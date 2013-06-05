@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2500;
+        int BotVersion = 2503;
 
         Random rnd = new Random();
 
@@ -154,6 +154,7 @@ namespace Simple_Bot
                 radioButtonParot.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[25]);
                 radioButtonCurrentPet.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[26]);
                 checkBoxAlarmBox.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[27]);
+                checkBoxBigGguru.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[28]);
             }
             catch { }
 
@@ -471,7 +472,7 @@ namespace Simple_Bot
                                               Convert.ToString(checkBoxHideBrowser.Checked), textBoxAdv.Text, Convert.ToString(radioButtonGoToForest.Checked), Convert.ToString(radioButtonMakeTree.Checked),
                                               Convert.ToString(radioButtonDontWork.Checked),Convert.ToString(numericUpDownGiftsCryNumber.Value),Convert.ToString(radioButtonSmallGift.Checked),Convert.ToString(radioButtonMiddleGift.Checked),
                                               Convert.ToString(radioButtonDonBuyGifts.Checked), Convert.ToString(radioButtonWhale.Checked), Convert.ToString(radioButtonParot.Checked),
-                                              Convert.ToString(radioButtonCurrentPet.Checked), Convert.ToString(checkBoxAlarmBox.Checked)};
+                                              Convert.ToString(radioButtonCurrentPet.Checked), Convert.ToString(checkBoxAlarmBox.Checked), Convert.ToString(checkBoxBigGguru.Checked),};
             CompareValuesInFile(AdditionalSettingsBox.Name, AdditionalSettings);
             checkBoxCryDust.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[1]);
             checkBoxFish.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[2]);
@@ -500,6 +501,7 @@ namespace Simple_Bot
             radioButtonParot.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[25]);
             radioButtonCurrentPet.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[26]);
             checkBoxAlarmBox.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[27]);
+            checkBoxBigGguru.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[28]);
 
             //Underground Settings
             string[] UndergroundSettings = { Convert.ToString(checkBoxUnderground.Checked), Convert.ToString(radioButtonUnderground.Checked), Convert.ToString(radioButtonFastUnderground.Checked),
@@ -754,6 +756,7 @@ namespace Simple_Bot
                     {
                         Bot.AlertFight();
                         Bot.LitleGuru();
+                        Bot.BigGuru();
                         Bot.PotionBoil();
                         Bot.TanksMaking();
                         Bot.MineGetCry();
@@ -1426,6 +1429,7 @@ namespace Simple_Bot
         {
             if (checkBoxLitleGuru.Checked == true)
             {
+                checkBoxBigGguru.Checked = false;
                 MessageBox.Show("При включении прокачки Малого гуру\r\nвсе остальные функции работать НЕ будут", "Simpe Bot: Information",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -1844,6 +1848,17 @@ namespace Simple_Bot
             string login = textBox1.Text;
             string loginMd5 = GetMd5Hash(md5Hash, login);
             textBoxMd5.Text = loginMd5;
+        }
+
+        private void checkBoxBigGguru_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxBigGguru.Checked == true)
+            {
+                checkBoxLitleGuru.Checked = false;
+                MessageBox.Show("При включении прокачки Большого гуру\r\nвсе остальные функции работать НЕ будут", "Simpe Bot: Information",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
     }
 }

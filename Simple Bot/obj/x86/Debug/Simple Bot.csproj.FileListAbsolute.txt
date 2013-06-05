@@ -179,3 +179,20 @@ E:\SBRepo\Simple Bot\obj\x86\Debug\Simple Bot.pdb
 F:\SBRepo-re\Simple Bot\bin\Debug\Simple Bot.exe.config
 F:\SBRepo-re\Simple Bot\obj\x86\Debug\Simple Bot.exe
 F:\SBRepo-re\Simple Bot\obj\x86\Debug\Simple Bot.pdb
+F:\NSB\Simple Bot\bin\Debug\Simple Bot.exe.config
+F:\NSB\Simple Bot\obj\x86\Debug\Simple Bot.exe
+F:\NSB\Simple Bot\obj\x86\Debug\Simple Bot.pdb
+F:\NSB\Simple Bot\bin\Debug\Simple Bot.exe.manifest
+F:\NSB\Simple Bot\bin\Debug\Simple Bot.application
+F:\NSB\Simple Bot\bin\Debug\Simple Bot.exe
+F:\NSB\Simple Bot\bin\Debug\Simple Bot.pdb
+F:\NSB\Simple Bot\bin\Debug\WebDriver.dll
+F:\NSB\Simple Bot\bin\Debug\WebDriver.pdb
+F:\NSB\Simple Bot\bin\Debug\WebDriver.xml
+F:\NSB\Simple Bot\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\NSB\Simple Bot\obj\x86\Debug\Simple_Bot.Form1.resources
+F:\NSB\Simple Bot\obj\x86\Debug\Simple_Bot.Properties.Resources.resources
+F:\NSB\Simple Bot\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\NSB\Simple Bot\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\NSB\Simple Bot\obj\x86\Debug\Simple Bot.exe.manifest
+F:\NSB\Simple Bot\obj\x86\Debug\Simple Bot.application

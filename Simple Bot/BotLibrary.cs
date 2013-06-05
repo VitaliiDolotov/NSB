@@ -936,14 +936,16 @@ namespace Simple_Bot
             return RetTime;
         }
 
-        public void BigFields()
+        public void BigFields(int BigGuru = -1)
         {
             try
             {
                 if (CharacterIsFree() == true)
                 {
                     FinishFieldsOpening();
-                    int MaxF = Convert.ToInt32(ReadFromFile(SettingsFile, "MineBox")[4]);
+                    int MaxF;
+                    //если не для нужд большого гуру, то присваиваем значение из бота
+                    MaxF = BigGuru >= 0 ? BigGuru : Convert.ToInt32(ReadFromFile(SettingsFile, "MineBox")[4]);
                     Random rnd = new Random();
 
                     //находим текущее число полянок
@@ -957,9 +959,10 @@ namespace Simple_Bot
                             {
                                 //шахта
                                 driver.FindElement(By.Id("m6")).FindElement(By.XPath(".//b")).Click();
+                                Delays();
                                 //большая
                                 WaitForElementAndClick(driver.FindElement(By.LinkText("БОЛЬШАЯ")), 4000);
-                                System.Threading.Thread.Sleep(rnd.Next(689, 899));
+                                Delays();
                             }
                             catch { }
 
@@ -3997,6 +4000,43 @@ namespace Simple_Bot
                         }
                     }
                     SmallFields();
+                }
+            }
+        }
+
+        public void BigGuru()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[28]) == true)
+            {
+                while (true)
+                {
+                    try
+                    {
+                        int currenCry = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                        driver.FindElement(By.LinkText("Гавань")).Click();
+                        Delays();
+                        driver.FindElement(By.LinkText("Торговая площадка")).Click();
+                        Delays();
+                        driver.FindElement(By.XPath(".//option[text()='Билет на большую поляну']")).Click();
+
+                        while (currenCry > 105)
+                        {
+                            //двигаем бегунок
+                            IWebElement Slider = driver.FindElement(By.CssSelector(".ui-slider-handle.ui-state-default.ui-corner-all"));
+                            Actions builder = new Actions(driver);
+                            IAction dragAndDrop = builder.ClickAndHold(Slider).MoveByOffset(0, 0).MoveByOffset(200, 150).Release().Build();
+                            dragAndDrop.Perform();
+                            driver.FindElement(By.XPath(".//input[@value='КУПИТЬ']")).Click();
+                            Delays();
+                            currenCry = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                            if (Convert.ToInt32(GetResourceValue("i34")[0]) > (Convert.ToInt32(GetResourceValue("i34")[1]) - 15))
+                            {
+                                break;
+                            }
+                        }
+                        BigFields(0);
+                    }
+                    catch { }
                 }
             }
         }
