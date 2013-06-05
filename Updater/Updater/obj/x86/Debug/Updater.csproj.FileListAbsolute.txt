@@ -1,0 +1,54 @@
+D:\Programs\BotvaBot\Updater\Updater\bin\Debug\Updater.exe
+D:\Programs\BotvaBot\Updater\Updater\bin\Debug\Updater.pdb
+D:\Programs\BotvaBot\Updater\Updater\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Programs\BotvaBot\Updater\Updater\obj\x86\Debug\Updater.Form1.resources
+D:\Programs\BotvaBot\Updater\Updater\obj\x86\Debug\Updater.Properties.Resources.resources
+D:\Programs\BotvaBot\Updater\Updater\obj\x86\Debug\ResGen.read.1.tlog
+D:\Programs\BotvaBot\Updater\Updater\obj\x86\Debug\ResGen.write.1.tlog
+D:\Programs\BotvaBot\Updater\Updater\obj\x86\Debug\Updater.exe
+D:\Programs\BotvaBot\Updater\Updater\obj\x86\Debug\Updater.pdb
+D:\Programs\BotvaBot\Updater\Updater\bin\Debug\Updater.exe.config
+D:\Programs\BotvaBot\Updater\Updater\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Programs\BotvaBot\Updater\Updater\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Aksis\Desktop\Botva HTML\Updater\Updater\bin\Debug\Updater.exe.config
+C:\Users\Aksis\Desktop\Botva HTML\Updater\Updater\obj\x86\Debug\Updater.exe
+C:\Users\Aksis\Desktop\Botva HTML\Updater\Updater\obj\x86\Debug\Updater.pdb
+C:\Users\Aksis\Desktop\Botva HTML\Updater\Updater\bin\Debug\Updater.exe
+C:\Users\Aksis\Desktop\Botva HTML\Updater\Updater\bin\Debug\Updater.pdb
+C:\Users\Aksis\Desktop\Botva HTML\Updater\Updater\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Aksis\Desktop\Botva HTML\Updater\Updater\obj\x86\Debug\Updater.Form1.resources
+C:\Users\Aksis\Desktop\Botva HTML\Updater\Updater\obj\x86\Debug\Updater.Properties.Resources.resources
+C:\Users\Aksis\Desktop\Botva HTML\Updater\Updater\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Aksis\Desktop\Botva HTML\Updater\Updater\obj\x86\Debug\ResGen.read.1.tlog
+C:\Users\Aksis\Desktop\Botva HTML\Updater\Updater\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Aksis\Desktop\Botva HTML\Updater\Updater\obj\x86\Debug\ResGen.write.1.tlog
+F:\SBRepo\SBRepo\Updater\Updater\bin\Debug\Updater.exe.config
+F:\SBRepo\SBRepo\Updater\Updater\obj\x86\Debug\Updater.exe
+F:\SBRepo\SBRepo\Updater\Updater\obj\x86\Debug\Updater.pdb
+F:\SBRepo\SBRepo\Updater\Updater\bin\Debug\Updater.exe
+F:\SBRepo\SBRepo\Updater\Updater\bin\Debug\Updater.pdb
+F:\SBRepo\SBRepo\Updater\Updater\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\SBRepo\SBRepo\Updater\Updater\obj\x86\Debug\Updater.Form1.resources
+F:\SBRepo\SBRepo\Updater\Updater\obj\x86\Debug\Updater.Properties.Resources.resources
+F:\SBRepo\SBRepo\Updater\Updater\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\SBRepo\SBRepo\Updater\Updater\obj\x86\Debug\ResGen.read.1.tlog
+F:\SBRepo\SBRepo\Updater\Updater\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\SBRepo\SBRepo\Updater\Updater\obj\x86\Debug\ResGen.write.1.tlog
+E:\Botva\SBRepo\Updater\Updater\bin\Debug\Updater.exe.config
+E:\Botva\SBRepo\Updater\Updater\obj\x86\Debug\Updater.exe
+E:\Botva\SBRepo\Updater\Updater\obj\x86\Debug\Updater.pdb
+E:\Botva\SBRepo\Updater\Updater\bin\Debug\Updater.exe
+E:\Botva\SBRepo\Updater\Updater\bin\Debug\Updater.pdb
+E:\Botva\SBRepo\Updater\Updater\obj\x86\Debug\Updater.Form1.resources
+E:\Botva\SBRepo\Updater\Updater\obj\x86\Debug\Updater.Properties.Resources.resources
+E:\Botva\SBRepo\Updater\Updater\obj\x86\Debug\Updater.csproj.GenerateResource.Cache
+D:\SBRepo\Updater\Updater\bin\Debug\Updater.exe.config
+D:\SBRepo\Updater\Updater\obj\x86\Debug\Updater.exe
+D:\SBRepo\Updater\Updater\obj\x86\Debug\Updater.pdb
+D:\SBRepo\Updater\Updater\bin\Debug\Updater.exe
+D:\SBRepo\Updater\Updater\bin\Debug\Updater.pdb
+D:\SBRepo\Updater\Updater\obj\x86\Debug\Updater.csprojResolveAssemblyReference.cache
+D:\SBRepo\Updater\Updater\obj\x86\Debug\Updater.Form1.resources
+D:\SBRepo\Updater\Updater\obj\x86\Debug\Updater.Properties.Resources.resources
+D:\SBRepo\Updater\Updater\obj\x86\Debug\Updater.csproj.GenerateResource.Cache
+E:\Botva\SBRepo\Updater\Updater\obj\x86\Debug\Updater.csprojResolveAssemblyReference.cache

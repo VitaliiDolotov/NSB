@@ -1,0 +1,63 @@
+[0.010][INFO]:      ChromeDriver 22.0.1203.0 C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\chromedriver.exe
+[1.420][FINE]:      Initializing session with capabilities {
+   "browserName": "chrome",
+   "chrome.switches": [ "--disable-extensions" ],
+   "chromeOptions": {
+      "args": [ "--disable-extensions" ],
+      "binary": "",
+      "extensions": [  ]
+   },
+   "javascriptEnabled": true,
+   "platform": "WINDOWS",
+   "version": ""
+}
+
+[1.420][INFO]:      Launching chrome: "C:\Users\Aksis\AppData\Local\Google\Chrome\Application\chrome.exe" --disable-hang-monitor --disable-prompt-on-repost --dom-automation --full-memory-crash-report --no-default-browser-check --no-first-run --ignore-certificate-errors --disable-popup-blocking --homepage=about:blank --disable-extensions
+[1.779][INFO]:      Connected to Chrome successfully. Version: 24.0.1312.56
+[1.783][FINE]:      Command received (/session/01b36700b89f7f6729ecf83d38725a51)
+[1.783][FINE]:      Command finished (/session/01b36700b89f7f6729ecf83d38725a51) with response {
+   "sessionId": "01b36700b89f7f6729ecf83d38725a51",
+   "status": 0,
+   "value": {
+      "acceptSslCerts": false,
+      "applicationCacheEnabled": false,
+      "browserConnectionEnabled": false,
+      "browserName": "chrome",
+      "chrome.chromedriverVersion": "22.0.1203.0",
+      "chrome.nativeEvents": false,
+      "cssSelectorsEnabled": true,
+      "databaseEnabled": false,
+      "handlesAlerts": true,
+      "javascriptEnabled": true,
+      "locationContextEnabled": false,
+      "nativeEvents": true,
+      "platform": "windows",
+      "rotatable": false,
+      "takesScreenshot": true,
+      "version": "24.0.1312.56",
+      "webStorageEnabled": true
+   }
+}
+
+[2.188][FINE]:      Command received (/session/01b36700b89f7f6729ecf83d38725a51/timeouts/implicit_wait) with params {
+   "ms": 2000.0
+}
+
+[2.188][FINER]:     Waiting for all views to stop loading...
+[2.188][FINER]:     Done waiting for all views to stop loading
+[2.188][FINER]:     Waiting for all views to stop loading...
+[2.188][FINER]:     Done waiting for all views to stop loading
+[2.188][FINE]:      Command finished (/session/01b36700b89f7f6729ecf83d38725a51/timeouts/implicit_wait) with response {
+   "sessionId": "01b36700b89f7f6729ecf83d38725a51",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[2.189][FINE]:      Command received (/session/01b36700b89f7f6729ecf83d38725a51/url) with params {
+   "url": "http://www.botva.ru/"
+}
+
+[2.189][FINER]:     Waiting for all views to stop loading...
+[2.189][FINER]:     Done waiting for all views to stop loading

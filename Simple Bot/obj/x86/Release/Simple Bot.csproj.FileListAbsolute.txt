@@ -1,0 +1,137 @@
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\bin\Release\Simple Bot.exe.config
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\bin\Release\Simple Bot.exe.manifest
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\bin\Release\Simple Bot.application
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\bin\Release\Simple Bot.exe
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\bin\Release\Simple Bot.pdb
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\bin\Release\SimpleBotLibrary.dll
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\bin\Release\WebDriver.dll
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\bin\Release\Newtonsoft.Json.dll
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\bin\Release\Ionic.Zip.dll
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\bin\Release\SimpleBotLibrary.pdb
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\bin\Release\WebDriver.pdb
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\bin\Release\WebDriver.xml
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\obj\x86\Release\Simple_Bot.Form1.resources
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\obj\x86\Release\Simple_Bot.Properties.Resources.resources
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\obj\x86\Release\GenerateResource.read.1.tlog
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\obj\x86\Release\GenerateResource.write.1.tlog
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.exe.manifest
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.application
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.exe
+D:\Programs\BotvaBot\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.pdb
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.exe.config
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.exe.manifest
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.application
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.exe
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.pdb
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\SimpleBotLibrary.dll
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\SimpleBotLibrary.pdb
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple_Bot.Form1.resources
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple_Bot.Properties.Resources.resources
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.exe.manifest
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.application
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.exe
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.pdb
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\WebDriver.pdb
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\WebDriver.xml
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\nunit.framework.dll
+C:\Users\Aksis\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\WebDriver.dll
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.exe.config
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.exe.manifest
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.application
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.exe
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.pdb
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\SimpleBotLibrary.dll
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\SimpleBotLibrary.pdb
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\WebDriver.pdb
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\bin\Release\WebDriver.xml
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple_Bot.Form1.resources
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple_Bot.Properties.Resources.resources
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.csproj.GenerateResource.Cache
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.exe.manifest
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.application
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.exe
+C:\Users\Admin\Desktop\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.pdb
+H:\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.exe.config
+H:\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.exe.manifest
+H:\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.application
+H:\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.exe
+H:\Botva HTML\Simple Bot\Simple Bot\bin\Release\Simple Bot.pdb
+H:\Botva HTML\Simple Bot\Simple Bot\bin\Release\WebDriver.pdb
+H:\Botva HTML\Simple Bot\Simple Bot\bin\Release\WebDriver.xml
+H:\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.csprojResolveAssemblyReference.cache
+H:\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple_Bot.Form1.resources
+H:\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple_Bot.Properties.Resources.resources
+H:\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.csproj.GenerateResource.Cache
+H:\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.exe.manifest
+H:\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.application
+H:\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.exe
+H:\Botva HTML\Simple Bot\Simple Bot\obj\x86\Release\Simple Bot.pdb
+F:\SBRepo\Simple Bot\bin\Release\Simple Bot.exe.config
+F:\SBRepo\Simple Bot\bin\Release\Simple Bot.exe.manifest
+F:\SBRepo\Simple Bot\bin\Release\Simple Bot.application
+F:\SBRepo\Simple Bot\bin\Release\Simple Bot.exe
+F:\SBRepo\Simple Bot\bin\Release\Simple Bot.pdb
+F:\SBRepo\Simple Bot\bin\Release\WebDriver.dll
+F:\SBRepo\Simple Bot\bin\Release\WebDriver.pdb
+F:\SBRepo\Simple Bot\bin\Release\WebDriver.xml
+F:\SBRepo\Simple Bot\obj\x86\Release\ResolveAssemblyReference.cache
+F:\SBRepo\Simple Bot\obj\x86\Release\Simple_Bot.Form1.resources
+F:\SBRepo\Simple Bot\obj\x86\Release\Simple_Bot.Properties.Resources.resources
+F:\SBRepo\Simple Bot\obj\x86\Release\GenerateResource.read.1.tlog
+F:\SBRepo\Simple Bot\obj\x86\Release\GenerateResource.write.1.tlog
+F:\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.exe.manifest
+F:\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.application
+F:\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.exe
+F:\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.pdb
+E:\Botva\SBRepo\Simple Bot\bin\Release\Simple Bot.exe.config
+E:\Botva\SBRepo\Simple Bot\bin\Release\Simple Bot.exe.manifest
+E:\Botva\SBRepo\Simple Bot\bin\Release\Simple Bot.application
+E:\Botva\SBRepo\Simple Bot\bin\Release\Simple Bot.exe
+E:\Botva\SBRepo\Simple Bot\bin\Release\Simple Bot.pdb
+E:\Botva\SBRepo\Simple Bot\bin\Release\WebDriver.pdb
+E:\Botva\SBRepo\Simple Bot\bin\Release\WebDriver.xml
+E:\Botva\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.csprojResolveAssemblyReference.cache
+E:\Botva\SBRepo\Simple Bot\obj\x86\Release\Simple_Bot.Form1.resources
+E:\Botva\SBRepo\Simple Bot\obj\x86\Release\Simple_Bot.Properties.Resources.resources
+E:\Botva\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.csproj.GenerateResource.Cache
+E:\Botva\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.exe.manifest
+E:\Botva\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.application
+E:\Botva\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.exe
+E:\Botva\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.pdb
+F:\SBRepo\SBRepo\Simple Bot\bin\Release\Simple Bot.exe.config
+F:\SBRepo\SBRepo\Simple Bot\bin\Release\Simple Bot.exe.manifest
+F:\SBRepo\SBRepo\Simple Bot\bin\Release\Simple Bot.application
+F:\SBRepo\SBRepo\Simple Bot\bin\Release\Simple Bot.exe
+F:\SBRepo\SBRepo\Simple Bot\bin\Release\Simple Bot.pdb
+F:\SBRepo\SBRepo\Simple Bot\bin\Release\WebDriver.dll
+F:\SBRepo\SBRepo\Simple Bot\bin\Release\WebDriver.pdb
+F:\SBRepo\SBRepo\Simple Bot\bin\Release\WebDriver.xml
+F:\SBRepo\SBRepo\Simple Bot\obj\x86\Release\ResolveAssemblyReference.cache
+F:\SBRepo\SBRepo\Simple Bot\obj\x86\Release\Simple_Bot.Form1.resources
+F:\SBRepo\SBRepo\Simple Bot\obj\x86\Release\Simple_Bot.Properties.Resources.resources
+F:\SBRepo\SBRepo\Simple Bot\obj\x86\Release\GenerateResource.read.1.tlog
+F:\SBRepo\SBRepo\Simple Bot\obj\x86\Release\GenerateResource.write.1.tlog
+F:\SBRepo\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.exe.manifest
+F:\SBRepo\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.application
+F:\SBRepo\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.exe
+F:\SBRepo\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.pdb
+D:\SBRepo\Simple Bot\bin\Release\Simple Bot.exe.config
+D:\SBRepo\Simple Bot\bin\Release\Simple Bot.exe.manifest
+D:\SBRepo\Simple Bot\bin\Release\Simple Bot.application
+D:\SBRepo\Simple Bot\bin\Release\Simple Bot.exe
+D:\SBRepo\Simple Bot\bin\Release\Simple Bot.pdb
+D:\SBRepo\Simple Bot\bin\Release\WebDriver.pdb
+D:\SBRepo\Simple Bot\bin\Release\WebDriver.xml
+D:\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.csprojResolveAssemblyReference.cache
+D:\SBRepo\Simple Bot\obj\x86\Release\Simple_Bot.Form1.resources
+D:\SBRepo\Simple Bot\obj\x86\Release\Simple_Bot.Properties.Resources.resources
+D:\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.csproj.GenerateResource.Cache
+D:\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.exe.manifest
+D:\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.application
+D:\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.exe
+D:\SBRepo\Simple Bot\obj\x86\Release\Simple Bot.pdb

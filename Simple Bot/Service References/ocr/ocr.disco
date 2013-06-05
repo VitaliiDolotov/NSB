@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://free-ocr.co.uk/ocr.asmx?wsdl" docRef="http://free-ocr.co.uk/ocr.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://free-ocr.co.uk/ocr.asmx" xmlns:q1="http://ocr.webtropy.com/" binding="q1:ocrSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://free-ocr.co.uk/ocr.asmx" xmlns:q2="http://ocr.webtropy.com/" binding="q2:ocrSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
