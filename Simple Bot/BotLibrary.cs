@@ -4408,7 +4408,7 @@ namespace Simple_Bot
                     {
                         driver.FindElement(By.LinkText("Школа")).Click();
                         Delays();
-                        driver.FindElement(By.LinkText("Школьные поручения")).Click();
+                        driver.FindElement(By.XPath("//div[text()='Школьные поручения']")).Click();
                         Delays();
                         try
                         {
