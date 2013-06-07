@@ -368,6 +368,8 @@
             this.numericUpDownGiftsCryNumber = new System.Windows.Forms.NumericUpDown();
             this.radioButtonMiddleGift = new System.Windows.Forms.RadioButton();
             this.radioButtonSmallGift = new System.Windows.Forms.RadioButton();
+            this.checkBoxBiggestPotion = new System.Windows.Forms.CheckBox();
+            this.pictureBox38 = new System.Windows.Forms.PictureBox();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
@@ -484,6 +486,7 @@
             this.PetForUndergrBox.SuspendLayout();
             this.GiftsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGiftsCryNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -1591,6 +1594,8 @@
             // 
             // AdditionalSettingsBox
             // 
+            this.AdditionalSettingsBox.Controls.Add(this.pictureBox38);
+            this.AdditionalSettingsBox.Controls.Add(this.checkBoxBiggestPotion);
             this.AdditionalSettingsBox.Controls.Add(this.pictureBox34);
             this.AdditionalSettingsBox.Controls.Add(this.checkBoxDayliGifts);
             this.AdditionalSettingsBox.Controls.Add(this.pictureBox33);
@@ -4422,6 +4427,26 @@
             this.radioButtonSmallGift.Text = "Маленькие";
             this.radioButtonSmallGift.UseVisualStyleBackColor = true;
             // 
+            // checkBoxBiggestPotion
+            // 
+            this.checkBoxBiggestPotion.AutoSize = true;
+            this.checkBoxBiggestPotion.Location = new System.Drawing.Point(157, 77);
+            this.checkBoxBiggestPotion.Name = "checkBoxBiggestPotion";
+            this.checkBoxBiggestPotion.Size = new System.Drawing.Size(111, 17);
+            this.checkBoxBiggestPotion.TabIndex = 27;
+            this.checkBoxBiggestPotion.Text = "Зел. огромности";
+            this.checkBoxBiggestPotion.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox38
+            // 
+            this.pictureBox38.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox38.Location = new System.Drawing.Point(272, 78);
+            this.pictureBox38.Name = "pictureBox38";
+            this.pictureBox38.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox38.TabIndex = 28;
+            this.pictureBox38.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox38, "Пить зелье Огромности");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4623,6 +4648,7 @@
             this.GiftsBox.ResumeLayout(false);
             this.GiftsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGiftsCryNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4968,6 +4994,8 @@
         private System.Windows.Forms.CheckBox checkBoxAlarmBox;
         private System.Windows.Forms.TextBox textBoxMd5;
         private System.Windows.Forms.CheckBox checkBoxBigGguru;
+        private System.Windows.Forms.PictureBox pictureBox38;
+        private System.Windows.Forms.CheckBox checkBoxBiggestPotion;
     }
 }
 

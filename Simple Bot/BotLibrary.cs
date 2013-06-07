@@ -166,7 +166,21 @@ namespace Simple_Bot
             MassAbilitysSetUp();
             VillageSetUp();
             BySlavesSetUp();
+            BiggestPotionSetUp();
             PageSource = driver.PageSource;
+        }
+
+        private void BiggestPotionSetUp()
+        {
+            try
+            {
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[29]))
+                {
+                    AddingCategory("Счётчики");
+                    AddingItemToTheCategory_Timers("Счётчики", "Ваши зверушки увеличены в размере и не могут быть проглочены Китушей", "Зелье огромности");
+                }
+            }
+            catch { }
         }
 
         private void VillageSetUp()
@@ -3579,6 +3593,35 @@ namespace Simple_Bot
             }
             catch { }
 
+            //Выпить зелье огромности
+            try
+            {
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[29]))
+                {
+                    if (!PageContent.Contains("Ваши зверушки увеличены в размере и не могут быть проглочены Китушей"))
+                    {
+                        driver.FindElement(By.LinkText("Персонаж")).Click();
+                        Delays();
+                        //Click on botles section
+                        driver.FindElement(By.CssSelector(".tabs_mini div:nth-of-type(2)")).Click();
+                        Delays();
+                        Actions builder = new Actions(driver);
+                        builder.MoveToElement(driver.FindElement(By.CssSelector(".ico_item_754"))).Build().Perform();
+                        driver.FindElement(By.XPath("//div[contains(@class,'ico_item_754')]//span[text()='ВЫПИТЬ']")).Click();
+                        Delays();
+                        driver.FindElement(By.XPath("//div[contains(@class,'box_controls')]//span[text()='ВЫПИТЬ']")).Click();
+                        try
+                        {
+                            //если есть надпись что можно стать козленочком
+                            driver.FindElement(By.XPath("//span[text()='close']")).Click();
+                            Delays();
+                        }
+                        catch { }
+                    }
+                }
+            }
+            catch { }
+
             try
             {
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "EffectsBox")[1]) == true)
@@ -4533,7 +4576,7 @@ namespace Simple_Bot
             MBeat();
             MFood();
             MGetSomeFood();
-            
+
 
 
         }
@@ -4548,7 +4591,7 @@ namespace Simple_Bot
 
         private int MGetCurrentHeal()
         {
-            return Convert.ToInt32(  driver.FindElement(By.CssSelector(".bg_health_scale_left")).GetAttribute("title").Split('/').FirstOrDefault());
+            return Convert.ToInt32(driver.FindElement(By.CssSelector(".bg_health_scale_left")).GetAttribute("title").Split('/').FirstOrDefault());
         }
 
         private int MMinHeal()
