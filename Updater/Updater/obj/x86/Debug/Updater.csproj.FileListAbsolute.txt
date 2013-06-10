@@ -64,3 +64,12 @@ F:\NSB\Updater\Updater\obj\x86\Debug\GenerateResource.read.1.tlog
 F:\NSB\Updater\Updater\obj\x86\Debug\ResGen.read.1.tlog
 F:\NSB\Updater\Updater\obj\x86\Debug\GenerateResource.write.1.tlog
 F:\NSB\Updater\Updater\obj\x86\Debug\ResGen.write.1.tlog
+E:\NSB\Updater\Updater\bin\Debug\Updater.exe.config
+E:\NSB\Updater\Updater\obj\x86\Debug\Updater.exe
+E:\NSB\Updater\Updater\obj\x86\Debug\Updater.pdb
+E:\NSB\Updater\Updater\bin\Debug\Updater.exe
+E:\NSB\Updater\Updater\bin\Debug\Updater.pdb
+E:\NSB\Updater\Updater\obj\x86\Debug\Updater.csprojResolveAssemblyReference.cache
+E:\NSB\Updater\Updater\obj\x86\Debug\Updater.Form1.resources
+E:\NSB\Updater\Updater\obj\x86\Debug\Updater.Properties.Resources.resources
+E:\NSB\Updater\Updater\obj\x86\Debug\Updater.csproj.GenerateResource.Cache

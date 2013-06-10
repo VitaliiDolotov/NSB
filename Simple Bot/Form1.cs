@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2506;
+        int BotVersion = 2507;
 
         Random rnd = new Random();
 
@@ -804,6 +804,10 @@ namespace Simple_Bot
                     catch
                     {
                         //чтоб могли релогнутся в катче если вылетит метод из трая
+                        Bot.ReLogIn();
+                    }
+                    finally
+                    {
                         Bot.ReLogIn();
                     }
                 }

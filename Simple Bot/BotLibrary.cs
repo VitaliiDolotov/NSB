@@ -76,6 +76,7 @@ namespace Simple_Bot
         static DateTime Timer_DayliGifts = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_DrinkOborotka = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_ForestFarmer = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+        static DateTime Timer_BiggestPotion = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
         static DateTime Timer_Grif = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_Mont = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
@@ -178,6 +179,7 @@ namespace Simple_Bot
                 {
                     AddingCategory("Счётчики");
                     AddingItemToTheCategory_Timers("Счётчики", "Ваши зверушки увеличены в размере и не могут быть проглочены Китушей", "Зелье огромности");
+                    Timer_BiggestPotion = ToDateTime(GetResourceValue("Ваши зверушки увеличены в размере и не могут быть проглочены Китушей")[0]);
                 }
             }
             catch { }
@@ -3598,7 +3600,7 @@ namespace Simple_Bot
             {
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[29]))
                 {
-                    if (!PageContent.Contains("Ваши зверушки увеличены в размере и не могут быть проглочены Китушей"))
+                    if (Timer_BiggestPotion.CompareTo(DateTime.Now)<0)
                     {
                         driver.FindElement(By.LinkText("Персонаж")).Click();
                         Delays();
@@ -3610,6 +3612,7 @@ namespace Simple_Bot
                         driver.FindElement(By.XPath("//div[contains(@class,'ico_item_754')]//span[text()='ВЫПИТЬ']")).Click();
                         Delays();
                         driver.FindElement(By.XPath("//div[contains(@class,'box_controls')]//span[text()='ВЫПИТЬ']")).Click();
+                        Timer_BiggestPotion = ToDateTime(GetResourceValue("Ваши зверушки увеличены в размере и не могут быть проглочены Китушей")[0]);
                         try
                         {
                             //если есть надпись что можно стать козленочком
