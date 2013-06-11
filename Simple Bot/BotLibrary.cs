@@ -679,7 +679,7 @@ namespace Simple_Bot
             Delay1 = 600;
             Delay2 = 1000;
 
-            Timer_Relogin = ToDateTime("00:05:10");
+            Timer_Relogin = ToDateTime("00:05:20");
 
             //асайнем таймер сбытни
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "ShopBox")[1]) == true)
@@ -769,7 +769,10 @@ namespace Simple_Bot
                         this.driver = Login(ReadFromFile(SettingsFile, "LoginBox")[1], ReadFromFile(SettingsFile, "LoginBox")[2], ReadFromFile(SettingsFile, "LoginBox")[3], ReadFromFile(SettingsFile, "LoginBox")[4], Convert.ToBoolean(ReadFromFile(SettingsFile, "LoginBox")[5]));
                     }
                 }
-                catch { }
+                catch
+                {
+                    this.driver = Login(ReadFromFile(SettingsFile, "LoginBox")[1], ReadFromFile(SettingsFile, "LoginBox")[2], ReadFromFile(SettingsFile, "LoginBox")[3], ReadFromFile(SettingsFile, "LoginBox")[4], Convert.ToBoolean(ReadFromFile(SettingsFile, "LoginBox")[5]));
+                }
                 ReHideWindow();
             }
         }
