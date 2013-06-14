@@ -4452,38 +4452,41 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[14]) == true)
             {
-                if (Timer_DayliGifts.CompareTo(DateTime.Now) < 0)
+                if (CurrentWork("Спуск") == false)
                 {
-                    try
+                    if (Timer_DayliGifts.CompareTo(DateTime.Now) < 0)
                     {
-                        driver.FindElement(By.LinkText("Школа")).Click();
-                        Delays();
-                        driver.FindElement(By.XPath("//div[text()='Школьные поручения']")).Click();
-                        Delays();
                         try
                         {
-                            IList<IWebElement> getList = driver.FindElements(By.XPath(".//input[@value='ПОЛУЧИТЬ НАГРАДУ']"));
-                            bool br = false;
-                            while (!br)
+                            driver.FindElement(By.LinkText("Школа")).Click();
+                            Delays();
+                            driver.FindElement(By.XPath("//div[text()='Школьные поручения']")).Click();
+                            Delays();
+                            try
                             {
-                                getList = driver.FindElements(By.XPath(".//input[@value='ПОЛУЧИТЬ НАГРАДУ']"));
-                                br = true;
-                                foreach (IWebElement get in getList)
+                                IList<IWebElement> getList = driver.FindElements(By.XPath(".//input[@value='ПОЛУЧИТЬ НАГРАДУ']"));
+                                bool br = false;
+                                while (!br)
                                 {
-                                    if (get.Enabled)
+                                    getList = driver.FindElements(By.XPath(".//input[@value='ПОЛУЧИТЬ НАГРАДУ']"));
+                                    br = true;
+                                    foreach (IWebElement get in getList)
                                     {
-                                        get.Click();
-                                        br = false;
-                                        break;
+                                        if (get.Enabled)
+                                        {
+                                            get.Click();
+                                            br = false;
+                                            break;
+                                        }
                                     }
                                 }
                             }
+                            catch { }
                         }
                         catch { }
+                        string minutes = Convert.ToString(rnd.Next(24, 36));
+                        Timer_DayliGifts = ToDateTime("00:" + minutes + ":06");
                     }
-                    catch { }
-                    string minutes = Convert.ToString(rnd.Next(24, 36));
-                    Timer_DayliGifts = ToDateTime("00:" + minutes + ":06");
                 }
             }
         }
@@ -4561,20 +4564,27 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[11]))
             {
-                driver.FindElement(By.Id("menu_monsterpve")).Click();
-                Delays();
                 if (driver.FindElement(By.XPath(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
                 {
                     try
                     {
                         IWebElement temp = driver.FindElement(By.XPath(".//a[@title='Посадить в клетку']"));
                     }
-                    catch 
+                    catch
                     {
-                        GoByWorm();
+                        try
+                        {
+                            GoByWorm();
+                            IWebElement temp = driver.FindElement(By.XPath(".//div[contains(text(),'У тебя уже есть такая зверушка, со')]"));
+                            GetPet(PetType.worm);
+                        }
+                        catch { }
                     }
                 }
-
+                driver.FindElement(By.Id("menu_monsterpve")).Click();
+                Delays();
+                driver.FindElement(By.XPath(".//input[contains(@value,'Перейти к месту')]")).Click();
+                Delays();
             }
         }
 

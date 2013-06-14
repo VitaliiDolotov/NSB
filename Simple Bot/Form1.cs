@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2515;
+        int BotVersion = 2516;
 
         Random rnd = new Random();
 
@@ -425,6 +425,7 @@ namespace Simple_Bot
             button4.Text = "Back";
             RemovingOldUpdater();
             CheckForUpdates();
+            ChromeDriverKillerProcess();
 
             //StutsUp Setting
             string[] StutsUpSettings = { Convert.ToString(checkBoxPower.Checked), Convert.ToString(checkBoxBlock.Checked), Convert.ToString(checkBoxDexterity.Checked), Convert.ToString(checkBoxEndurance.Checked), Convert.ToString(checkBoxCharisma.Checked) };
@@ -763,6 +764,7 @@ namespace Simple_Bot
                 {
                     try
                     {
+                        Bot.GoToOldoMsters();
                         Bot.AlertFight();
                         Bot.LitleGuru();
                         Bot.BigGuru();

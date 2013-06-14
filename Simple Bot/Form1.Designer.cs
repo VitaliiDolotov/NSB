@@ -533,7 +533,7 @@
             this.LoginBox.Controls.Add(this.label1);
             this.LoginBox.Location = new System.Drawing.Point(7, 4);
             this.LoginBox.Name = "LoginBox";
-            this.LoginBox.Size = new System.Drawing.Size(197, 235);
+            this.LoginBox.Size = new System.Drawing.Size(197, 230);
             this.LoginBox.TabIndex = 1;
             this.LoginBox.TabStop = false;
             this.LoginBox.Text = "Login:";
