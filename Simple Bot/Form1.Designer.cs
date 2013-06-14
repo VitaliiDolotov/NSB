@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.LoginBox = new System.Windows.Forms.GroupBox();
+            this.pictureBox39 = new System.Windows.Forms.PictureBox();
             this.textBoxMd5 = new System.Windows.Forms.TextBox();
             this.checkBoxHideBrowser = new System.Windows.Forms.CheckBox();
             this.pictureBox27 = new System.Windows.Forms.PictureBox();
@@ -124,6 +125,8 @@
             this.checkBoxTankMaking = new System.Windows.Forms.CheckBox();
             this.checkBoxPotionMaking = new System.Windows.Forms.CheckBox();
             this.AdditionalSettingsBox = new System.Windows.Forms.GroupBox();
+            this.pictureBox38 = new System.Windows.Forms.PictureBox();
+            this.checkBoxBiggestPotion = new System.Windows.Forms.CheckBox();
             this.pictureBox34 = new System.Windows.Forms.PictureBox();
             this.checkBoxDayliGifts = new System.Windows.Forms.CheckBox();
             this.pictureBox33 = new System.Windows.Forms.PictureBox();
@@ -368,9 +371,8 @@
             this.numericUpDownGiftsCryNumber = new System.Windows.Forms.NumericUpDown();
             this.radioButtonMiddleGift = new System.Windows.Forms.RadioButton();
             this.radioButtonSmallGift = new System.Windows.Forms.RadioButton();
-            this.checkBoxBiggestPotion = new System.Windows.Forms.CheckBox();
-            this.pictureBox38 = new System.Windows.Forms.PictureBox();
             this.LoginBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureStatusNone)).BeginInit();
@@ -409,6 +411,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
             this.panelPotionMaking.SuspendLayout();
             this.AdditionalSettingsBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).BeginInit();
@@ -486,7 +489,6 @@
             this.PetForUndergrBox.SuspendLayout();
             this.GiftsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGiftsCryNumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -501,6 +503,7 @@
             // 
             // LoginBox
             // 
+            this.LoginBox.Controls.Add(this.pictureBox39);
             this.LoginBox.Controls.Add(this.textBoxMd5);
             this.LoginBox.Controls.Add(this.checkBoxHideBrowser);
             this.LoginBox.Controls.Add(this.pictureBox27);
@@ -534,6 +537,16 @@
             this.LoginBox.TabIndex = 1;
             this.LoginBox.TabStop = false;
             this.LoginBox.Text = "Login:";
+            // 
+            // pictureBox39
+            // 
+            this.pictureBox39.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox39.Location = new System.Drawing.Point(88, 255);
+            this.pictureBox39.Name = "pictureBox39";
+            this.pictureBox39.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox39.TabIndex = 24;
+            this.pictureBox39.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox39, "Мгновенно перемещатся по ускоряшке");
             // 
             // textBoxMd5
             // 
@@ -584,9 +597,9 @@
             this.checkBoxTray.AutoSize = true;
             this.checkBoxTray.Location = new System.Drawing.Point(16, 255);
             this.checkBoxTray.Name = "checkBoxTray";
-            this.checkBoxTray.Size = new System.Drawing.Size(72, 17);
+            this.checkBoxTray.Size = new System.Drawing.Size(75, 17);
             this.checkBoxTray.TabIndex = 17;
-            this.checkBoxTray.Text = "Go to tray";
+            this.checkBoxTray.Text = "Ускоряха";
             this.checkBoxTray.UseVisualStyleBackColor = true;
             this.checkBoxTray.CheckedChanged += new System.EventHandler(this.checkBoxTaskBar_CheckedChanged);
             // 
@@ -1616,6 +1629,26 @@
             this.AdditionalSettingsBox.TabIndex = 9;
             this.AdditionalSettingsBox.TabStop = false;
             this.AdditionalSettingsBox.Text = " Дополнительные ";
+            // 
+            // pictureBox38
+            // 
+            this.pictureBox38.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox38.Location = new System.Drawing.Point(272, 78);
+            this.pictureBox38.Name = "pictureBox38";
+            this.pictureBox38.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox38.TabIndex = 28;
+            this.pictureBox38.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox38, "Пить зелье Огромности");
+            // 
+            // checkBoxBiggestPotion
+            // 
+            this.checkBoxBiggestPotion.AutoSize = true;
+            this.checkBoxBiggestPotion.Location = new System.Drawing.Point(157, 77);
+            this.checkBoxBiggestPotion.Name = "checkBoxBiggestPotion";
+            this.checkBoxBiggestPotion.Size = new System.Drawing.Size(111, 17);
+            this.checkBoxBiggestPotion.TabIndex = 27;
+            this.checkBoxBiggestPotion.Text = "Зел. огромности";
+            this.checkBoxBiggestPotion.UseVisualStyleBackColor = true;
             // 
             // pictureBox34
             // 
@@ -4427,26 +4460,6 @@
             this.radioButtonSmallGift.Text = "Маленькие";
             this.radioButtonSmallGift.UseVisualStyleBackColor = true;
             // 
-            // checkBoxBiggestPotion
-            // 
-            this.checkBoxBiggestPotion.AutoSize = true;
-            this.checkBoxBiggestPotion.Location = new System.Drawing.Point(157, 77);
-            this.checkBoxBiggestPotion.Name = "checkBoxBiggestPotion";
-            this.checkBoxBiggestPotion.Size = new System.Drawing.Size(111, 17);
-            this.checkBoxBiggestPotion.TabIndex = 27;
-            this.checkBoxBiggestPotion.Text = "Зел. огромности";
-            this.checkBoxBiggestPotion.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox38
-            // 
-            this.pictureBox38.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox38.Location = new System.Drawing.Point(272, 78);
-            this.pictureBox38.Name = "pictureBox38";
-            this.pictureBox38.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox38.TabIndex = 28;
-            this.pictureBox38.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox38, "Пить зелье Огромности");
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4490,6 +4503,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.LoginBox.ResumeLayout(false);
             this.LoginBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureStatusNone)).EndInit();
@@ -4539,6 +4553,7 @@
             this.panelPotionMaking.PerformLayout();
             this.AdditionalSettingsBox.ResumeLayout(false);
             this.AdditionalSettingsBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox33)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).EndInit();
@@ -4648,7 +4663,6 @@
             this.GiftsBox.ResumeLayout(false);
             this.GiftsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGiftsCryNumber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4996,6 +5010,7 @@
         private System.Windows.Forms.CheckBox checkBoxBigGguru;
         private System.Windows.Forms.PictureBox pictureBox38;
         private System.Windows.Forms.CheckBox checkBoxBiggestPotion;
+        private System.Windows.Forms.PictureBox pictureBox39;
     }
 }
 

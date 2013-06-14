@@ -679,7 +679,7 @@ namespace Simple_Bot
             Delay1 = 600;
             Delay2 = 1000;
 
-            Timer_Relogin = ToDateTime("00:05:20");
+            Timer_Relogin = ToDateTime("00:09:20");
 
             //асайнем таймер сбытни
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "ShopBox")[1]) == true)
@@ -730,7 +730,7 @@ namespace Simple_Bot
         {
             if (Timer_Relogin.CompareTo(DateTime.Now) < 0)
             {
-                Timer_Relogin = ToDateTime("00:05:23");
+                Timer_Relogin = ToDateTime("00:09:23");
                 try
                 {
                     driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
@@ -771,6 +771,7 @@ namespace Simple_Bot
                 }
                 catch
                 {
+                    this.driver.Quit();
                     this.driver = Login(ReadFromFile(SettingsFile, "LoginBox")[1], ReadFromFile(SettingsFile, "LoginBox")[2], ReadFromFile(SettingsFile, "LoginBox")[3], ReadFromFile(SettingsFile, "LoginBox")[4], Convert.ToBoolean(ReadFromFile(SettingsFile, "LoginBox")[5]));
                 }
                 ReHideWindow();
@@ -4554,6 +4555,39 @@ namespace Simple_Bot
             //    }
             //    catch { }
             //}
+        }
+
+        public void GoToOldoMsters()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[11]))
+            {
+                driver.FindElement(By.Id("menu_monsterpve")).Click();
+                Delays();
+                if (driver.FindElement(By.XPath(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
+                {
+                    try
+                    {
+                        IWebElement temp = driver.FindElement(By.XPath(".//a[@title='Посадить в клетку']"));
+                    }
+                    catch 
+                    {
+                        GoByWorm();
+                    }
+                }
+
+            }
+        }
+
+        private void GoByWorm()
+        {
+            driver.FindElement(By.LinkText("Деревня")).Click();
+            Delays();
+            driver.FindElement(By.LinkText("Лавка")).Click();
+            Delays();
+            driver.FindElement(By.LinkText("Звери")).Click();
+            Delays();
+            Delays();
+            driver.FindElement(By.CssSelector("#shop_cmd_200")).Click();
         }
 
         public void AlertFight()

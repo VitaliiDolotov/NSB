@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2508;
+        int BotVersion = 2515;
 
         Random rnd = new Random();
 
@@ -413,6 +413,13 @@ namespace Simple_Bot
             }
         }
 
+        private void ChromeDriverKillerProcess()
+        {
+            Process cdkProc = new Process();
+            cdkProc.StartInfo.FileName = "chromedriverKiller.exe";
+            cdkProc.Start();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             button4.Text = "Back";
@@ -797,14 +804,9 @@ namespace Simple_Bot
                         Bot.OpenAdvPage();
 
                         //Bot.SwToBotvaPage();
-
-                        //релогинимся
-                        Bot.ReLogIn();
                     }
                     catch
                     {
-                        //чтоб могли релогнутся в катче если вылетит метод из трая
-                        Bot.ReLogIn();
                     }
                     finally
                     {
@@ -1489,11 +1491,11 @@ namespace Simple_Bot
 
         private void checkBoxTaskBar_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxTray.Checked == true)
-            {
-                this.ShowInTaskbar = false;
-            }
-            else this.ShowInTaskbar = true;
+            //if (checkBoxTray.Checked == true)
+            //{
+            //    this.ShowInTaskbar = false;
+            //}
+            //else this.ShowInTaskbar = true;
         }
 
         private void button17_Click(object sender, EventArgs e)
