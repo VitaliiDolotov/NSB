@@ -216,6 +216,10 @@
             this.pictureBox30 = new System.Windows.Forms.PictureBox();
             this.pictureBox36 = new System.Windows.Forms.PictureBox();
             this.pictureBox37 = new System.Windows.Forms.PictureBox();
+            this.pictureBox40 = new System.Windows.Forms.PictureBox();
+            this.pictureBox41 = new System.Windows.Forms.PictureBox();
+            this.pictureBox42 = new System.Windows.Forms.PictureBox();
+            this.pictureBox43 = new System.Windows.Forms.PictureBox();
             this.PandaEffectsBox = new System.Windows.Forms.GroupBox();
             this.radioButtonPEcry = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
@@ -232,6 +236,7 @@
             this.FlyBox = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.FoFlyBox = new System.Windows.Forms.GroupBox();
+            this.checkBoxDontUseFoFly = new System.Windows.Forms.CheckBox();
             this.numericUpDownHrsFoFly = new System.Windows.Forms.NumericUpDown();
             this.radioButtonSTFoFly = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -239,15 +244,8 @@
             this.numericUpDownTrackFoFly = new System.Windows.Forms.NumericUpDown();
             this.radioButtonKarFoFly = new System.Windows.Forms.RadioButton();
             this.radioButtonBTFoFly = new System.Windows.Forms.RadioButton();
-            this.TFlyBox = new System.Windows.Forms.GroupBox();
-            this.numericUpDownHrsTFly = new System.Windows.Forms.NumericUpDown();
-            this.radioButtonSTTFly = new System.Windows.Forms.CheckBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.numericUpDownTrackTFly = new System.Windows.Forms.NumericUpDown();
-            this.radioButtonKarTFly = new System.Windows.Forms.RadioButton();
-            this.radioButtonBTTFly = new System.Windows.Forms.RadioButton();
             this.SFlyBox = new System.Windows.Forms.GroupBox();
+            this.checkBoxDontUseSFly = new System.Windows.Forms.CheckBox();
             this.numericUpDownHrsSFly = new System.Windows.Forms.NumericUpDown();
             this.radioButtonSTSFly = new System.Windows.Forms.CheckBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -256,6 +254,7 @@
             this.radioButtonKarSFly = new System.Windows.Forms.RadioButton();
             this.radioButtonBTSFly = new System.Windows.Forms.RadioButton();
             this.FFlyBox = new System.Windows.Forms.GroupBox();
+            this.checkBoxDontUseFFly = new System.Windows.Forms.CheckBox();
             this.radioButtonSTFFly = new System.Windows.Forms.CheckBox();
             this.numericUpDownHrsFFly = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
@@ -263,6 +262,15 @@
             this.numericUpDownTrackFFly = new System.Windows.Forms.NumericUpDown();
             this.radioButtonKarFFly = new System.Windows.Forms.RadioButton();
             this.radioButtonBTFFly = new System.Windows.Forms.RadioButton();
+            this.TFlyBox = new System.Windows.Forms.GroupBox();
+            this.checkBoxDontUseTFly = new System.Windows.Forms.CheckBox();
+            this.numericUpDownHrsTFly = new System.Windows.Forms.NumericUpDown();
+            this.radioButtonSTTFly = new System.Windows.Forms.CheckBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.numericUpDownTrackTFly = new System.Windows.Forms.NumericUpDown();
+            this.radioButtonKarTFly = new System.Windows.Forms.RadioButton();
+            this.radioButtonBTTFly = new System.Windows.Forms.RadioButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.MineInventoryBox = new System.Windows.Forms.GroupBox();
@@ -371,14 +379,17 @@
             this.numericUpDownGiftsCryNumber = new System.Windows.Forms.NumericUpDown();
             this.radioButtonMiddleGift = new System.Windows.Forms.RadioButton();
             this.radioButtonSmallGift = new System.Windows.Forms.RadioButton();
-            this.checkBoxDontUseTFly = new System.Windows.Forms.CheckBox();
-            this.pictureBox40 = new System.Windows.Forms.PictureBox();
-            this.pictureBox41 = new System.Windows.Forms.PictureBox();
-            this.checkBoxDontUseFoFly = new System.Windows.Forms.CheckBox();
-            this.pictureBox42 = new System.Windows.Forms.PictureBox();
-            this.checkBoxDontUseFFly = new System.Windows.Forms.CheckBox();
-            this.pictureBox43 = new System.Windows.Forms.PictureBox();
-            this.checkBoxDontUseSFly = new System.Windows.Forms.CheckBox();
+            this.TradeFieldBox = new System.Windows.Forms.GroupBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.comboBoxTFResource = new System.Windows.Forms.ComboBox();
+            this.numericUpDownTFDuringTime = new System.Windows.Forms.NumericUpDown();
+            this.label53 = new System.Windows.Forms.Label();
+            this.numericUpDownTFEveryTime = new System.Windows.Forms.NumericUpDown();
+            this.label54 = new System.Windows.Forms.Label();
+            this.button37 = new System.Windows.Forms.Button();
+            this.button38 = new System.Windows.Forms.Button();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -455,21 +466,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox37)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
             this.PandaEffectsBox.SuspendLayout();
             this.ImmunEffetsBox.SuspendLayout();
             this.FlyBox.SuspendLayout();
             this.FoFlyBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHrsFoFly)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrackFoFly)).BeginInit();
-            this.TFlyBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHrsTFly)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrackTFly)).BeginInit();
             this.SFlyBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHrsSFly)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrackSFly)).BeginInit();
             this.FFlyBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHrsFFly)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrackFFly)).BeginInit();
+            this.TFlyBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHrsTFly)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrackTFly)).BeginInit();
             this.MineInventoryBox.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.EnemyBox.SuspendLayout();
@@ -497,10 +512,9 @@
             this.PetForUndergrBox.SuspendLayout();
             this.GiftsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGiftsCryNumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
+            this.TradeFieldBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFDuringTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFEveryTime)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -849,6 +863,7 @@
             // 
             // MenuBox
             // 
+            this.MenuBox.Controls.Add(this.button38);
             this.MenuBox.Controls.Add(this.checkBoxBigGguru);
             this.MenuBox.Controls.Add(this.button30);
             this.MenuBox.Controls.Add(this.button7);
@@ -982,7 +997,7 @@
             // 
             this.button24.Location = new System.Drawing.Point(164, 357);
             this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(139, 23);
+            this.button24.Size = new System.Drawing.Size(141, 23);
             this.button24.TabIndex = 19;
             this.button24.Text = "Прокачка статов";
             this.button24.UseVisualStyleBackColor = true;
@@ -992,7 +1007,7 @@
             // 
             this.button5.Location = new System.Drawing.Point(164, 328);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(139, 23);
+            this.button5.Size = new System.Drawing.Size(141, 23);
             this.button5.TabIndex = 15;
             this.button5.Text = "Эффекты Панд";
             this.button5.UseVisualStyleBackColor = true;
@@ -1445,11 +1460,11 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(164, 387);
+            this.button4.Location = new System.Drawing.Point(309, 386);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(286, 23);
+            this.button4.Size = new System.Drawing.Size(141, 24);
             this.button4.TabIndex = 8;
-            this.button4.Text = "-==>> Save and Back <<==--";
+            this.button4.Text = "-=> Save and Back <=--";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -2636,6 +2651,46 @@
             this.pictureBox37.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox37, "Покупать, если на счету кристаллов\r\nбольше указанного значения");
             // 
+            // pictureBox40
+            // 
+            this.pictureBox40.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox40.Location = new System.Drawing.Point(101, 129);
+            this.pictureBox40.Name = "pictureBox40";
+            this.pictureBox40.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox40.TabIndex = 24;
+            this.pictureBox40.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox40, "Не использовать этого летуна");
+            // 
+            // pictureBox41
+            // 
+            this.pictureBox41.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox41.Location = new System.Drawing.Point(100, 129);
+            this.pictureBox41.Name = "pictureBox41";
+            this.pictureBox41.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox41.TabIndex = 26;
+            this.pictureBox41.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox41, "Не использовать этого летуна");
+            // 
+            // pictureBox42
+            // 
+            this.pictureBox42.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox42.Location = new System.Drawing.Point(100, 129);
+            this.pictureBox42.Name = "pictureBox42";
+            this.pictureBox42.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox42.TabIndex = 26;
+            this.pictureBox42.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox42, "Не использовать этого летуна");
+            // 
+            // pictureBox43
+            // 
+            this.pictureBox43.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox43.Location = new System.Drawing.Point(100, 129);
+            this.pictureBox43.Name = "pictureBox43";
+            this.pictureBox43.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox43.TabIndex = 28;
+            this.pictureBox43.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox43, "Не использовать этого летуна");
+            // 
             // PandaEffectsBox
             // 
             this.PandaEffectsBox.Controls.Add(this.radioButtonPEcry);
@@ -2826,6 +2881,16 @@
             this.FoFlyBox.TabStop = false;
             this.FoFlyBox.Text = "Четвертый летун";
             // 
+            // checkBoxDontUseFoFly
+            // 
+            this.checkBoxDontUseFoFly.AutoSize = true;
+            this.checkBoxDontUseFoFly.Location = new System.Drawing.Point(8, 129);
+            this.checkBoxDontUseFoFly.Name = "checkBoxDontUseFoFly";
+            this.checkBoxDontUseFoFly.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxDontUseFoFly.TabIndex = 25;
+            this.checkBoxDontUseFoFly.Text = "Не трогать";
+            this.checkBoxDontUseFoFly.UseVisualStyleBackColor = true;
+            // 
             // numericUpDownHrsFoFly
             // 
             this.numericUpDownHrsFoFly.Location = new System.Drawing.Point(69, 81);
@@ -2915,114 +2980,6 @@
             this.radioButtonBTFoFly.Text = "Большое Прик.";
             this.radioButtonBTFoFly.UseVisualStyleBackColor = true;
             // 
-            // TFlyBox
-            // 
-            this.TFlyBox.Controls.Add(this.pictureBox40);
-            this.TFlyBox.Controls.Add(this.checkBoxDontUseTFly);
-            this.TFlyBox.Controls.Add(this.pictureBox29);
-            this.TFlyBox.Controls.Add(this.numericUpDownHrsTFly);
-            this.TFlyBox.Controls.Add(this.radioButtonSTTFly);
-            this.TFlyBox.Controls.Add(this.label18);
-            this.TFlyBox.Controls.Add(this.label19);
-            this.TFlyBox.Controls.Add(this.numericUpDownTrackTFly);
-            this.TFlyBox.Controls.Add(this.radioButtonKarTFly);
-            this.TFlyBox.Controls.Add(this.radioButtonBTTFly);
-            this.TFlyBox.Location = new System.Drawing.Point(9, 178);
-            this.TFlyBox.Name = "TFlyBox";
-            this.TFlyBox.Size = new System.Drawing.Size(126, 152);
-            this.TFlyBox.TabIndex = 2;
-            this.TFlyBox.TabStop = false;
-            this.TFlyBox.Text = "Третий летун";
-            // 
-            // numericUpDownHrsTFly
-            // 
-            this.numericUpDownHrsTFly.Location = new System.Drawing.Point(69, 81);
-            this.numericUpDownHrsTFly.Maximum = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            this.numericUpDownHrsTFly.Name = "numericUpDownHrsTFly";
-            this.numericUpDownHrsTFly.Size = new System.Drawing.Size(49, 20);
-            this.numericUpDownHrsTFly.TabIndex = 5;
-            this.numericUpDownHrsTFly.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // radioButtonSTTFly
-            // 
-            this.radioButtonSTTFly.AutoSize = true;
-            this.radioButtonSTTFly.Location = new System.Drawing.Point(9, 107);
-            this.radioButtonSTTFly.Name = "radioButtonSTTFly";
-            this.radioButtonSTTFly.Size = new System.Drawing.Size(93, 17);
-            this.radioButtonSTTFly.TabIndex = 21;
-            this.radioButtonSTTFly.Text = "Малые Прик.";
-            this.radioButtonSTTFly.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(28, 83);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(35, 13);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "Часы";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(29, 63);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(31, 13);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "Путь";
-            // 
-            // numericUpDownTrackTFly
-            // 
-            this.numericUpDownTrackTFly.Location = new System.Drawing.Point(69, 58);
-            this.numericUpDownTrackTFly.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.numericUpDownTrackTFly.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownTrackTFly.Name = "numericUpDownTrackTFly";
-            this.numericUpDownTrackTFly.Size = new System.Drawing.Size(49, 20);
-            this.numericUpDownTrackTFly.TabIndex = 2;
-            this.numericUpDownTrackTFly.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // radioButtonKarTFly
-            // 
-            this.radioButtonKarTFly.AutoSize = true;
-            this.radioButtonKarTFly.Location = new System.Drawing.Point(8, 42);
-            this.radioButtonKarTFly.Name = "radioButtonKarTFly";
-            this.radioButtonKarTFly.Size = new System.Drawing.Size(66, 17);
-            this.radioButtonKarTFly.TabIndex = 1;
-            this.radioButtonKarTFly.Text = "Кар-Кар";
-            this.radioButtonKarTFly.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonBTTFly
-            // 
-            this.radioButtonBTTFly.AutoSize = true;
-            this.radioButtonBTTFly.Checked = true;
-            this.radioButtonBTTFly.Location = new System.Drawing.Point(8, 19);
-            this.radioButtonBTTFly.Name = "radioButtonBTTFly";
-            this.radioButtonBTTFly.Size = new System.Drawing.Size(102, 17);
-            this.radioButtonBTTFly.TabIndex = 0;
-            this.radioButtonBTTFly.TabStop = true;
-            this.radioButtonBTTFly.Text = "Большое Прик.";
-            this.radioButtonBTTFly.UseVisualStyleBackColor = true;
-            // 
             // SFlyBox
             // 
             this.SFlyBox.Controls.Add(this.pictureBox43);
@@ -3041,6 +2998,16 @@
             this.SFlyBox.TabIndex = 1;
             this.SFlyBox.TabStop = false;
             this.SFlyBox.Text = "Второй летун";
+            // 
+            // checkBoxDontUseSFly
+            // 
+            this.checkBoxDontUseSFly.AutoSize = true;
+            this.checkBoxDontUseSFly.Location = new System.Drawing.Point(8, 129);
+            this.checkBoxDontUseSFly.Name = "checkBoxDontUseSFly";
+            this.checkBoxDontUseSFly.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxDontUseSFly.TabIndex = 27;
+            this.checkBoxDontUseSFly.Text = "Не трогать";
+            this.checkBoxDontUseSFly.UseVisualStyleBackColor = true;
             // 
             // numericUpDownHrsSFly
             // 
@@ -3150,6 +3117,16 @@
             this.FFlyBox.TabStop = false;
             this.FFlyBox.Text = "Первый летун";
             // 
+            // checkBoxDontUseFFly
+            // 
+            this.checkBoxDontUseFFly.AutoSize = true;
+            this.checkBoxDontUseFFly.Location = new System.Drawing.Point(8, 129);
+            this.checkBoxDontUseFFly.Name = "checkBoxDontUseFFly";
+            this.checkBoxDontUseFFly.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxDontUseFFly.TabIndex = 25;
+            this.checkBoxDontUseFFly.Text = "Не трогать";
+            this.checkBoxDontUseFFly.UseVisualStyleBackColor = true;
+            // 
             // radioButtonSTFFly
             // 
             this.radioButtonSTFFly.AutoSize = true;
@@ -3238,6 +3215,124 @@
             this.radioButtonBTFFly.TabStop = true;
             this.radioButtonBTFFly.Text = "Большое Прик.";
             this.radioButtonBTFFly.UseVisualStyleBackColor = true;
+            // 
+            // TFlyBox
+            // 
+            this.TFlyBox.Controls.Add(this.pictureBox40);
+            this.TFlyBox.Controls.Add(this.checkBoxDontUseTFly);
+            this.TFlyBox.Controls.Add(this.pictureBox29);
+            this.TFlyBox.Controls.Add(this.numericUpDownHrsTFly);
+            this.TFlyBox.Controls.Add(this.radioButtonSTTFly);
+            this.TFlyBox.Controls.Add(this.label18);
+            this.TFlyBox.Controls.Add(this.label19);
+            this.TFlyBox.Controls.Add(this.numericUpDownTrackTFly);
+            this.TFlyBox.Controls.Add(this.radioButtonKarTFly);
+            this.TFlyBox.Controls.Add(this.radioButtonBTTFly);
+            this.TFlyBox.Location = new System.Drawing.Point(9, 178);
+            this.TFlyBox.Name = "TFlyBox";
+            this.TFlyBox.Size = new System.Drawing.Size(126, 152);
+            this.TFlyBox.TabIndex = 2;
+            this.TFlyBox.TabStop = false;
+            this.TFlyBox.Text = "Третий летун";
+            // 
+            // checkBoxDontUseTFly
+            // 
+            this.checkBoxDontUseTFly.AutoSize = true;
+            this.checkBoxDontUseTFly.Location = new System.Drawing.Point(9, 129);
+            this.checkBoxDontUseTFly.Name = "checkBoxDontUseTFly";
+            this.checkBoxDontUseTFly.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxDontUseTFly.TabIndex = 23;
+            this.checkBoxDontUseTFly.Text = "Не трогать";
+            this.checkBoxDontUseTFly.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDownHrsTFly
+            // 
+            this.numericUpDownHrsTFly.Location = new System.Drawing.Point(69, 81);
+            this.numericUpDownHrsTFly.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.numericUpDownHrsTFly.Name = "numericUpDownHrsTFly";
+            this.numericUpDownHrsTFly.Size = new System.Drawing.Size(49, 20);
+            this.numericUpDownHrsTFly.TabIndex = 5;
+            this.numericUpDownHrsTFly.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // radioButtonSTTFly
+            // 
+            this.radioButtonSTTFly.AutoSize = true;
+            this.radioButtonSTTFly.Location = new System.Drawing.Point(9, 107);
+            this.radioButtonSTTFly.Name = "radioButtonSTTFly";
+            this.radioButtonSTTFly.Size = new System.Drawing.Size(93, 17);
+            this.radioButtonSTTFly.TabIndex = 21;
+            this.radioButtonSTTFly.Text = "Малые Прик.";
+            this.radioButtonSTTFly.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(28, 83);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(35, 13);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "Часы";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(29, 63);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(31, 13);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "Путь";
+            // 
+            // numericUpDownTrackTFly
+            // 
+            this.numericUpDownTrackTFly.Location = new System.Drawing.Point(69, 58);
+            this.numericUpDownTrackTFly.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDownTrackTFly.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownTrackTFly.Name = "numericUpDownTrackTFly";
+            this.numericUpDownTrackTFly.Size = new System.Drawing.Size(49, 20);
+            this.numericUpDownTrackTFly.TabIndex = 2;
+            this.numericUpDownTrackTFly.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // radioButtonKarTFly
+            // 
+            this.radioButtonKarTFly.AutoSize = true;
+            this.radioButtonKarTFly.Location = new System.Drawing.Point(8, 42);
+            this.radioButtonKarTFly.Name = "radioButtonKarTFly";
+            this.radioButtonKarTFly.Size = new System.Drawing.Size(66, 17);
+            this.radioButtonKarTFly.TabIndex = 1;
+            this.radioButtonKarTFly.Text = "Кар-Кар";
+            this.radioButtonKarTFly.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonBTTFly
+            // 
+            this.radioButtonBTTFly.AutoSize = true;
+            this.radioButtonBTTFly.Checked = true;
+            this.radioButtonBTTFly.Location = new System.Drawing.Point(8, 19);
+            this.radioButtonBTTFly.Name = "radioButtonBTTFly";
+            this.radioButtonBTTFly.Size = new System.Drawing.Size(102, 17);
+            this.radioButtonBTTFly.TabIndex = 0;
+            this.radioButtonBTTFly.TabStop = true;
+            this.radioButtonBTTFly.Text = "Большое Прик.";
+            this.radioButtonBTTFly.UseVisualStyleBackColor = true;
             // 
             // timer1
             // 
@@ -4480,85 +4575,154 @@
             this.radioButtonSmallGift.Text = "Маленькие";
             this.radioButtonSmallGift.UseVisualStyleBackColor = true;
             // 
-            // checkBoxDontUseTFly
+            // TradeFieldBox
             // 
-            this.checkBoxDontUseTFly.AutoSize = true;
-            this.checkBoxDontUseTFly.Location = new System.Drawing.Point(9, 129);
-            this.checkBoxDontUseTFly.Name = "checkBoxDontUseTFly";
-            this.checkBoxDontUseTFly.Size = new System.Drawing.Size(82, 17);
-            this.checkBoxDontUseTFly.TabIndex = 23;
-            this.checkBoxDontUseTFly.Text = "Не трогать";
-            this.checkBoxDontUseTFly.UseVisualStyleBackColor = true;
+            this.TradeFieldBox.Controls.Add(this.button37);
+            this.TradeFieldBox.Controls.Add(this.label54);
+            this.TradeFieldBox.Controls.Add(this.numericUpDownTFEveryTime);
+            this.TradeFieldBox.Controls.Add(this.label53);
+            this.TradeFieldBox.Controls.Add(this.numericUpDownTFDuringTime);
+            this.TradeFieldBox.Controls.Add(this.comboBoxTFResource);
+            this.TradeFieldBox.Controls.Add(this.label52);
+            this.TradeFieldBox.Controls.Add(this.label51);
+            this.TradeFieldBox.Controls.Add(this.label50);
+            this.TradeFieldBox.Location = new System.Drawing.Point(1330, 533);
+            this.TradeFieldBox.Name = "TradeFieldBox";
+            this.TradeFieldBox.Size = new System.Drawing.Size(249, 132);
+            this.TradeFieldBox.TabIndex = 31;
+            this.TradeFieldBox.TabStop = false;
+            this.TradeFieldBox.Text = "Торговая площадка";
             // 
-            // pictureBox40
+            // label52
             // 
-            this.pictureBox40.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox40.Location = new System.Drawing.Point(101, 129);
-            this.pictureBox40.Name = "pictureBox40";
-            this.pictureBox40.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox40.TabIndex = 24;
-            this.pictureBox40.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox40, "Не использовать этого летуна");
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(10, 78);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(51, 13);
+            this.label52.TabIndex = 2;
+            this.label52.Text = "Каждые ";
             // 
-            // pictureBox41
+            // label51
             // 
-            this.pictureBox41.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox41.Location = new System.Drawing.Point(100, 129);
-            this.pictureBox41.Name = "pictureBox41";
-            this.pictureBox41.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox41.TabIndex = 26;
-            this.pictureBox41.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox41, "Не использовать этого летуна");
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(10, 50);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(63, 13);
+            this.label51.TabIndex = 1;
+            this.label51.Text = "В течении: ";
             // 
-            // checkBoxDontUseFoFly
+            // label50
             // 
-            this.checkBoxDontUseFoFly.AutoSize = true;
-            this.checkBoxDontUseFoFly.Location = new System.Drawing.Point(8, 129);
-            this.checkBoxDontUseFoFly.Name = "checkBoxDontUseFoFly";
-            this.checkBoxDontUseFoFly.Size = new System.Drawing.Size(82, 17);
-            this.checkBoxDontUseFoFly.TabIndex = 25;
-            this.checkBoxDontUseFoFly.Text = "Не трогать";
-            this.checkBoxDontUseFoFly.UseVisualStyleBackColor = true;
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(10, 24);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(46, 13);
+            this.label50.TabIndex = 0;
+            this.label50.Text = "Ресурс:";
             // 
-            // pictureBox42
+            // comboBoxTFResource
             // 
-            this.pictureBox42.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox42.Location = new System.Drawing.Point(100, 129);
-            this.pictureBox42.Name = "pictureBox42";
-            this.pictureBox42.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox42.TabIndex = 26;
-            this.pictureBox42.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox42, "Не использовать этого летуна");
+            this.comboBoxTFResource.FormattingEnabled = true;
+            this.comboBoxTFResource.Items.AddRange(new object[] {
+            "Не скупать ресурсы",
+            "Ртутный порошок",
+            "Конс. ядрёная смесь",
+            "Раб людишко",
+            "Билет на маленькую поляну",
+            "Билет на большую поляну",
+            "Сундучок Пандоры",
+            "Золотой Сундучок Пандоры",
+            "Оборотное зелье",
+            "Кристальная пыль"});
+            this.comboBoxTFResource.Location = new System.Drawing.Point(78, 21);
+            this.comboBoxTFResource.Name = "comboBoxTFResource";
+            this.comboBoxTFResource.Size = new System.Drawing.Size(154, 21);
+            this.comboBoxTFResource.TabIndex = 3;
+            this.comboBoxTFResource.Text = "Не скупать ресурсы";
             // 
-            // checkBoxDontUseFFly
+            // numericUpDownTFDuringTime
             // 
-            this.checkBoxDontUseFFly.AutoSize = true;
-            this.checkBoxDontUseFFly.Location = new System.Drawing.Point(8, 129);
-            this.checkBoxDontUseFFly.Name = "checkBoxDontUseFFly";
-            this.checkBoxDontUseFFly.Size = new System.Drawing.Size(82, 17);
-            this.checkBoxDontUseFFly.TabIndex = 25;
-            this.checkBoxDontUseFFly.Text = "Не трогать";
-            this.checkBoxDontUseFFly.UseVisualStyleBackColor = true;
+            this.numericUpDownTFDuringTime.Location = new System.Drawing.Point(78, 48);
+            this.numericUpDownTFDuringTime.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.numericUpDownTFDuringTime.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownTFDuringTime.Name = "numericUpDownTFDuringTime";
+            this.numericUpDownTFDuringTime.Size = new System.Drawing.Size(63, 20);
+            this.numericUpDownTFDuringTime.TabIndex = 4;
+            this.numericUpDownTFDuringTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownTFDuringTime.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // pictureBox43
+            // label53
             // 
-            this.pictureBox43.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox43.Location = new System.Drawing.Point(100, 129);
-            this.pictureBox43.Name = "pictureBox43";
-            this.pictureBox43.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox43.TabIndex = 28;
-            this.pictureBox43.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox43, "Не использовать этого летуна");
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(182, 56);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(50, 13);
+            this.label53.TabIndex = 5;
+            this.label53.Text = "минут/ы";
             // 
-            // checkBoxDontUseSFly
+            // numericUpDownTFEveryTime
             // 
-            this.checkBoxDontUseSFly.AutoSize = true;
-            this.checkBoxDontUseSFly.Location = new System.Drawing.Point(8, 129);
-            this.checkBoxDontUseSFly.Name = "checkBoxDontUseSFly";
-            this.checkBoxDontUseSFly.Size = new System.Drawing.Size(82, 17);
-            this.checkBoxDontUseSFly.TabIndex = 27;
-            this.checkBoxDontUseSFly.Text = "Не трогать";
-            this.checkBoxDontUseSFly.UseVisualStyleBackColor = true;
+            this.numericUpDownTFEveryTime.Location = new System.Drawing.Point(78, 76);
+            this.numericUpDownTFEveryTime.Maximum = new decimal(new int[] {
+            55,
+            0,
+            0,
+            0});
+            this.numericUpDownTFEveryTime.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownTFEveryTime.Name = "numericUpDownTFEveryTime";
+            this.numericUpDownTFEveryTime.Size = new System.Drawing.Size(63, 20);
+            this.numericUpDownTFEveryTime.TabIndex = 6;
+            this.numericUpDownTFEveryTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownTFEveryTime.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(182, 78);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(50, 13);
+            this.label54.TabIndex = 7;
+            this.label54.Text = "минут/ы";
+            // 
+            // button37
+            // 
+            this.button37.Location = new System.Drawing.Point(6, 100);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(232, 23);
+            this.button37.TabIndex = 20;
+            this.button37.Text = "Back";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
+            // 
+            // button38
+            // 
+            this.button38.Location = new System.Drawing.Point(164, 386);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(141, 24);
+            this.button38.TabIndex = 32;
+            this.button38.Text = "Торговая Площадка";
+            this.button38.UseVisualStyleBackColor = true;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
             // 
             // Form1
             // 
@@ -4566,6 +4730,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1604, 882);
+            this.Controls.Add(this.TradeFieldBox);
             this.Controls.Add(this.button35);
             this.Controls.Add(this.GiftsBox);
             this.Controls.Add(this.PetForUndergrBox);
@@ -4700,6 +4865,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox37)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
             this.PandaEffectsBox.ResumeLayout(false);
             this.PandaEffectsBox.PerformLayout();
             this.ImmunEffetsBox.ResumeLayout(false);
@@ -4708,10 +4877,6 @@
             this.FoFlyBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHrsFoFly)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrackFoFly)).EndInit();
-            this.TFlyBox.ResumeLayout(false);
-            this.TFlyBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHrsTFly)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrackTFly)).EndInit();
             this.SFlyBox.ResumeLayout(false);
             this.SFlyBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHrsSFly)).EndInit();
@@ -4720,6 +4885,10 @@
             this.FFlyBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHrsFFly)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrackFFly)).EndInit();
+            this.TFlyBox.ResumeLayout(false);
+            this.TFlyBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHrsTFly)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrackTFly)).EndInit();
             this.MineInventoryBox.ResumeLayout(false);
             this.MineInventoryBox.PerformLayout();
             this.groupBox9.ResumeLayout(false);
@@ -4763,10 +4932,10 @@
             this.GiftsBox.ResumeLayout(false);
             this.GiftsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGiftsCryNumber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
+            this.TradeFieldBox.ResumeLayout(false);
+            this.TradeFieldBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFDuringTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFEveryTime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5123,6 +5292,17 @@
         private System.Windows.Forms.CheckBox checkBoxDontUseFFly;
         private System.Windows.Forms.PictureBox pictureBox40;
         private System.Windows.Forms.CheckBox checkBoxDontUseTFly;
+        private System.Windows.Forms.GroupBox TradeFieldBox;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Button button37;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.NumericUpDown numericUpDownTFEveryTime;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.NumericUpDown numericUpDownTFDuringTime;
+        private System.Windows.Forms.ComboBox comboBoxTFResource;
+        private System.Windows.Forms.Button button38;
     }
 }
 

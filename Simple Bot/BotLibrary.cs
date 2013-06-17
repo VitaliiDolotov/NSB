@@ -88,6 +88,8 @@ namespace Simple_Bot
         static DateTime Timer_PandaEffect2 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_PandaEffect3 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_PandaEffect4 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+        static DateTime Timer_TFEvery = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+        static DateTime Timer_TFDuring = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
         static DateTime Timer_FarCountrys = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
@@ -680,6 +682,11 @@ namespace Simple_Bot
             Delay2 = 1000;
 
             Timer_Relogin = ToDateTime("00:09:20");
+
+            string TFEvery = ReadFromFile(SettingsFile, "AdditionalSettingsBox")[32];
+            if (TFEvery.Length == 1)
+                TFEvery = "0" + TFEvery;
+            Timer_TFEvery = ToDateTime(string.Format("00:{0}:15", TFEvery));
 
             //асайнем таймер сбытни
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "ShopBox")[1]) == true)
@@ -3607,7 +3614,7 @@ namespace Simple_Bot
             {
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[29]))
                 {
-                    if (Timer_BiggestPotion.CompareTo(DateTime.Now)<0)
+                    if (Timer_BiggestPotion.CompareTo(DateTime.Now) < 0)
                     {
                         driver.FindElement(By.LinkText("Персонаж")).Click();
                         Delays();
@@ -4147,6 +4154,46 @@ namespace Simple_Bot
                 FinishFieldsOpening();
             }
             catch { }
+        }
+
+        public void TradeField()
+        {
+            string dontByEnything = ReadFromFile(SettingsFile, "AdditionalSettingsBox")[30];
+            if (dontByEnything.Equals("Не скупать ресурсы") == false)
+            {
+                if (Timer_TFEvery.CompareTo(DateTime.Now) < 0)
+                {
+                    try
+                    {
+                        //настраиваем таймер в течении какого времени нужно скупать ресурс
+                        string TFDuring = ReadFromFile(SettingsFile, "AdditionalSettingsBox")[31];
+                        if (TFDuring.Length == 1)
+                            TFDuring = "0" + TFDuring;
+                        Timer_TFDuring = ToDateTime(string.Format("00:{0}:30", TFDuring));
+                        //идем в сбытку
+                        driver.FindElement(By.LinkText("Гавань")).Click();
+                        Delays();
+                        driver.FindElement(By.LinkText("Торговая площадка")).Click();
+                        Delays();
+                        //генерим линку покупаемого товара
+                        By selector = By.XPath(string.Format(".//option[text()='{0}']", ReadFromFile(SettingsFile, "AdditionalSettingsBox")[30]));
+                        driver.FindElement(selector).Click();
+                        while (Timer_TFDuring.CompareTo(DateTime.Now) > 0)
+                        {
+                            driver.FindElement(By.XPath(".//input[@ value='КУПИТЬ']")).Click();
+                            System.Threading.Thread.Sleep(rnd.Next(200, 865));
+                        }
+                    }
+                    catch { }
+                    finally
+                    {
+                        string TFEvery = ReadFromFile(SettingsFile, "AdditionalSettingsBox")[32];
+                        if (TFEvery.Length == 1)
+                            TFEvery = "0" + TFEvery;
+                        Timer_TFEvery = ToDateTime(string.Format("00:{0}:00", TFEvery));
+                    }
+                }
+            }
         }
 
         public void OpenAdvPage()

@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2519;
+        int BotVersion = 2520;
 
         Random rnd = new Random();
 
@@ -51,6 +51,8 @@ namespace Simple_Bot
         public Form1()
         {
             InitializeComponent();
+
+            File.Delete("chromedriver.log");
 
             this.Size = new System.Drawing.Size(217, 268);
 
@@ -159,6 +161,9 @@ namespace Simple_Bot
                 checkBoxAlarmBox.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[27]);
                 checkBoxBigGguru.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[28]);
                 checkBoxBiggestPotion.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[29]);
+                comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
+                numericUpDownTFDuringTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[31]);
+                numericUpDownTFEveryTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[32]);
             }
             catch { }
 
@@ -488,7 +493,8 @@ namespace Simple_Bot
                                               Convert.ToString(checkBoxHideBrowser.Checked), textBoxAdv.Text, Convert.ToString(radioButtonGoToForest.Checked), Convert.ToString(radioButtonMakeTree.Checked),
                                               Convert.ToString(radioButtonDontWork.Checked),Convert.ToString(numericUpDownGiftsCryNumber.Value),Convert.ToString(radioButtonSmallGift.Checked),Convert.ToString(radioButtonMiddleGift.Checked),
                                               Convert.ToString(radioButtonDonBuyGifts.Checked), Convert.ToString(radioButtonWhale.Checked), Convert.ToString(radioButtonParot.Checked),
-                                              Convert.ToString(radioButtonCurrentPet.Checked), Convert.ToString(checkBoxAlarmBox.Checked), Convert.ToString(checkBoxBigGguru.Checked),Convert.ToString(checkBoxBiggestPotion.Checked)};
+                                              Convert.ToString(radioButtonCurrentPet.Checked), Convert.ToString(checkBoxAlarmBox.Checked), Convert.ToString(checkBoxBigGguru.Checked),Convert.ToString(checkBoxBiggestPotion.Checked),
+                                              comboBoxTFResource.Text, Convert.ToString(numericUpDownTFDuringTime.Value), Convert.ToString(numericUpDownTFEveryTime.Value)};
             CompareValuesInFile(AdditionalSettingsBox.Name, AdditionalSettings);
             checkBoxCryDust.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[1]);
             checkBoxFish.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[2]);
@@ -519,6 +525,9 @@ namespace Simple_Bot
             checkBoxAlarmBox.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[27]);
             checkBoxBigGguru.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[28]);
             checkBoxBiggestPotion.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[29]);
+            comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
+            numericUpDownTFDuringTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[31]);
+            numericUpDownTFEveryTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[32]);
 
             //Underground Settings
             string[] UndergroundSettings = { Convert.ToString(checkBoxUnderground.Checked), Convert.ToString(radioButtonUnderground.Checked), Convert.ToString(radioButtonFastUnderground.Checked),
@@ -777,6 +786,7 @@ namespace Simple_Bot
                 {
                     try
                     {
+                        Bot.TradeField();
                         Bot.GoToOldoMsters();
                         Bot.AlertFight();
                         Bot.LitleGuru();
@@ -1889,6 +1899,16 @@ namespace Simple_Bot
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+        }
+
+        private void button38_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "TradeFieldBox");
+        }
+
+        private void button37_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "MenuBox");
         }
     }
 }
