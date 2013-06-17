@@ -2106,213 +2106,213 @@ namespace Simple_Bot
                 //First Fly
                 while (FlyNumber < 9)
                 {
-                    //if (Timer_Fly[FlyTimer].CompareTo(DateTime.Now) < 0)
-                    //{
-                    try
-                    {
-                        IWebElement jstimer = driver.FindElement(By.CssSelector(".flyings div:nth-of-type(" + Convert.ToString(FlyNumber) + ") .js_timer"));
-                    }
-                    catch
+                    if (!Convert.ToBoolean(ReadFromFile(SettingsFile, "FlyBox")[20 + FlyNumber / 2]))
                     {
                         try
                         {
-                            //если зверушка не в большом приключении
-                            if (driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") a")).Text.Contains("Мини"))//if (driver.FindElement(By.Id("accordion")).FindElement(By.XPath("//div[2]/div/div[" + Convert.ToString(FlyNumber) + "]/center/b/a[contains(@href,'castle')]")).Text == "Мини-игра")
-                            {
-                                //проверяем нет ли миниигры
-                                try
-                                {
-                                    driver.FindElement(By.Id("accordion")).FindElement(By.XPath("//div[2]/div/div[" + Convert.ToString(FlyNumber) + "]/center/form/input[@value='ПОМОЧЬ']")).Click();
-                                    System.Threading.Thread.Sleep(rnd.Next(898, 1089));
-                                    try
-                                    {
-                                        //выибраем один из сундучков
-                                        int box = rnd.Next(0, 3);
-                                        switch (box)
-                                        {
-                                            case 1:
-                                                try
-                                                {
-                                                    driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[1]")).Click();
-                                                    System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                                }
-                                                catch { }
-                                                break;
-
-                                            case 2:
-                                                try
-                                                {
-                                                    driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[2]")).Click();
-                                                    System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                                }
-                                                catch { }
-                                                break;
-                                            case 3:
-                                                try
-                                                {
-                                                    driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[3]")).Click();
-                                                    System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                                }
-                                                catch { }
-                                                break;
-                                        }
-                                    }
-                                    catch { }
-                                }
-                                catch { }
-                                IsInTrip = false;
-                                MinigameFightFood = true;
-                            }
-                        }
-                        catch { }
-
-                        //проверяем нет ли нападения                
-                        try
-                        {
-                            //если зверушка не в большом приключении
-                            if (driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") a")).Text.Contains("Нападение"))//if (driver.FindElement(By.Id("accordion")).FindElement(By.XPath("//div[2]/div/div[" + Convert.ToString(FlyNumber) + "]/center/b/a[contains(@href,'castle')]")).Text == "Нападение на летуна!")
-                            {
-                                //проверяем нет ли миниигры
-                                try
-                                {
-                                    driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") input[value='ПОСМОТРЕТЬ']")).Click();
-                                    System.Threading.Thread.Sleep(rnd.Next(898, 1125));
-                                    try
-                                    {
-                                        //выибраем один из сундучков
-                                        int box = rnd.Next(0, 3);
-                                        switch (box)
-                                        {
-                                            case 1:
-                                                try
-                                                {
-                                                    driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[1]")).Click();
-                                                    System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                                }
-                                                catch { }
-                                                break;
-
-                                            case 2:
-                                                try
-                                                {
-                                                    driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[2]")).Click();
-                                                    System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                                }
-                                                catch { }
-                                                break;
-                                            case 3:
-                                                try
-                                                {
-                                                    driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[3]")).Click();
-                                                    System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                                }
-                                                catch { }
-                                                break;
-                                        }
-                                    }
-                                    catch { }
-                                }
-                                catch { }
-                                IsInTrip = false;
-                                MinigameFightFood = true;
-                            }
-                        }
-                        catch { }
-
-                        //кормим если голоден
-                        try
-                        {
-                            string satiety = driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") u:nth-of-type(1) a")).Text;
-                            satiety = satiety.TrimEnd('%');
-                            if (Convert.ToInt32(satiety) < 75)
-                            {
-                                //кликаем по грибочкув боковой панели
-                                driver.FindElement(By.Id("accordion")).FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") u:nth-of-type(1) a b")).Click();
-                                System.Threading.Thread.Sleep(rnd.Next(899, 1399));
-                                driver.FindElement(By.Id("feed_zoo_did")).FindElement(By.XPath(".//input[@value='КОРМИТЬ']")).Click();
-                                IsInTrip = false;
-                                MinigameFightFood = true;
-                            }
-                        }
-                        catch { }
-
-                        //просто кликаем по иконке летуна если нет ни миниигры, ни нападения и не кормили зверя
-                        try
-                        {
-                            //если зверушка не в большом приключении
-                            if (driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") b a")).Text.Contains("Большое") && MinigameFightFood == false)
-                            {
-
-                            }
+                            IWebElement jstimer = driver.FindElement(By.CssSelector(".flyings div:nth-of-type(" + Convert.ToString(FlyNumber) + ") .js_timer"));
                         }
                         catch
                         {
                             try
                             {
-                                driver.FindElement(By.CssSelector(".title:nth-of-type(" + Convert.ToString(FlyNumber - 1) + ") a b")).Click();
-                                //driver.FindElement(By.Id("accordion")).FindElement(By.XPath(".//div[2]/div/div[" + Convert.ToString(FlyNumber - 1) + "]/a/b")).Click();
-                                System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                IsInTrip = false;
-                                MinigameFightFood = false;
-                            }
-                            catch { }
-                        }
-
-                        //если нe в БП то отправляем туда или в МП если есть доступное время
-                        if (IsInTrip == false)
-                        {
-                            try
-                            {
-                                //кликаем по компасу
-                                driver.FindElement(By.Id("fa_events")).Click();
-                                System.Threading.Thread.Sleep(rnd.Next(799, 1201));
-                                //Прежде всего отсылаем в малое если нужно
-                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FlyBox")[16 + FlyNumber / 2]) == true)
+                                //если зверушка не в большом приключении
+                                if (driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") a")).Text.Contains("Мини"))//if (driver.FindElement(By.Id("accordion")).FindElement(By.XPath("//div[2]/div/div[" + Convert.ToString(FlyNumber) + "]/center/b/a[contains(@href,'castle')]")).Text == "Мини-игра")
                                 {
+                                    //проверяем нет ли миниигры
                                     try
                                     {
-                                        IWebElement smallTrip = driver.FindElement(By.XPath(".//table/tbody/tr[1]//input[@value='ОТПРАВИТЬ']"));
-                                        smallTrip.Click();
+                                        driver.FindElement(By.Id("accordion")).FindElement(By.XPath("//div[2]/div/div[" + Convert.ToString(FlyNumber) + "]/center/form/input[@value='ПОМОЧЬ']")).Click();
+                                        System.Threading.Thread.Sleep(rnd.Next(898, 1089));
+                                        try
+                                        {
+                                            //выибраем один из сундучков
+                                            int box = rnd.Next(0, 3);
+                                            switch (box)
+                                            {
+                                                case 1:
+                                                    try
+                                                    {
+                                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[1]")).Click();
+                                                        System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                                    }
+                                                    catch { }
+                                                    break;
+
+                                                case 2:
+                                                    try
+                                                    {
+                                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[2]")).Click();
+                                                        System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                                    }
+                                                    catch { }
+                                                    break;
+                                                case 3:
+                                                    try
+                                                    {
+                                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[3]")).Click();
+                                                        System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                                    }
+                                                    catch { }
+                                                    break;
+                                            }
+                                        }
+                                        catch { }
                                     }
                                     catch { }
+                                    IsInTrip = false;
+                                    MinigameFightFood = true;
                                 }
-                                //В большое
-                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FlyBox")[settingsIndex]) == true)
-                                {
-                                    driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//table/tbody/tr[2]/td[3]/form/input[5][@value='ОТПРАВИТЬ']")).Click();
-                                    System.Threading.Thread.Sleep(rnd.Next(659, 989));
-                                }
-                                else
-                                {
-                                    //На кар-кар
-                                    WaitForElementAndClick(driver.FindElement(By.XPath("//input[@class='cmd_all cmd_row4 cmd_arow4']")), 4000);
-                                    //Выбираем путь
-                                    switch (Convert.ToInt32(ReadFromFile(SettingsFile, "FlyBox")[settingsIndex + 2]))
-                                    {
-                                        case 1:
-                                            WaitForElementAndClick(driver.FindElement(By.XPath("//div[@rel='1']")), 5000);
-                                            break;
-                                        case 2:
-                                            WaitForElementAndClick(driver.FindElement(By.XPath("//div[@rel='2']")), 5000);
-                                            break;
-                                        case 3:
-                                            WaitForElementAndClick(driver.FindElement(By.XPath("//div[@rel='3']")), 5000);
-                                            break;
-                                        default: break;
-                                    }
-                                    //вВыбираем кол-во часов
-                                    string hrs = ReadFromFile(SettingsFile, "FlyBox")[settingsIndex + 3];
-                                    driver.FindElement(By.XPath("//option[@value='" + hrs + "']")).Click();
-                                    //Отправить
-                                    System.Threading.Thread.Sleep(rnd.Next(1123, 1325));
-                                    driver.FindElement(By.CssSelector(".mbuttons.sbt.fl_l")).Click();
-                                    //Close
-                                    System.Threading.Thread.Sleep(rnd.Next(1123, 1325));
-                                    driver.FindElement(By.CssSelector(".iconsp.icon_close")).Click();
-                                }
-                                IsInTrip = true;
                             }
                             catch { }
+
+                            //проверяем нет ли нападения                
+                            try
+                            {
+                                //если зверушка не в большом приключении
+                                if (driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") a")).Text.Contains("Нападение"))//if (driver.FindElement(By.Id("accordion")).FindElement(By.XPath("//div[2]/div/div[" + Convert.ToString(FlyNumber) + "]/center/b/a[contains(@href,'castle')]")).Text == "Нападение на летуна!")
+                                {
+                                    //проверяем нет ли миниигры
+                                    try
+                                    {
+                                        driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") input[value='ПОСМОТРЕТЬ']")).Click();
+                                        System.Threading.Thread.Sleep(rnd.Next(898, 1125));
+                                        try
+                                        {
+                                            //выибраем один из сундучков
+                                            int box = rnd.Next(0, 3);
+                                            switch (box)
+                                            {
+                                                case 1:
+                                                    try
+                                                    {
+                                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[1]")).Click();
+                                                        System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                                    }
+                                                    catch { }
+                                                    break;
+
+                                                case 2:
+                                                    try
+                                                    {
+                                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[2]")).Click();
+                                                        System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                                    }
+                                                    catch { }
+                                                    break;
+                                                case 3:
+                                                    try
+                                                    {
+                                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[3]")).Click();
+                                                        System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                                    }
+                                                    catch { }
+                                                    break;
+                                            }
+                                        }
+                                        catch { }
+                                    }
+                                    catch { }
+                                    IsInTrip = false;
+                                    MinigameFightFood = true;
+                                }
+                            }
+                            catch { }
+
+                            //кормим если голоден
+                            try
+                            {
+                                string satiety = driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") u:nth-of-type(1) a")).Text;
+                                satiety = satiety.TrimEnd('%');
+                                if (Convert.ToInt32(satiety) < 75)
+                                {
+                                    //кликаем по грибочкув боковой панели
+                                    driver.FindElement(By.Id("accordion")).FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") u:nth-of-type(1) a b")).Click();
+                                    System.Threading.Thread.Sleep(rnd.Next(899, 1399));
+                                    driver.FindElement(By.Id("feed_zoo_did")).FindElement(By.XPath(".//input[@value='КОРМИТЬ']")).Click();
+                                    IsInTrip = false;
+                                    MinigameFightFood = true;
+                                }
+                            }
+                            catch { }
+
+                            //просто кликаем по иконке летуна если нет ни миниигры, ни нападения и не кормили зверя
+                            try
+                            {
+                                //если зверушка не в большом приключении
+                                if (driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") b a")).Text.Contains("Большое") && MinigameFightFood == false)
+                                {
+
+                                }
+                            }
+                            catch
+                            {
+                                try
+                                {
+                                    driver.FindElement(By.CssSelector(".title:nth-of-type(" + Convert.ToString(FlyNumber - 1) + ") a b")).Click();
+                                    System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                    IsInTrip = false;
+                                    MinigameFightFood = false;
+                                }
+                                catch { }
+                            }
+
+                            //если нe в БП то отправляем туда или в МП если есть доступное время
+                            if (IsInTrip == false)
+                            {
+                                try
+                                {
+                                    //кликаем по компасу
+                                    driver.FindElement(By.Id("fa_events")).Click();
+                                    System.Threading.Thread.Sleep(rnd.Next(799, 1201));
+                                    //Прежде всего отсылаем в малое если нужно
+                                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FlyBox")[16 + FlyNumber / 2]) == true)
+                                    {
+                                        try
+                                        {
+                                            IWebElement smallTrip = driver.FindElement(By.XPath(".//table/tbody/tr[1]//input[@value='ОТПРАВИТЬ']"));
+                                            smallTrip.Click();
+                                        }
+                                        catch { }
+                                    }
+                                    //В большое
+                                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FlyBox")[settingsIndex]) == true)
+                                    {
+                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//table/tbody/tr[2]/td[3]/form/input[5][@value='ОТПРАВИТЬ']")).Click();
+                                        System.Threading.Thread.Sleep(rnd.Next(659, 989));
+                                    }
+                                    else
+                                    {
+                                        //На кар-кар
+                                        WaitForElementAndClick(driver.FindElement(By.XPath("//input[@class='cmd_all cmd_row4 cmd_arow4']")), 4000);
+                                        //Выбираем путь
+                                        switch (Convert.ToInt32(ReadFromFile(SettingsFile, "FlyBox")[settingsIndex + 2]))
+                                        {
+                                            case 1:
+                                                WaitForElementAndClick(driver.FindElement(By.XPath("//div[@rel='1']")), 5000);
+                                                break;
+                                            case 2:
+                                                WaitForElementAndClick(driver.FindElement(By.XPath("//div[@rel='2']")), 5000);
+                                                break;
+                                            case 3:
+                                                WaitForElementAndClick(driver.FindElement(By.XPath("//div[@rel='3']")), 5000);
+                                                break;
+                                            default: break;
+                                        }
+                                        //вВыбираем кол-во часов
+                                        string hrs = ReadFromFile(SettingsFile, "FlyBox")[settingsIndex + 3];
+                                        driver.FindElement(By.XPath("//option[@value='" + hrs + "']")).Click();
+                                        //Отправить
+                                        System.Threading.Thread.Sleep(rnd.Next(1123, 1325));
+                                        driver.FindElement(By.CssSelector(".mbuttons.sbt.fl_l")).Click();
+                                        //Close
+                                        System.Threading.Thread.Sleep(rnd.Next(1123, 1325));
+                                        driver.FindElement(By.CssSelector(".iconsp.icon_close")).Click();
+                                    }
+                                    IsInTrip = true;
+                                }
+                                catch { }
+                            }
                         }
                     }
                     settingsIndex += 4;
@@ -2867,13 +2867,16 @@ namespace Simple_Bot
                         int FightCount = 0;
                         do
                         {
-                            FightMonster();
-                            FightZorro();
-                            FightCommon();
-                            FightCount++;
-                            if (FightCount > 5)
+                            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[1]) || Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[2]) || Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[5]))
                             {
-                                break;
+                                FightMonster();
+                                FightZorro();
+                                FightCommon();
+                                FightCount++;
+                                if (FightCount > 5)
+                                {
+                                    break;
+                                }
                             }
                         }
                         while (TimeToFight() == true);
@@ -4562,30 +4565,35 @@ namespace Simple_Bot
 
         public void GoToOldoMsters()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[11]))
+            try
             {
-                if (driver.FindElement(By.XPath(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[11]))
                 {
-                    try
-                    {
-                        IWebElement temp = driver.FindElement(By.XPath(".//a[@title='Посадить в клетку']"));
-                    }
-                    catch
+                    IWebElement fastMonsterIco = driver.FindElement(By.Id("menu_monsterpve"));
+                    if (driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
                     {
                         try
                         {
-                            GoByWorm();
-                            IWebElement temp = driver.FindElement(By.XPath(".//div[contains(text(),'У тебя уже есть такая зверушка, со')]"));
-                            GetPet(PetType.worm);
+                            IWebElement temp = driver.FindElement(By.XPath(".//a[@title='Посадить в клетку']"));
                         }
-                        catch { }
+                        catch
+                        {
+                            try
+                            {
+                                GoByWorm();
+                                IWebElement temp = driver.FindElement(By.XPath(".//div[contains(text(),'У тебя уже есть такая зверушка, со')]"));
+                                GetPet(PetType.worm);
+                            }
+                            catch { }
+                        }
                     }
+                    driver.FindElement(By.Id("menu_monsterpve")).Click();
+                    Delays();
+                    driver.FindElement(By.XPath(".//input[contains(@value,'Перейти к месту')]")).Click();
+                    Delays();
                 }
-                driver.FindElement(By.Id("menu_monsterpve")).Click();
-                Delays();
-                driver.FindElement(By.XPath(".//input[contains(@value,'Перейти к месту')]")).Click();
-                Delays();
             }
+            catch { }
         }
 
         private void GoByWorm()

@@ -371,6 +371,14 @@
             this.numericUpDownGiftsCryNumber = new System.Windows.Forms.NumericUpDown();
             this.radioButtonMiddleGift = new System.Windows.Forms.RadioButton();
             this.radioButtonSmallGift = new System.Windows.Forms.RadioButton();
+            this.checkBoxDontUseTFly = new System.Windows.Forms.CheckBox();
+            this.pictureBox40 = new System.Windows.Forms.PictureBox();
+            this.pictureBox41 = new System.Windows.Forms.PictureBox();
+            this.checkBoxDontUseFoFly = new System.Windows.Forms.CheckBox();
+            this.pictureBox42 = new System.Windows.Forms.PictureBox();
+            this.checkBoxDontUseFFly = new System.Windows.Forms.CheckBox();
+            this.pictureBox43 = new System.Windows.Forms.PictureBox();
+            this.checkBoxDontUseSFly = new System.Windows.Forms.CheckBox();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -489,6 +497,10 @@
             this.PetForUndergrBox.SuspendLayout();
             this.GiftsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGiftsCryNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -1819,7 +1831,7 @@
             this.FightBox.Controls.Add(this.checkBoxFightMonsters);
             this.FightBox.Controls.Add(this.groupBox5);
             this.FightBox.Controls.Add(this.groupBox4);
-            this.FightBox.Location = new System.Drawing.Point(473, 743);
+            this.FightBox.Location = new System.Drawing.Point(460, 697);
             this.FightBox.Name = "FightBox";
             this.FightBox.Size = new System.Drawing.Size(291, 279);
             this.FightBox.TabIndex = 3;
@@ -2775,19 +2787,19 @@
             // 
             this.FlyBox.Controls.Add(this.button9);
             this.FlyBox.Controls.Add(this.FoFlyBox);
-            this.FlyBox.Controls.Add(this.TFlyBox);
             this.FlyBox.Controls.Add(this.SFlyBox);
             this.FlyBox.Controls.Add(this.FFlyBox);
+            this.FlyBox.Controls.Add(this.TFlyBox);
             this.FlyBox.Location = new System.Drawing.Point(677, 282);
             this.FlyBox.Name = "FlyBox";
-            this.FlyBox.Size = new System.Drawing.Size(281, 314);
+            this.FlyBox.Size = new System.Drawing.Size(281, 369);
             this.FlyBox.TabIndex = 5;
             this.FlyBox.TabStop = false;
             this.FlyBox.Text = "Отправка летунов";
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(11, 285);
+            this.button9.Location = new System.Drawing.Point(9, 336);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(261, 23);
             this.button9.TabIndex = 16;
@@ -2797,7 +2809,9 @@
             // 
             // FoFlyBox
             // 
+            this.FoFlyBox.Controls.Add(this.pictureBox41);
             this.FoFlyBox.Controls.Add(this.pictureBox30);
+            this.FoFlyBox.Controls.Add(this.checkBoxDontUseFoFly);
             this.FoFlyBox.Controls.Add(this.numericUpDownHrsFoFly);
             this.FoFlyBox.Controls.Add(this.radioButtonSTFoFly);
             this.FoFlyBox.Controls.Add(this.label20);
@@ -2805,9 +2819,9 @@
             this.FoFlyBox.Controls.Add(this.numericUpDownTrackFoFly);
             this.FoFlyBox.Controls.Add(this.radioButtonKarFoFly);
             this.FoFlyBox.Controls.Add(this.radioButtonBTFoFly);
-            this.FoFlyBox.Location = new System.Drawing.Point(144, 155);
+            this.FoFlyBox.Location = new System.Drawing.Point(144, 178);
             this.FoFlyBox.Name = "FoFlyBox";
-            this.FoFlyBox.Size = new System.Drawing.Size(126, 126);
+            this.FoFlyBox.Size = new System.Drawing.Size(126, 152);
             this.FoFlyBox.TabIndex = 6;
             this.FoFlyBox.TabStop = false;
             this.FoFlyBox.Text = "Четвертый летун";
@@ -2903,6 +2917,8 @@
             // 
             // TFlyBox
             // 
+            this.TFlyBox.Controls.Add(this.pictureBox40);
+            this.TFlyBox.Controls.Add(this.checkBoxDontUseTFly);
             this.TFlyBox.Controls.Add(this.pictureBox29);
             this.TFlyBox.Controls.Add(this.numericUpDownHrsTFly);
             this.TFlyBox.Controls.Add(this.radioButtonSTTFly);
@@ -2911,9 +2927,9 @@
             this.TFlyBox.Controls.Add(this.numericUpDownTrackTFly);
             this.TFlyBox.Controls.Add(this.radioButtonKarTFly);
             this.TFlyBox.Controls.Add(this.radioButtonBTTFly);
-            this.TFlyBox.Location = new System.Drawing.Point(12, 155);
+            this.TFlyBox.Location = new System.Drawing.Point(9, 178);
             this.TFlyBox.Name = "TFlyBox";
-            this.TFlyBox.Size = new System.Drawing.Size(126, 126);
+            this.TFlyBox.Size = new System.Drawing.Size(126, 152);
             this.TFlyBox.TabIndex = 2;
             this.TFlyBox.TabStop = false;
             this.TFlyBox.Text = "Третий летун";
@@ -3009,7 +3025,9 @@
             // 
             // SFlyBox
             // 
+            this.SFlyBox.Controls.Add(this.pictureBox43);
             this.SFlyBox.Controls.Add(this.pictureBox28);
+            this.SFlyBox.Controls.Add(this.checkBoxDontUseSFly);
             this.SFlyBox.Controls.Add(this.numericUpDownHrsSFly);
             this.SFlyBox.Controls.Add(this.radioButtonSTSFly);
             this.SFlyBox.Controls.Add(this.label16);
@@ -3019,7 +3037,7 @@
             this.SFlyBox.Controls.Add(this.radioButtonBTSFly);
             this.SFlyBox.Location = new System.Drawing.Point(144, 19);
             this.SFlyBox.Name = "SFlyBox";
-            this.SFlyBox.Size = new System.Drawing.Size(126, 130);
+            this.SFlyBox.Size = new System.Drawing.Size(126, 152);
             this.SFlyBox.TabIndex = 1;
             this.SFlyBox.TabStop = false;
             this.SFlyBox.Text = "Второй летун";
@@ -3115,7 +3133,9 @@
             // 
             // FFlyBox
             // 
+            this.FFlyBox.Controls.Add(this.pictureBox42);
             this.FFlyBox.Controls.Add(this.pictureBox9);
+            this.FFlyBox.Controls.Add(this.checkBoxDontUseFFly);
             this.FFlyBox.Controls.Add(this.radioButtonSTFFly);
             this.FFlyBox.Controls.Add(this.numericUpDownHrsFFly);
             this.FFlyBox.Controls.Add(this.label15);
@@ -3125,7 +3145,7 @@
             this.FFlyBox.Controls.Add(this.radioButtonBTFFly);
             this.FFlyBox.Location = new System.Drawing.Point(9, 19);
             this.FFlyBox.Name = "FFlyBox";
-            this.FFlyBox.Size = new System.Drawing.Size(126, 130);
+            this.FFlyBox.Size = new System.Drawing.Size(126, 152);
             this.FFlyBox.TabIndex = 0;
             this.FFlyBox.TabStop = false;
             this.FFlyBox.Text = "Первый летун";
@@ -3738,7 +3758,7 @@
             this.MassAbilityBox.Controls.Add(this.radioButtonSK5);
             this.MassAbilityBox.Controls.Add(this.radioButtonSK3);
             this.MassAbilityBox.Controls.Add(this.radioButtonSK1);
-            this.MassAbilityBox.Location = new System.Drawing.Point(662, 606);
+            this.MassAbilityBox.Location = new System.Drawing.Point(757, 701);
             this.MassAbilityBox.Name = "MassAbilityBox";
             this.MassAbilityBox.Size = new System.Drawing.Size(296, 137);
             this.MassAbilityBox.TabIndex = 20;
@@ -4460,6 +4480,86 @@
             this.radioButtonSmallGift.Text = "Маленькие";
             this.radioButtonSmallGift.UseVisualStyleBackColor = true;
             // 
+            // checkBoxDontUseTFly
+            // 
+            this.checkBoxDontUseTFly.AutoSize = true;
+            this.checkBoxDontUseTFly.Location = new System.Drawing.Point(9, 129);
+            this.checkBoxDontUseTFly.Name = "checkBoxDontUseTFly";
+            this.checkBoxDontUseTFly.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxDontUseTFly.TabIndex = 23;
+            this.checkBoxDontUseTFly.Text = "Не трогать";
+            this.checkBoxDontUseTFly.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox40
+            // 
+            this.pictureBox40.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox40.Location = new System.Drawing.Point(101, 129);
+            this.pictureBox40.Name = "pictureBox40";
+            this.pictureBox40.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox40.TabIndex = 24;
+            this.pictureBox40.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox40, "Не использовать этого летуна");
+            // 
+            // pictureBox41
+            // 
+            this.pictureBox41.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox41.Location = new System.Drawing.Point(100, 129);
+            this.pictureBox41.Name = "pictureBox41";
+            this.pictureBox41.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox41.TabIndex = 26;
+            this.pictureBox41.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox41, "Не использовать этого летуна");
+            // 
+            // checkBoxDontUseFoFly
+            // 
+            this.checkBoxDontUseFoFly.AutoSize = true;
+            this.checkBoxDontUseFoFly.Location = new System.Drawing.Point(8, 129);
+            this.checkBoxDontUseFoFly.Name = "checkBoxDontUseFoFly";
+            this.checkBoxDontUseFoFly.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxDontUseFoFly.TabIndex = 25;
+            this.checkBoxDontUseFoFly.Text = "Не трогать";
+            this.checkBoxDontUseFoFly.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox42
+            // 
+            this.pictureBox42.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox42.Location = new System.Drawing.Point(100, 129);
+            this.pictureBox42.Name = "pictureBox42";
+            this.pictureBox42.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox42.TabIndex = 26;
+            this.pictureBox42.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox42, "Не использовать этого летуна");
+            // 
+            // checkBoxDontUseFFly
+            // 
+            this.checkBoxDontUseFFly.AutoSize = true;
+            this.checkBoxDontUseFFly.Location = new System.Drawing.Point(8, 129);
+            this.checkBoxDontUseFFly.Name = "checkBoxDontUseFFly";
+            this.checkBoxDontUseFFly.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxDontUseFFly.TabIndex = 25;
+            this.checkBoxDontUseFFly.Text = "Не трогать";
+            this.checkBoxDontUseFFly.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox43
+            // 
+            this.pictureBox43.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox43.Location = new System.Drawing.Point(100, 129);
+            this.pictureBox43.Name = "pictureBox43";
+            this.pictureBox43.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox43.TabIndex = 28;
+            this.pictureBox43.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox43, "Не использовать этого летуна");
+            // 
+            // checkBoxDontUseSFly
+            // 
+            this.checkBoxDontUseSFly.AutoSize = true;
+            this.checkBoxDontUseSFly.Location = new System.Drawing.Point(8, 129);
+            this.checkBoxDontUseSFly.Name = "checkBoxDontUseSFly";
+            this.checkBoxDontUseSFly.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxDontUseSFly.TabIndex = 27;
+            this.checkBoxDontUseSFly.Text = "Не трогать";
+            this.checkBoxDontUseSFly.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4663,6 +4763,10 @@
             this.GiftsBox.ResumeLayout(false);
             this.GiftsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGiftsCryNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5011,6 +5115,14 @@
         private System.Windows.Forms.PictureBox pictureBox38;
         private System.Windows.Forms.CheckBox checkBoxBiggestPotion;
         private System.Windows.Forms.PictureBox pictureBox39;
+        private System.Windows.Forms.PictureBox pictureBox41;
+        private System.Windows.Forms.CheckBox checkBoxDontUseFoFly;
+        private System.Windows.Forms.PictureBox pictureBox43;
+        private System.Windows.Forms.CheckBox checkBoxDontUseSFly;
+        private System.Windows.Forms.PictureBox pictureBox42;
+        private System.Windows.Forms.CheckBox checkBoxDontUseFFly;
+        private System.Windows.Forms.PictureBox pictureBox40;
+        private System.Windows.Forms.CheckBox checkBoxDontUseTFly;
     }
 }
 

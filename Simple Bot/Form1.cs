@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2516;
+        int BotVersion = 2519;
 
         Random rnd = new Random();
 
@@ -40,7 +40,9 @@ namespace Simple_Bot
         static DateTime Timer_GoBack = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_Reload = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_CloseBot = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+        static DateTime Timer_ChromeDriverKiller = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
+        bool chromeDriverCiller = false;
         bool botStatus;
 
         string SettingsFile = "settings";
@@ -53,6 +55,7 @@ namespace Simple_Bot
             this.Size = new System.Drawing.Size(217, 268);
 
             Timer_CloseBot = ToDateTime(string.Format("05:{0}:00", (rnd.Next(11, 19))));
+            Timer_ChromeDriverKiller = ToDateTime("00:01:15");
 
             Timer_OpenSite = ToDateTime("00:" + Convert.ToString(rnd.Next(25, 29)) + ":00");
             Timer_OpenWindow = ToDateTime("00:" + Convert.ToString(rnd.Next(30, 34)) + ":00");
@@ -281,6 +284,11 @@ namespace Simple_Bot
                 radioButtonSTSFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[18]);
                 radioButtonSTTFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[19]);
                 radioButtonSTFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[20]);
+
+                checkBoxDontUseFFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[21]);
+                checkBoxDontUseSFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[22]);
+                checkBoxDontUseTFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[23]);
+                checkBoxDontUseFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
             }
             catch { }
 
@@ -425,7 +433,6 @@ namespace Simple_Bot
             button4.Text = "Back";
             RemovingOldUpdater();
             CheckForUpdates();
-            ChromeDriverKillerProcess();
 
             //StutsUp Setting
             string[] StutsUpSettings = { Convert.ToString(checkBoxPower.Checked), Convert.ToString(checkBoxBlock.Checked), Convert.ToString(checkBoxDexterity.Checked), Convert.ToString(checkBoxEndurance.Checked), Convert.ToString(checkBoxCharisma.Checked) };
@@ -610,7 +617,8 @@ namespace Simple_Bot
                                    Convert.ToString(radioButtonBTSFly.Checked), Convert.ToString(radioButtonKarSFly.Checked), Convert.ToString(numericUpDownTrackSFly.Value), Convert.ToString(numericUpDownHrsSFly.Value),
                                    Convert.ToString(radioButtonBTTFly.Checked), Convert.ToString(radioButtonKarTFly.Checked), Convert.ToString(numericUpDownTrackTFly.Value), Convert.ToString(numericUpDownHrsTFly.Value),
                                    Convert.ToString(radioButtonBTFoFly.Checked), Convert.ToString(radioButtonKarFoFly.Checked), Convert.ToString(numericUpDownTrackFoFly.Value), Convert.ToString(numericUpDownHrsFoFly.Value),
-                                   Convert.ToString(radioButtonSTFFly.Checked),Convert.ToString(radioButtonSTSFly.Checked),Convert.ToString(radioButtonSTTFly.Checked),Convert.ToString(radioButtonSTFoFly.Checked)};
+                                   Convert.ToString(radioButtonSTFFly.Checked),Convert.ToString(radioButtonSTSFly.Checked),Convert.ToString(radioButtonSTTFly.Checked),Convert.ToString(radioButtonSTFoFly.Checked),
+                                   Convert.ToString(checkBoxDontUseFFly.Checked), Convert.ToString(checkBoxDontUseSFly.Checked), Convert.ToString(checkBoxDontUseTFly.Checked), Convert.ToString(checkBoxDontUseFoFly.Checked)};
             CompareValuesInFile(FlyBox.Name, FlySettings);
             radioButtonBTFFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[1]);
             radioButtonKarFFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[2]);
@@ -636,6 +644,11 @@ namespace Simple_Bot
             radioButtonSTSFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[18]);
             radioButtonSTTFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[19]);
             radioButtonSTFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[20]);
+
+            checkBoxDontUseFFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[21]);
+            checkBoxDontUseSFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[22]);
+            checkBoxDontUseTFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[23]);
+            checkBoxDontUseFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
 
             //Abilitys Box countrys
             string[] AbilitysSettings = { Convert.ToString(radioButtonSK1.Checked), Convert.ToString(radioButtonSK2.Checked), Convert.ToString(radioButtonSK3.Checked), Convert.ToString(radioButtonSK4.Checked), 
@@ -805,7 +818,6 @@ namespace Simple_Bot
                         //Adv
                         Bot.OpenAdvPage();
 
-                        //Bot.SwToBotvaPage();
                     }
                     catch
                     {
@@ -1314,13 +1326,21 @@ namespace Simple_Bot
             {
                 backgroundWorker1.RunWorkerAsync();
             }
-            if (Timer_CloseBot.CompareTo(DateTime.Now) < 0 /*& !textBox1.Text.Contains("aksis")*/ & isDonatePlayer == false)
+            if (Timer_CloseBot.CompareTo(DateTime.Now) < 0 & isDonatePlayer == false)
             {
                 this.Close();
             }
 
             if (isDonatePlayer)
+            {
                 textBoxMd5.BackColor = Color.LightGreen;
+                //убийца ошибки хромдрайвера
+                if (Timer_ChromeDriverKiller.CompareTo(DateTime.Now) < 0 & !chromeDriverCiller)
+                {
+                    ChromeDriverKillerProcess();
+                    chromeDriverCiller = true;
+                }
+            }
             //OpenSite();
             //PanelDisplay();//BrowserDisplay();
             //GoBackToSite();
