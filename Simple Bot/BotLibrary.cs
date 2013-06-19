@@ -1505,88 +1505,96 @@ namespace Simple_Bot
         {
             if (ReadFromFile(SettingsFile, "PotionMakingBox")[1] == "True")
             {
-                Random rnd = new Random();
-
-                //если таймер помешиваний больше текущего времени
-                if (Timer_PotionBoil.CompareTo(DateTime.Now) < 1)
+                try
                 {
-                    try
-                    {
-                        driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
-                    }
-                    catch { }
 
-                    //переход в простейшие зелья
-                    try
-                    {
-                        driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
-                        System.Threading.Thread.Sleep(rnd.Next(499, 1299));
-                    }
-                    catch { }
+                    Random rnd = new Random();
 
-                    //арендуем котел
-                    BoilerBuy();
-
-                    //если есть счетчик до помешивания до выгребаем его
-                    try
+                    //если таймер помешиваний больше текущего времени
+                    if (Timer_PotionBoil.CompareTo(DateTime.Now) < 1)
                     {
-                        if (driver.FindElement(By.Id("alchemy_small_window_text")).Text == "Следующее помешивание котла через:")
+                        try
                         {
-                            Timer_PotionBoil = ToDateTime(driver.FindElement(By.Id("alchemy_small_window_text2")).FindElement(By.TagName("span")).Text);
+                            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
+                        }
+                        catch { }
+
+                        //переход в простейшие зелья
+                        try
+                        {
+                            driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
+                            System.Threading.Thread.Sleep(rnd.Next(499, 1299));
+                        }
+                        catch { }
+
+                        //арендуем котел
+                        BoilerBuy();
+
+                        //если есть счетчик до помешивания до выгребаем его
+                        try
+                        {
+                            if (driver.FindElement(By.Id("alchemy_small_window_text")).Text == "Следующее помешивание котла через:")
+                            {
+                                Timer_PotionBoil = ToDateTime(driver.FindElement(By.Id("alchemy_small_window_text2")).FindElement(By.TagName("span")).Text);
+                            }
+                        }
+                        catch { }
+
+                        //если есть сообщение помешивания, то мешаем
+                        try
+                        {
+                            if (driver.FindElement(By.Id("alchemy_small_window_text3")).Text == "Вы должны помешать зелье в котле в течение:")
+                            {
+                                Stirring();
+                            }
+                        }
+                        catch { }
+
+                        //если есть окончание варки, то выгребаем время до окончания
+                        try
+                        {
+                            if (driver.FindElement(By.Id("alchemy_small_window_text")).Text == "Завершение варки зелья через:")
+                            {
+                                Timer_PotionBoil = ToDateTime(driver.FindElement(By.Id("alchemy_small_window_text2")).FindElement(By.TagName("span")).Text);
+                            }
+                        }
+                        catch { }
+                        int botelsCount = Convert.ToInt32(GetResourceValue("title=" + '\u0022' + "Стеклянная тара" + '\u0022' + " style")[0]);
+                        if (botelsCount != 0)
+                        {
+                            //начинаме варить зелье если ничего не происходит
+                            try
+                            {
+                                if (driver.FindElement(By.XPath("//input[@value='ЗАВЕРШИТЬ']")).Displayed == true)
+                                {
+                                    StartPotionMaking();
+                                }
+                            }
+                            catch { }
+
+                            //если просто есть кнопка варить
+                            try
+                            {
+                                if (driver.FindElement(By.XPath("//input[@value='ВАРИТЬ']")).Displayed == true)
+                                {
+                                    StartPotionMaking();
+                                }
+                            }
+                            catch { }
+
+                            //если задизейблена варить
+                            try
+                            {
+                                if (driver.FindElement(By.Id("alch_main_right_start")).FindElement(By.TagName("b")).Displayed == true)
+                                {
+                                    StartPotionMaking();
+                                }
+                            }
+                            catch { }
                         }
                     }
-                    catch { }
-
-                    //если есть сообщение помешивания, то мешаем
-                    try
-                    {
-                        if (driver.FindElement(By.Id("alchemy_small_window_text3")).Text == "Вы должны помешать зелье в котле в течение:")
-                        {
-                            Stirring();
-                        }
-                    }
-                    catch { }
-
-                    //если есть окончание варки, то выгребаем время до окончания
-                    try
-                    {
-                        if (driver.FindElement(By.Id("alchemy_small_window_text")).Text == "Завершение варки зелья через:")
-                        {
-                            Timer_PotionBoil = ToDateTime(driver.FindElement(By.Id("alchemy_small_window_text2")).FindElement(By.TagName("span")).Text);
-                        }
-                    }
-                    catch { }
-
-                    //начинаме варить зелье если ничего не происходит
-                    try
-                    {
-                        if (driver.FindElement(By.XPath("//input[@value='ЗАВЕРШИТЬ']")).Displayed == true)
-                        {
-                            StartPotionMaking();
-                        }
-                    }
-                    catch { }
-
-                    //если просто есть кнопка варить
-                    try
-                    {
-                        if (driver.FindElement(By.XPath("//input[@value='ВАРИТЬ']")).Displayed == true)
-                        {
-                            StartPotionMaking();
-                        }
-                    }
-                    catch { }
-
-                    //если задизейблена варить
-                    try
-                    {
-                        if (driver.FindElement(By.Id("alch_main_right_start")).FindElement(By.TagName("b")).Displayed == true)
-                        {
-                            StartPotionMaking();
-                        }
-                    }
-                    catch { }
                 }
+                catch { }
             }
         }
 
@@ -1808,8 +1816,11 @@ namespace Simple_Bot
                 screenshot.SaveAsFile("Screen.png", ImageFormat.Png);
 
                 //координаты и поинтер искомого имеджа
-
                 IWebElement TargetImage = driver.FindElement(By.Id(ImageElementID)).FindElement(By.XPath(PathToTheImage));
+
+                //фокусимся на элемент с числом
+                Actions action = new Actions(driver);
+                action.MoveToElement(TargetImage).Build().Perform();
                 int width = TargetImage.Size.Width;
                 int height = TargetImage.Size.Height;
                 Point ElemPoint = TargetImage.Location;
@@ -4169,7 +4180,7 @@ namespace Simple_Bot
                         string TFDuring = ReadFromFile(SettingsFile, "AdditionalSettingsBox")[31];
                         if (TFDuring.Length == 1)
                             TFDuring = "0" + TFDuring;
-                        Timer_TFDuring = ToDateTime(string.Format("00:{0}:30", TFDuring));
+                        Timer_TFDuring = ToDateTime(string.Format("00:{0}:{1}", TFDuring, rnd.Next(10, 59)));
                         //идем в сбытку
                         driver.FindElement(By.LinkText("Гавань")).Click();
                         Delays();
@@ -4188,9 +4199,11 @@ namespace Simple_Bot
                     finally
                     {
                         string TFEvery = ReadFromFile(SettingsFile, "AdditionalSettingsBox")[32];
+                        string TFEvery2 = ReadFromFile(SettingsFile, "AdditionalSettingsBox")[33];
+                        int randomEvery = rnd.Next(Convert.ToInt32(TFEvery), Convert.ToInt32(TFEvery2));
                         if (TFEvery.Length == 1)
                             TFEvery = "0" + TFEvery;
-                        Timer_TFEvery = ToDateTime(string.Format("00:{0}:00", TFEvery));
+                        Timer_TFEvery = ToDateTime(string.Format("00:{0}:{1}", TFEvery, randomEvery));
                     }
                 }
             }

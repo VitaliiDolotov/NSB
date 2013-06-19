@@ -61,6 +61,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
             this.MenuBox = new System.Windows.Forms.GroupBox();
+            this.button38 = new System.Windows.Forms.Button();
             this.checkBoxBigGguru = new System.Windows.Forms.CheckBox();
             this.button30 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -380,16 +381,17 @@
             this.radioButtonMiddleGift = new System.Windows.Forms.RadioButton();
             this.radioButtonSmallGift = new System.Windows.Forms.RadioButton();
             this.TradeFieldBox = new System.Windows.Forms.GroupBox();
+            this.button37 = new System.Windows.Forms.Button();
+            this.label54 = new System.Windows.Forms.Label();
+            this.numericUpDownTFEveryTime = new System.Windows.Forms.NumericUpDown();
+            this.label53 = new System.Windows.Forms.Label();
+            this.numericUpDownTFDuringTime = new System.Windows.Forms.NumericUpDown();
+            this.comboBoxTFResource = new System.Windows.Forms.ComboBox();
             this.label52 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
-            this.comboBoxTFResource = new System.Windows.Forms.ComboBox();
-            this.numericUpDownTFDuringTime = new System.Windows.Forms.NumericUpDown();
-            this.label53 = new System.Windows.Forms.Label();
-            this.numericUpDownTFEveryTime = new System.Windows.Forms.NumericUpDown();
-            this.label54 = new System.Windows.Forms.Label();
-            this.button37 = new System.Windows.Forms.Button();
-            this.button38 = new System.Windows.Forms.Button();
+            this.numericUpDownTFEveryTime2 = new System.Windows.Forms.NumericUpDown();
+            this.label55 = new System.Windows.Forms.Label();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -513,8 +515,9 @@
             this.GiftsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGiftsCryNumber)).BeginInit();
             this.TradeFieldBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFDuringTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFEveryTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFDuringTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFEveryTime2)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -886,6 +889,16 @@
             this.MenuBox.TabIndex = 2;
             this.MenuBox.TabStop = false;
             this.MenuBox.Text = " Settings ";
+            // 
+            // button38
+            // 
+            this.button38.Location = new System.Drawing.Point(164, 386);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(141, 24);
+            this.button38.TabIndex = 32;
+            this.button38.Text = "Торговая Площадка";
+            this.button38.UseVisualStyleBackColor = true;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
             // 
             // checkBoxBigGguru
             // 
@@ -4577,6 +4590,8 @@
             // 
             // TradeFieldBox
             // 
+            this.TradeFieldBox.Controls.Add(this.label55);
+            this.TradeFieldBox.Controls.Add(this.numericUpDownTFEveryTime2);
             this.TradeFieldBox.Controls.Add(this.button37);
             this.TradeFieldBox.Controls.Add(this.label54);
             this.TradeFieldBox.Controls.Add(this.numericUpDownTFEveryTime);
@@ -4592,6 +4607,101 @@
             this.TradeFieldBox.TabIndex = 31;
             this.TradeFieldBox.TabStop = false;
             this.TradeFieldBox.Text = "Торговая площадка";
+            // 
+            // button37
+            // 
+            this.button37.Location = new System.Drawing.Point(6, 100);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(232, 23);
+            this.button37.TabIndex = 20;
+            this.button37.Text = "Back";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(182, 78);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(50, 13);
+            this.label54.TabIndex = 7;
+            this.label54.Text = "минут/ы";
+            // 
+            // numericUpDownTFEveryTime
+            // 
+            this.numericUpDownTFEveryTime.Location = new System.Drawing.Point(78, 76);
+            this.numericUpDownTFEveryTime.Maximum = new decimal(new int[] {
+            55,
+            0,
+            0,
+            0});
+            this.numericUpDownTFEveryTime.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownTFEveryTime.Name = "numericUpDownTFEveryTime";
+            this.numericUpDownTFEveryTime.Size = new System.Drawing.Size(37, 20);
+            this.numericUpDownTFEveryTime.TabIndex = 6;
+            this.numericUpDownTFEveryTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownTFEveryTime.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownTFEveryTime.ValueChanged += new System.EventHandler(this.numericUpDownTFEveryTime_ValueChanged);
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(182, 56);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(50, 13);
+            this.label53.TabIndex = 5;
+            this.label53.Text = "минут/ы";
+            // 
+            // numericUpDownTFDuringTime
+            // 
+            this.numericUpDownTFDuringTime.Location = new System.Drawing.Point(78, 48);
+            this.numericUpDownTFDuringTime.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.numericUpDownTFDuringTime.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownTFDuringTime.Name = "numericUpDownTFDuringTime";
+            this.numericUpDownTFDuringTime.Size = new System.Drawing.Size(63, 20);
+            this.numericUpDownTFDuringTime.TabIndex = 4;
+            this.numericUpDownTFDuringTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownTFDuringTime.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // comboBoxTFResource
+            // 
+            this.comboBoxTFResource.FormattingEnabled = true;
+            this.comboBoxTFResource.Items.AddRange(new object[] {
+            "Не скупать ресурсы",
+            "Ртутный порошок",
+            "Конс. ядрёная смесь",
+            "Раб людишко",
+            "Билет на маленькую поляну",
+            "Билет на большую поляну",
+            "Сундучок Пандоры",
+            "Золотой Сундучок Пандоры",
+            "Оборотное зелье",
+            "Кристальная пыль"});
+            this.comboBoxTFResource.Location = new System.Drawing.Point(78, 21);
+            this.comboBoxTFResource.Name = "comboBoxTFResource";
+            this.comboBoxTFResource.Size = new System.Drawing.Size(154, 21);
+            this.comboBoxTFResource.TabIndex = 3;
+            this.comboBoxTFResource.Text = "Не скупать ресурсы";
             // 
             // label52
             // 
@@ -4620,109 +4730,38 @@
             this.label50.TabIndex = 0;
             this.label50.Text = "Ресурс:";
             // 
-            // comboBoxTFResource
+            // numericUpDownTFEveryTime2
             // 
-            this.comboBoxTFResource.FormattingEnabled = true;
-            this.comboBoxTFResource.Items.AddRange(new object[] {
-            "Не скупать ресурсы",
-            "Ртутный порошок",
-            "Конс. ядрёная смесь",
-            "Раб людишко",
-            "Билет на маленькую поляну",
-            "Билет на большую поляну",
-            "Сундучок Пандоры",
-            "Золотой Сундучок Пандоры",
-            "Оборотное зелье",
-            "Кристальная пыль"});
-            this.comboBoxTFResource.Location = new System.Drawing.Point(78, 21);
-            this.comboBoxTFResource.Name = "comboBoxTFResource";
-            this.comboBoxTFResource.Size = new System.Drawing.Size(154, 21);
-            this.comboBoxTFResource.TabIndex = 3;
-            this.comboBoxTFResource.Text = "Не скупать ресурсы";
-            // 
-            // numericUpDownTFDuringTime
-            // 
-            this.numericUpDownTFDuringTime.Location = new System.Drawing.Point(78, 48);
-            this.numericUpDownTFDuringTime.Maximum = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.numericUpDownTFDuringTime.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownTFDuringTime.Name = "numericUpDownTFDuringTime";
-            this.numericUpDownTFDuringTime.Size = new System.Drawing.Size(63, 20);
-            this.numericUpDownTFDuringTime.TabIndex = 4;
-            this.numericUpDownTFDuringTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDownTFDuringTime.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(182, 56);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(50, 13);
-            this.label53.TabIndex = 5;
-            this.label53.Text = "минут/ы";
-            // 
-            // numericUpDownTFEveryTime
-            // 
-            this.numericUpDownTFEveryTime.Location = new System.Drawing.Point(78, 76);
-            this.numericUpDownTFEveryTime.Maximum = new decimal(new int[] {
+            this.numericUpDownTFEveryTime2.Location = new System.Drawing.Point(139, 76);
+            this.numericUpDownTFEveryTime2.Maximum = new decimal(new int[] {
             55,
             0,
             0,
             0});
-            this.numericUpDownTFEveryTime.Minimum = new decimal(new int[] {
+            this.numericUpDownTFEveryTime2.Minimum = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.numericUpDownTFEveryTime.Name = "numericUpDownTFEveryTime";
-            this.numericUpDownTFEveryTime.Size = new System.Drawing.Size(63, 20);
-            this.numericUpDownTFEveryTime.TabIndex = 6;
-            this.numericUpDownTFEveryTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDownTFEveryTime.Value = new decimal(new int[] {
+            this.numericUpDownTFEveryTime2.Name = "numericUpDownTFEveryTime2";
+            this.numericUpDownTFEveryTime2.Size = new System.Drawing.Size(37, 20);
+            this.numericUpDownTFEveryTime2.TabIndex = 21;
+            this.numericUpDownTFEveryTime2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDownTFEveryTime2.Value = new decimal(new int[] {
             5,
             0,
             0,
             0});
+            this.numericUpDownTFEveryTime2.ValueChanged += new System.EventHandler(this.numericUpDownTFEveryTime2_ValueChanged);
             // 
-            // label54
+            // label55
             // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(182, 78);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(50, 13);
-            this.label54.TabIndex = 7;
-            this.label54.Text = "минут/ы";
-            // 
-            // button37
-            // 
-            this.button37.Location = new System.Drawing.Point(6, 100);
-            this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(232, 23);
-            this.button37.TabIndex = 20;
-            this.button37.Text = "Back";
-            this.button37.UseVisualStyleBackColor = true;
-            this.button37.Click += new System.EventHandler(this.button37_Click);
-            // 
-            // button38
-            // 
-            this.button38.Location = new System.Drawing.Point(164, 386);
-            this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(141, 24);
-            this.button38.TabIndex = 32;
-            this.button38.Text = "Торговая Площадка";
-            this.button38.UseVisualStyleBackColor = true;
-            this.button38.Click += new System.EventHandler(this.button38_Click);
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(121, 81);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(14, 13);
+            this.label55.TabIndex = 22;
+            this.label55.Text = "~";
             // 
             // Form1
             // 
@@ -4934,8 +4973,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGiftsCryNumber)).EndInit();
             this.TradeFieldBox.ResumeLayout(false);
             this.TradeFieldBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFDuringTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFEveryTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFDuringTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFEveryTime2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5303,6 +5343,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDownTFDuringTime;
         private System.Windows.Forms.ComboBox comboBoxTFResource;
         private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.NumericUpDown numericUpDownTFEveryTime2;
     }
 }
 

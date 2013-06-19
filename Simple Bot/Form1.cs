@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2520;
+        int BotVersion = 2523;
 
         Random rnd = new Random();
 
@@ -164,6 +164,7 @@ namespace Simple_Bot
                 comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
                 numericUpDownTFDuringTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[31]);
                 numericUpDownTFEveryTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[32]);
+                numericUpDownTFEveryTime2.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[33]);
             }
             catch { }
 
@@ -494,7 +495,7 @@ namespace Simple_Bot
                                               Convert.ToString(radioButtonDontWork.Checked),Convert.ToString(numericUpDownGiftsCryNumber.Value),Convert.ToString(radioButtonSmallGift.Checked),Convert.ToString(radioButtonMiddleGift.Checked),
                                               Convert.ToString(radioButtonDonBuyGifts.Checked), Convert.ToString(radioButtonWhale.Checked), Convert.ToString(radioButtonParot.Checked),
                                               Convert.ToString(radioButtonCurrentPet.Checked), Convert.ToString(checkBoxAlarmBox.Checked), Convert.ToString(checkBoxBigGguru.Checked),Convert.ToString(checkBoxBiggestPotion.Checked),
-                                              comboBoxTFResource.Text, Convert.ToString(numericUpDownTFDuringTime.Value), Convert.ToString(numericUpDownTFEveryTime.Value)};
+                                              comboBoxTFResource.Text, Convert.ToString(numericUpDownTFDuringTime.Value), Convert.ToString(numericUpDownTFEveryTime.Value),Convert.ToString(numericUpDownTFEveryTime2.Value)};
             CompareValuesInFile(AdditionalSettingsBox.Name, AdditionalSettings);
             checkBoxCryDust.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[1]);
             checkBoxFish.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[2]);
@@ -528,6 +529,7 @@ namespace Simple_Bot
             comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
             numericUpDownTFDuringTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[31]);
             numericUpDownTFEveryTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[32]);
+            numericUpDownTFEveryTime2.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[33]);
 
             //Underground Settings
             string[] UndergroundSettings = { Convert.ToString(checkBoxUnderground.Checked), Convert.ToString(radioButtonUnderground.Checked), Convert.ToString(radioButtonFastUnderground.Checked),
@@ -1909,6 +1911,17 @@ namespace Simple_Bot
         private void button37_Click(object sender, EventArgs e)
         {
             UIBoxDisplay(3, 4, "MenuBox");
+        }
+
+        private void numericUpDownTFEveryTime_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDownTFEveryTime2.Value = numericUpDownTFEveryTime.Value + 3;
+        }
+
+        private void numericUpDownTFEveryTime2_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownTFEveryTime2.Value <= numericUpDownTFEveryTime.Value)
+                numericUpDownTFEveryTime2.Value = numericUpDownTFEveryTime.Value + 1;
         }
     }
 }
