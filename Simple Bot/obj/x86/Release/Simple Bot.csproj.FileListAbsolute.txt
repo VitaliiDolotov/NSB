@@ -165,3 +165,6 @@ E:\NSB\Simple Bot\obj\x86\Release\Simple Bot.application
 E:\NSB\Simple Bot\obj\x86\Release\Simple Bot.exe
 E:\NSB\Simple Bot\obj\x86\Release\Simple Bot.pdb
 E:\NSB\Simple Bot\obj\x86\Release\Simple Bot.csprojResolveAssemblyReference.cache
+E:\NSB\Simple Bot\bin\Release\WebDriver.dll
+E:\NSB\Simple Bot\bin\Release\WebDriver.pdb
+E:\NSB\Simple Bot\bin\Release\WebDriver.xml

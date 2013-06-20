@@ -210,3 +210,5 @@ E:\NSB\Simple Bot\obj\x86\Debug\Simple Bot.csproj.GenerateResource.Cache
 E:\NSB\Simple Bot\obj\x86\Debug\Simple Bot.exe.manifest
 E:\NSB\Simple Bot\obj\x86\Debug\Simple Bot.application
 E:\NSB\Simple Bot\obj\x86\Debug\Simple Bot.csprojResolveAssemblyReference.cache
+E:\NSB\Simple Bot\bin\Debug\WebDriver.dll
+E:\NSB\Simple Bot\bin\Debug\WebDriver.pdb
