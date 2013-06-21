@@ -186,9 +186,6 @@ F:\NSB\Simple Bot\bin\Debug\Simple Bot.exe.manifest
 F:\NSB\Simple Bot\bin\Debug\Simple Bot.application
 F:\NSB\Simple Bot\bin\Debug\Simple Bot.exe
 F:\NSB\Simple Bot\bin\Debug\Simple Bot.pdb
-F:\NSB\Simple Bot\bin\Debug\WebDriver.dll
-F:\NSB\Simple Bot\bin\Debug\WebDriver.pdb
-F:\NSB\Simple Bot\bin\Debug\WebDriver.xml
 F:\NSB\Simple Bot\obj\x86\Debug\ResolveAssemblyReference.cache
 F:\NSB\Simple Bot\obj\x86\Debug\Simple_Bot.Form1.resources
 F:\NSB\Simple Bot\obj\x86\Debug\Simple_Bot.Properties.Resources.resources

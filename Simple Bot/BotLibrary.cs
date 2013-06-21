@@ -77,7 +77,7 @@ namespace Simple_Bot
         static DateTime Timer_DrinkOborotka = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_ForestFarmer = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_BiggestPotion = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
-		static DateTime Timer_Arena = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+        static DateTime Timer_Arena = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
         static DateTime Timer_Grif = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_Mont = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
@@ -2865,28 +2865,28 @@ namespace Simple_Bot
 
         public void Fight()
         {
-            try
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[1]) || Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[2]) || Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[5]))
             {
-                if (CharacterIsFree() == true)
+                try
                 {
-                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[9]) == true && Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == false)
+                    if (CharacterIsFree() == true)
                     {
-
-                        GetPet(FightPetProvider());
-                    }
-                    else
-                    {
-                        if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == true && ImmunTime() > Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[15]))
+                        if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[9]) == true && Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == false)
                         {
+
                             GetPet(FightPetProvider());
                         }
-                    }
-                    try
-                    {
-                        int FightCount = 0;
-                        do
+                        else
                         {
-                            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[1]) || Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[2]) || Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[5]))
+                            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == true && ImmunTime() > Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[15]))
+                            {
+                                GetPet(FightPetProvider());
+                            }
+                        }
+                        try
+                        {
+                            int FightCount = 0;
+                            do
                             {
                                 FightMonster();
                                 FightZorro();
@@ -2897,17 +2897,17 @@ namespace Simple_Bot
                                     break;
                                 }
                             }
+                            while (TimeToFight() == true);
                         }
-                        while (TimeToFight() == true);
-                    }
-                    catch { }
-                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[9]) == true || Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == true)
-                    {
-                        SetPet();
+                        catch { }
+                        if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[9]) == true || Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == true)
+                        {
+                            SetPet();
+                        }
                     }
                 }
+                catch { }
             }
-            catch { }
         }
 
         private void FightMonster()
@@ -2937,7 +2937,7 @@ namespace Simple_Bot
                 }
                 catch { }
 
-                IWebElement Timer = driver.FindElement(By.XPath("//tr[2]/td[2]/div/div[3]")).FindElement(By.ClassName("js_timer"));
+                IWebElement Timer = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) td:nth-of-type(2) span"));
                 //читаем таймер до след напа
 
                 Timer_FightMonster = ToDateTime(Timer.Text);
@@ -2963,22 +2963,22 @@ namespace Simple_Bot
                         int Temp_Count = 0;
                         if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[3]) == true)
                         {
-							IWebElement ZorroLvl = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) .flright:nth-of-type(2) input"));
+                            IWebElement ZorroLvl = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) .flright:nth-of-type(2) input"));
                             while (ZorroLvl.Displayed && Temp_Count < 6)
                             {
                                 ZorroLvl.Click();
                                 Temp_Count++;
-								ZorroLvl = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) .flright:nth-of-type(2) input"));
+                                ZorroLvl = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) .flright:nth-of-type(2) input"));
                             }
                         }
                         else
                         {
-							IWebElement ZorroList = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) .watch_attack_type .flright:nth-of-type(1) input"));
+                            IWebElement ZorroList = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) .watch_attack_type .flright:nth-of-type(1) input"));
                             while (ZorroList.Displayed && Temp_Count < 6)
                             {
                                 ZorroList.Click();
                                 Temp_Count++;
-								ZorroList = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) .watch_attack_type .flright:nth-of-type(1) input"));
+                                ZorroList = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) .watch_attack_type .flright:nth-of-type(1) input"));
                             }
                         }
                     }
@@ -3004,7 +3004,7 @@ namespace Simple_Bot
                     }
                     catch { }
 
-					IWebElement Timer = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) span"));
+                    IWebElement Timer = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) span"));
                     //читаем таймер до след напа
                     Timer_FightZorro = ToDateTime(Timer.Text);
                 }
@@ -3037,22 +3037,22 @@ namespace Simple_Bot
                             int Temp_Count = 0;
                             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[6]) == true)
                             {
-								IWebElement FightLvl = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) .flright:nth-of-type(2) input"));
+                                IWebElement FightLvl = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) .flright:nth-of-type(2) input"));
                                 while (FightLvl.Displayed && Temp_Count < 7)
                                 {
                                     FightLvl.Click();
                                     Temp_Count++;
-									FightLvl = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) .flright:nth-of-type(2) input"));
+                                    FightLvl = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) .flright:nth-of-type(2) input"));
                                 }
                             }
                             else
                             {
-								IWebElement FightList = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) .watch_attack_type .flright:nth-of-type(1) input"));
+                                IWebElement FightList = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) .watch_attack_type .flright:nth-of-type(1) input"));
                                 while (FightList.Displayed && Temp_Count < 7)
                                 {
                                     FightList.Click();
                                     Temp_Count++;
-									FightList = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) .watch_attack_type .flright:nth-of-type(1) input"));
+                                    FightList = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) .watch_attack_type .flright:nth-of-type(1) input"));
                                 }
                             }
                         }
@@ -3098,7 +3098,7 @@ namespace Simple_Bot
                 }
                 try
                 {
-					IWebElement Timer = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) span"));
+                    IWebElement Timer = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) span"));
                     //читаем таймер до след напа
                     Timer_FightCommon = ToDateTime(Timer.Text);
                 }
@@ -3172,23 +3172,30 @@ namespace Simple_Bot
         private bool TimeToFight()
         {
             bool RetVal = false;
-            DateTime Timer = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
-            TimeSpan duration = new TimeSpan(0, 0, 0, 11);
             try
             {
-                Timer = ToDateTime(driver.FindElement(By.Id("rmenu1")).FindElement(By.XPath("div[1]/a[2]/span")).Text);
-            }
-            catch { }
-            if (DateTime.Now.Add(duration).CompareTo(Timer) > 0)
-            {
-                System.Threading.Thread.Sleep(10889);
-                RetVal = true;
-                if (driver.FindElement(By.Id("rmenu1")).FindElement(By.XPath("div[1]/a[2]/span")).Text == "00:00:00")
+                DateTime Timer = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+                TimeSpan duration = new TimeSpan(0, 0, 0, 11);
+                try
                 {
-                    driver.FindElement(By.LinkText("Бодалка")).Click();
+                    Timer = ToDateTime(driver.FindElement(By.Id("rmenu1")).FindElement(By.XPath("div[1]/a[2]/span")).Text);
                 }
+                catch { }
+                if (DateTime.Now.Add(duration).CompareTo(Timer) > 0)
+                {
+                    System.Threading.Thread.Sleep(10889);
+                    RetVal = true;
+                    if (driver.FindElement(By.Id("rmenu1")).FindElement(By.XPath("div[1]/a[2]/span")).Text == "00:00:00")
+                    {
+                        driver.FindElement(By.LinkText("Бодалка")).Click();
+                    }
+                }
+                return RetVal;
             }
-            return RetVal;
+            catch
+            {
+                return RetVal = true;
+            }
         }
 
         private void GetPet(PetType pet = PetType.currentPet)
@@ -4745,81 +4752,87 @@ namespace Simple_Bot
             catch { }
         }
 
-		private void Sort(string[] enemysBm, string[] enemyName)
-		{
-			for (int i = 0; i < enemysBm.Length - 1; i++)
-			{
-				for (int y = 0; y < enemysBm.Length - 1; y++)
-				{
-					if (Convert.ToInt32(enemysBm[y]) > Convert.ToInt32(enemysBm[y + 1]) & y + 1 != enemysBm.Length)
-					{
-						//Перемещаем бм
-						string tempBm = enemysBm[y + 1];
-						enemysBm[y + 1] = enemysBm[y];
-						enemysBm[y] = tempBm;
+        private void Sort(string[] enemysBm, string[] enemyName)
+        {
+            for (int i = 0; i < enemysBm.Length - 1; i++)
+            {
+                for (int y = 0; y < enemysBm.Length - 1; y++)
+                {
+                    if (Convert.ToInt32(enemysBm[y]) > Convert.ToInt32(enemysBm[y + 1]) & y + 1 != enemysBm.Length)
+                    {
+                        //Перемещаем бм
+                        string tempBm = enemysBm[y + 1];
+                        enemysBm[y + 1] = enemysBm[y];
+                        enemysBm[y] = tempBm;
 
-						//Перемещаем имена
-						string tempName = enemyName[y + 1];
-						enemyName[y + 1] = enemyName[y];
-						enemyName[y] = tempName;
-					}
-				}
-			}
-		}
+                        //Перемещаем имена
+                        string tempName = enemyName[y + 1];
+                        enemyName[y + 1] = enemyName[y];
+                        enemyName[y] = tempName;
+                    }
+                }
+            }
+        }
 
-		public void ArenaFight()
-		{
-			if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[26]))
-			{
-				if (Timer_Arena.CompareTo(DateTime.Now) < 0)
-				{
-					try
-					{
-						//Определяем страницу, если не на бодалке, то переходим в нее
-						try
-						{
-							if (driver.Url.Contains("dozor") == false)
-							{
-								driver.FindElement(By.Id("m8")).FindElement(By.XPath(".//b")).Click();
-								System.Threading.Thread.Sleep(rnd.Next(154, 394));
-							}
-						}
-						catch { }
+        public void ArenaFight()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[26]))
+            {
+                if (Timer_Arena.CompareTo(DateTime.Now) < 0)
+                {
+                    //если текущая работа не спуск в подземелье, то пробуем спустится
+                    if (CurrentWork("Спуск") == false)
+                    {
+                        try
+                        {
+                            //Определяем страницу, если не на бодалке, то переходим в нее
+                            try
+                            {
+                                if (driver.Url.Contains("dozor") == false)
+                                {
+                                    driver.FindElement(By.LinkText("Бодалка")).Click();
+                                    Delays();
+                                }
+                            }
+                            catch { }
 
-						//число оставшихся кри на считу
-						int currenCry =
-							Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
-						if (currenCry > 5)
-						{
+                            //число оставшихся кри на считу
+                            int currenCry =
+                                Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                            if (currenCry > 5)
+                            {
+                                driver.FindElement(By.XPath(".//a[contains(text(),'ПОИСК:')]")).Click();
+                                Delays();
+                                string[] enemysBm = new string[4];
+                                string[] enemysName = new string[4];
+                                IList<IWebElement> enemys = driver.FindElements(By.CssSelector(".arena_enemy"));
+                                int iterator = 0;
+                                foreach (var enemy in enemys)
+                                {
+                                    enemysName[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_name")).Text;
+                                    enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(2)"))
+                                                              .Text.Replace(".", "");
+                                    iterator++;
+                                }
+                                Sort(enemysBm, enemysName);
 
-							driver.FindElement(By.LinkText("Бодалка")).Click();
-							Delays();
-							driver.FindElement(By.XPath(".//a[contains(text(),'ПОИСК:')]")).Click();
-							Delays();
-							string[] enemysBm = new string[4];
-							string[] enemysName = new string[4];
-							IList<IWebElement> enemys = driver.FindElements(By.CssSelector(".arena_enemy"));
-							int iterator = 0;
-							foreach (var enemy in enemys)
-							{
-								enemysName[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_name")).Text;
-								enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(2)"))
-								                          .Text.Replace(".", "");
-								iterator++;
-							}
-							Sort(enemysBm, enemysName);
+                                driver.FindElement(
+                                    By.XPath(string.Format(".//div[text()='{0}']/..",
+                                                           enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[27])]))).Click();
 
-							driver.FindElement(
-								By.XPath(string.Format(".//div[text()='{0}']/..",
-								                       enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[27])]))).Click();
-							Timer_Arena = ToDateTime(string.Format("00:05:{0}", rnd.Next(15, 58)));
-						}
-					}
-					catch (Exception)
-					{
-					}
-				}
-			}
-		}
+                                //Если каждые 5 минут, то ассайни соотв таймер
+                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[28]))
+                                    Timer_Arena = ToDateTime(string.Format("00:05:{0}", rnd.Next(15, 58)));
+                                else
+                                    Timer_Arena = ToDateTime(string.Format("00:15:{0}", rnd.Next(15, 58)));
+                            }
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                }
+            }
+        }
     }
 }
