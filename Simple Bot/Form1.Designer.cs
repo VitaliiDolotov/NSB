@@ -395,11 +395,11 @@
             this.label51 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.ArenaBox = new System.Windows.Forms.GroupBox();
+            this.checkBoxArenaEvery5min = new System.Windows.Forms.CheckBox();
             this.checkBoxArenaFight = new System.Windows.Forms.CheckBox();
             this.numericUpDownArenaEnemy = new System.Windows.Forms.NumericUpDown();
             this.label56 = new System.Windows.Forms.Label();
             this.button40 = new System.Windows.Forms.Button();
-            this.checkBoxArenaEvery5min = new System.Windows.Forms.CheckBox();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -904,7 +904,6 @@
             // 
             // button39
             // 
-            this.button39.Enabled = false;
             this.button39.Location = new System.Drawing.Point(309, 386);
             this.button39.Name = "button39";
             this.button39.Size = new System.Drawing.Size(141, 23);
@@ -1565,7 +1564,7 @@
             // 
             this.numericUpDownHeal.Location = new System.Drawing.Point(65, 20);
             this.numericUpDownHeal.Maximum = new decimal(new int[] {
-            990,
+            99,
             0,
             0,
             0});
@@ -4812,6 +4811,17 @@
             this.ArenaBox.TabStop = false;
             this.ArenaBox.Text = "Арена";
             // 
+            // checkBoxArenaEvery5min
+            // 
+            this.checkBoxArenaEvery5min.AutoSize = true;
+            this.checkBoxArenaEvery5min.Enabled = false;
+            this.checkBoxArenaEvery5min.Location = new System.Drawing.Point(10, 41);
+            this.checkBoxArenaEvery5min.Name = "checkBoxArenaEvery5min";
+            this.checkBoxArenaEvery5min.Size = new System.Drawing.Size(109, 17);
+            this.checkBoxArenaEvery5min.TabIndex = 21;
+            this.checkBoxArenaEvery5min.Text = "Каждые 5 минут";
+            this.checkBoxArenaEvery5min.UseVisualStyleBackColor = true;
+            // 
             // checkBoxArenaFight
             // 
             this.checkBoxArenaFight.AutoSize = true;
@@ -4852,16 +4862,6 @@
             this.button40.Text = "Back";
             this.button40.UseVisualStyleBackColor = true;
             this.button40.Click += new System.EventHandler(this.button40_Click);
-            // 
-            // checkBoxArenaEvery5min
-            // 
-            this.checkBoxArenaEvery5min.AutoSize = true;
-            this.checkBoxArenaEvery5min.Location = new System.Drawing.Point(10, 41);
-            this.checkBoxArenaEvery5min.Name = "checkBoxArenaEvery5min";
-            this.checkBoxArenaEvery5min.Size = new System.Drawing.Size(109, 17);
-            this.checkBoxArenaEvery5min.TabIndex = 21;
-            this.checkBoxArenaEvery5min.Text = "Каждые 5 минут";
-            this.checkBoxArenaEvery5min.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

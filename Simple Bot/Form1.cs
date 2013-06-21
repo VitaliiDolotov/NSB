@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2527;
+        int BotVersion = 2528;
 
         Random rnd = new Random();
 
@@ -1360,8 +1360,8 @@ namespace Simple_Bot
                     ChromeDriverKillerProcess();
                     chromeDriverCiller = true;
                 }
-				//Подрубаем Арену если донат
-	            button39.Enabled = true;
+				//Подрубаем Арену по 5 мину если донат
+                checkBoxArenaEvery5min.Enabled = true;
             }
             //OpenSite();
             //PanelDisplay();//BrowserDisplay();

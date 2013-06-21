@@ -36,7 +36,7 @@ namespace Simple_Bot
         int Delay1 = 0;
         int Delay2 = 0;
 
-        int TimeOutValue = 2;
+        int TimeOutValue = 1;
 
         bool CanMakeCryDust = false;
         bool CanMakeSoap = false;
@@ -1714,7 +1714,7 @@ namespace Simple_Bot
                 //в деревню
                 driver.FindElement(By.Id("m3")).FindElement(By.XPath(".//b")).Click();
                 //лавка
-                driver.FindElement(By.LinkText("Лавка")).Click();
+                driver.FindElement(By.XPath(".//div[text()='Лавка']")).Click();
             }
             catch { }
             //зеленка
@@ -2892,7 +2892,7 @@ namespace Simple_Bot
                                 FightZorro();
                                 FightCommon();
                                 FightCount++;
-                                if (FightCount > 5)
+                                if (FightCount > 3)
                                 {
                                     break;
                                 }
@@ -3067,7 +3067,7 @@ namespace Simple_Bot
                                     {
                                         driver.FindElement(By.XPath("//input[@value='НАПАСТЬ']")).Click();
                                     }
-                                    else counter--;
+                                    //else counter--;
                                 }
                                 else driver.FindElement(By.XPath("//input[@value='НАПАСТЬ']")).Click();
                             }
@@ -3175,15 +3175,25 @@ namespace Simple_Bot
             try
             {
                 DateTime Timer = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
-                TimeSpan duration = new TimeSpan(0, 0, 0, 11);
+                DateTime duration = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+                duration = ToDateTime("00:00:11");
+                //TimeSpan duration = new TimeSpan(0, 0, 0, 11);
                 try
                 {
                     Timer = ToDateTime(driver.FindElement(By.Id("rmenu1")).FindElement(By.XPath("div[1]/a[2]/span")).Text);
                 }
-                catch { }
-                if (DateTime.Now.Add(duration).CompareTo(Timer) > 0)
+                catch 
                 {
-                    System.Threading.Thread.Sleep(10889);
+                    return RetVal = true;
+                }
+                //if (DateTime.Now.Add(duration).CompareTo(Timer) > 0)
+                if (duration.CompareTo(Timer) > 0)
+                {
+                    //пока фактическое время не будет больше считанного таймера до нападения
+                    while (Timer.CompareTo(DateTime.Now) > 0)
+                    {
+                        System.Threading.Thread.Sleep(300);
+                    }
                     RetVal = true;
                     if (driver.FindElement(By.Id("rmenu1")).FindElement(By.XPath("div[1]/a[2]/span")).Text == "00:00:00")
                     {
@@ -3222,7 +3232,7 @@ namespace Simple_Bot
                             driver.FindElement(By.Id("m3")).FindElement(By.XPath(".//b")).Click();
                             Delays();
                             //Жилище
-                            driver.FindElement(By.LinkText("Жилище")).Click();
+                            driver.FindElement(By.XPath(".//div[text()='Жилище']")).Click();
                             Delays();
                             //клетка
                             driver.FindElement(By.LinkText("Клетка")).Click();
@@ -3258,7 +3268,7 @@ namespace Simple_Bot
                 driver.FindElement(By.Id("m3")).FindElement(By.XPath(".//b")).Click();
                 Delays();
                 //Жилище
-                driver.FindElement(By.LinkText("Жилище")).Click();
+                driver.FindElement(By.XPath(".//div[text()='Жилище']")).Click();
                 Delays();
                 //клетка
                 driver.FindElement(By.LinkText("Клетка")).Click();
@@ -3383,7 +3393,7 @@ namespace Simple_Bot
                 driver.FindElement(By.Id("m3")).FindElement(By.XPath(".//b")).Click();
                 System.Threading.Thread.Sleep(rnd.Next(300, 480));
                 //Жилище
-                driver.FindElement(By.LinkText("Жилище")).Click();
+                driver.FindElement(By.XPath(".//div[text()='Жилище']")).Click();
                 System.Threading.Thread.Sleep(rnd.Next(598, 899));
                 //клетка
                 driver.FindElement(By.LinkText("Клетка")).Click();
@@ -3534,7 +3544,7 @@ namespace Simple_Bot
                             driver.FindElement(By.LinkText("Деревня")).Click();
                             System.Threading.Thread.Sleep(rnd.Next(499, 798));
                             //святилище
-                            driver.FindElement(By.LinkText("Святилище")).Click();
+                            driver.FindElement(By.XPath(".//div[text()='Святилище']")).Click();
                             System.Threading.Thread.Sleep(rnd.Next(499, 798));
                             //Услуги шамана
                             driver.FindElement(By.LinkText("Услуги Шамана")).Click();
@@ -3700,10 +3710,10 @@ namespace Simple_Bot
                 {
                     //переход в деревню
                     driver.FindElement(By.LinkText("Деревня")).Click();
-                    System.Threading.Thread.Sleep(rnd.Next(499, 798));
+                    Delays();
                     //святилище
-                    driver.FindElement(By.LinkText("Святилище")).Click();
-                    System.Threading.Thread.Sleep(rnd.Next(499, 798));
+                    driver.FindElement(By.XPath(".//div[text()='Святилище']")).Click();
+                    Delays();
                     //Карма
                     if (driver.FindElement(By.XPath("//input[@value='НАЧАТЬ']")).Displayed == true)
                     {
@@ -3712,17 +3722,17 @@ namespace Simple_Bot
                     if (Poison == true)
                     {
                         driver.FindElement(By.XPath("//input[@value='109']")).Click();
-                        System.Threading.Thread.Sleep(rnd.Next(499, 798));
+                        Delays();
                     }
                     if (Gold == true)
                     {
                         driver.FindElement(By.XPath("//input[@value='118']")).Click();
-                        System.Threading.Thread.Sleep(rnd.Next(499, 798));
+                        Delays();
                     }
                     if (Anti == true)
                     {
                         driver.FindElement(By.XPath("//input[@value='122']")).Click();
-                        System.Threading.Thread.Sleep(rnd.Next(499, 798));
+                        Delays();
                     }
                     //Снять
                     driver.FindElement(By.XPath("//input[@value='СНЯТЬ']")).Click();
@@ -3747,7 +3757,7 @@ namespace Simple_Bot
                             driver.FindElement(By.LinkText("Деревня")).Click();
                             System.Threading.Thread.Sleep(rnd.Next(499, 798));
                             //святилище
-                            driver.FindElement(By.LinkText("Святилище")).Click();
+                            driver.FindElement(By.XPath(".//div[text()='Святилище']")).Click();
                             System.Threading.Thread.Sleep(rnd.Next(499, 798));
                             //эффекты панд
                             driver.FindElement(By.LinkText("Эффекты Пандоры")).Click();
@@ -4492,7 +4502,7 @@ namespace Simple_Bot
                         driver.FindElement(By.LinkText("Деревня")).Click();
                         Delays();
                         //Ферма
-                        driver.FindElement(By.LinkText("Ферма")).Click();
+                        driver.FindElement(By.XPath(".//div[text()='Ферма']")).Click();
                         Delays();
                         //Управляющий
                         driver.FindElement(By.XPath(".//div[@class='farm_margin']//option[@value='" + Convert.ToString(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[13]) + "']")).Click();
@@ -4611,7 +4621,7 @@ namespace Simple_Bot
             //        {
             //            driver.FindElement(By.LinkText("Деревня")).Click();
             //            Delays();
-            //            driver.FindElement(By.LinkText("Лавка")).Click();
+            //            driver.FindElement(By.XPath(".//div[text()='Лавка']")).Click();
             //            Delays();
             //            driver.FindElement(By.LinkText("ПОДРОБНЕЕ")).Click();
             //            Delays();
@@ -4638,7 +4648,7 @@ namespace Simple_Bot
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[11]))
                 {
                     IWebElement fastMonsterIco = driver.FindElement(By.Id("menu_monsterpve"));
-                    if (driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
+                    if (driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis") || driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("StrongPig"))
                     {
                         try
                         {
@@ -4668,7 +4678,7 @@ namespace Simple_Bot
         {
             driver.FindElement(By.LinkText("Деревня")).Click();
             Delays();
-            driver.FindElement(By.LinkText("Лавка")).Click();
+            driver.FindElement(By.XPath(".//div[text()='Лавка']")).Click();
             Delays();
             driver.FindElement(By.LinkText("Звери")).Click();
             Delays();
