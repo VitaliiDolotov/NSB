@@ -77,6 +77,7 @@ namespace Simple_Bot
         static DateTime Timer_DrinkOborotka = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_ForestFarmer = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_BiggestPotion = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+		static DateTime Timer_Arena = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
         static DateTime Timer_Grif = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_Mont = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
@@ -2962,22 +2963,22 @@ namespace Simple_Bot
                         int Temp_Count = 0;
                         if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[3]) == true)
                         {
-                            IWebElement ZorroLvl = driver.FindElement(By.XPath("//table/tbody/tr[2]/td[1]/div/div[3]/center/form[3]/div/div[2]/input[@value='ПОИСК']"));
+							IWebElement ZorroLvl = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) .flright:nth-of-type(2) input"));
                             while (ZorroLvl.Displayed && Temp_Count < 6)
                             {
                                 ZorroLvl.Click();
                                 Temp_Count++;
-                                ZorroLvl = driver.FindElement(By.XPath("//table/tbody/tr[2]/td[1]/div/div[3]/center/form[3]/div/div[2]/input[@value='ПОИСК']"));
+								ZorroLvl = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) .flright:nth-of-type(2) input"));
                             }
                         }
                         else
                         {
-                            IWebElement ZorroList = driver.FindElement(By.XPath("//table/tbody/tr[2]/td[1]/div/div[3]/center/form[1]/div/div/input[@value='ПОИСК']"));
+							IWebElement ZorroList = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) .watch_attack_type .flright:nth-of-type(1) input"));
                             while (ZorroList.Displayed && Temp_Count < 6)
                             {
                                 ZorroList.Click();
                                 Temp_Count++;
-                                ZorroList = driver.FindElement(By.XPath("//table/tbody/tr[2]/td[1]/div/div[3]/center/form[1]/div/div/input[@value='ПОИСК']"));
+								ZorroList = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) .watch_attack_type .flright:nth-of-type(1) input"));
                             }
                         }
                     }
@@ -3003,7 +3004,7 @@ namespace Simple_Bot
                     }
                     catch { }
 
-                    IWebElement Timer = driver.FindElement(By.XPath("//tr[2]/td[1]/div/div[3]")).FindElement(By.ClassName("js_timer"));
+					IWebElement Timer = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) span"));
                     //читаем таймер до след напа
                     Timer_FightZorro = ToDateTime(Timer.Text);
                 }
@@ -3036,22 +3037,22 @@ namespace Simple_Bot
                             int Temp_Count = 0;
                             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[6]) == true)
                             {
-                                IWebElement FightLvl = driver.FindElement(By.XPath("//table/tbody/tr[1]/td[1]/div/div[3]/center/form[3]/div/div[2]/input[@value='ПОИСК']"));
+								IWebElement FightLvl = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) .flright:nth-of-type(2) input"));
                                 while (FightLvl.Displayed && Temp_Count < 7)
                                 {
                                     FightLvl.Click();
                                     Temp_Count++;
-                                    FightLvl = driver.FindElement(By.XPath("//table/tbody/tr[1]/td[1]/div/div[3]/center/form[3]/div/div[2]/input[@value='ПОИСК']"));
+									FightLvl = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) .flright:nth-of-type(2) input"));
                                 }
                             }
                             else
                             {
-                                IWebElement FightList = driver.FindElement(By.CssSelector("#watch_find"));
+								IWebElement FightList = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) .watch_attack_type .flright:nth-of-type(1) input"));
                                 while (FightList.Displayed && Temp_Count < 7)
                                 {
                                     FightList.Click();
                                     Temp_Count++;
-                                    FightList = driver.FindElement(By.CssSelector("#watch_find"));
+									FightList = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) .watch_attack_type .flright:nth-of-type(1) input"));
                                 }
                             }
                         }
@@ -3097,7 +3098,7 @@ namespace Simple_Bot
                 }
                 try
                 {
-                    IWebElement Timer = driver.FindElement(By.XPath("//tr[1]/td[1]/div/div[3]")).FindElement(By.ClassName("js_timer"));
+					IWebElement Timer = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) span"));
                     //читаем таймер до след напа
                     Timer_FightCommon = ToDateTime(Timer.Text);
                 }
@@ -4770,34 +4771,54 @@ namespace Simple_Bot
 		{
 			if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[26]))
 			{
-				try
+				if (Timer_Arena.CompareTo(DateTime.Now) < 0)
 				{
-					//число оставшихся кри на считу
-                    int currenCry = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
-					if (currenCry > 5)
+					try
 					{
-
-						driver.FindElement(By.LinkText("Бодалка")).Click();
-						Delays();
-						driver.FindElement(By.XPath(".//a[contains(text(),'ПОИСК:')]")).Click();
-						Delays();
-						string[] enemysBm = new string[4];
-						string[] enemysName = new string[4];
-						IList<IWebElement> enemys = driver.FindElements(By.CssSelector(".arena_enemy"));
-						int iterator = 0;
-						foreach (var enemy in enemys)
+						//Определяем страницу, если не на бодалке, то переходим в нее
+						try
 						{
-							enemysName[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_name")).Text;
-							enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(2)"))
-							                          .Text.Replace(".","");
-							iterator++;
+							if (driver.Url.Contains("dozor") == false)
+							{
+								driver.FindElement(By.Id("m8")).FindElement(By.XPath(".//b")).Click();
+								System.Threading.Thread.Sleep(rnd.Next(154, 394));
+							}
 						}
-						Sort(enemysBm,enemysName);
+						catch { }
 
-						driver.FindElement(By.XPath(string.Format(".//div[text()='{0}']/..",enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[27])]))).Click();
+						//число оставшихся кри на считу
+						int currenCry =
+							Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+						if (currenCry > 5)
+						{
+
+							driver.FindElement(By.LinkText("Бодалка")).Click();
+							Delays();
+							driver.FindElement(By.XPath(".//a[contains(text(),'ПОИСК:')]")).Click();
+							Delays();
+							string[] enemysBm = new string[4];
+							string[] enemysName = new string[4];
+							IList<IWebElement> enemys = driver.FindElements(By.CssSelector(".arena_enemy"));
+							int iterator = 0;
+							foreach (var enemy in enemys)
+							{
+								enemysName[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_name")).Text;
+								enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(2)"))
+								                          .Text.Replace(".", "");
+								iterator++;
+							}
+							Sort(enemysBm, enemysName);
+
+							driver.FindElement(
+								By.XPath(string.Format(".//div[text()='{0}']/..",
+								                       enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[27])]))).Click();
+							Timer_Arena = ToDateTime(string.Format("00:05:{0}", rnd.Next(15, 58)));
+						}
+					}
+					catch (Exception)
+					{
 					}
 				}
-				catch (Exception){}
 			}
 		}
     }

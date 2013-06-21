@@ -61,6 +61,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.button16 = new System.Windows.Forms.Button();
 			this.MenuBox = new System.Windows.Forms.GroupBox();
+			this.button39 = new System.Windows.Forms.Button();
 			this.button38 = new System.Windows.Forms.Button();
 			this.checkBoxBigGguru = new System.Windows.Forms.CheckBox();
 			this.button30 = new System.Windows.Forms.Button();
@@ -221,6 +222,7 @@
 			this.pictureBox41 = new System.Windows.Forms.PictureBox();
 			this.pictureBox42 = new System.Windows.Forms.PictureBox();
 			this.pictureBox43 = new System.Windows.Forms.PictureBox();
+			this.pictureBox44 = new System.Windows.Forms.PictureBox();
 			this.PandaEffectsBox = new System.Windows.Forms.GroupBox();
 			this.radioButtonPEcry = new System.Windows.Forms.RadioButton();
 			this.label13 = new System.Windows.Forms.Label();
@@ -392,13 +394,11 @@
 			this.label52 = new System.Windows.Forms.Label();
 			this.label51 = new System.Windows.Forms.Label();
 			this.label50 = new System.Windows.Forms.Label();
-			this.button39 = new System.Windows.Forms.Button();
 			this.ArenaBox = new System.Windows.Forms.GroupBox();
-			this.button40 = new System.Windows.Forms.Button();
-			this.label56 = new System.Windows.Forms.Label();
-			this.numericUpDownArenaEnemy = new System.Windows.Forms.NumericUpDown();
-			this.pictureBox44 = new System.Windows.Forms.PictureBox();
 			this.checkBoxArenaFight = new System.Windows.Forms.CheckBox();
+			this.numericUpDownArenaEnemy = new System.Windows.Forms.NumericUpDown();
+			this.label56 = new System.Windows.Forms.Label();
+			this.button40 = new System.Windows.Forms.Button();
 			this.LoginBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -479,6 +479,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
 			this.PandaEffectsBox.SuspendLayout();
 			this.ImmunEffetsBox.SuspendLayout();
 			this.FlyBox.SuspendLayout();
@@ -527,7 +528,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFDuringTime)).BeginInit();
 			this.ArenaBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemy)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -900,6 +900,17 @@
 			this.MenuBox.TabIndex = 2;
 			this.MenuBox.TabStop = false;
 			this.MenuBox.Text = " Settings ";
+			// 
+			// button39
+			// 
+			this.button39.Enabled = false;
+			this.button39.Location = new System.Drawing.Point(309, 386);
+			this.button39.Name = "button39";
+			this.button39.Size = new System.Drawing.Size(141, 23);
+			this.button39.TabIndex = 33;
+			this.button39.Text = "Арена";
+			this.button39.UseVisualStyleBackColor = true;
+			this.button39.Click += new System.EventHandler(this.button39_Click);
 			// 
 			// button38
 			// 
@@ -2714,6 +2725,16 @@
 			this.pictureBox43.TabIndex = 28;
 			this.pictureBox43.TabStop = false;
 			this.toolTip1.SetToolTip(this.pictureBox43, "Не использовать этого летуна");
+			// 
+			// pictureBox44
+			// 
+			this.pictureBox44.Image = global::Simple_Bot.Properties.Resources.info_icon;
+			this.pictureBox44.Location = new System.Drawing.Point(151, 44);
+			this.pictureBox44.Name = "pictureBox44";
+			this.pictureBox44.Size = new System.Drawing.Size(16, 17);
+			this.pictureBox44.TabIndex = 19;
+			this.pictureBox44.TabStop = false;
+			this.toolTip1.SetToolTip(this.pictureBox44, "0 - самый слабый противник\r\n3 - самый сильный противник");
 			// 
 			// PandaEffectsBox
 			// 
@@ -4774,17 +4795,6 @@
 			this.label50.TabIndex = 0;
 			this.label50.Text = "Ресурс:";
 			// 
-			// button39
-			// 
-			this.button39.Enabled = false;
-			this.button39.Location = new System.Drawing.Point(309, 386);
-			this.button39.Name = "button39";
-			this.button39.Size = new System.Drawing.Size(141, 23);
-			this.button39.TabIndex = 33;
-			this.button39.Text = "Арена";
-			this.button39.UseVisualStyleBackColor = true;
-			this.button39.Click += new System.EventHandler(this.button39_Click);
-			// 
 			// ArenaBox
 			// 
 			this.ArenaBox.Controls.Add(this.checkBoxArenaFight);
@@ -4794,29 +4804,20 @@
 			this.ArenaBox.Controls.Add(this.button40);
 			this.ArenaBox.Location = new System.Drawing.Point(1368, 117);
 			this.ArenaBox.Name = "ArenaBox";
-			this.ArenaBox.Size = new System.Drawing.Size(200, 95);
+			this.ArenaBox.Size = new System.Drawing.Size(176, 95);
 			this.ArenaBox.TabIndex = 32;
 			this.ArenaBox.TabStop = false;
 			this.ArenaBox.Text = "Арена";
 			// 
-			// button40
+			// checkBoxArenaFight
 			// 
-			this.button40.Location = new System.Drawing.Point(7, 64);
-			this.button40.Name = "button40";
-			this.button40.Size = new System.Drawing.Size(188, 23);
-			this.button40.TabIndex = 16;
-			this.button40.Text = "Back";
-			this.button40.UseVisualStyleBackColor = true;
-			this.button40.Click += new System.EventHandler(this.button40_Click);
-			// 
-			// label56
-			// 
-			this.label56.AutoSize = true;
-			this.label56.Location = new System.Drawing.Point(8, 44);
-			this.label56.Name = "label56";
-			this.label56.Size = new System.Drawing.Size(97, 13);
-			this.label56.TabIndex = 17;
-			this.label56.Text = "Сила противника:";
+			this.checkBoxArenaFight.AutoSize = true;
+			this.checkBoxArenaFight.Location = new System.Drawing.Point(10, 22);
+			this.checkBoxArenaFight.Name = "checkBoxArenaFight";
+			this.checkBoxArenaFight.Size = new System.Drawing.Size(122, 17);
+			this.checkBoxArenaFight.TabIndex = 20;
+			this.checkBoxArenaFight.Text = "Бодаться на арене";
+			this.checkBoxArenaFight.UseVisualStyleBackColor = true;
 			// 
 			// numericUpDownArenaEnemy
 			// 
@@ -4830,25 +4831,24 @@
 			this.numericUpDownArenaEnemy.Size = new System.Drawing.Size(37, 20);
 			this.numericUpDownArenaEnemy.TabIndex = 18;
 			// 
-			// pictureBox44
+			// label56
 			// 
-			this.pictureBox44.Image = global::Simple_Bot.Properties.Resources.info_icon;
-			this.pictureBox44.Location = new System.Drawing.Point(151, 44);
-			this.pictureBox44.Name = "pictureBox44";
-			this.pictureBox44.Size = new System.Drawing.Size(16, 17);
-			this.pictureBox44.TabIndex = 19;
-			this.pictureBox44.TabStop = false;
-			this.toolTip1.SetToolTip(this.pictureBox44, "0 - самый слабый противник\r\n3 - самый сильный противник");
+			this.label56.AutoSize = true;
+			this.label56.Location = new System.Drawing.Point(8, 44);
+			this.label56.Name = "label56";
+			this.label56.Size = new System.Drawing.Size(97, 13);
+			this.label56.TabIndex = 17;
+			this.label56.Text = "Сила противника:";
 			// 
-			// checkBoxArenaFight
+			// button40
 			// 
-			this.checkBoxArenaFight.AutoSize = true;
-			this.checkBoxArenaFight.Location = new System.Drawing.Point(10, 22);
-			this.checkBoxArenaFight.Name = "checkBoxArenaFight";
-			this.checkBoxArenaFight.Size = new System.Drawing.Size(122, 17);
-			this.checkBoxArenaFight.TabIndex = 20;
-			this.checkBoxArenaFight.Text = "Бадаться на арене";
-			this.checkBoxArenaFight.UseVisualStyleBackColor = true;
+			this.button40.Location = new System.Drawing.Point(7, 64);
+			this.button40.Name = "button40";
+			this.button40.Size = new System.Drawing.Size(160, 23);
+			this.button40.TabIndex = 16;
+			this.button40.Text = "Back";
+			this.button40.UseVisualStyleBackColor = true;
+			this.button40.Click += new System.EventHandler(this.button40_Click);
 			// 
 			// Form1
 			// 
@@ -4996,6 +4996,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
 			this.PandaEffectsBox.ResumeLayout(false);
 			this.PandaEffectsBox.PerformLayout();
 			this.ImmunEffetsBox.ResumeLayout(false);
@@ -5067,7 +5068,6 @@
 			this.ArenaBox.ResumeLayout(false);
 			this.ArenaBox.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemy)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

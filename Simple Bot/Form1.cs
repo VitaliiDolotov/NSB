@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2525;
+        int BotVersion = 2526;
 
         Random rnd = new Random();
 
@@ -792,7 +792,6 @@ namespace Simple_Bot
                 {
                     try
                     {
-	                    Bot.ArenaFight();
                         Bot.TradeField();
                         Bot.GoToOldoMsters();
                         Bot.AlertFight();
@@ -804,6 +803,7 @@ namespace Simple_Bot
                         Bot.StatsUp();
                         Bot.FightImmuns();
                         Bot.Fight();
+						Bot.ArenaFight();
                         Bot.NegativeEffects();
                         Bot.BigFields();
                         Bot.SmallFields();

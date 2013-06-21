@@ -219,7 +219,6 @@ D:\NSB\Simple Bot\bin\Debug\Simple Bot.exe.manifest
 D:\NSB\Simple Bot\bin\Debug\Simple Bot.application
 D:\NSB\Simple Bot\bin\Debug\Simple Bot.exe
 D:\NSB\Simple Bot\bin\Debug\Simple Bot.pdb
-D:\NSB\Simple Bot\bin\Debug\WebDriver.xml
 D:\NSB\Simple Bot\obj\x86\Debug\Simple_Bot.Form1.resources
 D:\NSB\Simple Bot\obj\x86\Debug\Simple_Bot.Properties.Resources.resources
 D:\NSB\Simple Bot\obj\x86\Debug\Simple Bot.csproj.GenerateResource.Cache
