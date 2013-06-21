@@ -168,3 +168,18 @@ E:\NSB\Simple Bot\obj\x86\Release\Simple Bot.csprojResolveAssemblyReference.cach
 E:\NSB\Simple Bot\bin\Release\WebDriver.dll
 E:\NSB\Simple Bot\bin\Release\WebDriver.pdb
 E:\NSB\Simple Bot\bin\Release\WebDriver.xml
+D:\NSB\Simple Bot\bin\Release\Simple Bot.exe.config
+D:\NSB\Simple Bot\bin\Release\Simple Bot.exe.manifest
+D:\NSB\Simple Bot\bin\Release\Simple Bot.application
+D:\NSB\Simple Bot\bin\Release\Simple Bot.exe
+D:\NSB\Simple Bot\bin\Release\Simple Bot.pdb
+D:\NSB\Simple Bot\bin\Release\WebDriver.pdb
+D:\NSB\Simple Bot\bin\Release\WebDriver.xml
+D:\NSB\Simple Bot\obj\x86\Release\Simple Bot.csprojResolveAssemblyReference.cache
+D:\NSB\Simple Bot\obj\x86\Release\Simple_Bot.Form1.resources
+D:\NSB\Simple Bot\obj\x86\Release\Simple_Bot.Properties.Resources.resources
+D:\NSB\Simple Bot\obj\x86\Release\Simple Bot.csproj.GenerateResource.Cache
+D:\NSB\Simple Bot\obj\x86\Release\Simple Bot.exe.manifest
+D:\NSB\Simple Bot\obj\x86\Release\Simple Bot.application
+D:\NSB\Simple Bot\obj\x86\Release\Simple Bot.exe
+D:\NSB\Simple Bot\obj\x86\Release\Simple Bot.pdb

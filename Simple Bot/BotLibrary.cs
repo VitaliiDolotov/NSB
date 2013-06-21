@@ -4743,5 +4743,62 @@ namespace Simple_Bot
             }
             catch { }
         }
+
+		private void Sort(string[] enemysBm, string[] enemyName)
+		{
+			for (int i = 0; i < enemysBm.Length - 1; i++)
+			{
+				for (int y = 0; y < enemysBm.Length - 1; y++)
+				{
+					if (Convert.ToInt32(enemysBm[y]) > Convert.ToInt32(enemysBm[y + 1]) & y + 1 != enemysBm.Length)
+					{
+						//Перемещаем бм
+						string tempBm = enemysBm[y + 1];
+						enemysBm[y + 1] = enemysBm[y];
+						enemysBm[y] = tempBm;
+
+						//Перемещаем имена
+						string tempName = enemyName[y + 1];
+						enemyName[y + 1] = enemyName[y];
+						enemyName[y] = tempName;
+					}
+				}
+			}
+		}
+
+		public void ArenaFight()
+		{
+			if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[26]))
+			{
+				try
+				{
+					//число оставшихся кри на считу
+                    int currenCry = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+					if (currenCry > 5)
+					{
+
+						driver.FindElement(By.LinkText("Бодалка")).Click();
+						Delays();
+						driver.FindElement(By.XPath(".//a[contains(text(),'ПОИСК:')]")).Click();
+						Delays();
+						string[] enemysBm = new string[4];
+						string[] enemysName = new string[4];
+						IList<IWebElement> enemys = driver.FindElements(By.CssSelector(".arena_enemy"));
+						int iterator = 0;
+						foreach (var enemy in enemys)
+						{
+							enemysName[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_name")).Text;
+							enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(2)"))
+							                          .Text.Replace(".","");
+							iterator++;
+						}
+						Sort(enemysBm,enemysName);
+
+						driver.FindElement(By.XPath(string.Format(".//div[text()='{0}']/..",enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[27])]))).Click();
+					}
+				}
+				catch (Exception){}
+			}
+		}
     }
 }

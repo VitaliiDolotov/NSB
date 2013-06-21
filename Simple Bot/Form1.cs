@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2524;
+        int BotVersion = 2525;
 
         Random rnd = new Random();
 
@@ -219,6 +219,8 @@ namespace Simple_Bot
                 checkBoxMoralityPlus.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[23]);
                 checkBoxMoralityZero.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[24]);
                 checkBoxDrinkOborotka.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[25]);
+				checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
+				numericUpDownArenaEnemy.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
             }
             catch { }
 
@@ -561,7 +563,7 @@ namespace Simple_Bot
             string[] FightSettings = { Convert.ToString(checkBoxFightMonsters.Checked), Convert.ToString(checkBoxFightZorro.Checked), Convert.ToString(radioButtonZorroLvl.Checked), Convert.ToString(radioButtonZorroList.Checked), Convert.ToString(checkBoxFight.Checked), Convert.ToString(radioButtonFightLvl.Checked), Convert.ToString(radioButtonFightList.Checked), Convert.ToString(checkBoxOborotka.Checked), Convert.ToString(checkBoxGetPet.Checked), Convert.ToString(checkBoxImmunOgl.Checked), Convert.ToString(checkBoxImmunAnti.Checked), Convert.ToString(radioButtonImmunPir.Checked), Convert.ToString(radioButtonImmunCry.Checked), Convert.ToString(checkBoxPetImmun.Checked), Convert.ToString(numericUpDownPetImmun.Value), Convert.ToString(checkBoxEnemyPower.Checked),
                                          Convert.ToString(numericUpDownEnemyPower.Value),Convert.ToString(numericUpDownEnemyBlock.Value),Convert.ToString(numericUpDownEnemyDex.Value),Convert.ToString(numericUpDownEnemyEd.Value),Convert.ToString(numericUpDownEnemyChar.Value),
                                          Convert.ToString(checkBoxMoralityMinus.Checked),Convert.ToString(checkBoxMoralityPlus.Checked),Convert.ToString(checkBoxMoralityZero.Checked),
-                                         Convert.ToString(checkBoxDrinkOborotka.Checked)};
+                                         Convert.ToString(checkBoxDrinkOborotka.Checked), Convert.ToString(checkBoxArenaFight.Checked), Convert.ToString(numericUpDownArenaEnemy.Value)};
             CompareValuesInFile(FightBox.Name, FightSettings);
             checkBoxFightMonsters.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[1]);
             checkBoxFightZorro.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[2]);
@@ -588,6 +590,8 @@ namespace Simple_Bot
             checkBoxMoralityPlus.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[23]);
             checkBoxMoralityZero.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[24]);
             checkBoxDrinkOborotka.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[25]);
+			checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
+			numericUpDownArenaEnemy.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
 
             //Heal settings
             string[] HealSettings = { Convert.ToString(checkBoxHeal.Checked), Convert.ToString(numericUpDownHeal.Value), Convert.ToString(checkBoxPetHeal.Checked), Convert.ToString(numericUpDownPetHeal.Value) };
@@ -788,6 +792,7 @@ namespace Simple_Bot
                 {
                     try
                     {
+	                    Bot.ArenaFight();
                         Bot.TradeField();
                         Bot.GoToOldoMsters();
                         Bot.AlertFight();
@@ -1352,6 +1357,8 @@ namespace Simple_Bot
                     ChromeDriverKillerProcess();
                     chromeDriverCiller = true;
                 }
+				//Подрубаем Арену если донат
+	            button39.Enabled = true;
             }
             //OpenSite();
             //PanelDisplay();//BrowserDisplay();
@@ -1923,5 +1930,15 @@ namespace Simple_Bot
             if (numericUpDownTFEveryTime2.Value <= numericUpDownTFEveryTime.Value)
                 numericUpDownTFEveryTime2.Value = numericUpDownTFEveryTime.Value + 1;
         }
+
+		private void button40_Click(object sender, EventArgs e)
+		{
+			UIBoxDisplay(3, 4, "MenuBox");
+		}
+
+		private void button39_Click(object sender, EventArgs e)
+		{
+			UIBoxDisplay(3, 4, "ArenaBox");
+		}
     }
 }

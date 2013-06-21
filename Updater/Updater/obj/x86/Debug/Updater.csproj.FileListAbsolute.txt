@@ -73,3 +73,12 @@ E:\NSB\Updater\Updater\obj\x86\Debug\Updater.csprojResolveAssemblyReference.cach
 E:\NSB\Updater\Updater\obj\x86\Debug\Updater.Form1.resources
 E:\NSB\Updater\Updater\obj\x86\Debug\Updater.Properties.Resources.resources
 E:\NSB\Updater\Updater\obj\x86\Debug\Updater.csproj.GenerateResource.Cache
+D:\NSB\Updater\Updater\bin\Debug\Updater.exe.config
+D:\NSB\Updater\Updater\obj\x86\Debug\Updater.exe
+D:\NSB\Updater\Updater\obj\x86\Debug\Updater.pdb
+D:\NSB\Updater\Updater\bin\Debug\Updater.exe
+D:\NSB\Updater\Updater\bin\Debug\Updater.pdb
+D:\NSB\Updater\Updater\obj\x86\Debug\Updater.csprojResolveAssemblyReference.cache
+D:\NSB\Updater\Updater\obj\x86\Debug\Updater.Form1.resources
+D:\NSB\Updater\Updater\obj\x86\Debug\Updater.Properties.Resources.resources
+D:\NSB\Updater\Updater\obj\x86\Debug\Updater.csproj.GenerateResource.Cache
