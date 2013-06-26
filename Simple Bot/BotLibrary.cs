@@ -692,7 +692,8 @@ namespace Simple_Bot
             //асайнем таймер сбытни
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "ShopBox")[1]) == true)
             {
-                Timer_Shop = ToDateTime("00:" + Convert.ToString(ReadFromFile(SettingsFile, "ShopBox")[7]) + ":00");
+                string timer = string.Format("00:{0}:{1}", Convert.ToString(ReadFromFile(SettingsFile, "ShopBox")[7]), rnd.Next(10, 55));
+                Timer_Shop = ToDateTime(timer);
             }
 
 
@@ -2269,9 +2270,32 @@ namespace Simple_Bot
                                 try
                                 {
                                     driver.FindElement(By.CssSelector(".title:nth-of-type(" + Convert.ToString(FlyNumber - 1) + ") a b")).Click();
-                                    System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                    Delays();
                                     IsInTrip = false;
                                     MinigameFightFood = false;
+
+                                    //Для меня!
+                                    if (CurrentWork("Спуск") == false)
+                                    {
+                                        if(driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
+                                        {
+                                            try
+                                            {
+                                                //Если есть надпись что летун питомиц
+                                                IWebElement statusElement = driver.FindElement(By.XPath(".//b[contains(text(),'Питомец')]"));
+                                                //клацаем на яйца
+                                                driver.FindElement(By.XPath(".//div[@title='Информация']/span")).Click();
+                                                Delays();
+                                                //клацаем Сменить
+                                                driver.FindElement(By.LinkText("Сменить")).Click();
+                                                Delays();
+                                                //Меняем на агрессора
+                                                driver.FindElement(By.XPath(".//option[text()='Агрессор']")).Click();
+                                                Delays();
+                                            }
+                                            catch { }
+                                        }
+                                    }
                                 }
                                 catch { }
                             }
@@ -2996,7 +3020,7 @@ namespace Simple_Bot
                     //Определяем страницу, если не на бодалке, то переходим в нее
                     try
                     {
-                        if (driver.Url.Contains("dozor") == false)
+                        if (driver.Url.Contains("dozor") == false || driver.Url.Contains("arena"))
                         {
                             driver.FindElement(By.Id("m8")).FindElement(By.XPath(".//b")).Click();
                             System.Threading.Thread.Sleep(rnd.Next(154, 394));
@@ -3085,7 +3109,7 @@ namespace Simple_Bot
                                 System.Threading.Thread.Sleep(rnd.Next(154, 201));
                             }
                             catch { }
-                            if (driver.Url.Contains("dozor") == false)
+                            if (driver.Url.Contains("dozor") == false || driver.Url.Contains("arena"))
                             {
                                 driver.FindElement(By.Id("m8")).FindElement(By.XPath(".//b")).Click();
                                 System.Threading.Thread.Sleep(rnd.Next(154, 200));
@@ -3182,7 +3206,7 @@ namespace Simple_Bot
                 {
                     Timer = ToDateTime(driver.FindElement(By.Id("rmenu1")).FindElement(By.XPath("div[1]/a[2]/span")).Text);
                 }
-                catch 
+                catch
                 {
                     return RetVal = true;
                 }
@@ -4518,15 +4542,160 @@ namespace Simple_Bot
 
         public void Shop()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "ShopBox")[1]) == true)
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "ShopBox")[1]))
             {
-                if (Timer_Shop.CompareTo(DateTime.Now) < 0)
+                //если текущая работа не спуск в подземелье, то пробуем спустится
+                if (CurrentWork("Спуск") == false)
                 {
-                    int currentGold = Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[8]);
-                    int currentCry = Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[9]);
-                    int currentGren = Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[10]);
+                    if (Timer_Shop.CompareTo(DateTime.Now) < 0)
+                    {
+                        //Узнаем, установлен валидное числовое значение для лимита валюты и сразу сколько заданного ресурса на руках
+                        bool isCurrencyValid = false;
+                        int currenCurrency = 0;
+                        int currencyLimit = 0;
+
+                        switch (ReadFromFile(SettingsFile, "ShopBox")[3])
+                        {
+                            case "Золото":
+                                try
+                                {
+                                    currencyLimit = Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[8]);
+                                    isCurrencyValid = true;
+                                    currenCurrency = Convert.ToInt32(driver.FindElement(By.Id("gold")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                                }
+                                catch { }
+                                break;
+
+                            case "Кристаллы":
+                                try
+                                {
+                                    currencyLimit = Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[9]);
+                                    isCurrencyValid = true;
+                                    currenCurrency = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                                }
+                                catch { }
+                                break;
+
+                            case "Зелень":
+                                try
+                                {
+                                    currencyLimit = Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[10]);
+                                    isCurrencyValid = true;
+                                    currenCurrency = Convert.ToInt32(driver.FindElement(By.Id("green")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                                }
+                                catch { }
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        if (currenCurrency >= currencyLimit)
+                        {
+                            driver.FindElement(By.LinkText("Деревня")).Click();
+                            Delays();
+                            driver.FindElement(By.XPath("//div[text()='Сбытница']")).Click();
+                            Delays();
+                            //Выбираем все типы товаро
+                            driver.FindElement(By.XPath("//a[@title='Все']")).Click();
+                            Delays();
+
+                            ShopUncheckAllProductTypes();
+                            ShopUncheckAllCurrencyTypes();
+
+                            //Вводим название товара
+                            driver.FindElement(By.CssSelector("[name='text_filter']")).Clear();
+                            driver.FindElement(By.CssSelector("[name='text_filter']")).SendKeys(ReadFromFile(SettingsFile, "ShopBox")[2]);
+                            Delays();
+                            //Кликаем поиск
+                            driver.FindElement(By.CssSelector("[title='Поиск']")).Click();
+                            Delays();
+
+                            //выставляем опции сортировки с дешевых по  ддорогие
+                            try
+                            {
+                                IWebElement sortOption = driver.FindElement(By.XPath("//a[text()='Выкуп']/following-sibling::b[contains(@class,'desc')]"));
+                            }
+                            catch
+                            {
+                                driver.FindElement(By.XPath("//a[text()='Выкуп']")).Click();
+                                Delays();
+                            }
+
+                            int lowestPrice = 0;
+                            IList<IWebElement> itemsList = driver.FindElements(By.CssSelector(".row.round3"));
+                            foreach (var item in itemsList)
+                            {
+
+                            }
+
+                        }
+                        else
+                            //если не хвататет бабла , то заходим в сбытку чутка позже
+                            Timer_Shop = ToDateTime(string.Format("00:0{0}:{1}", rnd.Next(3, 9), rnd.Next(11,58)));
+                    }
                 }
             }
+        }
+
+        private void ShopUncheckAllProductTypes()
+        {
+            //анчекаем все активныее ттипы продуктоов
+            try
+            {
+                driver.FindElement(By.CssSelector(".button30.active [title='Обычные']")).Click();
+                Delays();
+            }
+            catch { }
+
+            try
+            {
+                driver.FindElement(By.CssSelector(".button30.active [title='Редкие']")).Click();
+                Delays();
+            }
+            catch { }
+            
+            try
+            {
+                driver.FindElement(By.CssSelector(".button30.active [title='Реликтовые']")).Click();
+                Delays();
+            }
+            catch { }
+
+            //чекаем нужный ресурсаа тип
+            driver.FindElement(By.CssSelector(string.Format(".button30 [title='{0}]']", ReadFromFile(SettingsFile, "ShopBox")[11]))).Click();
+            Delays();
+
+        }
+
+        private void ShopUncheckAllCurrencyTypes()
+        {
+            //анчекаем все активныее ттипы продуктоов
+            try
+            {
+                driver.FindElement(By.CssSelector(".button30.active [title='Золото']")).Click();
+                Delays();
+            }
+            catch { }
+
+            try
+            {
+                driver.FindElement(By.CssSelector(".button30.active [title='Кристаллы']")).Click();
+                Delays();
+            }
+            catch { }
+
+            try
+            {
+                driver.FindElement(By.CssSelector(".button30.active [title='Зелень']")).Click();
+                Delays();
+            }
+            catch { }
+
+            //чекаем нужный ресурсаа тип
+            driver.FindElement(By.CssSelector(string.Format(".button30 [title='{0}]']", ReadFromFile(SettingsFile, "ShopBox")[3]))).Click();
+            Delays();
+
         }
 
         public void DayliGifts()
@@ -4665,6 +4834,20 @@ namespace Simple_Bot
                             catch { }
                         }
                     }
+
+                    if (driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
+                    {
+                        driver.FindElement(By.XPath(".//a[contains(text(),'статусами')]")).Click();
+                        Delays();
+                        driver.FindElement(By.XPath(".//option[text()='Питомец']")).Click();
+                        Delays();
+                        driver.FindElement(By.XPath(".//input[@value='СМЕНИТЬ']")).Click();
+                        Delays();
+                        //закрыть попап
+                        driver.FindElement(By.CssSelector(".popup .close")).Click();
+                        Delays();
+                    }
+
                     driver.FindElement(By.Id("menu_monsterpve")).Click();
                     Delays();
                     driver.FindElement(By.XPath(".//input[contains(@value,'Перейти к месту')]")).Click();
@@ -4798,7 +4981,7 @@ namespace Simple_Bot
                             //Определяем страницу, если не на бодалке, то переходим в нее
                             try
                             {
-                                if (driver.Url.Contains("dozor") == false)
+                                if (driver.Url.Contains("dozor") == false || driver.Url.Contains("arena"))
                                 {
                                     driver.FindElement(By.LinkText("Бодалка")).Click();
                                     Delays();

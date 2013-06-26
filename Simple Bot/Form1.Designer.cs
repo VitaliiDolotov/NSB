@@ -400,6 +400,8 @@
             this.numericUpDownArenaEnemy = new System.Windows.Forms.NumericUpDown();
             this.label56 = new System.Windows.Forms.Label();
             this.button40 = new System.Windows.Forms.Button();
+            this.comboBoxProductType = new System.Windows.Forms.ComboBox();
+            this.label57 = new System.Windows.Forms.Label();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -4141,6 +4143,8 @@
             // 
             // ShopBox
             // 
+            this.ShopBox.Controls.Add(this.label57);
+            this.ShopBox.Controls.Add(this.comboBoxProductType);
             this.ShopBox.Controls.Add(this.checkBoxAlarmBox);
             this.ShopBox.Controls.Add(this.groupBox7);
             this.ShopBox.Controls.Add(this.numericUpDownItemLevel);
@@ -4159,7 +4163,7 @@
             this.ShopBox.Controls.Add(this.label38);
             this.ShopBox.Location = new System.Drawing.Point(1181, 247);
             this.ShopBox.Name = "ShopBox";
-            this.ShopBox.Size = new System.Drawing.Size(241, 280);
+            this.ShopBox.Size = new System.Drawing.Size(241, 311);
             this.ShopBox.TabIndex = 24;
             this.ShopBox.TabStop = false;
             this.ShopBox.Text = "Покупать товар:";
@@ -4181,7 +4185,7 @@
             this.groupBox7.Controls.Add(this.textBoxCurrenCry);
             this.groupBox7.Controls.Add(this.label44);
             this.groupBox7.Controls.Add(this.textBoxCurrentGold);
-            this.groupBox7.Location = new System.Drawing.Point(15, 148);
+            this.groupBox7.Location = new System.Drawing.Point(15, 179);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(218, 97);
             this.groupBox7.TabIndex = 25;
@@ -4205,6 +4209,7 @@
             this.textBoxCurrentGren.TabIndex = 4;
             this.textBoxCurrentGren.Text = "все равно";
             this.textBoxCurrentGren.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCurrentGren.TextChanged += new System.EventHandler(this.textBoxCurrentGren_TextChanged);
             // 
             // label45
             // 
@@ -4223,6 +4228,7 @@
             this.textBoxCurrenCry.TabIndex = 2;
             this.textBoxCurrenCry.Text = "все равно";
             this.textBoxCurrenCry.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCurrenCry.TextChanged += new System.EventHandler(this.textBoxCurrenCry_TextChanged);
             // 
             // label44
             // 
@@ -4241,10 +4247,11 @@
             this.textBoxCurrentGold.TabIndex = 0;
             this.textBoxCurrentGold.Text = "все равно";
             this.textBoxCurrentGold.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCurrentGold.TextChanged += new System.EventHandler(this.textBoxCurrentGold_TextChanged);
             // 
             // numericUpDownItemLevel
             // 
-            this.numericUpDownItemLevel.Location = new System.Drawing.Point(197, 96);
+            this.numericUpDownItemLevel.Location = new System.Drawing.Point(197, 126);
             this.numericUpDownItemLevel.Name = "numericUpDownItemLevel";
             this.numericUpDownItemLevel.Size = new System.Drawing.Size(36, 20);
             this.numericUpDownItemLevel.TabIndex = 24;
@@ -4252,7 +4259,7 @@
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(144, 101);
+            this.label43.Location = new System.Drawing.Point(144, 131);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(54, 13);
             this.label43.TabIndex = 23;
@@ -4280,11 +4287,13 @@
             this.comboBoxCurrencyType.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCurrencyType.TabIndex = 19;
             this.comboBoxCurrencyType.Text = "Золото";
+            this.comboBoxCurrencyType.SelectedValueChanged += new System.EventHandler(this.comboBoxCurrencyType_SelectedValueChanged);
+            this.comboBoxCurrencyType.TextChanged += new System.EventHandler(this.comboBoxCurrencyType_TextChanged);
             // 
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(12, 99);
+            this.label42.Location = new System.Drawing.Point(12, 129);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(63, 13);
             this.label42.TabIndex = 22;
@@ -4292,7 +4301,7 @@
             // 
             // button32
             // 
-            this.button32.Location = new System.Drawing.Point(15, 251);
+            this.button32.Location = new System.Drawing.Point(15, 284);
             this.button32.Name = "button32";
             this.button32.Size = new System.Drawing.Size(220, 23);
             this.button32.TabIndex = 18;
@@ -4303,7 +4312,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(196, 124);
+            this.label41.Location = new System.Drawing.Point(196, 154);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(37, 13);
             this.label41.TabIndex = 6;
@@ -4311,7 +4320,7 @@
             // 
             // numericUpDownPPvalue
             // 
-            this.numericUpDownPPvalue.Location = new System.Drawing.Point(81, 96);
+            this.numericUpDownPPvalue.Location = new System.Drawing.Point(81, 126);
             this.numericUpDownPPvalue.Maximum = new decimal(new int[] {
             10,
             0,
@@ -4328,14 +4337,14 @@
             // 
             // numericUpDownTryByMin
             // 
-            this.numericUpDownTryByMin.Location = new System.Drawing.Point(149, 122);
+            this.numericUpDownTryByMin.Location = new System.Drawing.Point(149, 152);
             this.numericUpDownTryByMin.Maximum = new decimal(new int[] {
-            59,
+            55,
             0,
             0,
             0});
             this.numericUpDownTryByMin.Minimum = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
@@ -4343,7 +4352,7 @@
             this.numericUpDownTryByMin.Size = new System.Drawing.Size(36, 20);
             this.numericUpDownTryByMin.TabIndex = 5;
             this.numericUpDownTryByMin.Value = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
@@ -4351,7 +4360,7 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(12, 124);
+            this.label40.Location = new System.Drawing.Point(12, 154);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(131, 13);
             this.label40.TabIndex = 4;
@@ -4863,6 +4872,30 @@
             this.button40.UseVisualStyleBackColor = true;
             this.button40.Click += new System.EventHandler(this.button40_Click);
             // 
+            // comboBoxProductType
+            // 
+            this.comboBoxProductType.FormattingEnabled = true;
+            this.comboBoxProductType.Items.AddRange(new object[] {
+            "Обычные",
+            "Редкие",
+            "Реликтовые"});
+            this.comboBoxProductType.Location = new System.Drawing.Point(112, 97);
+            this.comboBoxProductType.Name = "comboBoxProductType";
+            this.comboBoxProductType.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBoxProductType.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxProductType.TabIndex = 27;
+            this.comboBoxProductType.Text = "Обычные";
+            this.comboBoxProductType.TextChanged += new System.EventHandler(this.comboBoxProductType_TextChanged);
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(12, 100);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(67, 13);
+            this.label57.TabIndex = 28;
+            this.label57.Text = "Тип товара:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5372,7 +5405,6 @@
         private System.Windows.Forms.PictureBox pictureBox33;
         private System.Windows.Forms.CheckBox checkBoxShop;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.ComboBox comboBoxCurrencyType;
         private System.Windows.Forms.NumericUpDown numericUpDownItemLevel;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label42;
@@ -5458,6 +5490,9 @@
 		private System.Windows.Forms.NumericUpDown numericUpDownArenaEnemy;
 		private System.Windows.Forms.Label label56;
         private System.Windows.Forms.CheckBox checkBoxArenaEvery5min;
+        public System.Windows.Forms.ComboBox comboBoxCurrencyType;
+        private System.Windows.Forms.Label label57;
+        public System.Windows.Forms.ComboBox comboBoxProductType;
     }
 }
 

@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2528;
+        int BotVersion = 2531;
 
         Random rnd = new Random();
 
@@ -329,6 +329,7 @@ namespace Simple_Bot
                 textBoxCurrentGold.Text = ReadFromFile(SettingsFile, ShopBox.Name)[8];
                 textBoxCurrenCry.Text = ReadFromFile(SettingsFile, ShopBox.Name)[9];
                 textBoxCurrentGren.Text = ReadFromFile(SettingsFile, ShopBox.Name)[10];
+                comboBoxProductType.Text = ReadFromFile(SettingsFile, ShopBox.Name)[11];
             }
             catch { }
 
@@ -684,7 +685,8 @@ namespace Simple_Bot
 
             //Shop Box countrys
             string[] ShopSettings = { Convert.ToString(checkBoxShop.Checked), textBoxProdutName.Text, comboBoxCurrencyType.Text, textBoxMaxValue.Text, Convert.ToString(numericUpDownPPvalue.Value), Convert.ToString(numericUpDownItemLevel.Value),
-                                    Convert.ToString(numericUpDownTryByMin.Value), textBoxCurrentGold.Text, textBoxCurrenCry.Text, textBoxCurrentGren.Text };
+                                    Convert.ToString(numericUpDownTryByMin.Value), textBoxCurrentGold.Text, textBoxCurrenCry.Text, textBoxCurrentGren.Text,
+                                    comboBoxProductType.Text};
             CompareValuesInFile(ShopBox.Name, ShopSettings);
             checkBoxShop.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, ShopBox.Name)[1]);
             textBoxProdutName.Text = ReadFromFile(SettingsFile, ShopBox.Name)[2];
@@ -696,6 +698,7 @@ namespace Simple_Bot
             textBoxCurrentGold.Text = ReadFromFile(SettingsFile, ShopBox.Name)[8];
             textBoxCurrenCry.Text = ReadFromFile(SettingsFile, ShopBox.Name)[9];
             textBoxCurrentGren.Text = ReadFromFile(SettingsFile, ShopBox.Name)[10];
+            comboBoxProductType.Text = ReadFromFile(SettingsFile, ShopBox.Name)[11];
 
 
 
@@ -803,12 +806,13 @@ namespace Simple_Bot
                         Bot.TanksMaking();
                         Bot.MineGetCry();
                         Bot.StatsUp();
+                        Bot.ArenaFight();
                         Bot.FightImmuns();
                         Bot.Fight();
-						Bot.ArenaFight();
                         Bot.NegativeEffects();
                         Bot.BigFields();
                         Bot.SmallFields();
+                        Bot.GoldDiscard();
                         Bot.UndergroundFast();
                         Bot.Underground();
                         Bot.StatsUp();
@@ -834,6 +838,7 @@ namespace Simple_Bot
                         Bot.DayliGifts();
                         Bot.BuyGifts();
                         Bot.TradeField();
+
 
                         //Adv
                         Bot.OpenAdvPage();
@@ -1070,7 +1075,7 @@ namespace Simple_Bot
         {
             foreach (Process clsProcess in Process.GetProcesses())
             {
-                if (clsProcess.ProcessName.Contains("chromedriver"))
+                if (clsProcess.ProcessName.Contains("chromedriver") || clsProcess.ProcessName.Contains("chrome"))
                 {
                     clsProcess.Kill();
                 }
@@ -1943,5 +1948,127 @@ namespace Simple_Bot
 		{
 			UIBoxDisplay(3, 4, "ArenaBox");
 		}
+
+        private void comboBoxCurrencyType_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //Валидация значений лимитов
+            switch (comboBoxCurrencyType.Text)
+            {
+                case "Золото":
+                    try
+                    {
+                        int checkValue = Convert.ToInt32(textBoxCurrentGold.Text);
+                        textBoxCurrentGold.BackColor = Color.ForestGreen;
+
+                        textBoxCurrenCry.BackColor = Color.White;
+                        textBoxCurrentGren.BackColor = Color.White;
+                    }
+                    catch
+                    {
+                        textBoxCurrentGold.BackColor = Color.Red;
+                        textBoxCurrenCry.BackColor = Color.White;
+                        textBoxCurrentGren.BackColor = Color.White;
+                    }
+                    break;
+
+                case "Кристаллы":
+                                        try
+                    {
+                        int checkValue = Convert.ToInt32(textBoxCurrenCry.Text);
+                        textBoxCurrenCry.BackColor = Color.ForestGreen;
+
+                        textBoxCurrentGold.BackColor = Color.White;
+                        textBoxCurrentGren.BackColor = Color.White;
+                    }
+                    catch
+                    {
+                        textBoxCurrenCry.BackColor = Color.Red;
+                        textBoxCurrentGold.BackColor = Color.White;
+                        textBoxCurrentGren.BackColor = Color.White;
+                    }
+                    break;
+
+                case "Зелень":
+                    try
+                    {
+                        int checkValue = Convert.ToInt32(textBoxCurrentGren.Text);
+                        textBoxCurrentGren.BackColor = Color.ForestGreen;
+
+                        textBoxCurrentGold.BackColor = Color.White;
+                        textBoxCurrenCry.BackColor = Color.White;
+                    }
+                    catch
+                    {
+                        textBoxCurrentGren.BackColor = Color.Red;
+                        textBoxCurrentGold.BackColor = Color.White;
+                        textBoxCurrenCry.BackColor = Color.White;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void textBoxCurrentGold_TextChanged(object sender, EventArgs e)
+        {
+            if (comboBoxCurrencyType.Text.Equals("Золото"))
+            {
+                try
+                {
+                    int checkValue = Convert.ToInt32(textBoxCurrentGold.Text);
+                    textBoxCurrentGold.BackColor = Color.ForestGreen;
+                }
+                catch
+                {
+                    textBoxCurrentGold.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxCurrenCry_TextChanged(object sender, EventArgs e)
+        {
+            if (comboBoxCurrencyType.Text.Equals("Кристаллы"))
+            {
+                try
+                {
+                    int checkValue = Convert.ToInt32(textBoxCurrentGold.Text);
+                    textBoxCurrenCry.BackColor = Color.ForestGreen;
+                }
+                catch
+                {
+                    textBoxCurrenCry.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxCurrentGren_TextChanged(object sender, EventArgs e)
+        {
+            if (comboBoxCurrencyType.Text.Equals("Зелень"))
+            {
+                try
+                {
+                    int checkValue = Convert.ToInt32(textBoxCurrentGold.Text);
+                    textBoxCurrentGren.BackColor = Color.ForestGreen;
+                }
+                catch
+                {
+                    textBoxCurrentGren.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void comboBoxCurrencyType_TextChanged(object sender, EventArgs e)
+        {
+            //Валидация значития дропдауна
+            if (!comboBoxCurrencyType.Text.Equals("Золото") && !comboBoxCurrencyType.Text.Equals("Кристаллы") && !comboBoxCurrencyType.Text.Equals("Зелень"))
+                comboBoxCurrencyType.Text = "Золото";
+        }
+
+        private void comboBoxProductType_TextChanged(object sender, EventArgs e)
+        {
+            //Валидация значития дропдауна
+            if (!comboBoxProductType.Text.Equals("Обычные") && !comboBoxProductType.Text.Equals("Редкие") && !comboBoxProductType.Text.Equals("Реликтовые"))
+                comboBoxProductType.Text = "Обычные";
+        }
     }
 }
