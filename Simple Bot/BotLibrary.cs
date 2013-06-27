@@ -2239,6 +2239,21 @@ namespace Simple_Bot
                             }
                             catch { }
 
+                            //Будим если спит
+                            try
+                            {
+                                IWebElement wake = driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") a.cmd_asmall_sl"));
+                                wake.Click();
+                                Delays();
+                                //Будим и кормим 2 раза
+                                driver.FindElement(By.XPath("//input[@value='РАЗБУДИТЬ']")).Click();
+                                Delays();
+                                driver.FindElement(By.Id("feed_zoo_did")).FindElement(By.XPath(".//input[@value='КОРМИТЬ']")).Click();
+                                Delays();
+                                driver.FindElement(By.Id("feed_zoo_did")).FindElement(By.XPath(".//input[@value='КОРМИТЬ']")).Click();
+                            }
+                            catch { }
+
                             //кормим если голоден
                             try
                             {
@@ -2274,7 +2289,7 @@ namespace Simple_Bot
                                     IsInTrip = false;
                                     MinigameFightFood = false;
 
-                                    //Для меня!
+                                    //Персонально
                                     if (CurrentWork("Спуск") == false)
                                     {
                                         if(driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
@@ -2291,6 +2306,9 @@ namespace Simple_Bot
                                                 Delays();
                                                 //Меняем на агрессора
                                                 driver.FindElement(By.XPath(".//option[text()='Агрессор']")).Click();
+                                                Delays();
+                                                //подтверждаем смену
+                                                driver.FindElement(By.CssSelector("#ch_state input[value='СМЕНИТЬ']")).Click();
                                                 Delays();
                                             }
                                             catch { }
