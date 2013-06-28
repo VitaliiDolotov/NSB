@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2533;
+        int BotVersion = 2534;
 
         Random rnd = new Random();
 
@@ -336,13 +336,13 @@ namespace Simple_Bot
             //Mass Fight
             try
             {
-                checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[1]);
-                comboBoxMMine.Text = ReadFromFile(SettingsFile, MassFightBox.Name)[2];
-                checkBoxMAEnergy.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[3]);
-                checkBoxMAGodDefend.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[4]);
-                checkBoxMAGodSacrf.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[5]);
-                checkBoxMAOboz.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[6]);
-                comboBoxMLocation.Text = ReadFromFile(SettingsFile, MassFightBox.Name)[7];
+                checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
+                comboBoxMMine.Text = ReadFromFile(SettingsFile, MassFBox.Name)[2];
+                checkBoxMAEnergy.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[3]);
+                checkBoxMAGodDefend.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[4]);
+                checkBoxMAGodSacrf.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[5]);
+                checkBoxMAOboz.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[6]);
+                comboBoxMLocation.Text = ReadFromFile(SettingsFile, MassFBox.Name)[7];
             }
             catch { }
 
@@ -716,14 +716,14 @@ namespace Simple_Bot
             //Mass Fight
             string[] MassFightSettings = { Convert.ToString(checkBoxMassFight.Checked), comboBoxMMine.Text, Convert.ToString(checkBoxMAEnergy.Checked), Convert.ToString(checkBoxMAGodDefend.Checked),
                                          Convert.ToString(checkBoxMAGodSacrf.Checked),Convert.ToString(checkBoxMAOboz.Checked), comboBoxMLocation.Text};
-            CompareValuesInFile(MassFightBox.Name, MassFightSettings);
-            checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[1]);
-            comboBoxMMine.Text = ReadFromFile(SettingsFile, MassFightBox.Name)[2];
-            checkBoxMAEnergy.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[3]);
-            checkBoxMAGodDefend.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[4]);
-            checkBoxMAGodSacrf.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[5]);
-            checkBoxMAOboz.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[6]);
-            comboBoxMLocation.Text = ReadFromFile(SettingsFile, MassFightBox.Name)[7];
+            CompareValuesInFile(MassFBox.Name, MassFightSettings);
+            checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
+            comboBoxMMine.Text = ReadFromFile(SettingsFile, MassFBox.Name)[2];
+            checkBoxMAEnergy.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[3]);
+            checkBoxMAGodDefend.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[4]);
+            checkBoxMAGodSacrf.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[5]);
+            checkBoxMAOboz.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[6]);
+            comboBoxMLocation.Text = ReadFromFile(SettingsFile, MassFBox.Name)[7];
 
 
             Thread BotThread = new Thread(new ThreadStart(WorkThreadFunction));
@@ -2098,7 +2098,7 @@ namespace Simple_Bot
 
         private void button42_Click(object sender, EventArgs e)
         {
-            UIBoxDisplay(3, 4, "MassFightBox");
+            UIBoxDisplay(3, 4, "MassFBox");
         }
 
         private void button41_Click(object sender, EventArgs e)

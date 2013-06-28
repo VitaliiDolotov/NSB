@@ -61,6 +61,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
             this.MenuBox = new System.Windows.Forms.GroupBox();
+            this.button42 = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
             this.checkBoxBigGguru = new System.Windows.Forms.CheckBox();
@@ -402,18 +403,17 @@
             this.numericUpDownArenaEnemy = new System.Windows.Forms.NumericUpDown();
             this.label56 = new System.Windows.Forms.Label();
             this.button40 = new System.Windows.Forms.Button();
-            this.MassFightBox = new System.Windows.Forms.GroupBox();
-            this.button41 = new System.Windows.Forms.Button();
-            this.button42 = new System.Windows.Forms.Button();
-            this.comboBoxMMine = new System.Windows.Forms.ComboBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.checkBoxMAEnergy = new System.Windows.Forms.CheckBox();
-            this.checkBoxMAOboz = new System.Windows.Forms.CheckBox();
-            this.checkBoxMAGodSacrf = new System.Windows.Forms.CheckBox();
-            this.checkBoxMAGodDefend = new System.Windows.Forms.CheckBox();
-            this.checkBoxMassFight = new System.Windows.Forms.CheckBox();
-            this.comboBoxMLocation = new System.Windows.Forms.ComboBox();
+            this.MassFBox = new System.Windows.Forms.GroupBox();
             this.label58 = new System.Windows.Forms.Label();
+            this.comboBoxMLocation = new System.Windows.Forms.ComboBox();
+            this.checkBoxMassFight = new System.Windows.Forms.CheckBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.checkBoxMAGodDefend = new System.Windows.Forms.CheckBox();
+            this.checkBoxMAGodSacrf = new System.Windows.Forms.CheckBox();
+            this.checkBoxMAOboz = new System.Windows.Forms.CheckBox();
+            this.checkBoxMAEnergy = new System.Windows.Forms.CheckBox();
+            this.comboBoxMMine = new System.Windows.Forms.ComboBox();
+            this.button41 = new System.Windows.Forms.Button();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -543,7 +543,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFDuringTime)).BeginInit();
             this.ArenaBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemy)).BeginInit();
-            this.MassFightBox.SuspendLayout();
+            this.MassFBox.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -918,6 +918,16 @@
             this.MenuBox.TabIndex = 2;
             this.MenuBox.TabStop = false;
             this.MenuBox.Text = " Settings ";
+            // 
+            // button42
+            // 
+            this.button42.Location = new System.Drawing.Point(16, 416);
+            this.button42.Name = "button42";
+            this.button42.Size = new System.Drawing.Size(146, 23);
+            this.button42.TabIndex = 34;
+            this.button42.Text = "Чудо-шахты";
+            this.button42.UseVisualStyleBackColor = true;
+            this.button42.Click += new System.EventHandler(this.button42_Click);
             // 
             // button39
             // 
@@ -4911,40 +4921,107 @@
             this.button40.UseVisualStyleBackColor = true;
             this.button40.Click += new System.EventHandler(this.button40_Click);
             // 
-            // MassFightBox
+            // MassFBox
             // 
-            this.MassFightBox.Controls.Add(this.label58);
-            this.MassFightBox.Controls.Add(this.comboBoxMLocation);
-            this.MassFightBox.Controls.Add(this.checkBoxMassFight);
-            this.MassFightBox.Controls.Add(this.groupBox10);
-            this.MassFightBox.Controls.Add(this.comboBoxMMine);
-            this.MassFightBox.Controls.Add(this.button41);
-            this.MassFightBox.Location = new System.Drawing.Point(1428, 236);
-            this.MassFightBox.Name = "MassFightBox";
-            this.MassFightBox.Size = new System.Drawing.Size(277, 177);
-            this.MassFightBox.TabIndex = 33;
-            this.MassFightBox.TabStop = false;
-            this.MassFightBox.Text = "Массовые бои";
+            this.MassFBox.Controls.Add(this.label58);
+            this.MassFBox.Controls.Add(this.comboBoxMLocation);
+            this.MassFBox.Controls.Add(this.checkBoxMassFight);
+            this.MassFBox.Controls.Add(this.groupBox10);
+            this.MassFBox.Controls.Add(this.comboBoxMMine);
+            this.MassFBox.Controls.Add(this.button41);
+            this.MassFBox.Location = new System.Drawing.Point(1428, 236);
+            this.MassFBox.Name = "MassFBox";
+            this.MassFBox.Size = new System.Drawing.Size(277, 177);
+            this.MassFBox.TabIndex = 33;
+            this.MassFBox.TabStop = false;
+            this.MassFBox.Text = "Массовые бои";
             // 
-            // button41
+            // label58
             // 
-            this.button41.Location = new System.Drawing.Point(6, 146);
-            this.button41.Name = "button41";
-            this.button41.Size = new System.Drawing.Size(265, 23);
-            this.button41.TabIndex = 19;
-            this.button41.Text = "Back";
-            this.button41.UseVisualStyleBackColor = true;
-            this.button41.Click += new System.EventHandler(this.button41_Click);
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(11, 50);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(69, 13);
+            this.label58.TabIndex = 24;
+            this.label58.Text = "На локации:";
             // 
-            // button42
+            // comboBoxMLocation
             // 
-            this.button42.Location = new System.Drawing.Point(16, 416);
-            this.button42.Name = "button42";
-            this.button42.Size = new System.Drawing.Size(146, 23);
-            this.button42.TabIndex = 34;
-            this.button42.Text = "Чудо-шахты";
-            this.button42.UseVisualStyleBackColor = true;
-            this.button42.Click += new System.EventHandler(this.button42_Click);
+            this.comboBoxMLocation.FormattingEnabled = true;
+            this.comboBoxMLocation.Items.AddRange(new object[] {
+            "Лес",
+            "Равнина",
+            "Горы"});
+            this.comboBoxMLocation.Location = new System.Drawing.Point(129, 46);
+            this.comboBoxMLocation.Name = "comboBoxMLocation";
+            this.comboBoxMLocation.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBoxMLocation.Size = new System.Drawing.Size(142, 21);
+            this.comboBoxMLocation.TabIndex = 23;
+            this.comboBoxMLocation.Text = "Лес";
+            // 
+            // checkBoxMassFight
+            // 
+            this.checkBoxMassFight.AutoSize = true;
+            this.checkBoxMassFight.Enabled = false;
+            this.checkBoxMassFight.Location = new System.Drawing.Point(10, 21);
+            this.checkBoxMassFight.Name = "checkBoxMassFight";
+            this.checkBoxMassFight.Size = new System.Drawing.Size(113, 17);
+            this.checkBoxMassFight.TabIndex = 4;
+            this.checkBoxMassFight.Text = "Биться на шахте:";
+            this.checkBoxMassFight.UseVisualStyleBackColor = true;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.checkBoxMAGodDefend);
+            this.groupBox10.Controls.Add(this.checkBoxMAGodSacrf);
+            this.groupBox10.Controls.Add(this.checkBoxMAOboz);
+            this.groupBox10.Controls.Add(this.checkBoxMAEnergy);
+            this.groupBox10.Location = new System.Drawing.Point(6, 70);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(265, 71);
+            this.groupBox10.TabIndex = 22;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Умения: ";
+            // 
+            // checkBoxMAGodDefend
+            // 
+            this.checkBoxMAGodDefend.AutoSize = true;
+            this.checkBoxMAGodDefend.Location = new System.Drawing.Point(12, 46);
+            this.checkBoxMAGodDefend.Name = "checkBoxMAGodDefend";
+            this.checkBoxMAGodDefend.Size = new System.Drawing.Size(121, 17);
+            this.checkBoxMAGodDefend.TabIndex = 3;
+            this.checkBoxMAGodDefend.Text = "Защита древних б.";
+            this.checkBoxMAGodDefend.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMAGodSacrf
+            // 
+            this.checkBoxMAGodSacrf.AutoSize = true;
+            this.checkBoxMAGodSacrf.Location = new System.Drawing.Point(12, 23);
+            this.checkBoxMAGodSacrf.Name = "checkBoxMAGodSacrf";
+            this.checkBoxMAGodSacrf.Size = new System.Drawing.Size(122, 17);
+            this.checkBoxMAGodSacrf.TabIndex = 2;
+            this.checkBoxMAGodSacrf.Text = "Жертва древних б.";
+            this.checkBoxMAGodSacrf.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMAOboz
+            // 
+            this.checkBoxMAOboz.AutoSize = true;
+            this.checkBoxMAOboz.Location = new System.Drawing.Point(140, 46);
+            this.checkBoxMAOboz.Name = "checkBoxMAOboz";
+            this.checkBoxMAOboz.Size = new System.Drawing.Size(52, 17);
+            this.checkBoxMAOboz.TabIndex = 1;
+            this.checkBoxMAOboz.Text = "Обоз";
+            this.checkBoxMAOboz.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMAEnergy
+            // 
+            this.checkBoxMAEnergy.AutoSize = true;
+            this.checkBoxMAEnergy.Location = new System.Drawing.Point(140, 23);
+            this.checkBoxMAEnergy.Name = "checkBoxMAEnergy";
+            this.checkBoxMAEnergy.Size = new System.Drawing.Size(112, 17);
+            this.checkBoxMAEnergy.TabIndex = 0;
+            this.checkBoxMAEnergy.Text = "Энергия вулкана";
+            this.checkBoxMAEnergy.UseVisualStyleBackColor = true;
             // 
             // comboBoxMMine
             // 
@@ -4963,92 +5040,15 @@
             this.comboBoxMMine.TabIndex = 20;
             this.comboBoxMMine.Text = "Соль земли";
             // 
-            // groupBox10
+            // button41
             // 
-            this.groupBox10.Controls.Add(this.checkBoxMAGodDefend);
-            this.groupBox10.Controls.Add(this.checkBoxMAGodSacrf);
-            this.groupBox10.Controls.Add(this.checkBoxMAOboz);
-            this.groupBox10.Controls.Add(this.checkBoxMAEnergy);
-            this.groupBox10.Location = new System.Drawing.Point(6, 70);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(265, 71);
-            this.groupBox10.TabIndex = 22;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Умения: ";
-            // 
-            // checkBoxMAEnergy
-            // 
-            this.checkBoxMAEnergy.AutoSize = true;
-            this.checkBoxMAEnergy.Location = new System.Drawing.Point(140, 23);
-            this.checkBoxMAEnergy.Name = "checkBoxMAEnergy";
-            this.checkBoxMAEnergy.Size = new System.Drawing.Size(112, 17);
-            this.checkBoxMAEnergy.TabIndex = 0;
-            this.checkBoxMAEnergy.Text = "Энергия вулкана";
-            this.checkBoxMAEnergy.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMAOboz
-            // 
-            this.checkBoxMAOboz.AutoSize = true;
-            this.checkBoxMAOboz.Location = new System.Drawing.Point(140, 46);
-            this.checkBoxMAOboz.Name = "checkBoxMAOboz";
-            this.checkBoxMAOboz.Size = new System.Drawing.Size(52, 17);
-            this.checkBoxMAOboz.TabIndex = 1;
-            this.checkBoxMAOboz.Text = "Обоз";
-            this.checkBoxMAOboz.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMAGodSacrf
-            // 
-            this.checkBoxMAGodSacrf.AutoSize = true;
-            this.checkBoxMAGodSacrf.Location = new System.Drawing.Point(12, 23);
-            this.checkBoxMAGodSacrf.Name = "checkBoxMAGodSacrf";
-            this.checkBoxMAGodSacrf.Size = new System.Drawing.Size(122, 17);
-            this.checkBoxMAGodSacrf.TabIndex = 2;
-            this.checkBoxMAGodSacrf.Text = "Жертва древних б.";
-            this.checkBoxMAGodSacrf.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMAGodDefend
-            // 
-            this.checkBoxMAGodDefend.AutoSize = true;
-            this.checkBoxMAGodDefend.Location = new System.Drawing.Point(12, 46);
-            this.checkBoxMAGodDefend.Name = "checkBoxMAGodDefend";
-            this.checkBoxMAGodDefend.Size = new System.Drawing.Size(121, 17);
-            this.checkBoxMAGodDefend.TabIndex = 3;
-            this.checkBoxMAGodDefend.Text = "Защита древних б.";
-            this.checkBoxMAGodDefend.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMassFight
-            // 
-            this.checkBoxMassFight.AutoSize = true;
-            this.checkBoxMassFight.Enabled = false;
-            this.checkBoxMassFight.Location = new System.Drawing.Point(10, 21);
-            this.checkBoxMassFight.Name = "checkBoxMassFight";
-            this.checkBoxMassFight.Size = new System.Drawing.Size(113, 17);
-            this.checkBoxMassFight.TabIndex = 4;
-            this.checkBoxMassFight.Text = "Биться на шахте:";
-            this.checkBoxMassFight.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxMLocation
-            // 
-            this.comboBoxMLocation.FormattingEnabled = true;
-            this.comboBoxMLocation.Items.AddRange(new object[] {
-            "Лес",
-            "Равнина",
-            "Горы"});
-            this.comboBoxMLocation.Location = new System.Drawing.Point(129, 46);
-            this.comboBoxMLocation.Name = "comboBoxMLocation";
-            this.comboBoxMLocation.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBoxMLocation.Size = new System.Drawing.Size(142, 21);
-            this.comboBoxMLocation.TabIndex = 23;
-            this.comboBoxMLocation.Text = "Лес";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(11, 50);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(69, 13);
-            this.label58.TabIndex = 24;
-            this.label58.Text = "На локации:";
+            this.button41.Location = new System.Drawing.Point(6, 146);
+            this.button41.Name = "button41";
+            this.button41.Size = new System.Drawing.Size(265, 23);
+            this.button41.TabIndex = 19;
+            this.button41.Text = "Back";
+            this.button41.UseVisualStyleBackColor = true;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
             // 
             // Form1
             // 
@@ -5056,7 +5056,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1806, 882);
-            this.Controls.Add(this.MassFightBox);
+            this.Controls.Add(this.MassFBox);
             this.Controls.Add(this.ArenaBox);
             this.Controls.Add(this.TradeFieldBox);
             this.Controls.Add(this.button35);
@@ -5269,8 +5269,8 @@
             this.ArenaBox.ResumeLayout(false);
             this.ArenaBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemy)).EndInit();
-            this.MassFightBox.ResumeLayout(false);
-            this.MassFightBox.PerformLayout();
+            this.MassFBox.ResumeLayout(false);
+            this.MassFBox.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
@@ -5653,7 +5653,7 @@
         private System.Windows.Forms.Label label57;
         public System.Windows.Forms.ComboBox comboBoxProductType;
         private System.Windows.Forms.Button button42;
-        private System.Windows.Forms.GroupBox MassFightBox;
+        private System.Windows.Forms.GroupBox MassFBox;
         private System.Windows.Forms.Button button41;
         public System.Windows.Forms.ComboBox comboBoxMMine;
         private System.Windows.Forms.GroupBox groupBox10;
