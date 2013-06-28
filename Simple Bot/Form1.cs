@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2532;
+        int BotVersion = 2533;
 
         Random rnd = new Random();
 
@@ -219,8 +219,8 @@ namespace Simple_Bot
                 checkBoxMoralityPlus.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[23]);
                 checkBoxMoralityZero.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[24]);
                 checkBoxDrinkOborotka.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[25]);
-				checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
-				numericUpDownArenaEnemy.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
+                checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
+                numericUpDownArenaEnemy.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
                 checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
             }
             catch { }
@@ -330,6 +330,19 @@ namespace Simple_Bot
                 textBoxCurrenCry.Text = ReadFromFile(SettingsFile, ShopBox.Name)[9];
                 textBoxCurrentGren.Text = ReadFromFile(SettingsFile, ShopBox.Name)[10];
                 comboBoxProductType.Text = ReadFromFile(SettingsFile, ShopBox.Name)[11];
+            }
+            catch { }
+
+            //Mass Fight
+            try
+            {
+                checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[1]);
+                comboBoxMMine.Text = ReadFromFile(SettingsFile, MassFightBox.Name)[2];
+                checkBoxMAEnergy.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[3]);
+                checkBoxMAGodDefend.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[4]);
+                checkBoxMAGodSacrf.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[5]);
+                checkBoxMAOboz.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[6]);
+                comboBoxMLocation.Text = ReadFromFile(SettingsFile, MassFightBox.Name)[7];
             }
             catch { }
 
@@ -593,8 +606,8 @@ namespace Simple_Bot
             checkBoxMoralityPlus.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[23]);
             checkBoxMoralityZero.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[24]);
             checkBoxDrinkOborotka.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[25]);
-			checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
-			numericUpDownArenaEnemy.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
+            checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
+            numericUpDownArenaEnemy.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
             checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
 
             //Heal settings
@@ -700,6 +713,17 @@ namespace Simple_Bot
             textBoxCurrentGren.Text = ReadFromFile(SettingsFile, ShopBox.Name)[10];
             comboBoxProductType.Text = ReadFromFile(SettingsFile, ShopBox.Name)[11];
 
+            //Mass Fight
+            string[] MassFightSettings = { Convert.ToString(checkBoxMassFight.Checked), comboBoxMMine.Text, Convert.ToString(checkBoxMAEnergy.Checked), Convert.ToString(checkBoxMAGodDefend.Checked),
+                                         Convert.ToString(checkBoxMAGodSacrf.Checked),Convert.ToString(checkBoxMAOboz.Checked), comboBoxMLocation.Text};
+            CompareValuesInFile(MassFightBox.Name, MassFightSettings);
+            checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[1]);
+            comboBoxMMine.Text = ReadFromFile(SettingsFile, MassFightBox.Name)[2];
+            checkBoxMAEnergy.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[3]);
+            checkBoxMAGodDefend.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[4]);
+            checkBoxMAGodSacrf.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[5]);
+            checkBoxMAOboz.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFightBox.Name)[6]);
+            comboBoxMLocation.Text = ReadFromFile(SettingsFile, MassFightBox.Name)[7];
 
 
             Thread BotThread = new Thread(new ThreadStart(WorkThreadFunction));
@@ -798,6 +822,7 @@ namespace Simple_Bot
                 {
                     try
                     {
+                        Bot.MassFight();
                         Bot.GoToOldoMsters();
                         Bot.AlertFight();
                         Bot.LitleGuru();
@@ -1075,7 +1100,7 @@ namespace Simple_Bot
         {
             foreach (Process clsProcess in Process.GetProcesses())
             {
-                if (clsProcess.ProcessName.Contains("chromedriver") || clsProcess.ProcessName.Contains("chrome"))
+                if (clsProcess.ProcessName.Contains("chromedriver") || (clsProcess.ProcessName.Contains("chrome") & clsProcess.MainWindowTitle.Contains("Ботва")))
                 {
                     clsProcess.Kill();
                 }
@@ -1365,7 +1390,7 @@ namespace Simple_Bot
                     ChromeDriverKillerProcess();
                     chromeDriverCiller = true;
                 }
-				//Подрубаем Арену по 5 мину если донат
+                //Подрубаем Арену по 5 мину если донат
                 checkBoxArenaEvery5min.Enabled = true;
             }
             //OpenSite();
@@ -1939,15 +1964,15 @@ namespace Simple_Bot
                 numericUpDownTFEveryTime2.Value = numericUpDownTFEveryTime.Value + 1;
         }
 
-		private void button40_Click(object sender, EventArgs e)
-		{
-			UIBoxDisplay(3, 4, "MenuBox");
-		}
+        private void button40_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "MenuBox");
+        }
 
-		private void button39_Click(object sender, EventArgs e)
-		{
-			UIBoxDisplay(3, 4, "ArenaBox");
-		}
+        private void button39_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "ArenaBox");
+        }
 
         private void comboBoxCurrencyType_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -1972,7 +1997,7 @@ namespace Simple_Bot
                     break;
 
                 case "Кристаллы":
-                                        try
+                    try
                     {
                         int checkValue = Convert.ToInt32(textBoxCurrenCry.Text);
                         textBoxCurrenCry.BackColor = Color.ForestGreen;
@@ -2069,6 +2094,16 @@ namespace Simple_Bot
             //Валидация значития дропдауна
             if (!comboBoxProductType.Text.Equals("Обычные") && !comboBoxProductType.Text.Equals("Редкие") && !comboBoxProductType.Text.Equals("Реликтовые"))
                 comboBoxProductType.Text = "Обычные";
+        }
+
+        private void button42_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "MassFightBox");
+        }
+
+        private void button41_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "MenuBox");
         }
     }
 }

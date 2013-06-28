@@ -78,6 +78,7 @@ namespace Simple_Bot
         static DateTime Timer_ForestFarmer = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_BiggestPotion = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_Arena = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+        static DateTime Timer_MassFight = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
         static DateTime Timer_Grif = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_Mont = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
@@ -680,7 +681,7 @@ namespace Simple_Bot
             AdvTimerAssigne();
 
             Delay1 = 600;
-            Delay2 = 1000;
+            Delay2 = 1109;
 
             Timer_Relogin = ToDateTime("00:09:20");
 
@@ -1965,7 +1966,7 @@ namespace Simple_Bot
                             CurrentGold = driver.FindElement(By.Id("gold")).FindElement(By.TagName("b")).Text.Replace(".", "");
                         }
                         catch { }
-                        if (Convert.ToInt32(CurrentGold) > Convert.ToInt32(power) || Convert.ToInt32(CurrentGold) > Convert.ToInt32(charisma) || Convert.ToInt32(CurrentGold) > Convert.ToInt32(block) || Convert.ToInt32(CurrentGold) > Convert.ToInt32(endurance) || Convert.ToInt32(CurrentGold) > Convert.ToInt32(dexterity))
+                        if (Convert.ToInt64(CurrentGold) > Convert.ToInt64(power) || Convert.ToInt64(CurrentGold) > Convert.ToInt64(charisma) || Convert.ToInt64(CurrentGold) > Convert.ToInt64(block) || Convert.ToInt64(CurrentGold) > Convert.ToInt64(endurance) || Convert.ToInt64(CurrentGold) > Convert.ToInt64(dexterity))
                         {
                             //идем к тренеру если в хедере нет Тренировка
                             if (driver.Title.Contains("Тренировка") == false)
@@ -2292,7 +2293,7 @@ namespace Simple_Bot
                                     //Персонально
                                     if (CurrentWork("Спуск") == false)
                                     {
-                                        if(driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
+                                        if (driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
                                         {
                                             try
                                             {
@@ -4650,7 +4651,7 @@ namespace Simple_Bot
                         }
                         else
                             //если не хвататет бабла , то заходим в сбытку чутка позже
-                            Timer_Shop = ToDateTime(string.Format("00:0{0}:{1}", rnd.Next(3, 9), rnd.Next(11,58)));
+                            Timer_Shop = ToDateTime(string.Format("00:0{0}:{1}", rnd.Next(3, 9), rnd.Next(11, 58)));
                     }
                 }
             }
@@ -4672,7 +4673,7 @@ namespace Simple_Bot
                 Delays();
             }
             catch { }
-            
+
             try
             {
                 driver.FindElement(By.CssSelector(".button30.active [title='Реликтовые']")).Click();
@@ -4908,27 +4909,183 @@ namespace Simple_Bot
 
         public void MassFight()
         {
-            GoToMassFight();
-            MHealing();
-            MBeat();
-            MFood();
-            MGetSomeFood();
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFightBox")[1]))
+            {
+                Timer_MassFight = ToDateTime("00:35:00");
+                GoToMassFight();
+                while (true)
+                {
+                    try
+                    {
+                        //заканчиваем войну если есть спец элемнет
+                        try
+                        {
+                            IWebElement endFightElement = driver.FindElement(By.CssSelector(".bonus .title"));
+                            if (endFightElement.Displayed)
+                            {
+                                driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                break;
+                            }
+                        }
+                        catch { }
 
+                        MGoToLocation();
+                        MHealing();
+                        MGoTakeFood();
+                        MAskForFood();
+                        MAUseShild();
+                        MBeat();
+                        MFood();
+                        MAGetSomeFood();
+                        WaitForNewRaund();
 
+                        //ливаем по времени
+                        if (Timer_MassFight.CompareTo(DateTime.Now) < 0)
+                        {
+                            try
+                            {
+                                driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                break;
+                            }
+                            catch { }
 
+                            try
+                            {
+                                driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                break;
+                            }
+                            catch { }
+                        }
+
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        private void MGoToLocation()
+        {
+            try
+            {
+                IWebElement currentLocation = driver.FindElement(By.CssSelector("#places_ .active"));
+                //если лока не соотв заданной
+                if (!currentLocation.GetAttribute("title").Equals(ReadFromFile(SettingsFile, "MassFightBox")[7]))
+                {
+                    //если нужно в лес
+                    if (ReadFromFile(SettingsFile, "MassFightBox")[7].Equals("Лес"))
+                    {
+                        if (currentLocation.GetAttribute("title").Equals("Горы"))
+                        {
+                            Actions action = new Actions(driver);
+                            action.MoveToElement(driver.FindElement(By.CssSelector("#plains"))).Build().Perform();
+                            driver.FindElement(By.CssSelector("#plains b")).Click();
+                            Delays();
+                        }
+
+                        if (currentLocation.GetAttribute("title").Equals("Равнина"))
+                        {
+                            Actions action = new Actions(driver);
+                            action.MoveToElement(driver.FindElement(By.CssSelector("#forest"))).Build().Perform();
+                            driver.FindElement(By.CssSelector("#forest b")).Click();
+                            Delays();
+                        }
+                    }
+
+                    //если нужно в горы
+                    if (ReadFromFile(SettingsFile, "MassFightBox")[7].Equals("Горы"))
+                    {
+                        if (currentLocation.GetAttribute("title").Equals("Лес"))
+                        {
+                            Actions action = new Actions(driver);
+                            action.MoveToElement(driver.FindElement(By.CssSelector("#plains"))).Build().Perform();
+                            driver.FindElement(By.CssSelector("#plains b")).Click();
+                            Delays();
+                        }
+
+                        if (currentLocation.GetAttribute("title").Equals("Равнина"))
+                        {
+                            Actions action = new Actions(driver);
+                            action.MoveToElement(driver.FindElement(By.CssSelector("#mountains"))).Build().Perform();
+                            driver.FindElement(By.CssSelector("#mountains b")).Click();
+                            Delays();
+                        }
+                    }
+
+                    //если нужно на равнину
+                    if (ReadFromFile(SettingsFile, "MassFightBox")[7].Equals("Равнина"))
+                    {
+                        Actions action = new Actions(driver);
+                        action.MoveToElement(driver.FindElement(By.CssSelector("#plains"))).Build().Perform();
+                        driver.FindElement(By.CssSelector("#plains b")).Click();
+                        Delays();
+                    }
+                }
+            }
+            catch { }
         }
 
         private void GoToMassFight()
         {
-            if (driver.FindElement(By.CssSelector("[title='Горная слеза']")).Displayed)
+            try
             {
-                driver.FindElement(By.CssSelector(".single[data-id='4'] a")).FindElement(By.LinkText("ВСТУПИТЬ")).Click();
+                string selector = string.Format("[title='{0}']", ReadFromFile(SettingsFile, "MassFightBox")[2]);
+                if (driver.FindElement(By.CssSelector(selector)).Displayed)
+                {
+                    string mineSelector = string.Format("{0} a", MMainSelectorProvider(ReadFromFile(SettingsFile, "MassFightBox")[2]));
+                    driver.FindElement(By.CssSelector(mineSelector)).FindElement(By.LinkText("ВСТУПИТЬ")).Click();
+                    Delays();
+                }
+            }
+            catch { }
+        }
+
+        private string MMainSelectorProvider(string mineName)
+        {
+            switch (mineName)
+            {
+                case "Соль земли":
+                    return ".single.round3[data-id='1']";
+
+                case "Кофейный лист":
+                    return ".single.round3[data-id='2']";
+
+                case "Рыжий сланец":
+                    return ".single.round3[data-id='3']";
+
+                case "Горная слеза":
+                    return ".single.round3[data-id='4']";
+
+                case "Сверкающий адамант":
+                    return ".single.round3[data-id='5']";
+
+                case "Тяжелый мифрил":
+                    return ".single.round3[data-id='6']";
+
+                default: return string.Empty;
             }
         }
 
         private int MGetCurrentHeal()
         {
-            return Convert.ToInt32(driver.FindElement(By.CssSelector(".bg_health_scale_left")).GetAttribute("title").Split('/').FirstOrDefault());
+            string currentHeal = driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_health_scale_left")).GetAttribute("title").Replace(" ", string.Empty).Split('/').FirstOrDefault();
+            return Convert.ToInt32(currentHeal);
+        }
+
+        private int MGetCurrentFood()
+        {
+            return Convert.ToInt32(driver.FindElement(By.CssSelector("#ap_available")).Text);
+        }
+
+        private void MGoTakeFood()
+        {
+            if (MGetCurrentFood() < 25)
+            {
+                driver.FindElement(By.XPath("//a[text()='Уйти за едой']")).Click();
+                //убираем фокус
+                Actions action = new Actions(driver);
+                action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+                Delays();
+            }
         }
 
         private int MMinHeal()
@@ -4938,29 +5095,167 @@ namespace Simple_Bot
 
         private void MHealing()
         {
-            if (MMinHeal() <= MGetCurrentHeal())
+            try
             {
-                driver.FindElement(By.CssSelector(".talant_ico_520")).Click();
+                int minH = MMinHeal();
+                int currentH = MGetCurrentHeal();
+                if (currentH <= minH)
+                {
+                    driver.FindElement(By.CssSelector(".talant_ico_524")).Click();
+                    //убираем фокус
+                    Actions action = new Actions(driver);
+                    action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+                    Delays();
+                }
             }
+            catch { }
         }
 
         private void MFood()
         {
-
+            try
+            {
+                int foodCount = MGetCurrentFood();
+                IList<IWebElement> foodIcons = driver.FindElements(By.CssSelector(".ico_bg_food_request"));
+                foreach (var foodico in foodIcons)
+                {
+                    if (foodCount > 20)
+                    {
+                        foodico.Click();
+                        Delays();
+                        foodCount = MGetCurrentFood();
+                    }
+                    else
+                        break;
+                }
+            }
+            catch { }
         }
 
         private void MBeat()
         {
-
+            try
+            {
+                int foodCount = MGetCurrentFood();
+                IList<IWebElement> swordIcons = driver.FindElements(By.CssSelector("span[type='ico_attack']"));
+                foreach (var swordIcon in swordIcons)
+                {
+                    if (foodCount > 20)
+                    {
+                        swordIcon.Click();
+                        Delays();
+                        foodCount = MGetCurrentFood();
+                    }
+                    else
+                        break;
+                }
+            }
+            catch { }
         }
 
-        private void MGetSomeFood()
+        private void MAGetSomeFood()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFightBox")[6]))
+            {
+                try
+                {
+                    driver.FindElement(By.CssSelector(".talant_ico_800")).Click();
+                    Delays();
+                    //убираем фокус
+                    Actions action = new Actions(driver);
+                    action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+                    Delays();
+                }
+                catch { }
+            }
+        }
+
+        private void MAUseShild()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFightBox")[3]))
+            {
+                try
+                {
+                    driver.FindElement(By.CssSelector(".talant_ico_519")).Click();
+                    Delays();
+                    //Клацнуть на себя
+                    Actions action = new Actions(driver);
+                    action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+                    Delays();
+                    driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_name")).Click();
+                    Delays();
+                }
+                catch { }
+            }
+        }
+
+        private void MAUseGodDef()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFightBox")[4]))
+            {
+                try
+                {
+                    driver.FindElement(By.CssSelector(".talant_ico_518")).Click();
+                    Delays();
+                    //Клацнуть на себя
+                    Actions action = new Actions(driver);
+                    action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+                    Delays();
+                    driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_name")).Click();
+                    Delays();
+                }
+                catch { }
+            }
+        }
+
+        private void MAUseSacrifice()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFightBox")[5]))
+            {
+                try
+                {
+                    driver.FindElement(By.CssSelector(".talant_ico_520")).Click();
+                    Delays();
+                    //Клацнуть на себя
+                    Actions action = new Actions(driver);
+                    action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+                    Delays();
+                    driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_name")).Click();
+                    Delays();
+                }
+                catch { }
+            }
+        }
+
+        private void MAskForFood()
         {
             try
             {
-                driver.FindElement(By.CssSelector(".talant_ico_800")).Click();
+                driver.FindElement(By.CssSelector("#ap_request")).Click();
+                Delays();
+                //убираем фокус
+                Actions action = new Actions(driver);
+                action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+                Delays();
             }
             catch { }
+        }
+
+        private void WaitForNewRaund()
+        {
+            try
+            {
+                IWebElement timer = driver.FindElement(By.CssSelector("#main_timer i"));
+                while (timer.Displayed)
+                {
+                    Delays();
+                    timer = driver.FindElement(By.CssSelector("#main_timer i"));
+                }
+            }
+            catch
+            {
+                System.Threading.Thread.Sleep(7600);
+            }
         }
 
         private void Sort(string[] enemysBm, string[] enemyName)
@@ -4991,7 +5286,7 @@ namespace Simple_Bot
             {
                 if (Timer_Arena.CompareTo(DateTime.Now) < 0)
                 {
-                    //если текущая работа не спуск в подземелье, то пробуем спустится
+                    //если текущая работа не спуск в подземелье
                     if (CurrentWork("Спуск") == false)
                     {
                         try
