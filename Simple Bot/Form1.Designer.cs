@@ -61,6 +61,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
             this.MenuBox = new System.Windows.Forms.GroupBox();
+            this.button45 = new System.Windows.Forms.Button();
+            this.button43 = new System.Windows.Forms.Button();
             this.button42 = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
@@ -76,28 +78,6 @@
             this.checkBoxGetRP = new System.Windows.Forms.CheckBox();
             this.button24 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.UndergroundBox = new System.Windows.Forms.GroupBox();
-            this.pictureBox35 = new System.Windows.Forms.PictureBox();
-            this.button21 = new System.Windows.Forms.Button();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.checkBoxUndergroundSetPet = new System.Windows.Forms.CheckBox();
-            this.panelUnderground = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDownUndergroundImm = new System.Windows.Forms.NumericUpDown();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.radioButtonFastUnderground = new System.Windows.Forms.RadioButton();
-            this.radioButtonUnderground = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.radioButtonCord = new System.Windows.Forms.RadioButton();
-            this.radioButtonWinch = new System.Windows.Forms.RadioButton();
-            this.checkBoxUndGetPet = new System.Windows.Forms.CheckBox();
-            this.checkBoxUnderground = new System.Windows.Forms.CheckBox();
-            this.checkBoxByKeys = new System.Windows.Forms.CheckBox();
             this.checkBoxLitleGuru = new System.Windows.Forms.CheckBox();
             this.MineBox = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -144,6 +124,29 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.checkBoxFish = new System.Windows.Forms.CheckBox();
             this.checkBoxCryDust = new System.Windows.Forms.CheckBox();
+            this.UndergroundBox = new System.Windows.Forms.GroupBox();
+            this.button44 = new System.Windows.Forms.Button();
+            this.pictureBox35 = new System.Windows.Forms.PictureBox();
+            this.button21 = new System.Windows.Forms.Button();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.checkBoxUndergroundSetPet = new System.Windows.Forms.CheckBox();
+            this.panelUnderground = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numericUpDownUndergroundImm = new System.Windows.Forms.NumericUpDown();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.radioButtonFastUnderground = new System.Windows.Forms.RadioButton();
+            this.radioButtonUnderground = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.radioButtonCord = new System.Windows.Forms.RadioButton();
+            this.radioButtonWinch = new System.Windows.Forms.RadioButton();
+            this.checkBoxUndGetPet = new System.Windows.Forms.CheckBox();
+            this.checkBoxUnderground = new System.Windows.Forms.CheckBox();
+            this.checkBoxByKeys = new System.Windows.Forms.CheckBox();
             this.button35 = new System.Windows.Forms.Button();
             this.FightBox = new System.Windows.Forms.GroupBox();
             this.checkBoxDrinkOborotka = new System.Windows.Forms.CheckBox();
@@ -159,7 +162,6 @@
             this.numericUpDownPetImmun = new System.Windows.Forms.NumericUpDown();
             this.checkBoxGetPet = new System.Windows.Forms.CheckBox();
             this.button19 = new System.Windows.Forms.Button();
-            this.checkBoxFightMonsters = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.checkBoxFightZorro = new System.Windows.Forms.CheckBox();
             this.ZorroFightPanel = new System.Windows.Forms.Panel();
@@ -172,6 +174,7 @@
             this.button12 = new System.Windows.Forms.Button();
             this.radioButtonFightList = new System.Windows.Forms.RadioButton();
             this.radioButtonFightLvl = new System.Windows.Forms.RadioButton();
+            this.checkBoxFightMonsters = new System.Windows.Forms.CheckBox();
             this.checkBoxPandaOpenCry = new System.Windows.Forms.CheckBox();
             this.checkBoxOpenPanda = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -335,11 +338,13 @@
             this.label35 = new System.Windows.Forms.Label();
             this.numericUpDownVillageManagerTime = new System.Windows.Forms.NumericUpDown();
             this.checkBoxVillageManager = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.FMonstersBox = new System.Windows.Forms.GroupBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.panelFightMonsters = new System.Windows.Forms.Panel();
+            this.radioButtonMonstersLvl = new System.Windows.Forms.RadioButton();
+            this.comboBoxMonstersLvl = new System.Windows.Forms.ComboBox();
+            this.radioButtonMonstersAll = new System.Windows.Forms.RadioButton();
             this.button29 = new System.Windows.Forms.Button();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.ShopBox = new System.Windows.Forms.GroupBox();
             this.label59 = new System.Windows.Forms.Label();
             this.numericUpDownPPvalue2 = new System.Windows.Forms.NumericUpDown();
@@ -428,17 +433,6 @@
             this.MenuBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             this.FarCountrBox.SuspendLayout();
-            this.UndergroundBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            this.panelUnderground.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUndergroundImm)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.MineBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panelMineBox.SuspendLayout();
@@ -464,6 +458,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.UndergroundBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            this.panelUnderground.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUndergroundImm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.FightBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox32)).BeginInit();
             this.groupBox8.SuspendLayout();
@@ -530,7 +535,9 @@
             this.MassAbilityBox.SuspendLayout();
             this.VillageBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVillageManagerTime)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.FMonstersBox.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            this.panelFightMonsters.SuspendLayout();
             this.ShopBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPPvalue2)).BeginInit();
             this.groupBox7.SuspendLayout();
@@ -898,6 +905,8 @@
             // 
             // MenuBox
             // 
+            this.MenuBox.Controls.Add(this.button45);
+            this.MenuBox.Controls.Add(this.button43);
             this.MenuBox.Controls.Add(this.button42);
             this.MenuBox.Controls.Add(this.button39);
             this.MenuBox.Controls.Add(this.button38);
@@ -910,7 +919,6 @@
             this.MenuBox.Controls.Add(this.FarCountrBox);
             this.MenuBox.Controls.Add(this.button24);
             this.MenuBox.Controls.Add(this.button5);
-            this.MenuBox.Controls.Add(this.UndergroundBox);
             this.MenuBox.Controls.Add(this.checkBoxLitleGuru);
             this.MenuBox.Controls.Add(this.MineBox);
             this.MenuBox.Controls.Add(this.button4);
@@ -919,14 +927,34 @@
             this.MenuBox.Controls.Add(this.AdditionalSettingsBox);
             this.MenuBox.Location = new System.Drawing.Point(210, 4);
             this.MenuBox.Name = "MenuBox";
-            this.MenuBox.Size = new System.Drawing.Size(461, 448);
+            this.MenuBox.Size = new System.Drawing.Size(461, 356);
             this.MenuBox.TabIndex = 2;
             this.MenuBox.TabStop = false;
             this.MenuBox.Text = " Settings ";
             // 
+            // button45
+            // 
+            this.button45.Location = new System.Drawing.Point(164, 294);
+            this.button45.Name = "button45";
+            this.button45.Size = new System.Drawing.Size(141, 23);
+            this.button45.TabIndex = 36;
+            this.button45.Text = "Страхи в бодалке";
+            this.button45.UseVisualStyleBackColor = true;
+            this.button45.Click += new System.EventHandler(this.button45_Click);
+            // 
+            // button43
+            // 
+            this.button43.Location = new System.Drawing.Point(309, 294);
+            this.button43.Name = "button43";
+            this.button43.Size = new System.Drawing.Size(141, 23);
+            this.button43.TabIndex = 35;
+            this.button43.Text = "Подзем";
+            this.button43.UseVisualStyleBackColor = true;
+            this.button43.Click += new System.EventHandler(this.button43_Click);
+            // 
             // button42
             // 
-            this.button42.Location = new System.Drawing.Point(16, 416);
+            this.button42.Location = new System.Drawing.Point(16, 235);
             this.button42.Name = "button42";
             this.button42.Size = new System.Drawing.Size(146, 23);
             this.button42.TabIndex = 34;
@@ -936,7 +964,7 @@
             // 
             // button39
             // 
-            this.button39.Location = new System.Drawing.Point(309, 386);
+            this.button39.Location = new System.Drawing.Point(309, 264);
             this.button39.Name = "button39";
             this.button39.Size = new System.Drawing.Size(141, 23);
             this.button39.TabIndex = 33;
@@ -946,7 +974,7 @@
             // 
             // button38
             // 
-            this.button38.Location = new System.Drawing.Point(164, 386);
+            this.button38.Location = new System.Drawing.Point(164, 264);
             this.button38.Name = "button38";
             this.button38.Size = new System.Drawing.Size(141, 24);
             this.button38.TabIndex = 32;
@@ -957,7 +985,7 @@
             // checkBoxBigGguru
             // 
             this.checkBoxBigGguru.AutoSize = true;
-            this.checkBoxBigGguru.Location = new System.Drawing.Point(78, 332);
+            this.checkBoxBigGguru.Location = new System.Drawing.Point(78, 210);
             this.checkBoxBigGguru.Name = "checkBoxBigGguru";
             this.checkBoxBigGguru.Size = new System.Drawing.Size(60, 17);
             this.checkBoxBigGguru.TabIndex = 31;
@@ -967,7 +995,7 @@
             // 
             // button30
             // 
-            this.button30.Location = new System.Drawing.Point(16, 357);
+            this.button30.Location = new System.Drawing.Point(16, 294);
             this.button30.Name = "button30";
             this.button30.Size = new System.Drawing.Size(146, 23);
             this.button30.TabIndex = 23;
@@ -977,7 +1005,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(309, 358);
+            this.button7.Location = new System.Drawing.Point(309, 236);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(141, 23);
             this.button7.TabIndex = 3;
@@ -988,7 +1016,7 @@
             // pictureBox25
             // 
             this.pictureBox25.Image = global::Simple_Bot.Properties.Resources.medal_gold_3;
-            this.pictureBox25.Location = new System.Drawing.Point(137, 332);
+            this.pictureBox25.Location = new System.Drawing.Point(137, 210);
             this.pictureBox25.Name = "pictureBox25";
             this.pictureBox25.Size = new System.Drawing.Size(16, 17);
             this.pictureBox25.TabIndex = 18;
@@ -997,7 +1025,7 @@
             // 
             // button28
             // 
-            this.button28.Location = new System.Drawing.Point(16, 387);
+            this.button28.Location = new System.Drawing.Point(16, 265);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(146, 23);
             this.button28.TabIndex = 22;
@@ -1007,7 +1035,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(309, 327);
+            this.button10.Location = new System.Drawing.Point(309, 205);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(141, 21);
             this.button10.TabIndex = 16;
@@ -1020,7 +1048,7 @@
             this.FarCountrBox.Controls.Add(this.radioButtonSecondBoat);
             this.FarCountrBox.Controls.Add(this.radioButtonFirstBoat);
             this.FarCountrBox.Controls.Add(this.checkBoxGetRP);
-            this.FarCountrBox.Location = new System.Drawing.Point(13, 245);
+            this.FarCountrBox.Location = new System.Drawing.Point(13, 123);
             this.FarCountrBox.Name = "FarCountrBox";
             this.FarCountrBox.Size = new System.Drawing.Size(146, 75);
             this.FarCountrBox.TabIndex = 5;
@@ -1062,7 +1090,7 @@
             // 
             // button24
             // 
-            this.button24.Location = new System.Drawing.Point(164, 357);
+            this.button24.Location = new System.Drawing.Point(164, 235);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(141, 23);
             this.button24.TabIndex = 19;
@@ -1072,7 +1100,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(164, 328);
+            this.button5.Location = new System.Drawing.Point(164, 206);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(141, 23);
             this.button5.TabIndex = 15;
@@ -1080,267 +1108,10 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // UndergroundBox
-            // 
-            this.UndergroundBox.Controls.Add(this.pictureBox35);
-            this.UndergroundBox.Controls.Add(this.button21);
-            this.UndergroundBox.Controls.Add(this.pictureBox11);
-            this.UndergroundBox.Controls.Add(this.pictureBox15);
-            this.UndergroundBox.Controls.Add(this.checkBoxUndergroundSetPet);
-            this.UndergroundBox.Controls.Add(this.panelUnderground);
-            this.UndergroundBox.Controls.Add(this.checkBoxUndGetPet);
-            this.UndergroundBox.Controls.Add(this.checkBoxUnderground);
-            this.UndergroundBox.Controls.Add(this.checkBoxByKeys);
-            this.UndergroundBox.Location = new System.Drawing.Point(13, 119);
-            this.UndergroundBox.Name = "UndergroundBox";
-            this.UndergroundBox.Size = new System.Drawing.Size(437, 120);
-            this.UndergroundBox.TabIndex = 3;
-            this.UndergroundBox.TabStop = false;
-            this.UndergroundBox.Text = "  ";
-            // 
-            // pictureBox35
-            // 
-            this.pictureBox35.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox35.Image = global::Simple_Bot.Properties.Resources.settings;
-            this.pictureBox35.Location = new System.Drawing.Point(398, 15);
-            this.pictureBox35.Name = "pictureBox35";
-            this.pictureBox35.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox35.TabIndex = 14;
-            this.pictureBox35.TabStop = false;
-            this.pictureBox35.Click += new System.EventHandler(this.pictureBox35_Click);
-            // 
-            // button21
-            // 
-            this.button21.Location = new System.Drawing.Point(302, 88);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(132, 23);
-            this.button21.TabIndex = 4;
-            this.button21.Text = "Панды";
-            this.button21.UseVisualStyleBackColor = true;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox11.Location = new System.Drawing.Point(417, 41);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox11.TabIndex = 10;
-            this.pictureBox11.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox11, "Прятать зверя при спуске в подзем и \r\nбрать обратно при выходе");
-            // 
-            // pictureBox15
-            // 
-            this.pictureBox15.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox15.Location = new System.Drawing.Point(417, 15);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox15.TabIndex = 12;
-            this.pictureBox15.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox15, "Доставать зверя перед походом в подзем");
-            // 
-            // checkBoxUndergroundSetPet
-            // 
-            this.checkBoxUndergroundSetPet.AutoSize = true;
-            this.checkBoxUndergroundSetPet.Location = new System.Drawing.Point(302, 42);
-            this.checkBoxUndergroundSetPet.Name = "checkBoxUndergroundSetPet";
-            this.checkBoxUndergroundSetPet.Size = new System.Drawing.Size(110, 17);
-            this.checkBoxUndergroundSetPet.TabIndex = 5;
-            this.checkBoxUndergroundSetPet.Text = "ПРЯТАТЬ зверя";
-            this.checkBoxUndergroundSetPet.UseVisualStyleBackColor = true;
-            this.checkBoxUndergroundSetPet.CheckedChanged += new System.EventHandler(this.checkBoxUndergroundSetPet_CheckedChanged);
-            // 
-            // panelUnderground
-            // 
-            this.panelUnderground.Controls.Add(this.groupBox2);
-            this.panelUnderground.Controls.Add(this.groupBox3);
-            this.panelUnderground.Location = new System.Drawing.Point(3, 15);
-            this.panelUnderground.Name = "panelUnderground";
-            this.panelUnderground.Size = new System.Drawing.Size(290, 99);
-            this.panelUnderground.TabIndex = 3;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.pictureBox8);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.numericUpDownUndergroundImm);
-            this.groupBox2.Controls.Add(this.pictureBox6);
-            this.groupBox2.Controls.Add(this.pictureBox5);
-            this.groupBox2.Controls.Add(this.radioButtonFastUnderground);
-            this.groupBox2.Controls.Add(this.radioButtonUnderground);
-            this.groupBox2.Location = new System.Drawing.Point(2, -2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(141, 95);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox8.Location = new System.Drawing.Point(119, 71);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox8.TabIndex = 9;
-            this.pictureBox8.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox8, "Время иммуна для быстрого подзема.\r\nВсреднем достаточно 37-40 минут.");
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 72);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Иммун";
-            // 
-            // numericUpDownUndergroundImm
-            // 
-            this.numericUpDownUndergroundImm.Location = new System.Drawing.Point(70, 69);
-            this.numericUpDownUndergroundImm.Maximum = new decimal(new int[] {
-            59,
-            0,
-            0,
-            0});
-            this.numericUpDownUndergroundImm.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDownUndergroundImm.Name = "numericUpDownUndergroundImm";
-            this.numericUpDownUndergroundImm.Size = new System.Drawing.Size(43, 20);
-            this.numericUpDownUndergroundImm.TabIndex = 7;
-            this.numericUpDownUndergroundImm.Value = new decimal(new int[] {
-            37,
-            0,
-            0,
-            0});
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox6.Location = new System.Drawing.Point(119, 20);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox6.TabIndex = 6;
-            this.pictureBox6.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox6, "Бродить по уровню пока есть на кого нападать");
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox5.Location = new System.Drawing.Point(119, 45);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox5.TabIndex = 5;
-            this.pictureBox5.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox5, "Быстро спустится в сокровищницу\r\nи полностью зачистить ее");
-            // 
-            // radioButtonFastUnderground
-            // 
-            this.radioButtonFastUnderground.AutoSize = true;
-            this.radioButtonFastUnderground.Location = new System.Drawing.Point(7, 45);
-            this.radioButtonFastUnderground.Name = "radioButtonFastUnderground";
-            this.radioButtonFastUnderground.Size = new System.Drawing.Size(112, 17);
-            this.radioButtonFastUnderground.TabIndex = 0;
-            this.radioButtonFastUnderground.Text = "Быстрый подзем";
-            this.radioButtonFastUnderground.UseVisualStyleBackColor = true;
-            this.radioButtonFastUnderground.CheckedChanged += new System.EventHandler(this.radioButtonFastUnderground_CheckedChanged);
-            // 
-            // radioButtonUnderground
-            // 
-            this.radioButtonUnderground.AutoSize = true;
-            this.radioButtonUnderground.Checked = true;
-            this.radioButtonUnderground.Location = new System.Drawing.Point(7, 19);
-            this.radioButtonUnderground.Name = "radioButtonUnderground";
-            this.radioButtonUnderground.Size = new System.Drawing.Size(113, 17);
-            this.radioButtonUnderground.TabIndex = 1;
-            this.radioButtonUnderground.TabStop = true;
-            this.radioButtonUnderground.Text = "Обынчый подзем";
-            this.radioButtonUnderground.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.checkBox4);
-            this.groupBox3.Controls.Add(this.radioButtonCord);
-            this.groupBox3.Controls.Add(this.radioButtonWinch);
-            this.groupBox3.Location = new System.Drawing.Point(148, -2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(140, 95);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Дополнительно";
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Enabled = false;
-            this.checkBox4.Location = new System.Drawing.Point(9, 72);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(109, 17);
-            this.checkBox4.TabIndex = 2;
-            this.checkBox4.Text = "Покупать масла";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonCord
-            // 
-            this.radioButtonCord.AutoSize = true;
-            this.radioButtonCord.Location = new System.Drawing.Point(9, 45);
-            this.radioButtonCord.Name = "radioButtonCord";
-            this.radioButtonCord.Size = new System.Drawing.Size(84, 17);
-            this.radioButtonCord.TabIndex = 1;
-            this.radioButtonCord.Text = "По веревке";
-            this.radioButtonCord.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonWinch
-            // 
-            this.radioButtonWinch.AutoSize = true;
-            this.radioButtonWinch.Checked = true;
-            this.radioButtonWinch.Location = new System.Drawing.Point(10, 19);
-            this.radioButtonWinch.Name = "radioButtonWinch";
-            this.radioButtonWinch.Size = new System.Drawing.Size(84, 17);
-            this.radioButtonWinch.TabIndex = 0;
-            this.radioButtonWinch.TabStop = true;
-            this.radioButtonWinch.Text = "По лебедке";
-            this.radioButtonWinch.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxUndGetPet
-            // 
-            this.checkBoxUndGetPet.AutoSize = true;
-            this.checkBoxUndGetPet.Location = new System.Drawing.Point(302, 19);
-            this.checkBoxUndGetPet.Name = "checkBoxUndGetPet";
-            this.checkBoxUndGetPet.Size = new System.Drawing.Size(89, 17);
-            this.checkBoxUndGetPet.TabIndex = 11;
-            this.checkBoxUndGetPet.Text = "Брать зверя";
-            this.checkBoxUndGetPet.UseVisualStyleBackColor = true;
-            this.checkBoxUndGetPet.CheckedChanged += new System.EventHandler(this.checkBoxUndGetPet_CheckedChanged);
-            // 
-            // checkBoxUnderground
-            // 
-            this.checkBoxUnderground.AutoSize = true;
-            this.checkBoxUnderground.Location = new System.Drawing.Point(12, 0);
-            this.checkBoxUnderground.Name = "checkBoxUnderground";
-            this.checkBoxUnderground.Size = new System.Drawing.Size(128, 17);
-            this.checkBoxUnderground.TabIndex = 3;
-            this.checkBoxUnderground.Text = "Подземное царство";
-            this.checkBoxUnderground.UseVisualStyleBackColor = true;
-            this.checkBoxUnderground.CheckStateChanged += new System.EventHandler(this.checkBoxUnderground_CheckStateChanged);
-            // 
-            // checkBoxByKeys
-            // 
-            this.checkBoxByKeys.AutoSize = true;
-            this.checkBoxByKeys.Checked = true;
-            this.checkBoxByKeys.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxByKeys.Location = new System.Drawing.Point(302, 65);
-            this.checkBoxByKeys.Name = "checkBoxByKeys";
-            this.checkBoxByKeys.Size = new System.Drawing.Size(102, 17);
-            this.checkBoxByKeys.TabIndex = 2;
-            this.checkBoxByKeys.Text = "Покупать ключ";
-            this.checkBoxByKeys.UseVisualStyleBackColor = true;
-            // 
             // checkBoxLitleGuru
             // 
             this.checkBoxLitleGuru.AutoSize = true;
-            this.checkBoxLitleGuru.Location = new System.Drawing.Point(18, 331);
+            this.checkBoxLitleGuru.Location = new System.Drawing.Point(18, 209);
             this.checkBoxLitleGuru.Name = "checkBoxLitleGuru";
             this.checkBoxLitleGuru.Size = new System.Drawing.Size(62, 17);
             this.checkBoxLitleGuru.TabIndex = 17;
@@ -1527,9 +1298,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(164, 416);
+            this.button4.Location = new System.Drawing.Point(18, 325);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(286, 24);
+            this.button4.Size = new System.Drawing.Size(430, 24);
             this.button4.TabIndex = 8;
             this.button4.Text = "-=> Save and Back <=--";
             this.button4.UseVisualStyleBackColor = true;
@@ -1543,7 +1314,7 @@
             this.HealBox.Controls.Add(this.numericUpDownHeal);
             this.HealBox.Controls.Add(this.checkBoxPetHeal);
             this.HealBox.Controls.Add(this.checkBoxHeal);
-            this.HealBox.Location = new System.Drawing.Point(164, 245);
+            this.HealBox.Location = new System.Drawing.Point(164, 123);
             this.HealBox.Name = "HealBox";
             this.HealBox.Size = new System.Drawing.Size(142, 75);
             this.HealBox.TabIndex = 12;
@@ -1641,7 +1412,7 @@
             this.PotionMakingBox.Controls.Add(this.pictureBox24);
             this.PotionMakingBox.Controls.Add(this.panelPotionMaking);
             this.PotionMakingBox.Controls.Add(this.checkBoxPotionMaking);
-            this.PotionMakingBox.Location = new System.Drawing.Point(309, 245);
+            this.PotionMakingBox.Location = new System.Drawing.Point(309, 123);
             this.PotionMakingBox.Name = "PotionMakingBox";
             this.PotionMakingBox.Size = new System.Drawing.Size(141, 75);
             this.PotionMakingBox.TabIndex = 10;
@@ -1889,12 +1660,280 @@
             this.checkBoxCryDust.Text = "Кристальная пыль";
             this.checkBoxCryDust.UseVisualStyleBackColor = true;
             // 
+            // UndergroundBox
+            // 
+            this.UndergroundBox.Controls.Add(this.button44);
+            this.UndergroundBox.Controls.Add(this.pictureBox35);
+            this.UndergroundBox.Controls.Add(this.button21);
+            this.UndergroundBox.Controls.Add(this.pictureBox11);
+            this.UndergroundBox.Controls.Add(this.pictureBox15);
+            this.UndergroundBox.Controls.Add(this.checkBoxUndergroundSetPet);
+            this.UndergroundBox.Controls.Add(this.panelUnderground);
+            this.UndergroundBox.Controls.Add(this.checkBoxUndGetPet);
+            this.UndergroundBox.Controls.Add(this.checkBoxUnderground);
+            this.UndergroundBox.Controls.Add(this.checkBoxByKeys);
+            this.UndergroundBox.Location = new System.Drawing.Point(1428, 425);
+            this.UndergroundBox.Name = "UndergroundBox";
+            this.UndergroundBox.Size = new System.Drawing.Size(300, 198);
+            this.UndergroundBox.TabIndex = 3;
+            this.UndergroundBox.TabStop = false;
+            this.UndergroundBox.Text = "  ";
+            // 
+            // button44
+            // 
+            this.button44.Location = new System.Drawing.Point(7, 167);
+            this.button44.Name = "button44";
+            this.button44.Size = new System.Drawing.Size(287, 23);
+            this.button44.TabIndex = 21;
+            this.button44.Text = "Back";
+            this.button44.UseVisualStyleBackColor = true;
+            this.button44.Click += new System.EventHandler(this.button44_Click);
+            // 
+            // pictureBox35
+            // 
+            this.pictureBox35.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox35.Image = global::Simple_Bot.Properties.Resources.settings;
+            this.pictureBox35.Location = new System.Drawing.Point(105, 120);
+            this.pictureBox35.Name = "pictureBox35";
+            this.pictureBox35.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox35.TabIndex = 14;
+            this.pictureBox35.TabStop = false;
+            this.pictureBox35.Click += new System.EventHandler(this.pictureBox35_Click);
+            // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(152, 140);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(141, 23);
+            this.button21.TabIndex = 4;
+            this.button21.Text = "Панды";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox11.Location = new System.Drawing.Point(124, 144);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox11.TabIndex = 10;
+            this.pictureBox11.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox11, "Прятать зверя при спуске в подзем и \r\nбрать обратно при выходе");
+            // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox15.Location = new System.Drawing.Point(124, 120);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox15.TabIndex = 12;
+            this.pictureBox15.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox15, "Доставать зверя перед походом в подзем");
+            // 
+            // checkBoxUndergroundSetPet
+            // 
+            this.checkBoxUndergroundSetPet.AutoSize = true;
+            this.checkBoxUndergroundSetPet.Location = new System.Drawing.Point(6, 144);
+            this.checkBoxUndergroundSetPet.Name = "checkBoxUndergroundSetPet";
+            this.checkBoxUndergroundSetPet.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxUndergroundSetPet.TabIndex = 5;
+            this.checkBoxUndergroundSetPet.Text = "ПРЯТАТЬ зверя";
+            this.checkBoxUndergroundSetPet.UseVisualStyleBackColor = true;
+            this.checkBoxUndergroundSetPet.CheckedChanged += new System.EventHandler(this.checkBoxUndergroundSetPet_CheckedChanged);
+            // 
+            // panelUnderground
+            // 
+            this.panelUnderground.Controls.Add(this.groupBox2);
+            this.panelUnderground.Controls.Add(this.groupBox3);
+            this.panelUnderground.Location = new System.Drawing.Point(3, 15);
+            this.panelUnderground.Name = "panelUnderground";
+            this.panelUnderground.Size = new System.Drawing.Size(290, 100);
+            this.panelUnderground.TabIndex = 3;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.pictureBox8);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.numericUpDownUndergroundImm);
+            this.groupBox2.Controls.Add(this.pictureBox6);
+            this.groupBox2.Controls.Add(this.pictureBox5);
+            this.groupBox2.Controls.Add(this.radioButtonFastUnderground);
+            this.groupBox2.Controls.Add(this.radioButtonUnderground);
+            this.groupBox2.Location = new System.Drawing.Point(2, -2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(141, 95);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox8.Location = new System.Drawing.Point(119, 71);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox8.TabIndex = 9;
+            this.pictureBox8.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox8, "Время иммуна для быстрого подзема.\r\nВсреднем достаточно 37-40 минут.");
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Иммун";
+            // 
+            // numericUpDownUndergroundImm
+            // 
+            this.numericUpDownUndergroundImm.Location = new System.Drawing.Point(70, 69);
+            this.numericUpDownUndergroundImm.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.numericUpDownUndergroundImm.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownUndergroundImm.Name = "numericUpDownUndergroundImm";
+            this.numericUpDownUndergroundImm.Size = new System.Drawing.Size(43, 20);
+            this.numericUpDownUndergroundImm.TabIndex = 7;
+            this.numericUpDownUndergroundImm.Value = new decimal(new int[] {
+            37,
+            0,
+            0,
+            0});
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox6.Location = new System.Drawing.Point(119, 20);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox6.TabIndex = 6;
+            this.pictureBox6.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox6, "Бродить по уровню пока есть на кого нападать");
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox5.Location = new System.Drawing.Point(119, 45);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox5.TabIndex = 5;
+            this.pictureBox5.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox5, "Быстро спустится в сокровищницу\r\nи полностью зачистить ее");
+            // 
+            // radioButtonFastUnderground
+            // 
+            this.radioButtonFastUnderground.AutoSize = true;
+            this.radioButtonFastUnderground.Location = new System.Drawing.Point(7, 45);
+            this.radioButtonFastUnderground.Name = "radioButtonFastUnderground";
+            this.radioButtonFastUnderground.Size = new System.Drawing.Size(112, 17);
+            this.radioButtonFastUnderground.TabIndex = 0;
+            this.radioButtonFastUnderground.Text = "Быстрый подзем";
+            this.radioButtonFastUnderground.UseVisualStyleBackColor = true;
+            this.radioButtonFastUnderground.CheckedChanged += new System.EventHandler(this.radioButtonFastUnderground_CheckedChanged);
+            // 
+            // radioButtonUnderground
+            // 
+            this.radioButtonUnderground.AutoSize = true;
+            this.radioButtonUnderground.Checked = true;
+            this.radioButtonUnderground.Location = new System.Drawing.Point(7, 19);
+            this.radioButtonUnderground.Name = "radioButtonUnderground";
+            this.radioButtonUnderground.Size = new System.Drawing.Size(113, 17);
+            this.radioButtonUnderground.TabIndex = 1;
+            this.radioButtonUnderground.TabStop = true;
+            this.radioButtonUnderground.Text = "Обынчый подзем";
+            this.radioButtonUnderground.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.checkBox4);
+            this.groupBox3.Controls.Add(this.radioButtonCord);
+            this.groupBox3.Controls.Add(this.radioButtonWinch);
+            this.groupBox3.Location = new System.Drawing.Point(149, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(140, 95);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Дополнительно";
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Enabled = false;
+            this.checkBox4.Location = new System.Drawing.Point(9, 72);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(109, 17);
+            this.checkBox4.TabIndex = 2;
+            this.checkBox4.Text = "Покупать масла";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCord
+            // 
+            this.radioButtonCord.AutoSize = true;
+            this.radioButtonCord.Location = new System.Drawing.Point(9, 45);
+            this.radioButtonCord.Name = "radioButtonCord";
+            this.radioButtonCord.Size = new System.Drawing.Size(84, 17);
+            this.radioButtonCord.TabIndex = 1;
+            this.radioButtonCord.Text = "По веревке";
+            this.radioButtonCord.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonWinch
+            // 
+            this.radioButtonWinch.AutoSize = true;
+            this.radioButtonWinch.Checked = true;
+            this.radioButtonWinch.Location = new System.Drawing.Point(10, 19);
+            this.radioButtonWinch.Name = "radioButtonWinch";
+            this.radioButtonWinch.Size = new System.Drawing.Size(84, 17);
+            this.radioButtonWinch.TabIndex = 0;
+            this.radioButtonWinch.TabStop = true;
+            this.radioButtonWinch.Text = "По лебедке";
+            this.radioButtonWinch.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxUndGetPet
+            // 
+            this.checkBoxUndGetPet.AutoSize = true;
+            this.checkBoxUndGetPet.Location = new System.Drawing.Point(6, 121);
+            this.checkBoxUndGetPet.Name = "checkBoxUndGetPet";
+            this.checkBoxUndGetPet.Size = new System.Drawing.Size(89, 17);
+            this.checkBoxUndGetPet.TabIndex = 11;
+            this.checkBoxUndGetPet.Text = "Брать зверя";
+            this.checkBoxUndGetPet.UseVisualStyleBackColor = true;
+            this.checkBoxUndGetPet.CheckedChanged += new System.EventHandler(this.checkBoxUndGetPet_CheckedChanged);
+            // 
+            // checkBoxUnderground
+            // 
+            this.checkBoxUnderground.AutoSize = true;
+            this.checkBoxUnderground.Location = new System.Drawing.Point(12, 0);
+            this.checkBoxUnderground.Name = "checkBoxUnderground";
+            this.checkBoxUnderground.Size = new System.Drawing.Size(128, 17);
+            this.checkBoxUnderground.TabIndex = 3;
+            this.checkBoxUnderground.Text = "Подземное царство";
+            this.checkBoxUnderground.UseVisualStyleBackColor = true;
+            this.checkBoxUnderground.CheckStateChanged += new System.EventHandler(this.checkBoxUnderground_CheckStateChanged);
+            // 
+            // checkBoxByKeys
+            // 
+            this.checkBoxByKeys.AutoSize = true;
+            this.checkBoxByKeys.Checked = true;
+            this.checkBoxByKeys.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxByKeys.Location = new System.Drawing.Point(161, 122);
+            this.checkBoxByKeys.Name = "checkBoxByKeys";
+            this.checkBoxByKeys.Size = new System.Drawing.Size(102, 17);
+            this.checkBoxByKeys.TabIndex = 2;
+            this.checkBoxByKeys.Text = "Покупать ключ";
+            this.checkBoxByKeys.UseVisualStyleBackColor = true;
+            // 
             // button35
             // 
             this.button35.Enabled = false;
-            this.button35.Location = new System.Drawing.Point(7, 368);
+            this.button35.Location = new System.Drawing.Point(7, 374);
             this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(146, 23);
+            this.button35.Size = new System.Drawing.Size(139, 23);
             this.button35.TabIndex = 24;
             this.button35.Text = "Подарки";
             this.button35.UseVisualStyleBackColor = true;
@@ -1909,10 +1948,9 @@
             this.FightBox.Controls.Add(this.pictureBox32);
             this.FightBox.Controls.Add(this.groupBox8);
             this.FightBox.Controls.Add(this.button19);
-            this.FightBox.Controls.Add(this.checkBoxFightMonsters);
             this.FightBox.Controls.Add(this.groupBox5);
             this.FightBox.Controls.Add(this.groupBox4);
-            this.FightBox.Location = new System.Drawing.Point(460, 722);
+            this.FightBox.Location = new System.Drawing.Point(463, 642);
             this.FightBox.Name = "FightBox";
             this.FightBox.Size = new System.Drawing.Size(291, 279);
             this.FightBox.TabIndex = 3;
@@ -1922,7 +1960,7 @@
             // checkBoxDrinkOborotka
             // 
             this.checkBoxDrinkOborotka.AutoSize = true;
-            this.checkBoxDrinkOborotka.Location = new System.Drawing.Point(157, 116);
+            this.checkBoxDrinkOborotka.Location = new System.Drawing.Point(157, 112);
             this.checkBoxDrinkOborotka.Name = "checkBoxDrinkOborotka";
             this.checkBoxDrinkOborotka.Size = new System.Drawing.Size(100, 17);
             this.checkBoxDrinkOborotka.TabIndex = 26;
@@ -1942,7 +1980,7 @@
             // checkBoxOborotka
             // 
             this.checkBoxOborotka.AutoSize = true;
-            this.checkBoxOborotka.Location = new System.Drawing.Point(157, 83);
+            this.checkBoxOborotka.Location = new System.Drawing.Point(157, 89);
             this.checkBoxOborotka.Name = "checkBoxOborotka";
             this.checkBoxOborotka.Size = new System.Drawing.Size(105, 17);
             this.checkBoxOborotka.TabIndex = 3;
@@ -1953,7 +1991,7 @@
             // 
             this.pictureBox32.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox32.Image = global::Simple_Bot.Properties.Resources.settings;
-            this.pictureBox32.Location = new System.Drawing.Point(263, 117);
+            this.pictureBox32.Location = new System.Drawing.Point(263, 112);
             this.pictureBox32.Name = "pictureBox32";
             this.pictureBox32.Size = new System.Drawing.Size(16, 16);
             this.pictureBox32.TabIndex = 24;
@@ -2070,16 +2108,6 @@
             this.button19.Text = "Контроль морали";
             this.button19.UseVisualStyleBackColor = true;
             this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // checkBoxFightMonsters
-            // 
-            this.checkBoxFightMonsters.AutoSize = true;
-            this.checkBoxFightMonsters.Location = new System.Drawing.Point(157, 100);
-            this.checkBoxFightMonsters.Name = "checkBoxFightMonsters";
-            this.checkBoxFightMonsters.Size = new System.Drawing.Size(82, 17);
-            this.checkBoxFightMonsters.TabIndex = 0;
-            this.checkBoxFightMonsters.Text = "Страшилки";
-            this.checkBoxFightMonsters.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -2209,6 +2237,17 @@
             this.radioButtonFightLvl.TabStop = true;
             this.radioButtonFightLvl.Text = "По уровню";
             this.radioButtonFightLvl.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxFightMonsters
+            // 
+            this.checkBoxFightMonsters.AutoSize = true;
+            this.checkBoxFightMonsters.Location = new System.Drawing.Point(14, -1);
+            this.checkBoxFightMonsters.Name = "checkBoxFightMonsters";
+            this.checkBoxFightMonsters.Size = new System.Drawing.Size(162, 17);
+            this.checkBoxFightMonsters.TabIndex = 0;
+            this.checkBoxFightMonsters.Text = "Бить страшилок в бодалке";
+            this.checkBoxFightMonsters.UseVisualStyleBackColor = true;
+            this.checkBoxFightMonsters.CheckedChanged += new System.EventHandler(this.checkBoxFightMonsters_CheckedChanged);
             // 
             // checkBoxPandaOpenCry
             // 
@@ -2376,7 +2415,7 @@
             this.BankBox.Controls.Add(this.button11);
             this.BankBox.Controls.Add(this.groupBox12);
             this.BankBox.Controls.Add(this.groupBox11);
-            this.BankBox.Location = new System.Drawing.Point(210, 458);
+            this.BankBox.Location = new System.Drawing.Point(213, 367);
             this.BankBox.Name = "BankBox";
             this.BankBox.Size = new System.Drawing.Size(273, 189);
             this.BankBox.TabIndex = 13;
@@ -3752,7 +3791,7 @@
             this.StiringBox.Controls.Add(this.numericUpDownStiringByCryMin);
             this.StiringBox.Controls.Add(this.radioButtonStiringByCry);
             this.StiringBox.Controls.Add(this.radioButtonUseClearPotion);
-            this.StiringBox.Location = new System.Drawing.Point(497, 597);
+            this.StiringBox.Location = new System.Drawing.Point(497, 496);
             this.StiringBox.Name = "StiringBox";
             this.StiringBox.Size = new System.Drawing.Size(165, 119);
             this.StiringBox.TabIndex = 16;
@@ -3939,7 +3978,7 @@
             this.MassAbilityBox.Controls.Add(this.radioButtonSK5);
             this.MassAbilityBox.Controls.Add(this.radioButtonSK3);
             this.MassAbilityBox.Controls.Add(this.radioButtonSK1);
-            this.MassAbilityBox.Location = new System.Drawing.Point(757, 701);
+            this.MassAbilityBox.Location = new System.Drawing.Point(758, 701);
             this.MassAbilityBox.Name = "MassAbilityBox";
             this.MassAbilityBox.Size = new System.Drawing.Size(296, 137);
             this.MassAbilityBox.TabIndex = 20;
@@ -4125,60 +4164,84 @@
             this.checkBoxVillageManager.UseVisualStyleBackColor = true;
             this.checkBoxVillageManager.CheckedChanged += new System.EventHandler(this.checkBoxVillageManager_CheckedChanged);
             // 
-            // groupBox1
+            // FMonstersBox
             // 
-            this.groupBox1.Controls.Add(this.button29);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(1299, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(170, 100);
-            this.groupBox1.TabIndex = 22;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Уровень страшилок";
+            this.FMonstersBox.Controls.Add(this.groupBox13);
+            this.FMonstersBox.Controls.Add(this.button29);
+            this.FMonstersBox.Location = new System.Drawing.Point(1558, 27);
+            this.FMonstersBox.Name = "FMonstersBox";
+            this.FMonstersBox.Size = new System.Drawing.Size(253, 121);
+            this.FMonstersBox.TabIndex = 22;
+            this.FMonstersBox.TabStop = false;
+            this.FMonstersBox.Text = "Уровень страшилок";
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.panelFightMonsters);
+            this.groupBox13.Controls.Add(this.checkBoxFightMonsters);
+            this.groupBox13.Location = new System.Drawing.Point(8, 20);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(234, 68);
+            this.groupBox13.TabIndex = 23;
+            this.groupBox13.TabStop = false;
+            // 
+            // panelFightMonsters
+            // 
+            this.panelFightMonsters.Controls.Add(this.radioButtonMonstersLvl);
+            this.panelFightMonsters.Controls.Add(this.comboBoxMonstersLvl);
+            this.panelFightMonsters.Controls.Add(this.radioButtonMonstersAll);
+            this.panelFightMonsters.Location = new System.Drawing.Point(6, 17);
+            this.panelFightMonsters.Name = "panelFightMonsters";
+            this.panelFightMonsters.Size = new System.Drawing.Size(220, 45);
+            this.panelFightMonsters.TabIndex = 22;
+            // 
+            // radioButtonMonstersLvl
+            // 
+            this.radioButtonMonstersLvl.AutoSize = true;
+            this.radioButtonMonstersLvl.Location = new System.Drawing.Point(6, 21);
+            this.radioButtonMonstersLvl.Name = "radioButtonMonstersLvl";
+            this.radioButtonMonstersLvl.Size = new System.Drawing.Size(79, 17);
+            this.radioButtonMonstersLvl.TabIndex = 23;
+            this.radioButtonMonstersLvl.Text = "По уровню";
+            this.radioButtonMonstersLvl.UseVisualStyleBackColor = true;
+            this.radioButtonMonstersLvl.CheckedChanged += new System.EventHandler(this.radioButtonMonstersLvl_CheckedChanged);
+            // 
+            // comboBoxMonstersLvl
+            // 
+            this.comboBoxMonstersLvl.FormattingEnabled = true;
+            this.comboBoxMonstersLvl.Items.AddRange(new object[] {
+            "Страшилка 1 ур.",
+            "Страшилка 2 ур.",
+            "Страшилка 3 ур.",
+            "Бандюк 1-3 ур."});
+            this.comboBoxMonstersLvl.Location = new System.Drawing.Point(104, 20);
+            this.comboBoxMonstersLvl.Name = "comboBoxMonstersLvl";
+            this.comboBoxMonstersLvl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBoxMonstersLvl.Size = new System.Drawing.Size(107, 21);
+            this.comboBoxMonstersLvl.TabIndex = 21;
+            this.comboBoxMonstersLvl.Text = "Страшилка 1 ур.";
+            // 
+            // radioButtonMonstersAll
+            // 
+            this.radioButtonMonstersAll.AutoSize = true;
+            this.radioButtonMonstersAll.Checked = true;
+            this.radioButtonMonstersAll.Location = new System.Drawing.Point(6, 1);
+            this.radioButtonMonstersAll.Name = "radioButtonMonstersAll";
+            this.radioButtonMonstersAll.Size = new System.Drawing.Size(88, 17);
+            this.radioButtonMonstersAll.TabIndex = 22;
+            this.radioButtonMonstersAll.TabStop = true;
+            this.radioButtonMonstersAll.Text = "Всех подряд";
+            this.radioButtonMonstersAll.UseVisualStyleBackColor = true;
             // 
             // button29
             // 
-            this.button29.Location = new System.Drawing.Point(6, 71);
+            this.button29.Location = new System.Drawing.Point(8, 93);
             this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(149, 23);
+            this.button29.Size = new System.Drawing.Size(234, 23);
             this.button29.TabIndex = 20;
             this.button29.Text = "Back";
             this.button29.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(19, 54);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(85, 17);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(19, 35);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(19, 18);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
             // 
             // ShopBox
             // 
@@ -4501,7 +4564,7 @@
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(1299, 808);
+            this.webBrowser1.Location = new System.Drawing.Point(1060, 786);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(306, 84);
@@ -4559,17 +4622,17 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(1109, 808);
+            this.panel2.Location = new System.Drawing.Point(164, 732);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(182, 323);
+            this.panel2.Size = new System.Drawing.Size(182, 123);
             this.panel2.TabIndex = 27;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label47);
-            this.panel1.Location = new System.Drawing.Point(916, 808);
+            this.panel1.Location = new System.Drawing.Point(262, 708);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(182, 294);
+            this.panel1.Size = new System.Drawing.Size(182, 163);
             this.panel1.TabIndex = 26;
             // 
             // label47
@@ -4589,7 +4652,7 @@
             this.PetForUndergrBox.Controls.Add(this.radioButtonWorbBlueSoul);
             this.PetForUndergrBox.Controls.Add(this.radioButtonWormPet);
             this.PetForUndergrBox.Controls.Add(this.radioButtonDefaultUndrPet);
-            this.PetForUndergrBox.Location = new System.Drawing.Point(488, 463);
+            this.PetForUndergrBox.Location = new System.Drawing.Point(491, 372);
             this.PetForUndergrBox.Name = "PetForUndergrBox";
             this.PetForUndergrBox.Size = new System.Drawing.Size(183, 117);
             this.PetForUndergrBox.TabIndex = 29;
@@ -4647,7 +4710,7 @@
             this.GiftsBox.Controls.Add(this.numericUpDownGiftsCryNumber);
             this.GiftsBox.Controls.Add(this.radioButtonMiddleGift);
             this.GiftsBox.Controls.Add(this.radioButtonSmallGift);
-            this.GiftsBox.Location = new System.Drawing.Point(210, 653);
+            this.GiftsBox.Location = new System.Drawing.Point(213, 569);
             this.GiftsBox.Name = "GiftsBox";
             this.GiftsBox.Size = new System.Drawing.Size(244, 100);
             this.GiftsBox.TabIndex = 30;
@@ -4740,7 +4803,7 @@
             this.TradeFieldBox.Controls.Add(this.label52);
             this.TradeFieldBox.Controls.Add(this.label51);
             this.TradeFieldBox.Controls.Add(this.label50);
-            this.TradeFieldBox.Location = new System.Drawing.Point(1330, 586);
+            this.TradeFieldBox.Location = new System.Drawing.Point(1339, 632);
             this.TradeFieldBox.Name = "TradeFieldBox";
             this.TradeFieldBox.Size = new System.Drawing.Size(249, 132);
             this.TradeFieldBox.TabIndex = 31;
@@ -5105,7 +5168,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1806, 882);
+            this.ClientSize = new System.Drawing.Size(1923, 882);
             this.Controls.Add(this.MassFBox);
             this.Controls.Add(this.ArenaBox);
             this.Controls.Add(this.TradeFieldBox);
@@ -5118,8 +5181,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelBrowser);
             this.Controls.Add(this.textBoxAdv);
+            this.Controls.Add(this.UndergroundBox);
             this.Controls.Add(this.ShopBox);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.FMonstersBox);
             this.Controls.Add(this.VillageBox);
             this.Controls.Add(this.MassAbilityBox);
             this.Controls.Add(this.MoralityControlBox);
@@ -5158,20 +5222,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
             this.FarCountrBox.ResumeLayout(false);
             this.FarCountrBox.PerformLayout();
-            this.UndergroundBox.ResumeLayout(false);
-            this.UndergroundBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            this.panelUnderground.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUndergroundImm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.MineBox.ResumeLayout(false);
             this.MineBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -5203,6 +5253,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.UndergroundBox.ResumeLayout(false);
+            this.UndergroundBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            this.panelUnderground.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUndergroundImm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.FightBox.ResumeLayout(false);
             this.FightBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox32)).EndInit();
@@ -5294,8 +5358,11 @@
             this.VillageBox.ResumeLayout(false);
             this.VillageBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVillageManagerTime)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.FMonstersBox.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            this.panelFightMonsters.ResumeLayout(false);
+            this.panelFightMonsters.PerformLayout();
             this.ShopBox.ResumeLayout(false);
             this.ShopBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPPvalue2)).EndInit();
@@ -5599,11 +5666,8 @@
         private System.Windows.Forms.CheckBox checkBoxVillageManager;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.PictureBox pictureBox32;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox FMonstersBox;
         private System.Windows.Forms.Button button29;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.GroupBox ShopBox;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.NumericUpDown numericUpDownTryByMin;
@@ -5719,6 +5783,14 @@
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.NumericUpDown numericUpDownPPvalue2;
         private System.Windows.Forms.PictureBox pictureBox45;
+        private System.Windows.Forms.Button button43;
+        private System.Windows.Forms.Button button44;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Panel panelFightMonsters;
+        private System.Windows.Forms.RadioButton radioButtonMonstersLvl;
+        public System.Windows.Forms.ComboBox comboBoxMonstersLvl;
+        private System.Windows.Forms.RadioButton radioButtonMonstersAll;
+        private System.Windows.Forms.Button button45;
     }
 }
 

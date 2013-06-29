@@ -2974,20 +2974,34 @@ namespace Simple_Bot
                     if (driver.Title.Contains("Бодалка") == false)
                     {
                         driver.FindElement(By.Id("m8")).FindElement(By.XPath(".//b")).Click();
-                        System.Threading.Thread.Sleep(rnd.Next(459, 709));
+                        Delays();
                     }
 
-                    //поиск страшилки
-                    driver.FindElement(By.XPath("//form/input[contains(@value,'СТРАШИЛКУ')]")).Click();
-                    System.Threading.Thread.Sleep(rnd.Next(499, 899));
+                    //если всех подряд
+                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[29]))
+                    {
+                        //поиск страшилки
+                        driver.FindElement(By.XPath("//form/input[contains(@value,'СТРАШИЛКУ')]")).Click();
+                        Delays();
+                    }
+
+                    //если по уровню
+                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[30]))
+                    {
+                        string selector = string.Format("//option[text()='{0}']", ReadFromFile(SettingsFile, "FightBox")[31]);
+                        driver.FindElement(By.CssSelector(selector)).Click();
+                        Delays();
+                        driver.FindElement(By.CssSelector(".watch_attack_level input[value='АТАКА']")).Click();
+                        Delays();
+                    }
 
                     //кликаем напасть
                     driver.FindElement(By.XPath("//form/input[@value='НАПАСТЬ']")).Click();
-                    System.Threading.Thread.Sleep(rnd.Next(459, 659));
+                    Delays();
 
                     //возращаем в бодалку
                     driver.FindElement(By.Id("m8")).FindElement(By.XPath(".//b")).Click();
-                    System.Threading.Thread.Sleep(rnd.Next(459, 709));
+                    Delays();
                 }
                 catch { }
 

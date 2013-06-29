@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2536;
+        int BotVersion = 2537;
 
         Thread BotThread;
 
@@ -58,7 +58,7 @@ namespace Simple_Bot
 
             this.Size = new System.Drawing.Size(217, 268);
 
-            Timer_CloseBot = ToDateTime(string.Format("04:{0}:00", (rnd.Next(11, 45))));
+            Timer_CloseBot = ToDateTime(string.Format("05:{0}:00", (rnd.Next(11, 34))));
             Timer_ChromeDriverKiller = ToDateTime("00:01:15");
 
             Timer_OpenSite = ToDateTime("00:" + Convert.ToString(rnd.Next(25, 29)) + ":00");
@@ -224,6 +224,9 @@ namespace Simple_Bot
                 checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
                 numericUpDownArenaEnemy.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
                 checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+                radioButtonMonstersAll.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[29]);
+                radioButtonMonstersLvl.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[30]);
+                comboBoxMonstersLvl.Text = ReadFromFile(SettingsFile, FightBox.Name)[31];
             }
             catch { }
 
@@ -366,6 +369,8 @@ namespace Simple_Bot
             CBSoapMaking();
             CBOpenPanda();
             CBVillageManager();
+            CBMonsterFightLvl();
+            CBMonstersFight();
         }
 
         void CheckBotStatus()
@@ -582,7 +587,7 @@ namespace Simple_Bot
                                          Convert.ToString(numericUpDownEnemyPower.Value),Convert.ToString(numericUpDownEnemyBlock.Value),Convert.ToString(numericUpDownEnemyDex.Value),Convert.ToString(numericUpDownEnemyEd.Value),Convert.ToString(numericUpDownEnemyChar.Value),
                                          Convert.ToString(checkBoxMoralityMinus.Checked),Convert.ToString(checkBoxMoralityPlus.Checked),Convert.ToString(checkBoxMoralityZero.Checked),
                                          Convert.ToString(checkBoxDrinkOborotka.Checked), Convert.ToString(checkBoxArenaFight.Checked), Convert.ToString(numericUpDownArenaEnemy.Value),
-                                         Convert.ToString(checkBoxArenaEvery5min.Checked)};
+                                         Convert.ToString(checkBoxArenaEvery5min.Checked),Convert.ToString(radioButtonMonstersAll.Checked),Convert.ToString(radioButtonMonstersLvl.Checked), comboBoxMonstersLvl.Text };
             CompareValuesInFile(FightBox.Name, FightSettings);
             checkBoxFightMonsters.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[1]);
             checkBoxFightZorro.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[2]);
@@ -612,6 +617,10 @@ namespace Simple_Bot
             checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
             numericUpDownArenaEnemy.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
             checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+            radioButtonMonstersAll.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[29]);
+            radioButtonMonstersLvl.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[30]);
+            comboBoxMonstersLvl.Text = ReadFromFile(SettingsFile, FightBox.Name)[31];
+
 
             //Heal settings
             string[] HealSettings = { Convert.ToString(checkBoxHeal.Checked), Convert.ToString(numericUpDownHeal.Value), Convert.ToString(checkBoxPetHeal.Checked), Convert.ToString(numericUpDownPetHeal.Value) };
@@ -1682,7 +1691,7 @@ namespace Simple_Bot
 
         private void button22_Click(object sender, EventArgs e)
         {
-            UIBoxDisplay(3, 4, "MenuBox");
+            UIBoxDisplay(4, 3, "UndergroundBox");
         }
 
         private void button23_Click(object sender, EventArgs e)
@@ -2124,6 +2133,52 @@ namespace Simple_Bot
         {
             if (Convert.ToInt32(numericUpDownPPvalue2.Value) < Convert.ToInt32(numericUpDownPPvalue1.Value))
                 numericUpDownPPvalue1.Value = numericUpDownPPvalue2.Value;
+        }
+
+        private void button43_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "UndergroundBox");
+        }
+
+        private void button44_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "MenuBox");
+        }
+
+        private void button45_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "FMonstersBox");
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "MenuBox");
+        }
+
+        private void CBMonsterFightLvl()
+        {
+            if (radioButtonMonstersLvl.Checked)
+                comboBoxMonstersLvl.Enabled = true;
+            else
+                comboBoxMonstersLvl.Enabled = false;
+        }
+
+        private void radioButtonMonstersLvl_CheckedChanged(object sender, EventArgs e)
+        {
+            CBMonsterFightLvl();
+        }
+
+        private void checkBoxFightMonsters_CheckedChanged(object sender, EventArgs e)
+        {
+            CBMonstersFight();
+        }
+
+        private void CBMonstersFight()
+        {
+            if (checkBoxFightMonsters.Checked)
+                panelFightMonsters.Enabled = true;
+            else
+                panelFightMonsters.Enabled = false;
         }
     }
 }
