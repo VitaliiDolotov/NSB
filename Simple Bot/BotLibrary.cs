@@ -142,14 +142,18 @@ namespace Simple_Bot
 
         private void OldBotvaWindow()
         {
-            Process[] processRunning = Process.GetProcesses();
-            foreach (Process pr in processRunning)
+            try
             {
-                if (pr.ProcessName.Contains("chrome") && pr.MainWindowTitle.Contains("Ботва"))
+                Process[] processRunning = Process.GetProcesses();
+                foreach (Process pr in processRunning)
                 {
-                    oldBotvaWindow = pr.MainWindowHandle.ToString();
+                    if (pr.ProcessName.Contains("chrome") && pr.MainWindowTitle.Contains("Ботва"))
+                    {
+                        oldBotvaWindow = pr.MainWindowHandle.ToString();
+                    }
                 }
             }
+            catch { }
         }
 
         public void EnvironmentSetUp()
@@ -621,82 +625,89 @@ namespace Simple_Bot
 
         public BotvaClass()
         {
-            OldBotvaWindow();
-            driver = Login(ReadFromFile(SettingsFile, "LoginBox")[1], ReadFromFile(SettingsFile, "LoginBox")[2], ReadFromFile(SettingsFile, "LoginBox")[3], ReadFromFile(SettingsFile, "LoginBox")[4], Convert.ToBoolean(ReadFromFile(SettingsFile, "LoginBox")[5]));
-            Hide();
+            try
+            {
+                OldBotvaWindow();
+                driver = Login(ReadFromFile(SettingsFile, "LoginBox")[1], ReadFromFile(SettingsFile, "LoginBox")[2], ReadFromFile(SettingsFile, "LoginBox")[3], ReadFromFile(SettingsFile, "LoginBox")[4], Convert.ToBoolean(ReadFromFile(SettingsFile, "LoginBox")[5]));
+                Hide();
+            }
+            catch { }
         }
 
         public IWebDriver Login(string server, string Log, string Pas, string DriverType, bool MailRuLogin)
         {
             IWebDriver driver = DriverCreation(DriverType);
 
-
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
-            string ServerValueXPath;
-            switch (server)
-            {
-                case "Сервер Адын":
-                    ServerValueXPath = ".//option[@value='1']";
-                    break;
-                case "Сервер Дыдва":
-                    ServerValueXPath = ".//option[@value='2']";
-                    break;
-                case "Сервер Тытра":
-                    ServerValueXPath = ".//option[@value='3']";
-                    break;
-                case "Сервер Turbo":
-                    ServerValueXPath = ".//option[@value='4']";
-                    break;
-                default:
-                    ServerValueXPath = ".//option[@value='1']";
-                    break;
-            }
-
-            //LOGIN
-            //Default login    
             try
             {
-                if (MailRuLogin == false)
+
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
+                string ServerValueXPath;
+                switch (server)
                 {
-                    driver.Navigate().GoToUrl("http://www.botva.ru/");
-                    driver.FindElement(By.Id("server")).FindElement(By.XPath(ServerValueXPath)).Click();
-                    driver.FindElement(By.Id("loginForm")).FindElement(By.XPath(".//input[2]")).SendKeys(Log);
-                    driver.FindElement(By.Id("loginForm")).FindElement(By.XPath(".//input[3]")).SendKeys(Pas);
-                    driver.FindElement(By.Id("loginForm")).FindElement(By.XPath(".//input[5]")).Click();
+                    case "Сервер Адын":
+                        ServerValueXPath = ".//option[@value='1']";
+                        break;
+                    case "Сервер Дыдва":
+                        ServerValueXPath = ".//option[@value='2']";
+                        break;
+                    case "Сервер Тытра":
+                        ServerValueXPath = ".//option[@value='3']";
+                        break;
+                    case "Сервер Turbo":
+                        ServerValueXPath = ".//option[@value='4']";
+                        break;
+                    default:
+                        ServerValueXPath = ".//option[@value='1']";
+                        break;
                 }
-                else
+
+                //LOGIN
+                //Default login    
+                try
                 {
-                    //mail.ru login
-                    driver.Navigate().GoToUrl("http://botva.mail.ru/");
-                    driver.FindElement(By.Id("server")).FindElement(By.XPath(ServerValueXPath)).Click();
-                    driver.FindElement(By.Id("loginForm")).FindElement(By.XPath(".//table/tbody/tr/td[1]/input")).SendKeys(Log);
-                    driver.FindElement(By.Id("loginForm")).FindElement(By.XPath(".//input[2]")).SendKeys(Pas);
-                    driver.FindElement(By.Id("loginForm")).FindElement(By.XPath(".//input[4]")).Click();
+                    if (MailRuLogin == false)
+                    {
+                        driver.Navigate().GoToUrl("http://www.botva.ru/");
+                        driver.FindElement(By.Id("server")).FindElement(By.XPath(ServerValueXPath)).Click();
+                        driver.FindElement(By.Id("loginForm")).FindElement(By.XPath(".//input[2]")).SendKeys(Log);
+                        driver.FindElement(By.Id("loginForm")).FindElement(By.XPath(".//input[3]")).SendKeys(Pas);
+                        driver.FindElement(By.Id("loginForm")).FindElement(By.XPath(".//input[5]")).Click();
+                    }
+                    else
+                    {
+                        //mail.ru login
+                        driver.Navigate().GoToUrl("http://botva.mail.ru/");
+                        driver.FindElement(By.Id("server")).FindElement(By.XPath(ServerValueXPath)).Click();
+                        driver.FindElement(By.Id("loginForm")).FindElement(By.XPath(".//table/tbody/tr/td[1]/input")).SendKeys(Log);
+                        driver.FindElement(By.Id("loginForm")).FindElement(By.XPath(".//input[2]")).SendKeys(Pas);
+                        driver.FindElement(By.Id("loginForm")).FindElement(By.XPath(".//input[4]")).Click();
+                    }
+                }
+                catch { }
+
+                PageSource = driver.PageSource;
+
+                AdvTimerAssigne();
+
+                Delay1 = 600;
+                Delay2 = 1109;
+
+                Timer_Relogin = ToDateTime("00:09:20");
+
+                string TFEvery = ReadFromFile(SettingsFile, "AdditionalSettingsBox")[32];
+                if (TFEvery.Length == 1)
+                    TFEvery = "0" + TFEvery;
+                Timer_TFEvery = ToDateTime(string.Format("00:{0}:15", TFEvery));
+
+                //асайнем таймер сбытни
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "ShopBox")[1]) == true)
+                {
+                    string timer = string.Format("00:{0}:{1}", Convert.ToString(ReadFromFile(SettingsFile, "ShopBox")[7]), rnd.Next(10, 55));
+                    Timer_Shop = ToDateTime(timer);//ToDateTime("00:00:02");
                 }
             }
             catch { }
-
-            PageSource = driver.PageSource;
-
-            AdvTimerAssigne();
-
-            Delay1 = 600;
-            Delay2 = 1109;
-
-            Timer_Relogin = ToDateTime("00:09:20");
-
-            string TFEvery = ReadFromFile(SettingsFile, "AdditionalSettingsBox")[32];
-            if (TFEvery.Length == 1)
-                TFEvery = "0" + TFEvery;
-            Timer_TFEvery = ToDateTime(string.Format("00:{0}:15", TFEvery));
-
-            //асайнем таймер сбытни
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "ShopBox")[1]) == true)
-            {
-                string timer = string.Format("00:{0}:{1}", Convert.ToString(ReadFromFile(SettingsFile, "ShopBox")[7]), rnd.Next(10, 55));
-                Timer_Shop = ToDateTime(timer);
-            }
-
 
             return driver;
         }
@@ -4609,7 +4620,7 @@ namespace Simple_Bot
                                 break;
                         }
 
-                        if (currenCurrency >= currencyLimit)
+                        if (currenCurrency >= currencyLimit & isCurrencyValid)
                         {
                             driver.FindElement(By.LinkText("Деревня")).Click();
                             Delays();
@@ -4645,13 +4656,61 @@ namespace Simple_Bot
                             IList<IWebElement> itemsList = driver.FindElements(By.CssSelector(".row.round3"));
                             foreach (var item in itemsList)
                             {
+                                IWebElement tempElement;
+                                string tempString;
+                                //смотрим чтоб товар был в нужной нам валюте, если нет, то выходим
+                                tempString = item.FindElement(By.CssSelector(".more [title]")).GetAttribute("title");
+                                if (!tempString.Equals(ReadFromFile(SettingsFile, "ShopBox")[3]))
+                                    continue;
 
+                                //Сморим чтоб цена подходила была не больше максимальной
+                                tempString = item.FindElement(By.CssSelector(".more .price_num")).Text.Replace(".", string.Empty);
+                                if (Convert.ToInt64(tempString) > Convert.ToInt64(ReadFromFile(SettingsFile, "ShopBox")[4]))
+                                    continue;
+
+                                //смотрим уровень вещи
+                                //если установлено значение в 0, то ищем вещь без level
+                                if (ReadFromFile(SettingsFile, "ShopBox")[6].Equals("0"))
+                                {
+                                    try
+                                    {
+                                        //если у вещи находим тег левел, то она нам не нужна, делаем континью
+                                        tempElement = item.FindElement(By.CssSelector(".itemimg_info .level"));
+                                        continue;
+                                    }
+                                    catch { }
+                                }
+                                else
+                                {
+                                    tempString = item.FindElement(By.CssSelector(".itemimg_info .level")).Text;
+                                    if (!ReadFromFile(SettingsFile, "ShopBox")[6].Equals(tempString))
+                                        continue;
+                                }
+
+                                //смотрим кол-во пп
+                                tempString = item.FindElement(By.CssSelector(".itemimg_info_sells b")).GetAttribute("class").Remove(0, 6);
+                                if (Convert.ToInt32(tempString) >= Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[5]) & Convert.ToInt32(tempString) <= Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[12]))
+                                {
+                                    try
+                                    {
+                                        //покупаем
+                                        item.FindElement(By.CssSelector(".more a")).Click();
+                                        //наасайниваем новый таймер
+                                        string timer = string.Format("00:{0}:{1}", Convert.ToString(ReadFromFile(SettingsFile, "ShopBox")[7]), rnd.Next(10, 55));
+                                        Timer_Shop = ToDateTime(timer);
+                                        break;
+                                    }
+                                    catch { }
+                                }
                             }
 
                         }
                         else
-                            //если не хвататет бабла , то заходим в сбытку чутка позже
-                            Timer_Shop = ToDateTime(string.Format("00:0{0}:{1}", rnd.Next(3, 9), rnd.Next(11, 58)));
+                        //если не хвататет бабла , то переасайниваем таймер
+                        {
+                            string timer = string.Format("00:{0}:{1}", Convert.ToString(ReadFromFile(SettingsFile, "ShopBox")[7]), rnd.Next(10, 55));
+                            Timer_Shop = ToDateTime(timer);
+                        }
                     }
                 }
             }
@@ -4682,7 +4741,7 @@ namespace Simple_Bot
             catch { }
 
             //чекаем нужный ресурсаа тип
-            driver.FindElement(By.CssSelector(string.Format(".button30 [title='{0}]']", ReadFromFile(SettingsFile, "ShopBox")[11]))).Click();
+            driver.FindElement(By.CssSelector(string.Format(".button30 [title='{0}']", ReadFromFile(SettingsFile, "ShopBox")[11]))).Click();
             Delays();
 
         }
@@ -4712,7 +4771,7 @@ namespace Simple_Bot
             catch { }
 
             //чекаем нужный ресурсаа тип
-            driver.FindElement(By.CssSelector(string.Format(".button30 [title='{0}]']", ReadFromFile(SettingsFile, "ShopBox")[3]))).Click();
+            driver.FindElement(By.CssSelector(string.Format(".button30 [title='{0}']", ReadFromFile(SettingsFile, "ShopBox")[3]))).Click();
             Delays();
 
         }

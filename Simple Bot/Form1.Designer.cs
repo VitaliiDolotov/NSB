@@ -224,6 +224,7 @@
             this.pictureBox42 = new System.Windows.Forms.PictureBox();
             this.pictureBox43 = new System.Windows.Forms.PictureBox();
             this.pictureBox44 = new System.Windows.Forms.PictureBox();
+            this.pictureBox45 = new System.Windows.Forms.PictureBox();
             this.PandaEffectsBox = new System.Windows.Forms.GroupBox();
             this.radioButtonPEcry = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
@@ -340,9 +341,10 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.ShopBox = new System.Windows.Forms.GroupBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.numericUpDownPPvalue2 = new System.Windows.Forms.NumericUpDown();
             this.label57 = new System.Windows.Forms.Label();
             this.comboBoxProductType = new System.Windows.Forms.ComboBox();
-            this.checkBoxAlarmBox = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label46 = new System.Windows.Forms.Label();
             this.textBoxCurrentGren = new System.Windows.Forms.TextBox();
@@ -357,13 +359,14 @@
             this.label42 = new System.Windows.Forms.Label();
             this.button32 = new System.Windows.Forms.Button();
             this.label41 = new System.Windows.Forms.Label();
-            this.numericUpDownPPvalue = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownPPvalue1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownTryByMin = new System.Windows.Forms.NumericUpDown();
             this.label40 = new System.Windows.Forms.Label();
             this.textBoxMaxValue = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.textBoxProdutName = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
+            this.checkBoxAlarmBox = new System.Windows.Forms.CheckBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.textBoxAdv = new System.Windows.Forms.TextBox();
             this.panelBrowser = new System.Windows.Forms.Panel();
@@ -495,6 +498,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).BeginInit();
             this.PandaEffectsBox.SuspendLayout();
             this.ImmunEffetsBox.SuspendLayout();
             this.FlyBox.SuspendLayout();
@@ -528,9 +532,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVillageManagerTime)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.ShopBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPPvalue2)).BeginInit();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemLevel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPPvalue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPPvalue1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTryByMin)).BeginInit();
             this.panelBrowser.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -1773,7 +1778,6 @@
             // checkBoxShop
             // 
             this.checkBoxShop.AutoSize = true;
-            this.checkBoxShop.Enabled = false;
             this.checkBoxShop.Location = new System.Drawing.Point(12, 34);
             this.checkBoxShop.Name = "checkBoxShop";
             this.checkBoxShop.Size = new System.Drawing.Size(64, 17);
@@ -2762,6 +2766,16 @@
             this.pictureBox44.TabIndex = 19;
             this.pictureBox44.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox44, "0 - самый слабый противник\r\n3 - самый сильный противник");
+            // 
+            // pictureBox45
+            // 
+            this.pictureBox45.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox45.Location = new System.Drawing.Point(158, 152);
+            this.pictureBox45.Name = "pictureBox45";
+            this.pictureBox45.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox45.TabIndex = 31;
+            this.pictureBox45.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox45, "0 - если вещь не кованая");
             // 
             // PandaEffectsBox
             // 
@@ -4168,9 +4182,11 @@
             // 
             // ShopBox
             // 
+            this.ShopBox.Controls.Add(this.pictureBox45);
+            this.ShopBox.Controls.Add(this.label59);
+            this.ShopBox.Controls.Add(this.numericUpDownPPvalue2);
             this.ShopBox.Controls.Add(this.label57);
             this.ShopBox.Controls.Add(this.comboBoxProductType);
-            this.ShopBox.Controls.Add(this.checkBoxAlarmBox);
             this.ShopBox.Controls.Add(this.groupBox7);
             this.ShopBox.Controls.Add(this.numericUpDownItemLevel);
             this.ShopBox.Controls.Add(this.label43);
@@ -4179,19 +4195,46 @@
             this.ShopBox.Controls.Add(this.label42);
             this.ShopBox.Controls.Add(this.button32);
             this.ShopBox.Controls.Add(this.label41);
-            this.ShopBox.Controls.Add(this.numericUpDownPPvalue);
+            this.ShopBox.Controls.Add(this.numericUpDownPPvalue1);
             this.ShopBox.Controls.Add(this.numericUpDownTryByMin);
             this.ShopBox.Controls.Add(this.label40);
             this.ShopBox.Controls.Add(this.textBoxMaxValue);
             this.ShopBox.Controls.Add(this.label39);
             this.ShopBox.Controls.Add(this.textBoxProdutName);
             this.ShopBox.Controls.Add(this.label38);
-            this.ShopBox.Location = new System.Drawing.Point(1181, 247);
+            this.ShopBox.Location = new System.Drawing.Point(1181, 249);
             this.ShopBox.Name = "ShopBox";
-            this.ShopBox.Size = new System.Drawing.Size(241, 311);
+            this.ShopBox.Size = new System.Drawing.Size(241, 333);
             this.ShopBox.TabIndex = 24;
             this.ShopBox.TabStop = false;
             this.ShopBox.Text = "Покупать товар:";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(162, 129);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(19, 13);
+            this.label59.TabIndex = 30;
+            this.label59.Text = "до";
+            // 
+            // numericUpDownPPvalue2
+            // 
+            this.numericUpDownPPvalue2.Location = new System.Drawing.Point(193, 124);
+            this.numericUpDownPPvalue2.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownPPvalue2.Name = "numericUpDownPPvalue2";
+            this.numericUpDownPPvalue2.Size = new System.Drawing.Size(36, 20);
+            this.numericUpDownPPvalue2.TabIndex = 29;
+            this.numericUpDownPPvalue2.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownPPvalue2.ValueChanged += new System.EventHandler(this.numericUpDownPPvalue2_ValueChanged);
             // 
             // label57
             // 
@@ -4217,15 +4260,6 @@
             this.comboBoxProductType.Text = "Обычные";
             this.comboBoxProductType.TextChanged += new System.EventHandler(this.comboBoxProductType_TextChanged);
             // 
-            // checkBoxAlarmBox
-            // 
-            this.checkBoxAlarmBox.AutoSize = true;
-            this.checkBoxAlarmBox.Location = new System.Drawing.Point(91, 75);
-            this.checkBoxAlarmBox.Name = "checkBoxAlarmBox";
-            this.checkBoxAlarmBox.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxAlarmBox.TabIndex = 26;
-            this.checkBoxAlarmBox.UseVisualStyleBackColor = true;
-            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.label46);
@@ -4234,7 +4268,7 @@
             this.groupBox7.Controls.Add(this.textBoxCurrenCry);
             this.groupBox7.Controls.Add(this.label44);
             this.groupBox7.Controls.Add(this.textBoxCurrentGold);
-            this.groupBox7.Location = new System.Drawing.Point(15, 179);
+            this.groupBox7.Location = new System.Drawing.Point(15, 198);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(218, 97);
             this.groupBox7.TabIndex = 25;
@@ -4300,7 +4334,12 @@
             // 
             // numericUpDownItemLevel
             // 
-            this.numericUpDownItemLevel.Location = new System.Drawing.Point(197, 126);
+            this.numericUpDownItemLevel.Location = new System.Drawing.Point(112, 150);
+            this.numericUpDownItemLevel.Maximum = new decimal(new int[] {
+            26,
+            0,
+            0,
+            0});
             this.numericUpDownItemLevel.Name = "numericUpDownItemLevel";
             this.numericUpDownItemLevel.Size = new System.Drawing.Size(36, 20);
             this.numericUpDownItemLevel.TabIndex = 24;
@@ -4308,11 +4347,11 @@
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(144, 131);
+            this.label43.Location = new System.Drawing.Point(13, 153);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(54, 13);
+            this.label43.Size = new System.Drawing.Size(84, 13);
             this.label43.TabIndex = 23;
-            this.label43.Text = "Уровень:";
+            this.label43.Text = "Уровень вещи:";
             // 
             // label37
             // 
@@ -4344,13 +4383,13 @@
             this.label42.AutoSize = true;
             this.label42.Location = new System.Drawing.Point(12, 129);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(63, 13);
+            this.label42.Size = new System.Drawing.Size(77, 13);
             this.label42.TabIndex = 22;
-            this.label42.Text = "Кол-во ПП:";
+            this.label42.Text = "Кол-во ПП от:";
             // 
             // button32
             // 
-            this.button32.Location = new System.Drawing.Point(15, 284);
+            this.button32.Location = new System.Drawing.Point(15, 303);
             this.button32.Name = "button32";
             this.button32.Size = new System.Drawing.Size(220, 23);
             this.button32.TabIndex = 18;
@@ -4361,32 +4400,33 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(196, 154);
+            this.label41.Location = new System.Drawing.Point(196, 178);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(37, 13);
             this.label41.TabIndex = 6;
             this.label41.Text = "минут";
             // 
-            // numericUpDownPPvalue
+            // numericUpDownPPvalue1
             // 
-            this.numericUpDownPPvalue.Location = new System.Drawing.Point(81, 126);
-            this.numericUpDownPPvalue.Maximum = new decimal(new int[] {
+            this.numericUpDownPPvalue1.Location = new System.Drawing.Point(112, 124);
+            this.numericUpDownPPvalue1.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDownPPvalue.Name = "numericUpDownPPvalue";
-            this.numericUpDownPPvalue.Size = new System.Drawing.Size(36, 20);
-            this.numericUpDownPPvalue.TabIndex = 21;
-            this.numericUpDownPPvalue.Value = new decimal(new int[] {
+            this.numericUpDownPPvalue1.Name = "numericUpDownPPvalue1";
+            this.numericUpDownPPvalue1.Size = new System.Drawing.Size(36, 20);
+            this.numericUpDownPPvalue1.TabIndex = 21;
+            this.numericUpDownPPvalue1.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
+            this.numericUpDownPPvalue1.ValueChanged += new System.EventHandler(this.numericUpDownPPvalue1_ValueChanged);
             // 
             // numericUpDownTryByMin
             // 
-            this.numericUpDownTryByMin.Location = new System.Drawing.Point(149, 152);
+            this.numericUpDownTryByMin.Location = new System.Drawing.Point(149, 176);
             this.numericUpDownTryByMin.Maximum = new decimal(new int[] {
             55,
             0,
@@ -4409,7 +4449,7 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(12, 154);
+            this.label40.Location = new System.Drawing.Point(12, 178);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(131, 13);
             this.label40.TabIndex = 4;
@@ -4450,6 +4490,15 @@
             this.label38.TabIndex = 0;
             this.label38.Text = "Название товара:";
             // 
+            // checkBoxAlarmBox
+            // 
+            this.checkBoxAlarmBox.AutoSize = true;
+            this.checkBoxAlarmBox.Location = new System.Drawing.Point(86, 52);
+            this.checkBoxAlarmBox.Name = "checkBoxAlarmBox";
+            this.checkBoxAlarmBox.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxAlarmBox.TabIndex = 26;
+            this.checkBoxAlarmBox.UseVisualStyleBackColor = true;
+            // 
             // webBrowser1
             // 
             this.webBrowser1.Location = new System.Drawing.Point(1299, 808);
@@ -4472,7 +4521,7 @@
             this.panelBrowser.Controls.Add(this.label48);
             this.panelBrowser.Controls.Add(this.button33);
             this.panelBrowser.Controls.Add(this.button20);
-            this.panelBrowser.Location = new System.Drawing.Point(1144, 572);
+            this.panelBrowser.Location = new System.Drawing.Point(1144, 594);
             this.panelBrowser.Name = "panelBrowser";
             this.panelBrowser.Size = new System.Drawing.Size(177, 141);
             this.panelBrowser.TabIndex = 27;
@@ -4691,7 +4740,7 @@
             this.TradeFieldBox.Controls.Add(this.label52);
             this.TradeFieldBox.Controls.Add(this.label51);
             this.TradeFieldBox.Controls.Add(this.label50);
-            this.TradeFieldBox.Location = new System.Drawing.Point(1330, 533);
+            this.TradeFieldBox.Location = new System.Drawing.Point(1330, 586);
             this.TradeFieldBox.Name = "TradeFieldBox";
             this.TradeFieldBox.Size = new System.Drawing.Size(249, 132);
             this.TradeFieldBox.TabIndex = 31;
@@ -4928,6 +4977,7 @@
             this.MassFBox.Controls.Add(this.checkBoxMassFight);
             this.MassFBox.Controls.Add(this.groupBox10);
             this.MassFBox.Controls.Add(this.comboBoxMMine);
+            this.MassFBox.Controls.Add(this.checkBoxAlarmBox);
             this.MassFBox.Controls.Add(this.button41);
             this.MassFBox.Location = new System.Drawing.Point(1428, 236);
             this.MassFBox.Name = "MassFBox";
@@ -5198,6 +5248,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).EndInit();
             this.PandaEffectsBox.ResumeLayout(false);
             this.PandaEffectsBox.PerformLayout();
             this.ImmunEffetsBox.ResumeLayout(false);
@@ -5247,10 +5298,11 @@
             this.groupBox1.PerformLayout();
             this.ShopBox.ResumeLayout(false);
             this.ShopBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPPvalue2)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemLevel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPPvalue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPPvalue1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTryByMin)).EndInit();
             this.panelBrowser.ResumeLayout(false);
             this.panelBrowser.PerformLayout();
@@ -5567,7 +5619,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownItemLevel;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.NumericUpDown numericUpDownPPvalue;
+        private System.Windows.Forms.NumericUpDown numericUpDownPPvalue1;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.TextBox textBoxCurrentGren;
@@ -5664,6 +5716,9 @@
         private System.Windows.Forms.CheckBox checkBoxMassFight;
         private System.Windows.Forms.Label label58;
         public System.Windows.Forms.ComboBox comboBoxMLocation;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.NumericUpDown numericUpDownPPvalue2;
+        private System.Windows.Forms.PictureBox pictureBox45;
     }
 }
 

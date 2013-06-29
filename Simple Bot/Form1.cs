@@ -26,7 +26,9 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2534;
+        int BotVersion = 2536;
+
+        Thread BotThread;
 
         Random rnd = new Random();
 
@@ -56,7 +58,7 @@ namespace Simple_Bot
 
             this.Size = new System.Drawing.Size(217, 268);
 
-            Timer_CloseBot = ToDateTime(string.Format("05:{0}:00", (rnd.Next(11, 19))));
+            Timer_CloseBot = ToDateTime(string.Format("04:{0}:00", (rnd.Next(11, 45))));
             Timer_ChromeDriverKiller = ToDateTime("00:01:15");
 
             Timer_OpenSite = ToDateTime("00:" + Convert.ToString(rnd.Next(25, 29)) + ":00");
@@ -323,13 +325,14 @@ namespace Simple_Bot
                 textBoxProdutName.Text = ReadFromFile(SettingsFile, ShopBox.Name)[2];
                 comboBoxCurrencyType.Text = ReadFromFile(SettingsFile, ShopBox.Name)[3];
                 textBoxMaxValue.Text = ReadFromFile(SettingsFile, ShopBox.Name)[4];
-                numericUpDownPPvalue.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, ShopBox.Name)[5]);
+                numericUpDownPPvalue1.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, ShopBox.Name)[5]);
                 numericUpDownItemLevel.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, ShopBox.Name)[6]);
                 numericUpDownTryByMin.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, ShopBox.Name)[7]);
                 textBoxCurrentGold.Text = ReadFromFile(SettingsFile, ShopBox.Name)[8];
                 textBoxCurrenCry.Text = ReadFromFile(SettingsFile, ShopBox.Name)[9];
                 textBoxCurrentGren.Text = ReadFromFile(SettingsFile, ShopBox.Name)[10];
                 comboBoxProductType.Text = ReadFromFile(SettingsFile, ShopBox.Name)[11];
+                numericUpDownPPvalue2.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, ShopBox.Name)[12]);
             }
             catch { }
 
@@ -697,21 +700,22 @@ namespace Simple_Bot
             checkBoxMassAbilitys.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassAbilityBox.Name)[9]);
 
             //Shop Box countrys
-            string[] ShopSettings = { Convert.ToString(checkBoxShop.Checked), textBoxProdutName.Text, comboBoxCurrencyType.Text, textBoxMaxValue.Text, Convert.ToString(numericUpDownPPvalue.Value), Convert.ToString(numericUpDownItemLevel.Value),
+            string[] ShopSettings = { Convert.ToString(checkBoxShop.Checked), textBoxProdutName.Text, comboBoxCurrencyType.Text, textBoxMaxValue.Text, Convert.ToString(numericUpDownPPvalue1.Value), Convert.ToString(numericUpDownItemLevel.Value),
                                     Convert.ToString(numericUpDownTryByMin.Value), textBoxCurrentGold.Text, textBoxCurrenCry.Text, textBoxCurrentGren.Text,
-                                    comboBoxProductType.Text};
+                                    comboBoxProductType.Text, Convert.ToString(numericUpDownPPvalue2.Value)};
             CompareValuesInFile(ShopBox.Name, ShopSettings);
             checkBoxShop.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, ShopBox.Name)[1]);
             textBoxProdutName.Text = ReadFromFile(SettingsFile, ShopBox.Name)[2];
             comboBoxCurrencyType.Text = ReadFromFile(SettingsFile, ShopBox.Name)[3];
             textBoxMaxValue.Text = ReadFromFile(SettingsFile, ShopBox.Name)[4];
-            numericUpDownPPvalue.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, ShopBox.Name)[5]);
+            numericUpDownPPvalue1.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, ShopBox.Name)[5]);
             numericUpDownItemLevel.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, ShopBox.Name)[6]);
             numericUpDownTryByMin.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, ShopBox.Name)[7]);
             textBoxCurrentGold.Text = ReadFromFile(SettingsFile, ShopBox.Name)[8];
             textBoxCurrenCry.Text = ReadFromFile(SettingsFile, ShopBox.Name)[9];
             textBoxCurrentGren.Text = ReadFromFile(SettingsFile, ShopBox.Name)[10];
             comboBoxProductType.Text = ReadFromFile(SettingsFile, ShopBox.Name)[11];
+            numericUpDownPPvalue2.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, ShopBox.Name)[12]);
 
             //Mass Fight
             string[] MassFightSettings = { Convert.ToString(checkBoxMassFight.Checked), comboBoxMMine.Text, Convert.ToString(checkBoxMAEnergy.Checked), Convert.ToString(checkBoxMAGodDefend.Checked),
@@ -726,7 +730,7 @@ namespace Simple_Bot
             comboBoxMLocation.Text = ReadFromFile(SettingsFile, MassFBox.Name)[7];
 
 
-            Thread BotThread = new Thread(new ThreadStart(WorkThreadFunction));
+            BotThread = new Thread(new ThreadStart(WorkThreadFunction));
             BotThread.Start();
 
         }
@@ -822,7 +826,7 @@ namespace Simple_Bot
                 {
                     try
                     {
-                        Bot.MassFight();
+                        //Bot.MassFight();
                         Bot.GoToOldoMsters();
                         Bot.AlertFight();
                         Bot.LitleGuru();
@@ -863,6 +867,7 @@ namespace Simple_Bot
                         Bot.DayliGifts();
                         Bot.BuyGifts();
                         Bot.TradeField();
+                        Bot.Shop();
 
 
                         //Adv
@@ -1378,6 +1383,9 @@ namespace Simple_Bot
             }
             if (Timer_CloseBot.CompareTo(DateTime.Now) < 0 & isDonatePlayer == false)
             {
+                BotThread.Abort();
+                MessageBox.Show("Simpe Bot прикратил свою работу\r\nПриобретите полную версию продукта\r\nБольше информации на http://vk.com/club50060455", "Simpe Bot: Information",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Close();
             }
 
@@ -2056,7 +2064,7 @@ namespace Simple_Bot
             {
                 try
                 {
-                    int checkValue = Convert.ToInt32(textBoxCurrentGold.Text);
+                    int checkValue = Convert.ToInt32(textBoxCurrenCry.Text);
                     textBoxCurrenCry.BackColor = Color.ForestGreen;
                 }
                 catch
@@ -2072,7 +2080,7 @@ namespace Simple_Bot
             {
                 try
                 {
-                    int checkValue = Convert.ToInt32(textBoxCurrentGold.Text);
+                    int checkValue = Convert.ToInt32(textBoxCurrentGren.Text);
                     textBoxCurrentGren.BackColor = Color.ForestGreen;
                 }
                 catch
@@ -2104,6 +2112,18 @@ namespace Simple_Bot
         private void button41_Click(object sender, EventArgs e)
         {
             UIBoxDisplay(3, 4, "MenuBox");
+        }
+
+        private void numericUpDownPPvalue1_ValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(numericUpDownPPvalue1.Value) > Convert.ToInt32(numericUpDownPPvalue2.Value))
+                numericUpDownPPvalue2.Value = numericUpDownPPvalue1.Value;
+        }
+
+        private void numericUpDownPPvalue2_ValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(numericUpDownPPvalue2.Value) < Convert.ToInt32(numericUpDownPPvalue1.Value))
+                numericUpDownPPvalue1.Value = numericUpDownPPvalue2.Value;
         }
     }
 }
