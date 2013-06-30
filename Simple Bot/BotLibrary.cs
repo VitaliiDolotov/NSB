@@ -30,7 +30,8 @@ namespace Simple_Bot
         [DllImport("User32")]
         private static extern int ShowWindow(int hwnd, int nCmdShow);
 
-
+        string CurrentGold = "0";
+        Int64 maxStatCost = 0;
 
 
         int Delay1 = 0;
@@ -1920,154 +1921,189 @@ namespace Simple_Bot
                 {
                     if (CharacterIsFree() == true)
                     {
-                        Random rnd = new Random();
-
-                        try
-                        {
-                            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
-                        }
-                        catch { }
-
-                        string CurrentGold = "0";
-
-                        if (Convert.ToInt32(power) == 0)
-                        {
-                            //идем к тренеру
-                            try
-                            {
-                                driver.FindElement(By.Id("fast")).FindElement(By.XPath(".//a/div[@class='ico f38']")).Click();
-                                System.Threading.Thread.Sleep(rnd.Next(2333, 2555));
-                            }
-                            catch { }
-                            //собираем значения статов
-                            //собираем значения
-                            try
-                            {
-                                power = driver.FindElement(By.XPath("//div[3]/div[3]/table/tbody/tr[1]/td[4]/b[1]")).Text.Replace(".", "");
-                            }
-                            catch { }
-
-                            try
-                            {
-                                block = driver.FindElement(By.XPath("//div[3]/div[3]/table/tbody/tr[3]/td[4]/b[1]")).Text.Replace(".", "");
-                            }
-                            catch { }
-
-                            try
-                            {
-                                endurance = driver.FindElement(By.XPath("//div[3]/div[3]/table/tbody/tr[5]/td[4]/b[1]")).Text.Replace(".", "");
-                            }
-                            catch { }
-
-                            try
-                            {
-                                dexterity = driver.FindElement(By.XPath("//div[3]/div[3]/table/tbody/tr[7]/td[4]/b[1]")).Text.Replace(".", "");
-                            }
-                            catch { }
-
-                            try
-                            {
-                                charisma = driver.FindElement(By.XPath("//div[3]/div[3]/table/tbody/tr[9]/td[4]/b[1]")).Text.Replace(".", "");
-                            }
-                            catch { }
-                        }
-
+                        //смотрим сколько бабла на руках
                         try
                         {
                             CurrentGold = driver.FindElement(By.Id("gold")).FindElement(By.TagName("b")).Text.Replace(".", "");
                         }
                         catch { }
-                        if (Convert.ToInt64(CurrentGold) > Convert.ToInt64(power) || Convert.ToInt64(CurrentGold) > Convert.ToInt64(charisma) || Convert.ToInt64(CurrentGold) > Convert.ToInt64(block) || Convert.ToInt64(CurrentGold) > Convert.ToInt64(endurance) || Convert.ToInt64(CurrentGold) > Convert.ToInt64(dexterity))
+
+                        if (Convert.ToInt64(CurrentGold) >= maxStatCost)
                         {
-                            //идем к тренеру если в хедере нет Тренировка
-                            if (driver.Title.Contains("Тренировка") == false)
-                            {
-                                try
-                                {
-                                    driver.FindElement(By.Id("fast")).FindElement(By.XPath(".//a/div[@class='ico f38']")).Click();
-                                    System.Threading.Thread.Sleep(rnd.Next(2333, 2555));
-                                }
-                                catch { }
-                            }
+
                             try
                             {
-                                //ищим свободный стат по приоритету и если флаг в тру то качаем его
-                                if (ReadFromFile(SettingsFile, "StutsUpBox")[1] == "True")
-                                {
-                                    try
-                                    {
-                                        while (true)
-                                        {
-                                            driver.FindElement(By.Id("training_power")).FindElement(By.XPath(".//input[@value='ПОВЫСИТЬ']")).Click();
-                                            System.Threading.Thread.Sleep(rnd.Next(989, 1099));
-                                        }
-                                    }
-                                    catch { }
-                                }
-
-                                if (ReadFromFile(SettingsFile, "StutsUpBox")[5] == "True")
-                                {
-                                    //мастерство
-                                    try
-                                    {
-                                        while (true)
-                                        {
-                                            driver.FindElement(By.Id("training_charisma")).FindElement(By.XPath(".//input[@value='ПОВЫСИТЬ']")).Click();
-                                            System.Threading.Thread.Sleep(rnd.Next(989, 1099));
-                                        }
-                                    }
-                                    catch { }
-                                }
-
-                                if (ReadFromFile(SettingsFile, "StutsUpBox")[2] == "True")
-                                {
-                                    //защита
-                                    try
-                                    {
-                                        while (true)
-                                        {
-                                            driver.FindElement(By.Id("training_block")).FindElement(By.XPath(".//input[@value='ПОВЫСИТЬ']")).Click();
-                                            System.Threading.Thread.Sleep(rnd.Next(989, 1099));
-                                        }
-                                    }
-                                    catch { }
-                                }
-
-
-                                if (ReadFromFile(SettingsFile, "StutsUpBox")[3] == "True")
-                                {
-                                    //ловка
-                                    try
-                                    {
-                                        while (true)
-                                        {
-                                            driver.FindElement(By.Id("training_dexterity")).FindElement(By.XPath(".//input[@value='ПОВЫСИТЬ']")).Click();
-                                            System.Threading.Thread.Sleep(rnd.Next(989, 1099));
-                                        }
-                                    }
-                                    catch { }
-                                }
-
-                                if (ReadFromFile(SettingsFile, "StutsUpBox")[4] == "True")
-                                {
-                                    //масса
-                                    try
-                                    {
-                                        while (true)
-                                        {
-                                            driver.FindElement(By.Id("training_endurance")).FindElement(By.XPath(".//input[@value='ПОВЫСИТЬ']")).Click();
-                                            System.Threading.Thread.Sleep(rnd.Next(989, 1099));
-                                        }
-                                    }
-                                    catch { }
-                                }
-
-                                //обнуляем силу
-                                power = "0";
+                                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
                             }
                             catch { }
+
+                            //идем к тренеру
+                            try
+                            {
+                                driver.FindElement(By.Id("fast")).FindElement(By.XPath(".//a/div[@class='ico f38']")).Click();
+                                Delays();
+                            }
+                            catch { }
+
+                            //собираем значения статов
+                            MaxStatValues();
+
+                            if (Convert.ToInt64(CurrentGold) >= maxStatCost)
+                            {
+
+                                if (Convert.ToInt64(CurrentGold) > Convert.ToInt64(power) || Convert.ToInt64(CurrentGold) > Convert.ToInt64(charisma) || Convert.ToInt64(CurrentGold) > Convert.ToInt64(block) ||
+                                    Convert.ToInt64(CurrentGold) > Convert.ToInt64(endurance) || Convert.ToInt64(CurrentGold) > Convert.ToInt64(dexterity))
+                                {
+                                    //идем к тренеру если в хедере нет Тренировка
+                                    if (driver.Title.Contains("Тренировка") == false)
+                                    {
+                                        try
+                                        {
+                                            driver.FindElement(By.Id("fast")).FindElement(By.XPath(".//a/div[@class='ico f38']")).Click();
+                                            System.Threading.Thread.Sleep(rnd.Next(2333, 2555));
+                                        }
+                                        catch { }
+                                    }
+
+                                    try
+                                    {
+                                        //ищим свободный стат по приоритету и если флаг в тру то качаем его
+                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[1] == "True" & Convert.ToInt64(CurrentGold) > Convert.ToInt64(power))
+                                        {
+                                            try
+                                            {
+                                                while (true)
+                                                {
+                                                    driver.FindElement(By.Id("training_power")).FindElement(By.XPath(".//input[@value='ПОВЫСИТЬ']")).Click();
+                                                    System.Threading.Thread.Sleep(rnd.Next(989, 1099));
+                                                }
+                                            }
+                                            catch { }
+                                        }
+
+                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[5] == "True" & Convert.ToInt64(CurrentGold) > Convert.ToInt64(charisma))
+                                        {
+                                            //мастерство
+                                            try
+                                            {
+                                                while (true)
+                                                {
+                                                    driver.FindElement(By.Id("training_charisma")).FindElement(By.XPath(".//input[@value='ПОВЫСИТЬ']")).Click();
+                                                    System.Threading.Thread.Sleep(rnd.Next(989, 1099));
+                                                }
+                                            }
+                                            catch { }
+                                        }
+
+                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[2] == "True" & Convert.ToInt64(CurrentGold) > Convert.ToInt64(block))
+                                        {
+                                            //защита
+                                            try
+                                            {
+                                                while (true)
+                                                {
+                                                    driver.FindElement(By.Id("training_block")).FindElement(By.XPath(".//input[@value='ПОВЫСИТЬ']")).Click();
+                                                    System.Threading.Thread.Sleep(rnd.Next(989, 1099));
+                                                }
+                                            }
+                                            catch { }
+                                        }
+
+
+                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[3] == "True" & Convert.ToInt64(CurrentGold) > Convert.ToInt64(dexterity))
+                                        {
+                                            //ловка
+                                            try
+                                            {
+                                                while (true)
+                                                {
+                                                    driver.FindElement(By.Id("training_dexterity")).FindElement(By.XPath(".//input[@value='ПОВЫСИТЬ']")).Click();
+                                                    System.Threading.Thread.Sleep(rnd.Next(989, 1099));
+                                                }
+                                            }
+                                            catch { }
+                                        }
+
+                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[4] == "True" & Convert.ToInt64(CurrentGold) > Convert.ToInt64(endurance))
+                                        {
+                                            //масса
+                                            try
+                                            {
+                                                while (true)
+                                                {
+                                                    driver.FindElement(By.Id("training_endurance")).FindElement(By.XPath(".//input[@value='ПОВЫСИТЬ']")).Click();
+                                                    System.Threading.Thread.Sleep(rnd.Next(989, 1099));
+                                                }
+                                            }
+                                            catch { }
+                                        }
+
+                                        //собираем значения статов
+                                        MaxStatValues();
+                                    }
+                                    catch { }
+                                }
+                            }
                         }
                     }
+                }
+            }
+            catch { }
+        }
+
+        private void MaxStatValues()
+        {
+            try
+            {
+                if (ReadFromFile(SettingsFile, "StutsUpBox")[1] == "True")
+                {
+                    power = driver.FindElement(By.XPath("//div[3]/div[3]/table/tbody/tr[1]/td[4]/b[1]")).Text.Replace(".", "");
+                    if (Convert.ToInt64(power) > maxStatCost)
+                        maxStatCost = Convert.ToInt64(power);
+                }
+            }
+            catch { }
+
+            try
+            {
+                if (ReadFromFile(SettingsFile, "StutsUpBox")[2] == "True")
+                {
+                    block = driver.FindElement(By.XPath("//div[3]/div[3]/table/tbody/tr[3]/td[4]/b[1]")).Text.Replace(".", "");
+                    if (Convert.ToInt64(block) > maxStatCost)
+                        maxStatCost = Convert.ToInt64(block);
+                }
+            }
+            catch { }
+
+            try
+            {
+                if (ReadFromFile(SettingsFile, "StutsUpBox")[4] == "True")
+                {
+                    endurance = driver.FindElement(By.XPath("//div[3]/div[3]/table/tbody/tr[7]/td[4]/b[1]")).Text.Replace(".", "");
+                    if (Convert.ToInt64(endurance) > maxStatCost)
+                        maxStatCost = Convert.ToInt64(endurance);
+                }
+            }
+            catch { }
+
+            try
+            {
+                if (ReadFromFile(SettingsFile, "StutsUpBox")[3] == "True")
+                {
+                    dexterity = driver.FindElement(By.XPath("//div[3]/div[3]/table/tbody/tr[5]/td[4]/b[1]")).Text.Replace(".", "");
+                    if (Convert.ToInt64(dexterity) > maxStatCost)
+                        maxStatCost = Convert.ToInt64(dexterity);
+                }
+            }
+            catch { }
+
+            try
+            {
+                if (ReadFromFile(SettingsFile, "StutsUpBox")[5] == "True")
+                {
+                    charisma = driver.FindElement(By.XPath("//div[3]/div[3]/table/tbody/tr[9]/td[4]/b[1]")).Text.Replace(".", "");
+                    if (Convert.ToInt64(charisma) > maxStatCost)
+                        maxStatCost = Convert.ToInt64(charisma);
                 }
             }
             catch { }
@@ -2986,13 +3022,27 @@ namespace Simple_Bot
                     }
 
                     //если по уровню
-                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[30]))
+                    int currenCry = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                    if (currenCry > 1)
                     {
-                        string selector = string.Format("//option[text()='{0}']", ReadFromFile(SettingsFile, "FightBox")[31]);
-                        driver.FindElement(By.CssSelector(selector)).Click();
-                        Delays();
-                        driver.FindElement(By.CssSelector(".watch_attack_level input[value='АТАКА']")).Click();
-                        Delays();
+                        if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[30]))
+                        {
+                            string selector = string.Format("//option[text()='{0}']", ReadFromFile(SettingsFile, "FightBox")[31]);
+                            driver.FindElement(By.CssSelector(selector)).Click();
+                            Delays();
+                            driver.FindElement(By.CssSelector(".watch_attack_level input[value='АТАКА']")).Click();
+                            Delays();
+                        }
+                    }
+                    else
+                    {
+                        //если крисов мало, то всех подряд
+                        if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[29]))
+                        {
+                            //поиск страшилки
+                            driver.FindElement(By.XPath("//form/input[contains(@value,'СТРАШИЛКУ')]")).Click();
+                            Delays();
+                        }
                     }
 
                     //кликаем напасть
@@ -4591,7 +4641,7 @@ namespace Simple_Bot
                 //если текущая работа не спуск в подземелье, то пробуем спустится
                 if (CurrentWork("Спуск") == false)
                 {
-                    if (Timer_Shop.CompareTo(DateTime.Now) < 0)
+                    if(true)//if (Timer_Shop.CompareTo(DateTime.Now) < 0)
                     {
                         //Узнаем, установлен валидное числовое значение для лимита валюты и сразу сколько заданного ресурса на руках
                         bool isCurrencyValid = false;
@@ -5389,15 +5439,32 @@ namespace Simple_Bot
                                 foreach (var enemy in enemys)
                                 {
                                     enemysName[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_name")).Text;
-                                    enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(2)"))
-                                                              .Text.Replace(".", "");
+                                    //если ориентируемся по БМ, тогда один силектор, если нет, то другой
+                                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[32]))
+                                    {
+                                        enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(2)"))
+                                                                  .Text.Replace(".", "");
+                                    }
+                                    else
+                                    {
+                                        enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(1)"))
+                                                                  .Text.Replace(".", "");
+                                    }
                                     iterator++;
                                 }
                                 Sort(enemysBm, enemysName);
 
-                                driver.FindElement(
-                                    By.XPath(string.Format(".//div[text()='{0}']/..",
-                                                           enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[27])]))).Click();
+                                //бъем по БМ или славе
+                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[32]))
+                                {
+                                    driver.FindElement(
+                                        By.XPath(string.Format(".//div[text()='{0}']/..",
+                                                               enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[27])]))).Click();
+                                }
+                                else
+                                {
+                                    driver.FindElement(By.XPath(string.Format(".//div[text()='{0}']/..",enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[34])]))).Click();
+                                }
 
                                 //Если каждые 5 минут, то ассайни соотв таймер
                                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[28]))

@@ -228,6 +228,7 @@
             this.pictureBox43 = new System.Windows.Forms.PictureBox();
             this.pictureBox44 = new System.Windows.Forms.PictureBox();
             this.pictureBox45 = new System.Windows.Forms.PictureBox();
+            this.pictureBox46 = new System.Windows.Forms.PictureBox();
             this.PandaEffectsBox = new System.Windows.Forms.GroupBox();
             this.radioButtonPEcry = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
@@ -406,10 +407,12 @@
             this.label51 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.ArenaBox = new System.Windows.Forms.GroupBox();
+            this.numericUpDownArenaEnemySlava = new System.Windows.Forms.NumericUpDown();
+            this.radioButtonEnemySlava = new System.Windows.Forms.RadioButton();
+            this.radioButtonEnemyBm = new System.Windows.Forms.RadioButton();
             this.checkBoxArenaEvery5min = new System.Windows.Forms.CheckBox();
             this.checkBoxArenaFight = new System.Windows.Forms.CheckBox();
-            this.numericUpDownArenaEnemy = new System.Windows.Forms.NumericUpDown();
-            this.label56 = new System.Windows.Forms.Label();
+            this.numericUpDownArenaEnemyBm = new System.Windows.Forms.NumericUpDown();
             this.button40 = new System.Windows.Forms.Button();
             this.MassFBox = new System.Windows.Forms.GroupBox();
             this.label58 = new System.Windows.Forms.Label();
@@ -504,6 +507,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox46)).BeginInit();
             this.PandaEffectsBox.SuspendLayout();
             this.ImmunEffetsBox.SuspendLayout();
             this.FlyBox.SuspendLayout();
@@ -554,7 +558,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFEveryTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFDuringTime)).BeginInit();
             this.ArenaBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemySlava)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemyBm)).BeginInit();
             this.MassFBox.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.SuspendLayout();
@@ -964,9 +969,9 @@
             // 
             // button39
             // 
-            this.button39.Location = new System.Drawing.Point(309, 264);
+            this.button39.Location = new System.Drawing.Point(17, 264);
             this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(141, 23);
+            this.button39.Size = new System.Drawing.Size(145, 23);
             this.button39.TabIndex = 33;
             this.button39.Text = "Арена";
             this.button39.UseVisualStyleBackColor = true;
@@ -974,7 +979,7 @@
             // 
             // button38
             // 
-            this.button38.Location = new System.Drawing.Point(164, 264);
+            this.button38.Location = new System.Drawing.Point(165, 205);
             this.button38.Name = "button38";
             this.button38.Size = new System.Drawing.Size(141, 24);
             this.button38.TabIndex = 32;
@@ -1025,9 +1030,9 @@
             // 
             // button28
             // 
-            this.button28.Location = new System.Drawing.Point(16, 265);
+            this.button28.Location = new System.Drawing.Point(309, 265);
             this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(146, 23);
+            this.button28.Size = new System.Drawing.Size(139, 23);
             this.button28.TabIndex = 22;
             this.button28.Text = "Ферма";
             this.button28.UseVisualStyleBackColor = true;
@@ -1035,9 +1040,9 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(309, 205);
+            this.button10.Location = new System.Drawing.Point(309, 204);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(141, 21);
+            this.button10.Size = new System.Drawing.Size(141, 25);
             this.button10.TabIndex = 16;
             this.button10.Text = "Клан";
             this.button10.UseVisualStyleBackColor = true;
@@ -1090,9 +1095,9 @@
             // 
             // button24
             // 
-            this.button24.Location = new System.Drawing.Point(164, 235);
+            this.button24.Location = new System.Drawing.Point(165, 265);
             this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(141, 23);
+            this.button24.Size = new System.Drawing.Size(141, 22);
             this.button24.TabIndex = 19;
             this.button24.Text = "Прокачка статов";
             this.button24.UseVisualStyleBackColor = true;
@@ -1100,7 +1105,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(164, 206);
+            this.button5.Location = new System.Drawing.Point(164, 236);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(141, 23);
             this.button5.TabIndex = 15;
@@ -1931,7 +1936,7 @@
             // button35
             // 
             this.button35.Enabled = false;
-            this.button35.Location = new System.Drawing.Point(7, 374);
+            this.button35.Location = new System.Drawing.Point(12, 374);
             this.button35.Name = "button35";
             this.button35.Size = new System.Drawing.Size(139, 23);
             this.button35.TabIndex = 24;
@@ -2799,7 +2804,7 @@
             // pictureBox44
             // 
             this.pictureBox44.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox44.Location = new System.Drawing.Point(150, 59);
+            this.pictureBox44.Location = new System.Drawing.Point(167, 61);
             this.pictureBox44.Name = "pictureBox44";
             this.pictureBox44.Size = new System.Drawing.Size(16, 17);
             this.pictureBox44.TabIndex = 19;
@@ -2815,6 +2820,16 @@
             this.pictureBox45.TabIndex = 31;
             this.pictureBox45.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox45, "0 - если вещь не кованая");
+            // 
+            // pictureBox46
+            // 
+            this.pictureBox46.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox46.Location = new System.Drawing.Point(167, 87);
+            this.pictureBox46.Name = "pictureBox46";
+            this.pictureBox46.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox46.TabIndex = 25;
+            this.pictureBox46.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox46, "0 - самая низкая репутация\r\n3 - самая высокая репутация");
             // 
             // PandaEffectsBox
             // 
@@ -4968,18 +4983,55 @@
             // 
             // ArenaBox
             // 
+            this.ArenaBox.Controls.Add(this.pictureBox46);
+            this.ArenaBox.Controls.Add(this.numericUpDownArenaEnemySlava);
+            this.ArenaBox.Controls.Add(this.radioButtonEnemySlava);
+            this.ArenaBox.Controls.Add(this.radioButtonEnemyBm);
             this.ArenaBox.Controls.Add(this.checkBoxArenaEvery5min);
             this.ArenaBox.Controls.Add(this.checkBoxArenaFight);
             this.ArenaBox.Controls.Add(this.pictureBox44);
-            this.ArenaBox.Controls.Add(this.numericUpDownArenaEnemy);
-            this.ArenaBox.Controls.Add(this.label56);
+            this.ArenaBox.Controls.Add(this.numericUpDownArenaEnemyBm);
             this.ArenaBox.Controls.Add(this.button40);
-            this.ArenaBox.Location = new System.Drawing.Point(1368, 117);
+            this.ArenaBox.Location = new System.Drawing.Point(1361, 8);
             this.ArenaBox.Name = "ArenaBox";
-            this.ArenaBox.Size = new System.Drawing.Size(176, 113);
+            this.ArenaBox.Size = new System.Drawing.Size(192, 144);
             this.ArenaBox.TabIndex = 32;
             this.ArenaBox.TabStop = false;
             this.ArenaBox.Text = "Арена";
+            // 
+            // numericUpDownArenaEnemySlava
+            // 
+            this.numericUpDownArenaEnemySlava.Location = new System.Drawing.Point(125, 86);
+            this.numericUpDownArenaEnemySlava.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDownArenaEnemySlava.Name = "numericUpDownArenaEnemySlava";
+            this.numericUpDownArenaEnemySlava.Size = new System.Drawing.Size(37, 20);
+            this.numericUpDownArenaEnemySlava.TabIndex = 24;
+            // 
+            // radioButtonEnemySlava
+            // 
+            this.radioButtonEnemySlava.AutoSize = true;
+            this.radioButtonEnemySlava.Location = new System.Drawing.Point(10, 83);
+            this.radioButtonEnemySlava.Name = "radioButtonEnemySlava";
+            this.radioButtonEnemySlava.Size = new System.Drawing.Size(116, 17);
+            this.radioButtonEnemySlava.TabIndex = 23;
+            this.radioButtonEnemySlava.Text = "Репутация арены:";
+            this.radioButtonEnemySlava.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonEnemyBm
+            // 
+            this.radioButtonEnemyBm.AutoSize = true;
+            this.radioButtonEnemyBm.Checked = true;
+            this.radioButtonEnemyBm.Location = new System.Drawing.Point(10, 61);
+            this.radioButtonEnemyBm.Name = "radioButtonEnemyBm";
+            this.radioButtonEnemyBm.Size = new System.Drawing.Size(115, 17);
+            this.radioButtonEnemyBm.TabIndex = 22;
+            this.radioButtonEnemyBm.TabStop = true;
+            this.radioButtonEnemyBm.Text = "Сила противника:";
+            this.radioButtonEnemyBm.UseVisualStyleBackColor = true;
             // 
             // checkBoxArenaEvery5min
             // 
@@ -5002,32 +5054,23 @@
             this.checkBoxArenaFight.Text = "Бодаться на арене";
             this.checkBoxArenaFight.UseVisualStyleBackColor = true;
             // 
-            // numericUpDownArenaEnemy
+            // numericUpDownArenaEnemyBm
             // 
-            this.numericUpDownArenaEnemy.Location = new System.Drawing.Point(107, 61);
-            this.numericUpDownArenaEnemy.Maximum = new decimal(new int[] {
+            this.numericUpDownArenaEnemyBm.Location = new System.Drawing.Point(126, 60);
+            this.numericUpDownArenaEnemyBm.Maximum = new decimal(new int[] {
             3,
             0,
             0,
             0});
-            this.numericUpDownArenaEnemy.Name = "numericUpDownArenaEnemy";
-            this.numericUpDownArenaEnemy.Size = new System.Drawing.Size(37, 20);
-            this.numericUpDownArenaEnemy.TabIndex = 18;
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(7, 63);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(97, 13);
-            this.label56.TabIndex = 17;
-            this.label56.Text = "Сила противника:";
+            this.numericUpDownArenaEnemyBm.Name = "numericUpDownArenaEnemyBm";
+            this.numericUpDownArenaEnemyBm.Size = new System.Drawing.Size(37, 20);
+            this.numericUpDownArenaEnemyBm.TabIndex = 18;
             // 
             // button40
             // 
-            this.button40.Location = new System.Drawing.Point(6, 83);
+            this.button40.Location = new System.Drawing.Point(8, 112);
             this.button40.Name = "button40";
-            this.button40.Size = new System.Drawing.Size(160, 23);
+            this.button40.Size = new System.Drawing.Size(175, 23);
             this.button40.TabIndex = 16;
             this.button40.Text = "Back";
             this.button40.UseVisualStyleBackColor = true;
@@ -5313,6 +5356,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox46)).EndInit();
             this.PandaEffectsBox.ResumeLayout(false);
             this.PandaEffectsBox.PerformLayout();
             this.ImmunEffetsBox.ResumeLayout(false);
@@ -5387,7 +5431,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFDuringTime)).EndInit();
             this.ArenaBox.ResumeLayout(false);
             this.ArenaBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemySlava)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemyBm)).EndInit();
             this.MassFBox.ResumeLayout(false);
             this.MassFBox.PerformLayout();
             this.groupBox10.ResumeLayout(false);
@@ -5762,8 +5807,7 @@
 		private System.Windows.Forms.Button button40;
 		private System.Windows.Forms.CheckBox checkBoxArenaFight;
 		private System.Windows.Forms.PictureBox pictureBox44;
-		private System.Windows.Forms.NumericUpDown numericUpDownArenaEnemy;
-		private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.NumericUpDown numericUpDownArenaEnemyBm;
         private System.Windows.Forms.CheckBox checkBoxArenaEvery5min;
         public System.Windows.Forms.ComboBox comboBoxCurrencyType;
         private System.Windows.Forms.Label label57;
@@ -5791,6 +5835,10 @@
         public System.Windows.Forms.ComboBox comboBoxMonstersLvl;
         private System.Windows.Forms.RadioButton radioButtonMonstersAll;
         private System.Windows.Forms.Button button45;
+        private System.Windows.Forms.PictureBox pictureBox46;
+        private System.Windows.Forms.NumericUpDown numericUpDownArenaEnemySlava;
+        private System.Windows.Forms.RadioButton radioButtonEnemySlava;
+        private System.Windows.Forms.RadioButton radioButtonEnemyBm;
     }
 }
 
