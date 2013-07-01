@@ -4641,7 +4641,7 @@ namespace Simple_Bot
                 //если текущая работа не спуск в подземелье, то пробуем спустится
                 if (CurrentWork("Спуск") == false)
                 {
-                    if(true)//if (Timer_Shop.CompareTo(DateTime.Now) < 0)
+                    if (Timer_Shop.CompareTo(DateTime.Now) < 0)
                     {
                         //Узнаем, установлен валидное числовое значение для лимита валюты и сразу сколько заданного ресурса на руках
                         bool isCurrencyValid = false;
