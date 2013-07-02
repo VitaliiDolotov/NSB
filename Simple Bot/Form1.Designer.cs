@@ -5118,7 +5118,6 @@
             // checkBoxMassFight
             // 
             this.checkBoxMassFight.AutoSize = true;
-            this.checkBoxMassFight.Enabled = false;
             this.checkBoxMassFight.Location = new System.Drawing.Point(10, 21);
             this.checkBoxMassFight.Name = "checkBoxMassFight";
             this.checkBoxMassFight.Size = new System.Drawing.Size(113, 17);
@@ -5211,7 +5210,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1923, 882);
+            this.ClientSize = new System.Drawing.Size(1604, 882);
             this.Controls.Add(this.MassFBox);
             this.Controls.Add(this.ArenaBox);
             this.Controls.Add(this.TradeFieldBox);

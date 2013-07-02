@@ -3566,10 +3566,6 @@ namespace Simple_Bot
                         }
                         catch { }
                         string CurrentGold = driver.FindElement(By.Id("gold")).FindElement(By.TagName("b")).Text.Replace(".", "");
-
-                        string text = string.Format("Сливаем голд в казну: текущее кол-во голда {0}", CurrentGold);
-                        Logger(text);
-
                         CurrentGold = Convert.ToString(Convert.ToInt32(CurrentGold) - goldForMe);
                         //Обрезаем копейки
                         if (CurrentGold.Length > 3)
@@ -3579,6 +3575,8 @@ namespace Simple_Bot
                         }
                         if (Convert.ToInt32(CurrentGold) >= Gold)
                         {
+                            string text = string.Format("Сливаем голд в казну: текущее кол-во голда {0}", CurrentGold);
+                            Logger(text);
                             //клан
                             driver.FindElement(By.LinkText("Клан")).Click();
                             System.Threading.Thread.Sleep(rnd.Next(300, 480));
@@ -5063,7 +5061,7 @@ namespace Simple_Bot
 
         public void MassFight()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFightBox")[1]))
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[1]))
             {
                 Timer_MassFight = ToDateTime("00:35:00");
                 GoToMassFight();
@@ -5123,10 +5121,10 @@ namespace Simple_Bot
             {
                 IWebElement currentLocation = driver.FindElement(By.CssSelector("#places_ .active"));
                 //если лока не соотв заданной
-                if (!currentLocation.GetAttribute("title").Equals(ReadFromFile(SettingsFile, "MassFightBox")[7]))
+                if (!currentLocation.GetAttribute("title").Equals(ReadFromFile(SettingsFile, "MassFBox")[7]))
                 {
                     //если нужно в лес
-                    if (ReadFromFile(SettingsFile, "MassFightBox")[7].Equals("Лес"))
+                    if (ReadFromFile(SettingsFile, "MassFBox")[7].Equals("Лес"))
                     {
                         if (currentLocation.GetAttribute("title").Equals("Горы"))
                         {
@@ -5146,7 +5144,7 @@ namespace Simple_Bot
                     }
 
                     //если нужно в горы
-                    if (ReadFromFile(SettingsFile, "MassFightBox")[7].Equals("Горы"))
+                    if (ReadFromFile(SettingsFile, "MassFBox")[7].Equals("Горы"))
                     {
                         if (currentLocation.GetAttribute("title").Equals("Лес"))
                         {
@@ -5166,7 +5164,7 @@ namespace Simple_Bot
                     }
 
                     //если нужно на равнину
-                    if (ReadFromFile(SettingsFile, "MassFightBox")[7].Equals("Равнина"))
+                    if (ReadFromFile(SettingsFile, "MassFBox")[7].Equals("Равнина"))
                     {
                         Actions action = new Actions(driver);
                         action.MoveToElement(driver.FindElement(By.CssSelector("#plains"))).Build().Perform();
@@ -5182,13 +5180,15 @@ namespace Simple_Bot
         {
             try
             {
-                string selector = string.Format("[title='{0}']", ReadFromFile(SettingsFile, "MassFightBox")[2]);
-                if (driver.FindElement(By.CssSelector(selector)).Displayed)
-                {
-                    string mineSelector = string.Format("{0} a", MMainSelectorProvider(ReadFromFile(SettingsFile, "MassFightBox")[2]));
-                    driver.FindElement(By.CssSelector(mineSelector)).FindElement(By.LinkText("ВСТУПИТЬ")).Click();
-                    Delays();
-                }
+                string selector = string.Format("//div[@title='{0}']", ReadFromFile(SettingsFile, "MassFBox")[2]);
+                driver.FindElement(By.XPath(selector)).Click();
+                Delays();
+                //if (driver.FindElement(By.CssSelector(selector)).Displayed)
+                //{
+                string mineSelector = string.Format("{0} .status span:nth-of-type(1) a", MMainSelectorProvider(ReadFromFile(SettingsFile, "MassFBox")[2]));
+                driver.FindElement(By.CssSelector(mineSelector)).FindElement(By.LinkText("ВСТУПИТЬ")).Click();
+                Delays();
+                //}
             }
             catch { }
         }
@@ -5309,7 +5309,7 @@ namespace Simple_Bot
 
         private void MAGetSomeFood()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFightBox")[6]))
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[6]))
             {
                 try
                 {
@@ -5326,7 +5326,7 @@ namespace Simple_Bot
 
         private void MAUseShild()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFightBox")[3]))
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[3]))
             {
                 try
                 {
@@ -5345,7 +5345,7 @@ namespace Simple_Bot
 
         private void MAUseGodDef()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFightBox")[4]))
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[4]))
             {
                 try
                 {
@@ -5364,7 +5364,7 @@ namespace Simple_Bot
 
         private void MAUseSacrifice()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFightBox")[5]))
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[5]))
             {
                 try
                 {
@@ -5499,7 +5499,7 @@ namespace Simple_Bot
                                 }
                                 else
                                 {
-                                    driver.FindElement(By.XPath(string.Format(".//div[text()='{0}']/..",enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[34])]))).Click();
+                                    driver.FindElement(By.XPath(string.Format(".//div[text()='{0}']/..", enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[34])]))).Click();
                                 }
 
                                 //Если каждые 5 минут, то ассайни соотв таймер

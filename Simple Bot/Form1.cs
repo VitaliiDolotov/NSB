@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2540;
+        int BotVersion = 2541;
 
         Thread BotThread;
 
@@ -842,7 +842,7 @@ namespace Simple_Bot
                 {
                     try
                     {
-                        //Bot.MassFight();
+                        Bot.MassFight();
                         Bot.GoToOldoMsters();
                         Bot.AlertFight();
                         Bot.LitleGuru();
