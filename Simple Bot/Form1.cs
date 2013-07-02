@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2539;
+        int BotVersion = 2540;
 
         Thread BotThread;
 
@@ -887,7 +887,7 @@ namespace Simple_Bot
 
 
                         //Adv
-                        Bot.OpenAdvPage();
+                        //Bot.OpenAdvPage();
 
                     }
                     catch

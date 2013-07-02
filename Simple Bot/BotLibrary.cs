@@ -43,6 +43,7 @@ namespace Simple_Bot
         bool CanMakeSoap = false;
 
         string SettingsFile = "settings.bin";
+        string LoggFile = "Log.txt";
 
         static string power = "0", block = "0", endurance = "0", dexterity = "0", charisma = "0";
 
@@ -106,6 +107,23 @@ namespace Simple_Bot
         IWebDriver driver;
 
         Random rnd = new Random();
+
+        private void Logger(string logerData)
+        {
+            string text = string.Empty;
+            if (File.Exists(LoggFile))
+            {
+                var reader = new StreamReader(File.OpenRead(LoggFile));
+                text = reader.ReadToEnd();
+                reader.Close();
+            }
+
+            //удаялем старый файл и записуем старое значение
+            File.Delete(LoggFile);
+            var writer = new StreamWriter(File.OpenWrite(LoggFile));
+            writer.WriteLine(text + DateTime.Now + " " + logerData);
+            writer.Close();
+        }
 
         public void Hide()
         {
@@ -1778,8 +1796,13 @@ namespace Simple_Bot
                     //добываем пару чисел 
                     try
                     {
+                        string text;
                         int FirstNyumber = ElementScreenshot("FirstNum", "right_main", ".//div[4]/img");
+                        text = string.Format("Уравниваем температуру в котле: первое число {0}", FirstNyumber);
+                        Logger(text);
                         int SecondNumber = ElementScreenshot("SecNum", "right_main", ".//div[5]/img");
+                        text = string.Format("Уравниваем температуру в котле: второе число {0}", SecondNumber);
+                        Logger(text);
                         //вычисляем разницу температур
                         Result = SecondNumber - FirstNyumber;
 
@@ -1930,7 +1953,8 @@ namespace Simple_Bot
 
                         if (Convert.ToInt64(CurrentGold) >= maxStatCost)
                         {
-
+                            string text = string.Format("Текущее кол-во золота {0}, максимальная стоимость стата {1}", CurrentGold, maxStatCost);
+                            Logger(text);
                             try
                             {
                                 driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
@@ -3027,6 +3051,9 @@ namespace Simple_Bot
                     {
                         if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[30]))
                         {
+                            //валюта кристаллы
+                            driver.FindElement(By.CssSelector(".sub_title_other input[value='1']")).Click();
+                            Delays();
                             string selector = string.Format("//option[text()='{0}']", ReadFromFile(SettingsFile, "FightBox")[31]);
                             driver.FindElement(By.CssSelector(selector)).Click();
                             Delays();
@@ -3539,6 +3566,10 @@ namespace Simple_Bot
                         }
                         catch { }
                         string CurrentGold = driver.FindElement(By.Id("gold")).FindElement(By.TagName("b")).Text.Replace(".", "");
+
+                        string text = string.Format("Сливаем голд в казну: текущее кол-во голда {0}", CurrentGold);
+                        Logger(text);
+
                         CurrentGold = Convert.ToString(Convert.ToInt32(CurrentGold) - goldForMe);
                         //Обрезаем копейки
                         if (CurrentGold.Length > 3)
@@ -5430,7 +5461,12 @@ namespace Simple_Bot
                                 Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
                             if (currenCry > 5)
                             {
-                                driver.FindElement(By.XPath(".//a[contains(text(),'ПОИСК:')]")).Click();
+                                //driver.FindElement(By.XPath(".//a[contains(text(),'ПОИСК:')]")).Click();
+                                try
+                                {
+                                    driver.FindElement(By.XPath(".//a[text()='ПОИСК: ']")).Click();
+                                }
+                                catch { }
                                 Delays();
                                 string[] enemysBm = new string[4];
                                 string[] enemysName = new string[4];
