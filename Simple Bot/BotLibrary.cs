@@ -36,6 +36,8 @@ namespace Simple_Bot
 
         int Delay1 = 0;
         int Delay2 = 0;
+        int Delay3 = 0;
+        int Delay4 = 0;
 
         int TimeOutValue = 1;
 
@@ -711,6 +713,8 @@ namespace Simple_Bot
 
                 Delay1 = 600;
                 Delay2 = 1109;
+                Delay3 = 300;
+                Delay4 = 698;
 
                 Timer_Relogin = ToDateTime("00:09:20");
 
@@ -734,6 +738,11 @@ namespace Simple_Bot
         private void Delays()
         {
             System.Threading.Thread.Sleep(rnd.Next(Delay1, Delay2));
+        }
+
+        private void SmallDelays()
+        {
+            System.Threading.Thread.Sleep(rnd.Next(Delay3, Delay4));
         }
 
         private IWebDriver DriverCreation(string DrType)
@@ -5086,12 +5095,27 @@ namespace Simple_Bot
                         MGoTakeFood();
                         MAskForFood();
                         MAUseShild();
+                        MAUseGodDef();
+                        MAUseSacrifice();
                         MBeat();
                         MFood();
                         MAGetSomeFood();
                         WaitForNewRaund();
 
                         //ливаем по времени
+
+                        //ливаем если убили
+                        try
+                        {
+                            IWebElement deadPerson = driver.FindElement(By.CssSelector(".bg_user_panel.dead[style*='background-color']"));
+                            if (deadPerson.Displayed)
+                            {
+                                driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                break;
+                            }
+                        }
+                        catch { }
+
                         if (Timer_MassFight.CompareTo(DateTime.Now) < 0)
                         {
                             try
@@ -5131,7 +5155,8 @@ namespace Simple_Bot
                             Actions action = new Actions(driver);
                             action.MoveToElement(driver.FindElement(By.CssSelector("#plains"))).Build().Perform();
                             driver.FindElement(By.CssSelector("#plains b")).Click();
-                            Delays();
+                            SmallDelays();
+                            return;
                         }
 
                         if (currentLocation.GetAttribute("title").Equals("Равнина"))
@@ -5139,7 +5164,8 @@ namespace Simple_Bot
                             Actions action = new Actions(driver);
                             action.MoveToElement(driver.FindElement(By.CssSelector("#forest"))).Build().Perform();
                             driver.FindElement(By.CssSelector("#forest b")).Click();
-                            Delays();
+                            SmallDelays();
+                            return;
                         }
                     }
 
@@ -5151,7 +5177,8 @@ namespace Simple_Bot
                             Actions action = new Actions(driver);
                             action.MoveToElement(driver.FindElement(By.CssSelector("#plains"))).Build().Perform();
                             driver.FindElement(By.CssSelector("#plains b")).Click();
-                            Delays();
+                            SmallDelays();
+                            return;
                         }
 
                         if (currentLocation.GetAttribute("title").Equals("Равнина"))
@@ -5159,7 +5186,8 @@ namespace Simple_Bot
                             Actions action = new Actions(driver);
                             action.MoveToElement(driver.FindElement(By.CssSelector("#mountains"))).Build().Perform();
                             driver.FindElement(By.CssSelector("#mountains b")).Click();
-                            Delays();
+                            SmallDelays();
+                            return;
                         }
                     }
 
@@ -5169,7 +5197,8 @@ namespace Simple_Bot
                         Actions action = new Actions(driver);
                         action.MoveToElement(driver.FindElement(By.CssSelector("#plains"))).Build().Perform();
                         driver.FindElement(By.CssSelector("#plains b")).Click();
-                        Delays();
+                        SmallDelays();
+                        return;
                     }
                 }
             }
@@ -5186,8 +5215,8 @@ namespace Simple_Bot
                 //if (driver.FindElement(By.CssSelector(selector)).Displayed)
                 //{
                 string mineSelector = string.Format("{0} .status span:nth-of-type(1) a", MMainSelectorProvider(ReadFromFile(SettingsFile, "MassFBox")[2]));
-                driver.FindElement(By.CssSelector(mineSelector)).FindElement(By.LinkText("ВСТУПИТЬ")).Click();
-                Delays();
+                driver.FindElement(By.CssSelector(mineSelector))/*.FindElement(By.LinkText("ВСТУПИТЬ"))*/.Click();
+                SmallDelays();
                 //}
             }
             catch { }
@@ -5219,10 +5248,16 @@ namespace Simple_Bot
             }
         }
 
-        private int MGetCurrentHeal()
+        private Int64 MGetCurrentHeal()
         {
             string currentHeal = driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_health_scale_left")).GetAttribute("title").Replace(" ", string.Empty).Split('/').FirstOrDefault();
-            return Convert.ToInt32(currentHeal);
+            return Convert.ToInt64(currentHeal);
+        }
+
+        private Int64 MGetMaxHeal()
+        {
+            string maxHeal = driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_health_scale_left")).GetAttribute("title").Replace(" ", string.Empty).Split('/').LastOrDefault();
+            return Convert.ToInt64(maxHeal);
         }
 
         private int MGetCurrentFood()
@@ -5238,28 +5273,28 @@ namespace Simple_Bot
                 //убираем фокус
                 Actions action = new Actions(driver);
                 action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
-                Delays();
+                SmallDelays();
             }
         }
 
-        private int MMinHeal()
+        private Int64 MMinHeal()
         {
-            return 30 * MGetCurrentHeal() / 100;
+            return 31 * MGetMaxHeal() / 100;
         }
 
         private void MHealing()
         {
             try
             {
-                int minH = MMinHeal();
-                int currentH = MGetCurrentHeal();
+                Int64 minH = MMinHeal();
+                Int64 currentH = MGetCurrentHeal();
                 if (currentH <= minH)
                 {
                     driver.FindElement(By.CssSelector(".talant_ico_524")).Click();
                     //убираем фокус
                     Actions action = new Actions(driver);
                     action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
-                    Delays();
+                    SmallDelays();
                 }
             }
             catch { }
@@ -5270,17 +5305,24 @@ namespace Simple_Bot
             try
             {
                 int foodCount = MGetCurrentFood();
-                IList<IWebElement> foodIcons = driver.FindElements(By.CssSelector(".ico_bg_food_request"));
+                IList<IWebElement> foodIcons = driver.FindElements(By.XPath("//div[contains(@id,'user_slot')]//span[contains(@class,'ico_bg_food_request')]"));
                 foreach (var foodico in foodIcons)
                 {
-                    if (foodCount > 20)
+                    try
                     {
-                        foodico.Click();
-                        Delays();
-                        foodCount = MGetCurrentFood();
+                        if (foodico.Displayed & foodico.Enabled)
+                        {
+                            if (foodCount > 20)
+                            {
+                                foodico.Click();
+                                SmallDelays();
+                                foodCount = MGetCurrentFood();
+                            }
+                            else
+                                break;
+                        }
                     }
-                    else
-                        break;
+                    catch { }
                 }
             }
             catch { }
@@ -5297,7 +5339,7 @@ namespace Simple_Bot
                     if (foodCount > 20)
                     {
                         swordIcon.Click();
-                        Delays();
+                        SmallDelays();
                         foodCount = MGetCurrentFood();
                     }
                     else
@@ -5314,11 +5356,11 @@ namespace Simple_Bot
                 try
                 {
                     driver.FindElement(By.CssSelector(".talant_ico_800")).Click();
-                    Delays();
+                    SmallDelays();
                     //убираем фокус
                     Actions action = new Actions(driver);
                     action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
-                    Delays();
+                    SmallDelays();
                 }
                 catch { }
             }
@@ -5331,13 +5373,13 @@ namespace Simple_Bot
                 try
                 {
                     driver.FindElement(By.CssSelector(".talant_ico_519")).Click();
-                    Delays();
+                    SmallDelays();
                     //Клацнуть на себя
                     Actions action = new Actions(driver);
                     action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
-                    Delays();
+                    SmallDelays();
                     driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_name")).Click();
-                    Delays();
+                    SmallDelays();
                 }
                 catch { }
             }
@@ -5350,13 +5392,13 @@ namespace Simple_Bot
                 try
                 {
                     driver.FindElement(By.CssSelector(".talant_ico_518")).Click();
-                    Delays();
+                    SmallDelays();
                     //Клацнуть на себя
                     Actions action = new Actions(driver);
                     action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
-                    Delays();
+                    SmallDelays();
                     driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_name")).Click();
-                    Delays();
+                    SmallDelays();
                 }
                 catch { }
             }
@@ -5369,13 +5411,13 @@ namespace Simple_Bot
                 try
                 {
                     driver.FindElement(By.CssSelector(".talant_ico_520")).Click();
-                    Delays();
+                    SmallDelays();
                     //Клацнуть на себя
                     Actions action = new Actions(driver);
                     action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
-                    Delays();
+                    SmallDelays();
                     driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_name")).Click();
-                    Delays();
+                    SmallDelays();
                 }
                 catch { }
             }
@@ -5386,11 +5428,11 @@ namespace Simple_Bot
             try
             {
                 driver.FindElement(By.CssSelector("#ap_request")).Click();
-                Delays();
+                SmallDelays();
                 //убираем фокус
                 Actions action = new Actions(driver);
                 action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
-                Delays();
+                SmallDelays();
             }
             catch { }
         }
@@ -5402,7 +5444,7 @@ namespace Simple_Bot
                 IWebElement timer = driver.FindElement(By.CssSelector("#main_timer i"));
                 while (timer.Displayed)
                 {
-                    Delays();
+                    SmallDelays();
                     timer = driver.FindElement(By.CssSelector("#main_timer i"));
                 }
             }
@@ -5411,6 +5453,7 @@ namespace Simple_Bot
                 System.Threading.Thread.Sleep(7600);
             }
         }
+
 
         private void Sort(string[] enemysBm, string[] enemyName)
         {

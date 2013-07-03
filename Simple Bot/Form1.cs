@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2541;
+        int BotVersion = 2543;
 
         Thread BotThread;
 
@@ -45,6 +45,7 @@ namespace Simple_Bot
         static DateTime Timer_ChromeDriverKiller = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
         bool chromeDriverCiller = false;
+        bool oneTimeSetting = false;
         bool botStatus;
 
         string SettingsFile = "settings";
@@ -163,7 +164,7 @@ namespace Simple_Bot
                 checkBoxAlarmBox.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[27]);
                 checkBoxBigGguru.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[28]);
                 checkBoxBiggestPotion.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[29]);
-                comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
+                comboBoxTFResource.Text = "Не скупать ресурсы";//ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
                 numericUpDownTFDuringTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[31]);
                 numericUpDownTFEveryTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[32]);
                 numericUpDownTFEveryTime2.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[33]);
@@ -223,7 +224,7 @@ namespace Simple_Bot
                 checkBoxDrinkOborotka.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[25]);
                 checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
                 numericUpDownArenaEnemyBm.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
-                checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+                checkBoxArenaEvery5min.Checked = false;//Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
                 radioButtonMonstersAll.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[29]);
                 radioButtonMonstersLvl.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[30]);
                 comboBoxMonstersLvl.Text = ReadFromFile(SettingsFile, FightBox.Name)[31];
@@ -842,7 +843,6 @@ namespace Simple_Bot
                 {
                     try
                     {
-                        Bot.MassFight();
                         Bot.GoToOldoMsters();
                         Bot.AlertFight();
                         Bot.LitleGuru();
@@ -884,6 +884,7 @@ namespace Simple_Bot
                         Bot.BuyGifts();
                         Bot.TradeField();
                         Bot.Shop();
+                        Bot.MassFight();
 
 
                         //Adv
@@ -1414,8 +1415,17 @@ namespace Simple_Bot
                     ChromeDriverKillerProcess();
                     chromeDriverCiller = true;
                 }
-                //Подрубаем Арену по 5 мину если донат
-                checkBoxArenaEvery5min.Enabled = true;
+                
+                if (!oneTimeSetting)
+                {
+                    //Подрубаем Арену по 5 мину если донат
+                    checkBoxArenaEvery5min.Enabled = true;
+                    checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+                    //Торговая площадка
+                    comboBoxTFResource.Enabled = true;
+                    comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
+                    oneTimeSetting = true;
+                }
             }
             //OpenSite();
             //PanelDisplay();//BrowserDisplay();
@@ -1543,7 +1553,6 @@ namespace Simple_Bot
 
         private void button16_Click(object sender, EventArgs e)
         {
-
             Point l2 = Cursor.Position;
             System.Threading.Thread.Sleep(3000);
             Click(l2.X, l2.Y);

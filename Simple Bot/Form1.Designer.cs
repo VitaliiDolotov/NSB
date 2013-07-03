@@ -899,7 +899,7 @@
             // button16
             // 
             this.button16.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button16.Location = new System.Drawing.Point(7, 340);
+            this.button16.Location = new System.Drawing.Point(3, 337);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(75, 23);
             this.button16.TabIndex = 17;
@@ -951,7 +951,7 @@
             // 
             this.button43.Location = new System.Drawing.Point(309, 294);
             this.button43.Name = "button43";
-            this.button43.Size = new System.Drawing.Size(141, 23);
+            this.button43.Size = new System.Drawing.Size(137, 23);
             this.button43.TabIndex = 35;
             this.button43.Text = "Подзем";
             this.button43.UseVisualStyleBackColor = true;
@@ -959,9 +959,9 @@
             // 
             // button42
             // 
-            this.button42.Location = new System.Drawing.Point(16, 235);
+            this.button42.Location = new System.Drawing.Point(18, 235);
             this.button42.Name = "button42";
-            this.button42.Size = new System.Drawing.Size(146, 23);
+            this.button42.Size = new System.Drawing.Size(144, 23);
             this.button42.TabIndex = 34;
             this.button42.Text = "Чудо-шахты";
             this.button42.UseVisualStyleBackColor = true;
@@ -1000,9 +1000,9 @@
             // 
             // button30
             // 
-            this.button30.Location = new System.Drawing.Point(16, 294);
+            this.button30.Location = new System.Drawing.Point(17, 294);
             this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(146, 23);
+            this.button30.Size = new System.Drawing.Size(145, 23);
             this.button30.TabIndex = 23;
             this.button30.Text = "Бодалка";
             this.button30.UseVisualStyleBackColor = true;
@@ -1012,7 +1012,7 @@
             // 
             this.button7.Location = new System.Drawing.Point(309, 236);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(141, 23);
+            this.button7.Size = new System.Drawing.Size(137, 23);
             this.button7.TabIndex = 3;
             this.button7.Text = "Эффеты/Иммун";
             this.button7.UseVisualStyleBackColor = true;
@@ -1042,7 +1042,7 @@
             // 
             this.button10.Location = new System.Drawing.Point(309, 204);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(141, 25);
+            this.button10.Size = new System.Drawing.Size(138, 25);
             this.button10.TabIndex = 16;
             this.button10.Text = "Клан";
             this.button10.UseVisualStyleBackColor = true;
@@ -1303,9 +1303,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(18, 325);
+            this.button4.Location = new System.Drawing.Point(17, 325);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(430, 24);
+            this.button4.Size = new System.Drawing.Size(431, 24);
             this.button4.TabIndex = 8;
             this.button4.Text = "-=> Save and Back <=--";
             this.button4.UseVisualStyleBackColor = true;
@@ -4935,6 +4935,7 @@
             // 
             // comboBoxTFResource
             // 
+            this.comboBoxTFResource.Enabled = false;
             this.comboBoxTFResource.FormattingEnabled = true;
             this.comboBoxTFResource.Items.AddRange(new object[] {
             "Не скупать ресурсы",
