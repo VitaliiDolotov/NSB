@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2543;
+        int BotVersion = 2548;
 
         Thread BotThread;
 
@@ -224,7 +224,7 @@ namespace Simple_Bot
                 checkBoxDrinkOborotka.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[25]);
                 checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
                 numericUpDownArenaEnemyBm.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
-                checkBoxArenaEvery5min.Checked = false;//Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+                checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);//false;
                 radioButtonMonstersAll.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[29]);
                 radioButtonMonstersLvl.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[30]);
                 comboBoxMonstersLvl.Text = ReadFromFile(SettingsFile, FightBox.Name)[31];
@@ -353,6 +353,11 @@ namespace Simple_Bot
                 checkBoxMAGodSacrf.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[5]);
                 checkBoxMAOboz.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[6]);
                 comboBoxMLocation.Text = ReadFromFile(SettingsFile, MassFBox.Name)[7];
+                checkBoxMifBmHiger.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[8]);
+                checkBoxMAArmagedon.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[9]);
+                checkBoxMAProklatyshki.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[10]);
+                checkBoxMAScreem.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[11]);
+                checkBoxMAWeakness.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[12]);
             }
             catch { }
 
@@ -469,14 +474,9 @@ namespace Simple_Bot
             RemovingOldUpdater();
             CheckForUpdates();
 
-            //StutsUp Setting
-            string[] StutsUpSettings = { Convert.ToString(checkBoxPower.Checked), Convert.ToString(checkBoxBlock.Checked), Convert.ToString(checkBoxDexterity.Checked), Convert.ToString(checkBoxEndurance.Checked), Convert.ToString(checkBoxCharisma.Checked) };
-            CompareValuesInFile(StutsUpBox.Name, StutsUpSettings);
-            checkBoxPower.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, StutsUpBox.Name)[1]);
-            checkBoxBlock.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, StutsUpBox.Name)[2]);
-            checkBoxDexterity.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, StutsUpBox.Name)[3]);
-            checkBoxEndurance.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, StutsUpBox.Name)[4]);
-            checkBoxCharisma.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, StutsUpBox.Name)[5]);
+            //Pasue/Resume
+            StartButton.Visible = false;
+            PauseButton.Visible = true;
 
             //Login
             string[] LoginBoxValues = { comboBox1.Text, textBox1.Text, textBox2.Text, comboBox2.Text, Convert.ToString(checkBox1.Checked) };
@@ -486,6 +486,24 @@ namespace Simple_Bot
             textBox2.Text = ReadFromFile(SettingsFile, LoginBox.Name)[3];
             comboBox2.Text = ReadFromFile(SettingsFile, LoginBox.Name)[4];
             checkBox1.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, LoginBox.Name)[5]);
+
+            BotSetUp();
+
+            BotThread = new Thread(new ThreadStart(WorkThreadFunction));
+            BotThread.Start();
+
+        }
+
+        private void BotSetUp()
+        {
+            //StutsUp Setting
+            string[] StutsUpSettings = { Convert.ToString(checkBoxPower.Checked), Convert.ToString(checkBoxBlock.Checked), Convert.ToString(checkBoxDexterity.Checked), Convert.ToString(checkBoxEndurance.Checked), Convert.ToString(checkBoxCharisma.Checked) };
+            CompareValuesInFile(StutsUpBox.Name, StutsUpSettings);
+            checkBoxPower.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, StutsUpBox.Name)[1]);
+            checkBoxBlock.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, StutsUpBox.Name)[2]);
+            checkBoxDexterity.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, StutsUpBox.Name)[3]);
+            checkBoxEndurance.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, StutsUpBox.Name)[4]);
+            checkBoxCharisma.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, StutsUpBox.Name)[5]);
 
             //Mine Settings
             string[] MineSettings = { Convert.ToString(checkBoxWorkInMine.Checked), Convert.ToString(numericUpDownMineImmun.Value), Convert.ToString(numericUpDownMaxSmallFields.Value), Convert.ToString(numericUpDownMaxBigFields.Value),
@@ -736,7 +754,9 @@ namespace Simple_Bot
 
             //Mass Fight
             string[] MassFightSettings = { Convert.ToString(checkBoxMassFight.Checked), comboBoxMMine.Text, Convert.ToString(checkBoxMAEnergy.Checked), Convert.ToString(checkBoxMAGodDefend.Checked),
-                                         Convert.ToString(checkBoxMAGodSacrf.Checked),Convert.ToString(checkBoxMAOboz.Checked), comboBoxMLocation.Text};
+                                         Convert.ToString(checkBoxMAGodSacrf.Checked),Convert.ToString(checkBoxMAOboz.Checked), comboBoxMLocation.Text,
+                                         Convert.ToString(checkBoxMifBmHiger.Checked),Convert.ToString(checkBoxMAArmagedon.Checked),Convert.ToString(checkBoxMAProklatyshki.Checked),
+                                         Convert.ToString(checkBoxMAScreem.Checked),Convert.ToString(checkBoxMAWeakness.Checked)};
             CompareValuesInFile(MassFBox.Name, MassFightSettings);
             checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
             comboBoxMMine.Text = ReadFromFile(SettingsFile, MassFBox.Name)[2];
@@ -745,11 +765,11 @@ namespace Simple_Bot
             checkBoxMAGodSacrf.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[5]);
             checkBoxMAOboz.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[6]);
             comboBoxMLocation.Text = ReadFromFile(SettingsFile, MassFBox.Name)[7];
-
-
-            BotThread = new Thread(new ThreadStart(WorkThreadFunction));
-            BotThread.Start();
-
+            checkBoxMifBmHiger.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[8]);
+            checkBoxMAArmagedon.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[9]);
+            checkBoxMAProklatyshki.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[10]);
+            checkBoxMAScreem.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[11]);
+            checkBoxMAWeakness.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[12]);
         }
 
         private void CheckBotMessage()
@@ -1415,15 +1435,23 @@ namespace Simple_Bot
                     ChromeDriverKillerProcess();
                     chromeDriverCiller = true;
                 }
-                
+
                 if (!oneTimeSetting)
                 {
                     //Подрубаем Арену по 5 мину если донат
                     checkBoxArenaEvery5min.Enabled = true;
-                    checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+                    try
+                    {
+                        checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+                    }
+                    catch { }
                     //Торговая площадка
                     comboBoxTFResource.Enabled = true;
-                    comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
+                    try
+                    {
+                        comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
+                    }
+                    catch { }
                     oneTimeSetting = true;
                 }
             }
@@ -2195,6 +2223,21 @@ namespace Simple_Bot
                 panelFightMonsters.Enabled = true;
             else
                 panelFightMonsters.Enabled = false;
+        }
+
+        private void button46_Click(object sender, EventArgs e)
+        {
+            PauseButton.Visible = false;
+            ResumeButton.Visible = true;
+            BotThread.Suspend();
+        }
+
+        private void button47_Click(object sender, EventArgs e)
+        {
+            BotSetUp();
+            ResumeButton.Visible = false;
+            PauseButton.Visible = true;
+            BotThread.Resume();
         }
     }
 }

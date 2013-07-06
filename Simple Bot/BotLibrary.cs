@@ -713,8 +713,8 @@ namespace Simple_Bot
 
                 Delay1 = 600;
                 Delay2 = 1109;
-                Delay3 = 300;
-                Delay4 = 698;
+                Delay3 = 289;
+                Delay4 = 530;
 
                 Timer_Relogin = ToDateTime("00:09:20");
 
@@ -1497,50 +1497,54 @@ namespace Simple_Bot
 
         public void Fishing()
         {
-            if (ReadFromFile(SettingsFile, "AdditionalSettingsBox")[2] == "True")
+            try
             {
-                if (Timer_Fishing.CompareTo(DateTime.Now) < 0)
+                if (ReadFromFile(SettingsFile, "AdditionalSettingsBox")[2] == "True")
                 {
-                    Random rnd = new Random();
-                    try
+                    if (Timer_Fishing.CompareTo(DateTime.Now) < 0)
                     {
-                        driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
-                    }
-                    catch { }
-
-                    //проверяем таймер, если 0 то отправляем
-                    try
-                    {
-                        //открываем ресы
-                        string Resources = GetResourceValue("Количество походов за пирашками на сегодня")[0];
-                        System.Threading.Thread.Sleep(rnd.Next(898, 1156));
-
-                        //глядим время
-                        System.Threading.Thread.Sleep(rnd.Next(1105, 1199));
-                        Timer_Fishing = ToDateTime(GetResourceValue("Время до возвращения судна с пирашками")[0]);
-                        System.Threading.Thread.Sleep(rnd.Next(898, 1156));
-
-                        if (Timer_Fishing.CompareTo(DateTime.Now) < 0 && Resources != "0" && Resources != "")
+                        Random rnd = new Random();
+                        try
                         {
-                            try
-                            {
-                                //переход в дальние страны
-                                driver.FindElement(By.XPath("//a/div[contains(@class,'f35')]")).Click();
-                                System.Threading.Thread.Sleep(rnd.Next(898, 1156));
-                            }
-                            catch { }
-                            try
-                            {
-                                //кликаем отправить
-                                driver.FindElement(By.XPath("//input[@value='ОТПРАВИТЬ']")).Click();
-                            }
-                            catch { }
+                            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
                         }
+                        catch { }
 
+                        //проверяем таймер, если 0 то отправляем
+                        try
+                        {
+                            //открываем ресы
+                            string Resources = GetResourceValue("Количество походов за пирашками на сегодня")[0];
+                            System.Threading.Thread.Sleep(rnd.Next(898, 1156));
+
+                            //глядим время
+                            System.Threading.Thread.Sleep(rnd.Next(1105, 1199));
+                            Timer_Fishing = ToDateTime(GetResourceValue("Время до возвращения судна с пирашками")[0]);
+                            System.Threading.Thread.Sleep(rnd.Next(898, 1156));
+
+                            if (Timer_Fishing.CompareTo(DateTime.Now) < 0 && Resources != "0" && Resources != "")
+                            {
+                                try
+                                {
+                                    //переход в дальние страны
+                                    driver.FindElement(By.XPath("//a/div[contains(@class,'f35')]")).Click();
+                                    System.Threading.Thread.Sleep(rnd.Next(898, 1156));
+                                }
+                                catch { }
+                                try
+                                {
+                                    //кликаем отправить
+                                    driver.FindElement(By.XPath("//input[@value='ОТПРАВИТЬ']")).Click();
+                                }
+                                catch { }
+                            }
+
+                        }
+                        catch { }
                     }
-                    catch { }
                 }
             }
+            catch { }
         }
 
         public void PotionBoil()
@@ -1909,40 +1913,44 @@ namespace Simple_Bot
 
         public void TanksMaking()
         {
-            if (ReadFromFile(SettingsFile, "PotionMakingBox")[2] == "True" && Convert.ToBoolean(ReadFromFile(SettingsFile, "PotionMakingBox")[1]) == true)
+            try
             {
-                if (Timer_TanksMaking.CompareTo(DateTime.Now) < 0)
+                if (ReadFromFile(SettingsFile, "PotionMakingBox")[2] == "True" && Convert.ToBoolean(ReadFromFile(SettingsFile, "PotionMakingBox")[1]) == true)
                 {
-                    if ((Convert.ToInt32(GetResourceValue("title=" + '\u0022' + "Стеклянная тара" + '\u0022' + " style")[0]) < Convert.ToInt32(GetResourceValue("title=" + '\u0022' + "Стеклянная тара" + '\u0022' + " style")[1])) || (Convert.ToInt32(GetResourceValue("title=" + '\u0022' + "Раскаленное стекло" + '\u0022' + " style")[0]) < Convert.ToInt32(GetResourceValue("title=" + '\u0022' + "Раскаленное стекло" + '\u0022' + " style")[1])))
+                    if (Timer_TanksMaking.CompareTo(DateTime.Now) < 0)
                     {
-                        //Изготавливаем тару
-                        try
+                        if ((Convert.ToInt32(GetResourceValue("title=" + '\u0022' + "Стеклянная тара" + '\u0022' + " style")[0]) < Convert.ToInt32(GetResourceValue("title=" + '\u0022' + "Стеклянная тара" + '\u0022' + " style")[1])) || (Convert.ToInt32(GetResourceValue("title=" + '\u0022' + "Раскаленное стекло" + '\u0022' + " style")[0]) < Convert.ToInt32(GetResourceValue("title=" + '\u0022' + "Раскаленное стекло" + '\u0022' + " style")[1])))
                         {
-                            //переход в лабараторию
-                            driver.FindElement(By.XPath("//a/div[contains(@class,'f59')]")).Click();
-                            System.Threading.Thread.Sleep(rnd.Next(499, 1277));
-                        }
-                        catch { }
+                            //Изготавливаем тару
+                            try
+                            {
+                                //переход в лабараторию
+                                driver.FindElement(By.XPath("//a/div[contains(@class,'f59')]")).Click();
+                                System.Threading.Thread.Sleep(rnd.Next(499, 1277));
+                            }
+                            catch { }
 
-                        try
-                        {
-                            //отжиг
-                            driver.FindElement(By.XPath("//input[@value='ОТЖИГ']")).Click();
-                            System.Threading.Thread.Sleep(rnd.Next(499, 1234));
-                        }
-                        catch { }
+                            try
+                            {
+                                //отжиг
+                                driver.FindElement(By.XPath("//input[@value='ОТЖИГ']")).Click();
+                                System.Threading.Thread.Sleep(rnd.Next(499, 1234));
+                            }
+                            catch { }
 
-                        try
-                        {
-                            //охлаждение
-                            driver.FindElement(By.XPath("//input[@value='ОХЛАЖДЕНИЕ']")).Click();
-                            System.Threading.Thread.Sleep(rnd.Next(898, 1359));
+                            try
+                            {
+                                //охлаждение
+                                driver.FindElement(By.XPath("//input[@value='ОХЛАЖДЕНИЕ']")).Click();
+                                System.Threading.Thread.Sleep(rnd.Next(898, 1359));
+                            }
+                            catch { }
+                            Timer_TanksMaking = ToDateTime("00:16:00");
                         }
-                        catch { }
-                        Timer_TanksMaking = ToDateTime("00:16:00");
                     }
                 }
             }
+            catch { }
         }
 
         public void StatsUp()
@@ -2183,284 +2191,288 @@ namespace Simple_Bot
 
         public void Fly()
         {
-            if (ReadFromFile(SettingsFile, "AdditionalSettingsBox")[3] == "True")
+            try
             {
-                Random rnd = new Random();
-                try
+                if (ReadFromFile(SettingsFile, "AdditionalSettingsBox")[3] == "True")
                 {
-                    driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(1));
-                }
-                catch { }
-
-                try
-                {
-                    //открываем секцию летунов !!!
-                    driver.FindElement(By.Id("accordion")).FindElement(By.XPath(".//h3[2]")).Click();
-                    System.Threading.Thread.Sleep(rnd.Next(1105, 1199));
-                }
-                catch { }
-
-                int FlyNumber = 2;
-                int settingsIndex = 1;
-                bool IsInTrip = true;
-                bool MinigameFightFood = false;
-                //First Fly
-                while (FlyNumber < 9)
-                {
-                    if (!Convert.ToBoolean(ReadFromFile(SettingsFile, "FlyBox")[20 + FlyNumber / 2]))
+                    Random rnd = new Random();
+                    try
                     {
-                        try
+                        driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(1));
+                    }
+                    catch { }
+
+                    try
+                    {
+                        //открываем секцию летунов !!!
+                        driver.FindElement(By.Id("accordion")).FindElement(By.XPath(".//h3[2]")).Click();
+                        System.Threading.Thread.Sleep(rnd.Next(1105, 1199));
+                    }
+                    catch { }
+
+                    int FlyNumber = 2;
+                    int settingsIndex = 1;
+                    bool IsInTrip = true;
+                    bool MinigameFightFood = false;
+                    //First Fly
+                    while (FlyNumber < 9)
+                    {
+                        if (!Convert.ToBoolean(ReadFromFile(SettingsFile, "FlyBox")[20 + FlyNumber / 2]))
                         {
-                            IWebElement jstimer = driver.FindElement(By.CssSelector(".flyings div:nth-of-type(" + Convert.ToString(FlyNumber) + ") .js_timer"));
-                        }
-                        catch
-                        {
                             try
                             {
-                                //если зверушка не в большом приключении
-                                if (driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") a")).Text.Contains("Мини"))//if (driver.FindElement(By.Id("accordion")).FindElement(By.XPath("//div[2]/div/div[" + Convert.ToString(FlyNumber) + "]/center/b/a[contains(@href,'castle')]")).Text == "Мини-игра")
-                                {
-                                    //проверяем нет ли миниигры
-                                    try
-                                    {
-                                        driver.FindElement(By.Id("accordion")).FindElement(By.XPath("//div[2]/div/div[" + Convert.ToString(FlyNumber) + "]/center/form/input[@value='ПОМОЧЬ']")).Click();
-                                        System.Threading.Thread.Sleep(rnd.Next(898, 1089));
-                                        try
-                                        {
-                                            //выибраем один из сундучков
-                                            int box = rnd.Next(0, 3);
-                                            switch (box)
-                                            {
-                                                case 1:
-                                                    try
-                                                    {
-                                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[1]")).Click();
-                                                        System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                                    }
-                                                    catch { }
-                                                    break;
-
-                                                case 2:
-                                                    try
-                                                    {
-                                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[2]")).Click();
-                                                        System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                                    }
-                                                    catch { }
-                                                    break;
-                                                case 3:
-                                                    try
-                                                    {
-                                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[3]")).Click();
-                                                        System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                                    }
-                                                    catch { }
-                                                    break;
-                                            }
-                                        }
-                                        catch { }
-                                    }
-                                    catch { }
-                                    IsInTrip = false;
-                                    MinigameFightFood = true;
-                                }
-                            }
-                            catch { }
-
-                            //проверяем нет ли нападения                
-                            try
-                            {
-                                //если зверушка не в большом приключении
-                                if (driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") a")).Text.Contains("Нападение"))//if (driver.FindElement(By.Id("accordion")).FindElement(By.XPath("//div[2]/div/div[" + Convert.ToString(FlyNumber) + "]/center/b/a[contains(@href,'castle')]")).Text == "Нападение на летуна!")
-                                {
-                                    //проверяем нет ли миниигры
-                                    try
-                                    {
-                                        driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") input[value='ПОСМОТРЕТЬ']")).Click();
-                                        System.Threading.Thread.Sleep(rnd.Next(898, 1125));
-                                        try
-                                        {
-                                            //выибраем один из сундучков
-                                            int box = rnd.Next(0, 3);
-                                            switch (box)
-                                            {
-                                                case 1:
-                                                    try
-                                                    {
-                                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[1]")).Click();
-                                                        System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                                    }
-                                                    catch { }
-                                                    break;
-
-                                                case 2:
-                                                    try
-                                                    {
-                                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[2]")).Click();
-                                                        System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                                    }
-                                                    catch { }
-                                                    break;
-                                                case 3:
-                                                    try
-                                                    {
-                                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[3]")).Click();
-                                                        System.Threading.Thread.Sleep(rnd.Next(659, 899));
-                                                    }
-                                                    catch { }
-                                                    break;
-                                            }
-                                        }
-                                        catch { }
-                                    }
-                                    catch { }
-                                    IsInTrip = false;
-                                    MinigameFightFood = true;
-                                }
-                            }
-                            catch { }
-
-                            //Будим если спит
-                            try
-                            {
-                                IWebElement wake = driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") a.cmd_asmall_sl"));
-                                wake.Click();
-                                Delays();
-                                //Будим и кормим 2 раза
-                                driver.FindElement(By.XPath("//input[@value='РАЗБУДИТЬ']")).Click();
-                                Delays();
-                                driver.FindElement(By.Id("feed_zoo_did")).FindElement(By.XPath(".//input[@value='КОРМИТЬ']")).Click();
-                                Delays();
-                                driver.FindElement(By.Id("feed_zoo_did")).FindElement(By.XPath(".//input[@value='КОРМИТЬ']")).Click();
-                            }
-                            catch { }
-
-                            //кормим если голоден
-                            try
-                            {
-                                string satiety = driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") u:nth-of-type(1) a")).Text;
-                                satiety = satiety.TrimEnd('%');
-                                if (Convert.ToInt32(satiety) < 75)
-                                {
-                                    //кликаем по грибочкув боковой панели
-                                    driver.FindElement(By.Id("accordion")).FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") u:nth-of-type(1) a b")).Click();
-                                    System.Threading.Thread.Sleep(rnd.Next(899, 1399));
-                                    driver.FindElement(By.Id("feed_zoo_did")).FindElement(By.XPath(".//input[@value='КОРМИТЬ']")).Click();
-                                    IsInTrip = false;
-                                    MinigameFightFood = true;
-                                }
-                            }
-                            catch { }
-
-                            //просто кликаем по иконке летуна если нет ни миниигры, ни нападения и не кормили зверя
-                            try
-                            {
-                                //если зверушка не в большом приключении
-                                if (driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") b a")).Text.Contains("Большое") && MinigameFightFood == false)
-                                {
-
-                                }
+                                IWebElement jstimer = driver.FindElement(By.CssSelector(".flyings div:nth-of-type(" + Convert.ToString(FlyNumber) + ") .js_timer"));
                             }
                             catch
                             {
                                 try
                                 {
-                                    driver.FindElement(By.CssSelector(".title:nth-of-type(" + Convert.ToString(FlyNumber - 1) + ") a b")).Click();
-                                    Delays();
-                                    IsInTrip = false;
-                                    MinigameFightFood = false;
-
-                                    //Персонально
-                                    if (CurrentWork("Спуск") == false)
+                                    //если зверушка не в большом приключении
+                                    if (driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") a")).Text.Contains("Мини"))//if (driver.FindElement(By.Id("accordion")).FindElement(By.XPath("//div[2]/div/div[" + Convert.ToString(FlyNumber) + "]/center/b/a[contains(@href,'castle')]")).Text == "Мини-игра")
                                     {
-                                        if (driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
+                                        //проверяем нет ли миниигры
+                                        try
                                         {
+                                            driver.FindElement(By.Id("accordion")).FindElement(By.XPath("//div[2]/div/div[" + Convert.ToString(FlyNumber) + "]/center/form/input[@value='ПОМОЧЬ']")).Click();
+                                            System.Threading.Thread.Sleep(rnd.Next(898, 1089));
                                             try
                                             {
-                                                //Если есть надпись что летун питомиц
-                                                IWebElement statusElement = driver.FindElement(By.XPath(".//b[contains(text(),'Питомец')]"));
-                                                //клацаем на яйца
-                                                driver.FindElement(By.XPath(".//div[@title='Информация']/span")).Click();
-                                                Delays();
-                                                //клацаем Сменить
-                                                driver.FindElement(By.LinkText("Сменить")).Click();
-                                                Delays();
-                                                //Меняем на агрессора
-                                                driver.FindElement(By.XPath(".//option[text()='Агрессор']")).Click();
-                                                Delays();
-                                                //подтверждаем смену
-                                                driver.FindElement(By.CssSelector("#ch_state input[value='СМЕНИТЬ']")).Click();
-                                                Delays();
+                                                //выибраем один из сундучков
+                                                int box = rnd.Next(0, 3);
+                                                switch (box)
+                                                {
+                                                    case 1:
+                                                        try
+                                                        {
+                                                            driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[1]")).Click();
+                                                            System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                                        }
+                                                        catch { }
+                                                        break;
+
+                                                    case 2:
+                                                        try
+                                                        {
+                                                            driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[2]")).Click();
+                                                            System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                                        }
+                                                        catch { }
+                                                        break;
+                                                    case 3:
+                                                        try
+                                                        {
+                                                            driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[3]")).Click();
+                                                            System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                                        }
+                                                        catch { }
+                                                        break;
+                                                }
                                             }
                                             catch { }
                                         }
+                                        catch { }
+                                        IsInTrip = false;
+                                        MinigameFightFood = true;
                                     }
                                 }
                                 catch { }
-                            }
 
-                            //если нe в БП то отправляем туда или в МП если есть доступное время
-                            if (IsInTrip == false)
-                            {
+                                //проверяем нет ли нападения                
                                 try
                                 {
-                                    //кликаем по компасу
-                                    driver.FindElement(By.Id("fa_events")).Click();
-                                    System.Threading.Thread.Sleep(rnd.Next(799, 1201));
-                                    //Прежде всего отсылаем в малое если нужно
-                                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FlyBox")[16 + FlyNumber / 2]) == true)
+                                    //если зверушка не в большом приключении
+                                    if (driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") a")).Text.Contains("Нападение"))//if (driver.FindElement(By.Id("accordion")).FindElement(By.XPath("//div[2]/div/div[" + Convert.ToString(FlyNumber) + "]/center/b/a[contains(@href,'castle')]")).Text == "Нападение на летуна!")
                                     {
+                                        //проверяем нет ли миниигры
                                         try
                                         {
-                                            IWebElement smallTrip = driver.FindElement(By.XPath(".//table/tbody/tr[1]//input[@value='ОТПРАВИТЬ']"));
-                                            smallTrip.Click();
+                                            driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") input[value='ПОСМОТРЕТЬ']")).Click();
+                                            System.Threading.Thread.Sleep(rnd.Next(898, 1125));
+                                            try
+                                            {
+                                                //выибраем один из сундучков
+                                                int box = rnd.Next(0, 3);
+                                                switch (box)
+                                                {
+                                                    case 1:
+                                                        try
+                                                        {
+                                                            driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[1]")).Click();
+                                                            System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                                        }
+                                                        catch { }
+                                                        break;
+
+                                                    case 2:
+                                                        try
+                                                        {
+                                                            driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[2]")).Click();
+                                                            System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                                        }
+                                                        catch { }
+                                                        break;
+                                                    case 3:
+                                                        try
+                                                        {
+                                                            driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//center/a[3]")).Click();
+                                                            System.Threading.Thread.Sleep(rnd.Next(659, 899));
+                                                        }
+                                                        catch { }
+                                                        break;
+                                                }
+                                            }
+                                            catch { }
                                         }
                                         catch { }
+                                        IsInTrip = false;
+                                        MinigameFightFood = true;
                                     }
-                                    //В большое
-                                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FlyBox")[settingsIndex]) == true)
-                                    {
-                                        driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//table/tbody/tr[2]/td[3]/form/input[5][@value='ОТПРАВИТЬ']")).Click();
-                                        System.Threading.Thread.Sleep(rnd.Next(659, 989));
-                                    }
-                                    else
-                                    {
-                                        //На кар-кар
-                                        WaitForElementAndClick(driver.FindElement(By.XPath("//input[@class='cmd_all cmd_row4 cmd_arow4']")), 4000);
-                                        //Выбираем путь
-                                        switch (Convert.ToInt32(ReadFromFile(SettingsFile, "FlyBox")[settingsIndex + 2]))
-                                        {
-                                            case 1:
-                                                WaitForElementAndClick(driver.FindElement(By.XPath("//div[@rel='1']")), 5000);
-                                                break;
-                                            case 2:
-                                                WaitForElementAndClick(driver.FindElement(By.XPath("//div[@rel='2']")), 5000);
-                                                break;
-                                            case 3:
-                                                WaitForElementAndClick(driver.FindElement(By.XPath("//div[@rel='3']")), 5000);
-                                                break;
-                                            default: break;
-                                        }
-                                        //вВыбираем кол-во часов
-                                        string hrs = ReadFromFile(SettingsFile, "FlyBox")[settingsIndex + 3];
-                                        driver.FindElement(By.XPath("//option[@value='" + hrs + "']")).Click();
-                                        //Отправить
-                                        System.Threading.Thread.Sleep(rnd.Next(1123, 1325));
-                                        driver.FindElement(By.CssSelector(".mbuttons.sbt.fl_l")).Click();
-                                        //Close
-                                        System.Threading.Thread.Sleep(rnd.Next(1123, 1325));
-                                        driver.FindElement(By.CssSelector(".iconsp.icon_close")).Click();
-                                    }
-                                    IsInTrip = true;
                                 }
                                 catch { }
+
+                                //Будим если спит
+                                try
+                                {
+                                    IWebElement wake = driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") a.cmd_asmall_sl"));
+                                    wake.Click();
+                                    Delays();
+                                    //Будим и кормим 2 раза
+                                    driver.FindElement(By.XPath("//input[@value='РАЗБУДИТЬ']")).Click();
+                                    Delays();
+                                    driver.FindElement(By.Id("feed_zoo_did")).FindElement(By.XPath(".//input[@value='КОРМИТЬ']")).Click();
+                                    Delays();
+                                    driver.FindElement(By.Id("feed_zoo_did")).FindElement(By.XPath(".//input[@value='КОРМИТЬ']")).Click();
+                                }
+                                catch { }
+
+                                //кормим если голоден
+                                try
+                                {
+                                    string satiety = driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") u:nth-of-type(1) a")).Text;
+                                    satiety = satiety.TrimEnd('%');
+                                    if (Convert.ToInt32(satiety) < 75)
+                                    {
+                                        //кликаем по грибочкув боковой панели
+                                        driver.FindElement(By.Id("accordion")).FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") u:nth-of-type(1) a b")).Click();
+                                        System.Threading.Thread.Sleep(rnd.Next(899, 1399));
+                                        driver.FindElement(By.Id("feed_zoo_did")).FindElement(By.XPath(".//input[@value='КОРМИТЬ']")).Click();
+                                        IsInTrip = false;
+                                        MinigameFightFood = true;
+                                    }
+                                }
+                                catch { }
+
+                                //просто кликаем по иконке летуна если нет ни миниигры, ни нападения и не кормили зверя
+                                try
+                                {
+                                    //если зверушка не в большом приключении
+                                    if (driver.FindElement(By.CssSelector(".content:nth-of-type(" + Convert.ToString(FlyNumber) + ") b a")).Text.Contains("Большое") && MinigameFightFood == false)
+                                    {
+
+                                    }
+                                }
+                                catch
+                                {
+                                    try
+                                    {
+                                        driver.FindElement(By.CssSelector(".title:nth-of-type(" + Convert.ToString(FlyNumber - 1) + ") a b")).Click();
+                                        Delays();
+                                        IsInTrip = false;
+                                        MinigameFightFood = false;
+
+                                        //Персонально
+                                        if (CurrentWork("Спуск") == false)
+                                        {
+                                            if (driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
+                                            {
+                                                try
+                                                {
+                                                    //Если есть надпись что летун питомиц
+                                                    IWebElement statusElement = driver.FindElement(By.XPath(".//b[contains(text(),'Питомец')]"));
+                                                    //клацаем на яйца
+                                                    driver.FindElement(By.XPath(".//div[@title='Информация']/span")).Click();
+                                                    Delays();
+                                                    //клацаем Сменить
+                                                    driver.FindElement(By.LinkText("Сменить")).Click();
+                                                    Delays();
+                                                    //Меняем на агрессора
+                                                    driver.FindElement(By.XPath(".//option[text()='Агрессор']")).Click();
+                                                    Delays();
+                                                    //подтверждаем смену
+                                                    driver.FindElement(By.CssSelector("#ch_state input[value='СМЕНИТЬ']")).Click();
+                                                    Delays();
+                                                }
+                                                catch { }
+                                            }
+                                        }
+                                    }
+                                    catch { }
+                                }
+
+                                //если нe в БП то отправляем туда или в МП если есть доступное время
+                                if (IsInTrip == false)
+                                {
+                                    try
+                                    {
+                                        //кликаем по компасу
+                                        driver.FindElement(By.Id("fa_events")).Click();
+                                        System.Threading.Thread.Sleep(rnd.Next(799, 1201));
+                                        //Прежде всего отсылаем в малое если нужно
+                                        if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FlyBox")[16 + FlyNumber / 2]) == true)
+                                        {
+                                            try
+                                            {
+                                                IWebElement smallTrip = driver.FindElement(By.XPath(".//table/tbody/tr[1]//input[@value='ОТПРАВИТЬ']"));
+                                                smallTrip.Click();
+                                            }
+                                            catch { }
+                                        }
+                                        //В большое
+                                        if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FlyBox")[settingsIndex]) == true)
+                                        {
+                                            driver.FindElement(By.Id("flying_block")).FindElement(By.XPath(".//table/tbody/tr[2]/td[3]/form/input[5][@value='ОТПРАВИТЬ']")).Click();
+                                            System.Threading.Thread.Sleep(rnd.Next(659, 989));
+                                        }
+                                        else
+                                        {
+                                            //На кар-кар
+                                            WaitForElementAndClick(driver.FindElement(By.XPath("//input[@class='cmd_all cmd_row4 cmd_arow4']")), 4000);
+                                            //Выбираем путь
+                                            switch (Convert.ToInt32(ReadFromFile(SettingsFile, "FlyBox")[settingsIndex + 2]))
+                                            {
+                                                case 1:
+                                                    WaitForElementAndClick(driver.FindElement(By.XPath("//div[@rel='1']")), 5000);
+                                                    break;
+                                                case 2:
+                                                    WaitForElementAndClick(driver.FindElement(By.XPath("//div[@rel='2']")), 5000);
+                                                    break;
+                                                case 3:
+                                                    WaitForElementAndClick(driver.FindElement(By.XPath("//div[@rel='3']")), 5000);
+                                                    break;
+                                                default: break;
+                                            }
+                                            //вВыбираем кол-во часов
+                                            string hrs = ReadFromFile(SettingsFile, "FlyBox")[settingsIndex + 3];
+                                            driver.FindElement(By.XPath("//option[@value='" + hrs + "']")).Click();
+                                            //Отправить
+                                            System.Threading.Thread.Sleep(rnd.Next(1123, 1325));
+                                            driver.FindElement(By.CssSelector(".mbuttons.sbt.fl_l")).Click();
+                                            //Close
+                                            System.Threading.Thread.Sleep(rnd.Next(1123, 1325));
+                                            driver.FindElement(By.CssSelector(".iconsp.icon_close")).Click();
+                                        }
+                                        IsInTrip = true;
+                                    }
+                                    catch { }
+                                }
                             }
                         }
+                        settingsIndex += 4;
+                        FlyNumber = FlyNumber + 2;
                     }
-                    settingsIndex += 4;
-                    FlyNumber = FlyNumber + 2;
                 }
             }
+            catch { }
         }
 
         public void Underground()
@@ -2842,19 +2854,23 @@ namespace Simple_Bot
 
         public void OpenNewPand()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "UndergroundBox")[8]) == true)
+            try
             {
-                int currentPandaCount = Convert.ToInt32(GetResourceValue("title=" + '\u0022' + "Ящик Пандоры" + '\u0022' + " style")[0]);
-                if (PandaCount < currentPandaCount)
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "UndergroundBox")[8]) == true)
                 {
-                    OpenSalePanda();
-                    PandaCount = currentPandaCount;
-                }
-                if (PandaCount > currentPandaCount)
-                {
-                    PandaCount = currentPandaCount;
+                    int currentPandaCount = Convert.ToInt32(GetResourceValue("title=" + '\u0022' + "Ящик Пандоры" + '\u0022' + " style")[0]);
+                    if (PandaCount < currentPandaCount)
+                    {
+                        OpenSalePanda();
+                        PandaCount = currentPandaCount;
+                    }
+                    if (PandaCount > currentPandaCount)
+                    {
+                        PandaCount = currentPandaCount;
+                    }
                 }
             }
+            catch { }
         }
 
         public void OpenSalePanda()
@@ -3683,38 +3699,42 @@ namespace Simple_Bot
 
         public void FightImmuns()
         {
-            bool Ogl = Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[10]);
-            bool Anti = Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[11]);
-            if (Ogl == true || Anti == true)
+            try
             {
-                if (Timer_FightImmunOgl.CompareTo(DateTime.Now) < 0 || Timer_FightImmunAnti.CompareTo(DateTime.Now) < 0)
+                bool Ogl = Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[10]);
+                bool Anti = Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[11]);
+                if (Ogl == true || Anti == true)
                 {
-                    Timer_FightImmunOgl = ToDateTime(GetResourceValue("Иммунитет к заговору " + "&quot;" + "Оглушка" + "&quot;" + ".")[0]);
-                    Timer_FightImmunAnti = ToDateTime(GetResourceValue("Иммунитет к заговору " + "&quot;" + "Антикрут" + "&quot;" + ".")[0]);
-
                     if (Timer_FightImmunOgl.CompareTo(DateTime.Now) < 0 || Timer_FightImmunAnti.CompareTo(DateTime.Now) < 0)
                     {
-                        try
+                        Timer_FightImmunOgl = ToDateTime(GetResourceValue("Иммунитет к заговору " + "&quot;" + "Оглушка" + "&quot;" + ".")[0]);
+                        Timer_FightImmunAnti = ToDateTime(GetResourceValue("Иммунитет к заговору " + "&quot;" + "Антикрут" + "&quot;" + ".")[0]);
+
+                        if (Timer_FightImmunOgl.CompareTo(DateTime.Now) < 0 || Timer_FightImmunAnti.CompareTo(DateTime.Now) < 0)
                         {
-                            //переход в деревню
-                            driver.FindElement(By.LinkText("Деревня")).Click();
-                            System.Threading.Thread.Sleep(rnd.Next(499, 798));
-                            //святилище
-                            driver.FindElement(By.XPath(".//div[text()='Святилище']")).Click();
-                            System.Threading.Thread.Sleep(rnd.Next(499, 798));
-                            //Услуги шамана
-                            driver.FindElement(By.LinkText("Услуги Шамана")).Click();
-                            System.Threading.Thread.Sleep(rnd.Next(499, 798));
-                            //Выбираем нужные иммуны
-                            FightImmunOgl(Ogl);
-                            FightImmunAnti(Anti);
-                            //выбераем ресурс и активируем
-                            ImmunSelectPirCry();
+                            try
+                            {
+                                //переход в деревню
+                                driver.FindElement(By.LinkText("Деревня")).Click();
+                                System.Threading.Thread.Sleep(rnd.Next(499, 798));
+                                //святилище
+                                driver.FindElement(By.XPath(".//div[text()='Святилище']")).Click();
+                                System.Threading.Thread.Sleep(rnd.Next(499, 798));
+                                //Услуги шамана
+                                driver.FindElement(By.LinkText("Услуги Шамана")).Click();
+                                System.Threading.Thread.Sleep(rnd.Next(499, 798));
+                                //Выбираем нужные иммуны
+                                FightImmunOgl(Ogl);
+                                FightImmunAnti(Anti);
+                                //выбераем ресурс и активируем
+                                ImmunSelectPirCry();
+                            }
+                            catch { }
                         }
-                        catch { }
                     }
                 }
             }
+            catch { }
         }
 
         private void FightImmunOgl(bool ShoulBy)
@@ -4059,14 +4079,18 @@ namespace Simple_Bot
 
         public void MineByInventory()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MineBox")[10]) == true)
+            try
             {
-                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MineBox")[8]) == true)
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MineBox")[10]) == true)
                 {
-                    ByMineInventoryCommon(Convert.ToInt32(GetResourceValue("Кирка")[0]), Convert.ToInt32(GetResourceValue("Очки")[0]), Convert.ToInt32(GetResourceValue("Каска")[0]));
+                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MineBox")[8]) == true)
+                    {
+                        ByMineInventoryCommon(Convert.ToInt32(GetResourceValue("Кирка")[0]), Convert.ToInt32(GetResourceValue("Очки")[0]), Convert.ToInt32(GetResourceValue("Каска")[0]));
+                    }
+                    else ByMineInventoryWorker();
                 }
-                else ByMineInventoryWorker();
             }
+            catch { }
         }
 
         private void ByMineInventoryCommon(int Pick, int Glasses, int Helmet)
@@ -4199,54 +4223,62 @@ namespace Simple_Bot
 
         public void CryStirring()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PotionMakingBox")[1]) == true && Convert.ToBoolean(ReadFromFile(SettingsFile, "PotionMakingBox")[5]) == true)
+            try
             {
-                if (Timer_CryStiring.CompareTo(DateTime.Now) < 0)
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PotionMakingBox")[1]) == true && Convert.ToBoolean(ReadFromFile(SettingsFile, "PotionMakingBox")[5]) == true)
                 {
-                    driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
-                    //чистим котел
-                    driver.FindElement(By.Id("form_alchemy_boiler")).FindElement(By.XPath(".//input[@value='ПОЧИСТИТЬ']")).Click();
-                    string duration = Convert.ToString(ReadFromFile(SettingsFile, "PotionMakingBox")[6]);
-                    if (duration.Length == 1)
+                    if (Timer_CryStiring.CompareTo(DateTime.Now) < 0)
                     {
-                        duration = "0" + duration;
+                        driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
+                        //чистим котел
+                        driver.FindElement(By.Id("form_alchemy_boiler")).FindElement(By.XPath(".//input[@value='ПОЧИСТИТЬ']")).Click();
+                        string duration = Convert.ToString(ReadFromFile(SettingsFile, "PotionMakingBox")[6]);
+                        if (duration.Length == 1)
+                        {
+                            duration = "0" + duration;
+                        }
+                        Timer_CryStiring = ToDateTime("00:" + duration + ":01");
                     }
-                    Timer_CryStiring = ToDateTime("00:" + duration + ":01");
                 }
             }
+            catch { }
         }
 
         public void LitleGuru()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[9]) == true)
+            try
             {
-                while (true)
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[9]) == true)
                 {
-                    int currenCry = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
-                    driver.FindElement(By.LinkText("Гавань")).Click();
-                    System.Threading.Thread.Sleep(rnd.Next(689, 899));
-                    driver.FindElement(By.LinkText("Торговая площадка")).Click();
-                    System.Threading.Thread.Sleep(rnd.Next(689, 899));
-                    driver.FindElement(By.XPath(".//option[text()='Билет на маленькую поляну']")).Click();
-
-                    while (currenCry > 30)
+                    while (true)
                     {
-                        //двигаем бегунок
-                        IWebElement Slider = driver.FindElement(By.CssSelector(".ui-slider-handle.ui-state-default.ui-corner-all"));
-                        Actions builder = new Actions(driver);
-                        IAction dragAndDrop = builder.ClickAndHold(Slider).MoveByOffset(0, 0).MoveByOffset(200, 150).Release().Build();
-                        dragAndDrop.Perform();
-                        driver.FindElement(By.XPath(".//input[@value='КУПИТЬ']")).Click();
+                        int currenCry = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                        driver.FindElement(By.LinkText("Гавань")).Click();
                         System.Threading.Thread.Sleep(rnd.Next(689, 899));
-                        currenCry = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
-                        if (Convert.ToInt32(GetResourceValue("i33")[0]) > (Convert.ToInt32(GetResourceValue("i33")[1]) - 15))
+                        driver.FindElement(By.LinkText("Торговая площадка")).Click();
+                        System.Threading.Thread.Sleep(rnd.Next(689, 899));
+                        driver.FindElement(By.XPath(".//option[text()='Билет на маленькую поляну']")).Click();
+
+                        while (currenCry > 30)
                         {
-                            break;
+                            //двигаем бегунок
+                            IWebElement Slider = driver.FindElement(By.CssSelector(".ui-slider-handle.ui-state-default.ui-corner-all"));
+                            Actions builder = new Actions(driver);
+                            IAction dragAndDrop = builder.ClickAndHold(Slider).MoveByOffset(0, 0).MoveByOffset(200, 150).Release().Build();
+                            dragAndDrop.Perform();
+                            driver.FindElement(By.XPath(".//input[@value='КУПИТЬ']")).Click();
+                            System.Threading.Thread.Sleep(rnd.Next(689, 899));
+                            currenCry = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                            if (Convert.ToInt32(GetResourceValue("i33")[0]) > (Convert.ToInt32(GetResourceValue("i33")[1]) - 15))
+                            {
+                                break;
+                            }
                         }
+                        SmallFields();
                     }
-                    SmallFields();
                 }
             }
+            catch { }
         }
 
         public void BigGuru()
@@ -4674,148 +4706,152 @@ namespace Simple_Bot
 
         public void Shop()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "ShopBox")[1]))
+            try
             {
-                //если текущая работа не спуск в подземелье, то пробуем спустится
-                if (CurrentWork("Спуск") == false)
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "ShopBox")[1]))
                 {
-                    if (Timer_Shop.CompareTo(DateTime.Now) < 0)
+                    //если текущая работа не спуск в подземелье, то пробуем спустится
+                    if (CurrentWork("Спуск") == false)
                     {
-                        //Узнаем, установлен валидное числовое значение для лимита валюты и сразу сколько заданного ресурса на руках
-                        bool isCurrencyValid = false;
-                        int currenCurrency = 0;
-                        int currencyLimit = 0;
-
-                        switch (ReadFromFile(SettingsFile, "ShopBox")[3])
+                        if (Timer_Shop.CompareTo(DateTime.Now) < 0)
                         {
-                            case "Золото":
-                                try
-                                {
-                                    currencyLimit = Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[8]);
-                                    isCurrencyValid = true;
-                                    currenCurrency = Convert.ToInt32(driver.FindElement(By.Id("gold")).FindElement(By.TagName("b")).Text.Replace(".", ""));
-                                }
-                                catch { }
-                                break;
+                            //Узнаем, установлен валидное числовое значение для лимита валюты и сразу сколько заданного ресурса на руках
+                            bool isCurrencyValid = false;
+                            int currenCurrency = 0;
+                            int currencyLimit = 0;
 
-                            case "Кристаллы":
-                                try
-                                {
-                                    currencyLimit = Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[9]);
-                                    isCurrencyValid = true;
-                                    currenCurrency = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
-                                }
-                                catch { }
-                                break;
-
-                            case "Зелень":
-                                try
-                                {
-                                    currencyLimit = Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[10]);
-                                    isCurrencyValid = true;
-                                    currenCurrency = Convert.ToInt32(driver.FindElement(By.Id("green")).FindElement(By.TagName("b")).Text.Replace(".", ""));
-                                }
-                                catch { }
-                                break;
-
-                            default:
-                                break;
-                        }
-
-                        if (currenCurrency >= currencyLimit & isCurrencyValid)
-                        {
-                            driver.FindElement(By.LinkText("Деревня")).Click();
-                            Delays();
-                            driver.FindElement(By.XPath("//div[text()='Сбытница']")).Click();
-                            Delays();
-                            //Выбираем все типы товаро
-                            driver.FindElement(By.XPath("//a[@title='Все']")).Click();
-                            Delays();
-
-                            ShopUncheckAllProductTypes();
-                            ShopUncheckAllCurrencyTypes();
-
-                            //Вводим название товара
-                            driver.FindElement(By.CssSelector("[name='text_filter']")).Clear();
-                            driver.FindElement(By.CssSelector("[name='text_filter']")).SendKeys(ReadFromFile(SettingsFile, "ShopBox")[2]);
-                            Delays();
-                            //Кликаем поиск
-                            driver.FindElement(By.CssSelector("[title='Поиск']")).Click();
-                            Delays();
-
-                            //выставляем опции сортировки с дешевых по  ддорогие
-                            try
+                            switch (ReadFromFile(SettingsFile, "ShopBox")[3])
                             {
-                                IWebElement sortOption = driver.FindElement(By.XPath("//a[text()='Выкуп']/following-sibling::b[contains(@class,'desc')]"));
+                                case "Золото":
+                                    try
+                                    {
+                                        currencyLimit = Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[8]);
+                                        isCurrencyValid = true;
+                                        currenCurrency = Convert.ToInt32(driver.FindElement(By.Id("gold")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                                    }
+                                    catch { }
+                                    break;
+
+                                case "Кристаллы":
+                                    try
+                                    {
+                                        currencyLimit = Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[9]);
+                                        isCurrencyValid = true;
+                                        currenCurrency = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                                    }
+                                    catch { }
+                                    break;
+
+                                case "Зелень":
+                                    try
+                                    {
+                                        currencyLimit = Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[10]);
+                                        isCurrencyValid = true;
+                                        currenCurrency = Convert.ToInt32(driver.FindElement(By.Id("green")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                                    }
+                                    catch { }
+                                    break;
+
+                                default:
+                                    break;
                             }
-                            catch
+
+                            if (currenCurrency >= currencyLimit & isCurrencyValid)
                             {
-                                driver.FindElement(By.XPath("//a[text()='Выкуп']")).Click();
+                                driver.FindElement(By.LinkText("Деревня")).Click();
                                 Delays();
-                            }
+                                driver.FindElement(By.XPath("//div[text()='Сбытница']")).Click();
+                                Delays();
+                                //Выбираем все типы товаро
+                                driver.FindElement(By.XPath("//a[@title='Все']")).Click();
+                                Delays();
 
-                            int lowestPrice = 0;
-                            IList<IWebElement> itemsList = driver.FindElements(By.CssSelector(".row.round3"));
-                            foreach (var item in itemsList)
+                                ShopUncheckAllProductTypes();
+                                ShopUncheckAllCurrencyTypes();
+
+                                //Вводим название товара
+                                driver.FindElement(By.CssSelector("[name='text_filter']")).Clear();
+                                driver.FindElement(By.CssSelector("[name='text_filter']")).SendKeys(ReadFromFile(SettingsFile, "ShopBox")[2]);
+                                Delays();
+                                //Кликаем поиск
+                                driver.FindElement(By.CssSelector("[title='Поиск']")).Click();
+                                Delays();
+
+                                //выставляем опции сортировки с дешевых по  ддорогие
+                                try
+                                {
+                                    IWebElement sortOption = driver.FindElement(By.XPath("//a[text()='Выкуп']/following-sibling::b[contains(@class,'desc')]"));
+                                }
+                                catch
+                                {
+                                    driver.FindElement(By.XPath("//a[text()='Выкуп']")).Click();
+                                    Delays();
+                                }
+
+                                int lowestPrice = 0;
+                                IList<IWebElement> itemsList = driver.FindElements(By.CssSelector(".row.round3"));
+                                foreach (var item in itemsList)
+                                {
+                                    IWebElement tempElement;
+                                    string tempString;
+                                    //смотрим чтоб товар был в нужной нам валюте, если нет, то выходим
+                                    tempString = item.FindElement(By.CssSelector(".more [title]")).GetAttribute("title");
+                                    if (!tempString.Equals(ReadFromFile(SettingsFile, "ShopBox")[3]))
+                                        continue;
+
+                                    //Сморим чтоб цена подходила была не больше максимальной
+                                    tempString = item.FindElement(By.CssSelector(".more .price_num")).Text.Replace(".", string.Empty);
+                                    if (Convert.ToInt64(tempString) > Convert.ToInt64(ReadFromFile(SettingsFile, "ShopBox")[4]))
+                                        continue;
+
+                                    //смотрим уровень вещи
+                                    //если установлено значение в 0, то ищем вещь без level
+                                    if (ReadFromFile(SettingsFile, "ShopBox")[6].Equals("0"))
+                                    {
+                                        try
+                                        {
+                                            //если у вещи находим тег левел, то она нам не нужна, делаем континью
+                                            tempElement = item.FindElement(By.CssSelector(".itemimg_info .level"));
+                                            continue;
+                                        }
+                                        catch { }
+                                    }
+                                    else
+                                    {
+                                        tempString = item.FindElement(By.CssSelector(".itemimg_info .level")).Text;
+                                        if (!ReadFromFile(SettingsFile, "ShopBox")[6].Equals(tempString))
+                                            continue;
+                                    }
+
+                                    //смотрим кол-во пп
+                                    tempString = item.FindElement(By.CssSelector(".itemimg_info_sells b")).GetAttribute("class").Remove(0, 6);
+                                    if (Convert.ToInt32(tempString) >= Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[5]) & Convert.ToInt32(tempString) <= Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[12]))
+                                    {
+                                        try
+                                        {
+                                            //покупаем
+                                            item.FindElement(By.CssSelector(".more a")).Click();
+                                            //наасайниваем новый таймер
+                                            string timer = string.Format("00:{0}:{1}", Convert.ToString(ReadFromFile(SettingsFile, "ShopBox")[7]), rnd.Next(10, 55));
+                                            Timer_Shop = ToDateTime(timer);
+                                            break;
+                                        }
+                                        catch { }
+                                    }
+                                }
+
+                            }
+                            else
+                            //если не хвататет бабла , то переасайниваем таймер
                             {
-                                IWebElement tempElement;
-                                string tempString;
-                                //смотрим чтоб товар был в нужной нам валюте, если нет, то выходим
-                                tempString = item.FindElement(By.CssSelector(".more [title]")).GetAttribute("title");
-                                if (!tempString.Equals(ReadFromFile(SettingsFile, "ShopBox")[3]))
-                                    continue;
-
-                                //Сморим чтоб цена подходила была не больше максимальной
-                                tempString = item.FindElement(By.CssSelector(".more .price_num")).Text.Replace(".", string.Empty);
-                                if (Convert.ToInt64(tempString) > Convert.ToInt64(ReadFromFile(SettingsFile, "ShopBox")[4]))
-                                    continue;
-
-                                //смотрим уровень вещи
-                                //если установлено значение в 0, то ищем вещь без level
-                                if (ReadFromFile(SettingsFile, "ShopBox")[6].Equals("0"))
-                                {
-                                    try
-                                    {
-                                        //если у вещи находим тег левел, то она нам не нужна, делаем континью
-                                        tempElement = item.FindElement(By.CssSelector(".itemimg_info .level"));
-                                        continue;
-                                    }
-                                    catch { }
-                                }
-                                else
-                                {
-                                    tempString = item.FindElement(By.CssSelector(".itemimg_info .level")).Text;
-                                    if (!ReadFromFile(SettingsFile, "ShopBox")[6].Equals(tempString))
-                                        continue;
-                                }
-
-                                //смотрим кол-во пп
-                                tempString = item.FindElement(By.CssSelector(".itemimg_info_sells b")).GetAttribute("class").Remove(0, 6);
-                                if (Convert.ToInt32(tempString) >= Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[5]) & Convert.ToInt32(tempString) <= Convert.ToInt32(ReadFromFile(SettingsFile, "ShopBox")[12]))
-                                {
-                                    try
-                                    {
-                                        //покупаем
-                                        item.FindElement(By.CssSelector(".more a")).Click();
-                                        //наасайниваем новый таймер
-                                        string timer = string.Format("00:{0}:{1}", Convert.ToString(ReadFromFile(SettingsFile, "ShopBox")[7]), rnd.Next(10, 55));
-                                        Timer_Shop = ToDateTime(timer);
-                                        break;
-                                    }
-                                    catch { }
-                                }
+                                string timer = string.Format("00:{0}:{1}", Convert.ToString(ReadFromFile(SettingsFile, "ShopBox")[7]), rnd.Next(10, 55));
+                                Timer_Shop = ToDateTime(timer);
                             }
-
-                        }
-                        else
-                        //если не хвататет бабла , то переасайниваем таймер
-                        {
-                            string timer = string.Format("00:{0}:{1}", Convert.ToString(ReadFromFile(SettingsFile, "ShopBox")[7]), rnd.Next(10, 55));
-                            Timer_Shop = ToDateTime(timer);
                         }
                     }
                 }
             }
+            catch { }
         }
 
         private void ShopUncheckAllProductTypes()
@@ -5070,73 +5106,77 @@ namespace Simple_Bot
 
         public void MassFight()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[1]))
+            try
             {
-                Timer_MassFight = ToDateTime("00:35:00");
-                GoToMassFight();
-                while (true)
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[1]))
                 {
-                    try
+                    Timer_MassFight = ToDateTime("00:35:00");
+                    GoToMassFight();
+                    while (true)
                     {
-                        //заканчиваем войну если есть спец элемнет
                         try
                         {
-                            IWebElement endFightElement = driver.FindElement(By.CssSelector(".bonus .title"));
-                            if (endFightElement.Displayed)
-                            {
-                                driver.FindElement(By.CssSelector(".battleground_exit")).Click();
-                                break;
-                            }
-                        }
-                        catch { }
-
-                        MGoToLocation();
-                        MHealing();
-                        MGoTakeFood();
-                        MAskForFood();
-                        MAUseShild();
-                        MAUseGodDef();
-                        MAUseSacrifice();
-                        MBeat();
-                        MFood();
-                        MAGetSomeFood();
-                        WaitForNewRaund();
-
-                        //ливаем по времени
-
-                        //ливаем если убили
-                        try
-                        {
-                            IWebElement deadPerson = driver.FindElement(By.CssSelector(".bg_user_panel.dead[style*='background-color']"));
-                            if (deadPerson.Displayed)
-                            {
-                                driver.FindElement(By.CssSelector(".battleground_exit")).Click();
-                                break;
-                            }
-                        }
-                        catch { }
-
-                        if (Timer_MassFight.CompareTo(DateTime.Now) < 0)
-                        {
+                            //заканчиваем войну если есть спец элемнет
                             try
                             {
-                                driver.FindElement(By.CssSelector(".battleground_exit")).Click();
-                                break;
+                                IWebElement endFightElement = driver.FindElement(By.CssSelector(".bonus .title"));
+                                if (endFightElement.Displayed)
+                                {
+                                    driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                    break;
+                                }
                             }
                             catch { }
 
+                            MGoToLocation();
+                            MHealing();
+                            MGoTakeFood();
+                            MAskForFood();
+                            MAUseShild();
+                            MAUseGodDef();
+                            MAUseSacrifice();
+                            MBeat();
+                            MFood();
+                            MAGetSomeFood();
+                            WaitForNewRaund();
+
+                            //ливаем по времени
+
+                            //ливаем если убили
                             try
                             {
-                                driver.FindElement(By.CssSelector(".battleground_exit")).Click();
-                                break;
+                                IWebElement deadPerson = driver.FindElement(By.CssSelector(".bg_user_panel.dead[style*='background-color']"));
+                                if (deadPerson.Displayed)
+                                {
+                                    driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                    break;
+                                }
                             }
                             catch { }
-                        }
 
+                            if (Timer_MassFight.CompareTo(DateTime.Now) < 0)
+                            {
+                                try
+                                {
+                                    driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                    break;
+                                }
+                                catch { }
+
+                                try
+                                {
+                                    driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                    break;
+                                }
+                                catch { }
+                            }
+
+                        }
+                        catch { }
                     }
-                    catch { }
                 }
             }
+            catch { }
         }
 
         private void MGoToLocation()
@@ -5248,10 +5288,41 @@ namespace Simple_Bot
             }
         }
 
+        private Int64 MGetMyBm()
+        {
+            string bm = driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_points i")).Text;
+            return Convert.ToInt64(bm);
+        }
+
         private Int64 MGetCurrentHeal()
         {
             string currentHeal = driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_health_scale_left")).GetAttribute("title").Replace(" ", string.Empty).Split('/').FirstOrDefault();
             return Convert.ToInt64(currentHeal);
+        }
+
+        private bool MIsEnemyPresents()
+        {
+            bool retValue = true;
+
+            try
+            {
+                IList<IWebElement> enemys = driver.FindElements(By.CssSelector("#left div[id_user]"));
+                foreach (var enemy in enemys)
+                {
+                    string ettribyte = enemy.GetAttribute("class");
+                    if (!ettribyte.Contains("dead"))
+                    {
+                        return true;
+                    }
+                }
+
+            }
+            catch
+            {
+                return false;
+            }
+
+            return retValue;
         }
 
         private Int64 MGetMaxHeal()
@@ -5366,22 +5437,30 @@ namespace Simple_Bot
             }
         }
 
+        //Abilitys
+
         private void MAUseShild()
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[3]))
             {
-                try
+                if (MIsEnemyPresents())
                 {
-                    driver.FindElement(By.CssSelector(".talant_ico_519")).Click();
-                    SmallDelays();
-                    //Клацнуть на себя
-                    Actions action = new Actions(driver);
-                    action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
-                    SmallDelays();
-                    driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_name")).Click();
-                    SmallDelays();
+                    if (MGetCurrentFood() > 15)
+                    {
+                        try
+                        {
+                            driver.FindElement(By.CssSelector(".talant_ico_519")).Click();
+                            SmallDelays();
+                            //Клацнуть на себя
+                            Actions action = new Actions(driver);
+                            action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+                            SmallDelays();
+                            driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_name")).Click();
+                            SmallDelays();
+                        }
+                        catch { }
+                    }
                 }
-                catch { }
             }
         }
 
@@ -5389,18 +5468,24 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[4]))
             {
-                try
+                if (MIsEnemyPresents())
                 {
-                    driver.FindElement(By.CssSelector(".talant_ico_518")).Click();
-                    SmallDelays();
-                    //Клацнуть на себя
-                    Actions action = new Actions(driver);
-                    action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
-                    SmallDelays();
-                    driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_name")).Click();
-                    SmallDelays();
+                    if (MGetCurrentFood() > 15)
+                    {
+                        try
+                        {
+                            driver.FindElement(By.CssSelector(".talant_ico_518")).Click();
+                            SmallDelays();
+                            //Клацнуть на себя
+                            Actions action = new Actions(driver);
+                            action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+                            SmallDelays();
+                            driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_name")).Click();
+                            SmallDelays();
+                        }
+                        catch { }
+                    }
                 }
-                catch { }
             }
         }
 
@@ -5408,20 +5493,249 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[5]))
             {
-                try
+                if (MIsEnemyPresents())
                 {
-                    driver.FindElement(By.CssSelector(".talant_ico_520")).Click();
-                    SmallDelays();
-                    //Клацнуть на себя
-                    Actions action = new Actions(driver);
-                    action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
-                    SmallDelays();
-                    driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_name")).Click();
-                    SmallDelays();
+                    if (MGetCurrentFood() > 15)
+                    {
+                        try
+                        {
+                            driver.FindElement(By.CssSelector(".talant_ico_520")).Click();
+                            SmallDelays();
+                            //Клацнуть на себя
+                            Actions action = new Actions(driver);
+                            action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+                            SmallDelays();
+                            driver.FindElement(By.CssSelector(".bg_user_panel[style*='background-color'] .bg_name")).Click();
+                            SmallDelays();
+                        }
+                        catch { }
+                    }
                 }
-                catch { }
             }
         }
+
+        //***********
+
+        private void MAArmagedon()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[9]))
+            {
+                if (MIsEnemyPresents())
+                {
+                    if (MGetCurrentFood() > 15)
+                    {
+                        try
+                        {
+                            driver.FindElement(By.CssSelector(".talant_ico_517")).Click();
+                            SmallDelays();
+
+                            Actions action = new Actions(driver);
+                            action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+
+                            //Собираем лист всех противников
+                            IList<IWebElement> enemys = driver.FindElements(By.CssSelector("#left div[id_user]"));
+
+                            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[8]))
+                            {
+                                Int64 myBm = MGetMyBm();
+                                IWebElement prevEenemy = null;
+                                foreach (var enemy in enemys)
+                                {
+                                    string enemyBm = enemy.FindElement(By.CssSelector(".bg_points i")).Text;
+
+                                    //если БМ больше то идем дальше, если меньше, то клацаем на придыдущего
+                                    if (Convert.ToInt64(enemyBm) >= myBm)
+                                        prevEenemy = enemy;
+                                    else
+                                    {
+                                        if (prevEenemy != null)
+                                            prevEenemy.Click();
+                                        else
+                                            break;
+                                    }
+
+                                }
+                            }
+                            else
+                                enemys.FirstOrDefault().Click();
+
+                            SmallDelays();
+                        }
+                        catch { }
+                    }
+                }
+            }
+        }
+
+        private void MAProklatyshki()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[10]))
+            {
+                if (MIsEnemyPresents())
+                {
+                    if (MGetCurrentFood() > 15)
+                    {
+                        try
+                        {
+                            driver.FindElement(By.CssSelector(".talant_ico_522")).Click();
+                            SmallDelays();
+
+                            Actions action = new Actions(driver);
+                            action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+
+                            //Собираем лист всех противников
+                            IList<IWebElement> enemys = driver.FindElements(By.CssSelector("#left div[id_user]"));
+
+                            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[8]))
+                            {
+                                Int64 myBm = MGetMyBm();
+                                IWebElement prevEenemy = null;
+                                foreach (var enemy in enemys)
+                                {
+                                    string enemyBm = enemy.FindElement(By.CssSelector(".bg_points i")).Text;
+
+                                    //если БМ больше то идем дальше, если меньше, то клацаем на придыдущего
+                                    if (Convert.ToInt64(enemyBm) >= myBm)
+                                        prevEenemy = enemy;
+                                    else
+                                    {
+                                        if (prevEenemy != null)
+                                            prevEenemy.Click();
+                                        else
+                                            break;
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                if (enemys.Count > 1)
+                                    enemys[1].Click();
+                                else
+                                    enemys[0].Click();
+                            }
+
+                            SmallDelays();
+                        }
+                        catch { }
+                    }
+                }
+            }
+        }
+
+        private void MAScreem()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[11]))
+            {
+                if (MIsEnemyPresents())
+                {
+                    if (MGetCurrentFood() > 15)
+                    {
+                        try
+                        {
+                            driver.FindElement(By.CssSelector(".talant_ico_521")).Click();
+                            SmallDelays();
+
+                            Actions action = new Actions(driver);
+                            action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+
+                            //Собираем лист всех противников
+                            IList<IWebElement> enemys = driver.FindElements(By.CssSelector("#left div[id_user]"));
+
+                            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[8]))
+                            {
+                                Int64 myBm = MGetMyBm();
+                                IWebElement prevEenemy = null;
+                                foreach (var enemy in enemys)
+                                {
+                                    string enemyBm = enemy.FindElement(By.CssSelector(".bg_points i")).Text;
+
+                                    //если БМ больше то идем дальше, если меньше, то клацаем на придыдущего
+                                    if (Convert.ToInt64(enemyBm) >= myBm)
+                                        prevEenemy = enemy;
+                                    else
+                                    {
+                                        if (prevEenemy != null)
+                                            prevEenemy.Click();
+                                        else
+                                            break;
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                if (enemys.Count > 1)
+                                    enemys[1].Click();
+                                else
+                                    enemys[0].Click();
+                            }
+
+                            SmallDelays();
+                        }
+                        catch { }
+                    }
+                }
+            }
+        }
+
+        private void MAWeakness()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[12]))
+            {
+                if (MIsEnemyPresents())
+                {
+                    if (MGetCurrentFood() > 15)
+                    {
+                        try
+                        {
+                            driver.FindElement(By.CssSelector(".talant_ico_523")).Click();
+                            SmallDelays();
+
+                            Actions action = new Actions(driver);
+                            action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+
+                            //Собираем лист всех противников
+                            IList<IWebElement> enemys = driver.FindElements(By.CssSelector("#left div[id_user]"));
+
+                            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[8]))
+                            {
+                                Int64 myBm = MGetMyBm();
+                                IWebElement prevEenemy = null;
+                                foreach (var enemy in enemys)
+                                {
+                                    string enemyBm = enemy.FindElement(By.CssSelector(".bg_points i")).Text;
+
+                                    //если БМ больше то идем дальше, если меньше, то клацаем на придыдущего
+                                    if (Convert.ToInt64(enemyBm) >= myBm)
+                                        prevEenemy = enemy;
+                                    else
+                                    {
+                                        if (prevEenemy != null)
+                                            prevEenemy.Click();
+                                        else
+                                            break;
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                if (enemys.Count > 1)
+                                    enemys[1].Click();
+                                else
+                                    enemys[0].Click();
+                            }
+
+                            SmallDelays();
+                        }
+                        catch { }
+                    }
+                }
+            }
+        }
+
+        //***********
 
         private void MAskForFood()
         {
@@ -5479,85 +5793,89 @@ namespace Simple_Bot
 
         public void ArenaFight()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[26]))
+            try
             {
-                if (Timer_Arena.CompareTo(DateTime.Now) < 0)
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[26]))
                 {
-                    //если текущая работа не спуск в подземелье
-                    if (CurrentWork("Спуск") == false)
+                    if (Timer_Arena.CompareTo(DateTime.Now) < 0)
                     {
-                        try
+                        //если текущая работа не спуск в подземелье
+                        if (CurrentWork("Спуск") == false)
                         {
-                            //Определяем страницу, если не на бодалке, то переходим в нее
                             try
                             {
-                                if (driver.Url.Contains("dozor") == false || driver.Url.Contains("arena"))
-                                {
-                                    driver.FindElement(By.LinkText("Бодалка")).Click();
-                                    Delays();
-                                }
-                            }
-                            catch { }
-
-                            //число оставшихся кри на считу
-                            int currenCry =
-                                Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
-                            if (currenCry > 5)
-                            {
-                                //driver.FindElement(By.XPath(".//a[contains(text(),'ПОИСК:')]")).Click();
+                                //Определяем страницу, если не на бодалке, то переходим в нее
                                 try
                                 {
-                                    driver.FindElement(By.XPath(".//a[text()='ПОИСК: ']")).Click();
+                                    if (driver.Url.Contains("dozor") == false || driver.Url.Contains("arena"))
+                                    {
+                                        driver.FindElement(By.LinkText("Бодалка")).Click();
+                                        Delays();
+                                    }
                                 }
                                 catch { }
-                                Delays();
-                                string[] enemysBm = new string[4];
-                                string[] enemysName = new string[4];
-                                IList<IWebElement> enemys = driver.FindElements(By.CssSelector(".arena_enemy"));
-                                int iterator = 0;
-                                foreach (var enemy in enemys)
+
+                                //число оставшихся кри на считу
+                                int currenCry =
+                                    Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+                                if (currenCry > 5)
                                 {
-                                    enemysName[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_name")).Text;
-                                    //если ориентируемся по БМ, тогда один силектор, если нет, то другой
+                                    //driver.FindElement(By.XPath(".//a[contains(text(),'ПОИСК:')]")).Click();
+                                    try
+                                    {
+                                        driver.FindElement(By.XPath(".//a[text()='ПОИСК: ']")).Click();
+                                    }
+                                    catch { }
+                                    Delays();
+                                    string[] enemysBm = new string[4];
+                                    string[] enemysName = new string[4];
+                                    IList<IWebElement> enemys = driver.FindElements(By.CssSelector(".arena_enemy"));
+                                    int iterator = 0;
+                                    foreach (var enemy in enemys)
+                                    {
+                                        enemysName[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_name")).Text;
+                                        //если ориентируемся по БМ, тогда один силектор, если нет, то другой
+                                        if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[32]))
+                                        {
+                                            enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(2)"))
+                                                                      .Text.Replace(".", "");
+                                        }
+                                        else
+                                        {
+                                            enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(1)"))
+                                                                      .Text.Replace(".", "");
+                                        }
+                                        iterator++;
+                                    }
+                                    Sort(enemysBm, enemysName);
+
+                                    //бъем по БМ или славе
                                     if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[32]))
                                     {
-                                        enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(2)"))
-                                                                  .Text.Replace(".", "");
+                                        driver.FindElement(
+                                            By.XPath(string.Format(".//div[text()='{0}']/..",
+                                                                   enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[27])]))).Click();
                                     }
                                     else
                                     {
-                                        enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(1)"))
-                                                                  .Text.Replace(".", "");
+                                        driver.FindElement(By.XPath(string.Format(".//div[text()='{0}']/..", enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[34])]))).Click();
                                     }
-                                    iterator++;
-                                }
-                                Sort(enemysBm, enemysName);
 
-                                //бъем по БМ или славе
-                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[32]))
-                                {
-                                    driver.FindElement(
-                                        By.XPath(string.Format(".//div[text()='{0}']/..",
-                                                               enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[27])]))).Click();
+                                    //Если каждые 5 минут, то ассайни соотв таймер
+                                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[28]))
+                                        Timer_Arena = ToDateTime(string.Format("00:05:{0}", rnd.Next(15, 58)));
+                                    else
+                                        Timer_Arena = ToDateTime(string.Format("00:15:{0}", rnd.Next(15, 58)));
                                 }
-                                else
-                                {
-                                    driver.FindElement(By.XPath(string.Format(".//div[text()='{0}']/..", enemysName[Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[34])]))).Click();
-                                }
-
-                                //Если каждые 5 минут, то ассайни соотв таймер
-                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[28]))
-                                    Timer_Arena = ToDateTime(string.Format("00:05:{0}", rnd.Next(15, 58)));
-                                else
-                                    Timer_Arena = ToDateTime(string.Format("00:15:{0}", rnd.Next(15, 58)));
                             }
-                        }
-                        catch (Exception)
-                        {
+                            catch (Exception)
+                            {
+                            }
                         }
                     }
                 }
             }
+            catch { }
         }
     }
 }
