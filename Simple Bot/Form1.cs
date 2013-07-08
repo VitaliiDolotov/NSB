@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2548;
+        int BotVersion = 2549;
 
         Thread BotThread;
 
@@ -2016,12 +2016,15 @@ namespace Simple_Bot
 
         private void numericUpDownTFEveryTime_ValueChanged(object sender, EventArgs e)
         {
-            numericUpDownTFEveryTime2.Value = numericUpDownTFEveryTime.Value + 3;
+            if (numericUpDownTFEveryTime.Value + 3 < 55)
+                numericUpDownTFEveryTime2.Value = numericUpDownTFEveryTime.Value + 3;
+            else
+                numericUpDownTFEveryTime2.Value = 55;
         }
 
         private void numericUpDownTFEveryTime2_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDownTFEveryTime2.Value <= numericUpDownTFEveryTime.Value)
+            if (numericUpDownTFEveryTime2.Value <= numericUpDownTFEveryTime.Value & numericUpDownTFEveryTime.Value + 1 <= 55)
                 numericUpDownTFEveryTime2.Value = numericUpDownTFEveryTime.Value + 1;
         }
 
@@ -2238,6 +2241,39 @@ namespace Simple_Bot
             ResumeButton.Visible = false;
             PauseButton.Visible = true;
             BotThread.Resume();
+        }
+
+        private void numericUpDownMinDelay_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMinDelay.Value + 500 <= 9999)
+                numericUpDownMaxDelay.Value = numericUpDownMinDelay.Value + 500;
+            else
+                numericUpDownMaxDelay.Value = 9999;
+        }
+
+        private void numericUpDownMaxDelay_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMaxDelay.Value <= numericUpDownMinDelay.Value & numericUpDownMinDelay.Value + 100 <= 9999)
+                numericUpDownMaxDelay.Value = numericUpDownMinDelay.Value + 100;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "SystemBox");
+        }
+
+        private void numericUpDownMinDelayMf_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMinDelayMf.Value + 300 <= 9999)
+                numericUpDownMaxDelayMf.Value = numericUpDownMinDelayMf.Value + 300;
+            else
+                numericUpDownMaxDelayMf.Value = 9999;
+        }
+
+        private void numericUpDownMaxDelayMf_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMaxDelayMf.Value <= numericUpDownMinDelayMf.Value & numericUpDownMinDelayMf.Value + 100 <= 9999)
+                numericUpDownMaxDelayMf.Value = numericUpDownMinDelayMf.Value + 100;
         }
     }
 }

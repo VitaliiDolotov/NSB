@@ -5132,9 +5132,16 @@ namespace Simple_Bot
                             MHealing();
                             MGoTakeFood();
                             MAskForFood();
+
                             MAUseShild();
                             MAUseGodDef();
                             MAUseSacrifice();
+
+                            MAArmagedon();
+                            MAScreem();
+                            MAProklatyshki();                            
+                            MAWeakness();
+
                             MBeat();
                             MFood();
                             MAGetSomeFood();
@@ -5538,22 +5545,20 @@ namespace Simple_Bot
                             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[8]))
                             {
                                 Int64 myBm = MGetMyBm();
-                                IWebElement prevEenemy = null;
                                 foreach (var enemy in enemys)
                                 {
                                     string enemyBm = enemy.FindElement(By.CssSelector(".bg_points i")).Text;
 
-                                    //если БМ больше то идем дальше, если меньше, то клацаем на придыдущего
-                                    if (Convert.ToInt64(enemyBm) >= myBm)
-                                        prevEenemy = enemy;
-                                    else
-                                    {
-                                        if (prevEenemy != null)
-                                            prevEenemy.Click();
-                                        else
-                                            break;
-                                    }
+                                    //если противник всего один
+                                    if (enemys.Count == 1 & Convert.ToInt64(enemyBm) >= myBm)
+                                        enemy.Click(); 
 
+                                    //если БМ, то валим первого попавшегося
+                                    if (Convert.ToInt64(enemyBm) >= myBm)
+                                    {
+                                        enemy.Click();
+                                        break;
+                                    }
                                 }
                             }
                             else
@@ -5588,15 +5593,23 @@ namespace Simple_Bot
 
                             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[8]))
                             {
+                                int iterator = 0;
                                 Int64 myBm = MGetMyBm();
                                 IWebElement prevEenemy = null;
                                 foreach (var enemy in enemys)
                                 {
                                     string enemyBm = enemy.FindElement(By.CssSelector(".bg_points i")).Text;
 
+                                    //если противник всего один
+                                    if (enemys.Count == 1 & Convert.ToInt64(enemyBm) >= myBm)
+                                        enemy.Click();
+
                                     //если БМ больше то идем дальше, если меньше, то клацаем на придыдущего
                                     if (Convert.ToInt64(enemyBm) >= myBm)
+                                    {
                                         prevEenemy = enemy;
+                                        iterator++;
+                                    }
                                     else
                                     {
                                         if (prevEenemy != null)
@@ -5604,6 +5617,10 @@ namespace Simple_Bot
                                         else
                                             break;
                                     }
+
+                                    //клацаем по второму по силе
+                                    if (Convert.ToInt64(enemyBm) >= myBm & iterator > 1)
+                                        enemy.Click();
 
                                 }
                             }
@@ -5644,15 +5661,23 @@ namespace Simple_Bot
 
                             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[8]))
                             {
+                                int iterator = 0;
                                 Int64 myBm = MGetMyBm();
                                 IWebElement prevEenemy = null;
                                 foreach (var enemy in enemys)
                                 {
                                     string enemyBm = enemy.FindElement(By.CssSelector(".bg_points i")).Text;
 
+                                    //если противник всего один
+                                    if (enemys.Count == 1 & Convert.ToInt64(enemyBm) >= myBm)
+                                        enemy.Click(); 
+
                                     //если БМ больше то идем дальше, если меньше, то клацаем на придыдущего
                                     if (Convert.ToInt64(enemyBm) >= myBm)
+                                    {
                                         prevEenemy = enemy;
+                                        iterator++;
+                                    }
                                     else
                                     {
                                         if (prevEenemy != null)
@@ -5660,6 +5685,11 @@ namespace Simple_Bot
                                         else
                                             break;
                                     }
+
+
+                                    //клацаем по второму по силе
+                                    if (Convert.ToInt64(enemyBm) >= myBm & iterator > 1)
+                                        enemy.Click();
 
                                 }
                             }
@@ -5700,15 +5730,23 @@ namespace Simple_Bot
 
                             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[8]))
                             {
+                                int iterator = 0;
                                 Int64 myBm = MGetMyBm();
                                 IWebElement prevEenemy = null;
                                 foreach (var enemy in enemys)
                                 {
                                     string enemyBm = enemy.FindElement(By.CssSelector(".bg_points i")).Text;
 
+                                    //если противник всего один
+                                    if (enemys.Count == 1 & Convert.ToInt64(enemyBm) >= myBm)
+                                        enemy.Click();                                        
+
                                     //если БМ больше то идем дальше, если меньше, то клацаем на придыдущего
                                     if (Convert.ToInt64(enemyBm) >= myBm)
+                                    {
+                                        iterator++;
                                         prevEenemy = enemy;
+                                    }
                                     else
                                     {
                                         if (prevEenemy != null)
@@ -5716,6 +5754,10 @@ namespace Simple_Bot
                                         else
                                             break;
                                     }
+
+                                    //клацаем по второму по силе
+                                    if (Convert.ToInt64(enemyBm) >= myBm & iterator > 1)
+                                        enemy.Click();
 
                                 }
                             }
