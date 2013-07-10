@@ -19,6 +19,7 @@ using System.Threading;
 using Simple_Bot.ocr;
 using System.Runtime.InteropServices;
 using System.Media;
+using Simple_Bot.Resources;
 
 
 namespace Simple_Bot
@@ -26,7 +27,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2553;
+        int BotVersion = 2554;
 
         Thread BotThread;
 
@@ -525,9 +526,9 @@ namespace Simple_Bot
 
             BotSetUp();
 
-            BotThread = new Thread(new ThreadStart(WorkThreadFunction));
+            //BotThread = new Thread(new ThreadStart(WorkThreadFunction));
+            BotThread = new Thread(new ThreadStart(BotWorker.WorkThreadFunction));
             BotThread.Start();
-
         }
 
         private void BotSetUp()
@@ -1540,18 +1541,22 @@ namespace Simple_Bot
                 this.Close();
             }
 
+            //идем отдыхать
             if (Timer_CloseBot.CompareTo(DateTime.Now) < 0 & Timer_SleepTime.CompareTo(DateTime.Now) < 0 & !isOnRest & isDonatePlayer)
             {
                 NewRestTimer();
                 isOnRest = true;
-                BotThread.Suspend();
+                BotThread = new Thread(new ThreadStart(BotWorker.Rest));
+                BotThread.Start();
             }
 
+            //начинаем снова работать
             if (Timer_SleepTime.CompareTo(DateTime.Now) < 0 & isOnRest & isDonatePlayer)
             {
                 NewWorkTimer();
                 isOnRest = false;
-                BotThread.Resume();
+                BotThread = new Thread(new ThreadStart(BotWorker.WorkThreadFunction));
+                BotThread.Start();
             }
 
             if (isDonatePlayer)
@@ -2500,4 +2505,6 @@ namespace Simple_Bot
             UIBoxDisplay(3, 4, "MenuBox");
         }
     }
+
+
 }

@@ -104,6 +104,7 @@ namespace Simple_Bot
         static DateTime Timer_AdvTimer = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_OpenMySite = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
+        static DateTime Timer_RestTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
 
         IWebDriver driver;
@@ -653,6 +654,11 @@ namespace Simple_Bot
                 Hide();
             }
             catch { }
+        }
+
+        public void Quit()
+        {
+            driver.Quit();
         }
 
         public IWebDriver Login(string server, string Log, string Pas, string DriverType, bool MailRuLogin)
@@ -2665,6 +2671,23 @@ namespace Simple_Bot
             catch { }
         }
 
+        public void LiaveMetro()
+        {
+            driver.FindElement(By.LinkText("Бодалка")).Click();
+            try
+            {
+                driver.FindElement(By.CssSelector("input[value='НАПАСТЬ']")).Click();
+                Delays();
+            }
+            catch { }
+            Delays();
+            //выходим с подзема
+            driver.FindElement(By.XPath("//input[@value='ВЫЙТИ ИЗ ПОДЗЕМЕЛЬЯ']")).Click();
+            Delays();
+            driver.FindElement(By.XPath("//input[@value='ТОЧНО ВЫЙТИ?']")).Click();
+            Delays();
+        }
+
         public void ByKeys()
         {
             if (ReadFromFile(SettingsFile, "UndergroundBox")[6] == "True")
@@ -3315,10 +3338,10 @@ namespace Simple_Bot
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[16]) == true)
             {
                 IList<IWebElement> Stats = driver.FindElements(By.ClassName("c4"));
-                if (Convert.ToInt32(Stats[0].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[17]) &&
-                    Convert.ToInt32(Stats[1].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[18]) &&
-                    Convert.ToInt32(Stats[2].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[19]) &&
-                    Convert.ToInt32(Stats[3].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[20]) &&
+                if (Convert.ToInt32(Stats[0].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[17]) &
+                    Convert.ToInt32(Stats[1].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[18]) &
+                    Convert.ToInt32(Stats[2].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[19]) &
+                    Convert.ToInt32(Stats[3].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[20]) &
                     Convert.ToInt32(Stats[4].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[21]))
                 {
                     retValue = false;
@@ -3408,6 +3431,22 @@ namespace Simple_Bot
             {
                 return RetVal = true;
             }
+        }
+
+        public DateTime CurrentWorkTime()
+        {
+            DateTime Timer = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+            try
+            {
+                IWebElement imFree = driver.FindElement(By.CssSelector(".timers a:nth-of-type(1)"));
+                if (!imFree.Text.Equals("Я свободен!"))
+                    Timer = ToDateTime(driver.FindElement(By.CssSelector(".timers a:nth-of-type(1) span")).Text);
+            }
+            catch 
+            {
+                Timer = ToDateTime(driver.FindElement(By.CssSelector(".timers a:nth-of-type(1) span")).Text);
+            }
+            return Timer;
         }
 
         private void GetPet(PetType pet = PetType.currentPet)
@@ -5997,6 +6036,30 @@ namespace Simple_Bot
                         }
                     }
                 }
+            }
+            catch { }
+        }
+
+        public void Rest()
+        {
+            try
+            {
+                bool inMine = CurrentWork("Работа в карьере");
+                bool inMetro = CurrentWork("Спуск");
+
+                DateTime Timer_PendingWork = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+                Timer_PendingWork = CurrentWorkTime();
+
+                while (Timer_PendingWork.CompareTo(DateTime.Now) > 0)
+                    System.Threading.Thread.Sleep(1000);
+
+                if (inMine)
+                    MineGetCry();
+
+                if (inMetro)
+                    LiaveMetro();
+
+                SetPet();
             }
             catch { }
         }
