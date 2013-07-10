@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2549;
+        int BotVersion = 2551;
 
         Thread BotThread;
 
@@ -42,8 +42,10 @@ namespace Simple_Bot
         static DateTime Timer_GoBack = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_Reload = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_CloseBot = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+        static DateTime Timer_SleepTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_ChromeDriverKiller = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
+        bool isOnRest = false;
         bool chromeDriverCiller = false;
         bool oneTimeSetting = false;
         bool botStatus;
@@ -59,7 +61,17 @@ namespace Simple_Bot
 
             this.Size = new System.Drawing.Size(217, 268);
 
-            Timer_CloseBot = ToDateTime(string.Format("05:{0}:00", (rnd.Next(11, 34))));
+            int workTimeH = rnd.Next(Convert.ToInt32(numericUpDownMinHrsW.Value), Convert.ToInt32(numericUpDownMaxHrsW.Value));
+            string workTimeStringH = workTimeH.ToString();
+            if (workTimeStringH.Length == 1)
+                workTimeStringH = "0" + workTimeStringH;
+
+            int workTimeM = rnd.Next(Convert.ToInt32(numericUpDownMinMinW.Value), Convert.ToInt32(numericUpDownMaxMinW.Value));
+            string workTimeStringM = workTimeM.ToString();
+            if (workTimeStringM.Length == 1)
+                workTimeStringM = "0" + workTimeStringM;
+
+            Timer_CloseBot = ToDateTime(string.Format("{0}:{1}:00", workTimeStringH, workTimeStringM));
             Timer_ChromeDriverKiller = ToDateTime("00:01:15");
 
             Timer_OpenSite = ToDateTime("00:" + Convert.ToString(rnd.Next(25, 29)) + ":00");
@@ -224,7 +236,7 @@ namespace Simple_Bot
                 checkBoxDrinkOborotka.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[25]);
                 checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
                 numericUpDownArenaEnemyBm.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
-                checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);//false;
+                checkBoxArenaEvery5min.Checked = false;//Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
                 radioButtonMonstersAll.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[29]);
                 radioButtonMonstersLvl.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[30]);
                 comboBoxMonstersLvl.Text = ReadFromFile(SettingsFile, FightBox.Name)[31];
@@ -358,6 +370,27 @@ namespace Simple_Bot
                 checkBoxMAProklatyshki.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[10]);
                 checkBoxMAScreem.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[11]);
                 checkBoxMAWeakness.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[12]);
+            }
+            catch { }
+
+            //System Settings
+            try
+            {
+                numericUpDownMinDelay.Value = 1500;
+                numericUpDownMaxDelay.Value = 2500;
+
+                numericUpDownMinDelayMf.Value = 1200;
+                numericUpDownMaxDelayMf.Value = 1500;
+
+                numericUpDownMinHrsW.Value = 4;
+                numericUpDownMinMinW.Value = 10;
+                numericUpDownMaxHrsW.Value = 5;
+                numericUpDownMaxMinW.Value = 45;
+
+                numericUpDownMinHrsR.Value = 4;
+                numericUpDownMinMinR.Value = 10;
+                numericUpDownMaxHrsR.Value = 5;
+                numericUpDownMaxMinR.Value = 45;
             }
             catch { }
 
@@ -770,6 +803,76 @@ namespace Simple_Bot
             checkBoxMAProklatyshki.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[10]);
             checkBoxMAScreem.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[11]);
             checkBoxMAWeakness.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[12]);
+
+            //System Settings
+            string[] SystemSettings = { Convert.ToString(numericUpDownMinDelay.Value), Convert.ToString(numericUpDownMaxDelay.Value),
+                                      Convert.ToString(numericUpDownMinDelayMf.Value),Convert.ToString(numericUpDownMaxDelayMf.Value),
+                                      
+                                      Convert.ToString(numericUpDownMinHrsW.Value),Convert.ToString(numericUpDownMinMinW.Value),
+                                      Convert.ToString(numericUpDownMaxHrsW.Value),Convert.ToString(numericUpDownMaxMinW.Value),
+        
+                                      Convert.ToString(numericUpDownMinHrsR.Value),Convert.ToString(numericUpDownMinMinR.Value),
+                                      Convert.ToString(numericUpDownMaxHrsR.Value),Convert.ToString(numericUpDownMaxMinR.Value)};
+
+            CompareValuesInFile(SystemBox.Name, SystemSettings);
+
+            numericUpDownMinDelay.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[1]);
+            numericUpDownMaxDelay.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[2]);
+
+            numericUpDownMinDelayMf.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[3]);
+            numericUpDownMaxDelayMf.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[4]);
+
+            numericUpDownMinHrsW.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[5]);
+            numericUpDownMinMinW.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[6]);
+            numericUpDownMaxHrsW.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[7]);
+            numericUpDownMaxMinW.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[8]);
+
+            numericUpDownMinHrsR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[9]);
+            numericUpDownMinMinR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[10]);
+            numericUpDownMaxHrsR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[11]);
+            numericUpDownMaxMinR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[12]);
+        }
+
+        private void BotDonateSetUp()
+        {
+            //System Settings
+            try
+            {
+                numericUpDownMinDelay.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[1]);
+                numericUpDownMaxDelay.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[2]);
+
+                numericUpDownMinDelayMf.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[3]);
+                numericUpDownMaxDelayMf.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[4]);
+
+                numericUpDownMinHrsW.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[5]);
+                numericUpDownMinMinW.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[6]);
+                numericUpDownMaxHrsW.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[7]);
+                numericUpDownMaxMinW.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[8]);
+
+                numericUpDownMinHrsR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[9]);
+                numericUpDownMinMinR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[10]);
+                numericUpDownMaxHrsR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[11]);
+                numericUpDownMaxMinR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[12]);
+            }
+            catch { }
+
+            //Fight Settings
+            try
+            {
+                //Подрубаем Арену по 5 мину
+                checkBoxArenaEvery5min.Enabled = true;
+                checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+            }
+            catch { }
+
+            //Additional Settings
+            try
+            {
+                //Торговая площадка
+                comboBoxTFResource.Enabled = true;
+                comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
+            }
+            catch { }
         }
 
         private void CheckBotMessage()
@@ -1426,6 +1529,20 @@ namespace Simple_Bot
                 this.Close();
             }
 
+            if (Timer_CloseBot.CompareTo(DateTime.Now) < 0 & Timer_SleepTime.CompareTo(DateTime.Now) < 0 & !isOnRest & isDonatePlayer)
+            {
+                NewRestTimer();
+                isOnRest = true;
+                BotThread.Suspend();
+            }
+
+            if (Timer_SleepTime.CompareTo(DateTime.Now) < 0 & isOnRest & isDonatePlayer)
+            {
+                NewWorkTimer();
+                isOnRest = false;
+                BotThread.Resume();
+            }
+
             if (isDonatePlayer)
             {
                 textBoxMd5.BackColor = Color.LightGreen;
@@ -1438,27 +1555,58 @@ namespace Simple_Bot
 
                 if (!oneTimeSetting)
                 {
-                    //Подрубаем Арену по 5 мину если донат
-                    checkBoxArenaEvery5min.Enabled = true;
-                    try
-                    {
-                        checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
-                    }
-                    catch { }
-                    //Торговая площадка
-                    comboBoxTFResource.Enabled = true;
-                    try
-                    {
-                        comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
-                    }
-                    catch { }
                     oneTimeSetting = true;
+                    BotDonateSetUp();
+                    DonateLabel1.Visible = false;
+
+                    //наасайниваем новый таймер конца работы
+                    int workTimeH = rnd.Next(Convert.ToInt32(numericUpDownMinHrsW.Value), Convert.ToInt32(numericUpDownMaxHrsW.Value));
+                    string workTimeStringH = workTimeH.ToString();
+                    if (workTimeStringH.Length == 1)
+                        workTimeStringH = "0" + workTimeStringH;
+
+                    int workTimeM = rnd.Next(Convert.ToInt32(numericUpDownMinMinW.Value), Convert.ToInt32(numericUpDownMaxMinW.Value));
+                    string workTimeStringM = workTimeM.ToString();
+                    if (workTimeStringM.Length == 1)
+                        workTimeStringM = "0" + workTimeStringM;
+
+                    Timer_CloseBot = ToDateTime(string.Format("{0}:{1}:00", workTimeStringH, workTimeStringM));
                 }
             }
             //OpenSite();
             //PanelDisplay();//BrowserDisplay();
             //GoBackToSite();
             //BrowserReloadContent();
+        }
+
+        private void NewRestTimer()
+        {
+            int restTimeH = rnd.Next(Convert.ToInt32(numericUpDownMinHrsR.Value), Convert.ToInt32(numericUpDownMaxHrsR.Value));
+            string restTimeStringH = restTimeH.ToString();
+            if (restTimeStringH.Length == 1)
+                restTimeStringH = "0" + restTimeStringH;
+
+            int restTimeM = rnd.Next(Convert.ToInt32(numericUpDownMinMinR.Value), Convert.ToInt32(numericUpDownMaxMinR.Value));
+            string restTimeStringM = restTimeM.ToString();
+            if (restTimeStringM.Length == 1)
+                restTimeStringM = "0" + restTimeStringM;
+
+            Timer_SleepTime = ToDateTime(string.Format("{0}:{1}:00", restTimeStringH, restTimeStringM));
+        }
+
+        private void NewWorkTimer()
+        {
+            int workTimeH = rnd.Next(Convert.ToInt32(numericUpDownMinHrsW.Value), Convert.ToInt32(numericUpDownMaxHrsW.Value));
+            string workTimeStringH = workTimeH.ToString();
+            if (workTimeStringH.Length == 1)
+                workTimeStringH = "0" + workTimeStringH;
+
+            int workTimeM = rnd.Next(Convert.ToInt32(numericUpDownMinMinW.Value), Convert.ToInt32(numericUpDownMaxMinW.Value));
+            string workTimeStringM = workTimeM.ToString();
+            if (workTimeStringM.Length == 1)
+                workTimeStringM = "0" + workTimeStringM;
+
+            Timer_CloseBot = ToDateTime(string.Format("{0}:{1}:00", workTimeStringH, workTimeStringM));
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -1652,7 +1800,6 @@ namespace Simple_Bot
         private void button17_MouseHover(object sender, EventArgs e)
         {
             button17.Visible = false;
-            checkBoxHideBrowser.Visible = true;
             int sizeBox = LoginBox.Size.Height;
             int sizeForm = this.Size.Height;
             for (int i = 0; i < 38; i++)
@@ -1670,7 +1817,6 @@ namespace Simple_Bot
         private void button18_MouseHover(object sender, EventArgs e)
         {
             button18.Visible = false;
-            checkBoxHideBrowser.Visible = false;
             int sizeBox = LoginBox.Size.Height;
             int sizeForm = this.Size.Height;
             for (int i = 0; i < 38; i++)
@@ -2246,7 +2392,7 @@ namespace Simple_Bot
         private void numericUpDownMinDelay_ValueChanged(object sender, EventArgs e)
         {
             if (numericUpDownMinDelay.Value + 500 <= 9999)
-                numericUpDownMaxDelay.Value = numericUpDownMinDelay.Value + 500;
+                numericUpDownMaxDelay.Value = numericUpDownMinDelay.Value + 1000;
             else
                 numericUpDownMaxDelay.Value = 9999;
         }
@@ -2274,6 +2420,71 @@ namespace Simple_Bot
         {
             if (numericUpDownMaxDelayMf.Value <= numericUpDownMinDelayMf.Value & numericUpDownMinDelayMf.Value + 100 <= 9999)
                 numericUpDownMaxDelayMf.Value = numericUpDownMinDelayMf.Value + 100;
+        }
+
+        private void numericUpDownMaxHrsW_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMaxHrsW.Value < numericUpDownMinHrsW.Value)
+                numericUpDownMaxHrsW.Value = numericUpDownMinHrsW.Value;
+
+            if (numericUpDownMaxHrsW.Value == numericUpDownMinHrsW.Value & numericUpDownMinMinW.Value >= numericUpDownMaxMinW.Value)
+                numericUpDownMaxMinW.Value = numericUpDownMinMinW.Value + 1;
+        }
+
+        private void numericUpDownMinHrsW_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMinHrsW.Value > numericUpDownMaxHrsW.Value)
+                numericUpDownMaxHrsW.Value = numericUpDownMinHrsW.Value;
+
+            if (numericUpDownMaxHrsW.Value == numericUpDownMinHrsW.Value & numericUpDownMinMinW.Value >= numericUpDownMaxMinW.Value)
+                numericUpDownMaxMinW.Value = numericUpDownMinMinW.Value + 1;
+        }
+
+        private void numericUpDownMaxMinW_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMaxHrsW.Value == numericUpDownMinHrsW.Value & numericUpDownMinMinW.Value >= numericUpDownMaxMinW.Value)
+                numericUpDownMaxMinW.Value = numericUpDownMinMinW.Value + 1;
+        }
+
+        private void numericUpDownMinMinW_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMaxHrsW.Value == numericUpDownMinHrsW.Value & numericUpDownMinMinW.Value >= numericUpDownMaxMinW.Value)
+                numericUpDownMaxMinW.Value = numericUpDownMinMinW.Value + 1;
+        }
+
+        private void numericUpDownMinHrsR_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMinHrsR.Value > numericUpDownMaxHrsR.Value)
+                numericUpDownMaxHrsR.Value = numericUpDownMinHrsR.Value;
+
+            if (numericUpDownMaxHrsR.Value == numericUpDownMinHrsR.Value & numericUpDownMinMinR.Value >= numericUpDownMaxMinR.Value)
+                numericUpDownMaxMinR.Value = numericUpDownMinMinR.Value + 1;
+        }
+
+        private void numericUpDownMinMinR_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMaxHrsR.Value == numericUpDownMinHrsR.Value & numericUpDownMinMinR.Value >= numericUpDownMaxMinR.Value)
+                numericUpDownMaxMinR.Value = numericUpDownMinMinR.Value + 1;
+        }
+
+        private void numericUpDownMaxHrsR_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMaxHrsR.Value < numericUpDownMinHrsR.Value)
+                numericUpDownMaxHrsR.Value = numericUpDownMinHrsR.Value;
+
+            if (numericUpDownMaxHrsR.Value == numericUpDownMinHrsR.Value & numericUpDownMinMinR.Value >= numericUpDownMaxMinR.Value)
+                numericUpDownMaxMinR.Value = numericUpDownMinMinR.Value + 1;
+        }
+
+        private void numericUpDownMaxMinR_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMaxHrsR.Value == numericUpDownMinHrsR.Value & numericUpDownMinMinR.Value >= numericUpDownMaxMinR.Value)
+                numericUpDownMaxMinR.Value = numericUpDownMinMinR.Value + 1;
+        }
+
+        private void button19_Click_1(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "MenuBox");
         }
     }
 }
