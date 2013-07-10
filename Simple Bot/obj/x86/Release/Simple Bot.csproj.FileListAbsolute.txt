@@ -180,3 +180,5 @@ D:\NSB\Simple Bot\obj\x86\Release\Simple Bot.exe
 D:\NSB\Simple Bot\obj\x86\Release\Simple Bot.pdb
 F:\NSB\Simple Bot\bin\Release\WebDriver.pdb
 F:\NSB\Simple Bot\bin\Release\WebDriver.xml
+D:\NSB\Simple Bot\bin\Release\WebDriver.pdb
+D:\NSB\Simple Bot\bin\Release\WebDriver.xml

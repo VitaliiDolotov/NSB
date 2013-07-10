@@ -750,8 +750,20 @@ namespace Simple_Bot
             if (DrType == "Chrome")
             {
                 ChromeOptions options = new ChromeOptions();
+				//дизейбилм все экстеншены
                 options.AddArgument("--disable-extensions");
-                IWebDriver driver = new ChromeDriver(options);
+				//Создаем и подключаем папку с профайлом
+	            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "SystemBox")[13]))
+	            {
+		            string path = Directory.GetCurrentDirectory();
+		            options.AddArguments(string.Format("user-data-dir={0}/ChromeProfile", path));
+	            }
+				//Максимайз браузер
+				if (Convert.ToBoolean(ReadFromFile(SettingsFile, "SystemBox")[14]))
+				{
+					options.AddArguments("start-maximized");
+				}
+	            IWebDriver driver = new ChromeDriver(options);
 
                 //Hide chromedriver Window
                 Process[] processRunning = Process.GetProcesses();

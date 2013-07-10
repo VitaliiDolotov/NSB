@@ -26,7 +26,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2551;
+        int BotVersion = 2553;
 
         Thread BotThread;
 
@@ -391,6 +391,9 @@ namespace Simple_Bot
                 numericUpDownMinMinR.Value = 10;
                 numericUpDownMaxHrsR.Value = 5;
                 numericUpDownMaxMinR.Value = 45;
+
+				checkBoxUseDriverProfile.Checked = false;
+	            checkBoxMaximizeBrowser.Checked = false;
             }
             catch { }
 
@@ -812,7 +815,9 @@ namespace Simple_Bot
                                       Convert.ToString(numericUpDownMaxHrsW.Value),Convert.ToString(numericUpDownMaxMinW.Value),
         
                                       Convert.ToString(numericUpDownMinHrsR.Value),Convert.ToString(numericUpDownMinMinR.Value),
-                                      Convert.ToString(numericUpDownMaxHrsR.Value),Convert.ToString(numericUpDownMaxMinR.Value)};
+                                      Convert.ToString(numericUpDownMaxHrsR.Value),Convert.ToString(numericUpDownMaxMinR.Value),
+									  
+									  Convert.ToString(checkBoxUseDriverProfile.Checked), Convert.ToString(checkBoxMaximizeBrowser.Checked)};
 
             CompareValuesInFile(SystemBox.Name, SystemSettings);
 
@@ -831,6 +836,9 @@ namespace Simple_Bot
             numericUpDownMinMinR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[10]);
             numericUpDownMaxHrsR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[11]);
             numericUpDownMaxMinR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[12]);
+
+			checkBoxUseDriverProfile.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[13]);
+			checkBoxMaximizeBrowser.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[14]); 
         }
 
         private void BotDonateSetUp()
@@ -853,6 +861,9 @@ namespace Simple_Bot
                 numericUpDownMinMinR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[10]);
                 numericUpDownMaxHrsR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[11]);
                 numericUpDownMaxMinR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[12]);
+
+	            checkBoxUseDriverProfile.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[13]);
+				checkBoxMaximizeBrowser.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[14]); 
             }
             catch { }
 
@@ -1557,6 +1568,8 @@ namespace Simple_Bot
                 {
                     oneTimeSetting = true;
                     BotDonateSetUp();
+					//System Settings
+	                SystemSettingsPanel.Enabled = true;
                     DonateLabel1.Visible = false;
 
                     //наасайниваем новый таймер конца работы
