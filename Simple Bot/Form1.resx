@@ -120,6 +120,23 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="pictureBox50.ToolTip" xml:space="preserve">
+    <value>Работать в течение 12:45/13:10.
+
+Бот берет радномное время с указанного промежутка 
+(к примеру 12:58) и работает указанное время. 
+
+Отдыхать в течении 3:15/4:05
+
+После исчерпания времени работы бот берет рандомное
+время с поля одтыха (к примеру 3:45) и отдыхает. 
+
+По окончанию времени отдаха снова начинает с поля
+"Работать в течении" и так по кругу.</value>
+  </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 17</value>
   </metadata>

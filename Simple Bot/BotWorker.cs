@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace Simple_Bot.Resources
 {
     public static class BotWorker
     {
         static BotvaClass Bot = new BotvaClass();
+        static BotvaClass Bg;
+
+        static Thread MassFightThread;
+
+        static DateTime Timer_Bg = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
         public static void WorkThreadFunction()
         {
@@ -22,6 +28,13 @@ namespace Simple_Bot.Resources
                 {
                     try
                     {
+                        if (Timer_Bg.CompareTo(DateTime.Now) < 0)
+                            if (Bot.IsNecessaryMineIsOpened())
+                            {
+                                Timer_Bg = ToDateTime("00:35:00");
+                                MassFight();
+                            }
+
                         Bot.GoToOldoMsters();
                         Bot.AlertFight();
                         Bot.LitleGuru();
@@ -63,7 +76,9 @@ namespace Simple_Bot.Resources
                         Bot.BuyGifts();
                         Bot.TradeField();
                         Bot.Shop();
-                        Bot.MassFight();
+                        //Bot.MassFight();
+
+
 
 
                         //Adv
@@ -87,9 +102,40 @@ namespace Simple_Bot.Resources
             Bot.Rest();
         }
 
-        public static void Quit()
+        public static void MassFight()
         {
-            Bot.Quit();
+            Bg = new BotvaClass();
+
+            try
+            {
+                if (MassFightThread.IsAlive)
+                    MassFightThread.Abort();
+            }
+            catch { }
+
+            MassFightThread = new Thread(new ThreadStart(BotWorker.FightOnMassFight));
+            MassFightThread.Start();
+        }
+
+        private static void FightOnMassFight()
+        {
+            Bg.MassFight();
+        }
+
+        private static DateTime ToDateTime(string CounterTime)
+        {
+            char Separator = ':';
+            string[] SeparatedTime;
+            SeparatedTime = CounterTime.Split(Separator);
+            DateTime ReturnTime = DateTime.Now;
+            TimeSpan TimeToAdd = new TimeSpan(0, Convert.ToInt32(SeparatedTime[0]), Convert.ToInt32(SeparatedTime[1]), Convert.ToInt32(SeparatedTime[2]));
+            ReturnTime = DateTime.Now.Add(TimeToAdd);
+            return ReturnTime;
+        }
+
+        private static void Quit(BotvaClass botvaObject)
+        {
+            botvaObject.Quit();
         }
     }
 }

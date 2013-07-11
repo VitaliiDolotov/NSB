@@ -1981,6 +1981,18 @@ namespace Simple_Bot
             catch { }
         }
 
+        public Int64 GeCurrentGold()
+        {
+            Int64 retValue = 0;
+            //смотрим сколько бабла на руках
+            try
+            {
+                retValue = Convert.ToInt64(driver.FindElement(By.Id("gold")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+            }
+            catch { }
+            return retValue;
+        }
+
         public void StatsUp()
         {
             try
@@ -2037,7 +2049,7 @@ namespace Simple_Bot
                                     try
                                     {
                                         //ищим свободный стат по приоритету и если флаг в тру то качаем его
-                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[1] == "True" & Convert.ToInt64(CurrentGold) > Convert.ToInt64(power))
+                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[1] == "True" & GeCurrentGold() >= Convert.ToInt64(power))
                                         {
                                             try
                                             {
@@ -2050,7 +2062,7 @@ namespace Simple_Bot
                                             catch { }
                                         }
 
-                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[5] == "True" & Convert.ToInt64(CurrentGold) > Convert.ToInt64(charisma))
+                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[5] == "True" & GeCurrentGold() >= Convert.ToInt64(charisma))
                                         {
                                             //мастерство
                                             try
@@ -2064,7 +2076,7 @@ namespace Simple_Bot
                                             catch { }
                                         }
 
-                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[2] == "True" & Convert.ToInt64(CurrentGold) > Convert.ToInt64(block))
+                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[2] == "True" & GeCurrentGold() >= Convert.ToInt64(block))
                                         {
                                             //защита
                                             try
@@ -2079,7 +2091,7 @@ namespace Simple_Bot
                                         }
 
 
-                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[3] == "True" & Convert.ToInt64(CurrentGold) > Convert.ToInt64(dexterity))
+                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[3] == "True" & GeCurrentGold() >= Convert.ToInt64(dexterity))
                                         {
                                             //ловка
                                             try
@@ -2093,7 +2105,7 @@ namespace Simple_Bot
                                             catch { }
                                         }
 
-                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[4] == "True" & Convert.ToInt64(CurrentGold) > Convert.ToInt64(endurance))
+                                        if (ReadFromFile(SettingsFile, "StutsUpBox")[4] == "True" & GeCurrentGold() >= Convert.ToInt64(endurance))
                                         {
                                             //масса
                                             try
@@ -2159,7 +2171,7 @@ namespace Simple_Bot
             {
                 if (ReadFromFile(SettingsFile, "StutsUpBox")[3] == "True")
                 {
-                    dexterity = driver.FindElement(By.XPath("//div[3]/div[3]/table/tbody/tr[5]/td[4]/b[1]")).Text.Replace(".", "");
+                    dexterity = driver.FindElement(By.XPath("//div[3]/div[3]/table/tbody/tr[5]/td[4]/b[1]")).Text.Replace(".", string.Empty);
                     if (Convert.ToInt64(dexterity) > maxStatCost)
                         maxStatCost = Convert.ToInt64(dexterity);
                 }
@@ -3338,10 +3350,10 @@ namespace Simple_Bot
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[16]) == true)
             {
                 IList<IWebElement> Stats = driver.FindElements(By.ClassName("c4"));
-                if (Convert.ToInt32(Stats[0].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[17]) &
-                    Convert.ToInt32(Stats[1].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[18]) &
-                    Convert.ToInt32(Stats[2].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[19]) &
-                    Convert.ToInt32(Stats[3].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[20]) &
+                if (Convert.ToInt32(Stats[0].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[17]) ||
+                    Convert.ToInt32(Stats[1].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[18]) ||
+                    Convert.ToInt32(Stats[2].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[19]) ||
+                    Convert.ToInt32(Stats[3].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[20]) ||
                     Convert.ToInt32(Stats[4].Text) >= Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[21]))
                 {
                     retValue = false;
@@ -5297,6 +5309,7 @@ namespace Simple_Bot
                         }
                         catch { }
                     }
+                    Quit();
                 }
             }
             catch { }
@@ -5383,6 +5396,19 @@ namespace Simple_Bot
                 //}
             }
             catch { }
+        }
+
+        public bool IsNecessaryMineIsOpened()
+        {
+            bool retValue = false;
+            try
+            {
+                string selector = string.Format("//div[@title='{0}']", ReadFromFile(SettingsFile, "MassFBox")[2]);
+                if (driver.FindElement(By.XPath(selector)).Displayed)
+                    retValue = true;
+            }
+            catch { }
+            return retValue;
         }
 
         private string MMainSelectorProvider(string mineName)

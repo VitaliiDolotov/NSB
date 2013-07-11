@@ -27,9 +27,9 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2554;
+        int BotVersion = 2556;
 
-        Thread BotThread;
+        static Thread BotThread;
 
         Random rnd = new Random();
 
