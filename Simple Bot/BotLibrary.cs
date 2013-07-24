@@ -775,25 +775,25 @@ namespace Simple_Bot
             if (DrType == "Chrome")
             {
                 ChromeOptions options = new ChromeOptions();
-				//дизейбилм все экстеншены
+                //дизейбилм все экстеншены
                 options.AddArgument("--disable-extensions");
-				//Создаем и подключаем папку с профайлом
-	            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "SystemBox")[13]))
-	            {
-		            string path = Directory.GetCurrentDirectory();
+                //Создаем и подключаем папку с профайлом
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "SystemBox")[13]))
+                {
+                    string path = Directory.GetCurrentDirectory();
                     string profileType = null;
                     if (isMassFight)
                         profileType = "ChromeProfileForMassFight";
                     else
                         profileType = "ChromeProfile";
                     options.AddArguments(string.Format("user-data-dir={0}/{1}", path, profileType));
-	            }
-				//Максимайз браузер
-				if (Convert.ToBoolean(ReadFromFile(SettingsFile, "SystemBox")[14]))
-				{
-					options.AddArguments("start-maximized");
-				}
-	            IWebDriver driver = new ChromeDriver(options);
+                }
+                //Максимайз браузер
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "SystemBox")[14]))
+                {
+                    options.AddArguments("start-maximized");
+                }
+                IWebDriver driver = new ChromeDriver(options);
 
                 //Hide chromedriver Window
                 Process[] processRunning = Process.GetProcesses();
@@ -3509,7 +3509,7 @@ namespace Simple_Bot
                 if (!imFree.Text.Equals("Я свободен!"))
                     Timer = ToDateTime(driver.FindElement(By.CssSelector(".timers a:nth-of-type(1) span")).Text);
             }
-            catch 
+            catch
             {
                 Timer = ToDateTime(driver.FindElement(By.CssSelector(".timers a:nth-of-type(1) span")).Text);
             }
@@ -5324,7 +5324,7 @@ namespace Simple_Bot
 
                             MAArmagedon();
                             MAScreem();
-                            MAProklatyshki();                            
+                            MAProklatyshki();
                             MAWeakness();
 
                             MBeat();
@@ -5765,7 +5765,7 @@ namespace Simple_Bot
 
                                     //если противник всего один
                                     if (enemys.Count == 1 & Convert.ToInt64(enemyBm) >= myBm)
-                                        enemy.Click(); 
+                                        enemy.Click();
 
                                     //если БМ, то валим первого попавшегося
                                     if (Convert.ToInt64(enemyBm) >= myBm)
@@ -5884,7 +5884,7 @@ namespace Simple_Bot
 
                                     //если противник всего один
                                     if (enemys.Count == 1 & Convert.ToInt64(enemyBm) >= myBm)
-                                        enemy.Click(); 
+                                        enemy.Click();
 
                                     //если БМ больше то идем дальше, если меньше, то клацаем на придыдущего
                                     if (Convert.ToInt64(enemyBm) >= myBm)
@@ -5953,7 +5953,7 @@ namespace Simple_Bot
 
                                     //если противник всего один
                                     if (enemys.Count == 1 & Convert.ToInt64(enemyBm) >= myBm)
-                                        enemy.Click();                                        
+                                        enemy.Click();
 
                                     //если БМ больше то идем дальше, если меньше, то клацаем на придыдущего
                                     if (Convert.ToInt64(enemyBm) >= myBm)
@@ -6162,6 +6162,52 @@ namespace Simple_Bot
                 SetPet();
             }
             catch { }
+        }
+
+        public void MrIdiot()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[34]))
+            {
+                try
+                {
+                    if (!driver.FindElement(By.XPath(".//a[@title='Посадить в клетку']")).Displayed)
+                    {
+                        driver.FindElement(By.LinkText("Деревня")).Click();
+                        Delays();
+                        driver.FindElement(By.XPath(".//div[text()='Лавка']")).Click();
+                        Delays();
+                        driver.FindElement(By.LinkText("Звери")).Click();
+                        Delays();
+                        Delays();
+                        string selectro = string.Format(".//th[text()='{0} ']/../following-sibling::tr//input[@value='КУПИТЬ']", ReadFromFile(SettingsFile, "AdditionalSettingsBox")[35]);
+                        driver.FindElement(By.XPath(selectro)).Click();
+                        SmallDelays();
+                        IWebElement temp = driver.FindElement(By.XPath(".//div[contains(text(),'У тебя уже есть такая зверушка, со')]"));
+                        //TODO добавить вытаскивалку зверей
+                        //GetPet(PetType.worm);
+                    }
+                }
+                catch
+                {
+                    try
+                    {
+                        driver.FindElement(By.LinkText("Деревня")).Click();
+                        Delays();
+                        driver.FindElement(By.XPath(".//div[text()='Лавка']")).Click();
+                        Delays();
+                        driver.FindElement(By.LinkText("Звери")).Click();
+                        Delays();
+                        Delays();
+                        string selectro = string.Format(".//th[text()='{0} ']/../following-sibling::tr//input[@value='КУПИТЬ']", ReadFromFile(SettingsFile, "AdditionalSettingsBox")[35]);
+                        driver.FindElement(By.XPath(selectro)).Click();
+                        SmallDelays();
+                        IWebElement temp = driver.FindElement(By.XPath(".//div[contains(text(),'У тебя уже есть такая зверушка, со')]"));
+                        //TODO добавить вытаскивалку зверей
+                        //GetPet(PetType.worm);
+                    }
+                    catch { }
+                }
+            }
         }
     }
 }
