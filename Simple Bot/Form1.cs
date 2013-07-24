@@ -28,7 +28,7 @@ namespace Simple_Bot
     {
         bool isDonatePlayer = false;
         bool botIsWorked = false;
-        int BotVersion = 2569;
+        int BotVersion = 2570;
 
         static Thread BotThread;
 
@@ -449,7 +449,7 @@ namespace Simple_Bot
                     checkBoxUseDriverProfile.Checked = false;
                     checkBoxMaximizeBrowser.Checked = false;
 
-                    comboBoxSettingsFile.Text = "settings.bin";
+                    //comboBoxSettingsFile.Text = "settings.bin";
                 }
             }
             catch { }

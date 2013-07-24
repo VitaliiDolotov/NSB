@@ -64,15 +64,14 @@
             this.checkBoxHideBrowser = new System.Windows.Forms.CheckBox();
             this.button16 = new System.Windows.Forms.Button();
             this.MenuBox = new System.Windows.Forms.GroupBox();
+            this.button23 = new System.Windows.Forms.Button();
             this.button45 = new System.Windows.Forms.Button();
             this.button43 = new System.Windows.Forms.Button();
             this.button42 = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
-            this.checkBoxBigGguru = new System.Windows.Forms.CheckBox();
             this.button30 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.pictureBox25 = new System.Windows.Forms.PictureBox();
             this.button28 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.FarCountrBox = new System.Windows.Forms.GroupBox();
@@ -81,7 +80,6 @@
             this.checkBoxGetRP = new System.Windows.Forms.CheckBox();
             this.button24 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.checkBoxLitleGuru = new System.Windows.Forms.CheckBox();
             this.MineBox = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelMineBox = new System.Windows.Forms.Panel();
@@ -127,6 +125,9 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.checkBoxFish = new System.Windows.Forms.CheckBox();
             this.checkBoxCryDust = new System.Windows.Forms.CheckBox();
+            this.checkBoxBigGguru = new System.Windows.Forms.CheckBox();
+            this.pictureBox25 = new System.Windows.Forms.PictureBox();
+            this.checkBoxLitleGuru = new System.Windows.Forms.CheckBox();
             this.UndergroundBox = new System.Windows.Forms.GroupBox();
             this.button44 = new System.Windows.Forms.Button();
             this.pictureBox35 = new System.Windows.Forms.PictureBox();
@@ -244,6 +245,8 @@
             this.pictureBox53 = new System.Windows.Forms.PictureBox();
             this.pictureBox54 = new System.Windows.Forms.PictureBox();
             this.pictureBox55 = new System.Windows.Forms.PictureBox();
+            this.pictureBox56 = new System.Windows.Forms.PictureBox();
+            this.pictureBox57 = new System.Windows.Forms.PictureBox();
             this.PandaEffectsBox = new System.Windows.Forms.GroupBox();
             this.radioButtonPEcry = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
@@ -481,12 +484,9 @@
             this.DonateLabel1 = new System.Windows.Forms.Label();
             this.button19 = new System.Windows.Forms.Button();
             this.MedalsBox = new System.Windows.Forms.GroupBox();
-            this.checkBoxMrIdiot = new System.Windows.Forms.CheckBox();
-            this.pictureBox56 = new System.Windows.Forms.PictureBox();
-            this.pictureBox57 = new System.Windows.Forms.PictureBox();
-            this.comboBoxMrIdiot = new System.Windows.Forms.ComboBox();
-            this.button23 = new System.Windows.Forms.Button();
             this.button46 = new System.Windows.Forms.Button();
+            this.comboBoxMrIdiot = new System.Windows.Forms.ComboBox();
+            this.checkBoxMrIdiot = new System.Windows.Forms.CheckBox();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -496,7 +496,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureStatusFalse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.MenuBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             this.FarCountrBox.SuspendLayout();
             this.MineBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -523,6 +522,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             this.UndergroundBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
@@ -580,6 +580,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).BeginInit();
             this.PandaEffectsBox.SuspendLayout();
             this.ImmunEffetsBox.SuspendLayout();
             this.FlyBox.SuspendLayout();
@@ -653,8 +655,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxDelayMf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinDelayMf)).BeginInit();
             this.MedalsBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).BeginInit();
             this.SuspendLayout();
             // 
             // StartButton
@@ -719,7 +719,7 @@
             // 
             // PauseButton
             // 
-            this.PauseButton.Location = new System.Drawing.Point(112, 122);
+            this.PauseButton.Location = new System.Drawing.Point(112, 121);
             this.PauseButton.Name = "PauseButton";
             this.PauseButton.Size = new System.Drawing.Size(75, 23);
             this.PauseButton.TabIndex = 3;
@@ -1062,6 +1062,16 @@
             this.MenuBox.TabStop = false;
             this.MenuBox.Text = " Settings ";
             // 
+            // button23
+            // 
+            this.button23.Location = new System.Drawing.Point(13, 205);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(149, 23);
+            this.button23.TabIndex = 37;
+            this.button23.Text = "Медали";
+            this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click_1);
+            // 
             // button45
             // 
             this.button45.Location = new System.Drawing.Point(164, 294);
@@ -1112,17 +1122,6 @@
             this.button38.UseVisualStyleBackColor = true;
             this.button38.Click += new System.EventHandler(this.button38_Click);
             // 
-            // checkBoxBigGguru
-            // 
-            this.checkBoxBigGguru.AutoSize = true;
-            this.checkBoxBigGguru.Location = new System.Drawing.Point(17, 45);
-            this.checkBoxBigGguru.Name = "checkBoxBigGguru";
-            this.checkBoxBigGguru.Size = new System.Drawing.Size(95, 17);
-            this.checkBoxBigGguru.TabIndex = 31;
-            this.checkBoxBigGguru.Text = "Большой гуру";
-            this.checkBoxBigGguru.UseVisualStyleBackColor = true;
-            this.checkBoxBigGguru.CheckedChanged += new System.EventHandler(this.checkBoxBigGguru_CheckedChanged);
-            // 
             // button30
             // 
             this.button30.Location = new System.Drawing.Point(13, 294);
@@ -1142,16 +1141,6 @@
             this.button7.Text = "Эффеты/Иммун";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // pictureBox25
-            // 
-            this.pictureBox25.Image = global::Simple_Bot.Properties.Resources.medal_gold_3;
-            this.pictureBox25.Location = new System.Drawing.Point(172, 70);
-            this.pictureBox25.Name = "pictureBox25";
-            this.pictureBox25.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox25.TabIndex = 18;
-            this.pictureBox25.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox25, "Если нет зверя, то автоматически\r\nдокупает выбранного");
             // 
             // button28
             // 
@@ -1237,17 +1226,6 @@
             this.button5.Text = "Эффекты Панд";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // checkBoxLitleGuru
-            // 
-            this.checkBoxLitleGuru.AutoSize = true;
-            this.checkBoxLitleGuru.Location = new System.Drawing.Point(17, 22);
-            this.checkBoxLitleGuru.Name = "checkBoxLitleGuru";
-            this.checkBoxLitleGuru.Size = new System.Drawing.Size(85, 17);
-            this.checkBoxLitleGuru.TabIndex = 17;
-            this.checkBoxLitleGuru.Text = "Малый гуру";
-            this.checkBoxLitleGuru.UseVisualStyleBackColor = true;
-            this.checkBoxLitleGuru.CheckedChanged += new System.EventHandler(this.checkBoxLitleGuru_CheckedChanged);
             // 
             // MineBox
             // 
@@ -1789,6 +1767,38 @@
             this.checkBoxCryDust.TabIndex = 7;
             this.checkBoxCryDust.Text = "Кристальная пыль";
             this.checkBoxCryDust.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxBigGguru
+            // 
+            this.checkBoxBigGguru.AutoSize = true;
+            this.checkBoxBigGguru.Location = new System.Drawing.Point(17, 45);
+            this.checkBoxBigGguru.Name = "checkBoxBigGguru";
+            this.checkBoxBigGguru.Size = new System.Drawing.Size(95, 17);
+            this.checkBoxBigGguru.TabIndex = 31;
+            this.checkBoxBigGguru.Text = "Большой гуру";
+            this.checkBoxBigGguru.UseVisualStyleBackColor = true;
+            this.checkBoxBigGguru.CheckedChanged += new System.EventHandler(this.checkBoxBigGguru_CheckedChanged);
+            // 
+            // pictureBox25
+            // 
+            this.pictureBox25.Image = global::Simple_Bot.Properties.Resources.medal_gold_3;
+            this.pictureBox25.Location = new System.Drawing.Point(172, 70);
+            this.pictureBox25.Name = "pictureBox25";
+            this.pictureBox25.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox25.TabIndex = 18;
+            this.pictureBox25.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox25, "Если нет зверя, то автоматически\r\nдокупает выбранного");
+            // 
+            // checkBoxLitleGuru
+            // 
+            this.checkBoxLitleGuru.AutoSize = true;
+            this.checkBoxLitleGuru.Location = new System.Drawing.Point(17, 22);
+            this.checkBoxLitleGuru.Name = "checkBoxLitleGuru";
+            this.checkBoxLitleGuru.Size = new System.Drawing.Size(85, 17);
+            this.checkBoxLitleGuru.TabIndex = 17;
+            this.checkBoxLitleGuru.Text = "Малый гуру";
+            this.checkBoxLitleGuru.UseVisualStyleBackColor = true;
+            this.checkBoxLitleGuru.CheckedChanged += new System.EventHandler(this.checkBoxLitleGuru_CheckedChanged);
             // 
             // UndergroundBox
             // 
@@ -3078,6 +3088,26 @@
             this.pictureBox55.TabIndex = 26;
             this.pictureBox55.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox55, "Эта опция доступна только\r\nв полной версии");
+            // 
+            // pictureBox56
+            // 
+            this.pictureBox56.Image = global::Simple_Bot.Properties.Resources.medal_gold_3;
+            this.pictureBox56.Location = new System.Drawing.Point(172, 45);
+            this.pictureBox56.Name = "pictureBox56";
+            this.pictureBox56.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox56.TabIndex = 33;
+            this.pictureBox56.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox56, "Прокачка медали \"Малый гуру\"/\"Большой гуру\"");
+            // 
+            // pictureBox57
+            // 
+            this.pictureBox57.Image = global::Simple_Bot.Properties.Resources.medal_gold_3;
+            this.pictureBox57.Location = new System.Drawing.Point(172, 22);
+            this.pictureBox57.Name = "pictureBox57";
+            this.pictureBox57.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox57.TabIndex = 34;
+            this.pictureBox57.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox57, "Прокачка медали \"Малый гуру\"/\"Большой гуру\"");
             // 
             // PandaEffectsBox
             // 
@@ -6068,35 +6098,15 @@
             this.MedalsBox.TabStop = false;
             this.MedalsBox.Text = "Прокачка медалей";
             // 
-            // checkBoxMrIdiot
+            // button46
             // 
-            this.checkBoxMrIdiot.AutoSize = true;
-            this.checkBoxMrIdiot.Location = new System.Drawing.Point(17, 70);
-            this.checkBoxMrIdiot.Name = "checkBoxMrIdiot";
-            this.checkBoxMrIdiot.Size = new System.Drawing.Size(156, 17);
-            this.checkBoxMrIdiot.TabIndex = 32;
-            this.checkBoxMrIdiot.Text = "Мистер Невнимательный";
-            this.checkBoxMrIdiot.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox56
-            // 
-            this.pictureBox56.Image = global::Simple_Bot.Properties.Resources.medal_gold_3;
-            this.pictureBox56.Location = new System.Drawing.Point(172, 45);
-            this.pictureBox56.Name = "pictureBox56";
-            this.pictureBox56.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox56.TabIndex = 33;
-            this.pictureBox56.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox56, "Прокачка медали \"Малый гуру\"/\"Большой гуру\"");
-            // 
-            // pictureBox57
-            // 
-            this.pictureBox57.Image = global::Simple_Bot.Properties.Resources.medal_gold_3;
-            this.pictureBox57.Location = new System.Drawing.Point(172, 22);
-            this.pictureBox57.Name = "pictureBox57";
-            this.pictureBox57.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox57.TabIndex = 34;
-            this.pictureBox57.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox57, "Прокачка медали \"Малый гуру\"/\"Большой гуру\"");
+            this.button46.Location = new System.Drawing.Point(17, 117);
+            this.button46.Name = "button46";
+            this.button46.Size = new System.Drawing.Size(171, 23);
+            this.button46.TabIndex = 36;
+            this.button46.Text = "Back";
+            this.button46.UseVisualStyleBackColor = true;
+            this.button46.Click += new System.EventHandler(this.button46_Click_1);
             // 
             // comboBoxMrIdiot
             // 
@@ -6116,25 +6126,15 @@
             this.comboBoxMrIdiot.TabIndex = 35;
             this.comboBoxMrIdiot.Text = "Шнырк";
             // 
-            // button23
+            // checkBoxMrIdiot
             // 
-            this.button23.Location = new System.Drawing.Point(13, 205);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(149, 23);
-            this.button23.TabIndex = 37;
-            this.button23.Text = "Медали";
-            this.button23.UseVisualStyleBackColor = true;
-            this.button23.Click += new System.EventHandler(this.button23_Click_1);
-            // 
-            // button46
-            // 
-            this.button46.Location = new System.Drawing.Point(17, 117);
-            this.button46.Name = "button46";
-            this.button46.Size = new System.Drawing.Size(171, 23);
-            this.button46.TabIndex = 36;
-            this.button46.Text = "Back";
-            this.button46.UseVisualStyleBackColor = true;
-            this.button46.Click += new System.EventHandler(this.button46_Click_1);
+            this.checkBoxMrIdiot.AutoSize = true;
+            this.checkBoxMrIdiot.Location = new System.Drawing.Point(17, 70);
+            this.checkBoxMrIdiot.Name = "checkBoxMrIdiot";
+            this.checkBoxMrIdiot.Size = new System.Drawing.Size(156, 17);
+            this.checkBoxMrIdiot.TabIndex = 32;
+            this.checkBoxMrIdiot.Text = "Мистер Невнимательный";
+            this.checkBoxMrIdiot.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -6192,7 +6192,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureStatusFalse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.MenuBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
             this.FarCountrBox.ResumeLayout(false);
             this.FarCountrBox.PerformLayout();
             this.MineBox.ResumeLayout(false);
@@ -6226,6 +6225,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
             this.UndergroundBox.ResumeLayout(false);
             this.UndergroundBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).EndInit();
@@ -6298,6 +6298,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).EndInit();
             this.PandaEffectsBox.ResumeLayout(false);
             this.PandaEffectsBox.PerformLayout();
             this.ImmunEffetsBox.ResumeLayout(false);
@@ -6403,8 +6405,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinDelayMf)).EndInit();
             this.MedalsBox.ResumeLayout(false);
             this.MedalsBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

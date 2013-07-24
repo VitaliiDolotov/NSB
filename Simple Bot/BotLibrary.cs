@@ -3031,6 +3031,11 @@ namespace Simple_Bot
             return driver.FindElements(By.XPath("//div[contains(@id,'panda')]"));
         }
 
+        private int CurrentCry()
+        {
+            return Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
+        }
+
         private bool PandaSale(IList<IWebElement> PandList, int MinPandaLvl)
         {
             //если произведена продажа, то флаг переходит в тру, если нет - то фолс
@@ -6166,7 +6171,7 @@ namespace Simple_Bot
 
         public void MrIdiot()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[34]))
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[34]) && CurrentCry() > 51)
             {
                 try
                 {
