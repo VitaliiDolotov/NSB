@@ -27,7 +27,8 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
-        int BotVersion = 2556;
+        bool botIsWorked = false;
+        int BotVersion = 2568;
 
         static Thread BotThread;
 
@@ -45,6 +46,7 @@ namespace Simple_Bot
         static DateTime Timer_CloseBot = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_SleepTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_ChromeDriverKiller = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+        static DateTime Timer_SettingsLive = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
         bool isOnRest = false;
         bool chromeDriverCiller = false;
@@ -95,6 +97,28 @@ namespace Simple_Bot
             link2.LinkData = "https://docs.google.com/forms/d/1ACUpGzPo7TVtaDWq6ZOH3uQNEJwq3S8_9Umr7yvyWl0/viewform";
             linkLabel1.Links.Add(link2);
 
+            GetSettingsFiles();
+
+            TryToLoadSettings();
+        }
+
+        void GetSettingsFiles()
+        {
+            string [] filesList = new string[Directory.GetFiles(Directory.GetCurrentDirectory(), "*.bin").Length];
+            int index = 0;
+            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory(), "*.bin"))
+            {
+                filesList[index] = Path.GetFileName(file);
+                index++;
+            }
+            comboBoxSettingsFile.DataSource = filesList;
+
+            SettingsFile = comboBoxSettingsFile.Text.Split('.')[0];
+            SettingsFileExtantion = "." + comboBoxSettingsFile.Text.Split('.')[1];
+        }
+
+        void TryToLoadSettings()
+        {
             //Login
             try
             {
@@ -319,7 +343,7 @@ namespace Simple_Bot
                 checkBoxDontUseFFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[21]);
                 checkBoxDontUseSFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[22]);
                 checkBoxDontUseTFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[23]);
-                checkBoxDontUseFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
+                checkBoxDontUseFoFly.Checked = true;//Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
             }
             catch { }
 
@@ -359,7 +383,7 @@ namespace Simple_Bot
             //Mass Fight
             try
             {
-                checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
+                checkBoxMassFight.Checked = false;//Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
                 comboBoxMMine.Text = ReadFromFile(SettingsFile, MassFBox.Name)[2];
                 checkBoxMAEnergy.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[3]);
                 checkBoxMAGodDefend.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[4]);
@@ -371,30 +395,60 @@ namespace Simple_Bot
                 checkBoxMAProklatyshki.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[10]);
                 checkBoxMAScreem.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[11]);
                 checkBoxMAWeakness.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[12]);
+                numericUpDownFightTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, MassFBox.Name)[13]);
+                checkBoxMFightTime.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[14]);
             }
             catch { }
 
             //System Settings
             try
             {
-                numericUpDownMinDelay.Value = 1500;
-                numericUpDownMaxDelay.Value = 2500;
+                if (isDonatePlayer)
+                {
+                    numericUpDownMinDelay.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[1]);
+                    numericUpDownMaxDelay.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[2]);
 
-                numericUpDownMinDelayMf.Value = 1200;
-                numericUpDownMaxDelayMf.Value = 1500;
+                    numericUpDownMinDelayMf.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[3]);
+                    numericUpDownMaxDelayMf.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[4]);
 
-                numericUpDownMinHrsW.Value = 4;
-                numericUpDownMinMinW.Value = 10;
-                numericUpDownMaxHrsW.Value = 5;
-                numericUpDownMaxMinW.Value = 45;
+                    numericUpDownMinHrsW.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[5]);
+                    numericUpDownMinMinW.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[6]);
+                    numericUpDownMaxHrsW.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[7]);
+                    numericUpDownMaxMinW.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[8]);
 
-                numericUpDownMinHrsR.Value = 4;
-                numericUpDownMinMinR.Value = 10;
-                numericUpDownMaxHrsR.Value = 5;
-                numericUpDownMaxMinR.Value = 45;
+                    numericUpDownMinHrsR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[9]);
+                    numericUpDownMinMinR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[10]);
+                    numericUpDownMaxHrsR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[11]);
+                    numericUpDownMaxMinR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[12]);
 
-				checkBoxUseDriverProfile.Checked = false;
-	            checkBoxMaximizeBrowser.Checked = false;
+                    checkBoxUseDriverProfile.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[13]);
+                    checkBoxMaximizeBrowser.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[14]);
+
+                    comboBoxSettingsFile.Text = ReadFromFile(SettingsFile, SystemBox.Name)[15]; 
+                }
+                else
+                {
+                    numericUpDownMinDelay.Value = 1500;
+                    numericUpDownMaxDelay.Value = 2500;
+
+                    numericUpDownMinDelayMf.Value = 1200;
+                    numericUpDownMaxDelayMf.Value = 1500;
+
+                    numericUpDownMinHrsW.Value = 4;
+                    numericUpDownMinMinW.Value = 10;
+                    numericUpDownMaxHrsW.Value = 5;
+                    numericUpDownMaxMinW.Value = 45;
+
+                    numericUpDownMinHrsR.Value = 4;
+                    numericUpDownMinMinR.Value = 10;
+                    numericUpDownMaxHrsR.Value = 5;
+                    numericUpDownMaxMinR.Value = 45;
+
+                    checkBoxUseDriverProfile.Checked = false;
+                    checkBoxMaximizeBrowser.Checked = false;
+
+                    comboBoxSettingsFile.Text = "settings.bin";
+                }
             }
             catch { }
 
@@ -507,6 +561,10 @@ namespace Simple_Bot
 
         private void button1_Click(object sender, EventArgs e)
         {
+            botIsWorked = true;
+            NewWorkTimer();
+            SettingsFile = comboBoxSettingsFile.Text.Split('.')[0];
+            SettingsFileExtantion = "." + comboBoxSettingsFile.Text.Split('.')[1];
             button4.Text = "Back";
             RemovingOldUpdater();
             CheckForUpdates();
@@ -514,15 +572,6 @@ namespace Simple_Bot
             //Pasue/Resume
             StartButton.Visible = false;
             PauseButton.Visible = true;
-
-            //Login
-            string[] LoginBoxValues = { comboBox1.Text, textBox1.Text, textBox2.Text, comboBox2.Text, Convert.ToString(checkBox1.Checked) };
-            CompareValuesInFile(LoginBox.Name, LoginBoxValues);
-            comboBox1.Text = ReadFromFile(SettingsFile, LoginBox.Name)[1];
-            textBox1.Text = ReadFromFile(SettingsFile, LoginBox.Name)[2];
-            textBox2.Text = ReadFromFile(SettingsFile, LoginBox.Name)[3];
-            comboBox2.Text = ReadFromFile(SettingsFile, LoginBox.Name)[4];
-            checkBox1.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, LoginBox.Name)[5]);
 
             BotSetUp();
 
@@ -533,6 +582,15 @@ namespace Simple_Bot
 
         private void BotSetUp()
         {
+            //Login
+            string[] LoginBoxValues = { comboBox1.Text, textBox1.Text, textBox2.Text, comboBox2.Text, Convert.ToString(checkBox1.Checked) };
+            CompareValuesInFile(LoginBox.Name, LoginBoxValues);
+            comboBox1.Text = ReadFromFile(SettingsFile, LoginBox.Name)[1];
+            textBox1.Text = ReadFromFile(SettingsFile, LoginBox.Name)[2];
+            textBox2.Text = ReadFromFile(SettingsFile, LoginBox.Name)[3];
+            comboBox2.Text = ReadFromFile(SettingsFile, LoginBox.Name)[4];
+            checkBox1.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, LoginBox.Name)[5]);
+
             //StutsUp Setting
             string[] StutsUpSettings = { Convert.ToString(checkBoxPower.Checked), Convert.ToString(checkBoxBlock.Checked), Convert.ToString(checkBoxDexterity.Checked), Convert.ToString(checkBoxEndurance.Checked), Convert.ToString(checkBoxCharisma.Checked) };
             CompareValuesInFile(StutsUpBox.Name, StutsUpSettings);
@@ -755,7 +813,7 @@ namespace Simple_Bot
             checkBoxDontUseFFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[21]);
             checkBoxDontUseSFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[22]);
             checkBoxDontUseTFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[23]);
-            checkBoxDontUseFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
+            checkBoxDontUseFoFly.Checked = true;//Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
 
             //Abilitys Box countrys
             string[] AbilitysSettings = { Convert.ToString(radioButtonSK1.Checked), Convert.ToString(radioButtonSK2.Checked), Convert.ToString(radioButtonSK3.Checked), Convert.ToString(radioButtonSK4.Checked), 
@@ -793,9 +851,10 @@ namespace Simple_Bot
             string[] MassFightSettings = { Convert.ToString(checkBoxMassFight.Checked), comboBoxMMine.Text, Convert.ToString(checkBoxMAEnergy.Checked), Convert.ToString(checkBoxMAGodDefend.Checked),
                                          Convert.ToString(checkBoxMAGodSacrf.Checked),Convert.ToString(checkBoxMAOboz.Checked), comboBoxMLocation.Text,
                                          Convert.ToString(checkBoxMifBmHiger.Checked),Convert.ToString(checkBoxMAArmagedon.Checked),Convert.ToString(checkBoxMAProklatyshki.Checked),
-                                         Convert.ToString(checkBoxMAScreem.Checked),Convert.ToString(checkBoxMAWeakness.Checked)};
+                                         Convert.ToString(checkBoxMAScreem.Checked),Convert.ToString(checkBoxMAWeakness.Checked), Convert.ToString(numericUpDownFightTime.Value),
+                                         Convert.ToString(checkBoxMFightTime.Checked)};
             CompareValuesInFile(MassFBox.Name, MassFightSettings);
-            checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
+            checkBoxMassFight.Checked = false;//Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
             comboBoxMMine.Text = ReadFromFile(SettingsFile, MassFBox.Name)[2];
             checkBoxMAEnergy.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[3]);
             checkBoxMAGodDefend.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[4]);
@@ -807,8 +866,11 @@ namespace Simple_Bot
             checkBoxMAProklatyshki.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[10]);
             checkBoxMAScreem.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[11]);
             checkBoxMAWeakness.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[12]);
+            numericUpDownFightTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, MassFBox.Name)[13]);
+            checkBoxMFightTime.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[14]);
 
             //System Settings
+            Timer_SettingsLive = ToDateTime("00:00:09");
             string[] SystemSettings = { Convert.ToString(numericUpDownMinDelay.Value), Convert.ToString(numericUpDownMaxDelay.Value),
                                       Convert.ToString(numericUpDownMinDelayMf.Value),Convert.ToString(numericUpDownMaxDelayMf.Value),
                                       
@@ -818,7 +880,9 @@ namespace Simple_Bot
                                       Convert.ToString(numericUpDownMinHrsR.Value),Convert.ToString(numericUpDownMinMinR.Value),
                                       Convert.ToString(numericUpDownMaxHrsR.Value),Convert.ToString(numericUpDownMaxMinR.Value),
 									  
-									  Convert.ToString(checkBoxUseDriverProfile.Checked), Convert.ToString(checkBoxMaximizeBrowser.Checked)};
+									  Convert.ToString(checkBoxUseDriverProfile.Checked), Convert.ToString(checkBoxMaximizeBrowser.Checked),
+                                      
+                                      comboBoxSettingsFile.Text, Timer_SettingsLive.ToString()};
 
             CompareValuesInFile(SystemBox.Name, SystemSettings);
 
@@ -839,11 +903,16 @@ namespace Simple_Bot
             numericUpDownMaxMinR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[12]);
 
 			checkBoxUseDriverProfile.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[13]);
-			checkBoxMaximizeBrowser.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[14]); 
+			checkBoxMaximizeBrowser.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[14]);
+
+            comboBoxSettingsFile.Text = ReadFromFile(SettingsFile, SystemBox.Name)[15];
         }
 
         private void BotDonateSetUp()
         {
+            SettingsFile = comboBoxSettingsFile.Text.Split('.')[0];
+            SettingsFileExtantion = "." + comboBoxSettingsFile.Text.Split('.')[1];
+
             //System Settings
             try
             {
@@ -864,7 +933,9 @@ namespace Simple_Bot
                 numericUpDownMaxMinR.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, SystemBox.Name)[12]);
 
 	            checkBoxUseDriverProfile.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[13]);
-				checkBoxMaximizeBrowser.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[14]); 
+				checkBoxMaximizeBrowser.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[14]);
+
+                comboBoxSettingsFile.Text = ReadFromFile(SettingsFile, SystemBox.Name)[15]; 
             }
             catch { }
 
@@ -877,6 +948,22 @@ namespace Simple_Bot
             }
             catch { }
 
+            //Mass Fight
+            try
+            {
+                checkBoxMassFight.Enabled = true;
+                checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
+            }
+            catch { }
+
+            //Fly Settings
+            try
+            {
+                checkBoxDontUseFoFly.Enabled = true;
+                checkBoxDontUseFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
+            }
+            catch { }
+
             //Additional Settings
             try
             {
@@ -885,6 +972,8 @@ namespace Simple_Bot
                 comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
             }
             catch { }
+
+            StartButton.Enabled = true;
         }
 
         private void CheckBotMessage()
@@ -923,6 +1012,7 @@ namespace Simple_Bot
                     }
                 }
             }
+            StartButton.Enabled = true;
             return false;
         }
 
@@ -1542,19 +1632,32 @@ namespace Simple_Bot
             }
 
             //идем отдыхать
-            if (Timer_CloseBot.CompareTo(DateTime.Now) < 0 & Timer_SleepTime.CompareTo(DateTime.Now) < 0 & !isOnRest & isDonatePlayer)
+            if (Timer_CloseBot.CompareTo(DateTime.Now) < 0 & Timer_SleepTime.CompareTo(DateTime.Now) < 0 & !isOnRest & isDonatePlayer & botIsWorked)
             {
                 NewRestTimer();
                 isOnRest = true;
+                try
+                {
+                    if (BotThread.IsAlive)
+                        BotThread.Abort();
+                }
+                catch { }
                 BotThread = new Thread(new ThreadStart(BotWorker.Rest));
                 BotThread.Start();
             }
 
             //начинаем снова работать
-            if (Timer_SleepTime.CompareTo(DateTime.Now) < 0 & isOnRest & isDonatePlayer)
+            if (Timer_SleepTime.CompareTo(DateTime.Now) < 0 & isOnRest & isDonatePlayer & botIsWorked)
             {
                 NewWorkTimer();
                 isOnRest = false;
+                try
+                {
+                    if (BotThread.IsAlive)
+                        BotThread.Abort();
+                }
+                catch { }
+                BotSetUp();
                 BotThread = new Thread(new ThreadStart(BotWorker.WorkThreadFunction));
                 BotThread.Start();
             }
@@ -1591,6 +1694,8 @@ namespace Simple_Bot
                     Timer_CloseBot = ToDateTime(string.Format("{0}:{1}:00", workTimeStringH, workTimeStringM));
                 }
             }
+            else
+                textBoxMd5.BackColor = Color.Red;
             //OpenSite();
             //PanelDisplay();//BrowserDisplay();
             //GoBackToSite();
@@ -2152,6 +2257,8 @@ namespace Simple_Bot
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
+            oneTimeSetting = false;
+            isDonatePlayer = false;
             string login = textBox1.Text;
             string loginMd5 = GetMd5Hash(md5Hash, login);
             textBoxMd5.Text = loginMd5;
@@ -2394,6 +2501,7 @@ namespace Simple_Bot
 
         private void button46_Click(object sender, EventArgs e)
         {
+            botIsWorked = false;
             PauseButton.Visible = false;
             ResumeButton.Visible = true;
             BotThread.Suspend();
@@ -2401,6 +2509,7 @@ namespace Simple_Bot
 
         private void button47_Click(object sender, EventArgs e)
         {
+            botIsWorked = true;
             BotSetUp();
             ResumeButton.Visible = false;
             PauseButton.Visible = true;
@@ -2504,7 +2613,12 @@ namespace Simple_Bot
         {
             UIBoxDisplay(3, 4, "MenuBox");
         }
+
+        private void comboBoxSettingsFile_SelectedValueChanged(object sender, EventArgs e)
+        {
+            SettingsFile = comboBoxSettingsFile.Text.Split('.')[0];
+            SettingsFileExtantion = "." + comboBoxSettingsFile.Text.Split('.')[1];
+            TryToLoadSettings();
+        }
     }
-
-
 }

@@ -1,0 +1,786 @@
+function str_replace( search, replace, subject ) {	// Replace all occurrences of the search string with the replacement string
+	// 
+	// +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+	// +   improved by: Gabriel Paderni
+
+	if(!(replace instanceof Array)){
+		replace=new Array(replace);
+		if(search instanceof Array){//If search	is an array and replace	is a string, then this replacement string is used for every value of search
+			while(search.length>replace.length){
+				replace[replace.length]=replace[0];
+			}
+		}
+	}
+
+	if(!(search instanceof Array))search=new Array(search);
+	while(search.length>replace.length){//If replace	has fewer values than search , then an empty string is used for the rest of replacement values
+		replace[replace.length]='';
+	}
+
+	if(subject instanceof Array){//If subject is an array, then the search and replace is performed with every entry of subject , and the return value is an array as well.
+		for(k in subject){
+			subject[k]=str_replace(search,replace,subject[k]);
+		}
+		return subject;
+	}
+
+	for(var k=0; k<search.length; k++){
+		var i = subject.indexOf(search[k]);
+		while(i>-1){
+			subject = subject.replace(search[k], replace[k]);
+			i = subject.indexOf(search[k],i);
+		}
+	}
+
+	return subject;
+
+}
+
+function intval(value) {
+  if (value === true) return 1;
+  return isNaN(parseInt(value, 10)) ? 0 : parseInt(value, 10);
+}
+
+function limit(value,min,max) {
+	max	= max || null;
+	value	= parseInt(value);
+	if (min!==null && value<min)
+		value	= min;
+	if (max!==null && value>max)
+		value	= max;
+	return value;
+}
+
+var TOOLTIP = tooltipHandler();
+
+function tooltipHandler() {
+	var t		= {
+		'path'	: {
+			'main'		: '#tooltip',
+			'content'	: '#tooltip .tooltip_body',
+			'arrow'		: '#tooltip .tooltip_arrow'
+		}
+	};
+	
+	var _cache	= {
+		'obj'		: {},
+		'param'		: {},
+		'timer_show'	: 0,
+		'timer_hide'	: 0,
+		'is_hide'	: true
+	};
+	
+	/** 
+	 * показывает tooltip, параметры: 
+	 * {
+	 *	'type'	: 'Тип записи (house,items,gifts,desc)'
+	 *	'id'	: 'id записи',
+	 *	'keep'	: 'позволять наводить мышкой',	true - по умолчанию
+	 *	'extra'	: 'дополнительные параметры', {
+	 *		'my'	: 'true' - моя ли вещь (надеть\снять, продлить сейфы)
+	 *	}
+	 * }
+	 **/
+	t.show		= function(obj,param) {
+		if (_cache.obj == obj && _cache.is_hide == false) {
+			clearTimeout(_cache['timer_hide']);
+			return;
+		}
+		
+		/** настройки по умолчанию */
+		param.left	= param.left || 0;
+		param.top	= param.top || 0;
+		param.arrow_left= param.arrow_left || 0;
+		
+		_cache.obj	= obj;
+		_cache.param	= param;
+		
+		/** сбрасываем таймеры */
+		clearTimeout(_cache.timer_show);
+		clearTimeout(_cache.timer_hide);
+		
+		_start();		// подготавливем
+	}
+	
+	/** маленькие подсказки */
+	t.hint		= function(obj,code,offset) {
+		if (typeof offset == 'undefined') {
+			offset	= {left:0,top:0,arrow_left:0};
+		}
+		
+		if (typeof offset.left == 'undefined') {
+			offset.left = 0;
+		}
+		
+		if (typeof offset.top == 'undefined') {
+			offset.top = 0;
+		}
+		
+		if (typeof offset.arrow_left == 'undefined') {
+			offset.arrow_left = 0;
+		}
+		
+		var txt	= g('hint.'+code);
+		this.show(obj,{'type':'hint','txt':txt,'left':offset.left,'top':offset.top,'arrow_left':offset.arrow_left});
+	}
+	
+	/** */
+	t.text		= function(obj,txt,offset) {
+		if (typeof offset == 'undefined') {
+			offset	= {left:0,top:0,arrow_left:0};
+		}
+		
+		if (typeof offset.left == 'undefined') {
+			offset.left = 0;
+		}
+		
+		if (typeof offset.top == 'undefined') {
+			offset.top = 0;
+		}
+		
+		if (typeof offset.arrow_left == 'undefined') {
+			offset.arrow_left = 0;
+		}
+		
+		this.show(obj,{'type':'hint','txt':txt,'left':offset.left,'top':offset.top,'arrow_left':offset.arrow_left});
+	}
+	
+	/** */
+	t.txt		= function(obj,txt,offset) {
+		if (typeof offset == 'undefined') {
+			offset	= {left:0,top:0,arrow_left:0};
+		}
+		
+		if (typeof offset.left == 'undefined') {
+			offset.left = 0;
+		}
+		
+		if (typeof offset.top == 'undefined') {
+			offset.top = 0;
+		}
+		
+		if (typeof offset.arrow_left == 'undefined') {
+			offset.arrow_left = 0;
+		}
+		
+		this.show(obj,{'type':'hint','txt':txt,'left':offset.left,'top':offset.top,'arrow_left':offset.arrow_left});
+	}
+	
+	/** скрываем tooltip, курсор ушел с блока obj  */
+	t.hide		= function(force) {
+		if (force) {
+			_hide();
+			clearTimeout(_cache.timer_show);
+			clearTimeout(_cache.timer_hide);
+			return true;
+		}
+		
+		clearTimeout(_cache.timer_show);
+		_cache['timer_hide']	= setTimeout(function(){
+			_hide();
+		},100);
+	}
+	
+	/** курсор ушел из попапа */
+	t.nextOut	= function() {
+		this.hide();
+	}
+	
+	/** курсор из объекта и перешел в popup */
+	t.nextOver	= function() {
+		clearTimeout(_cache['timer_hide']);
+	}
+	
+	t.html	= htmlHandler(t);
+	function htmlHandler(self) {
+		var t	= {
+			'self'	: self
+		};
+		
+		/** общий каркас tooltip */
+		t.main		= function() {
+			var txt = '\n\
+			<div class="tooltip" style="" onmouseover="TOOLTIP.nextOver();" onmouseout="TOOLTIP.nextOut();">\n\
+				<div class="tooltip_arrow" style=""></div>\n\
+				<div class="tooltip_body clear_fix">\n\
+		\n\
+				</div>\n\
+			</div>';
+			return txt;
+		}
+		
+		/** показываем информацию о вещах */
+		t.typeItems	= function() {
+			var txt		= '';
+			var param	= _cache.param;
+			var extra	= typeof param.extra != 'undefined' && typeof param.extra.extra != 'undefined' ? param.extra.extra : {};
+			
+			/**  
+			 * {
+			 *	'type'		: 'items',
+			 *	'tooltip_id'	: 'item_9',
+			 *	'id'		: '9',			// item_id
+			 *	'extra'		: {
+			 *		'room'	: 'dressingroom',	// popup в одевалке
+			 *		'index'	:'0',			// index - вещи в таблице 
+			 *		'extra'	:'[]'			// перекрытие каких-либо параметров (например уровень вещи и т.п.)
+			 *	}
+			 * }
+			 **/
+			
+			
+			var info	= tooltips[param.tooltip_id];
+			
+			var replace	= {
+				'IMG_URL'	: IMG_URL,
+				'MONEY_1'	: g('icon.money_1'),
+				'NAME'		: info.name,
+				'LEVEL'		: typeof extra.level != 'undefined' ? "(" + extra.level + " ур.)" : '',
+				'STAT'		: _getStat(info),
+				'UPGRADE_STAT'	: _getUpgradeStat(),
+				'MIN_LEVEL'	: _getMinLevel(info),
+				'UPGRADES'	: _getUpgrades(info),
+				'DESC'		: _getDesc(info),
+				'ACTIONS'	: _getActions(info)
+			};
+			
+			txt	= '\n\
+				<div class="mt12 mr10 mb12 ml10 mxw280">\n\
+					<div class="bold white mb10 uppercase">{NAME} {LEVEL}</div>\n\
+					{STAT}\n\
+					{UPGRADE_STAT}\n\
+					{MIN_LEVEL}\n\
+					{DESC}\n\
+					{UPGRADES}\n\
+					{ACTIONS}\n\
+					\n\
+				</div>\n\
+				';
+			return txt.format(replace);
+			
+			/** 
+			 * -----------------------------------------------------
+			 *			PROTECTED
+			 * -----------------------------------------------------
+			 **/
+			/** возращает улучшения статов которые дает вещь */
+			function _getStat(info) {
+				var txt	= '';
+				if (typeof info.stat !='undefined') {
+					txt	+= '<div class="mb10">Характеристики:  ';
+					var bb	= ['power','block','dexterity','endurance','charisma'];
+					for (var i in bb) {
+						var key = bb[i];
+						if (intval(info.stat[key])!=0) {
+							if (intval(info.stat[key])>0) {
+								txt += '<span class="white">+'+info.stat[key]+ g('icon.t_stat_'+key) + '</span>';
+							} else {
+								txt += '<span class="white">'+info.stat[key]+ g('icon.t_stat_'+key) + '</span>';
+							}
+						}
+					
+						if (typeof extra.list_stat != 'undefined' && typeof extra.list_stat[key] != 'undefined') {
+							txt += '<span class="green bold">+'+extra.list_stat[key]+ g('icon.t_stat_'+key) + '</span>';
+						}
+					}
+					txt	+= '</div>';
+				}
+				return txt;
+			}
+
+			/** минимальный уровень для покупки */
+			function _getMinLevel(info) {
+				var txt	= '';
+				
+				if (typeof info.min_level!='undefined') {
+					txt	= '<div class=" ">Требование для покупки: <span class="white">мин. '+info.min_level+'</span> ' + g('icon.t_stat_level') +'</div>';
+				}
+				
+				return txt;
+			}
+			
+			/** описание вещи*/
+			function _getDesc(info) {
+				var txt	= '';
+				
+				if (typeof info.desc !='undefined') {
+					txt	= '<div class="mb5 lh150">'+info.desc+'</div>';
+				}
+				
+				if (typeof extra.group != undefined && typeof extra.list_ch != undefined && extra.group == 6) {
+					txt	= txt.format(extra.list_ch);
+				}
+				
+				return txt;
+			}
+			
+			/** улучшенные статы */
+			function _getUpgradeStat() {
+				var txt	= '';
+				return '';
+				if (count(extra.list_stat)==0)
+					return txt;
+				
+				if (typeof extra.list_stat !='undefined') {
+					txt	+= '<div class="mb10 yellow">Улучшения:  ';
+					var bb	= ['power','block','dexterity','endurance','charisma'];
+					for (var i in bb) {
+						var key = bb[i];
+						if (typeof extra.list_stat[key] != 'undefined') {
+							txt += '<span class="green">+'+extra.list_stat[key]+ g('icon.t_stat_'+key) + '</span>';
+						}
+					}
+					txt	+= '</div>';
+				}
+				return txt;
+			}
+			
+			/** улучшение */
+			function _getUpgrades(info) {
+				var txt	= '';
+				
+				/** можно ли улучшать */
+				if (typeof extra.can_upgrade != 'undefined' && extra.can_upgrade == 0) {
+					return txt;
+				}
+				
+				if (typeof info.upgrades !='undefined') {
+					txt	= '<div class="">Можно улучшать в <span style="color:yellow;" class="alink" onclick="ACTIONS.smith.master.screenMain();">кузнице</span> до '+info.upgrades+'</div>';
+					
+				}
+				
+				return txt;
+			}
+			
+			/** действия */
+			function _getActions(info) {
+				var txt	= '';
+				
+				if (typeof param.extra !=='undefined') {
+					/** моя одевалка */
+					var item	= PLAYER.items.getInfo(param.extra.index);
+					
+					/** Для туториала. На втором шаге нужно обработать клик по клавище одеть.*/
+					var extra_tutorial	= '';
+					var extra_tutorial_click= '';
+					
+					if ($(_cache.obj).attr('t_step')!= 'undefined' && $(_cache.obj).attr('t_id') != 'undefined') {
+						extra_tutorial		= ' t_step="'+$(_cache.obj).attr('t_step')+'" '+' t_id="'+$(_cache.obj).attr('t_id')+'" ';
+						extra_tutorial_click	= ' TUTORIAL.click(this); ';
+					}
+					
+					if (typeof param.extra.room !=='undefined' && param.extra.room == 'dressingroom') {
+						var replace	= {
+							'ACTION'	: item.activated == 1 ? 'PLAYER.items.deActivate('+param.extra.index+');' : 'PLAYER.items.activate('+param.extra.index+');',
+							'TITLE'		: item.activated == 1 ? 'Снять' : 'Надеть',
+							'DROP'		: 'Выбросить',
+							'DROP_CLICK'	: 'PLAYER.items.drop('+param.extra.index+')',
+							'SELL'		: 'Продать',
+							'SELL_CLICK'	: 'PLAYER.items.sell('+param.extra.index+')',
+							'T_EXTRA'	: extra_tutorial,
+							'T_EXTRA_CLICK'	: extra_tutorial_click
+						};
+						
+						txt	= '<div class="clear_fix mt10">\n\
+							<div class="dark_button uppercase fl_l mr3" {T_EXTRA} onclick="{ACTION} {T_EXTRA_CLICK}"><b></b><span>{TITLE}</span></div>\n\
+							<div class="dark_button uppercase dark_button_gray fl_r w76" onclick="{SELL_CLICK}"><b></b><span>{SELL}</span></div>\n\
+							<div class="dark_button uppercase dark_button_gray fl_l w80 mr3" onclick="{DROP_CLICK}"><b></b><span>{DROP}</span></div>\n\
+						</div>'.format(replace);
+					}
+					
+					
+				}
+				
+				
+				
+				return txt;
+			}
+			
+		}
+		
+		t.typeHouse	= function() {
+			var txt		= '';
+			var param	= _cache.param;
+			/**  
+			 * {
+			 *	'type'		: 'items',
+			 *	'tooltip_id'	: 'item_9',
+			 *	'id'		: '9',			// item_id
+			 *	'extra'		: {
+			 *		'my'	: true,	// popup в одевалке
+			 *		'index'	:'0',			// index - вещи в таблице 
+			 *	}
+			 * }
+			 **/
+			
+			var info	= tooltips[param.tooltip_id]
+			var replace	= {
+				'IMG_URL'	: IMG_URL,
+				'MONEY_1'	: g('icon.money_1'),
+				'NAME'		: info.name,
+				'DESC'		: _getDesc(info),
+				'ACTIONS'	: _getActions(info)
+			};
+			
+			txt	= '\n\
+				<div class="mt12 mr10 mb12 ml10 mxw300">\n\
+					<div class="bold white mb10 uppercase">{NAME}</div>\n\
+					{ACTIONS}\n\
+					{DESC}\n\
+					\n\
+				</div>\n\
+				';
+			return txt.format(replace);
+			
+			
+			/** 
+			 * -----------------------------------------------------
+			 *			PROTECTED
+			 * -----------------------------------------------------
+			
+			/** описание вещи*/
+			function _getDesc(info) {
+				var txt	= '';
+				
+				if (typeof info.desc !='undefined') {
+					txt	= '<div class="mb5 lh150">'+info.desc+'</div>';
+				}
+				
+				return txt;
+			}
+			
+			/** действия */
+			function _getActions(info) {
+				var txt	= '';
+				if (typeof param.extra !=='undefined' && typeof param.extra.my !=='undefined' && param.extra.my) {
+					if (param.tooltip_id == 'safe') {
+						/** сейфы */
+						var have1	= PLAYER.house.have('safe1');
+						var have2	= PLAYER.house.have('safe2');
+						var replace	= {
+							'TITLE1'		: have1 == false ? '<span class="lightgray">'+g('icon.time')+'<span id="tt_safe1_timer" class="day_on">Не действует</span></span>' : '<span class="lightgray">'+ g('icon.time') + '<span id="tt_safe1_timer" class="day_on"></span><script>timer({"id":"tt_safe1_timer","time":'+PLAYER.house.getInfo('safe1')+'});</script></span>',
+							'TITLE2'		: have1 == false ? '<span class="lightgray">'+g('icon.time')+'<span id="tt_safe2_timer" class="day_on">Не действует</span></span>' : '<span class="lightgray">'+ g('icon.time') + '<span id="tt_safe2_timer" class="day_on"></span><script>timer({"id":"tt_safe2_timer","time":'+PLAYER.house.getInfo('safe2')+'});</script></span>',
+							'ACTION1'		: "ACTIONS.shop.house.show('safe1')",
+							'ACTION2'		: "ACTIONS.shop.house.show('safe2')",
+							'BTN_TITLE1'		: have1 == false ? 'Активировать' : 'Продлить',
+							'BTN_TITLE2'		: have2 == false ? 'Активировать' : 'Продлить'
+						};
+						
+						txt	= '\n\
+							<div class="clear_fix">\n\
+								<div class="tooltip_inside_box mb8 mr5 fl_l">\n\
+									<span class="inlineb w70">Обычный</span>\n\
+									{TITLE1}\n\
+								</div>\n\
+								<div class="dark_button dark_button_grey uppercase fl_r" onclick="{ACTION1}"><b></b><span>{BTN_TITLE1}</span></div>\n\
+							</div>\n\
+							<div class="clear_fix">\n\
+								<div class="tooltip_inside_box mb8 mr5 fl_l">\n\
+									<span class="inlineb w70">Кристальный</span>\n\
+									{TITLE2}\n\
+								</div>\n\
+								<div class="dark_button dark_button_grey uppercase fl_r" onclick="{ACTION2}"><b></b><span>{BTN_TITLE2}</span></div>\n\
+							</div>\n\
+							'.format(replace);
+						
+					} else {
+						/** тотемы - кроме сейфов */
+						var have1	= PLAYER.house.have(param.tooltip_id);
+						var replace	= {
+							'TITLE1'		: have1 == false ? '<span class="lightgray">'+g('icon.time')+'<span id="tt_'+param.tooltip_id+'_timer" class="day_on">Не действует</span></span>' : '<span class="lightgray">'+ g('icon.time') + '<span id="tt_'+param.tooltip_id+'_timer" class="day_on"></span><script>timer({"id":"tt_'+param.tooltip_id+'_timer","time":'+PLAYER.house.getInfo(param.tooltip_id)+'});</script></span>',
+							'ACTION1'		: "ACTIONS.shop.house.show('{ID}')".format({'ID':param.tooltip_id}),
+							'BTN_TITLE1'		: have1 == false ? 'Активировать' : 'Продлить'
+							
+						};
+						
+						txt	= '\n\
+							<div class="clear_fix">\n\
+								<div class="tooltip_inside_box mb8 mr5 fl_l">\n\
+									<span class="inlineb w70">Действует:</span>\n\
+									{TITLE1}\n\
+								</div>\n\
+								<div class="dark_button dark_button_grey uppercase fl_r" onclick="{ACTION1}"><b></b><span>{BTN_TITLE1}</span></div>\n\
+							</div>\n\
+							'.format(replace);
+					}
+					
+					
+				}
+				
+				
+				
+				return txt;
+			}
+		}
+		
+		/** маленькие красивые подсказки */
+		t.typeHint	= function() {
+			var txt		= '';
+			var param	= _cache.param;
+			/**  
+			 * {
+			 *	'type'		: 'hint',
+			 *	'code'		: 'код подсказки',
+			 *	'extra'		: {
+			 *	}
+			 * }
+			 **/
+			var replace	= {
+				'MESSAGE'	: param.txt
+			};
+			
+			txt	= '\n\
+				<div class="mt9 mr12 mb10 ml12 mxw305 lh150">\n\
+					{MESSAGE}\n\
+				</div>\n\
+				';
+			return txt.format(replace);
+		}
+		
+		/** описание медалей  */
+		t.typeMedals	= function() {
+			var txt		= '';
+			var param	= _cache.param;
+			/**  
+			 * {
+			 *	'type'		: 'medals',
+			 *	'tooltip_id'	: 'код tooltip-а',
+			 * }
+			 **/
+			
+			if (typeof tooltips[param.tooltip_id] == 'undefined')
+				return '<div class="p10">ERROR: Type of tooltips['+param.tooltip_id+'] undefined</div>';
+			
+			var replace	= {
+				'DESC'		: tooltips[param.tooltip_id].desc,
+				'NAME'		: tooltips[param.tooltip_id].name
+			};
+			
+			txt	= '\n\
+				<div class="mt12 mr10 mb12 ml10 mxw280">\n\
+					<div class="bold white mb10 uppercase">{NAME}</div>\n\
+					<div class="mb5 lh150">{DESC}</div>\n\
+				</div>\n\
+				';
+			return txt.format(replace);
+		}
+		
+		/** описание орденов  */
+		t.typeOrdens	= function() {
+			var txt		= '';
+			var param	= _cache.param;
+			
+			if (typeof tooltips[param.tooltip_id] == 'undefined')
+				return '<div class="p10">ERROR: Type of tooltips['+param.tooltip_id+'] undefined</div>';
+			
+			/**  
+			 * {
+			 *	'type'		: 'medals',
+			 *	'tooltip_id'	: 'код tooltip-а',
+			 * }
+			 **/
+			var replace	= {
+				'DESC'		: tooltips[param.tooltip_id].desc,
+				'NAME'		: tooltips[param.tooltip_id].name
+			};
+			
+			txt	= '\n\
+				<div class="mt12 mr10 mb12 ml10 mxw280">\n\
+					<div class="bold white mb10 uppercase">{NAME}</div>\n\
+					<div class="mb5 lh150">{DESC}</div>\n\
+				</div>\n\
+				';
+			return txt.format(replace);
+		}
+		
+		/** показываем информацию о вещах */
+		t.typeProfileItems	= function() {
+			var txt		= '';
+			var param	= _cache.param;
+			var extra	= typeof param.extra != 'undefined' && typeof param.extra.extra != 'undefined' ? param.extra.extra : {};
+			
+			var item	= popups['item_' + param['id']];
+			
+			var body	= str_replace('\\n','<br>',item[2]);
+			
+			var vars	= {};
+			
+			body		= doItemBodyParse(body, vars);
+			
+			var replace	= {
+				'ID'		: param['id'],
+				'NAME'		: item[0],
+				'LEVEL'		: '111',
+				'BODY'		: body
+				
+			};
+log(item[2]);
+log(str_replace('\\n',"<br>",item[2]));
+		    
+		    txt	= '\<div class="tooltip_body clear_fix">\n\
+			    <div class="mt12 mr10 mb12 ml10 mxw310">\n\
+				<div class="clear_fix">\n\
+				<div class="fl_l bold white mb10 uppercase">{NAME} ({LEVEL} ур.{ID} )</div>\n\
+				<div class="fl_r"></div>\n\
+			</div>\n\
+			<div class="mb10">{BODY} Характеристики: \n\
+			    <span class="white">+24<b title="Сила" class="icon16 t_stat_power"></b></span>\n\
+			    <span class="white">+8<b title="Ловкость" class="icon16 t_stat_dexterity"></b></span>\n\
+			    <span class="white">+2<b title="Масса" class="icon16 t_stat_endurance"></b></span>\n\
+			</div>\n\
+			<div class=" ">Требование для покупки: <span class="white">мин. 14</span> <b title="Уровень" class="icon16 t_stat_level"></b></div>\n\
+			<div class="">Можно улучшать в <span onclick="" class="alink" style="color:yellow;">кузнице</span> до 21-го уровня.</div>\n\
+			    </div></div>\n\
+				';
+		    // log(txt.format(replace));
+			return txt.format(replace);
+			
+		}
+		
+		return t;
+	}
+	
+
+	
+	/**
+	 * ---------------------------------------------------------------------
+	 *				PROTECTED 
+	 * ---------------------------------------------------------------------
+	 */
+	
+	/** подготавливаем tooltip */
+	function _start() {	
+		/** 
+		 * Здесь один важный момент. 
+		 * Если попап уже показан - мы просто заменяем в нем контент и перепозиционируем его 
+		 * Если же попап нет - мы показываем его с нуля - со всеми задержками и т.п.
+		 * */
+		
+		if (_cache['is_hide']==true) {
+			/** нет popup */
+			
+			_generatePopup();
+			_generateHtml();	// запоняем внутренности
+			_pos();			// позиционируем
+			
+			_cache.timer_show	= setTimeout(function(){
+				_show(300);	// показываем		// настраиваем 
+				_after();
+			},400);
+		} else {
+			/** есть popup */
+			_generatePopup();
+			_generateHtml();
+			_pos();
+			_show(200);	// показываем
+			_after();
+		}
+		
+		_cache.obj.onmouseout=function () {
+			TOOLTIP.hide();
+		}
+	}
+	
+	function _generatePopup() {
+		$(t.path.main).remove();
+		$('body').append('<div id="'+str_replace('#','',t.path.main)+'" style="display:none;" class="bb"></div>');
+		$(t.path.main).html(t.html.main());
+	}
+	
+	/** формируем внутреннюю часть */
+	function _generateHtml() {
+		var txt	= '';
+		switch (_cache.param.type) {
+			case 'house':
+				txt	= t.html.typeHouse();
+				break;
+			case 'items':
+				txt	= t.html.typeItems();
+				break;
+			case 'hint':
+				txt	= t.html.typeHint();
+				break;
+			case 'medals':
+				txt	= t.html.typeMedals();
+				break;
+			case 'ordens':
+				txt	= t.html.typeOrdens();
+				break;
+			case 'profile_items':
+				txt	= t.html.typeProfileItems();
+				break;
+			default:
+				txt	= '<span class="p10">Type of Tooltip Undefined. Check Type param</span>';
+				break;
+		}
+		
+		$(t.path.content).html(txt);
+	}
+	
+	/** показываем tooltip. Вызывается по timeout */
+	function _pos() {
+		/** получаем позицию */
+		var content_off	= $('body').offset();
+		
+		var off		= $(_cache.obj).offset();
+		var size_w	= $(_cache.obj).width();
+		var size_h	= $(_cache.obj).height();
+		
+		var tooltip_w	= $(t.path.main).width();
+		var tooltip_h	= $(t.path.main).height();
+		
+		var content_w	= $('body').width();
+		
+		var pos_c	= intval(tooltip_w / 2)-10;
+		var pos_y	= limit(off.top + size_h +_cache.param.top);
+		var pos_arrow	= pos_c - 7 + +_cache.param.arrow_left; /** позиционирование маленькой стрелочки сверху */
+		var pos_x	= limit(off.left+_cache.param.left - (pos_c - intval((size_w  / 2))) ,0);
+		
+		
+		/** корректируем */
+		if (pos_x - content_off.left < 0 ) {
+			/** выход слева*/
+			var bb = (content_off.left - pos_x)+15;
+			
+			pos_arrow	= pos_arrow - bb; 
+			pos_x		= pos_x + bb;
+		} else if ( (pos_x + tooltip_w) >= (content_off.left + content_w)  ) {
+			/** выход справа*/
+			var bb = (pos_x + tooltip_w) - (content_off.left + content_w)+15;
+			
+			pos_arrow	= pos_arrow + bb; 
+			pos_x		= pos_x - bb;
+		}
+		
+		$(t.path.arrow).css({'left':pos_arrow+'px'});
+		$(t.path.main).css({'left':pos_x+'px','top':pos_y+'px'});
+	}
+	
+	/** анимируем показ */
+	function _show(timeout) {
+		$(t.path.main).show('drop',{direction:"down",'distance':30},timeout,function(){
+			
+		});
+	}
+	
+	/** _hide - вызывается по рабатыванию timeout */
+	function _hide() {
+		if (_cache.is_hide)
+			return false;
+		
+		$(t.path.main).stop().hide('drop',{direction:"down",'distance':30},300,function(){
+			// 'percent':10,'size':1,
+			$(this).remove();
+			$('.ui-effects-wrapper').remove();
+			_cache.is_hide	= true;
+		});
+		
+	}
+		
+	/** привязка на наведение т.п - действия после показа */
+	function _after() {
+		_cache.is_hide	= false;
+	}
+	
+	return t;
+}

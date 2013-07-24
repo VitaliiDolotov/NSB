@@ -1,0 +1,721 @@
+/**
+.slider {
+	width: 300px;
+}
+
+.slider_v {
+	display: none;
+}
+*/
+#flyings {
+	width: 570px;
+	height: 200px;
+	margin-left: -10px;
+	padding-bottom: 10px;
+}
+#flyings div {
+	width: 190px;
+	height: 210px;
+	float: left;
+}
+
+#flyings.count_4 {
+	height: 160px;
+}
+
+#flyings.count_4 div {
+	width: 142px;
+	height: 157px;
+}
+
+#flyings div.active {
+	background-position: 0px 210px;
+}
+
+#flyings.count_4 div.active {
+	background-position: 0px 157px;
+}
+
+#flyings .flying0 {	background-image: url(/images/items/ink_0.png); }
+#flyings .flying11 {	background-image: url(/images/items/ink_11.png); }
+#flyings .flying12 {	background-image: url(/images/items/ink_12.png); }
+#flyings .flying13 {	background-image: url(/images/items/ink_13.png); }
+#flyings .flying21 {	background-image: url(/images/items/ink_21.png); }
+#flyings .flying22 {	background-image: url(/images/items/ink_22.png); }
+#flyings .flying23 {	background-image: url(/images/items/ink_23.png); }
+#flyings .flying31 {	background-image: url(/images/items/ink_31.png); }
+#flyings .flying32 {	background-image: url(/images/items/ink_32.png); }
+#flyings .flying33 {	background-image: url(/images/items/ink_33.png); }
+#flyings .flying41 {	background-image: url(/images/items/ink_41.png); }
+#flyings .flying42 {	background-image: url(/images/items/ink_42.png); }
+#flyings .flying43 {	background-image: url(/images/items/ink_43.png); }
+
+#flyings.count_4 .flying11 {	background-image: url(/images/items/ink_11_4.png); }
+#flyings.count_4 .flying12 {	background-image: url(/images/items/ink_12_4.png); }
+#flyings.count_4 .flying13 {	background-image: url(/images/items/ink_13_4.png); }
+#flyings.count_4 .flying21 {	background-image: url(/images/items/ink_21_4.png); }
+#flyings.count_4 .flying22 {	background-image: url(/images/items/ink_22_4.png); }
+#flyings.count_4 .flying23 {	background-image: url(/images/items/ink_23_4.png); }
+#flyings.count_4 .flying31 {	background-image: url(/images/items/ink_31_4.png); }
+#flyings.count_4 .flying32 {	background-image: url(/images/items/ink_32_4.png); }
+#flyings.count_4 .flying33 {	background-image: url(/images/items/ink_33_4.png); }
+#flyings.count_4 .flying41 {	background-image: url(/images/items/ink_41_4.png); }
+#flyings.count_4 .flying42 {	background-image: url(/images/items/ink_42_4.png); }
+#flyings.count_4 .flying43 {	background-image: url(/images/items/ink_43_4.png); }
+
+#flyings div.active {
+	cursor: pointer;
+	position:relative;
+}
+#flyings div.passive {
+	cursor: default;
+	position:relative;
+}
+
+#flyings div.active {
+	
+}
+
+#flyings div.clear {
+	height: 1px !important;
+}
+
+#flyings div.sleeping {
+	float: right;
+	width: 60px;
+	height: 30px;
+	background: url('/i/ico_sleep.png') no-repeat;
+}
+
+#flyings div.gold_bonus {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	right: 10px;
+	bottom: 10px;
+}
+
+#flyings div[class^=flying1]  div.gold_bonus {
+    background: url('/images/atlantis/atlantis_drakos.png') no-repeat;
+}
+
+#flyings div[class^=flying2]  div.gold_bonus {
+    background: url('/images/atlantis/atlantis_pegass.png') no-repeat;
+}
+
+#flyings div[class^=flying3]  div.gold_bonus {
+    background: url('/images/atlantis/atlantis_grifons.png') no-repeat;
+}
+
+#flyings div[class^=flying4]  div.gold_bonus {
+    background: url('/images/atlantis/atlantis_mantikors.png') no-repeat;
+}
+
+#flying_actions {
+	width: 510px;
+	height: 50px;
+	padding-left: 50px;
+}
+#flying_actions div {
+	width: 40px;
+	height: 40px;
+	float: left;
+	border: 1px coral solid;
+	margin-right: 5px;
+}
+
+#flying_actions div.active {
+	border: 1px green solid;
+}
+
+.flying_actions div.selected {
+	background: #e3d0af url(/i/front/bg_m_pets.png) no-repeat;
+	background-position: 0px -75px;
+	height: 67px;
+	width: 90px;
+	float:left;
+}
+
+.flying_actions div {
+	background: #e3d0af url(/i/front/bg_m_pets.png) no-repeat;
+	background-position: -90px -75px;
+	height: 67px;
+	width: 90px;
+	float:left;
+}
+
+.flying_actions span {
+	display:block;
+	background-image: url(/images/packs/ico_m_pets.png);
+	width: 60px;
+	height: 60px;
+	margin-left: 15px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+.flying_actions div.passive span {
+	cursor: default;
+}
+
+.flying_actions #fa_about.active span { background-position: 0px 0px; }
+.flying_actions #fa_about.passive span { background-position: 0px 60px; }
+.flying_actions #fa_heal.active span { background-position: -60px 0px; }
+.flying_actions #fa_heal.passive span { background-position: -60px 60px; }
+.flying_actions #fa_feed.active span { background-position: -120px 0px; }
+.flying_actions #fa_feed.passive span { background-position: -120px 60px; }
+.flying_actions #fa_bonus.active span { background-position: -180px 0px; }
+.flying_actions #fa_bonus.passive span { background-position: -180px 60px; }
+.flying_actions #fa_training.active span { background-position: -240px 0px; }
+.flying_actions #fa_training.passive span { background-position: -240px 60px; }
+.flying_actions #fa_events.active span { background-position: -300px 0px; }
+.flying_actions #fa_events.passive span { background-position: -300px 60px; }
+
+.egg .flying_actions #fa_heal.active span { background-position: -420px 0px; }
+.egg .flying_actions #fa_heal.passive span { background-position: -420px 60px; }
+.egg .flying_actions #fa_feed.active span { background-position: -360px 0px; }
+.egg .flying_actions #fa_feed.passive span { background-position: -360px 60px; }
+
+#flying_stats {
+	padding-left:33px;
+}
+
+#flying_stats div.clear {
+	height: 1px;
+}
+
+#flying_character {
+	width: 220px;
+	height: 206px;
+	float: left;
+}
+
+#flying_items {
+	width: 290px;
+	height: 206px;
+	float: left;
+	
+}
+
+#flying_items div.holders {
+	width: 290px;
+}
+
+#zoo_all {
+	text-align: center;
+}
+#zoo_all #flyings_all {
+/*	width: 170px;*/
+	height: 150px;
+	float:left;
+}
+
+#zoo_all #skills_all {
+	width: 128px;
+	height: 70px;
+	float:left;
+}
+
+
+
+#can_find span {
+	width: 60px;
+	height: 60px;
+	background-image: url(/images/m/class/flying/items_can_get.jpg);
+	display: inline-block;
+}
+
+#can_find .fish { background-position: 0px 0px }
+#can_find .gold { background-position: -60px 0px }
+#can_find .cry { background-position: -120px 0px }
+#can_find .pand2 { background-position: -180px 0px }
+#can_find .pot11 { background-position: -240px 0px }
+
+#can_find .mine_7 { background-position: -360px -60px }
+#can_find .farm_1 { background-position: -360px 0px }
+#can_find .smith_6 { background-position: -300px 0px }
+#can_find .trade_1 { background-position: -300px -60px }
+#can_find .recipe_1 { background-position: -420px 0px }
+
+#can_find .salt { background-position: 0px -60px }
+#can_find .tear { background-position: -60px -60px }
+#can_find .leaf { background-position: -120px -60px }
+#can_find .ore { background-position: -180px -60px }
+#can_find .res_all { background-position: -240px -60px }
+#can_find .icon_stats_exp_big { background-position: -420px -60px }
+
+#zoo_block {
+	background-image: url(/images/m/class/flying/menu_fpets_01.png);
+/*	width: 150px;*/
+	height: 190px;
+	position: relative;
+	background-repeat: no-repeat;
+}
+#zoo_block div22 {
+	width: 20px;
+	height: 20px;
+	background-image: url(/images/m/class/flying/menu_fpets_01.png);
+	position: absolute;
+}
+#zoo_block .sk1 { position: absolute; top: 104px; left: 80px; }
+#zoo_block .sk2 { position: absolute; top: 104px; left: 115px; }
+#zoo_block .sk3 { position: absolute; top: 11px; left: 80px; }
+#zoo_block .sk4 { position: absolute; top: 11px; left: 115px; }
+#zoo_block .sk5 { position: absolute; top: 58px; left: 6px; }
+#zoo_block .sk6 { position: absolute; top: 58px; left: 41px; }
+#zoo_block .sk7 { position: absolute; top: 150px; left: 6px; }
+#zoo_block .sk8 { position: absolute; top: 150px; left: 41px; }
+
+#accordion .flyings {
+/*	width: 160px;
+	overflow: hidden;*/
+}
+#accordion .flyings .timer_here, #accordion .flyings .timer_here span {
+	width: 60px !important;
+	font-style: normal !important;
+	float: left;
+}
+
+#accordion .flyings .timer_center, #accordion .flyings .timer_center span {
+	float: none !important;
+	font-style: normal;
+}
+#accordion .flyings .clear {
+	width: 10px;
+}
+
+#accordion .flyings .can_get{
+	height: 40px;
+}
+#accordion .flyings .title {
+	background-color: #ecddc0;
+	height: 36px;
+/*	margin-top: 2px;
+	margin-bottom: 2px;*/
+	border-bottom: 1px solid #bfb18e;
+	border-right: 1px solid #bfb18e;
+	float:left;
+	width: 20px;
+	padding-top: 19px;
+	overflow: hidden;
+}
+#accordion .flyings .title a {
+	text-decoration: none;
+}
+
+#accordion .flyings .sleeping {
+	width: 30px;
+	height: 15px;
+	background: url('/i/ico_sleep_s.png') no-repeat;
+	margin: 0 auto;
+}
+
+#accordion .flyings .content {
+	height: 51px;
+	border-bottom: 1px solid #bfb18e;
+	padding-top: 4px;
+	width: 153px;
+	float: left;
+}
+
+#accordion .flyings .content .mb10 {
+/*	width: 160px;*/
+}
+
+#accordion .flyings .content span {
+	width: 80px;
+	display: inline-block;
+	padding-left: 7px;
+	font-size: 11px;
+	line-height: 15px;
+	float: left;
+	height: 15px;
+}
+
+#accordion .flyings .content form {
+	display: inline;
+	width: 50px;
+}
+
+#accordion .flyings .content form input[type="submit"] {
+/*	width: 50px;*/
+}
+
+#accordion .flyings .content u {
+	font-style: normal;
+	display: block;
+	width: 66px;
+	padding: 1px 0 1px 5px;
+	margin: 1px;
+	height: 18px;
+	border: 1px solid #C1B092;
+	float: left;
+	text-decoration: none;
+}
+
+#accordion .flyings .content u.long {
+	width: 141px;
+}
+
+#accordion .flyings .content u.first {
+	margin-left: 2px;
+}
+
+#accordion .flyings .content a {
+	text-decoration: none;
+}
+
+#accordion .flyings .status_control {
+	border: 1px solid #C1B092;
+	text-align: center;
+	font-size: 10px;
+}
+
+.list_menu .td_last {
+	width: 127px;
+	text-align: center;
+}
+
+.list_menu .td_center {
+	padding-right: 5px;
+}
+
+.select_watch_time {
+	width: 170px;
+	text-align: center;
+}
+
+#body .message {
+	margin: 0 !important;
+}
+
+#body .overmessage {
+	height: 14px;
+	width: 514px;
+	display: block;
+	clear:both;
+	margin-left:20px;
+}
+
+.mg_prize {
+	display: inline-block;
+	background-color: red;
+	width: 60px;
+	height: 60px;
+	font-style: normal;
+	color: black;
+}
+
+.mg_prize.green {
+	background-color: green;
+}
+
+.chest {
+	display: inline-block;
+	background-image: url(/images/m/class/flying/mg_chests.png);
+	width: 100px;
+	height: 83px;
+	background-position: 0px 0px;
+	position: relative;
+	margin-right: 10px;
+}
+
+.chest u {
+	display: block;
+	position: absolute;
+	top: 53px;
+	left: 15px;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none;
+	width: 67px;
+}
+
+.chest:hover {
+	background-position: 0px -83px;
+}
+
+.chest.opened_1_0 {
+	color: #dacaac;
+	background-position: -200px 0px;
+}
+.chest.opened_1_1 {
+	background-position: -200px -83px;
+	color: #542F1B;
+}
+.chest.opened_2_0 {
+	color: #dacaac;
+	background-position: -100px 0px;
+}
+.chest.opened_2_1 {
+	background-position: -100px -83px;
+	color: #542F1B;
+}
+.chest.opened_10_0 {
+	color: #dacaac;
+	background-position: -300px 0px;
+}
+.chest.opened_10_1 {
+	background-position: -300px -83px;
+	color: #542F1B;
+}
+
+
+
+/* ----- css блок для бонусов ----- */
+.bonus {
+	display:inline-block;
+	width:245px;
+	float:left;
+}
+
+.bonus.cl_m_charisma {
+	width:265px !important;
+}
+
+.zoo_about_bar_bg {
+	width:215px !important;
+	height:40px !important;
+	background:url(/i/buttons.png) no-repeat;
+	background-position: -387px	 -290px;
+	margin-bottom:10px;
+	margin-left: 0px  !important;
+	text-align: center;
+	
+}
+
+.zoo_td {
+	vertical-align:middle;padding:5px 0;
+}
+
+.zoo_about_text1 {
+	padding-right:10px;width:300px;float:left;
+}
+
+.zoo_stat_1 {
+	width:215px;
+	margin-right: 10px;
+	text-align: right;
+}
+
+
+.zoo_event_1 {
+	background:url(/images/menus/fly_adv.png) no-repeat;
+	width:100px;
+	height:75px;
+	margin:5px 0;
+}
+
+.zoo_event_2 {
+	background:url(/images/menus/fly_adv.png) no-repeat;
+	background-position: 0px	 -75px;
+	width:100px;
+	height:75px;
+	margin:5px 0;
+}
+
+.zoo_event_3 {
+	background:url(/images/menus/fly_adv.png) no-repeat;
+	background-position: 0px	 -150px;
+	/*
+	background:url(/images/menus/fly_advp.png) no-repeat;
+	*/
+	width:100px;
+	height:75px;
+	margin:5px 0;
+}
+
+/* ----- ----- */
+.flying_working {margin-left:-9px;margin-bottom: 10px;}
+.flying_working_top { background:url(/i/inside/bg_block_in.png) no-repeat; height:13px; width:530px; background-position: 0 -13px;}
+.flying_working_bottom { background:url(/i/inside/bg_block_in.png) no-repeat; height:13px; width:530px;}
+.flying_working_center { background:url(/i/inside/bg_block_in.png) repeat-y; height:200px; width:530px; background-position: -530px 0px;}
+
+.flying_working_center .ico {background:url(/images/buildings/fly_farm.jpg) no-repeat; height:200px; width:504px;}
+
+.zoo_bar_border_ico {
+	vertical-align: top;
+	width:20px; 
+	float: left;
+	margin-left:7px;
+}
+
+.zoo_bar_border_bar {
+	margin-left: -8px;
+	padding: 0px; 
+	
+}
+
+#bigattack_fight_block {
+	position: relative;
+	height: 80px;
+	margin: 10px 0 15px 0;
+}
+
+#bigattack_fight_block .flying_ava,
+#bigattack_fight_block .monster_ava {
+	width:80px;
+	height:80px;
+	position: absolute;
+}
+
+#bigattack_fight_block .winner_name {
+	margin: 0 auto;
+	width: 320px;
+	overflow-x: hidden;
+	padding-top: 30px;
+}
+
+#bigattack_fight_block .flying_ava {
+	background-image: url(/images/m/class/mega/fpets_ava_s.png);
+	left: 10px;
+}
+
+#bigattack_fight_block .monster_ava {
+	background-image: url(/images/m/class/mega/fly_monsters.png);
+	right: 10px;
+}
+
+
+#bigattack_fight_block .flying_ava span.level,
+#bigattack_fight_block .monster_ava span.level {
+	display: block;
+	font-size: 10px;
+	left: 25px;
+	position: absolute;
+	text-align: center;
+	top: 61px;
+	width: 20px;
+}
+
+#bigattack_fight_block .flying_ava.ava_12 {
+	background-position: 0px -80px; 
+}
+
+#bigattack_fight_block .flying_ava.ava_13 {
+	background-position: -80px -80px; 
+}
+
+#bigattack_fight_block .flying_ava.ava_22 {
+	background-position: -160px -80px; 
+}
+
+#bigattack_fight_block .flying_ava.ava_23 {
+	background-position: -240px -80px; 
+}
+
+#bigattack_fight_block .flying_ava.ava_32 {
+	background-position: -320px -80px; 
+}
+
+#bigattack_fight_block .flying_ava.ava_33 {
+	background-position: -400px -80px; 
+}
+
+#bigattack_fight_block .flying_ava.ava_42 {
+	background-position: -480px -80px; 
+}
+
+#bigattack_fight_block .flying_ava.ava_43 {
+	background-position: -560px -80px; 
+}
+
+#bigattack_fight_block .monster_ava.kk_01 {
+	background-position: -240px -160px; 
+}
+#bigattack_fight_block .monster_ava.kk_02 {
+	background-position: -320px -160px; 
+}
+#bigattack_fight_block .monster_ava.kk_03 {
+	background-position: -320px -80px; 
+}
+#bigattack_fight_block .monster_ava.kk_04 {
+	background-position: -80px -80px; 
+}
+#bigattack_fight_block .monster_ava.kk_05 {
+	background-position: -400px -160px; 
+}
+#bigattack_fight_block .monster_ava.kk_06 {
+	background-position: -80px -160px; 
+}
+#bigattack_fight_block .monster_ava.kk_07 {
+	background-position: -160px -0px; 
+}
+#bigattack_fight_block .monster_ava.kk_08 {
+	background-position: -80px -0px; 
+}
+#bigattack_fight_block .monster_ava.kk_09 {
+	background-position: -240px -0px; 
+}
+#bigattack_fight_block .monster_ava.kk_10 {
+	background-position: -320px -0px; 
+}
+#bigattack_fight_block .monster_ava.kk_11 {
+	background-position: -0px -0px; 
+}
+#bigattack_fight_block .monster_ava.kk_12 {
+	background-position: -400px -0px; 
+}
+#bigattack_fight_block .monster_ava.kk_13 {
+	background-position: -160px -80px; 
+}
+#bigattack_fight_block .monster_ava.kk_14 {
+	background-position: -0px -80px; 
+}
+#bigattack_fight_block .monster_ava.kk_15 {
+	background-position: -160px -160px; 
+}
+#bigattack_fight_block .monster_ava.kk_16 {
+	background-position: -400px -80px; 
+}
+#bigattack_fight_block .monster_ava.kk_17 {
+	background-position: -0px -160px; 
+}
+#bigattack_fight_block .monster_ava.kk_18 {
+	background-position: -240px -80px; 
+}
+#bigattack_fight_block .monster_ava.kk_19 {
+	background-position: 0 -240px;
+}
+#bigattack_fight_block .monster_ava.kk_20 {
+	background-position: -80px -240px;
+}
+#bigattack_fight_block .monster_ava.kk_21 {
+	background-position: -160px -240px;
+}
+
+#pegasus_training_ad_top {
+    background-image: url(/locale/RU/pegas_banner.png);
+    width: 504px;
+    height: 65px;
+	position: relative;
+	top: -7px;
+	margin-bottom: -7px;
+}
+
+#draco_training_ad_top {
+    background-image: url(/locale/RU/draco_banner.png);
+    width: 504px;
+    height: 65px;
+    position: relative;
+    top: -7px;
+    margin-bottom: -7px;
+}
+
+#grifon_training_ad_top {
+    background-image: url(/locale/RU/grifon_banner.png);
+    width: 504px;
+    height: 65px;
+    position: relative;
+    top: -7px;
+    margin-bottom: -7px;
+}
+
+#manticore_training_ad_top {
+    background-image: url(/locale/RU/manticore_banner.png);
+    width: 504px;
+    height: 65px;
+    position: relative;
+    top: -7px;
+    margin-bottom: -7px;
+}

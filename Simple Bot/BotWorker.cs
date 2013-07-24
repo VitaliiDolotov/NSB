@@ -8,7 +8,7 @@ namespace Simple_Bot.Resources
 {
     public static class BotWorker
     {
-        static BotvaClass Bot = new BotvaClass();
+        static BotvaClass Bot;// = new BotvaClass();
         static BotvaClass Bg;
 
         static Thread MassFightThread;
@@ -17,6 +17,12 @@ namespace Simple_Bot.Resources
 
         public static void WorkThreadFunction()
         {
+            try
+            {
+                if (Bot == null)
+                    Bot = new BotvaClass();
+            }
+            catch { }
             try
             {
                 try
@@ -100,6 +106,8 @@ namespace Simple_Bot.Resources
         public static void Rest()
         {
             Bot.Rest();
+            Quit(Bot);
+            Bot = null;
         }
 
         public static void MassFight()

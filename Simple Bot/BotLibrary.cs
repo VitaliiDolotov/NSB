@@ -83,6 +83,7 @@ namespace Simple_Bot
         static DateTime Timer_BiggestPotion = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_Arena = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_MassFight = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+        static DateTime Timer_MassFightTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
         static DateTime Timer_Grif = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_Mont = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
@@ -106,10 +107,27 @@ namespace Simple_Bot
 
         static DateTime Timer_RestTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
-
         IWebDriver driver;
 
         Random rnd = new Random();
+
+        void GetSettingsFiles()
+        {
+            string[] filesList = new string[Directory.GetFiles(Directory.GetCurrentDirectory(), "*.bin").Length];
+            int index = 0;
+            foreach (var file in Directory.GetFiles(Directory.GetCurrentDirectory(), "*.bin"))
+            {
+                filesList[index] = Path.GetFileName(file);
+                SettingsFile = Path.GetFileName(file);
+                try
+                {
+                    if (Convert.ToDateTime(ReadFromFile(SettingsFile, "SystemBox")[16]).CompareTo(DateTime.Now) > 0)
+                        return;
+                }
+                catch { }
+                index++;
+            }
+        }
 
         private void Logger(string logerData)
         {
@@ -645,12 +663,13 @@ namespace Simple_Bot
             }
         }
 
-        public BotvaClass()
+        public BotvaClass(bool isMassFight = false)
         {
+            GetSettingsFiles();
             try
             {
                 OldBotvaWindow();
-                driver = Login(ReadFromFile(SettingsFile, "LoginBox")[1], ReadFromFile(SettingsFile, "LoginBox")[2], ReadFromFile(SettingsFile, "LoginBox")[3], ReadFromFile(SettingsFile, "LoginBox")[4], Convert.ToBoolean(ReadFromFile(SettingsFile, "LoginBox")[5]));
+                driver = Login(ReadFromFile(SettingsFile, "LoginBox")[1], ReadFromFile(SettingsFile, "LoginBox")[2], ReadFromFile(SettingsFile, "LoginBox")[3], ReadFromFile(SettingsFile, "LoginBox")[4], Convert.ToBoolean(ReadFromFile(SettingsFile, "LoginBox")[5]), isMassFight);
                 Hide();
             }
             catch { }
@@ -661,9 +680,9 @@ namespace Simple_Bot
             driver.Quit();
         }
 
-        public IWebDriver Login(string server, string Log, string Pas, string DriverType, bool MailRuLogin)
+        public IWebDriver Login(string server, string Log, string Pas, string DriverType, bool MailRuLogin, bool isMassFight)
         {
-            IWebDriver driver = DriverCreation(DriverType);
+            IWebDriver driver = DriverCreation(DriverType, isMassFight);
 
             try
             {
@@ -751,7 +770,7 @@ namespace Simple_Bot
             System.Threading.Thread.Sleep(rnd.Next(Delay3, Delay4));
         }
 
-        private IWebDriver DriverCreation(string DrType)
+        private IWebDriver DriverCreation(string DrType, bool isMassFight)
         {
             if (DrType == "Chrome")
             {
@@ -762,7 +781,12 @@ namespace Simple_Bot
 	            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "SystemBox")[13]))
 	            {
 		            string path = Directory.GetCurrentDirectory();
-		            options.AddArguments(string.Format("user-data-dir={0}/ChromeProfile", path));
+                    string profileType = null;
+                    if (isMassFight)
+                        profileType = "ChromeProfileForMassFight";
+                    else
+                        profileType = "ChromeProfile";
+                    options.AddArguments(string.Format("user-data-dir={0}/{1}", path, profileType));
 	            }
 				//Максимайз браузер
 				if (Convert.ToBoolean(ReadFromFile(SettingsFile, "SystemBox")[14]))
@@ -833,13 +857,13 @@ namespace Simple_Bot
                         }
                         iterator++;
                         this.driver.Quit();
-                        this.driver = Login(ReadFromFile(SettingsFile, "LoginBox")[1], ReadFromFile(SettingsFile, "LoginBox")[2], ReadFromFile(SettingsFile, "LoginBox")[3], ReadFromFile(SettingsFile, "LoginBox")[4], Convert.ToBoolean(ReadFromFile(SettingsFile, "LoginBox")[5]));
+                        this.driver = Login(ReadFromFile(SettingsFile, "LoginBox")[1], ReadFromFile(SettingsFile, "LoginBox")[2], ReadFromFile(SettingsFile, "LoginBox")[3], ReadFromFile(SettingsFile, "LoginBox")[4], Convert.ToBoolean(ReadFromFile(SettingsFile, "LoginBox")[5]), false);
                     }
                 }
                 catch
                 {
                     this.driver.Quit();
-                    this.driver = Login(ReadFromFile(SettingsFile, "LoginBox")[1], ReadFromFile(SettingsFile, "LoginBox")[2], ReadFromFile(SettingsFile, "LoginBox")[3], ReadFromFile(SettingsFile, "LoginBox")[4], Convert.ToBoolean(ReadFromFile(SettingsFile, "LoginBox")[5]));
+                    this.driver = Login(ReadFromFile(SettingsFile, "LoginBox")[1], ReadFromFile(SettingsFile, "LoginBox")[2], ReadFromFile(SettingsFile, "LoginBox")[3], ReadFromFile(SettingsFile, "LoginBox")[4], Convert.ToBoolean(ReadFromFile(SettingsFile, "LoginBox")[5]), false);
                 }
                 ReHideWindow();
             }
@@ -1467,7 +1491,7 @@ namespace Simple_Bot
                         {
                             try
                             {
-                                if (Convert.ToInt32(GetResourceValue("Кристальная пыль")[0].Replace(".", "")) < 1991)
+                                if (Convert.ToInt64(GetResourceValue("Кристальная пыль")[0].Replace(".", "")) < 100000000)
                                 {
                                     //Переходим в жерновую ico f58
                                     driver.FindElement(By.XPath("//a/div[contains(@class,'f58')]")).Click();
@@ -1499,7 +1523,7 @@ namespace Simple_Bot
                         {
                             try
                             {
-                                if (Convert.ToInt32(GetResourceValue("Мыльный камень")[0].Replace(".", "")) < 1991)
+                                if (Convert.ToInt64(GetResourceValue("Мыльный камень")[0].Replace(".", "")) < 10000000)
                                 {
                                     //Переходим на плуг ico f57
                                     driver.FindElement(By.XPath("//a/div[contains(@class,'f57')]")).Click();
@@ -3076,18 +3100,7 @@ namespace Simple_Bot
                 {
                     if (CharacterIsFree() == true)
                     {
-                        if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[9]) == true && Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == false)
-                        {
 
-                            GetPet(FightPetProvider());
-                        }
-                        else
-                        {
-                            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == true && ImmunTime() > Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[15]))
-                            {
-                                GetPet(FightPetProvider());
-                            }
-                        }
                         try
                         {
                             int FightCount = 0;
@@ -3119,6 +3132,20 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[1]) == true && Timer_FightMonster.CompareTo(DateTime.Now) < 0)
             {
+                //Вытаскиваем зверя
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[9]) == true && Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == false)
+                {
+
+                    GetPet(FightPetProvider());
+                }
+                else
+                {
+                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == true && ImmunTime() > Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[15]))
+                    {
+                        GetPet(FightPetProvider());
+                    }
+                }
+
                 try
                 {
                     //возращаем в бодалку
@@ -3185,6 +3212,20 @@ namespace Simple_Bot
             //Зорро бодалка
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[2]) == true && Timer_FightZorro.CompareTo(DateTime.Now) < 0)
             {
+                //Вытаскиваем зверя
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[9]) == true && Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == false)
+                {
+
+                    GetPet(FightPetProvider());
+                }
+                else
+                {
+                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == true && ImmunTime() > Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[15]))
+                    {
+                        GetPet(FightPetProvider());
+                    }
+                }
+
                 try
                 {
                     //возращаем в бодалку
@@ -3252,6 +3293,20 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[5]) == true && Timer_FightCommon.CompareTo(DateTime.Now) < 0)
             {
+                //Вытаскиваем зверя
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[9]) == true && Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == false)
+                {
+
+                    GetPet(FightPetProvider());
+                }
+                else
+                {
+                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == true && ImmunTime() > Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[15]))
+                    {
+                        GetPet(FightPetProvider());
+                    }
+                }
+
                 int counter = 2;
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[8]) == true)
                 {
@@ -5239,6 +5294,8 @@ namespace Simple_Bot
                 {
                     Timer_MassFight = ToDateTime("00:35:00");
                     GoToMassFight();
+                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[14]))
+                        Timer_MassFightTime = ToDateTime(string.Format("00:{0}:00", ReadFromFile(SettingsFile, "MassFBox")[13]));
                     while (true)
                     {
                         try
@@ -5306,6 +5363,16 @@ namespace Simple_Bot
                                 catch { }
                             }
 
+                            //Ливаем по ограничивалке времени
+                            if (Timer_MassFightTime.CompareTo(DateTime.Now) < 0)
+                            {
+                                try
+                                {
+                                    driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                    break;
+                                }
+                                catch { }
+                            }
                         }
                         catch { }
                     }
@@ -5403,9 +5470,13 @@ namespace Simple_Bot
             bool retValue = false;
             try
             {
-                string selector = string.Format("//div[@title='{0}']", ReadFromFile(SettingsFile, "MassFBox")[2]);
-                if (driver.FindElement(By.XPath(selector)).Displayed)
-                    retValue = true;
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[1]))
+                {
+                    string selector = string.Format("//div[@title='{0}']", ReadFromFile(SettingsFile, "MassFBox")[2]);
+                    if (driver.FindElement(By.XPath(selector)).Displayed)
+                        retValue = true;
+                }
+                else return false;
             }
             catch { }
             return retValue;
@@ -5570,13 +5641,15 @@ namespace Simple_Bot
             catch { }
         }
 
+        //Abilitys
+
         private void MAGetSomeFood()
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[6]))
             {
                 try
                 {
-                    driver.FindElement(By.CssSelector(".talant_ico_800")).Click();
+                    driver.FindElement(By.CssSelector("#talants_friendly a:nth-of-type(1)")).Click();
                     SmallDelays();
                     //убираем фокус
                     Actions action = new Actions(driver);
@@ -5586,8 +5659,6 @@ namespace Simple_Bot
                 catch { }
             }
         }
-
-        //Abilitys
 
         private void MAUseShild()
         {
@@ -5599,7 +5670,7 @@ namespace Simple_Bot
                     {
                         try
                         {
-                            driver.FindElement(By.CssSelector(".talant_ico_519")).Click();
+                            driver.FindElement(By.CssSelector("#talants_friendly a:nth-of-type(2)")).Click();
                             SmallDelays();
                             //Клацнуть на себя
                             Actions action = new Actions(driver);
@@ -5624,7 +5695,7 @@ namespace Simple_Bot
                     {
                         try
                         {
-                            driver.FindElement(By.CssSelector(".talant_ico_518")).Click();
+                            driver.FindElement(By.CssSelector("#talants_friendly a:nth-of-type(3)")).Click();
                             SmallDelays();
                             //Клацнуть на себя
                             Actions action = new Actions(driver);
@@ -5649,7 +5720,7 @@ namespace Simple_Bot
                     {
                         try
                         {
-                            driver.FindElement(By.CssSelector(".talant_ico_520")).Click();
+                            driver.FindElement(By.CssSelector("#talants_friendly a:nth-of-type(4)")).Click();
                             SmallDelays();
                             //Клацнуть на себя
                             Actions action = new Actions(driver);
@@ -5676,7 +5747,7 @@ namespace Simple_Bot
                     {
                         try
                         {
-                            driver.FindElement(By.CssSelector(".talant_ico_517")).Click();
+                            driver.FindElement(By.CssSelector("#talants_enemies a:nth-of-type(5)")).Click();
                             SmallDelays();
 
                             Actions action = new Actions(driver);
@@ -5725,7 +5796,7 @@ namespace Simple_Bot
                     {
                         try
                         {
-                            driver.FindElement(By.CssSelector(".talant_ico_522")).Click();
+                            driver.FindElement(By.CssSelector("#talants_enemies a:nth-of-type(7)")).Click();
                             SmallDelays();
 
                             Actions action = new Actions(driver);
@@ -5793,7 +5864,7 @@ namespace Simple_Bot
                     {
                         try
                         {
-                            driver.FindElement(By.CssSelector(".talant_ico_521")).Click();
+                            driver.FindElement(By.CssSelector("#talants_enemies a:nth-of-type(6)")).Click();
                             SmallDelays();
 
                             Actions action = new Actions(driver);
@@ -5862,7 +5933,7 @@ namespace Simple_Bot
                     {
                         try
                         {
-                            driver.FindElement(By.CssSelector(".talant_ico_523")).Click();
+                            driver.FindElement(By.CssSelector("#talants_enemies a:nth-of-type(8)")).Click();
                             SmallDelays();
 
                             Actions action = new Actions(driver);
@@ -6051,9 +6122,12 @@ namespace Simple_Bot
 
                                     //Если каждые 5 минут, то ассайни соотв таймер
                                     if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[28]))
-                                        Timer_Arena = ToDateTime(string.Format("00:05:{0}", rnd.Next(15, 58)));
+                                        Timer_Arena = ToDateTime(string.Format("00:05:0{0}", rnd.Next(1, 9)));
                                     else
-                                        Timer_Arena = ToDateTime(string.Format("00:15:{0}", rnd.Next(15, 58)));
+                                        Timer_Arena = ToDateTime(string.Format("00:15:0{0}", rnd.Next(1, 9)));
+                                    //Уходим в бодалку
+                                    driver.FindElement(By.LinkText("Бодалка")).Click();
+                                    Delays();
                                 }
                             }
                             catch (Exception)

@@ -241,6 +241,9 @@
             this.pictureBox50 = new System.Windows.Forms.PictureBox();
             this.pictureBox51 = new System.Windows.Forms.PictureBox();
             this.pictureBox52 = new System.Windows.Forms.PictureBox();
+            this.pictureBox53 = new System.Windows.Forms.PictureBox();
+            this.pictureBox54 = new System.Windows.Forms.PictureBox();
+            this.pictureBox55 = new System.Windows.Forms.PictureBox();
             this.PandaEffectsBox = new System.Windows.Forms.GroupBox();
             this.radioButtonPEcry = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
@@ -346,6 +349,7 @@
             this.label35 = new System.Windows.Forms.Label();
             this.numericUpDownVillageManagerTime = new System.Windows.Forms.NumericUpDown();
             this.checkBoxVillageManager = new System.Windows.Forms.CheckBox();
+            this.checkBoxAlarmBox = new System.Windows.Forms.CheckBox();
             this.FMonstersBox = new System.Windows.Forms.GroupBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.panelFightMonsters = new System.Windows.Forms.Panel();
@@ -379,7 +383,6 @@
             this.label39 = new System.Windows.Forms.Label();
             this.textBoxProdutName = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
-            this.checkBoxAlarmBox = new System.Windows.Forms.CheckBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.textBoxAdv = new System.Windows.Forms.TextBox();
             this.panelBrowser = new System.Windows.Forms.Panel();
@@ -422,12 +425,14 @@
             this.numericUpDownArenaEnemyBm = new System.Windows.Forms.NumericUpDown();
             this.button40 = new System.Windows.Forms.Button();
             this.MassFBox = new System.Windows.Forms.GroupBox();
+            this.checkBoxMFightTime = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBoxMAWeakness = new System.Windows.Forms.CheckBox();
             this.checkBoxMAProklatyshki = new System.Windows.Forms.CheckBox();
             this.checkBoxMAScreem = new System.Windows.Forms.CheckBox();
             this.checkBoxMAArmagedon = new System.Windows.Forms.CheckBox();
             this.checkBoxMifBmHiger = new System.Windows.Forms.CheckBox();
+            this.numericUpDownFightTime = new System.Windows.Forms.NumericUpDown();
             this.label58 = new System.Windows.Forms.Label();
             this.comboBoxMLocation = new System.Windows.Forms.ComboBox();
             this.checkBoxMassFight = new System.Windows.Forms.CheckBox();
@@ -441,6 +446,8 @@
             this.textBoxZadro4ka = new System.Windows.Forms.TextBox();
             this.SystemBox = new System.Windows.Forms.GroupBox();
             this.SystemSettingsPanel = new System.Windows.Forms.Panel();
+            this.comboBoxSettingsFile = new System.Windows.Forms.ComboBox();
+            this.label73 = new System.Windows.Forms.Label();
             this.checkBoxMaximizeBrowser = new System.Windows.Forms.CheckBox();
             this.checkBoxUseDriverProfile = new System.Windows.Forms.CheckBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
@@ -564,6 +571,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox50)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox51)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).BeginInit();
             this.PandaEffectsBox.SuspendLayout();
             this.ImmunEffetsBox.SuspendLayout();
             this.FlyBox.SuspendLayout();
@@ -617,6 +627,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemyBm)).BeginInit();
             this.MassFBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFightTime)).BeginInit();
             this.groupBox10.SuspendLayout();
             this.SystemBox.SuspendLayout();
             this.SystemSettingsPanel.SuspendLayout();
@@ -639,6 +650,7 @@
             // 
             // StartButton
             // 
+            this.StartButton.Enabled = false;
             this.StartButton.Location = new System.Drawing.Point(112, 121);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(75, 23);
@@ -698,7 +710,7 @@
             // 
             // PauseButton
             // 
-            this.PauseButton.Location = new System.Drawing.Point(112, 121);
+            this.PauseButton.Location = new System.Drawing.Point(112, 122);
             this.PauseButton.Name = "PauseButton";
             this.PauseButton.Size = new System.Drawing.Size(75, 23);
             this.PauseButton.TabIndex = 3;
@@ -1783,7 +1795,7 @@
             this.UndergroundBox.Controls.Add(this.checkBoxUndGetPet);
             this.UndergroundBox.Controls.Add(this.checkBoxUnderground);
             this.UndergroundBox.Controls.Add(this.checkBoxByKeys);
-            this.UndergroundBox.Location = new System.Drawing.Point(1428, 425);
+            this.UndergroundBox.Location = new System.Drawing.Point(1428, 468);
             this.UndergroundBox.Name = "UndergroundBox";
             this.UndergroundBox.Size = new System.Drawing.Size(300, 198);
             this.UndergroundBox.TabIndex = 3;
@@ -2063,7 +2075,7 @@
             this.FightBox.Controls.Add(this.MoralityControlBox);
             this.FightBox.Location = new System.Drawing.Point(463, 657);
             this.FightBox.Name = "FightBox";
-            this.FightBox.Size = new System.Drawing.Size(291, 353);
+            this.FightBox.Size = new System.Drawing.Size(291, 334);
             this.FightBox.TabIndex = 3;
             this.FightBox.TabStop = false;
             this.FightBox.Text = "Бодалка";
@@ -2071,7 +2083,7 @@
             // checkBoxDrinkOborotka
             // 
             this.checkBoxDrinkOborotka.AutoSize = true;
-            this.checkBoxDrinkOborotka.Location = new System.Drawing.Point(157, 112);
+            this.checkBoxDrinkOborotka.Location = new System.Drawing.Point(157, 107);
             this.checkBoxDrinkOborotka.Name = "checkBoxDrinkOborotka";
             this.checkBoxDrinkOborotka.Size = new System.Drawing.Size(100, 17);
             this.checkBoxDrinkOborotka.TabIndex = 26;
@@ -2080,7 +2092,7 @@
             // 
             // button31
             // 
-            this.button31.Location = new System.Drawing.Point(6, 321);
+            this.button31.Location = new System.Drawing.Point(6, 304);
             this.button31.Name = "button31";
             this.button31.Size = new System.Drawing.Size(280, 23);
             this.button31.TabIndex = 25;
@@ -2091,7 +2103,7 @@
             // checkBoxOborotka
             // 
             this.checkBoxOborotka.AutoSize = true;
-            this.checkBoxOborotka.Location = new System.Drawing.Point(157, 89);
+            this.checkBoxOborotka.Location = new System.Drawing.Point(157, 85);
             this.checkBoxOborotka.Name = "checkBoxOborotka";
             this.checkBoxOborotka.Size = new System.Drawing.Size(105, 17);
             this.checkBoxOborotka.TabIndex = 3;
@@ -2102,7 +2114,7 @@
             // 
             this.pictureBox32.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox32.Image = global::Simple_Bot.Properties.Resources.settings;
-            this.pictureBox32.Location = new System.Drawing.Point(263, 112);
+            this.pictureBox32.Location = new System.Drawing.Point(263, 107);
             this.pictureBox32.Name = "pictureBox32";
             this.pictureBox32.Size = new System.Drawing.Size(16, 16);
             this.pictureBox32.TabIndex = 24;
@@ -2117,7 +2129,7 @@
             this.groupBox8.Controls.Add(this.checkBoxPetImmun);
             this.groupBox8.Controls.Add(this.numericUpDownPetImmun);
             this.groupBox8.Controls.Add(this.checkBoxGetPet);
-            this.groupBox8.Location = new System.Drawing.Point(6, 139);
+            this.groupBox8.Location = new System.Drawing.Point(6, 129);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(277, 69);
             this.groupBox8.TabIndex = 3;
@@ -2267,9 +2279,9 @@
             // 
             this.groupBox4.Controls.Add(this.checkBoxFight);
             this.groupBox4.Controls.Add(this.FightPanel);
-            this.groupBox4.Location = new System.Drawing.Point(5, 13);
+            this.groupBox4.Location = new System.Drawing.Point(10, 13);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(136, 120);
+            this.groupBox4.Size = new System.Drawing.Size(136, 114);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "   ";
@@ -2293,7 +2305,7 @@
             this.FightPanel.Controls.Add(this.radioButtonFightLvl);
             this.FightPanel.Location = new System.Drawing.Point(6, 14);
             this.FightPanel.Name = "FightPanel";
-            this.FightPanel.Size = new System.Drawing.Size(124, 102);
+            this.FightPanel.Size = new System.Drawing.Size(124, 93);
             this.FightPanel.TabIndex = 0;
             // 
             // checkBoxEnemyPower
@@ -2344,9 +2356,9 @@
             this.MoralityControlBox.Controls.Add(this.checkBoxMoralityZero);
             this.MoralityControlBox.Controls.Add(this.checkBoxMoralityPlus);
             this.MoralityControlBox.Controls.Add(this.checkBoxMoralityMinus);
-            this.MoralityControlBox.Location = new System.Drawing.Point(6, 214);
+            this.MoralityControlBox.Location = new System.Drawing.Point(6, 204);
             this.MoralityControlBox.Name = "MoralityControlBox";
-            this.MoralityControlBox.Size = new System.Drawing.Size(277, 101);
+            this.MoralityControlBox.Size = new System.Drawing.Size(277, 93);
             this.MoralityControlBox.TabIndex = 19;
             this.MoralityControlBox.TabStop = false;
             this.MoralityControlBox.Text = "НЕ проводить бои с: ";
@@ -2917,7 +2929,7 @@
             this.pictureBox41.Size = new System.Drawing.Size(16, 17);
             this.pictureBox41.TabIndex = 26;
             this.pictureBox41.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox41, "Не использовать этого летуна");
+            this.toolTip1.SetToolTip(this.pictureBox41, "Только для полной версии");
             // 
             // pictureBox42
             // 
@@ -3029,6 +3041,36 @@
             this.pictureBox52.TabIndex = 40;
             this.pictureBox52.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox52, "Данная опция может значительно \r\nувеличить производительность бота\r\n");
+            // 
+            // pictureBox53
+            // 
+            this.pictureBox53.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox53.Location = new System.Drawing.Point(242, 74);
+            this.pictureBox53.Name = "pictureBox53";
+            this.pictureBox53.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox53.TabIndex = 32;
+            this.pictureBox53.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox53, "Бится в течение ХХ минут\r\nпосле чего покидать бой.");
+            // 
+            // pictureBox54
+            // 
+            this.pictureBox54.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox54.Location = new System.Drawing.Point(292, 244);
+            this.pictureBox54.Name = "pictureBox54";
+            this.pictureBox54.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox54.TabIndex = 43;
+            this.pictureBox54.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox54, "Введите название нового профиля плюс .bin\r\n");
+            // 
+            // pictureBox55
+            // 
+            this.pictureBox55.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox55.Location = new System.Drawing.Point(167, 38);
+            this.pictureBox55.Name = "pictureBox55";
+            this.pictureBox55.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox55.TabIndex = 26;
+            this.pictureBox55.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox55, "Эта опция доступна только\r\nв полной версии");
             // 
             // PandaEffectsBox
             // 
@@ -3223,6 +3265,7 @@
             // checkBoxDontUseFoFly
             // 
             this.checkBoxDontUseFoFly.AutoSize = true;
+            this.checkBoxDontUseFoFly.Enabled = false;
             this.checkBoxDontUseFoFly.Location = new System.Drawing.Point(8, 129);
             this.checkBoxDontUseFoFly.Name = "checkBoxDontUseFoFly";
             this.checkBoxDontUseFoFly.Size = new System.Drawing.Size(82, 17);
@@ -4246,6 +4289,7 @@
             this.VillageBox.Controls.Add(this.label35);
             this.VillageBox.Controls.Add(this.numericUpDownVillageManagerTime);
             this.VillageBox.Controls.Add(this.checkBoxVillageManager);
+            this.VillageBox.Controls.Add(this.checkBoxAlarmBox);
             this.VillageBox.Location = new System.Drawing.Point(1130, 3);
             this.VillageBox.Name = "VillageBox";
             this.VillageBox.Size = new System.Drawing.Size(162, 115);
@@ -4324,6 +4368,15 @@
             this.checkBoxVillageManager.Text = "Нанимать заведующего";
             this.checkBoxVillageManager.UseVisualStyleBackColor = true;
             this.checkBoxVillageManager.CheckedChanged += new System.EventHandler(this.checkBoxVillageManager_CheckedChanged);
+            // 
+            // checkBoxAlarmBox
+            // 
+            this.checkBoxAlarmBox.AutoSize = true;
+            this.checkBoxAlarmBox.Location = new System.Drawing.Point(137, 67);
+            this.checkBoxAlarmBox.Name = "checkBoxAlarmBox";
+            this.checkBoxAlarmBox.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxAlarmBox.TabIndex = 26;
+            this.checkBoxAlarmBox.UseVisualStyleBackColor = true;
             // 
             // FMonstersBox
             // 
@@ -4714,15 +4767,6 @@
             this.label38.TabIndex = 0;
             this.label38.Text = "Название товара:";
             // 
-            // checkBoxAlarmBox
-            // 
-            this.checkBoxAlarmBox.AutoSize = true;
-            this.checkBoxAlarmBox.Location = new System.Drawing.Point(86, 52);
-            this.checkBoxAlarmBox.Name = "checkBoxAlarmBox";
-            this.checkBoxAlarmBox.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxAlarmBox.TabIndex = 26;
-            this.checkBoxAlarmBox.UseVisualStyleBackColor = true;
-            // 
             // webBrowser1
             // 
             this.webBrowser1.Location = new System.Drawing.Point(970, 570);
@@ -4783,7 +4827,7 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(164, 732);
+            this.panel2.Location = new System.Drawing.Point(52, 708);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(182, 123);
             this.panel2.TabIndex = 27;
@@ -4964,7 +5008,7 @@
             this.TradeFieldBox.Controls.Add(this.label52);
             this.TradeFieldBox.Controls.Add(this.label51);
             this.TradeFieldBox.Controls.Add(this.label50);
-            this.TradeFieldBox.Location = new System.Drawing.Point(1339, 632);
+            this.TradeFieldBox.Location = new System.Drawing.Point(1392, 672);
             this.TradeFieldBox.Name = "TradeFieldBox";
             this.TradeFieldBox.Size = new System.Drawing.Size(249, 132);
             this.TradeFieldBox.TabIndex = 31;
@@ -5130,6 +5174,7 @@
             // 
             // ArenaBox
             // 
+            this.ArenaBox.Controls.Add(this.pictureBox55);
             this.ArenaBox.Controls.Add(this.pictureBox46);
             this.ArenaBox.Controls.Add(this.numericUpDownArenaEnemySlava);
             this.ArenaBox.Controls.Add(this.radioButtonEnemySlava);
@@ -5225,20 +5270,32 @@
             // 
             // MassFBox
             // 
+            this.MassFBox.Controls.Add(this.checkBoxMFightTime);
+            this.MassFBox.Controls.Add(this.pictureBox53);
             this.MassFBox.Controls.Add(this.groupBox1);
+            this.MassFBox.Controls.Add(this.numericUpDownFightTime);
             this.MassFBox.Controls.Add(this.label58);
             this.MassFBox.Controls.Add(this.comboBoxMLocation);
             this.MassFBox.Controls.Add(this.checkBoxMassFight);
             this.MassFBox.Controls.Add(this.groupBox10);
             this.MassFBox.Controls.Add(this.comboBoxMMine);
-            this.MassFBox.Controls.Add(this.checkBoxAlarmBox);
             this.MassFBox.Controls.Add(this.button41);
-            this.MassFBox.Location = new System.Drawing.Point(1443, 152);
+            this.MassFBox.Location = new System.Drawing.Point(1443, 166);
             this.MassFBox.Name = "MassFBox";
-            this.MassFBox.Size = new System.Drawing.Size(277, 264);
+            this.MassFBox.Size = new System.Drawing.Size(277, 296);
             this.MassFBox.TabIndex = 33;
             this.MassFBox.TabStop = false;
             this.MassFBox.Text = "Массовые бои";
+            // 
+            // checkBoxMFightTime
+            // 
+            this.checkBoxMFightTime.AutoSize = true;
+            this.checkBoxMFightTime.Location = new System.Drawing.Point(10, 72);
+            this.checkBoxMFightTime.Name = "checkBoxMFightTime";
+            this.checkBoxMFightTime.Size = new System.Drawing.Size(111, 17);
+            this.checkBoxMFightTime.TabIndex = 33;
+            this.checkBoxMFightTime.Text = "Бится в течение:";
+            this.checkBoxMFightTime.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -5248,7 +5305,7 @@
             this.groupBox1.Controls.Add(this.checkBoxMAArmagedon);
             this.groupBox1.Controls.Add(this.pictureBox47);
             this.groupBox1.Controls.Add(this.checkBoxMifBmHiger);
-            this.groupBox1.Location = new System.Drawing.Point(6, 145);
+            this.groupBox1.Location = new System.Drawing.Point(6, 172);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(265, 86);
             this.groupBox1.TabIndex = 27;
@@ -5305,6 +5362,28 @@
             this.checkBoxMifBmHiger.Text = "Только если БМ врага выше";
             this.checkBoxMifBmHiger.UseVisualStyleBackColor = true;
             // 
+            // numericUpDownFightTime
+            // 
+            this.numericUpDownFightTime.Location = new System.Drawing.Point(129, 72);
+            this.numericUpDownFightTime.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.numericUpDownFightTime.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownFightTime.Name = "numericUpDownFightTime";
+            this.numericUpDownFightTime.Size = new System.Drawing.Size(36, 20);
+            this.numericUpDownFightTime.TabIndex = 30;
+            this.numericUpDownFightTime.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            // 
             // label58
             // 
             this.label58.AutoSize = true;
@@ -5331,6 +5410,7 @@
             // checkBoxMassFight
             // 
             this.checkBoxMassFight.AutoSize = true;
+            this.checkBoxMassFight.Enabled = false;
             this.checkBoxMassFight.Location = new System.Drawing.Point(10, 21);
             this.checkBoxMassFight.Name = "checkBoxMassFight";
             this.checkBoxMassFight.Size = new System.Drawing.Size(113, 17);
@@ -5344,7 +5424,7 @@
             this.groupBox10.Controls.Add(this.checkBoxMAGodSacrf);
             this.groupBox10.Controls.Add(this.checkBoxMAOboz);
             this.groupBox10.Controls.Add(this.checkBoxMAEnergy);
-            this.groupBox10.Location = new System.Drawing.Point(6, 70);
+            this.groupBox10.Location = new System.Drawing.Point(6, 96);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(265, 71);
             this.groupBox10.TabIndex = 22;
@@ -5410,7 +5490,7 @@
             // 
             // button41
             // 
-            this.button41.Location = new System.Drawing.Point(7, 237);
+            this.button41.Location = new System.Drawing.Point(6, 266);
             this.button41.Name = "button41";
             this.button41.Size = new System.Drawing.Size(265, 23);
             this.button41.TabIndex = 19;
@@ -5433,13 +5513,16 @@
             this.SystemBox.Controls.Add(this.button19);
             this.SystemBox.Location = new System.Drawing.Point(1055, 592);
             this.SystemBox.Name = "SystemBox";
-            this.SystemBox.Size = new System.Drawing.Size(330, 300);
+            this.SystemBox.Size = new System.Drawing.Size(330, 322);
             this.SystemBox.TabIndex = 34;
             this.SystemBox.TabStop = false;
             this.SystemBox.Text = "Системные настройки";
             // 
             // SystemSettingsPanel
             // 
+            this.SystemSettingsPanel.Controls.Add(this.pictureBox54);
+            this.SystemSettingsPanel.Controls.Add(this.comboBoxSettingsFile);
+            this.SystemSettingsPanel.Controls.Add(this.label73);
             this.SystemSettingsPanel.Controls.Add(this.checkBoxMaximizeBrowser);
             this.SystemSettingsPanel.Controls.Add(this.pictureBox52);
             this.SystemSettingsPanel.Controls.Add(this.checkBoxUseDriverProfile);
@@ -5450,8 +5533,39 @@
             this.SystemSettingsPanel.Enabled = false;
             this.SystemSettingsPanel.Location = new System.Drawing.Point(5, 13);
             this.SystemSettingsPanel.Name = "SystemSettingsPanel";
-            this.SystemSettingsPanel.Size = new System.Drawing.Size(319, 244);
+            this.SystemSettingsPanel.Size = new System.Drawing.Size(319, 266);
             this.SystemSettingsPanel.TabIndex = 35;
+            // 
+            // comboBoxSettingsFile
+            // 
+            this.comboBoxSettingsFile.FormattingEnabled = true;
+            this.comboBoxSettingsFile.Items.AddRange(new object[] {
+            "Не скупать ресурсы",
+            "Ртутный порошок",
+            "Конс. ядрёная смесь",
+            "Раб людишко",
+            "Билет на маленькую поляну",
+            "Билет на большую поляну",
+            "Сундучок Пандоры",
+            "Золотой Сундучок Пандоры",
+            "Оборотное зелье",
+            "Кристальная пыль",
+            "Мыльный камень"});
+            this.comboBoxSettingsFile.Location = new System.Drawing.Point(136, 241);
+            this.comboBoxSettingsFile.Name = "comboBoxSettingsFile";
+            this.comboBoxSettingsFile.Size = new System.Drawing.Size(144, 21);
+            this.comboBoxSettingsFile.TabIndex = 42;
+            this.comboBoxSettingsFile.Text = "settings.bin";
+            this.comboBoxSettingsFile.SelectedValueChanged += new System.EventHandler(this.comboBoxSettingsFile_SelectedValueChanged);
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(13, 245);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(118, 13);
+            this.label73.TabIndex = 41;
+            this.label73.Text = "Файл с настройками:";
             // 
             // checkBoxMaximizeBrowser
             // 
@@ -5523,7 +5637,7 @@
             this.numericUpDownMaxDelay.Size = new System.Drawing.Size(45, 20);
             this.numericUpDownMaxDelay.TabIndex = 6;
             this.numericUpDownMaxDelay.Value = new decimal(new int[] {
-            2500,
+            3000,
             0,
             0,
             0});
@@ -5546,7 +5660,7 @@
             this.numericUpDownMinDelay.Size = new System.Drawing.Size(45, 20);
             this.numericUpDownMinDelay.TabIndex = 5;
             this.numericUpDownMinDelay.Value = new decimal(new int[] {
-            1500,
+            2000,
             0,
             0,
             0});
@@ -5628,16 +5742,11 @@
             0,
             0,
             0});
-            this.numericUpDownMaxHrsR.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
             this.numericUpDownMaxHrsR.Name = "numericUpDownMaxHrsR";
             this.numericUpDownMaxHrsR.Size = new System.Drawing.Size(34, 20);
             this.numericUpDownMaxHrsR.TabIndex = 35;
             this.numericUpDownMaxHrsR.Value = new decimal(new int[] {
-            5,
+            4,
             0,
             0,
             0});
@@ -5692,16 +5801,11 @@
             0,
             0,
             0});
-            this.numericUpDownMinHrsR.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.numericUpDownMinHrsR.Name = "numericUpDownMinHrsR";
             this.numericUpDownMinHrsR.Size = new System.Drawing.Size(34, 20);
             this.numericUpDownMinHrsR.TabIndex = 31;
             this.numericUpDownMinHrsR.Value = new decimal(new int[] {
-            4,
+            3,
             0,
             0,
             0});
@@ -5757,7 +5861,7 @@
             0,
             0});
             this.numericUpDownMaxHrsW.Minimum = new decimal(new int[] {
-            2,
+            1,
             0,
             0,
             0});
@@ -5817,11 +5921,6 @@
             this.numericUpDownMinHrsW.Location = new System.Drawing.Point(117, 21);
             this.numericUpDownMinHrsW.Maximum = new decimal(new int[] {
             48,
-            0,
-            0,
-            0});
-            this.numericUpDownMinHrsW.Minimum = new decimal(new int[] {
-            1,
             0,
             0,
             0});
@@ -5894,7 +5993,7 @@
             this.numericUpDownMaxDelayMf.Size = new System.Drawing.Size(45, 20);
             this.numericUpDownMaxDelayMf.TabIndex = 6;
             this.numericUpDownMaxDelayMf.Value = new decimal(new int[] {
-            1500,
+            1600,
             0,
             0,
             0});
@@ -5917,7 +6016,7 @@
             this.numericUpDownMinDelayMf.Size = new System.Drawing.Size(45, 20);
             this.numericUpDownMinDelayMf.TabIndex = 5;
             this.numericUpDownMinDelayMf.Value = new decimal(new int[] {
-            1200,
+            1300,
             0,
             0,
             0});
@@ -5936,7 +6035,7 @@
             // 
             this.DonateLabel1.AutoSize = true;
             this.DonateLabel1.ForeColor = System.Drawing.Color.Red;
-            this.DonateLabel1.Location = new System.Drawing.Point(15, 283);
+            this.DonateLabel1.Location = new System.Drawing.Point(17, 305);
             this.DonateLabel1.Name = "DonateLabel1";
             this.DonateLabel1.Size = new System.Drawing.Size(297, 13);
             this.DonateLabel1.TabIndex = 26;
@@ -5944,7 +6043,7 @@
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(5, 260);
+            this.button19.Location = new System.Drawing.Point(5, 282);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(319, 23);
             this.button19.TabIndex = 25;
@@ -5957,7 +6056,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1604, 1053);
+            this.ClientSize = new System.Drawing.Size(1851, 1053);
             this.Controls.Add(this.SystemBox);
             this.Controls.Add(this.textBoxZadro4ka);
             this.Controls.Add(this.MassFBox);
@@ -6112,6 +6211,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox50)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox51)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).EndInit();
             this.PandaEffectsBox.ResumeLayout(false);
             this.PandaEffectsBox.PerformLayout();
             this.ImmunEffetsBox.ResumeLayout(false);
@@ -6190,6 +6292,7 @@
             this.MassFBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFightTime)).EndInit();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.SystemBox.ResumeLayout(false);
@@ -6665,6 +6768,13 @@
 		private System.Windows.Forms.CheckBox checkBoxUseDriverProfile;
 		private System.Windows.Forms.PictureBox pictureBox52;
 		private System.Windows.Forms.CheckBox checkBoxMaximizeBrowser;
+        private System.Windows.Forms.CheckBox checkBoxMFightTime;
+        private System.Windows.Forms.PictureBox pictureBox53;
+        private System.Windows.Forms.NumericUpDown numericUpDownFightTime;
+        private System.Windows.Forms.PictureBox pictureBox54;
+        private System.Windows.Forms.ComboBox comboBoxSettingsFile;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.PictureBox pictureBox55;
     }
 }
 
