@@ -41,6 +41,7 @@ namespace Simple_Bot.Resources
                                 MassFight();
                             }
 
+                        Bot.MrIdiot();
                         Bot.GoToOldoMsters();
                         Bot.AlertFight();
                         Bot.LitleGuru();

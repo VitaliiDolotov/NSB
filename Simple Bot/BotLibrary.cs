@@ -6171,7 +6171,7 @@ namespace Simple_Bot
 
         public void MrIdiot()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[34]) && CurrentCry() > 51)
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[34]))
             {
                 try
                 {
