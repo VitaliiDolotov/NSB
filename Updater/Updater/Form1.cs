@@ -17,7 +17,7 @@ namespace Updater
         string[] FilesForDeleting;
         string[] FilesForDownload;
         string[] FilesForDownloadNames;
-        int BotVersion = 2571;
+        int BotVersion = 2573;
         int NewBotVersion;
         string reportLog = "";
         string labelMessage = "";

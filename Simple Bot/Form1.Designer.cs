@@ -64,6 +64,7 @@
             this.checkBoxHideBrowser = new System.Windows.Forms.CheckBox();
             this.button16 = new System.Windows.Forms.Button();
             this.MenuBox = new System.Windows.Forms.GroupBox();
+            this.button47 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
             this.button45 = new System.Windows.Forms.Button();
             this.button43 = new System.Windows.Forms.Button();
@@ -244,9 +245,9 @@
             this.pictureBox52 = new System.Windows.Forms.PictureBox();
             this.pictureBox53 = new System.Windows.Forms.PictureBox();
             this.pictureBox54 = new System.Windows.Forms.PictureBox();
-            this.pictureBox55 = new System.Windows.Forms.PictureBox();
             this.pictureBox56 = new System.Windows.Forms.PictureBox();
             this.pictureBox57 = new System.Windows.Forms.PictureBox();
+            this.pictureBox58Donate = new System.Windows.Forms.PictureBox();
             this.PandaEffectsBox = new System.Windows.Forms.GroupBox();
             this.radioButtonPEcry = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
@@ -487,6 +488,9 @@
             this.button46 = new System.Windows.Forms.Button();
             this.comboBoxMrIdiot = new System.Windows.Forms.ComboBox();
             this.checkBoxMrIdiot = new System.Windows.Forms.CheckBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.textBoxProxy = new System.Windows.Forms.TextBox();
+            this.pictureBox55 = new System.Windows.Forms.PictureBox();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -579,9 +583,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox58Donate)).BeginInit();
             this.PandaEffectsBox.SuspendLayout();
             this.ImmunEffetsBox.SuspendLayout();
             this.FlyBox.SuspendLayout();
@@ -655,6 +659,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxDelayMf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinDelayMf)).BeginInit();
             this.MedalsBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).BeginInit();
             this.SuspendLayout();
             // 
             // StartButton
@@ -1036,6 +1041,7 @@
             // 
             // MenuBox
             // 
+            this.MenuBox.Controls.Add(this.button47);
             this.MenuBox.Controls.Add(this.button23);
             this.MenuBox.Controls.Add(this.button1);
             this.MenuBox.Controls.Add(this.button45);
@@ -1062,6 +1068,16 @@
             this.MenuBox.TabStop = false;
             this.MenuBox.Text = " Settings ";
             // 
+            // button47
+            // 
+            this.button47.Location = new System.Drawing.Point(165, 325);
+            this.button47.Name = "button47";
+            this.button47.Size = new System.Drawing.Size(141, 23);
+            this.button47.TabIndex = 38;
+            this.button47.Text = "Прокач. Кулонов";
+            this.button47.UseVisualStyleBackColor = true;
+            this.button47.Click += new System.EventHandler(this.button47_Click_1);
+            // 
             // button23
             // 
             this.button23.Location = new System.Drawing.Point(13, 205);
@@ -1076,7 +1092,7 @@
             // 
             this.button45.Location = new System.Drawing.Point(164, 294);
             this.button45.Name = "button45";
-            this.button45.Size = new System.Drawing.Size(141, 23);
+            this.button45.Size = new System.Drawing.Size(142, 23);
             this.button45.TabIndex = 36;
             this.button45.Text = "Страхи в бодалке";
             this.button45.UseVisualStyleBackColor = true;
@@ -1406,9 +1422,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(165, 325);
+            this.button4.Location = new System.Drawing.Point(309, 324);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(285, 24);
+            this.button4.Size = new System.Drawing.Size(141, 24);
             this.button4.TabIndex = 8;
             this.button4.Text = "-=> Save and Back <=--";
             this.button4.UseVisualStyleBackColor = true;
@@ -3052,7 +3068,7 @@
             // pictureBox52
             // 
             this.pictureBox52.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox52.Location = new System.Drawing.Point(292, 201);
+            this.pictureBox52.Location = new System.Drawing.Point(294, 201);
             this.pictureBox52.Name = "pictureBox52";
             this.pictureBox52.Size = new System.Drawing.Size(16, 17);
             this.pictureBox52.TabIndex = 40;
@@ -3072,22 +3088,12 @@
             // pictureBox54
             // 
             this.pictureBox54.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox54.Location = new System.Drawing.Point(292, 244);
+            this.pictureBox54.Location = new System.Drawing.Point(294, 251);
             this.pictureBox54.Name = "pictureBox54";
             this.pictureBox54.Size = new System.Drawing.Size(16, 17);
             this.pictureBox54.TabIndex = 43;
             this.pictureBox54.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox54, "Введите название нового профиля плюс .bin\r\n");
-            // 
-            // pictureBox55
-            // 
-            this.pictureBox55.Image = global::Simple_Bot.Properties.Resources.info_icon;
-            this.pictureBox55.Location = new System.Drawing.Point(167, 38);
-            this.pictureBox55.Name = "pictureBox55";
-            this.pictureBox55.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox55.TabIndex = 26;
-            this.pictureBox55.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox55, "Эта опция доступна только\r\nв полной версии");
             // 
             // pictureBox56
             // 
@@ -3108,6 +3114,16 @@
             this.pictureBox57.TabIndex = 34;
             this.pictureBox57.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox57, "Прокачка медали \"Малый гуру\"/\"Большой гуру\"");
+            // 
+            // pictureBox58Donate
+            // 
+            this.pictureBox58Donate.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox58Donate.Image")));
+            this.pictureBox58Donate.Location = new System.Drawing.Point(167, 38);
+            this.pictureBox58Donate.Name = "pictureBox58Donate";
+            this.pictureBox58Donate.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox58Donate.TabIndex = 36;
+            this.pictureBox58Donate.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox58Donate, "Эта опция доступна только\r\nв полной версии");
             // 
             // PandaEffectsBox
             // 
@@ -3302,7 +3318,6 @@
             // checkBoxDontUseFoFly
             // 
             this.checkBoxDontUseFoFly.AutoSize = true;
-            this.checkBoxDontUseFoFly.Enabled = false;
             this.checkBoxDontUseFoFly.Location = new System.Drawing.Point(8, 129);
             this.checkBoxDontUseFoFly.Name = "checkBoxDontUseFoFly";
             this.checkBoxDontUseFoFly.Size = new System.Drawing.Size(82, 17);
@@ -5204,7 +5219,7 @@
             // 
             // ArenaBox
             // 
-            this.ArenaBox.Controls.Add(this.pictureBox55);
+            this.ArenaBox.Controls.Add(this.pictureBox58Donate);
             this.ArenaBox.Controls.Add(this.pictureBox46);
             this.ArenaBox.Controls.Add(this.numericUpDownArenaEnemySlava);
             this.ArenaBox.Controls.Add(this.radioButtonEnemySlava);
@@ -5538,12 +5553,15 @@
             // 
             // SystemBox
             // 
+            this.SystemBox.Controls.Add(this.pictureBox55);
             this.SystemBox.Controls.Add(this.SystemSettingsPanel);
+            this.SystemBox.Controls.Add(this.textBoxProxy);
+            this.SystemBox.Controls.Add(this.label74);
             this.SystemBox.Controls.Add(this.DonateLabel1);
             this.SystemBox.Controls.Add(this.button19);
-            this.SystemBox.Location = new System.Drawing.Point(1055, 592);
+            this.SystemBox.Location = new System.Drawing.Point(1056, 576);
             this.SystemBox.Name = "SystemBox";
-            this.SystemBox.Size = new System.Drawing.Size(330, 322);
+            this.SystemBox.Size = new System.Drawing.Size(330, 348);
             this.SystemBox.TabIndex = 34;
             this.SystemBox.TabStop = false;
             this.SystemBox.Text = "Системные настройки";
@@ -5563,7 +5581,7 @@
             this.SystemSettingsPanel.Enabled = false;
             this.SystemSettingsPanel.Location = new System.Drawing.Point(5, 13);
             this.SystemSettingsPanel.Name = "SystemSettingsPanel";
-            this.SystemSettingsPanel.Size = new System.Drawing.Size(319, 266);
+            this.SystemSettingsPanel.Size = new System.Drawing.Size(319, 273);
             this.SystemSettingsPanel.TabIndex = 35;
             // 
             // comboBoxSettingsFile
@@ -5581,7 +5599,7 @@
             "Оборотное зелье",
             "Кристальная пыль",
             "Мыльный камень"});
-            this.comboBoxSettingsFile.Location = new System.Drawing.Point(136, 241);
+            this.comboBoxSettingsFile.Location = new System.Drawing.Point(140, 247);
             this.comboBoxSettingsFile.Name = "comboBoxSettingsFile";
             this.comboBoxSettingsFile.Size = new System.Drawing.Size(144, 21);
             this.comboBoxSettingsFile.TabIndex = 42;
@@ -5591,7 +5609,7 @@
             // label73
             // 
             this.label73.AutoSize = true;
-            this.label73.Location = new System.Drawing.Point(13, 245);
+            this.label73.Location = new System.Drawing.Point(17, 251);
             this.label73.Name = "label73";
             this.label73.Size = new System.Drawing.Size(118, 13);
             this.label73.TabIndex = 41;
@@ -5610,7 +5628,7 @@
             // checkBoxUseDriverProfile
             // 
             this.checkBoxUseDriverProfile.AutoSize = true;
-            this.checkBoxUseDriverProfile.Location = new System.Drawing.Point(158, 201);
+            this.checkBoxUseDriverProfile.Location = new System.Drawing.Point(136, 201);
             this.checkBoxUseDriverProfile.Name = "checkBoxUseDriverProfile";
             this.checkBoxUseDriverProfile.Size = new System.Drawing.Size(122, 17);
             this.checkBoxUseDriverProfile.TabIndex = 36;
@@ -5886,7 +5904,7 @@
             // 
             this.numericUpDownMaxHrsW.Location = new System.Drawing.Point(204, 21);
             this.numericUpDownMaxHrsW.Maximum = new decimal(new int[] {
-            49,
+            60,
             0,
             0,
             0});
@@ -5950,7 +5968,7 @@
             // 
             this.numericUpDownMinHrsW.Location = new System.Drawing.Point(117, 21);
             this.numericUpDownMinHrsW.Maximum = new decimal(new int[] {
-            48,
+            59,
             0,
             0,
             0});
@@ -6065,15 +6083,16 @@
             // 
             this.DonateLabel1.AutoSize = true;
             this.DonateLabel1.ForeColor = System.Drawing.Color.Red;
-            this.DonateLabel1.Location = new System.Drawing.Point(17, 305);
+            this.DonateLabel1.Location = new System.Drawing.Point(18, 331);
             this.DonateLabel1.Name = "DonateLabel1";
             this.DonateLabel1.Size = new System.Drawing.Size(297, 13);
             this.DonateLabel1.TabIndex = 26;
             this.DonateLabel1.Text = "Системные настройки доступны только в полной версии";
+            this.DonateLabel1.Click += new System.EventHandler(this.DonateLabel1_Click);
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(5, 282);
+            this.button19.Location = new System.Drawing.Point(6, 308);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(319, 23);
             this.button19.TabIndex = 25;
@@ -6136,12 +6155,39 @@
             this.checkBoxMrIdiot.Text = "Мистер Невнимательный";
             this.checkBoxMrIdiot.UseVisualStyleBackColor = true;
             // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(25, 288);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(36, 13);
+            this.label74.TabIndex = 44;
+            this.label74.Text = "Proxy:";
+            // 
+            // textBoxProxy
+            // 
+            this.textBoxProxy.Location = new System.Drawing.Point(145, 285);
+            this.textBoxProxy.Name = "textBoxProxy";
+            this.textBoxProxy.Size = new System.Drawing.Size(144, 20);
+            this.textBoxProxy.TabIndex = 45;
+            this.textBoxProxy.TextChanged += new System.EventHandler(this.textBoxProxy_TextChanged);
+            // 
+            // pictureBox55
+            // 
+            this.pictureBox55.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox55.Location = new System.Drawing.Point(299, 287);
+            this.pictureBox55.Name = "pictureBox55";
+            this.pictureBox55.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox55.TabIndex = 46;
+            this.pictureBox55.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox55, "Пример: 192.168.106.12:3128");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1604, 882);
+            this.ClientSize = new System.Drawing.Size(1604, 1006);
             this.Controls.Add(this.MedalsBox);
             this.Controls.Add(this.SystemBox);
             this.Controls.Add(this.textBoxZadro4ka);
@@ -6297,9 +6343,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox58Donate)).EndInit();
             this.PandaEffectsBox.ResumeLayout(false);
             this.PandaEffectsBox.PerformLayout();
             this.ImmunEffetsBox.ResumeLayout(false);
@@ -6405,6 +6451,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinDelayMf)).EndInit();
             this.MedalsBox.ResumeLayout(false);
             this.MedalsBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6861,7 +6908,6 @@
         private System.Windows.Forms.PictureBox pictureBox54;
         private System.Windows.Forms.ComboBox comboBoxSettingsFile;
         private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.PictureBox pictureBox55;
         private System.Windows.Forms.GroupBox MedalsBox;
         private System.Windows.Forms.PictureBox pictureBox57;
         private System.Windows.Forms.PictureBox pictureBox56;
@@ -6869,6 +6915,11 @@
         private System.Windows.Forms.ComboBox comboBoxMrIdiot;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button46;
+        private System.Windows.Forms.Button button47;
+        private System.Windows.Forms.PictureBox pictureBox58Donate;
+        private System.Windows.Forms.PictureBox pictureBox55;
+        private System.Windows.Forms.TextBox textBoxProxy;
+        private System.Windows.Forms.Label label74;
     }
 }
 

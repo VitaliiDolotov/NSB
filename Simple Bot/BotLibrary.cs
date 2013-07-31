@@ -4382,14 +4382,19 @@ namespace Simple_Bot
                     Delays();
                     driver.FindElement(By.XPath(".//option[text()='Раб людишко']")).Click();
                     Delays();
-                    //двигаем бегунок
-                    IWebElement Slider = driver.FindElement(By.CssSelector(".ui-slider-handle.ui-state-default.ui-corner-all"));
-                    Actions builder = new Actions(driver);
-                    IAction dragAndDrop = builder.ClickAndHold(Slider).MoveByOffset(0, 0).MoveByOffset(7, 100).Release().Build();
-                    dragAndDrop.Perform();
-                    SmallDelays();
-                    driver.FindElement(By.XPath(".//input[@value='КУПИТЬ']")).Click();
-                    Delays();
+                    do
+                    {
+                        //двигаем бегунок
+                        IWebElement Slider = driver.FindElement(By.CssSelector(".ui-slider-handle.ui-state-default.ui-corner-all"));
+                        Actions builder = new Actions(driver);
+                        IAction dragAndDrop = builder.ClickAndHold(Slider).MoveByOffset(0, 0).MoveByOffset(7, 20).Release().Build();
+                        dragAndDrop.Perform();
+                        SmallDelays();
+                        driver.FindElement(By.XPath(".//input[@value='КУПИТЬ']")).Click();
+                        Delays();
+                        currentSlavesCount = Convert.ToInt32(GetResourceValue("title=" + '\u0022' + "Количество занятых мест на плантации" + '\u0022' + " style")[0]);
+                    }
+                    while (currentSlavesCount <= slavesCount);
                 }
             }
             catch { }
@@ -4440,7 +4445,7 @@ namespace Simple_Bot
                             //двигаем бегунок
                             IWebElement Slider = driver.FindElement(By.CssSelector(".ui-slider-handle.ui-state-default.ui-corner-all"));
                             Actions builder = new Actions(driver);
-                            IAction dragAndDrop = builder.ClickAndHold(Slider).MoveByOffset(0, 0).MoveByOffset(200, 150).Release().Build();
+                            IAction dragAndDrop = builder.ClickAndHold(Slider).MoveByOffset(0, 0).MoveByOffset(40, 40).Release().Build();
                             dragAndDrop.Perform();
                             SmallDelays();
                             driver.FindElement(By.XPath(".//input[@value='КУПИТЬ']")).Click();
@@ -4478,7 +4483,7 @@ namespace Simple_Bot
                             //двигаем бегунок
                             IWebElement Slider = driver.FindElement(By.CssSelector(".ui-slider-handle.ui-state-default.ui-corner-all"));
                             Actions builder = new Actions(driver);
-                            IAction dragAndDrop = builder.ClickAndHold(Slider).MoveByOffset(0, 0).MoveByOffset(200, 150).Release().Build();
+                            IAction dragAndDrop = builder.ClickAndHold(Slider).MoveByOffset(0, 0).MoveByOffset(40, 40).Release().Build();
                             dragAndDrop.Perform();
                             SmallDelays();
                             driver.FindElement(By.XPath(".//input[@value='КУПИТЬ']")).Click();

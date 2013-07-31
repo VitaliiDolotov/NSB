@@ -28,7 +28,7 @@ namespace Simple_Bot
     {
         bool isDonatePlayer = false;
         bool botIsWorked = false;
-        int BotVersion = 2571;
+        int BotVersion = 2573;
 
         static Thread BotThread;
 
@@ -59,6 +59,8 @@ namespace Simple_Bot
         public Form1()
         {
             InitializeComponent();
+
+            ProxyReader();
 
             File.Delete("chromedriver.log");
 
@@ -345,7 +347,7 @@ namespace Simple_Bot
                 checkBoxDontUseFFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[21]);
                 checkBoxDontUseSFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[22]);
                 checkBoxDontUseTFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[23]);
-                checkBoxDontUseFoFly.Checked = true;//Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
+                checkBoxDontUseFoFly.Checked = /*true;*/Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
             }
             catch { }
 
@@ -480,6 +482,11 @@ namespace Simple_Bot
             try
             {
                 WebClient client = new WebClient();
+                if (!string.IsNullOrEmpty(textBoxProxy.Text))
+                {
+                    WebProxy wp = new WebProxy(textBoxProxy.Text);
+                    client.Proxy = wp;
+                }
                 Stream stream = client.OpenRead("https://dl.dropbox.com/s/gixvi3853twwks3/UpdateFile.csv?dl=1");
                 StreamReader reader = new StreamReader(stream);
                 string FileContent = reader.ReadToEnd();
@@ -534,6 +541,11 @@ namespace Simple_Bot
             try
             {
                 WebClient client = new WebClient();
+                if (!string.IsNullOrEmpty(textBoxProxy.Text))
+                {
+                    WebProxy wp = new WebProxy(textBoxProxy.Text);
+                    client.Proxy = wp;
+                }
                 Stream stream = client.OpenRead("https://dl.dropbox.com/s/gixvi3853twwks3/UpdateFile.csv?dl=1");
                 StreamReader reader = new StreamReader(stream);
                 string[] FileContent = reader.ReadToEnd().Split(';');
@@ -818,7 +830,7 @@ namespace Simple_Bot
             checkBoxDontUseFFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[21]);
             checkBoxDontUseSFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[22]);
             checkBoxDontUseTFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[23]);
-            checkBoxDontUseFoFly.Checked = true;//Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
+            checkBoxDontUseFoFly.Checked = /*true;*/Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
 
             //Abilitys Box countrys
             string[] AbilitysSettings = { Convert.ToString(radioButtonSK1.Checked), Convert.ToString(radioButtonSK2.Checked), Convert.ToString(radioButtonSK3.Checked), Convert.ToString(radioButtonSK4.Checked), 
@@ -964,8 +976,8 @@ namespace Simple_Bot
             //Fly Settings
             try
             {
-                checkBoxDontUseFoFly.Enabled = true;
-                checkBoxDontUseFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
+                //checkBoxDontUseFoFly.Enabled = true;
+                //checkBoxDontUseFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
             }
             catch { }
 
@@ -986,6 +998,11 @@ namespace Simple_Bot
             try
             {
                 WebClient client = new WebClient();
+                if (!string.IsNullOrEmpty(textBoxProxy.Text))
+                {
+                    WebProxy wp = new WebProxy(textBoxProxy.Text);
+                    client.Proxy = wp;
+                }
                 Stream stream = client.OpenRead("https://dl.dropbox.com/s/vhrstr5i424la7s/BotMessage.txt?token_hash=AAESnSj9Ws8Wzw7OFJdygkt5RUMF1rlmEHD7I7n_H8qyjg&dl=1");
                 StreamReader reader = new StreamReader(stream);
                 string fileContent = reader.ReadToEnd();
@@ -1000,6 +1017,11 @@ namespace Simple_Bot
         private IList<string> GetDonatePlayersList()
         {
             WebClient client = new WebClient();
+            if (!string.IsNullOrEmpty(textBoxProxy.Text))
+            {
+                WebProxy wp = new WebProxy(textBoxProxy.Text);
+                client.Proxy = wp;
+            }
             Stream stream = client.OpenRead("https://dl.dropboxusercontent.com/s/309hd9u59aii20y/donate.txt?token_hash=AAFD8tTztvO2tzfrqYc115h-Y6OAUwG_k7FhqVWQB6yULA&dl=1");
             StreamReader reader = new StreamReader(stream);
             return reader.ReadToEnd().Split(';');
@@ -1751,8 +1773,12 @@ namespace Simple_Bot
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (isDonatePlayer == false)
-                isDonatePlayer = IsDonatePlayer(GetDonatePlayersList());
+            try
+            {
+                if (isDonatePlayer == false)
+                    isDonatePlayer = IsDonatePlayer(GetDonatePlayersList());
+            }
+            catch { }
             label29.Text = lable29Text;
             pictureStatusNone.Visible = false;
             if (botStatus == false)
@@ -2634,6 +2660,34 @@ namespace Simple_Bot
         private void button46_Click_1(object sender, EventArgs e)
         {
             UIBoxDisplay(3, 4, "MenuBox");
+        }
+
+        private void button47_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DonateLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxProxy_TextChanged(object sender, EventArgs e)
+        {
+            StreamWriter writer = new StreamWriter(File.OpenWrite("Proxy.txt"));
+            writer.WriteLine(textBoxProxy.Text);
+            writer.Close();
+        }
+
+        private void ProxyReader()
+        {
+            try
+            {
+                StreamReader reader = new StreamReader(File.OpenRead("Proxy.txt"));
+                textBoxProxy.Text = reader.ReadToEnd();
+                reader.Close();
+            }
+            catch { }
         }
     }
 }
