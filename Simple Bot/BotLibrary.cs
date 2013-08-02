@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Media;
 using System.Diagnostics;               // For prcesss related information
 using System.Runtime.InteropServices;   // For DLL importing 
+using System.Windows.Forms;
 
 namespace Simple_Bot
 {
@@ -1839,74 +1840,77 @@ namespace Simple_Bot
 
         private void Stirring()
         {
-            Random rnd = new Random();
-            try
-            {
-                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
-            }
-            catch { }
-            int Result = 0;
-            try
-            {
-                if (driver.FindElement(By.Id("alchemy_small_window_text3")).Text == "Вы должны помешать зелье в котле в течение:")
-                {
-                    try
-                    {
-                        //переход в простейшие зелья
-                        driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
-                        Delays();
-                    }
-                    catch { }
+            MessageBox.Show("Нужно уровнять температуру!", "Simpe Bot: Information",
+            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    //добываем пару чисел 
-                    try
-                    {
-                        string text;
-                        int FirstNyumber = ElementScreenshot("FirstNum", "right_main", ".//div[4]/img");
-                        text = string.Format("Уравниваем температуру в котле: первое число {0}", FirstNyumber);
-                        Logger(text);
-                        int SecondNumber = ElementScreenshot("SecNum", "right_main", ".//div[5]/img");
-                        text = string.Format("Уравниваем температуру в котле: второе число {0}", SecondNumber);
-                        Logger(text);
-                        //вычисляем разницу температур
-                        Result = SecondNumber - FirstNyumber;
+            //Random rnd = new Random();
+            //try
+            //{
+            //    driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
+            //}
+            //catch { }
+            //int Result = 0;
+            //try
+            //{
+            //    if (driver.FindElement(By.Id("alchemy_small_window_text3")).Text == "Вы должны помешать зелье в котле в течение:")
+            //    {
+            //        try
+            //        {
+            //            //переход в простейшие зелья
+            //            driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
+            //            Delays();
+            //        }
+            //        catch { }
 
-                        //опускаем если вторая больше первой
-                        if (Result < 0)
-                        {
-                            try
-                            {
-                                driver.FindElement(By.Id("alchemy_stir_action")).FindElement(By.XPath(".//p[2]/input[@value='2']")).Click();
-                                Delays();
-                                //если результат отрицательный то умножаем на -1 чтоб стал положительным
-                                Result = Result * (-1);
-                            }
-                            catch { }
-                        }
-                    }
-                    catch { }
+            //        //добываем пару чисел 
+            //        try
+            //        {
+            //            string text;
+            //            int FirstNyumber = ElementScreenshot("FirstNum", "right_main", ".//div[4]/img");
+            //            text = string.Format("Уравниваем температуру в котле: первое число {0}", FirstNyumber);
+            //            Logger(text);
+            //            int SecondNumber = ElementScreenshot("SecNum", "right_main", ".//div[5]/img");
+            //            text = string.Format("Уравниваем температуру в котле: второе число {0}", SecondNumber);
+            //            Logger(text);
+            //            //вычисляем разницу температур
+            //            Result = SecondNumber - FirstNyumber;
 
-                    //вкидуем число в квери
-                    try
-                    {
-                        driver.FindElement(By.Id("change_temperature")).Clear();
-                        System.Threading.Thread.Sleep(rnd.Next(599, 1989));
-                        driver.FindElement(By.Id("change_temperature")).SendKeys(Convert.ToString(Result));
-                        System.Threading.Thread.Sleep(rnd.Next(1099, 1489));
-                    }
-                    catch { }
+            //            //опускаем если вторая больше первой
+            //            if (Result < 0)
+            //            {
+            //                try
+            //                {
+            //                    driver.FindElement(By.Id("alchemy_stir_action")).FindElement(By.XPath(".//p[2]/input[@value='2']")).Click();
+            //                    Delays();
+            //                    //если результат отрицательный то умножаем на -1 чтоб стал положительным
+            //                    Result = Result * (-1);
+            //                }
+            //                catch { }
+            //            }
+            //        }
+            //        catch { }
 
-                    //помешуем
+            //        //вкидуем число в квери
+            //        try
+            //        {
+            //            driver.FindElement(By.Id("change_temperature")).Clear();
+            //            System.Threading.Thread.Sleep(rnd.Next(599, 1989));
+            //            driver.FindElement(By.Id("change_temperature")).SendKeys(Convert.ToString(Result));
+            //            System.Threading.Thread.Sleep(rnd.Next(1099, 1489));
+            //        }
+            //        catch { }
 
-                    try
-                    {
-                        driver.FindElement(By.XPath("//input[@value='ПОМЕШАТЬ']")).Click();
-                        Delays();
-                    }
-                    catch { }
-                }
-            }
-            catch { }
+            //        //помешуем
+
+            //        try
+            //        {
+            //            driver.FindElement(By.XPath("//input[@value='ПОМЕШАТЬ']")).Click();
+            //            Delays();
+            //        }
+            //        catch { }
+            //    }
+            //}
+            //catch { }
         }
 
         private int ElementScreenshot(string ImageName, string ImageElementID, string PathToTheImage)
@@ -4387,7 +4391,7 @@ namespace Simple_Bot
                         //двигаем бегунок
                         IWebElement Slider = driver.FindElement(By.CssSelector(".ui-slider-handle.ui-state-default.ui-corner-all"));
                         Actions builder = new Actions(driver);
-                        IAction dragAndDrop = builder.ClickAndHold(Slider).MoveByOffset(0, 0).MoveByOffset(7, 20).Release().Build();
+                        IAction dragAndDrop = builder.ClickAndHold(Slider).MoveByOffset(0, 0).MoveByOffset(4, 10).Release().Build();
                         dragAndDrop.Perform();
                         SmallDelays();
                         driver.FindElement(By.XPath(".//input[@value='КУПИТЬ']")).Click();
@@ -4575,7 +4579,7 @@ namespace Simple_Bot
                         //идем в сбытку
                         driver.FindElement(By.LinkText("Гавань")).Click();
                         Delays();
-                        driver.FindElement(By.LinkText("Торговая площадка")).Click();
+                        driver.FindElement(By.XPath("//div[text()='Торговая площадка']")).Click();
                         Delays();
                         //генерим линку покупаемого товара
                         By selector = By.XPath(string.Format(".//option[text()='{0}']", ReadFromFile(SettingsFile, "AdditionalSettingsBox")[30]));

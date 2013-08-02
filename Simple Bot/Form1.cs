@@ -28,7 +28,7 @@ namespace Simple_Bot
     {
         bool isDonatePlayer = false;
         bool botIsWorked = false;
-        int BotVersion = 2573;
+        int BotVersion = 2575;
 
         static Thread BotThread;
 
