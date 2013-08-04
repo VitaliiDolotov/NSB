@@ -5406,6 +5406,8 @@ namespace Simple_Bot
             return fightList.FirstOrDefault(enemy => enemy.Text.Contains(alertEnemy + " атаковал вас")).Displayed;
         }
 
+        #region MassFight
+
         public void MassFight()
         {
             try
@@ -6172,6 +6174,7 @@ namespace Simple_Bot
             }
         }
 
+        #endregion
 
         private void Sort(string[] enemysBm, string[] enemyName)
         {
@@ -6232,6 +6235,9 @@ namespace Simple_Bot
                                     }
                                     catch { }
                                     Delays();
+
+                                    ArenaSearchWeakEnemy();
+
                                     string[] enemysBm = new string[4];
                                     string[] enemysName = new string[4];
                                     IList<IWebElement> enemys = driver.FindElements(By.CssSelector(".arena_enemy"));
@@ -6286,6 +6292,43 @@ namespace Simple_Bot
                 }
             }
             catch { }
+        }
+
+        private bool ArenaSearchNext()
+        {
+            string[] enemysBm = new string[4];
+            IList<IWebElement> enemys = driver.FindElements(By.CssSelector(".arena_enemy"));
+            int iterator = 0;
+            foreach (var enemy in enemys)
+            {
+                enemysBm[iterator] = enemy.FindElement(By.CssSelector(".arena_enemy_stat div:nth-of-type(2)"))
+                          .Text.Replace(".", "");
+                iterator++;
+            }
+
+            for (int i = 0; i < enemysBm.Length; i++)
+            {
+                if (Convert.ToInt32(enemysBm[i]) < Convert.ToDecimal(ReadFromFile(SettingsFile, "FightBox")[36]))
+                    return false;
+            }
+            return true;
+        }
+
+        private void ArenaSearchWeakEnemy()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[35]))
+            {
+                try
+                {
+                    int test = Convert.ToInt32(GetResourceValue("i120")[0]);
+                    while (Convert.ToInt32(GetResourceValue("i120")[0]) > 0 && ArenaSearchNext())
+                    {
+                        driver.FindElement(By.PartialLinkText("НОВЫЙ")).Click();
+                        Delays();
+                    }
+                }
+                catch { }
+            }
         }
 
         public void Rest()
@@ -6356,6 +6399,37 @@ namespace Simple_Bot
                     catch { }
                 }
             }
+        }
+
+        public void CulonsUp()
+        {
+            try{
+                if (!string.IsNullOrEmpty(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[36]))
+                {
+                    if (CurrentCry() > Convert.ToInt32(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[37]))
+                    {
+                        driver.FindElement(By.LinkText("Деревня")).Click();
+                        Delays();
+                        driver.FindElement(By.XPath("//div[text()='Кузница']")).Click();
+                        Delays();
+                        driver.FindElement(By.PartialLinkText("МАСТЕРА")).Click();
+                        Delays();
+                        string selector = string.Format("//td[contains(text(),'{0}')]/../../..//a[text()='НА КОВКУ']", ReadFromFile(SettingsFile, "AdditionalSettingsBox")[36]);
+                        driver.FindElement(By.XPath(selector)).Click();
+                        do
+                        {
+                            //Если прайс больше текущего кол-ва крисов, то ливаем
+                            if (Convert.ToInt32(driver.FindElement(By.CssSelector(".price_num")).Text) > CurrentCry())
+                                break;
+                            driver.FindElement(By.XPath("//input[@value='КОВАТЬ']")).Click();
+                            Delays();
+
+                        }
+                        while (CurrentCry() > Convert.ToInt32(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[37]));
+                    }
+                }
+            }
+            catch { }
         }
     }
 }

@@ -64,6 +64,7 @@
             this.checkBoxHideBrowser = new System.Windows.Forms.CheckBox();
             this.button16 = new System.Windows.Forms.Button();
             this.MenuBox = new System.Windows.Forms.GroupBox();
+            this.button48 = new System.Windows.Forms.Button();
             this.button47 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
             this.button45 = new System.Windows.Forms.Button();
@@ -103,11 +104,6 @@
             this.numericUpDownHeal = new System.Windows.Forms.NumericUpDown();
             this.checkBoxPetHeal = new System.Windows.Forms.CheckBox();
             this.checkBoxHeal = new System.Windows.Forms.CheckBox();
-            this.PotionMakingBox = new System.Windows.Forms.GroupBox();
-            this.panelPotionMaking = new System.Windows.Forms.Panel();
-            this.checkBoxBoilRent = new System.Windows.Forms.CheckBox();
-            this.checkBoxTankMaking = new System.Windows.Forms.CheckBox();
-            this.checkBoxPotionMaking = new System.Windows.Forms.CheckBox();
             this.AdditionalSettingsBox = new System.Windows.Forms.GroupBox();
             this.pictureBox38 = new System.Windows.Forms.PictureBox();
             this.checkBoxBiggestPotion = new System.Windows.Forms.CheckBox();
@@ -125,6 +121,23 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.checkBoxFish = new System.Windows.Forms.CheckBox();
             this.checkBoxCryDust = new System.Windows.Forms.CheckBox();
+            this.PotionMakingBox = new System.Windows.Forms.GroupBox();
+            this.button15 = new System.Windows.Forms.Button();
+            this.checkBoxPotionMaking = new System.Windows.Forms.CheckBox();
+            this.panelPotionMaking = new System.Windows.Forms.Panel();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.checkBoxBoilRent = new System.Windows.Forms.CheckBox();
+            this.checkBoxTankMaking = new System.Windows.Forms.CheckBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.pictureBox24 = new System.Windows.Forms.PictureBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButtonCommonPotions = new System.Windows.Forms.RadioButton();
+            this.radioButtonSimplePotions = new System.Windows.Forms.RadioButton();
+            this.StiringBox = new System.Windows.Forms.GroupBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.numericUpDownStiringByCryMin = new System.Windows.Forms.NumericUpDown();
+            this.radioButtonStiringByCry = new System.Windows.Forms.RadioButton();
+            this.radioButtonUseClearPotion = new System.Windows.Forms.RadioButton();
             this.checkBoxBigGguru = new System.Windows.Forms.CheckBox();
             this.pictureBox25 = new System.Windows.Forms.PictureBox();
             this.checkBoxLitleGuru = new System.Windows.Forms.CheckBox();
@@ -248,6 +261,8 @@
             this.pictureBox57 = new System.Windows.Forms.PictureBox();
             this.pictureBox58Donate = new System.Windows.Forms.PictureBox();
             this.pictureBox55 = new System.Windows.Forms.PictureBox();
+            this.pictureBox58 = new System.Windows.Forms.PictureBox();
+            this.pictureBox59 = new System.Windows.Forms.PictureBox();
             this.PandaEffectsBox = new System.Windows.Forms.GroupBox();
             this.radioButtonPEcry = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
@@ -326,12 +341,6 @@
             this.label31 = new System.Windows.Forms.Label();
             this.textBoxSoapToTP = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.StiringBox = new System.Windows.Forms.GroupBox();
-            this.button15 = new System.Windows.Forms.Button();
-            this.label33 = new System.Windows.Forms.Label();
-            this.numericUpDownStiringByCryMin = new System.Windows.Forms.NumericUpDown();
-            this.radioButtonStiringByCry = new System.Windows.Forms.RadioButton();
-            this.radioButtonUseClearPotion = new System.Windows.Forms.RadioButton();
             this.PandaBox = new System.Windows.Forms.GroupBox();
             this.button22 = new System.Windows.Forms.Button();
             this.numericUpDownPandaLvlForSale = new System.Windows.Forms.NumericUpDown();
@@ -420,6 +429,8 @@
             this.label51 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.ArenaBox = new System.Windows.Forms.GroupBox();
+            this.checkBoxNextEnemys = new System.Windows.Forms.CheckBox();
+            this.numericUpDownEnemyBm = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownArenaEnemySlava = new System.Windows.Forms.NumericUpDown();
             this.radioButtonEnemySlava = new System.Windows.Forms.RadioButton();
             this.radioButtonEnemyBm = new System.Windows.Forms.RadioButton();
@@ -490,14 +501,13 @@
             this.button46 = new System.Windows.Forms.Button();
             this.comboBoxMrIdiot = new System.Windows.Forms.ComboBox();
             this.checkBoxMrIdiot = new System.Windows.Forms.CheckBox();
-            this.pictureBox58 = new System.Windows.Forms.PictureBox();
-            this.button48 = new System.Windows.Forms.Button();
-            this.radioButtonSimplePotions = new System.Windows.Forms.RadioButton();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.radioButtonCommonPotions = new System.Windows.Forms.RadioButton();
-            this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.pictureBox24 = new System.Windows.Forms.PictureBox();
+            this.CulonsBox = new System.Windows.Forms.GroupBox();
+            this.button49 = new System.Windows.Forms.Button();
+            this.textBoxCulonName = new System.Windows.Forms.TextBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.numericUpDownMinCryForCulonUp = new System.Windows.Forms.NumericUpDown();
+            this.label75 = new System.Windows.Forms.Label();
+            this.pictureBox60 = new System.Windows.Forms.PictureBox();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -522,8 +532,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPetHeal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeal)).BeginInit();
-            this.PotionMakingBox.SuspendLayout();
-            this.panelPotionMaking.SuspendLayout();
             this.AdditionalSettingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).BeginInit();
@@ -532,6 +540,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.PotionMakingBox.SuspendLayout();
+            this.panelPotionMaking.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
+            this.StiringBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStiringByCryMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             this.UndergroundBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).BeginInit();
@@ -593,6 +608,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox58Donate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox59)).BeginInit();
             this.PandaEffectsBox.SuspendLayout();
             this.ImmunEffetsBox.SuspendLayout();
             this.FlyBox.SuspendLayout();
@@ -616,8 +633,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnemyBlock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnemyDex)).BeginInit();
             this.SoapBox.SuspendLayout();
-            this.StiringBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStiringByCryMin)).BeginInit();
             this.PandaBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPandaLvlForSale)).BeginInit();
             this.MassAbilityBox.SuspendLayout();
@@ -642,6 +657,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFEveryTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFDuringTime)).BeginInit();
             this.ArenaBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnemyBm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemySlava)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemyBm)).BeginInit();
             this.MassFBox.SuspendLayout();
@@ -666,10 +682,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxDelayMf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinDelayMf)).BeginInit();
             this.MedalsBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).BeginInit();
-            this.groupBox14.SuspendLayout();
-            this.groupBox18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
+            this.CulonsBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinCryForCulonUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).BeginInit();
             this.SuspendLayout();
             // 
             // StartButton
@@ -1077,6 +1092,16 @@
             this.MenuBox.TabIndex = 2;
             this.MenuBox.TabStop = false;
             this.MenuBox.Text = " Settings ";
+            // 
+            // button48
+            // 
+            this.button48.Location = new System.Drawing.Point(309, 205);
+            this.button48.Name = "button48";
+            this.button48.Size = new System.Drawing.Size(141, 23);
+            this.button48.TabIndex = 39;
+            this.button48.Text = "Алхимия";
+            this.button48.UseVisualStyleBackColor = true;
+            this.button48.Click += new System.EventHandler(this.button48_Click);
             // 
             // button47
             // 
@@ -1541,59 +1566,6 @@
             this.checkBoxHeal.UseVisualStyleBackColor = true;
             this.checkBoxHeal.CheckedChanged += new System.EventHandler(this.checkBoxHeal_CheckedChanged);
             // 
-            // PotionMakingBox
-            // 
-            this.PotionMakingBox.Controls.Add(this.button15);
-            this.PotionMakingBox.Controls.Add(this.checkBoxPotionMaking);
-            this.PotionMakingBox.Controls.Add(this.panelPotionMaking);
-            this.PotionMakingBox.Location = new System.Drawing.Point(20, 399);
-            this.PotionMakingBox.Name = "PotionMakingBox";
-            this.PotionMakingBox.Size = new System.Drawing.Size(338, 228);
-            this.PotionMakingBox.TabIndex = 10;
-            this.PotionMakingBox.TabStop = false;
-            this.PotionMakingBox.Text = "Алхимия";
-            // 
-            // panelPotionMaking
-            // 
-            this.panelPotionMaking.Controls.Add(this.groupBox18);
-            this.panelPotionMaking.Controls.Add(this.groupBox14);
-            this.panelPotionMaking.Controls.Add(this.StiringBox);
-            this.panelPotionMaking.Location = new System.Drawing.Point(3, 36);
-            this.panelPotionMaking.Name = "panelPotionMaking";
-            this.panelPotionMaking.Size = new System.Drawing.Size(326, 163);
-            this.panelPotionMaking.TabIndex = 3;
-            // 
-            // checkBoxBoilRent
-            // 
-            this.checkBoxBoilRent.AutoSize = true;
-            this.checkBoxBoilRent.Location = new System.Drawing.Point(11, 21);
-            this.checkBoxBoilRent.Name = "checkBoxBoilRent";
-            this.checkBoxBoilRent.Size = new System.Drawing.Size(118, 17);
-            this.checkBoxBoilRent.TabIndex = 2;
-            this.checkBoxBoilRent.Text = "Арендовать котел";
-            this.checkBoxBoilRent.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxTankMaking
-            // 
-            this.checkBoxTankMaking.AutoSize = true;
-            this.checkBoxTankMaking.Location = new System.Drawing.Point(163, 21);
-            this.checkBoxTankMaking.Name = "checkBoxTankMaking";
-            this.checkBoxTankMaking.Size = new System.Drawing.Size(128, 17);
-            this.checkBoxTankMaking.TabIndex = 1;
-            this.checkBoxTankMaking.Text = "Изготовливать тару";
-            this.checkBoxTankMaking.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxPotionMaking
-            // 
-            this.checkBoxPotionMaking.AutoSize = true;
-            this.checkBoxPotionMaking.Location = new System.Drawing.Point(22, 18);
-            this.checkBoxPotionMaking.Name = "checkBoxPotionMaking";
-            this.checkBoxPotionMaking.Size = new System.Drawing.Size(95, 17);
-            this.checkBoxPotionMaking.TabIndex = 0;
-            this.checkBoxPotionMaking.Text = "Варить зелья";
-            this.checkBoxPotionMaking.UseVisualStyleBackColor = true;
-            this.checkBoxPotionMaking.CheckedChanged += new System.EventHandler(this.checkBoxPotionMaking_CheckedChanged);
-            // 
             // AdditionalSettingsBox
             // 
             this.AdditionalSettingsBox.Controls.Add(this.pictureBox38);
@@ -1783,6 +1755,198 @@
             this.checkBoxCryDust.TabIndex = 7;
             this.checkBoxCryDust.Text = "Кристальная пыль";
             this.checkBoxCryDust.UseVisualStyleBackColor = true;
+            // 
+            // PotionMakingBox
+            // 
+            this.PotionMakingBox.Controls.Add(this.button15);
+            this.PotionMakingBox.Controls.Add(this.checkBoxPotionMaking);
+            this.PotionMakingBox.Controls.Add(this.panelPotionMaking);
+            this.PotionMakingBox.Location = new System.Drawing.Point(20, 399);
+            this.PotionMakingBox.Name = "PotionMakingBox";
+            this.PotionMakingBox.Size = new System.Drawing.Size(338, 228);
+            this.PotionMakingBox.TabIndex = 10;
+            this.PotionMakingBox.TabStop = false;
+            this.PotionMakingBox.Text = "Алхимия";
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(11, 199);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(315, 23);
+            this.button15.TabIndex = 19;
+            this.button15.Text = "Back";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // checkBoxPotionMaking
+            // 
+            this.checkBoxPotionMaking.AutoSize = true;
+            this.checkBoxPotionMaking.Location = new System.Drawing.Point(22, 18);
+            this.checkBoxPotionMaking.Name = "checkBoxPotionMaking";
+            this.checkBoxPotionMaking.Size = new System.Drawing.Size(95, 17);
+            this.checkBoxPotionMaking.TabIndex = 0;
+            this.checkBoxPotionMaking.Text = "Варить зелья";
+            this.checkBoxPotionMaking.UseVisualStyleBackColor = true;
+            this.checkBoxPotionMaking.CheckedChanged += new System.EventHandler(this.checkBoxPotionMaking_CheckedChanged);
+            // 
+            // panelPotionMaking
+            // 
+            this.panelPotionMaking.Controls.Add(this.groupBox18);
+            this.panelPotionMaking.Controls.Add(this.groupBox14);
+            this.panelPotionMaking.Controls.Add(this.StiringBox);
+            this.panelPotionMaking.Location = new System.Drawing.Point(3, 36);
+            this.panelPotionMaking.Name = "panelPotionMaking";
+            this.panelPotionMaking.Size = new System.Drawing.Size(326, 163);
+            this.panelPotionMaking.TabIndex = 3;
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.checkBoxBoilRent);
+            this.groupBox18.Controls.Add(this.checkBoxTankMaking);
+            this.groupBox18.Location = new System.Drawing.Point(8, 98);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(315, 53);
+            this.groupBox18.TabIndex = 36;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "Дополнительно";
+            // 
+            // checkBoxBoilRent
+            // 
+            this.checkBoxBoilRent.AutoSize = true;
+            this.checkBoxBoilRent.Location = new System.Drawing.Point(11, 21);
+            this.checkBoxBoilRent.Name = "checkBoxBoilRent";
+            this.checkBoxBoilRent.Size = new System.Drawing.Size(118, 17);
+            this.checkBoxBoilRent.TabIndex = 2;
+            this.checkBoxBoilRent.Text = "Арендовать котел";
+            this.checkBoxBoilRent.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxTankMaking
+            // 
+            this.checkBoxTankMaking.AutoSize = true;
+            this.checkBoxTankMaking.Location = new System.Drawing.Point(163, 21);
+            this.checkBoxTankMaking.Name = "checkBoxTankMaking";
+            this.checkBoxTankMaking.Size = new System.Drawing.Size(128, 17);
+            this.checkBoxTankMaking.TabIndex = 1;
+            this.checkBoxTankMaking.Text = "Изготовливать тару";
+            this.checkBoxTankMaking.UseVisualStyleBackColor = true;
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.pictureBox24);
+            this.groupBox14.Controls.Add(this.radioButton3);
+            this.groupBox14.Controls.Add(this.radioButtonCommonPotions);
+            this.groupBox14.Controls.Add(this.radioButtonSimplePotions);
+            this.groupBox14.Location = new System.Drawing.Point(7, 5);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(144, 87);
+            this.groupBox14.TabIndex = 17;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Тип зелий";
+            // 
+            // pictureBox24
+            // 
+            this.pictureBox24.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox24.Image")));
+            this.pictureBox24.Location = new System.Drawing.Point(122, 40);
+            this.pictureBox24.Name = "pictureBox24";
+            this.pictureBox24.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox24.TabIndex = 38;
+            this.pictureBox24.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox24, "Эта опция доступна только\r\nв полной версии");
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Enabled = false;
+            this.radioButton3.Location = new System.Drawing.Point(12, 64);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(105, 17);
+            this.radioButton3.TabIndex = 19;
+            this.radioButton3.Text = "Сложные зелья";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCommonPotions
+            // 
+            this.radioButtonCommonPotions.AutoSize = true;
+            this.radioButtonCommonPotions.Enabled = false;
+            this.radioButtonCommonPotions.Location = new System.Drawing.Point(12, 41);
+            this.radioButtonCommonPotions.Name = "radioButtonCommonPotions";
+            this.radioButtonCommonPotions.Size = new System.Drawing.Size(105, 17);
+            this.radioButtonCommonPotions.TabIndex = 18;
+            this.radioButtonCommonPotions.Text = "Обычные зелья";
+            this.radioButtonCommonPotions.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonSimplePotions
+            // 
+            this.radioButtonSimplePotions.AutoSize = true;
+            this.radioButtonSimplePotions.Checked = true;
+            this.radioButtonSimplePotions.Location = new System.Drawing.Point(12, 19);
+            this.radioButtonSimplePotions.Name = "radioButtonSimplePotions";
+            this.radioButtonSimplePotions.Size = new System.Drawing.Size(121, 17);
+            this.radioButtonSimplePotions.TabIndex = 17;
+            this.radioButtonSimplePotions.TabStop = true;
+            this.radioButtonSimplePotions.Text = "Простейшие зелья";
+            this.radioButtonSimplePotions.UseVisualStyleBackColor = true;
+            // 
+            // StiringBox
+            // 
+            this.StiringBox.Controls.Add(this.label33);
+            this.StiringBox.Controls.Add(this.numericUpDownStiringByCryMin);
+            this.StiringBox.Controls.Add(this.radioButtonStiringByCry);
+            this.StiringBox.Controls.Add(this.radioButtonUseClearPotion);
+            this.StiringBox.Location = new System.Drawing.Point(158, 5);
+            this.StiringBox.Name = "StiringBox";
+            this.StiringBox.Size = new System.Drawing.Size(165, 87);
+            this.StiringBox.TabIndex = 16;
+            this.StiringBox.TabStop = false;
+            this.StiringBox.Text = "Опции варки зелий";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(110, 61);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(45, 13);
+            this.label33.TabIndex = 3;
+            this.label33.Text = "минуты";
+            // 
+            // numericUpDownStiringByCryMin
+            // 
+            this.numericUpDownStiringByCryMin.Location = new System.Drawing.Point(59, 59);
+            this.numericUpDownStiringByCryMin.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownStiringByCryMin.Name = "numericUpDownStiringByCryMin";
+            this.numericUpDownStiringByCryMin.Size = new System.Drawing.Size(42, 20);
+            this.numericUpDownStiringByCryMin.TabIndex = 2;
+            this.numericUpDownStiringByCryMin.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // radioButtonStiringByCry
+            // 
+            this.radioButtonStiringByCry.AutoSize = true;
+            this.radioButtonStiringByCry.Location = new System.Drawing.Point(13, 41);
+            this.radioButtonStiringByCry.Name = "radioButtonStiringByCry";
+            this.radioButtonStiringByCry.Size = new System.Drawing.Size(146, 17);
+            this.radioButtonStiringByCry.TabIndex = 1;
+            this.radioButtonStiringByCry.Text = "Чистить за кри каждые";
+            this.radioButtonStiringByCry.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonUseClearPotion
+            // 
+            this.radioButtonUseClearPotion.AutoSize = true;
+            this.radioButtonUseClearPotion.Checked = true;
+            this.radioButtonUseClearPotion.Location = new System.Drawing.Point(12, 19);
+            this.radioButtonUseClearPotion.Name = "radioButtonUseClearPotion";
+            this.radioButtonUseClearPotion.Size = new System.Drawing.Size(143, 17);
+            this.radioButtonUseClearPotion.TabIndex = 0;
+            this.radioButtonUseClearPotion.TabStop = true;
+            this.radioButtonUseClearPotion.Text = "Использовать чистюли";
+            this.radioButtonUseClearPotion.UseVisualStyleBackColor = true;
             // 
             // checkBoxBigGguru
             // 
@@ -3135,6 +3299,26 @@
             this.pictureBox55.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox55, "Пример: 192.168.106.12:3128");
             // 
+            // pictureBox58
+            // 
+            this.pictureBox58.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox58.Image")));
+            this.pictureBox58.Location = new System.Drawing.Point(100, 129);
+            this.pictureBox58.Name = "pictureBox58";
+            this.pictureBox58.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox58.TabIndex = 37;
+            this.pictureBox58.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox58, "Эта опция доступна только\r\nв полной версии");
+            // 
+            // pictureBox59
+            // 
+            this.pictureBox59.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox59.Location = new System.Drawing.Point(225, 46);
+            this.pictureBox59.Name = "pictureBox59";
+            this.pictureBox59.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox59.TabIndex = 22;
+            this.pictureBox59.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox59, "Если кристаллов больше\r\nуказанного значения");
+            // 
             // PandaEffectsBox
             // 
             this.PandaEffectsBox.Controls.Add(this.radioButtonPEcry);
@@ -4104,77 +4288,6 @@
             this.label30.TabIndex = 0;
             this.label30.Text = "Выставлять мыло на ТП";
             // 
-            // StiringBox
-            // 
-            this.StiringBox.Controls.Add(this.label33);
-            this.StiringBox.Controls.Add(this.numericUpDownStiringByCryMin);
-            this.StiringBox.Controls.Add(this.radioButtonStiringByCry);
-            this.StiringBox.Controls.Add(this.radioButtonUseClearPotion);
-            this.StiringBox.Location = new System.Drawing.Point(158, 5);
-            this.StiringBox.Name = "StiringBox";
-            this.StiringBox.Size = new System.Drawing.Size(165, 87);
-            this.StiringBox.TabIndex = 16;
-            this.StiringBox.TabStop = false;
-            this.StiringBox.Text = "Опции варки зелий";
-            // 
-            // button15
-            // 
-            this.button15.Location = new System.Drawing.Point(11, 199);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(315, 23);
-            this.button15.TabIndex = 19;
-            this.button15.Text = "Back";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(110, 61);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(45, 13);
-            this.label33.TabIndex = 3;
-            this.label33.Text = "минуты";
-            // 
-            // numericUpDownStiringByCryMin
-            // 
-            this.numericUpDownStiringByCryMin.Location = new System.Drawing.Point(59, 59);
-            this.numericUpDownStiringByCryMin.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDownStiringByCryMin.Name = "numericUpDownStiringByCryMin";
-            this.numericUpDownStiringByCryMin.Size = new System.Drawing.Size(42, 20);
-            this.numericUpDownStiringByCryMin.TabIndex = 2;
-            this.numericUpDownStiringByCryMin.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // radioButtonStiringByCry
-            // 
-            this.radioButtonStiringByCry.AutoSize = true;
-            this.radioButtonStiringByCry.Location = new System.Drawing.Point(13, 41);
-            this.radioButtonStiringByCry.Name = "radioButtonStiringByCry";
-            this.radioButtonStiringByCry.Size = new System.Drawing.Size(146, 17);
-            this.radioButtonStiringByCry.TabIndex = 1;
-            this.radioButtonStiringByCry.Text = "Чистить за кри каждые";
-            this.radioButtonStiringByCry.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonUseClearPotion
-            // 
-            this.radioButtonUseClearPotion.AutoSize = true;
-            this.radioButtonUseClearPotion.Checked = true;
-            this.radioButtonUseClearPotion.Location = new System.Drawing.Point(12, 19);
-            this.radioButtonUseClearPotion.Name = "radioButtonUseClearPotion";
-            this.radioButtonUseClearPotion.Size = new System.Drawing.Size(143, 17);
-            this.radioButtonUseClearPotion.TabIndex = 0;
-            this.radioButtonUseClearPotion.TabStop = true;
-            this.radioButtonUseClearPotion.Text = "Использовать чистюли";
-            this.radioButtonUseClearPotion.UseVisualStyleBackColor = true;
-            // 
             // PandaBox
             // 
             this.PandaBox.Controls.Add(this.button22);
@@ -4890,7 +5003,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.label47);
-            this.panel1.Location = new System.Drawing.Point(469, 651);
+            this.panel1.Location = new System.Drawing.Point(620, 657);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(132, 33);
             this.panel1.TabIndex = 26;
@@ -4912,7 +5025,7 @@
             this.PetForUndergrBox.Controls.Add(this.radioButtonWorbBlueSoul);
             this.PetForUndergrBox.Controls.Add(this.radioButtonWormPet);
             this.PetForUndergrBox.Controls.Add(this.radioButtonDefaultUndrPet);
-            this.PetForUndergrBox.Location = new System.Drawing.Point(38, 748);
+            this.PetForUndergrBox.Location = new System.Drawing.Point(268, 845);
             this.PetForUndergrBox.Name = "PetForUndergrBox";
             this.PetForUndergrBox.Size = new System.Drawing.Size(183, 117);
             this.PetForUndergrBox.TabIndex = 29;
@@ -4970,7 +5083,7 @@
             this.GiftsBox.Controls.Add(this.numericUpDownGiftsCryNumber);
             this.GiftsBox.Controls.Add(this.radioButtonMiddleGift);
             this.GiftsBox.Controls.Add(this.radioButtonSmallGift);
-            this.GiftsBox.Location = new System.Drawing.Point(213, 599);
+            this.GiftsBox.Location = new System.Drawing.Point(375, 594);
             this.GiftsBox.Name = "GiftsBox";
             this.GiftsBox.Size = new System.Drawing.Size(244, 100);
             this.GiftsBox.TabIndex = 30;
@@ -5229,6 +5342,9 @@
             // 
             // ArenaBox
             // 
+            this.ArenaBox.Controls.Add(this.pictureBox60);
+            this.ArenaBox.Controls.Add(this.checkBoxNextEnemys);
+            this.ArenaBox.Controls.Add(this.numericUpDownEnemyBm);
             this.ArenaBox.Controls.Add(this.pictureBox58Donate);
             this.ArenaBox.Controls.Add(this.pictureBox46);
             this.ArenaBox.Controls.Add(this.numericUpDownArenaEnemySlava);
@@ -5239,12 +5355,36 @@
             this.ArenaBox.Controls.Add(this.pictureBox44);
             this.ArenaBox.Controls.Add(this.numericUpDownArenaEnemyBm);
             this.ArenaBox.Controls.Add(this.button40);
-            this.ArenaBox.Location = new System.Drawing.Point(1361, 8);
+            this.ArenaBox.Location = new System.Drawing.Point(1298, 4);
             this.ArenaBox.Name = "ArenaBox";
-            this.ArenaBox.Size = new System.Drawing.Size(192, 144);
+            this.ArenaBox.Size = new System.Drawing.Size(193, 190);
             this.ArenaBox.TabIndex = 32;
             this.ArenaBox.TabStop = false;
             this.ArenaBox.Text = "Арена";
+            // 
+            // checkBoxNextEnemys
+            // 
+            this.checkBoxNextEnemys.AutoSize = true;
+            this.checkBoxNextEnemys.Enabled = false;
+            this.checkBoxNextEnemys.Location = new System.Drawing.Point(10, 112);
+            this.checkBoxNextEnemys.Name = "checkBoxNextEnemys";
+            this.checkBoxNextEnemys.Size = new System.Drawing.Size(181, 17);
+            this.checkBoxNextEnemys.TabIndex = 39;
+            this.checkBoxNextEnemys.Text = "Искать дельше если БМ выше";
+            this.checkBoxNextEnemys.UseVisualStyleBackColor = true;
+            this.checkBoxNextEnemys.CheckedChanged += new System.EventHandler(this.checkBoxNextEnemys_CheckedChanged);
+            // 
+            // numericUpDownEnemyBm
+            // 
+            this.numericUpDownEnemyBm.Location = new System.Drawing.Point(63, 137);
+            this.numericUpDownEnemyBm.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numericUpDownEnemyBm.Name = "numericUpDownEnemyBm";
+            this.numericUpDownEnemyBm.Size = new System.Drawing.Size(99, 20);
+            this.numericUpDownEnemyBm.TabIndex = 38;
             // 
             // numericUpDownArenaEnemySlava
             // 
@@ -5315,7 +5455,7 @@
             // 
             // button40
             // 
-            this.button40.Location = new System.Drawing.Point(8, 112);
+            this.button40.Location = new System.Drawing.Point(8, 162);
             this.button40.Name = "button40";
             this.button40.Size = new System.Drawing.Size(175, 23);
             this.button40.TabIndex = 16;
@@ -6137,7 +6277,7 @@
             this.MedalsBox.Controls.Add(this.checkBoxBigGguru);
             this.MedalsBox.Controls.Add(this.checkBoxLitleGuru);
             this.MedalsBox.Controls.Add(this.pictureBox25);
-            this.MedalsBox.Location = new System.Drawing.Point(210, 708);
+            this.MedalsBox.Location = new System.Drawing.Point(263, 693);
             this.MedalsBox.Name = "MedalsBox";
             this.MedalsBox.Size = new System.Drawing.Size(200, 146);
             this.MedalsBox.TabIndex = 35;
@@ -6182,100 +6322,85 @@
             this.checkBoxMrIdiot.Text = "Мистер Невнимательный";
             this.checkBoxMrIdiot.UseVisualStyleBackColor = true;
             // 
-            // pictureBox58
+            // CulonsBox
             // 
-            this.pictureBox58.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox58.Image")));
-            this.pictureBox58.Location = new System.Drawing.Point(100, 129);
-            this.pictureBox58.Name = "pictureBox58";
-            this.pictureBox58.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox58.TabIndex = 37;
-            this.pictureBox58.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox58, "Эта опция доступна только\r\nв полной версии");
+            this.CulonsBox.Controls.Add(this.pictureBox59);
+            this.CulonsBox.Controls.Add(this.button49);
+            this.CulonsBox.Controls.Add(this.textBoxCulonName);
+            this.CulonsBox.Controls.Add(this.label76);
+            this.CulonsBox.Controls.Add(this.numericUpDownMinCryForCulonUp);
+            this.CulonsBox.Controls.Add(this.label75);
+            this.CulonsBox.Location = new System.Drawing.Point(7, 642);
+            this.CulonsBox.Name = "CulonsBox";
+            this.CulonsBox.Size = new System.Drawing.Size(250, 100);
+            this.CulonsBox.TabIndex = 36;
+            this.CulonsBox.TabStop = false;
+            this.CulonsBox.Text = "Прокачка кулонов";
             // 
-            // button48
+            // button49
             // 
-            this.button48.Location = new System.Drawing.Point(309, 205);
-            this.button48.Name = "button48";
-            this.button48.Size = new System.Drawing.Size(141, 23);
-            this.button48.TabIndex = 39;
-            this.button48.Text = "Алхимия";
-            this.button48.UseVisualStyleBackColor = true;
-            this.button48.Click += new System.EventHandler(this.button48_Click);
+            this.button49.Location = new System.Drawing.Point(13, 70);
+            this.button49.Name = "button49";
+            this.button49.Size = new System.Drawing.Size(231, 23);
+            this.button49.TabIndex = 21;
+            this.button49.Text = "Back";
+            this.button49.UseVisualStyleBackColor = true;
+            this.button49.Click += new System.EventHandler(this.button49_Click);
             // 
-            // radioButtonSimplePotions
+            // textBoxCulonName
             // 
-            this.radioButtonSimplePotions.AutoSize = true;
-            this.radioButtonSimplePotions.Checked = true;
-            this.radioButtonSimplePotions.Location = new System.Drawing.Point(12, 19);
-            this.radioButtonSimplePotions.Name = "radioButtonSimplePotions";
-            this.radioButtonSimplePotions.Size = new System.Drawing.Size(121, 17);
-            this.radioButtonSimplePotions.TabIndex = 17;
-            this.radioButtonSimplePotions.TabStop = true;
-            this.radioButtonSimplePotions.Text = "Простейшие зелья";
-            this.radioButtonSimplePotions.UseVisualStyleBackColor = true;
+            this.textBoxCulonName.Location = new System.Drawing.Point(136, 18);
+            this.textBoxCulonName.Name = "textBoxCulonName";
+            this.textBoxCulonName.Size = new System.Drawing.Size(108, 20);
+            this.textBoxCulonName.TabIndex = 4;
             // 
-            // groupBox14
+            // label76
             // 
-            this.groupBox14.Controls.Add(this.pictureBox24);
-            this.groupBox14.Controls.Add(this.radioButton3);
-            this.groupBox14.Controls.Add(this.radioButtonCommonPotions);
-            this.groupBox14.Controls.Add(this.radioButtonSimplePotions);
-            this.groupBox14.Location = new System.Drawing.Point(7, 5);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(144, 87);
-            this.groupBox14.TabIndex = 17;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Тип зелий";
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(11, 21);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(98, 13);
+            this.label76.TabIndex = 2;
+            this.label76.Text = "Название кулона:";
             // 
-            // radioButtonCommonPotions
+            // numericUpDownMinCryForCulonUp
             // 
-            this.radioButtonCommonPotions.AutoSize = true;
-            this.radioButtonCommonPotions.Enabled = false;
-            this.radioButtonCommonPotions.Location = new System.Drawing.Point(12, 41);
-            this.radioButtonCommonPotions.Name = "radioButtonCommonPotions";
-            this.radioButtonCommonPotions.Size = new System.Drawing.Size(105, 17);
-            this.radioButtonCommonPotions.TabIndex = 18;
-            this.radioButtonCommonPotions.Text = "Обычные зелья";
-            this.radioButtonCommonPotions.UseVisualStyleBackColor = true;
+            this.numericUpDownMinCryForCulonUp.Location = new System.Drawing.Point(136, 44);
+            this.numericUpDownMinCryForCulonUp.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDownMinCryForCulonUp.Name = "numericUpDownMinCryForCulonUp";
+            this.numericUpDownMinCryForCulonUp.Size = new System.Drawing.Size(75, 20);
+            this.numericUpDownMinCryForCulonUp.TabIndex = 1;
             // 
-            // groupBox18
+            // label75
             // 
-            this.groupBox18.Controls.Add(this.checkBoxBoilRent);
-            this.groupBox18.Controls.Add(this.checkBoxTankMaking);
-            this.groupBox18.Location = new System.Drawing.Point(8, 98);
-            this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(315, 53);
-            this.groupBox18.TabIndex = 36;
-            this.groupBox18.TabStop = false;
-            this.groupBox18.Text = "Дополнительно";
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(11, 46);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(122, 13);
+            this.label75.TabIndex = 0;
+            this.label75.Text = "Если на руках больше:";
             // 
-            // radioButton3
+            // pictureBox60
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Enabled = false;
-            this.radioButton3.Location = new System.Drawing.Point(12, 64);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(105, 17);
-            this.radioButton3.TabIndex = 19;
-            this.radioButton3.Text = "Сложные зелья";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox24
-            // 
-            this.pictureBox24.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox24.Image")));
-            this.pictureBox24.Location = new System.Drawing.Point(122, 40);
-            this.pictureBox24.Name = "pictureBox24";
-            this.pictureBox24.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox24.TabIndex = 38;
-            this.pictureBox24.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox24, "Эта опция доступна только\r\nв полной версии");
+            this.pictureBox60.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox60.Image")));
+            this.pictureBox60.Location = new System.Drawing.Point(167, 138);
+            this.pictureBox60.Name = "pictureBox60";
+            this.pictureBox60.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox60.TabIndex = 40;
+            this.pictureBox60.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox60, "Эта опция доступна только\r\nв полной версии");
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1604, 1006);
+            this.ClientSize = new System.Drawing.Size(1604, 882);
+            this.Controls.Add(this.CulonsBox);
             this.Controls.Add(this.MedalsBox);
             this.Controls.Add(this.SystemBox);
             this.Controls.Add(this.textBoxZadro4ka);
@@ -6345,9 +6470,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPetHeal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeal)).EndInit();
-            this.PotionMakingBox.ResumeLayout(false);
-            this.PotionMakingBox.PerformLayout();
-            this.panelPotionMaking.ResumeLayout(false);
             this.AdditionalSettingsBox.ResumeLayout(false);
             this.AdditionalSettingsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).EndInit();
@@ -6357,6 +6479,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.PotionMakingBox.ResumeLayout(false);
+            this.PotionMakingBox.PerformLayout();
+            this.panelPotionMaking.ResumeLayout(false);
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
+            this.StiringBox.ResumeLayout(false);
+            this.StiringBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStiringByCryMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
             this.UndergroundBox.ResumeLayout(false);
             this.UndergroundBox.PerformLayout();
@@ -6433,6 +6566,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox58Donate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox59)).EndInit();
             this.PandaEffectsBox.ResumeLayout(false);
             this.PandaEffectsBox.PerformLayout();
             this.ImmunEffetsBox.ResumeLayout(false);
@@ -6465,9 +6600,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnemyDex)).EndInit();
             this.SoapBox.ResumeLayout(false);
             this.SoapBox.PerformLayout();
-            this.StiringBox.ResumeLayout(false);
-            this.StiringBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStiringByCryMin)).EndInit();
             this.PandaBox.ResumeLayout(false);
             this.PandaBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPandaLvlForSale)).EndInit();
@@ -6505,6 +6637,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTFDuringTime)).EndInit();
             this.ArenaBox.ResumeLayout(false);
             this.ArenaBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnemyBm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemySlava)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownArenaEnemyBm)).EndInit();
             this.MassFBox.ResumeLayout(false);
@@ -6538,12 +6671,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinDelayMf)).EndInit();
             this.MedalsBox.ResumeLayout(false);
             this.MedalsBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).EndInit();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
-            this.groupBox18.ResumeLayout(false);
-            this.groupBox18.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
+            this.CulonsBox.ResumeLayout(false);
+            this.CulonsBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinCryForCulonUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7019,6 +7150,16 @@
         private System.Windows.Forms.RadioButton radioButtonCommonPotions;
         private System.Windows.Forms.RadioButton radioButtonSimplePotions;
         private System.Windows.Forms.PictureBox pictureBox24;
+        private System.Windows.Forms.GroupBox CulonsBox;
+        private System.Windows.Forms.Button button49;
+        private System.Windows.Forms.TextBox textBoxCulonName;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.NumericUpDown numericUpDownMinCryForCulonUp;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.PictureBox pictureBox59;
+        private System.Windows.Forms.CheckBox checkBoxNextEnemys;
+        private System.Windows.Forms.NumericUpDown numericUpDownEnemyBm;
+        private System.Windows.Forms.PictureBox pictureBox60;
     }
 }
 

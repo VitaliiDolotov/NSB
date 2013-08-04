@@ -28,7 +28,7 @@ namespace Simple_Bot
     {
         bool isDonatePlayer = false;
         bool botIsWorked = false;
-        int BotVersion = 2580;
+        int BotVersion = 2582;
 
         static Thread BotThread;
 
@@ -217,6 +217,8 @@ namespace Simple_Bot
                 numericUpDownTFEveryTime2.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[33]);
                 checkBoxMrIdiot.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[34]);
                 comboBoxMrIdiot.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[35];
+                textBoxCulonName.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[36];
+                numericUpDownMinCryForCulonUp.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[37]);
             }
             catch { }
 
@@ -283,6 +285,11 @@ namespace Simple_Bot
                 radioButtonEnemyBm.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[32]);
                 radioButtonEnemySlava.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[33]);
                 numericUpDownArenaEnemySlava.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[34]);
+                if (isDonatePlayer)
+                    checkBoxNextEnemys.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[35]);
+                else
+                    checkBoxNextEnemys.Checked = false;
+                numericUpDownEnemyBm.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[36]);
             }
             catch { }
 
@@ -675,7 +682,7 @@ namespace Simple_Bot
                                               Convert.ToString(radioButtonDonBuyGifts.Checked), Convert.ToString(radioButtonWhale.Checked), Convert.ToString(radioButtonParot.Checked),
                                               Convert.ToString(radioButtonCurrentPet.Checked), Convert.ToString(checkBoxAlarmBox.Checked), Convert.ToString(checkBoxBigGguru.Checked),Convert.ToString(checkBoxBiggestPotion.Checked),
                                               comboBoxTFResource.Text, Convert.ToString(numericUpDownTFDuringTime.Value), Convert.ToString(numericUpDownTFEveryTime.Value),Convert.ToString(numericUpDownTFEveryTime2.Value),
-                                              Convert.ToString(checkBoxMrIdiot.Checked), comboBoxMrIdiot.Text};
+                                              Convert.ToString(checkBoxMrIdiot.Checked), comboBoxMrIdiot.Text,textBoxCulonName.Text, Convert.ToString(numericUpDownMinCryForCulonUp.Value)};
             CompareValuesInFile(AdditionalSettingsBox.Name, AdditionalSettings);
             checkBoxCryDust.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[1]);
             checkBoxFish.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[2]);
@@ -715,6 +722,8 @@ namespace Simple_Bot
             numericUpDownTFEveryTime2.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[33]);
             checkBoxMrIdiot.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[34]);
             comboBoxMrIdiot.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[35];
+            textBoxCulonName.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[36];
+            numericUpDownMinCryForCulonUp.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[37]);
 
             //Underground Settings
             string[] UndergroundSettings = { Convert.ToString(checkBoxUnderground.Checked), Convert.ToString(radioButtonUnderground.Checked), Convert.ToString(radioButtonFastUnderground.Checked),
@@ -748,7 +757,8 @@ namespace Simple_Bot
                                          Convert.ToString(checkBoxMoralityMinus.Checked),Convert.ToString(checkBoxMoralityPlus.Checked),Convert.ToString(checkBoxMoralityZero.Checked),
                                          Convert.ToString(checkBoxDrinkOborotka.Checked), Convert.ToString(checkBoxArenaFight.Checked), Convert.ToString(numericUpDownArenaEnemyBm.Value),
                                          Convert.ToString(checkBoxArenaEvery5min.Checked),Convert.ToString(radioButtonMonstersAll.Checked),Convert.ToString(radioButtonMonstersLvl.Checked), comboBoxMonstersLvl.Text,
-                                         Convert.ToString(radioButtonEnemyBm.Checked),Convert.ToString(radioButtonEnemySlava.Checked),Convert.ToString(numericUpDownArenaEnemySlava.Value)};
+                                         Convert.ToString(radioButtonEnemyBm.Checked),Convert.ToString(radioButtonEnemySlava.Checked),Convert.ToString(numericUpDownArenaEnemySlava.Value),
+                                         Convert.ToString(checkBoxNextEnemys.Checked), Convert.ToString(numericUpDownEnemyBm.Value)};
             CompareValuesInFile(FightBox.Name, FightSettings);
             checkBoxFightMonsters.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[1]);
             checkBoxFightZorro.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[2]);
@@ -787,6 +797,11 @@ namespace Simple_Bot
             radioButtonEnemyBm.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[32]);
             radioButtonEnemySlava.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[33]);
             numericUpDownArenaEnemySlava.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[34]);
+            if (isDonatePlayer)
+                checkBoxNextEnemys.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[35]);
+            else
+                checkBoxNextEnemys.Checked = false;
+            numericUpDownEnemyBm.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[36]);
 
 
             //Heal settings
@@ -1005,6 +1020,12 @@ namespace Simple_Bot
                 //Подрубаем Арену по 5 мину
                 checkBoxArenaEvery5min.Enabled = true;
                 checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+                //Поиск противников за капустные листки
+                checkBoxNextEnemys.Enabled = true;
+                if (isDonatePlayer)
+                    checkBoxNextEnemys.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[35]);
+                else
+                    checkBoxNextEnemys.Checked = false;
             }
             catch { }
 
@@ -2707,7 +2728,7 @@ namespace Simple_Bot
 
         private void button47_Click_1(object sender, EventArgs e)
         {
-
+            UIBoxDisplay(3, 4, "CulonsBox");
         }
 
         private void DonateLabel1_Click(object sender, EventArgs e)
@@ -2736,6 +2757,19 @@ namespace Simple_Bot
         private void button48_Click(object sender, EventArgs e)
         {
             UIBoxDisplay(3, 4, "PotionMakingBox");
+        }
+
+        private void button49_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "MenuBox");
+        }
+
+        private void checkBoxNextEnemys_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxNextEnemys.Checked)
+                numericUpDownEnemyBm.Enabled = true;
+            else
+                numericUpDownEnemyBm.Enabled = false;
         }
     }
 }
