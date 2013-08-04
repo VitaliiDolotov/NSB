@@ -23,6 +23,8 @@ namespace Simple_Bot
 
         private const int SW_RESTORE = 9;
 
+        private static bool isMainThredFree = true;
+
         private int hWnd;
 
         string oldBotvaWindow;
@@ -58,6 +60,8 @@ namespace Simple_Bot
 
         //ADV
         bool AdvIsOpened = false;
+
+        #region Timers
 
         static DateTime Timer_MineWork = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_CryDustMaking = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
@@ -107,6 +111,8 @@ namespace Simple_Bot
         static DateTime Timer_OpenMySite = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
         static DateTime Timer_RestTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+
+        #endregion
 
         IWebDriver driver;
 
@@ -256,6 +262,15 @@ namespace Simple_Bot
                 PanelForFastAccess();
                 //вытягиваем иконку шахты
                 IconsAdding("f43");
+            }
+        }
+
+        private void ArenaSetUp()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[35]))
+            {
+                AddingCategory("Ресурсы");
+                AddingItemToTheCategory_Resource("Ресурсы", "i120", "Капустный лист");
             }
         }
 
@@ -3213,8 +3228,11 @@ namespace Simple_Bot
                             do
                             {
                                 FightMonster();
+                                WaitUntilThreadBecomeAvailable();
                                 FightZorro();
+                                WaitUntilThreadBecomeAvailable();
                                 FightCommon();
+                                WaitUntilThreadBecomeAvailable();
                                 FightCount++;
                                 if (FightCount > 3)
                                 {
@@ -5467,6 +5485,7 @@ namespace Simple_Bot
                                 if (deadPerson.FindElement(By.CssSelector(".ico_bg_dead")).Displayed)
                                 {
                                     driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                    isMainThredFree = true;
                                     break;
                                 }
                             }
@@ -5477,6 +5496,7 @@ namespace Simple_Bot
                                 try
                                 {
                                     driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                    isMainThredFree = true;
                                     break;
                                 }
                                 catch { }
@@ -5484,6 +5504,7 @@ namespace Simple_Bot
                                 try
                                 {
                                     driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                    isMainThredFree = true;
                                     break;
                                 }
                                 catch { }
@@ -5495,6 +5516,7 @@ namespace Simple_Bot
                                 try
                                 {
                                     driver.FindElement(By.CssSelector(".battleground_exit")).Click();
+                                    isMainThredFree = true;
                                     break;
                                 }
                                 catch { }
@@ -5502,6 +5524,7 @@ namespace Simple_Bot
                         }
                         catch { }
                     }
+                    isMainThredFree = true;
                     Quit();
                 }
             }
@@ -6162,6 +6185,7 @@ namespace Simple_Bot
             try
             {
                 IWebElement timer = driver.FindElement(By.CssSelector("#main_timer i"));
+                isMainThredFree = true;
                 while (timer.Displayed)
                 {
                     SmallDelays();
@@ -6172,6 +6196,7 @@ namespace Simple_Bot
             {
                 System.Threading.Thread.Sleep(7600);
             }
+            isMainThredFree = false;
         }
 
         #endregion
@@ -6403,7 +6428,8 @@ namespace Simple_Bot
 
         public void CulonsUp()
         {
-            try{
+            try
+            {
                 if (!string.IsNullOrEmpty(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[36]))
                 {
                     if (CurrentCry() > Convert.ToInt32(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[37]))
@@ -6430,6 +6456,15 @@ namespace Simple_Bot
                 }
             }
             catch { }
+        }
+
+        public void WaitUntilThreadBecomeAvailable()
+        {
+            while (!isMainThredFree)
+            {
+                Delays();
+                Delays();
+            }
         }
     }
 }
