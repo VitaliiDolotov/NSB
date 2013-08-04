@@ -5601,15 +5601,13 @@ namespace Simple_Bot
         {
             try
             {
-                string selector = string.Format("//div[@title='{0}']", ReadFromFile(SettingsFile, "MassFBox")[2]);
+                //string selector = string.Format("//div[@title='{0}']", ReadFromFile(SettingsFile, "MassFBox")[2]);
+                string selector = ".//div[contains(@class,'bg_banner_new')]";
                 driver.FindElement(By.XPath(selector)).Click();
                 Delays();
-                //if (driver.FindElement(By.CssSelector(selector)).Displayed)
-                //{
                 string mineSelector = string.Format("{0} .status span:nth-of-type(1) a", MMainSelectorProvider(ReadFromFile(SettingsFile, "MassFBox")[2]));
-                driver.FindElement(By.CssSelector(mineSelector))/*.FindElement(By.LinkText("ВСТУПИТЬ"))*/.Click();
+                driver./*FindElement(By.CssSelector(mineSelector)).*/FindElement(By.LinkText("ВСТУПИТЬ")).Click();
                 SmallDelays();
-                //}
             }
             catch { }
         }
@@ -5621,7 +5619,8 @@ namespace Simple_Bot
             {
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[1]))
                 {
-                    string selector = string.Format("//div[@title='{0}']", ReadFromFile(SettingsFile, "MassFBox")[2]);
+                    //string selector = string.Format("//div[@title='{0}']", ReadFromFile(SettingsFile, "MassFBox")[2]);
+                    string selector = ".//div[contains(@class,'bg_banner_new')]";
                     if (driver.FindElement(By.XPath(selector)).Displayed)
                         retValue = true;
                 }
