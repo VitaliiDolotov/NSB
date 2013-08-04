@@ -34,12 +34,15 @@ namespace Simple_Bot.Resources
                 {
                     try
                     {
-                        if (Timer_Bg.CompareTo(DateTime.Now) < 0)
-                            if (Bot.IsNecessaryMineIsOpened())
-                            {
-                                Timer_Bg = ToDateTime("00:35:00");
-                                MassFight();
-                            }
+                        //if (Timer_Bg.CompareTo(DateTime.Now) < 0)
+                        //    if (Bot.IsNecessaryMineIsOpened())
+                        //    {
+                        //        Timer_Bg = ToDateTime("00:35:00");
+                        //        MassFight();
+                        //    }
+
+                        Bot.MassFight();
+
 
                         Bot.MrIdiot();
                         Bot.GoToOldoMsters();
@@ -83,9 +86,6 @@ namespace Simple_Bot.Resources
                         Bot.BuyGifts();
                         Bot.TradeField();
                         Bot.Shop();
-                        //Bot.MassFight();
-
-
 
 
                         //Adv

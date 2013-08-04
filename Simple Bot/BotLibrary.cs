@@ -1597,6 +1597,37 @@ namespace Simple_Bot
             catch { }
         }
 
+        private void GoToAppropriatePotions()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PotionMakingBox")[7]))
+            {
+                try
+                {
+                    if (!driver.Title.Contains("Обычные зелья"))
+                    {
+                        //переход в обычные зелья
+                        driver.FindElement(By.XPath("//a/div[contains(@class,'f76')]")).Click();
+                        Delays();
+                    }
+                }
+                catch { }
+            }
+
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PotionMakingBox")[8]))
+            {
+                try
+                {
+                    if (!driver.Title.Contains("Простейшие зелья"))
+                    {
+                        //переход в простейшие зелья
+                        driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
+                        Delays();
+                    }
+                }
+                catch { }
+            }
+        }
+
         public void PotionBoil()
         {
             if (ReadFromFile(SettingsFile, "PotionMakingBox")[1] == "True")
@@ -1615,13 +1646,8 @@ namespace Simple_Bot
                         }
                         catch { }
 
-                        //переход в простейшие зелья
-                        try
-                        {
-                            driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
-                            Delays();
-                        }
-                        catch { }
+                        //переход в зелья
+                        GoToAppropriatePotions();
 
                         //арендуем котел
                         BoilerBuy();
@@ -1678,11 +1704,22 @@ namespace Simple_Bot
                             }
                             catch { }
 
-                            //если задизейблена варить
+                            //если задизейблена варить, то переходим в простейшие зелья и начинаем варить хилку
                             try
                             {
                                 if (driver.FindElement(By.Id("alch_main_right_start")).FindElement(By.TagName("b")).Displayed == true)
                                 {
+                                    //переход в простейшие зелья
+                                    try
+                                    {
+                                        if (!driver.Title.Contains("Простейшие зелья"))
+                                        {
+
+                                            driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
+                                            Delays();
+                                        }
+                                    }
+                                    catch { }
                                     StartPotionMaking();
                                 }
                             }
@@ -1725,9 +1762,8 @@ namespace Simple_Bot
                             SmallDelays();
                         }
                         catch { }
-                        //обратно в простейшие зелья
-                        driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
-                        Delays();
+                        //переход в зелья
+                        GoToAppropriatePotions();
                     }
                 }
                 catch { }
@@ -1840,77 +1876,91 @@ namespace Simple_Bot
 
         private void Stirring()
         {
-            MessageBox.Show("Нужно уровнять температуру!", "Simpe Bot: Information",
-            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Random rnd = new Random();
+            try
+            {
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
+            }
+            catch { }
+            int Result = 0;
+            try
+            {
+                if (driver.FindElement(By.Id("alchemy_small_window_text3")).Text == "Вы должны помешать зелье в котле в течение:")
+                {
+                    //переход в зелья
+                    GoToAppropriatePotions();
 
-            //Random rnd = new Random();
-            //try
-            //{
-            //    driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(TimeOutValue));
-            //}
-            //catch { }
-            //int Result = 0;
-            //try
-            //{
-            //    if (driver.FindElement(By.Id("alchemy_small_window_text3")).Text == "Вы должны помешать зелье в котле в течение:")
-            //    {
-            //        try
-            //        {
-            //            //переход в простейшие зелья
-            //            driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
-            //            Delays();
-            //        }
-            //        catch { }
+                    //Если не в той зельеварне
+                    try
+                    {
+                        if (driver.FindElement(By.CssSelector("alchemy_small_simple_text")).Text.Contains("Котел занят. Может не будем зелье портить, а?"))
+                        {
+                            //если обычные зелья, то переходим в простейшие иначе в обычные
+                            if (driver.Title.Contains("Обычные зелья"))
+                            {
+                                //переход в простейшие зелья
+                                driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
+                                Delays();
+                            }
+                            else
+                            {
+                                //переход в обычные зелья
+                                driver.FindElement(By.XPath("//a/div[contains(@class,'f76')]")).Click();
+                                Delays();
+                            }
+                        }
+                    }
+                    catch { }
 
-            //        //добываем пару чисел 
-            //        try
-            //        {
-            //            string text;
-            //            int FirstNyumber = ElementScreenshot("FirstNum", "right_main", ".//div[4]/img");
-            //            text = string.Format("Уравниваем температуру в котле: первое число {0}", FirstNyumber);
-            //            Logger(text);
-            //            int SecondNumber = ElementScreenshot("SecNum", "right_main", ".//div[5]/img");
-            //            text = string.Format("Уравниваем температуру в котле: второе число {0}", SecondNumber);
-            //            Logger(text);
-            //            //вычисляем разницу температур
-            //            Result = SecondNumber - FirstNyumber;
+                    //добываем пару чисел 
+                    try
+                    {
+                        string text;
+                        int FirstNyumber = ElementScreenshot("FirstNum", "right_main", ".//div[4]/img");
+                        text = string.Format("Уравниваем температуру в котле: первое число {0}", FirstNyumber);
+                        Logger(text);
+                        int SecondNumber = ElementScreenshot("SecNum", "right_main", ".//div[5]/img");
+                        text = string.Format("Уравниваем температуру в котле: второе число {0}", SecondNumber);
+                        Logger(text);
+                        //вычисляем разницу температур
+                        Result = SecondNumber - FirstNyumber;
 
-            //            //опускаем если вторая больше первой
-            //            if (Result < 0)
-            //            {
-            //                try
-            //                {
-            //                    driver.FindElement(By.Id("alchemy_stir_action")).FindElement(By.XPath(".//p[2]/input[@value='2']")).Click();
-            //                    Delays();
-            //                    //если результат отрицательный то умножаем на -1 чтоб стал положительным
-            //                    Result = Result * (-1);
-            //                }
-            //                catch { }
-            //            }
-            //        }
-            //        catch { }
+                        //опускаем если вторая больше первой
+                        if (Result < 0)
+                        {
+                            try
+                            {
+                                driver.FindElement(By.Id("alchemy_stir_action")).FindElement(By.XPath(".//p[2]/input[@value='2']")).Click();
+                                Delays();
+                                //если результат отрицательный то умножаем на -1 чтоб стал положительным
+                                Result = Result * (-1);
+                            }
+                            catch { }
+                        }
+                    }
+                    catch { }
 
-            //        //вкидуем число в квери
-            //        try
-            //        {
-            //            driver.FindElement(By.Id("change_temperature")).Clear();
-            //            System.Threading.Thread.Sleep(rnd.Next(599, 1989));
-            //            driver.FindElement(By.Id("change_temperature")).SendKeys(Convert.ToString(Result));
-            //            System.Threading.Thread.Sleep(rnd.Next(1099, 1489));
-            //        }
-            //        catch { }
+                    //вкидуем число в квери
+                    try
+                    {
+                        driver.FindElement(By.Id("change_temperature")).Clear();
+                        System.Threading.Thread.Sleep(rnd.Next(599, 1989));
+                        driver.FindElement(By.Id("change_temperature")).SendKeys(Convert.ToString(Result));
+                        System.Threading.Thread.Sleep(rnd.Next(1099, 1489));
+                    }
+                    catch { }
 
-            //        //помешуем
+                    //помешуем
 
-            //        try
-            //        {
-            //            driver.FindElement(By.XPath("//input[@value='ПОМЕШАТЬ']")).Click();
-            //            Delays();
-            //        }
-            //        catch { }
-            //    }
-            //}
-            //catch { }
+                    try
+                    {
+                        driver.FindElement(By.XPath("//input[@value='ПОМЕШАТЬ']")).Click();
+                        Delays();
+                    }
+                    catch { }
+                }
+            }
+            catch { }
         }
 
         private int ElementScreenshot(string ImageName, string ImageElementID, string PathToTheImage)
@@ -1918,53 +1968,100 @@ namespace Simple_Bot
             int result = 0;
             try
             {
-                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
-                Screenshot screenshot = screenshotDriver.GetScreenshot();
-                screenshot.SaveAsFile("Screen.png", ImageFormat.Png);
-
-                //координаты и поинтер искомого имеджа
-                IWebElement TargetImage = driver.FindElement(By.Id(ImageElementID)).FindElement(By.XPath(PathToTheImage));
-
-                //фокусимся на элемент с числом
-                Actions action = new Actions(driver);
-                action.MoveToElement(TargetImage).Build().Perform();
-                int width = TargetImage.Size.Width;
-                int height = TargetImage.Size.Height;
-                Point ElemPoint = TargetImage.Location;
-
-
-                //исходный имедж
-                Bitmap sourceBitmap = new Bitmap("Screen.png");
-                //скрин компонента
-                Bitmap PartOfScrn = new Bitmap(width - 1, height);
-
-                Color sourceColor = new Color();
-
-                for (int i = 0; i < width - 1; i++)
+                //Пытаемся сделать скрин или выводим сообщение что нужно мешать в ручную
+                if (StirringGetScreenshot())
                 {
-                    for (int j = 0; j < height; j++)
+
+                    //координаты и поинтер искомого имеджа
+                    IWebElement TargetImage = driver.FindElement(By.Id(ImageElementID)).FindElement(By.XPath(PathToTheImage));
+
+                    //фокусимся на элемент с числом
+                    Actions action = new Actions(driver);
+                    action.MoveToElement(TargetImage).Build().Perform();
+                    int width = TargetImage.Size.Width;
+                    int height = TargetImage.Size.Height;
+                    Point ElemPoint = TargetImage.Location;
+
+
+                    //исходный имедж
+                    Bitmap sourceBitmap = new Bitmap("Screen.png");
+                    //скрин компонента
+                    Bitmap PartOfScrn = new Bitmap(width - 1, height);
+
+                    Color sourceColor = new Color();
+
+                    for (int i = 0; i < width - 1; i++)
                     {
-                        sourceColor = sourceBitmap.GetPixel(i + ElemPoint.X, j + ElemPoint.Y);
-                        PartOfScrn.SetPixel(i, j, sourceColor);
+                        for (int j = 0; j < height; j++)
+                        {
+                            sourceColor = sourceBitmap.GetPixel(i + ElemPoint.X, j + ElemPoint.Y);
+                            PartOfScrn.SetPixel(i, j, sourceColor);
+                        }
                     }
+                    PartOfScrn.Save(ImageName + ".png");
+
+                    var sFile = new FileStream(ImageName + ".png", FileMode.Open);
+                    byte[] PhotoBytes = new byte[sFile.Length];
+                    sFile.Read(PhotoBytes, 0, PhotoBytes.Length);
+                    Simple_Bot.ocr.ocrSoapClient webservice = new Simple_Bot.ocr.ocrSoapClient();
+                    //SimpleBotLibrary.ocr.ocrSoapClient webservice = new SimpleBotLibrary.ocr.ocrSoapClient();
+                    result = Convert.ToInt32(webservice.Analyze("aksis8@gmail.com", PhotoBytes));
+
+                    sFile.Dispose();
+                    PartOfScrn.Dispose();
+                    sourceBitmap.Dispose();
                 }
-                PartOfScrn.Save(ImageName + ".png");
-
-                //var sFile = new FileStream(@"C:\" + PicName + ".png", FileMode.Open);
-                var sFile = new FileStream(ImageName + ".png", FileMode.Open);
-                byte[] PhotoBytes = new byte[sFile.Length];
-                sFile.Read(PhotoBytes, 0, PhotoBytes.Length);
-                Simple_Bot.ocr.ocrSoapClient webservice = new Simple_Bot.ocr.ocrSoapClient();
-                //SimpleBotLibrary.ocr.ocrSoapClient webservice = new SimpleBotLibrary.ocr.ocrSoapClient();
-                result = Convert.ToInt32(webservice.Analyze("aksis8@gmail.com", PhotoBytes));
-
-                sFile.Dispose();
-                PartOfScrn.Dispose();
-                sourceBitmap.Dispose();
+                else
+                {
+                    MessageBox.Show("Нужно уровнять температуру в котле!", "Simpe Bot: Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch { }
 
             return result;
+        }
+
+        private bool StirringGetScreenshot()
+        {
+            int numberOfBlackPixels = 0;
+            int attemps = 20;
+            do
+            {
+                numberOfBlackPixels = 0;
+
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile("Screen.png", ImageFormat.Png);
+
+                //исходный имедж
+                Bitmap sourceBitmap = new Bitmap("Screen.png");
+
+                Color sourceColor = new Color();
+
+                //Эталонный колор, берем первый пиксель и сравниваем все с ним
+                Color etalon = sourceBitmap.GetPixel(1, 1);
+
+                //Проверяем кол-во черных пиксилей из 10 ряда изображения
+                for (int i = 0; i < 30; i++)
+                {
+                    sourceColor = sourceBitmap.GetPixel(i, 20);
+                    if (sourceColor == etalon)
+                        numberOfBlackPixels++;
+                }
+
+                sourceBitmap.Dispose();
+
+                attemps--;
+                Delays();
+                Delays();
+            }
+            while (numberOfBlackPixels > 15 && attemps > 0);
+
+            if (numberOfBlackPixels < 20)
+                return true;
+            else
+                return false;
         }
 
         public void TanksMaking()
@@ -2728,13 +2825,13 @@ namespace Simple_Bot
             Delays();
         }
 
-        public void ByKeys()
+        private void ByKeys()
         {
             if (ReadFromFile(SettingsFile, "UndergroundBox")[6] == "True")
             {
                 Random rnd = new Random();
                 //смотрим сколько у нас ключей, если 0, то докупаем
-                if (Convert.ToInt32(GetResourceValue("Ключ от ворот царства Манаглота")[0]) == 0)
+                if (Convert.ToInt32(GetResourceValue("Ключ от ворот царства Манаглота")[0]) < 4)
                 {
                     try
                     {
@@ -4404,6 +4501,7 @@ namespace Simple_Bot
             catch { }
         }
 
+        //Чистка котла за кри
         public void CryStirring()
         {
             try
@@ -4412,7 +4510,8 @@ namespace Simple_Bot
                 {
                     if (Timer_CryStiring.CompareTo(DateTime.Now) < 0)
                     {
-                        driver.FindElement(By.XPath("//a/div[contains(@class,'f60')]")).Click();
+                        //переходим в зелья
+                        GoToAppropriatePotions();
                         SmallDelays();
                         //чистим котел
                         driver.FindElement(By.Id("form_alchemy_boiler")).FindElement(By.XPath(".//input[@value='ПОЧИСТИТЬ']")).Click();
@@ -4589,6 +4688,13 @@ namespace Simple_Bot
                         {
                             driver.FindElement(By.XPath(".//input[@ value='КУПИТЬ']")).Click();
                             SmallDelays();
+                            //Надпись о состоянии покупки
+                            try
+                            {
+                                driver.FindElement(By.CssSelector(".balert_baloon_title")).Click();
+                                SmallDelays();
+                            }
+                            catch { }
                         }
                     }
                     catch { }
@@ -5327,10 +5433,14 @@ namespace Simple_Bot
                             }
                             catch { }
 
+                            MassAbility();
+
                             MGoToLocation();
                             MHealing();
                             MGoTakeFood();
                             MAskForFood();
+
+                            MAGetSomeFood();
 
                             MAUseShild();
                             MAUseGodDef();
@@ -5343,7 +5453,7 @@ namespace Simple_Bot
 
                             MBeat();
                             MFood();
-                            MAGetSomeFood();
+
                             WaitForNewRaund();
 
                             //ливаем по времени
@@ -5352,7 +5462,7 @@ namespace Simple_Bot
                             try
                             {
                                 IWebElement deadPerson = driver.FindElement(By.CssSelector(".bg_user_panel.dead[style*='background-color']"));
-                                if (deadPerson.Displayed)
+                                if (deadPerson.FindElement(By.CssSelector(".ico_bg_dead")).Displayed)
                                 {
                                     driver.FindElement(By.CssSelector(".battleground_exit")).Click();
                                     break;
@@ -5378,7 +5488,7 @@ namespace Simple_Bot
                             }
 
                             //Ливаем по ограничивалке времени
-                            if (Timer_MassFightTime.CompareTo(DateTime.Now) < 0)
+                            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[14]) && Timer_MassFightTime.CompareTo(DateTime.Now) < 0)
                             {
                                 try
                                 {
@@ -5549,6 +5659,7 @@ namespace Simple_Bot
                         return true;
                     }
                 }
+                return false;
 
             }
             catch
@@ -5657,6 +5768,23 @@ namespace Simple_Bot
 
         //Abilitys
 
+        public void MassAbility()
+        {
+            try
+            {
+                int rnd = new Random().Next(1, 4);
+                if (rnd == 2)
+                    rnd = 3;
+                string selector = string.Format("#talants_enemies a:nth-of-type({0})", rnd);
+                driver.FindElement(By.CssSelector(selector)).Click();
+                SmallDelays();
+                //убираем фокус
+                Actions action = new Actions(driver);
+                action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+            }
+            catch { }
+        }
+
         private void MAGetSomeFood()
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[6]))
@@ -5678,7 +5806,7 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[3]))
             {
-                if (MIsEnemyPresents())
+                if (true /*MIsEnemyPresents()*/)
                 {
                     if (MGetCurrentFood() > 15)
                     {
@@ -5703,7 +5831,7 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[4]))
             {
-                if (MIsEnemyPresents())
+                if (true /*MIsEnemyPresents()*/)
                 {
                     if (MGetCurrentFood() > 15)
                     {
@@ -5728,7 +5856,7 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[5]))
             {
-                if (MIsEnemyPresents())
+                if (true /*MIsEnemyPresents()*/)
                 {
                     if (MGetCurrentFood() > 15)
                     {
@@ -5777,16 +5905,23 @@ namespace Simple_Bot
                                 {
                                     string enemyBm = enemy.FindElement(By.CssSelector(".bg_points i")).Text;
 
-                                    //если противник всего один
-                                    if (enemys.Count == 1 & Convert.ToInt64(enemyBm) >= myBm)
-                                        enemy.Click();
-
-                                    //если БМ, то валим первого попавшегося
-                                    if (Convert.ToInt64(enemyBm) >= myBm)
+                                    //если противник не мертв
+                                    if (!enemy.GetAttribute("class").Contains("dead"))
                                     {
-                                        enemy.Click();
-                                        break;
+
+                                        //если противник всего один
+                                        if (enemys.Count == 1 & Convert.ToInt64(enemyBm) >= myBm)
+                                            enemy.Click();
+
+                                        //если БМ, то валим первого попавшегося
+                                        if (Convert.ToInt64(enemyBm) >= myBm)
+                                        {
+                                            enemy.Click();
+                                            break;
+                                        }
                                     }
+                                    else
+                                        break;
                                 }
                             }
                             else
@@ -5816,8 +5951,8 @@ namespace Simple_Bot
                             Actions action = new Actions(driver);
                             action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
 
-                            //Собираем лист всех противников
-                            IList<IWebElement> enemys = driver.FindElements(By.CssSelector("#left div[id_user]"));
+                            //Собираем лист всех противников которые не мертвы
+                            List<IWebElement> enemys = driver.FindElements(By.CssSelector("#left div[id_user]")).Where(item => !item.GetAttribute("class").Contains("dead")).ToList();
 
                             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[8]))
                             {
@@ -5849,7 +5984,6 @@ namespace Simple_Bot
                                     //клацаем по второму по силе
                                     if (Convert.ToInt64(enemyBm) >= myBm & iterator > 1)
                                         enemy.Click();
-
                                 }
                             }
                             else
@@ -5884,8 +6018,8 @@ namespace Simple_Bot
                             Actions action = new Actions(driver);
                             action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
 
-                            //Собираем лист всех противников
-                            IList<IWebElement> enemys = driver.FindElements(By.CssSelector("#left div[id_user]"));
+                            //Собираем лист всех противников которые не мертвы
+                            List<IWebElement> enemys = driver.FindElements(By.CssSelector("#left div[id_user]")).Where(item => !item.GetAttribute("class").Contains("dead")).ToList();
 
                             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[8]))
                             {
@@ -5953,8 +6087,8 @@ namespace Simple_Bot
                             Actions action = new Actions(driver);
                             action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
 
-                            //Собираем лист всех противников
-                            IList<IWebElement> enemys = driver.FindElements(By.CssSelector("#left div[id_user]"));
+                            //Собираем лист всех противников которые не мертвы
+                            List<IWebElement> enemys = driver.FindElements(By.CssSelector("#left div[id_user]")).Where(item => !item.GetAttribute("class").Contains("dead")).ToList();
 
                             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[8]))
                             {

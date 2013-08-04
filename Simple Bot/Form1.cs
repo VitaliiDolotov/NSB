@@ -28,7 +28,7 @@ namespace Simple_Bot
     {
         bool isDonatePlayer = false;
         bool botIsWorked = false;
-        int BotVersion = 2575;
+        int BotVersion = 2580;
 
         static Thread BotThread;
 
@@ -148,7 +148,7 @@ namespace Simple_Bot
             }
             catch { }
 
-            //Potionsetting Box
+            //Potion Making Settings
             try
             {
                 checkBoxPotionMaking.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PotionMakingBox.Name)[1]);
@@ -157,6 +157,11 @@ namespace Simple_Bot
                 radioButtonUseClearPotion.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PotionMakingBox.Name)[4]);
                 radioButtonStiringByCry.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PotionMakingBox.Name)[5]);
                 numericUpDownStiringByCryMin.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, PotionMakingBox.Name)[6]);
+                if (isDonatePlayer)
+                    radioButtonCommonPotions.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PotionMakingBox.Name)[7]);
+                else
+                    radioButtonCommonPotions.Checked = false;
+                radioButtonSimplePotions.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PotionMakingBox.Name)[8]);
             }
             catch { }
 
@@ -203,7 +208,10 @@ namespace Simple_Bot
                 checkBoxAlarmBox.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[27]);
                 checkBoxBigGguru.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[28]);
                 checkBoxBiggestPotion.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[29]);
-                comboBoxTFResource.Text = "Не скупать ресурсы";//ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
+                if (isDonatePlayer)
+                    comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
+                else
+                    comboBoxTFResource.Text = "Не скупать ресурсы";
                 numericUpDownTFDuringTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[31]);
                 numericUpDownTFEveryTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[32]);
                 numericUpDownTFEveryTime2.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[33]);
@@ -265,7 +273,10 @@ namespace Simple_Bot
                 checkBoxDrinkOborotka.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[25]);
                 checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
                 numericUpDownArenaEnemyBm.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
-                checkBoxArenaEvery5min.Checked = false;//Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+                if(isDonatePlayer)
+                    checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+                else
+                    checkBoxArenaEvery5min.Checked = false;
                 radioButtonMonstersAll.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[29]);
                 radioButtonMonstersLvl.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[30]);
                 comboBoxMonstersLvl.Text = ReadFromFile(SettingsFile, FightBox.Name)[31];
@@ -347,7 +358,10 @@ namespace Simple_Bot
                 checkBoxDontUseFFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[21]);
                 checkBoxDontUseSFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[22]);
                 checkBoxDontUseTFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[23]);
-                checkBoxDontUseFoFly.Checked = /*true;*/Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
+                if (isDonatePlayer)
+                    checkBoxDontUseFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
+                else
+                    checkBoxDontUseFoFly.Checked = true;
             }
             catch { }
 
@@ -387,7 +401,10 @@ namespace Simple_Bot
             //Mass Fight
             try
             {
-                checkBoxMassFight.Checked = false;//Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
+                if (isDonatePlayer)
+                    checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
+                else
+                    checkBoxMassFight.Checked = false;
                 comboBoxMMine.Text = ReadFromFile(SettingsFile, MassFBox.Name)[2];
                 checkBoxMAEnergy.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[3]);
                 checkBoxMAGodDefend.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[4]);
@@ -633,7 +650,8 @@ namespace Simple_Bot
 
             //Potion Making Settings
             string[] PotionMakingSettings = { Convert.ToString(checkBoxPotionMaking.Checked), Convert.ToString(checkBoxTankMaking.Checked), Convert.ToString(checkBoxBoilRent.Checked),
-                                            Convert.ToString(radioButtonUseClearPotion.Checked),Convert.ToString(radioButtonStiringByCry.Checked),Convert.ToString(numericUpDownStiringByCryMin.Value)};
+                                            Convert.ToString(radioButtonUseClearPotion.Checked),Convert.ToString(radioButtonStiringByCry.Checked),Convert.ToString(numericUpDownStiringByCryMin.Value),
+                                            Convert.ToString(radioButtonCommonPotions.Checked),Convert.ToString(radioButtonSimplePotions.Checked)};
             CompareValuesInFile(PotionMakingBox.Name, PotionMakingSettings);
             checkBoxPotionMaking.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PotionMakingBox.Name)[1]);
             checkBoxTankMaking.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PotionMakingBox.Name)[2]);
@@ -641,6 +659,11 @@ namespace Simple_Bot
             radioButtonUseClearPotion.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PotionMakingBox.Name)[4]);
             radioButtonStiringByCry.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PotionMakingBox.Name)[5]);
             numericUpDownStiringByCryMin.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, PotionMakingBox.Name)[6]);
+            if (isDonatePlayer)
+                radioButtonCommonPotions.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PotionMakingBox.Name)[7]);
+            else
+                radioButtonCommonPotions.Checked = false;
+            radioButtonSimplePotions.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PotionMakingBox.Name)[8]);
 
             //Additional Settings
             string[] AdditionalSettings = { Convert.ToString(checkBoxCryDust.Checked), Convert.ToString(checkBoxFish.Checked), Convert.ToString(checkBoxFly.Checked),
@@ -683,7 +706,10 @@ namespace Simple_Bot
             checkBoxAlarmBox.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[27]);
             checkBoxBigGguru.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[28]);
             checkBoxBiggestPotion.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[29]);
-            comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
+            if (isDonatePlayer)
+                comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
+            else
+                comboBoxTFResource.Text = "Не скупать ресурсы";
             numericUpDownTFDuringTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[31]);
             numericUpDownTFEveryTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[32]);
             numericUpDownTFEveryTime2.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[33]);
@@ -751,7 +777,10 @@ namespace Simple_Bot
             checkBoxDrinkOborotka.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[25]);
             checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
             numericUpDownArenaEnemyBm.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
-            checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+            if (isDonatePlayer)
+                checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
+            else
+                checkBoxArenaEvery5min.Checked = false;
             radioButtonMonstersAll.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[29]);
             radioButtonMonstersLvl.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[30]);
             comboBoxMonstersLvl.Text = ReadFromFile(SettingsFile, FightBox.Name)[31];
@@ -830,7 +859,10 @@ namespace Simple_Bot
             checkBoxDontUseFFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[21]);
             checkBoxDontUseSFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[22]);
             checkBoxDontUseTFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[23]);
-            checkBoxDontUseFoFly.Checked = /*true;*/Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
+            if (isDonatePlayer)
+                checkBoxDontUseFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
+            else
+                checkBoxDontUseFoFly.Checked = true;
 
             //Abilitys Box countrys
             string[] AbilitysSettings = { Convert.ToString(radioButtonSK1.Checked), Convert.ToString(radioButtonSK2.Checked), Convert.ToString(radioButtonSK3.Checked), Convert.ToString(radioButtonSK4.Checked), 
@@ -871,7 +903,10 @@ namespace Simple_Bot
                                          Convert.ToString(checkBoxMAScreem.Checked),Convert.ToString(checkBoxMAWeakness.Checked), Convert.ToString(numericUpDownFightTime.Value),
                                          Convert.ToString(checkBoxMFightTime.Checked)};
             CompareValuesInFile(MassFBox.Name, MassFightSettings);
-            checkBoxMassFight.Checked = false;//Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
+            if(isDonatePlayer)
+                checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
+            else
+                checkBoxMassFight.Checked = false;
             comboBoxMMine.Text = ReadFromFile(SettingsFile, MassFBox.Name)[2];
             checkBoxMAEnergy.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[3]);
             checkBoxMAGodDefend.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[4]);
@@ -956,6 +991,14 @@ namespace Simple_Bot
             }
             catch { }
 
+            //Potion Making Settings
+            try
+            {
+                radioButtonCommonPotions.Enabled = true;
+                radioButtonCommonPotions.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PotionMakingBox.Name)[7]);
+            }
+            catch { }
+
             //Fight Settings
             try
             {
@@ -976,8 +1019,8 @@ namespace Simple_Bot
             //Fly Settings
             try
             {
-                //checkBoxDontUseFoFly.Enabled = true;
-                //checkBoxDontUseFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
+                checkBoxDontUseFoFly.Enabled = true;
+                checkBoxDontUseFoFly.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FlyBox.Name)[24]);
             }
             catch { }
 
@@ -2688,6 +2731,11 @@ namespace Simple_Bot
                 reader.Close();
             }
             catch { }
+        }
+
+        private void button48_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "PotionMakingBox");
         }
     }
 }
