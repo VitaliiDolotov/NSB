@@ -263,6 +263,9 @@
             this.pictureBox55 = new System.Windows.Forms.PictureBox();
             this.pictureBox58 = new System.Windows.Forms.PictureBox();
             this.pictureBox59 = new System.Windows.Forms.PictureBox();
+            this.pictureBox60 = new System.Windows.Forms.PictureBox();
+            this.pictureBox61 = new System.Windows.Forms.PictureBox();
+            this.pictureBox62 = new System.Windows.Forms.PictureBox();
             this.PandaEffectsBox = new System.Windows.Forms.GroupBox();
             this.radioButtonPEcry = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
@@ -439,6 +442,8 @@
             this.numericUpDownArenaEnemyBm = new System.Windows.Forms.NumericUpDown();
             this.button40 = new System.Windows.Forms.Button();
             this.MassFBox = new System.Windows.Forms.GroupBox();
+            this.comboBoxMassAbil = new System.Windows.Forms.ComboBox();
+            this.checkBoxMassAbil = new System.Windows.Forms.CheckBox();
             this.checkBoxMFightTime = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBoxMAWeakness = new System.Windows.Forms.CheckBox();
@@ -459,6 +464,10 @@
             this.button41 = new System.Windows.Forms.Button();
             this.textBoxZadro4ka = new System.Windows.Forms.TextBox();
             this.SystemBox = new System.Windows.Forms.GroupBox();
+            this.textBoxProxyPassword = new System.Windows.Forms.TextBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.textBoxDomainUserName = new System.Windows.Forms.TextBox();
+            this.label77 = new System.Windows.Forms.Label();
             this.SystemSettingsPanel = new System.Windows.Forms.Panel();
             this.comboBoxSettingsFile = new System.Windows.Forms.ComboBox();
             this.label73 = new System.Windows.Forms.Label();
@@ -507,7 +516,21 @@
             this.label76 = new System.Windows.Forms.Label();
             this.numericUpDownMinCryForCulonUp = new System.Windows.Forms.NumericUpDown();
             this.label75 = new System.Windows.Forms.Label();
-            this.pictureBox60 = new System.Windows.Forms.PictureBox();
+            this.button50 = new System.Windows.Forms.Button();
+            this.PersonalCageBox = new System.Windows.Forms.GroupBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.comboBoxPetsSelectionFight = new System.Windows.Forms.ComboBox();
+            this.comboBoxPetsSelectionFightMonsters = new System.Windows.Forms.ComboBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.comboBoxPetsSelectionUnderground = new System.Windows.Forms.ComboBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.comboBoxPetsUskor = new System.Windows.Forms.ComboBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
+            this.comboBoxPetsSelectionZorroFight = new System.Windows.Forms.ComboBox();
+            this.checkBoxUsePersonalCage = new System.Windows.Forms.CheckBox();
+            this.button51 = new System.Windows.Forms.Button();
+            this.pictureBox63 = new System.Windows.Forms.PictureBox();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -610,6 +633,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox59)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox62)).BeginInit();
             this.PandaEffectsBox.SuspendLayout();
             this.ImmunEffetsBox.SuspendLayout();
             this.FlyBox.SuspendLayout();
@@ -684,7 +710,8 @@
             this.MedalsBox.SuspendLayout();
             this.CulonsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinCryForCulonUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).BeginInit();
+            this.PersonalCageBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).BeginInit();
             this.SuspendLayout();
             // 
             // StartButton
@@ -1066,6 +1093,7 @@
             // 
             // MenuBox
             // 
+            this.MenuBox.Controls.Add(this.button50);
             this.MenuBox.Controls.Add(this.button48);
             this.MenuBox.Controls.Add(this.button47);
             this.MenuBox.Controls.Add(this.button23);
@@ -1457,9 +1485,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(15, 355);
+            this.button4.Location = new System.Drawing.Point(13, 355);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(435, 24);
+            this.button4.Size = new System.Drawing.Size(437, 24);
             this.button4.TabIndex = 8;
             this.button4.Text = "-=> Save and Back <=--";
             this.button4.UseVisualStyleBackColor = true;
@@ -1992,7 +2020,7 @@
             this.UndergroundBox.Controls.Add(this.checkBoxUndGetPet);
             this.UndergroundBox.Controls.Add(this.checkBoxUnderground);
             this.UndergroundBox.Controls.Add(this.checkBoxByKeys);
-            this.UndergroundBox.Location = new System.Drawing.Point(1428, 468);
+            this.UndergroundBox.Location = new System.Drawing.Point(1428, 508);
             this.UndergroundBox.Name = "UndergroundBox";
             this.UndergroundBox.Size = new System.Drawing.Size(300, 198);
             this.UndergroundBox.TabIndex = 3;
@@ -3318,6 +3346,36 @@
             this.pictureBox59.TabIndex = 22;
             this.pictureBox59.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox59, "Если кристаллов больше\r\nуказанного значения");
+            // 
+            // pictureBox60
+            // 
+            this.pictureBox60.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox60.Image")));
+            this.pictureBox60.Location = new System.Drawing.Point(167, 138);
+            this.pictureBox60.Name = "pictureBox60";
+            this.pictureBox60.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox60.TabIndex = 40;
+            this.pictureBox60.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox60, "Эта опция доступна только\r\nв полной версии");
+            // 
+            // pictureBox61
+            // 
+            this.pictureBox61.Image = global::Simple_Bot.Properties.Resources.info_icon;
+            this.pictureBox61.Location = new System.Drawing.Point(299, 314);
+            this.pictureBox61.Name = "pictureBox61";
+            this.pictureBox61.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox61.TabIndex = 51;
+            this.pictureBox61.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox61, "Пример: domain\\\\user");
+            // 
+            // pictureBox62
+            // 
+            this.pictureBox62.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox62.Image")));
+            this.pictureBox62.Location = new System.Drawing.Point(242, 21);
+            this.pictureBox62.Name = "pictureBox62";
+            this.pictureBox62.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox62.TabIndex = 41;
+            this.pictureBox62.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox62, "Эта опция доступна только в\r\nполной версии");
             // 
             // PandaEffectsBox
             // 
@@ -5176,7 +5234,7 @@
             this.TradeFieldBox.Controls.Add(this.label52);
             this.TradeFieldBox.Controls.Add(this.label51);
             this.TradeFieldBox.Controls.Add(this.label50);
-            this.TradeFieldBox.Location = new System.Drawing.Point(1392, 672);
+            this.TradeFieldBox.Location = new System.Drawing.Point(1392, 707);
             this.TradeFieldBox.Name = "TradeFieldBox";
             this.TradeFieldBox.Size = new System.Drawing.Size(249, 132);
             this.TradeFieldBox.TabIndex = 31;
@@ -5465,6 +5523,9 @@
             // 
             // MassFBox
             // 
+            this.MassFBox.Controls.Add(this.pictureBox62);
+            this.MassFBox.Controls.Add(this.comboBoxMassAbil);
+            this.MassFBox.Controls.Add(this.checkBoxMassAbil);
             this.MassFBox.Controls.Add(this.checkBoxMFightTime);
             this.MassFBox.Controls.Add(this.pictureBox53);
             this.MassFBox.Controls.Add(this.groupBox1);
@@ -5477,10 +5538,34 @@
             this.MassFBox.Controls.Add(this.button41);
             this.MassFBox.Location = new System.Drawing.Point(1443, 166);
             this.MassFBox.Name = "MassFBox";
-            this.MassFBox.Size = new System.Drawing.Size(277, 296);
+            this.MassFBox.Size = new System.Drawing.Size(277, 320);
             this.MassFBox.TabIndex = 33;
             this.MassFBox.TabStop = false;
             this.MassFBox.Text = "Массовые бои";
+            // 
+            // comboBoxMassAbil
+            // 
+            this.comboBoxMassAbil.FormattingEnabled = true;
+            this.comboBoxMassAbil.Items.AddRange(new object[] {
+            "Ледяной дождь",
+            "Огненная буря",
+            "Разряд молнии",
+            "Разбой обозов"});
+            this.comboBoxMassAbil.Location = new System.Drawing.Point(121, 263);
+            this.comboBoxMassAbil.Name = "comboBoxMassAbil";
+            this.comboBoxMassAbil.Size = new System.Drawing.Size(137, 21);
+            this.comboBoxMassAbil.TabIndex = 35;
+            this.comboBoxMassAbil.Text = "Ледяной дождь";
+            // 
+            // checkBoxMassAbil
+            // 
+            this.checkBoxMassAbil.AutoSize = true;
+            this.checkBoxMassAbil.Location = new System.Drawing.Point(18, 266);
+            this.checkBoxMassAbil.Name = "checkBoxMassAbil";
+            this.checkBoxMassAbil.Size = new System.Drawing.Size(72, 17);
+            this.checkBoxMassAbil.TabIndex = 34;
+            this.checkBoxMassAbil.Text = "Массухи:";
+            this.checkBoxMassAbil.UseVisualStyleBackColor = true;
             // 
             // checkBoxMFightTime
             // 
@@ -5512,9 +5597,9 @@
             this.checkBoxMAWeakness.AutoSize = true;
             this.checkBoxMAWeakness.Location = new System.Drawing.Point(140, 62);
             this.checkBoxMAWeakness.Name = "checkBoxMAWeakness";
-            this.checkBoxMAWeakness.Size = new System.Drawing.Size(89, 17);
+            this.checkBoxMAWeakness.Size = new System.Drawing.Size(80, 17);
             this.checkBoxMAWeakness.TabIndex = 30;
-            this.checkBoxMAWeakness.Text = "Уязвимость";
+            this.checkBoxMAWeakness.Text = "-20% от ХР";
             this.checkBoxMAWeakness.UseVisualStyleBackColor = true;
             // 
             // checkBoxMAProklatyshki
@@ -5522,9 +5607,9 @@
             this.checkBoxMAProklatyshki.AutoSize = true;
             this.checkBoxMAProklatyshki.Location = new System.Drawing.Point(140, 39);
             this.checkBoxMAProklatyshki.Name = "checkBoxMAProklatyshki";
-            this.checkBoxMAProklatyshki.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxMAProklatyshki.Size = new System.Drawing.Size(110, 17);
             this.checkBoxMAProklatyshki.TabIndex = 29;
-            this.checkBoxMAProklatyshki.Text = "Проклятушки";
+            this.checkBoxMAProklatyshki.Text = "-10% от Макс ХР";
             this.checkBoxMAProklatyshki.UseVisualStyleBackColor = true;
             // 
             // checkBoxMAScreem
@@ -5532,9 +5617,9 @@
             this.checkBoxMAScreem.AutoSize = true;
             this.checkBoxMAScreem.Location = new System.Drawing.Point(12, 62);
             this.checkBoxMAScreem.Name = "checkBoxMAScreem";
-            this.checkBoxMAScreem.Size = new System.Drawing.Size(92, 17);
+            this.checkBoxMAScreem.Size = new System.Drawing.Size(123, 17);
             this.checkBoxMAScreem.TabIndex = 28;
-            this.checkBoxMAScreem.Text = "Шанский рев";
+            this.checkBoxMAScreem.Text = "-25% к статм врага";
             this.checkBoxMAScreem.UseVisualStyleBackColor = true;
             // 
             // checkBoxMAArmagedon
@@ -5542,9 +5627,9 @@
             this.checkBoxMAArmagedon.AutoSize = true;
             this.checkBoxMAArmagedon.Location = new System.Drawing.Point(12, 39);
             this.checkBoxMAArmagedon.Name = "checkBoxMAArmagedon";
-            this.checkBoxMAArmagedon.Size = new System.Drawing.Size(88, 17);
+            this.checkBoxMAArmagedon.Size = new System.Drawing.Size(80, 17);
             this.checkBoxMAArmagedon.TabIndex = 27;
-            this.checkBoxMAArmagedon.Text = "Армагеддон";
+            this.checkBoxMAArmagedon.Text = "-40% от ХР";
             this.checkBoxMAArmagedon.UseVisualStyleBackColor = true;
             // 
             // checkBoxMifBmHiger
@@ -5598,7 +5683,7 @@
             this.comboBoxMLocation.Location = new System.Drawing.Point(129, 46);
             this.comboBoxMLocation.Name = "comboBoxMLocation";
             this.comboBoxMLocation.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBoxMLocation.Size = new System.Drawing.Size(142, 21);
+            this.comboBoxMLocation.Size = new System.Drawing.Size(129, 21);
             this.comboBoxMLocation.TabIndex = 23;
             this.comboBoxMLocation.Text = "Лес";
             // 
@@ -5631,9 +5716,9 @@
             this.checkBoxMAGodDefend.AutoSize = true;
             this.checkBoxMAGodDefend.Location = new System.Drawing.Point(12, 46);
             this.checkBoxMAGodDefend.Name = "checkBoxMAGodDefend";
-            this.checkBoxMAGodDefend.Size = new System.Drawing.Size(121, 17);
+            this.checkBoxMAGodDefend.Size = new System.Drawing.Size(100, 17);
             this.checkBoxMAGodDefend.TabIndex = 3;
-            this.checkBoxMAGodDefend.Text = "Защита древних б.";
+            this.checkBoxMAGodDefend.Text = "+25% к статам";
             this.checkBoxMAGodDefend.UseVisualStyleBackColor = true;
             // 
             // checkBoxMAGodSacrf
@@ -5641,9 +5726,9 @@
             this.checkBoxMAGodSacrf.AutoSize = true;
             this.checkBoxMAGodSacrf.Location = new System.Drawing.Point(12, 23);
             this.checkBoxMAGodSacrf.Name = "checkBoxMAGodSacrf";
-            this.checkBoxMAGodSacrf.Size = new System.Drawing.Size(122, 17);
+            this.checkBoxMAGodSacrf.Size = new System.Drawing.Size(106, 17);
             this.checkBoxMAGodSacrf.TabIndex = 2;
-            this.checkBoxMAGodSacrf.Text = "Жертва древних б.";
+            this.checkBoxMAGodSacrf.Text = "+10% от тек. ХР";
             this.checkBoxMAGodSacrf.UseVisualStyleBackColor = true;
             // 
             // checkBoxMAOboz
@@ -5651,9 +5736,9 @@
             this.checkBoxMAOboz.AutoSize = true;
             this.checkBoxMAOboz.Location = new System.Drawing.Point(140, 46);
             this.checkBoxMAOboz.Name = "checkBoxMAOboz";
-            this.checkBoxMAOboz.Size = new System.Drawing.Size(52, 17);
+            this.checkBoxMAOboz.Size = new System.Drawing.Size(82, 17);
             this.checkBoxMAOboz.TabIndex = 1;
-            this.checkBoxMAOboz.Text = "Обоз";
+            this.checkBoxMAOboz.Text = "+10% к еде";
             this.checkBoxMAOboz.UseVisualStyleBackColor = true;
             // 
             // checkBoxMAEnergy
@@ -5661,9 +5746,9 @@
             this.checkBoxMAEnergy.AutoSize = true;
             this.checkBoxMAEnergy.Location = new System.Drawing.Point(140, 23);
             this.checkBoxMAEnergy.Name = "checkBoxMAEnergy";
-            this.checkBoxMAEnergy.Size = new System.Drawing.Size(112, 17);
+            this.checkBoxMAEnergy.Size = new System.Drawing.Size(107, 17);
             this.checkBoxMAEnergy.TabIndex = 0;
-            this.checkBoxMAEnergy.Text = "Энергия вулкана";
+            this.checkBoxMAEnergy.Text = "-75% от свитков";
             this.checkBoxMAEnergy.UseVisualStyleBackColor = true;
             // 
             // comboBoxMMine
@@ -5679,13 +5764,13 @@
             this.comboBoxMMine.Location = new System.Drawing.Point(129, 19);
             this.comboBoxMMine.Name = "comboBoxMMine";
             this.comboBoxMMine.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBoxMMine.Size = new System.Drawing.Size(142, 21);
+            this.comboBoxMMine.Size = new System.Drawing.Size(102, 21);
             this.comboBoxMMine.TabIndex = 20;
             this.comboBoxMMine.Text = "Соль земли";
             // 
             // button41
             // 
-            this.button41.Location = new System.Drawing.Point(6, 266);
+            this.button41.Location = new System.Drawing.Point(6, 291);
             this.button41.Name = "button41";
             this.button41.Size = new System.Drawing.Size(265, 23);
             this.button41.TabIndex = 19;
@@ -5703,18 +5788,58 @@
             // 
             // SystemBox
             // 
+            this.SystemBox.Controls.Add(this.pictureBox61);
+            this.SystemBox.Controls.Add(this.textBoxProxyPassword);
+            this.SystemBox.Controls.Add(this.label78);
+            this.SystemBox.Controls.Add(this.textBoxDomainUserName);
+            this.SystemBox.Controls.Add(this.label77);
             this.SystemBox.Controls.Add(this.pictureBox55);
             this.SystemBox.Controls.Add(this.SystemSettingsPanel);
             this.SystemBox.Controls.Add(this.textBoxProxy);
             this.SystemBox.Controls.Add(this.label74);
             this.SystemBox.Controls.Add(this.DonateLabel1);
             this.SystemBox.Controls.Add(this.button19);
-            this.SystemBox.Location = new System.Drawing.Point(1056, 576);
+            this.SystemBox.Location = new System.Drawing.Point(1062, 589);
             this.SystemBox.Name = "SystemBox";
-            this.SystemBox.Size = new System.Drawing.Size(330, 348);
+            this.SystemBox.Size = new System.Drawing.Size(330, 407);
             this.SystemBox.TabIndex = 34;
             this.SystemBox.TabStop = false;
             this.SystemBox.Text = "Системные настройки";
+            // 
+            // textBoxProxyPassword
+            // 
+            this.textBoxProxyPassword.Location = new System.Drawing.Point(145, 336);
+            this.textBoxProxyPassword.Name = "textBoxProxyPassword";
+            this.textBoxProxyPassword.PasswordChar = '*';
+            this.textBoxProxyPassword.Size = new System.Drawing.Size(145, 20);
+            this.textBoxProxyPassword.TabIndex = 50;
+            this.textBoxProxyPassword.TextChanged += new System.EventHandler(this.textBoxProxyPassword_TextChanged);
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(25, 339);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(56, 13);
+            this.label78.TabIndex = 49;
+            this.label78.Text = "Password:";
+            // 
+            // textBoxDomainUserName
+            // 
+            this.textBoxDomainUserName.Location = new System.Drawing.Point(145, 310);
+            this.textBoxDomainUserName.Name = "textBoxDomainUserName";
+            this.textBoxDomainUserName.Size = new System.Drawing.Size(144, 20);
+            this.textBoxDomainUserName.TabIndex = 48;
+            this.textBoxDomainUserName.TextChanged += new System.EventHandler(this.textBoxDomainUserName_TextChanged);
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(25, 314);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(93, 13);
+            this.label77.TabIndex = 47;
+            this.label77.Text = "Domain  and user:";
             // 
             // SystemSettingsPanel
             // 
@@ -6250,7 +6375,7 @@
             // 
             this.DonateLabel1.AutoSize = true;
             this.DonateLabel1.ForeColor = System.Drawing.Color.Red;
-            this.DonateLabel1.Location = new System.Drawing.Point(18, 331);
+            this.DonateLabel1.Location = new System.Drawing.Point(20, 390);
             this.DonateLabel1.Name = "DonateLabel1";
             this.DonateLabel1.Size = new System.Drawing.Size(297, 13);
             this.DonateLabel1.TabIndex = 26;
@@ -6259,7 +6384,7 @@
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(6, 308);
+            this.button19.Location = new System.Drawing.Point(8, 367);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(319, 23);
             this.button19.TabIndex = 25;
@@ -6384,22 +6509,261 @@
             this.label75.TabIndex = 0;
             this.label75.Text = "Если на руках больше:";
             // 
-            // pictureBox60
+            // button50
             // 
-            this.pictureBox60.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox60.Image")));
-            this.pictureBox60.Location = new System.Drawing.Point(167, 138);
-            this.pictureBox60.Name = "pictureBox60";
-            this.pictureBox60.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox60.TabIndex = 40;
-            this.pictureBox60.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox60, "Эта опция доступна только\r\nв полной версии");
+            this.button50.Location = new System.Drawing.Point(165, 174);
+            this.button50.Name = "button50";
+            this.button50.Size = new System.Drawing.Size(141, 24);
+            this.button50.TabIndex = 40;
+            this.button50.Text = "Переносная клетка";
+            this.button50.UseVisualStyleBackColor = true;
+            this.button50.Click += new System.EventHandler(this.button50_Click);
+            // 
+            // PersonalCageBox
+            // 
+            this.PersonalCageBox.Controls.Add(this.pictureBox63);
+            this.PersonalCageBox.Controls.Add(this.button51);
+            this.PersonalCageBox.Controls.Add(this.checkBoxUsePersonalCage);
+            this.PersonalCageBox.Controls.Add(this.label83);
+            this.PersonalCageBox.Controls.Add(this.comboBoxPetsSelectionZorroFight);
+            this.PersonalCageBox.Controls.Add(this.label82);
+            this.PersonalCageBox.Controls.Add(this.comboBoxPetsUskor);
+            this.PersonalCageBox.Controls.Add(this.label81);
+            this.PersonalCageBox.Controls.Add(this.comboBoxPetsSelectionUnderground);
+            this.PersonalCageBox.Controls.Add(this.label80);
+            this.PersonalCageBox.Controls.Add(this.comboBoxPetsSelectionFightMonsters);
+            this.PersonalCageBox.Controls.Add(this.comboBoxPetsSelectionFight);
+            this.PersonalCageBox.Controls.Add(this.label79);
+            this.PersonalCageBox.Location = new System.Drawing.Point(7, 750);
+            this.PersonalCageBox.Name = "PersonalCageBox";
+            this.PersonalCageBox.Size = new System.Drawing.Size(250, 212);
+            this.PersonalCageBox.TabIndex = 37;
+            this.PersonalCageBox.TabStop = false;
+            this.PersonalCageBox.Text = "Переносная клетка";
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(15, 48);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(50, 13);
+            this.label79.TabIndex = 0;
+            this.label79.Text = "Бодалка";
+            // 
+            // comboBoxPetsSelectionFight
+            // 
+            this.comboBoxPetsSelectionFight.FormattingEnabled = true;
+            this.comboBoxPetsSelectionFight.Items.AddRange(new object[] {
+            "Бобруйко",
+            "Броневоз",
+            "Енотка",
+            "Кашалоша",
+            "Китушка",
+            "Красный Червячелло",
+            "Лисистричка",
+            "Обезьяна",
+            "Попуган",
+            "Серый Мамантоша",
+            "Спиношип",
+            "Страусяша",
+            "Феникс",
+            "Хамелеоша Зеленый",
+            "Хамелеоша Красный",
+            "Хамелеоша Синий",
+            "Царапка",
+            "Червячелло",
+            "Шнырк"});
+            this.comboBoxPetsSelectionFight.Location = new System.Drawing.Point(112, 45);
+            this.comboBoxPetsSelectionFight.Name = "comboBoxPetsSelectionFight";
+            this.comboBoxPetsSelectionFight.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPetsSelectionFight.TabIndex = 1;
+            // 
+            // comboBoxPetsSelectionFightMonsters
+            // 
+            this.comboBoxPetsSelectionFightMonsters.FormattingEnabled = true;
+            this.comboBoxPetsSelectionFightMonsters.Items.AddRange(new object[] {
+            "Бобруйко",
+            "Броневоз",
+            "Енотка",
+            "Кашалоша",
+            "Китушка",
+            "Красный Червячелло",
+            "Лисистричка",
+            "Обезьяна",
+            "Попуган",
+            "Серый Мамантоша",
+            "Спиношип",
+            "Страусяша",
+            "Феникс",
+            "Хамелеоша Зеленый",
+            "Хамелеоша Красный",
+            "Хамелеоша Синий",
+            "Царапка",
+            "Червячелло",
+            "Шнырк"});
+            this.comboBoxPetsSelectionFightMonsters.Location = new System.Drawing.Point(112, 99);
+            this.comboBoxPetsSelectionFightMonsters.Name = "comboBoxPetsSelectionFightMonsters";
+            this.comboBoxPetsSelectionFightMonsters.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPetsSelectionFightMonsters.TabIndex = 2;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(15, 102);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(96, 13);
+            this.label80.TabIndex = 3;
+            this.label80.Text = "Страхи в бодалке";
+            // 
+            // comboBoxPetsSelectionUnderground
+            // 
+            this.comboBoxPetsSelectionUnderground.FormattingEnabled = true;
+            this.comboBoxPetsSelectionUnderground.Items.AddRange(new object[] {
+            "Бобруйко",
+            "Броневоз",
+            "Енотка",
+            "Кашалоша",
+            "Китушка",
+            "Красный Червячелло",
+            "Лисистричка",
+            "Обезьяна",
+            "Попуган",
+            "Серый Мамантоша",
+            "Спиношип",
+            "Страусяша",
+            "Феникс",
+            "Хамелеоша Зеленый",
+            "Хамелеоша Красный",
+            "Хамелеоша Синий",
+            "Царапка",
+            "Червячелло",
+            "Шнырк"});
+            this.comboBoxPetsSelectionUnderground.Location = new System.Drawing.Point(112, 126);
+            this.comboBoxPetsSelectionUnderground.Name = "comboBoxPetsSelectionUnderground";
+            this.comboBoxPetsSelectionUnderground.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPetsSelectionUnderground.TabIndex = 4;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(15, 130);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(47, 13);
+            this.label81.TabIndex = 5;
+            this.label81.Text = "Подзем";
+            // 
+            // comboBoxPetsUskor
+            // 
+            this.comboBoxPetsUskor.FormattingEnabled = true;
+            this.comboBoxPetsUskor.Items.AddRange(new object[] {
+            "Бобруйко",
+            "Броневоз",
+            "Енотка",
+            "Кашалоша",
+            "Китушка",
+            "Красный Червячелло",
+            "Лисистричка",
+            "Обезьяна",
+            "Попуган",
+            "Серый Мамантоша",
+            "Спиношип",
+            "Страусяша",
+            "Феникс",
+            "Хамелеоша Зеленый",
+            "Хамелеоша Красный",
+            "Хамелеоша Синий",
+            "Царапка",
+            "Червячелло",
+            "Шнырк"});
+            this.comboBoxPetsUskor.Location = new System.Drawing.Point(112, 153);
+            this.comboBoxPetsUskor.Name = "comboBoxPetsUskor";
+            this.comboBoxPetsUskor.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPetsUskor.TabIndex = 6;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(15, 157);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(65, 13);
+            this.label82.TabIndex = 7;
+            this.label82.Text = "Ускоряшка";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(15, 76);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(83, 13);
+            this.label83.TabIndex = 9;
+            this.label83.Text = "Зорро бодалка";
+            // 
+            // comboBoxPetsSelectionZorroFight
+            // 
+            this.comboBoxPetsSelectionZorroFight.FormattingEnabled = true;
+            this.comboBoxPetsSelectionZorroFight.Items.AddRange(new object[] {
+            "Бобруйко",
+            "Броневоз",
+            "Енотка",
+            "Кашалоша",
+            "Китушка",
+            "Красный Червячелло",
+            "Лисистричка",
+            "Обезьяна",
+            "Попуган",
+            "Серый Мамантоша",
+            "Спиношип",
+            "Страусяша",
+            "Феникс",
+            "Хамелеоша Зеленый",
+            "Хамелеоша Красный",
+            "Хамелеоша Синий",
+            "Царапка",
+            "Червячелло",
+            "Шнырк"});
+            this.comboBoxPetsSelectionZorroFight.Location = new System.Drawing.Point(112, 72);
+            this.comboBoxPetsSelectionZorroFight.Name = "comboBoxPetsSelectionZorroFight";
+            this.comboBoxPetsSelectionZorroFight.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPetsSelectionZorroFight.TabIndex = 8;
+            // 
+            // checkBoxUsePersonalCage
+            // 
+            this.checkBoxUsePersonalCage.AutoSize = true;
+            this.checkBoxUsePersonalCage.Enabled = false;
+            this.checkBoxUsePersonalCage.Location = new System.Drawing.Point(18, 21);
+            this.checkBoxUsePersonalCage.Name = "checkBoxUsePersonalCage";
+            this.checkBoxUsePersonalCage.Size = new System.Drawing.Size(136, 17);
+            this.checkBoxUsePersonalCage.TabIndex = 10;
+            this.checkBoxUsePersonalCage.Text = "Использовать клетку";
+            this.checkBoxUsePersonalCage.UseVisualStyleBackColor = true;
+            // 
+            // button51
+            // 
+            this.button51.Location = new System.Drawing.Point(13, 181);
+            this.button51.Name = "button51";
+            this.button51.Size = new System.Drawing.Size(221, 23);
+            this.button51.TabIndex = 18;
+            this.button51.Text = "Back";
+            this.button51.UseVisualStyleBackColor = true;
+            this.button51.Click += new System.EventHandler(this.button51_Click);
+            // 
+            // pictureBox63
+            // 
+            this.pictureBox63.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox63.Image")));
+            this.pictureBox63.Location = new System.Drawing.Point(216, 21);
+            this.pictureBox63.Name = "pictureBox63";
+            this.pictureBox63.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox63.TabIndex = 39;
+            this.pictureBox63.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox63, "Эта опция доступна только\r\nв полной версии");
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1604, 882);
+            this.ClientSize = new System.Drawing.Size(1905, 1072);
+            this.Controls.Add(this.PersonalCageBox);
             this.Controls.Add(this.CulonsBox);
             this.Controls.Add(this.MedalsBox);
             this.Controls.Add(this.SystemBox);
@@ -6568,6 +6932,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox59)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox62)).EndInit();
             this.PandaEffectsBox.ResumeLayout(false);
             this.PandaEffectsBox.PerformLayout();
             this.ImmunEffetsBox.ResumeLayout(false);
@@ -6674,7 +7041,9 @@
             this.CulonsBox.ResumeLayout(false);
             this.CulonsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinCryForCulonUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).EndInit();
+            this.PersonalCageBox.ResumeLayout(false);
+            this.PersonalCageBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7160,6 +7529,29 @@
         private System.Windows.Forms.CheckBox checkBoxNextEnemys;
         private System.Windows.Forms.NumericUpDown numericUpDownEnemyBm;
         private System.Windows.Forms.PictureBox pictureBox60;
+        private System.Windows.Forms.TextBox textBoxProxyPassword;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.TextBox textBoxDomainUserName;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.PictureBox pictureBox61;
+        private System.Windows.Forms.ComboBox comboBoxMassAbil;
+        private System.Windows.Forms.CheckBox checkBoxMassAbil;
+        private System.Windows.Forms.PictureBox pictureBox62;
+        private System.Windows.Forms.Button button50;
+        private System.Windows.Forms.GroupBox PersonalCageBox;
+        private System.Windows.Forms.Button button51;
+        private System.Windows.Forms.CheckBox checkBoxUsePersonalCage;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.ComboBox comboBoxPetsSelectionZorroFight;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.ComboBox comboBoxPetsUskor;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.ComboBox comboBoxPetsSelectionUnderground;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.ComboBox comboBoxPetsSelectionFightMonsters;
+        private System.Windows.Forms.ComboBox comboBoxPetsSelectionFight;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.PictureBox pictureBox63;
     }
 }
 

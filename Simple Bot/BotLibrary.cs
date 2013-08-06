@@ -2673,16 +2673,8 @@ namespace Simple_Bot
                         {
                             try
                             {
-                                //садим пета
-                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "UndergroundBox")[11]) == true)
-                                {
-                                    SetPet();
-                                }
                                 //берем пета
-                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "UndergroundBox")[12]) == true)
-                                {
-                                    GetPet(PetTypeProvider());
-                                }
+                                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[5]);
                                 //переходим в шахту и кликаем "по лебедке"/"по веревке"
                                 driver.FindElement(By.Id("m6")).FindElement(By.XPath(".//b")).Click();
                                 SmallDelays();
@@ -2771,11 +2763,6 @@ namespace Simple_Bot
                                                 TP_Underground = Timer_Underground;
                                                 //вскрываем/продаем панды
                                                 OpenSalePanda();
-                                                //Достаем пета
-                                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "UndergroundBox")[11]) == true)
-                                                {
-                                                    GetPet();
-                                                }
                                                 //Садим пета
                                                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "UndergroundBox")[12]) == true)
                                                 {
@@ -2895,16 +2882,8 @@ namespace Simple_Bot
                             {
                                 try
                                 {
-                                    //садим пета
-                                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "UndergroundBox")[11]) == true)
-                                    {
-                                        SetPet();
-                                    }
                                     //берем пета
-                                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "UndergroundBox")[12]) == true)
-                                    {
-                                        GetPet(PetTypeProvider());
-                                    }
+                                    GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[5]);
                                     //переходим в шахту и кликаем "по лебедке"/"по веревке"
                                     driver.FindElement(By.Id("m6")).FindElement(By.XPath(".//b")).Click();
                                     SmallDelays();
@@ -3010,11 +2989,6 @@ namespace Simple_Bot
                                                 TP_Underground = Timer_Underground;
                                                 //вскрываем/продаем панды
                                                 OpenSalePanda();
-                                                //Достаем пета
-                                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "UndergroundBox")[11]) == true)
-                                                {
-                                                    GetPet();
-                                                }
                                                 //Садим пета
                                                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "UndergroundBox")[12]) == true)
                                                 {
@@ -3093,7 +3067,7 @@ namespace Simple_Bot
                         if (Convert.ToInt32(temp.Text) == 1)
                         {
                             //кликаем по бордеру чтоб появилась кнопка Открыть
-                            PandList[i].FindElement(By.ClassName("border")).Click();
+                            PandList[i].FindElement(By.TagName("a")).Click();
                             Delays();
                             driver.FindElement(By.LinkText("ОТКРЫТЬ")).Click();
                             Delays();
@@ -3166,7 +3140,7 @@ namespace Simple_Bot
                     if (Convert.ToInt32(temp.Text) < MinPandaLvl)
                     {
                         //кликаем по бордеру чтоб появилась кнопка Продать и продаем
-                        PandList[i].FindElement(By.ClassName("border")).Click();
+                        PandList[i].FindElement(By.TagName("a")).Click();
                         Delays();
                         driver.FindElement(By.LinkText("ПРОДАТЬ")).Click();
                         Delays();
@@ -3197,7 +3171,7 @@ namespace Simple_Bot
                     if (Convert.ToInt32(temp.Text) > MinPandaLvl && Convert.ToInt32(temp.Text) != 8)
                     {
                         //кликаем по бордеру чтоб появилась кнопка ОТКРЫТЬ и ОТКРЫВАЕМ
-                        PandList[i].FindElement(By.ClassName("border")).Click();
+                        PandList[i].FindElement(By.TagName("a")).Click();
                         Delays();
                         driver.FindElement(By.LinkText("ОТКРЫТЬ")).Click();
                         Delays();
@@ -3227,10 +3201,13 @@ namespace Simple_Bot
                             int FightCount = 0;
                             do
                             {
+                                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[4]);
                                 FightMonster();
                                 WaitUntilThreadBecomeAvailable();
+                                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[3]);
                                 FightZorro();
                                 WaitUntilThreadBecomeAvailable();
+                                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[2]);
                                 FightCommon();
                                 WaitUntilThreadBecomeAvailable();
                                 FightCount++;
@@ -3818,8 +3795,8 @@ namespace Simple_Bot
             if (driver.FindElement(By.XPath("//a[@title='Посадить в клетку']")).Displayed == true)
             {
                 driver.FindElement(By.XPath("//a[@title='Посадить в клетку']")).Click();
-                System.Threading.Thread.Sleep(rnd.Next(541, 789));
-                driver.FindElement(By.LinkText("КЛЁВА")).Click();
+                SmallDelays();
+                driver.FindElement(By.LinkText("СПРЯТАТЬ")).Click();
                 /*
                 //Деревня
                 driver.FindElement(By.Id("m3")).FindElement(By.XPath(".//b")).Click();
@@ -4471,7 +4448,7 @@ namespace Simple_Bot
                 {
                     driver.FindElement(By.LinkText("Гавань")).Click();
                     SmallDelays();
-                    driver.FindElement(By.LinkText("Торговая площадка")).Click();
+                    driver.FindElement(By.XPath("//div[text()='Торговая площадка']")).Click();
                     SmallDelays();
                     driver.FindElement(By.LinkText("ПРОДАЖА")).Click();
                     SmallDelays();
@@ -4497,7 +4474,7 @@ namespace Simple_Bot
                 {
                     driver.FindElement(By.LinkText("Гавань")).Click();
                     Delays();
-                    driver.FindElement(By.LinkText("Торговая площадка")).Click();
+                    driver.FindElement(By.XPath(".//div[text()='Торговая площадка']")).Click();
                     Delays();
                     driver.FindElement(By.XPath(".//option[text()='Раб людишко']")).Click();
                     Delays();
@@ -4557,7 +4534,7 @@ namespace Simple_Bot
                         int currenCry = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
                         driver.FindElement(By.LinkText("Гавань")).Click();
                         SmallDelays();
-                        driver.FindElement(By.LinkText("Торговая площадка")).Click();
+                        driver.FindElement(By.XPath("//div[text()='Торговая площадка']")).Click();
                         SmallDelays();
                         driver.FindElement(By.XPath(".//option[text()='Билет на маленькую поляну']")).Click();
 
@@ -4595,7 +4572,7 @@ namespace Simple_Bot
                         int currenCry = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
                         driver.FindElement(By.LinkText("Гавань")).Click();
                         Delays();
-                        driver.FindElement(By.LinkText("Торговая площадка")).Click();
+                        driver.FindElement(By.XPath("//div[text()='Торговая площадка']")).Click();
                         Delays();
                         driver.FindElement(By.XPath(".//option[text()='Билет на большую поляну']")).Click();
 
@@ -5352,6 +5329,7 @@ namespace Simple_Bot
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[11]))
                 {
                     IWebElement fastMonsterIco = driver.FindElement(By.Id("menu_monsterpve"));
+                    GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[6]);
                     if (driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis") || driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("StrongPig"))
                     {
                         try
@@ -5601,12 +5579,13 @@ namespace Simple_Bot
         {
             try
             {
-                //string selector = string.Format("//div[@title='{0}']", ReadFromFile(SettingsFile, "MassFBox")[2]);
-                string selector = ".//div[contains(@class,'bg_banner_new')]";
+                string selector = string.Format("//div[@title='{0}']", ReadFromFile(SettingsFile, "MassFBox")[2]);
+                //Акция
+                //string selector = ".//div[contains(@class,'bg_banner_new')]";
                 driver.FindElement(By.XPath(selector)).Click();
                 Delays();
                 string mineSelector = string.Format("{0} .status span:nth-of-type(1) a", MMainSelectorProvider(ReadFromFile(SettingsFile, "MassFBox")[2]));
-                driver./*FindElement(By.CssSelector(mineSelector)).*/FindElement(By.LinkText("ВСТУПИТЬ")).Click();
+                driver.FindElement(By.CssSelector(mineSelector))./*FindElement(By.LinkText("ВСТУПИТЬ")).*/Click();
                 SmallDelays();
             }
             catch { }
@@ -5619,8 +5598,9 @@ namespace Simple_Bot
             {
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[1]))
                 {
-                    //string selector = string.Format("//div[@title='{0}']", ReadFromFile(SettingsFile, "MassFBox")[2]);
-                    string selector = ".//div[contains(@class,'bg_banner_new')]";
+                    string selector = string.Format("//div[@title='{0}']", ReadFromFile(SettingsFile, "MassFBox")[2]);
+                    //Акция
+                    //string selector = ".//div[contains(@class,'bg_banner_new')]";
                     if (driver.FindElement(By.XPath(selector)).Displayed)
                         retValue = true;
                 }
@@ -5794,19 +5774,34 @@ namespace Simple_Bot
 
         public void MassAbility()
         {
-            try
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[15]))
             {
-                int rnd = new Random().Next(1, 4);
-                if (rnd == 2)
-                    rnd = 3;
-                string selector = string.Format("#talants_enemies a:nth-of-type({0})", rnd);
-                driver.FindElement(By.CssSelector(selector)).Click();
-                SmallDelays();
-                //убираем фокус
-                Actions action = new Actions(driver);
-                action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+                try
+                {
+                    MassAbilityElementProvider().Click();
+                    SmallDelays();
+                    //убираем фокус
+                    Actions action = new Actions(driver);
+                    action.MoveToElement(driver.FindElement(By.CssSelector("#close_battle"))).Build().Perform();
+                }
+                catch { }
             }
-            catch { }
+        }
+
+        private IWebElement MassAbilityElementProvider()
+        {
+            switch (ReadFromFile(SettingsFile, "MassFBox")[16])
+            {
+                case "Ледяной дождь":
+                    return driver.FindElement(By.CssSelector("#talants_enemies a:nth-of-type(1)"));
+                case "Огненная буря":
+                    return driver.FindElement(By.CssSelector("#talants_enemies a:nth-of-type(2)"));
+                case "Разряд молнии":
+                    return driver.FindElement(By.CssSelector("#talants_enemies a:nth-of-type(3)"));
+                case "Разбой обозов":
+                    return driver.FindElement(By.CssSelector("#talants_enemies a:nth-of-type(3)"));
+                default: return null;
+            }
         }
 
         private void MAGetSomeFood()
@@ -5830,7 +5825,8 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[3]))
             {
-                if (true /*MIsEnemyPresents()*/)
+                //Акция
+                if (/*true*/ MIsEnemyPresents())
                 {
                     if (MGetCurrentFood() > 15)
                     {
@@ -5855,7 +5851,8 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[4]))
             {
-                if (true /*MIsEnemyPresents()*/)
+                //Акция
+                if (/*true*/ MIsEnemyPresents())
                 {
                     if (MGetCurrentFood() > 15)
                     {
@@ -5880,7 +5877,8 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "MassFBox")[5]))
             {
-                if (true /*MIsEnemyPresents()*/)
+                //Акция
+                if (/*true*/ MIsEnemyPresents())
                 {
                     if (MGetCurrentFood() > 15)
                     {
@@ -6463,6 +6461,78 @@ namespace Simple_Bot
             {
                 Delays();
                 Delays();
+            }
+        }
+
+        private IWebElement PetElementProvider(string petName)
+        {
+            switch (petName)
+            {
+                case "Бобруйко":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_3')]/..")).FirstOrDefault();
+                case "Броневоз":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_6')]/..")).FirstOrDefault();
+                case "Енотка":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_5')]/..")).FirstOrDefault();
+                case "Кашалоша":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_22')]/..")).FirstOrDefault();
+                case "Китушка":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_21')]/..")).FirstOrDefault();
+                case "Красный Червячелло":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_10')]/..")).FirstOrDefault();
+                case "Лисистричка":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_9')]/..")).FirstOrDefault();
+                case "Обезьяна":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_12')]/..")).FirstOrDefault();
+                case "Попуган":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_23')]/..")).FirstOrDefault();
+                case "Серый Мамантоша":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_18')]/..")).FirstOrDefault();
+                case "Спиношип":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_4')]/..")).FirstOrDefault();
+                case "Страусяша":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_24')]/..")).FirstOrDefault();
+                case "Феникс":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_11')]/..")).FirstOrDefault();
+                case "Хамелеоша Зеленый":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_13')]/..")).FirstOrDefault();
+                case "Хамелеоша Красный":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_15')]/..")).FirstOrDefault();
+                case "Хамелеоша Синий":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_14')]/..")).FirstOrDefault();
+                case "Царапка":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_2')]/..")).FirstOrDefault();
+                case "Червячелло":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_7')]/..")).FirstOrDefault();
+                case "Шнырк":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_1')]/..")).FirstOrDefault();
+                default: return null;
+            }
+        }
+
+        public void GetPersonalPet(string petName)
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[1]) && !string.IsNullOrEmpty(petName) && CurrentCry() > 5)
+            {
+                try
+                {
+                    //кликаем посадить или достать из клетки иконку
+                    driver.FindElement(By.XPath("//a[contains(@title,'клетк')]")).Click();
+                    //Достаем необходимого зверя или если нет , то садим текущего
+                    try
+                    {
+                        PetElementProvider(petName).Click();
+                        Delays();
+                        driver.FindElement(By.LinkText("ВЫПУСТИТЬ")).Click();
+                        Delays();
+                    }
+                    catch
+                    {
+                        driver.FindElement(By.LinkText("СПРЯТАТЬ")).Click();
+                        Delays();
+                    }
+                }
+                catch { }
             }
         }
     }

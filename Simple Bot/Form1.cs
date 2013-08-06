@@ -28,7 +28,7 @@ namespace Simple_Bot
     {
         bool isDonatePlayer = false;
         bool botIsWorked = false;
-        int BotVersion = 2586;
+        int BotVersion = 2588;
 
         static Thread BotThread;
 
@@ -275,7 +275,7 @@ namespace Simple_Bot
                 checkBoxDrinkOborotka.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[25]);
                 checkBoxArenaFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[26]);
                 numericUpDownArenaEnemyBm.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, FightBox.Name)[27]);
-                if(isDonatePlayer)
+                if (isDonatePlayer)
                     checkBoxArenaEvery5min.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, FightBox.Name)[28]);
                 else
                     checkBoxArenaEvery5min.Checked = false;
@@ -425,6 +425,8 @@ namespace Simple_Bot
                 checkBoxMAWeakness.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[12]);
                 numericUpDownFightTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, MassFBox.Name)[13]);
                 checkBoxMFightTime.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[14]);
+                checkBoxMassAbil.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[15]);
+                comboBoxMassAbil.Text = ReadFromFile(SettingsFile, MassFBox.Name)[16];
             }
             catch { }
 
@@ -480,6 +482,21 @@ namespace Simple_Bot
             }
             catch { }
 
+            //Personal Cage
+            try
+            {
+                if (isDonatePlayer)
+                    checkBoxUsePersonalCage.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[1]);
+                else
+                    checkBoxUsePersonalCage.Checked = false;
+                comboBoxPetsSelectionFight.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[2];
+                comboBoxPetsSelectionZorroFight.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[3];
+                comboBoxPetsSelectionFightMonsters.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[4];
+                comboBoxPetsSelectionUnderground.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[5];
+                comboBoxPetsUskor.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[6];
+            }
+            catch { }
+
             CBWorkInMine();
             CBUnderground();
             CBPotionMaking();
@@ -505,13 +522,7 @@ namespace Simple_Bot
         {
             try
             {
-                WebClient client = new WebClient();
-                if (!string.IsNullOrEmpty(textBoxProxy.Text))
-                {
-                    WebProxy wp = new WebProxy(textBoxProxy.Text);
-                    client.Proxy = wp;
-                }
-                Stream stream = client.OpenRead("https://dl.dropbox.com/s/gixvi3853twwks3/UpdateFile.csv?dl=1");
+                Stream stream = WebClientCreation().OpenRead("https://dl.dropbox.com/s/gixvi3853twwks3/UpdateFile.csv?dl=1");
                 StreamReader reader = new StreamReader(stream);
                 string FileContent = reader.ReadToEnd();
                 if (FileContent.Contains("SimpleBotLibrary"))
@@ -524,6 +535,22 @@ namespace Simple_Bot
             {
                 botStatus = false;
             }
+        }
+
+        private WebClient WebClientCreation()
+        {
+            WebClient client = new WebClient();
+            if (!string.IsNullOrEmpty(textBoxProxy.Text))
+            {
+                WebProxy wp = new WebProxy(textBoxProxy.Text);
+                if (!string.IsNullOrEmpty(textBoxDomainUserName.Text))
+                {
+                    wp.Credentials = new NetworkCredential(textBoxDomainUserName.Text, textBoxProxyPassword.Text);
+                    WebRequest.DefaultWebProxy = wp;
+                }
+                client.Proxy = wp;
+            }
+            return client;
         }
 
         private string GetMd5Hash(MD5 md5Hash, string input)
@@ -916,9 +943,9 @@ namespace Simple_Bot
                                          Convert.ToString(checkBoxMAGodSacrf.Checked),Convert.ToString(checkBoxMAOboz.Checked), comboBoxMLocation.Text,
                                          Convert.ToString(checkBoxMifBmHiger.Checked),Convert.ToString(checkBoxMAArmagedon.Checked),Convert.ToString(checkBoxMAProklatyshki.Checked),
                                          Convert.ToString(checkBoxMAScreem.Checked),Convert.ToString(checkBoxMAWeakness.Checked), Convert.ToString(numericUpDownFightTime.Value),
-                                         Convert.ToString(checkBoxMFightTime.Checked)};
+                                         Convert.ToString(checkBoxMFightTime.Checked), Convert.ToString(checkBoxMassAbil.Checked), comboBoxMassAbil.Text};
             CompareValuesInFile(MassFBox.Name, MassFightSettings);
-            if(isDonatePlayer)
+            if (isDonatePlayer)
                 checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
             else
                 checkBoxMassFight.Checked = false;
@@ -935,6 +962,8 @@ namespace Simple_Bot
             checkBoxMAWeakness.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[12]);
             numericUpDownFightTime.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, MassFBox.Name)[13]);
             checkBoxMFightTime.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[14]);
+            checkBoxMassAbil.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[15]);
+            comboBoxMassAbil.Text = ReadFromFile(SettingsFile, MassFBox.Name)[16];
 
             //System Settings
             Timer_SettingsLive = ToDateTime("00:00:09");
@@ -973,12 +1002,34 @@ namespace Simple_Bot
             checkBoxMaximizeBrowser.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, SystemBox.Name)[14]);
 
             comboBoxSettingsFile.Text = ReadFromFile(SettingsFile, SystemBox.Name)[15];
+
+            //Personal Cage
+            string[] PersonalCageSettings = { Convert.ToString(checkBoxUsePersonalCage.Checked), comboBoxPetsSelectionFight.Text, comboBoxPetsSelectionZorroFight.Text ,
+                                            comboBoxPetsSelectionFightMonsters.Text, comboBoxPetsSelectionUnderground.Text ,comboBoxPetsUskor.Text};
+            CompareValuesInFile(PersonalCageBox.Name, PersonalCageSettings);
+            if (isDonatePlayer)
+                checkBoxUsePersonalCage.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[1]);
+            else
+                checkBoxUsePersonalCage.Checked = false;
+            comboBoxPetsSelectionFight.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[2];
+            comboBoxPetsSelectionZorroFight.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[3];
+            comboBoxPetsSelectionFightMonsters.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[4];
+            comboBoxPetsSelectionUnderground.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[5];
+            comboBoxPetsUskor.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[6];
         }
 
         private void BotDonateSetUp()
         {
             SettingsFile = comboBoxSettingsFile.Text.Split('.')[0];
             SettingsFileExtantion = "." + comboBoxSettingsFile.Text.Split('.')[1];
+
+            //Personal Cage
+            try
+            {
+                checkBoxUsePersonalCage.Enabled = true;
+                checkBoxUsePersonalCage.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[1]);
+            }
+            catch { }
 
             //System Settings
             try
@@ -2738,9 +2789,7 @@ namespace Simple_Bot
 
         private void textBoxProxy_TextChanged(object sender, EventArgs e)
         {
-            StreamWriter writer = new StreamWriter(File.OpenWrite("Proxy.txt"));
-            writer.WriteLine(textBoxProxy.Text);
-            writer.Close();
+            ProxyWreter();
         }
 
         private void ProxyReader()
@@ -2748,8 +2797,29 @@ namespace Simple_Bot
             try
             {
                 StreamReader reader = new StreamReader(File.OpenRead("Proxy.txt"));
-                textBoxProxy.Text = reader.ReadToEnd();
+                string[] FileContent = reader.ReadToEnd().Split(';');
                 reader.Close();
+                string proxy = FileContent[0];
+                string domainAndUserName = FileContent[1];
+                string password = FileContent[2];
+                textBoxProxy.Text = proxy;
+                textBoxDomainUserName.Text = domainAndUserName;
+                textBoxProxyPassword.Text = password;
+
+            }
+            catch { }
+        }
+
+        private void ProxyWreter()
+        {
+            try
+            {
+                StreamWriter writer = new StreamWriter(File.Create("Proxy.txt"));
+                string proxyString = textBoxProxy.Text;
+                if (!string.IsNullOrEmpty(textBoxDomainUserName.Text))
+                    proxyString += ";" + textBoxDomainUserName.Text + ";" + textBoxProxyPassword.Text;
+                writer.Write(proxyString);
+                writer.Close();
             }
             catch { }
         }
@@ -2770,6 +2840,26 @@ namespace Simple_Bot
                 numericUpDownEnemyBm.Enabled = true;
             else
                 numericUpDownEnemyBm.Enabled = false;
+        }
+
+        private void textBoxDomainUserName_TextChanged(object sender, EventArgs e)
+        {
+            ProxyWreter();
+        }
+
+        private void textBoxProxyPassword_TextChanged(object sender, EventArgs e)
+        {
+            ProxyWreter();
+        }
+
+        private void button50_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "PersonalCageBox");
+        }
+
+        private void button51_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "MenuBox");
         }
     }
 }
