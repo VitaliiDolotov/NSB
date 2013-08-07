@@ -64,6 +64,7 @@
             this.checkBoxHideBrowser = new System.Windows.Forms.CheckBox();
             this.button16 = new System.Windows.Forms.Button();
             this.MenuBox = new System.Windows.Forms.GroupBox();
+            this.button50 = new System.Windows.Forms.Button();
             this.button48 = new System.Windows.Forms.Button();
             this.button47 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
@@ -266,6 +267,7 @@
             this.pictureBox60 = new System.Windows.Forms.PictureBox();
             this.pictureBox61 = new System.Windows.Forms.PictureBox();
             this.pictureBox62 = new System.Windows.Forms.PictureBox();
+            this.pictureBox63 = new System.Windows.Forms.PictureBox();
             this.PandaEffectsBox = new System.Windows.Forms.GroupBox();
             this.radioButtonPEcry = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
@@ -516,21 +518,19 @@
             this.label76 = new System.Windows.Forms.Label();
             this.numericUpDownMinCryForCulonUp = new System.Windows.Forms.NumericUpDown();
             this.label75 = new System.Windows.Forms.Label();
-            this.button50 = new System.Windows.Forms.Button();
             this.PersonalCageBox = new System.Windows.Forms.GroupBox();
-            this.label79 = new System.Windows.Forms.Label();
-            this.comboBoxPetsSelectionFight = new System.Windows.Forms.ComboBox();
-            this.comboBoxPetsSelectionFightMonsters = new System.Windows.Forms.ComboBox();
-            this.label80 = new System.Windows.Forms.Label();
-            this.comboBoxPetsSelectionUnderground = new System.Windows.Forms.ComboBox();
-            this.label81 = new System.Windows.Forms.Label();
-            this.comboBoxPetsUskor = new System.Windows.Forms.ComboBox();
-            this.label82 = new System.Windows.Forms.Label();
+            this.button51 = new System.Windows.Forms.Button();
+            this.checkBoxUsePersonalCage = new System.Windows.Forms.CheckBox();
             this.label83 = new System.Windows.Forms.Label();
             this.comboBoxPetsSelectionZorroFight = new System.Windows.Forms.ComboBox();
-            this.checkBoxUsePersonalCage = new System.Windows.Forms.CheckBox();
-            this.button51 = new System.Windows.Forms.Button();
-            this.pictureBox63 = new System.Windows.Forms.PictureBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.comboBoxPetsUskor = new System.Windows.Forms.ComboBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.comboBoxPetsSelectionUnderground = new System.Windows.Forms.ComboBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.comboBoxPetsSelectionFightMonsters = new System.Windows.Forms.ComboBox();
+            this.comboBoxPetsSelectionFight = new System.Windows.Forms.ComboBox();
+            this.label79 = new System.Windows.Forms.Label();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -636,6 +636,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox62)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).BeginInit();
             this.PandaEffectsBox.SuspendLayout();
             this.ImmunEffetsBox.SuspendLayout();
             this.FlyBox.SuspendLayout();
@@ -711,7 +712,6 @@
             this.CulonsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinCryForCulonUp)).BeginInit();
             this.PersonalCageBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).BeginInit();
             this.SuspendLayout();
             // 
             // StartButton
@@ -1120,6 +1120,16 @@
             this.MenuBox.TabIndex = 2;
             this.MenuBox.TabStop = false;
             this.MenuBox.Text = " Settings ";
+            // 
+            // button50
+            // 
+            this.button50.Location = new System.Drawing.Point(165, 174);
+            this.button50.Name = "button50";
+            this.button50.Size = new System.Drawing.Size(141, 24);
+            this.button50.TabIndex = 40;
+            this.button50.Text = "Переносная клетка";
+            this.button50.UseVisualStyleBackColor = true;
+            this.button50.Click += new System.EventHandler(this.button50_Click);
             // 
             // button48
             // 
@@ -2372,6 +2382,7 @@
             this.radioButtonCurrentPet.TabStop = true;
             this.radioButtonCurrentPet.Text = "Текущий зверь";
             this.radioButtonCurrentPet.UseVisualStyleBackColor = true;
+            this.radioButtonCurrentPet.Visible = false;
             // 
             // radioButtonParot
             // 
@@ -2382,6 +2393,7 @@
             this.radioButtonParot.TabIndex = 13;
             this.radioButtonParot.Text = "Попугана";
             this.radioButtonParot.UseVisualStyleBackColor = true;
+            this.radioButtonParot.Visible = false;
             // 
             // radioButtonWhale
             // 
@@ -2392,6 +2404,7 @@
             this.radioButtonWhale.TabIndex = 12;
             this.radioButtonWhale.Text = "Китушку";
             this.radioButtonWhale.UseVisualStyleBackColor = true;
+            this.radioButtonWhale.Visible = false;
             // 
             // pictureBox18
             // 
@@ -3377,6 +3390,16 @@
             this.pictureBox62.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox62, "Эта опция доступна только в\r\nполной версии");
             // 
+            // pictureBox63
+            // 
+            this.pictureBox63.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox63.Image")));
+            this.pictureBox63.Location = new System.Drawing.Point(216, 21);
+            this.pictureBox63.Name = "pictureBox63";
+            this.pictureBox63.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox63.TabIndex = 39;
+            this.pictureBox63.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox63, "Эта опция доступна только\r\nв полной версии");
+            // 
             // PandaEffectsBox
             // 
             this.PandaEffectsBox.Controls.Add(this.radioButtonPEcry);
@@ -3571,6 +3594,7 @@
             // checkBoxDontUseFoFly
             // 
             this.checkBoxDontUseFoFly.AutoSize = true;
+            this.checkBoxDontUseFoFly.Enabled = false;
             this.checkBoxDontUseFoFly.Location = new System.Drawing.Point(8, 129);
             this.checkBoxDontUseFoFly.Name = "checkBoxDontUseFoFly";
             this.checkBoxDontUseFoFly.Size = new System.Drawing.Size(82, 17);
@@ -6509,16 +6533,6 @@
             this.label75.TabIndex = 0;
             this.label75.Text = "Если на руках больше:";
             // 
-            // button50
-            // 
-            this.button50.Location = new System.Drawing.Point(165, 174);
-            this.button50.Name = "button50";
-            this.button50.Size = new System.Drawing.Size(141, 24);
-            this.button50.TabIndex = 40;
-            this.button50.Text = "Переносная клетка";
-            this.button50.UseVisualStyleBackColor = true;
-            this.button50.Click += new System.EventHandler(this.button50_Click);
-            // 
             // PersonalCageBox
             // 
             this.PersonalCageBox.Controls.Add(this.pictureBox63);
@@ -6541,153 +6555,26 @@
             this.PersonalCageBox.TabStop = false;
             this.PersonalCageBox.Text = "Переносная клетка";
             // 
-            // label79
+            // button51
             // 
-            this.label79.AutoSize = true;
-            this.label79.Location = new System.Drawing.Point(15, 48);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(50, 13);
-            this.label79.TabIndex = 0;
-            this.label79.Text = "Бодалка";
+            this.button51.Location = new System.Drawing.Point(13, 181);
+            this.button51.Name = "button51";
+            this.button51.Size = new System.Drawing.Size(221, 23);
+            this.button51.TabIndex = 18;
+            this.button51.Text = "Back";
+            this.button51.UseVisualStyleBackColor = true;
+            this.button51.Click += new System.EventHandler(this.button51_Click);
             // 
-            // comboBoxPetsSelectionFight
+            // checkBoxUsePersonalCage
             // 
-            this.comboBoxPetsSelectionFight.FormattingEnabled = true;
-            this.comboBoxPetsSelectionFight.Items.AddRange(new object[] {
-            "Бобруйко",
-            "Броневоз",
-            "Енотка",
-            "Кашалоша",
-            "Китушка",
-            "Красный Червячелло",
-            "Лисистричка",
-            "Обезьяна",
-            "Попуган",
-            "Серый Мамантоша",
-            "Спиношип",
-            "Страусяша",
-            "Феникс",
-            "Хамелеоша Зеленый",
-            "Хамелеоша Красный",
-            "Хамелеоша Синий",
-            "Царапка",
-            "Червячелло",
-            "Шнырк"});
-            this.comboBoxPetsSelectionFight.Location = new System.Drawing.Point(112, 45);
-            this.comboBoxPetsSelectionFight.Name = "comboBoxPetsSelectionFight";
-            this.comboBoxPetsSelectionFight.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxPetsSelectionFight.TabIndex = 1;
-            // 
-            // comboBoxPetsSelectionFightMonsters
-            // 
-            this.comboBoxPetsSelectionFightMonsters.FormattingEnabled = true;
-            this.comboBoxPetsSelectionFightMonsters.Items.AddRange(new object[] {
-            "Бобруйко",
-            "Броневоз",
-            "Енотка",
-            "Кашалоша",
-            "Китушка",
-            "Красный Червячелло",
-            "Лисистричка",
-            "Обезьяна",
-            "Попуган",
-            "Серый Мамантоша",
-            "Спиношип",
-            "Страусяша",
-            "Феникс",
-            "Хамелеоша Зеленый",
-            "Хамелеоша Красный",
-            "Хамелеоша Синий",
-            "Царапка",
-            "Червячелло",
-            "Шнырк"});
-            this.comboBoxPetsSelectionFightMonsters.Location = new System.Drawing.Point(112, 99);
-            this.comboBoxPetsSelectionFightMonsters.Name = "comboBoxPetsSelectionFightMonsters";
-            this.comboBoxPetsSelectionFightMonsters.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxPetsSelectionFightMonsters.TabIndex = 2;
-            // 
-            // label80
-            // 
-            this.label80.AutoSize = true;
-            this.label80.Location = new System.Drawing.Point(15, 102);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(96, 13);
-            this.label80.TabIndex = 3;
-            this.label80.Text = "Страхи в бодалке";
-            // 
-            // comboBoxPetsSelectionUnderground
-            // 
-            this.comboBoxPetsSelectionUnderground.FormattingEnabled = true;
-            this.comboBoxPetsSelectionUnderground.Items.AddRange(new object[] {
-            "Бобруйко",
-            "Броневоз",
-            "Енотка",
-            "Кашалоша",
-            "Китушка",
-            "Красный Червячелло",
-            "Лисистричка",
-            "Обезьяна",
-            "Попуган",
-            "Серый Мамантоша",
-            "Спиношип",
-            "Страусяша",
-            "Феникс",
-            "Хамелеоша Зеленый",
-            "Хамелеоша Красный",
-            "Хамелеоша Синий",
-            "Царапка",
-            "Червячелло",
-            "Шнырк"});
-            this.comboBoxPetsSelectionUnderground.Location = new System.Drawing.Point(112, 126);
-            this.comboBoxPetsSelectionUnderground.Name = "comboBoxPetsSelectionUnderground";
-            this.comboBoxPetsSelectionUnderground.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxPetsSelectionUnderground.TabIndex = 4;
-            // 
-            // label81
-            // 
-            this.label81.AutoSize = true;
-            this.label81.Location = new System.Drawing.Point(15, 130);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(47, 13);
-            this.label81.TabIndex = 5;
-            this.label81.Text = "Подзем";
-            // 
-            // comboBoxPetsUskor
-            // 
-            this.comboBoxPetsUskor.FormattingEnabled = true;
-            this.comboBoxPetsUskor.Items.AddRange(new object[] {
-            "Бобруйко",
-            "Броневоз",
-            "Енотка",
-            "Кашалоша",
-            "Китушка",
-            "Красный Червячелло",
-            "Лисистричка",
-            "Обезьяна",
-            "Попуган",
-            "Серый Мамантоша",
-            "Спиношип",
-            "Страусяша",
-            "Феникс",
-            "Хамелеоша Зеленый",
-            "Хамелеоша Красный",
-            "Хамелеоша Синий",
-            "Царапка",
-            "Червячелло",
-            "Шнырк"});
-            this.comboBoxPetsUskor.Location = new System.Drawing.Point(112, 153);
-            this.comboBoxPetsUskor.Name = "comboBoxPetsUskor";
-            this.comboBoxPetsUskor.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxPetsUskor.TabIndex = 6;
-            // 
-            // label82
-            // 
-            this.label82.AutoSize = true;
-            this.label82.Location = new System.Drawing.Point(15, 157);
-            this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(65, 13);
-            this.label82.TabIndex = 7;
-            this.label82.Text = "Ускоряшка";
+            this.checkBoxUsePersonalCage.AutoSize = true;
+            this.checkBoxUsePersonalCage.Enabled = false;
+            this.checkBoxUsePersonalCage.Location = new System.Drawing.Point(18, 21);
+            this.checkBoxUsePersonalCage.Name = "checkBoxUsePersonalCage";
+            this.checkBoxUsePersonalCage.Size = new System.Drawing.Size(136, 17);
+            this.checkBoxUsePersonalCage.TabIndex = 10;
+            this.checkBoxUsePersonalCage.Text = "Использовать клетку";
+            this.checkBoxUsePersonalCage.UseVisualStyleBackColor = true;
             // 
             // label83
             // 
@@ -6726,43 +6613,160 @@
             this.comboBoxPetsSelectionZorroFight.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPetsSelectionZorroFight.TabIndex = 8;
             // 
-            // checkBoxUsePersonalCage
+            // label82
             // 
-            this.checkBoxUsePersonalCage.AutoSize = true;
-            this.checkBoxUsePersonalCage.Enabled = false;
-            this.checkBoxUsePersonalCage.Location = new System.Drawing.Point(18, 21);
-            this.checkBoxUsePersonalCage.Name = "checkBoxUsePersonalCage";
-            this.checkBoxUsePersonalCage.Size = new System.Drawing.Size(136, 17);
-            this.checkBoxUsePersonalCage.TabIndex = 10;
-            this.checkBoxUsePersonalCage.Text = "Использовать клетку";
-            this.checkBoxUsePersonalCage.UseVisualStyleBackColor = true;
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(15, 157);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(65, 13);
+            this.label82.TabIndex = 7;
+            this.label82.Text = "Ускоряшка";
             // 
-            // button51
+            // comboBoxPetsUskor
             // 
-            this.button51.Location = new System.Drawing.Point(13, 181);
-            this.button51.Name = "button51";
-            this.button51.Size = new System.Drawing.Size(221, 23);
-            this.button51.TabIndex = 18;
-            this.button51.Text = "Back";
-            this.button51.UseVisualStyleBackColor = true;
-            this.button51.Click += new System.EventHandler(this.button51_Click);
+            this.comboBoxPetsUskor.FormattingEnabled = true;
+            this.comboBoxPetsUskor.Items.AddRange(new object[] {
+            "Бобруйко",
+            "Броневоз",
+            "Енотка",
+            "Кашалоша",
+            "Китушка",
+            "Красный Червячелло",
+            "Лисистричка",
+            "Обезьяна",
+            "Попуган",
+            "Серый Мамантоша",
+            "Спиношип",
+            "Страусяша",
+            "Феникс",
+            "Хамелеоша Зеленый",
+            "Хамелеоша Красный",
+            "Хамелеоша Синий",
+            "Царапка",
+            "Червячелло",
+            "Шнырк"});
+            this.comboBoxPetsUskor.Location = new System.Drawing.Point(112, 153);
+            this.comboBoxPetsUskor.Name = "comboBoxPetsUskor";
+            this.comboBoxPetsUskor.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPetsUskor.TabIndex = 6;
             // 
-            // pictureBox63
+            // label81
             // 
-            this.pictureBox63.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox63.Image")));
-            this.pictureBox63.Location = new System.Drawing.Point(216, 21);
-            this.pictureBox63.Name = "pictureBox63";
-            this.pictureBox63.Size = new System.Drawing.Size(16, 17);
-            this.pictureBox63.TabIndex = 39;
-            this.pictureBox63.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox63, "Эта опция доступна только\r\nв полной версии");
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(15, 130);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(47, 13);
+            this.label81.TabIndex = 5;
+            this.label81.Text = "Подзем";
+            // 
+            // comboBoxPetsSelectionUnderground
+            // 
+            this.comboBoxPetsSelectionUnderground.FormattingEnabled = true;
+            this.comboBoxPetsSelectionUnderground.Items.AddRange(new object[] {
+            "Бобруйко",
+            "Броневоз",
+            "Енотка",
+            "Кашалоша",
+            "Китушка",
+            "Красный Червячелло",
+            "Лисистричка",
+            "Обезьяна",
+            "Попуган",
+            "Серый Мамантоша",
+            "Спиношип",
+            "Страусяша",
+            "Феникс",
+            "Хамелеоша Зеленый",
+            "Хамелеоша Красный",
+            "Хамелеоша Синий",
+            "Царапка",
+            "Червячелло",
+            "Шнырк"});
+            this.comboBoxPetsSelectionUnderground.Location = new System.Drawing.Point(112, 126);
+            this.comboBoxPetsSelectionUnderground.Name = "comboBoxPetsSelectionUnderground";
+            this.comboBoxPetsSelectionUnderground.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPetsSelectionUnderground.TabIndex = 4;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(15, 102);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(96, 13);
+            this.label80.TabIndex = 3;
+            this.label80.Text = "Страхи в бодалке";
+            // 
+            // comboBoxPetsSelectionFightMonsters
+            // 
+            this.comboBoxPetsSelectionFightMonsters.FormattingEnabled = true;
+            this.comboBoxPetsSelectionFightMonsters.Items.AddRange(new object[] {
+            "Бобруйко",
+            "Броневоз",
+            "Енотка",
+            "Кашалоша",
+            "Китушка",
+            "Красный Червячелло",
+            "Лисистричка",
+            "Обезьяна",
+            "Попуган",
+            "Серый Мамантоша",
+            "Спиношип",
+            "Страусяша",
+            "Феникс",
+            "Хамелеоша Зеленый",
+            "Хамелеоша Красный",
+            "Хамелеоша Синий",
+            "Царапка",
+            "Червячелло",
+            "Шнырк"});
+            this.comboBoxPetsSelectionFightMonsters.Location = new System.Drawing.Point(112, 99);
+            this.comboBoxPetsSelectionFightMonsters.Name = "comboBoxPetsSelectionFightMonsters";
+            this.comboBoxPetsSelectionFightMonsters.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPetsSelectionFightMonsters.TabIndex = 2;
+            // 
+            // comboBoxPetsSelectionFight
+            // 
+            this.comboBoxPetsSelectionFight.FormattingEnabled = true;
+            this.comboBoxPetsSelectionFight.Items.AddRange(new object[] {
+            "Бобруйко",
+            "Броневоз",
+            "Енотка",
+            "Кашалоша",
+            "Китушка",
+            "Красный Червячелло",
+            "Лисистричка",
+            "Обезьяна",
+            "Попуган",
+            "Серый Мамантоша",
+            "Спиношип",
+            "Страусяша",
+            "Феникс",
+            "Хамелеоша Зеленый",
+            "Хамелеоша Красный",
+            "Хамелеоша Синий",
+            "Царапка",
+            "Червячелло",
+            "Шнырк"});
+            this.comboBoxPetsSelectionFight.Location = new System.Drawing.Point(112, 45);
+            this.comboBoxPetsSelectionFight.Name = "comboBoxPetsSelectionFight";
+            this.comboBoxPetsSelectionFight.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPetsSelectionFight.TabIndex = 1;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(15, 48);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(50, 13);
+            this.label79.TabIndex = 0;
+            this.label79.Text = "Бодалка";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1905, 1072);
+            this.ClientSize = new System.Drawing.Size(1905, 1064);
             this.Controls.Add(this.PersonalCageBox);
             this.Controls.Add(this.CulonsBox);
             this.Controls.Add(this.MedalsBox);
@@ -6800,6 +6804,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Simple Bot ";
@@ -6935,6 +6940,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox62)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).EndInit();
             this.PandaEffectsBox.ResumeLayout(false);
             this.PandaEffectsBox.PerformLayout();
             this.ImmunEffetsBox.ResumeLayout(false);
@@ -7043,7 +7049,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinCryForCulonUp)).EndInit();
             this.PersonalCageBox.ResumeLayout(false);
             this.PersonalCageBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

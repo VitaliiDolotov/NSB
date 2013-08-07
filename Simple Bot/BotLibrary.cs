@@ -2058,7 +2058,7 @@ namespace Simple_Bot
                 Color etalon = sourceBitmap.GetPixel(1, 1);
 
                 //Проверяем кол-во черных пиксилей из 10 ряда изображения
-                for (int i = 0; i < 30; i++)
+                for (int i = 0; i < 60; i++)
                 {
                     sourceColor = sourceBitmap.GetPixel(i, 20);
                     if (sourceColor == etalon)
@@ -2068,12 +2068,14 @@ namespace Simple_Bot
                 sourceBitmap.Dispose();
 
                 attemps--;
+                
+                driver.Navigate().Refresh();
                 Delays();
                 Delays();
             }
-            while (numberOfBlackPixels > 15 && attemps > 0);
+            while (numberOfBlackPixels > 40 && attemps > 0);
 
-            if (numberOfBlackPixels < 20)
+            if (numberOfBlackPixels < 39)
                 return true;
             else
                 return false;
@@ -3201,13 +3203,10 @@ namespace Simple_Bot
                             int FightCount = 0;
                             do
                             {
-                                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[4]);
                                 FightMonster();
                                 WaitUntilThreadBecomeAvailable();
-                                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[3]);
                                 FightZorro();
                                 WaitUntilThreadBecomeAvailable();
-                                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[2]);
                                 FightCommon();
                                 WaitUntilThreadBecomeAvailable();
                                 FightCount++;
@@ -3233,19 +3232,7 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[1]) == true && Timer_FightMonster.CompareTo(DateTime.Now) < 0)
             {
-                //Вытаскиваем зверя
-                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[9]) == true && Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == false)
-                {
-
-                    GetPet(FightPetProvider());
-                }
-                else
-                {
-                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == true && ImmunTime() > Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[15]))
-                    {
-                        GetPet(FightPetProvider());
-                    }
-                }
+                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[4]);
 
                 try
                 {
@@ -3313,19 +3300,7 @@ namespace Simple_Bot
             //Зорро бодалка
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[2]) == true && Timer_FightZorro.CompareTo(DateTime.Now) < 0)
             {
-                //Вытаскиваем зверя
-                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[9]) == true && Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == false)
-                {
-
-                    GetPet(FightPetProvider());
-                }
-                else
-                {
-                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == true && ImmunTime() > Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[15]))
-                    {
-                        GetPet(FightPetProvider());
-                    }
-                }
+                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[3]);
 
                 try
                 {
@@ -3394,19 +3369,7 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[5]) == true && Timer_FightCommon.CompareTo(DateTime.Now) < 0)
             {
-                //Вытаскиваем зверя
-                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[9]) == true && Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == false)
-                {
-
-                    GetPet(FightPetProvider());
-                }
-                else
-                {
-                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[14]) == true && ImmunTime() > Convert.ToInt32(ReadFromFile(SettingsFile, "FightBox")[15]))
-                    {
-                        GetPet(FightPetProvider());
-                    }
-                }
+                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[2]);
 
                 int counter = 2;
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[8]) == true)
@@ -4042,6 +4005,8 @@ namespace Simple_Bot
                         builder.MoveToElement(driver.FindElement(By.CssSelector(".ico_item_404"))).Build().Perform();
                         driver.FindElement(By.XPath("//div[contains(@class,'ico_item_404')]//span[text()='ВЫПИТЬ']")).Click();
                         Delays();
+                        builder.MoveToElement(driver.FindElement(By.CssSelector(".title_popup.uppercase"))).Build().Perform();
+                        SmallDelays();
                         driver.FindElement(By.XPath("//div[contains(@class,'box_controls')]//span[text()='ВЫПИТЬ']")).Click();
                         try
                         {
@@ -5256,7 +5221,6 @@ namespace Simple_Bot
         public void DrinkOborotka()
         {
             string PageContent = driver.PageSource;
-
         }
 
         public void Sawmill()
@@ -6429,26 +6393,29 @@ namespace Simple_Bot
             {
                 if (!string.IsNullOrEmpty(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[36]))
                 {
-                    if (CurrentCry() > Convert.ToInt32(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[37]))
+                    if (CurrentWork("Спуск") == false)
                     {
-                        driver.FindElement(By.LinkText("Деревня")).Click();
-                        Delays();
-                        driver.FindElement(By.XPath("//div[text()='Кузница']")).Click();
-                        Delays();
-                        driver.FindElement(By.PartialLinkText("МАСТЕРА")).Click();
-                        Delays();
-                        string selector = string.Format("//td[contains(text(),'{0}')]/../../..//a[text()='НА КОВКУ']", ReadFromFile(SettingsFile, "AdditionalSettingsBox")[36]);
-                        driver.FindElement(By.XPath(selector)).Click();
-                        do
+                        if (CurrentCry() > Convert.ToInt32(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[37]))
                         {
-                            //Если прайс больше текущего кол-ва крисов, то ливаем
-                            if (Convert.ToInt32(driver.FindElement(By.CssSelector(".price_num")).Text) > CurrentCry())
-                                break;
-                            driver.FindElement(By.XPath("//input[@value='КОВАТЬ']")).Click();
+                            driver.FindElement(By.LinkText("Деревня")).Click();
                             Delays();
+                            driver.FindElement(By.XPath("//div[text()='Кузница']")).Click();
+                            Delays();
+                            driver.FindElement(By.PartialLinkText("МАСТЕРА")).Click();
+                            Delays();
+                            string selector = string.Format("//td[contains(text(),'{0}')]/../../..//a[text()='НА КОВКУ']", ReadFromFile(SettingsFile, "AdditionalSettingsBox")[36]);
+                            driver.FindElement(By.XPath(selector)).Click();
+                            do
+                            {
+                                //Если прайс больше текущего кол-ва крисов, то ливаем
+                                if (Convert.ToInt32(driver.FindElement(By.CssSelector(".price_num")).Text) > CurrentCry())
+                                    break;
+                                driver.FindElement(By.XPath("//input[@value='КОВАТЬ']")).Click();
+                                Delays();
 
+                            }
+                            while (CurrentCry() > Convert.ToInt32(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[37]));
                         }
-                        while (CurrentCry() > Convert.ToInt32(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[37]));
                     }
                 }
             }
@@ -6510,9 +6477,73 @@ namespace Simple_Bot
             }
         }
 
+        private string PetIcoProvider(string petName)
+        {
+            switch (petName)
+            {
+                case "Бобруйко":
+                    return "pet3";
+                case "Броневоз":
+                    return "pet6";
+                case "Енотка":
+                    return "pet5";
+                case "Кашалоша":
+                    return "pet22";
+                case "Китушка":
+                    return "pet21";
+                case "Красный Червячелло":
+                    return "pet10";
+                case "Лисистричка":
+                    return "pet9";
+                case "Обезьяна":
+                    return "pet12";
+                case "Попуган":
+                    return "pet23";
+                case "Серый Мамантоша":
+                    return "pet18";
+                case "Спиношип":
+                    return "pet4";
+                case "Страусяша":
+                    return "pet24";
+                case "Феникс":
+                    return "pet11";
+                case "Хамелеоша Зеленый":
+                    return "pet13";
+                case "Хамелеоша Красный":
+                    return "pet15";
+                case "Хамелеоша Синий":
+                    return "pet14";
+                case "Царапка":
+                    return "pet2";
+                case "Червячелло":
+                    return "pet7";
+                case "Шнырк":
+                    return "pet1";
+                default: return null;
+            }
+        }
+
+        private bool ShoulChangePet(string petName)
+        {
+            try
+            {
+                //если дисплеится посадить в клетку, то проверяем текущего зверя, если в классе содержится азвание пета и оно совпадает, возвращаем фолс
+                if (driver.FindElement(By.XPath("//a[@title='Посадить в клетку']")).Displayed)
+                    return !driver.FindElement(By.CssSelector("#pet b.icon2")).GetAttribute("class").Contains(PetIcoProvider(petName));
+                else
+                    return true;
+            }
+            catch { }
+            return true;
+            
+        }
+
         public void GetPersonalPet(string petName)
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[1]) && !string.IsNullOrEmpty(petName) && CurrentCry() > 5)
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[1]) &&
+                !string.IsNullOrEmpty(petName) &&
+                ShoulChangePet(petName) &&
+                CurrentCry() > 5)
             {
                 try
                 {

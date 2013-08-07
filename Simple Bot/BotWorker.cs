@@ -43,7 +43,6 @@ namespace Simple_Bot.Resources
 
                         //Bot.MassFight();
 
-
                         Bot.MrIdiot(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.GoToOldoMsters(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.AlertFight(); Bot.WaitUntilThreadBecomeAvailable();
@@ -86,6 +85,7 @@ namespace Simple_Bot.Resources
                         Bot.BuyGifts(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.TradeField(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.Shop(); Bot.WaitUntilThreadBecomeAvailable();
+                        Bot.CulonsUp(); Bot.WaitUntilThreadBecomeAvailable();
 
 
                         //Adv

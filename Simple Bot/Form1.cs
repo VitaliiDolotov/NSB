@@ -28,7 +28,7 @@ namespace Simple_Bot
     {
         bool isDonatePlayer = false;
         bool botIsWorked = false;
-        int BotVersion = 2588;
+        int BotVersion = 2591;
 
         static Thread BotThread;
 
@@ -643,6 +643,13 @@ namespace Simple_Bot
             //BotThread = new Thread(new ThreadStart(WorkThreadFunction));
             BotThread = new Thread(new ThreadStart(BotWorker.WorkThreadFunction));
             BotThread.Start();
+
+            try
+            {
+                webBrowser1.ScriptErrorsSuppressed = true;
+                webBrowser1.Navigate("http://simplebot.ru/");                
+            }
+            catch { }
         }
 
         private void BotSetUp()
@@ -1806,6 +1813,7 @@ namespace Simple_Bot
 
             if (isDonatePlayer)
             {
+                this.MinimizeBox = true;
                 textBoxMd5.BackColor = Color.LightGreen;
                 //убийца ошибки хромдрайвера
                 if (Timer_ChromeDriverKiller.CompareTo(DateTime.Now) < 0 & !chromeDriverCiller)
