@@ -121,6 +121,27 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox33.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAALOSURBVDhPhZNbSNNRHMc1ot570gcf3N0hLdNZo2SouU3z
+        klREZc5busrUVl6ZmtfwrlG+JF0epCKUIFZTMlKIhJBuFuVlmZc259yc2/lrNvftv784EpXO05/D//O9
+        nN85Xl7brJNC4a4EWYhfjFTsI5VKd27336b9uszYyPcVx7S2pjhCNUfDUS9zGaoiTFq1rCPthJy/rZDb
+        pb80sZ20xruo5hhQjXJQLUdB1R8BqTkMUnUQ82WhpCFVkU6LeG8Seq2Jb2eAJgUDLXfmwDn1GStDT0Fa
+        40DK94OU7oWtROisTI5K2iBQo1REkkaFi2qIAlUXjuXH+VhddcK5OIc/dgtWrEY6gQSOYgEchVxMqnnm
+        xES5r0dkqDRaS9VFgLohpeMeYlxXZr5ieeAeqCfFoHQtcNSGwZ7PwuI1fyyo/dGSLNUwAkL6tBdqpYTU
+        rvUkFWIsv7yF30sESxMfQe6rYC9gw06Dtqv+sFxhwZzHhi4zeIDGd3glhIX4kWoJSGUoyHV3TxHzTQ2/
+        AkVRcNjtWBzsgrVQiPk8Fky5bBhzOHiTJdJzOJzdXjFisY+9PNhFyvbBoQn09GTi9t3BwmA3rBYLzJ0l
+        mKVBw2UOpi9x0Z8hGmME3OObKRKZHCUBcBTx6Lgs2HVtsPXchvX5TZjbTmNu5AOMXfWYyeZi6iIXPy/w
+        8FAp6WUquNcz1YGOf3tau6thsVhhHh/G7LseGA0GTNfEM+APFQ/jmXwUnZJle6aQFh/ON6nZxKpmMT3n
+        8riYfVQB48gn/BrUYbLhzBqYxcfoeQFeKINHZTLZno13ISki3ZjLds7msJmeM3TPqbsFmKiMg54Gx2jX
+        7xkCvE0JXEg7Hhu51ZX21pyNSvqiCjCv99Sr1sAR2vVbugBa2nk72COYKJf71iWFa7qV4oG+1CB9T0rQ
+        2INzkt4CuvOm2P95ojvcY2JGtX7aWwB/Aax+yAnz7VMfAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="pictureBox24.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

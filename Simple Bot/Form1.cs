@@ -28,7 +28,7 @@ namespace Simple_Bot
     {
         bool isDonatePlayer = false;
         bool botIsWorked = false;
-        int BotVersion = 2591;
+        int BotVersion = 2592;
 
         static Thread BotThread;
 
@@ -219,6 +219,10 @@ namespace Simple_Bot
                 comboBoxMrIdiot.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[35];
                 textBoxCulonName.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[36];
                 numericUpDownMinCryForCulonUp.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[37]);
+                if (isDonatePlayer)
+                    checkBoxChameleons.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[38]);
+                else
+                    checkBoxChameleons.Checked = false;
             }
             catch { }
 
@@ -494,6 +498,11 @@ namespace Simple_Bot
                 comboBoxPetsSelectionFightMonsters.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[4];
                 comboBoxPetsSelectionUnderground.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[5];
                 comboBoxPetsUskor.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[6];
+
+                checkBoxetsSelectionFightSet.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[7]);
+                checkBoxetsSelectionZorroFightSet.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[8]);
+                checkBoxPetsSelectionFightMonstersSet.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[9]);
+                checkBoxPetsSelectionUnderground.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[10]);
             }
             catch { }
 
@@ -644,12 +653,12 @@ namespace Simple_Bot
             BotThread = new Thread(new ThreadStart(BotWorker.WorkThreadFunction));
             BotThread.Start();
 
-            try
-            {
-                webBrowser1.ScriptErrorsSuppressed = true;
-                webBrowser1.Navigate("http://simplebot.ru/");                
-            }
-            catch { }
+            //try
+            //{
+            //    webBrowser1.ScriptErrorsSuppressed = true;
+            //    webBrowser1.Navigate("http://simplebot.ru/");                
+            //}
+            //catch { }
         }
 
         private void BotSetUp()
@@ -716,7 +725,7 @@ namespace Simple_Bot
                                               Convert.ToString(radioButtonDonBuyGifts.Checked), Convert.ToString(radioButtonWhale.Checked), Convert.ToString(radioButtonParot.Checked),
                                               Convert.ToString(radioButtonCurrentPet.Checked), Convert.ToString(checkBoxAlarmBox.Checked), Convert.ToString(checkBoxBigGguru.Checked),Convert.ToString(checkBoxBiggestPotion.Checked),
                                               comboBoxTFResource.Text, Convert.ToString(numericUpDownTFDuringTime.Value), Convert.ToString(numericUpDownTFEveryTime.Value),Convert.ToString(numericUpDownTFEveryTime2.Value),
-                                              Convert.ToString(checkBoxMrIdiot.Checked), comboBoxMrIdiot.Text,textBoxCulonName.Text, Convert.ToString(numericUpDownMinCryForCulonUp.Value)};
+                                              Convert.ToString(checkBoxMrIdiot.Checked), comboBoxMrIdiot.Text,textBoxCulonName.Text, Convert.ToString(numericUpDownMinCryForCulonUp.Value), Convert.ToString(checkBoxChameleons.Checked)};
             CompareValuesInFile(AdditionalSettingsBox.Name, AdditionalSettings);
             checkBoxCryDust.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[1]);
             checkBoxFish.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[2]);
@@ -758,6 +767,10 @@ namespace Simple_Bot
             comboBoxMrIdiot.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[35];
             textBoxCulonName.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[36];
             numericUpDownMinCryForCulonUp.Value = Convert.ToDecimal(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[37]);
+            if (isDonatePlayer)
+                checkBoxChameleons.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[38]);
+            else
+                checkBoxChameleons.Checked = false;
 
             //Underground Settings
             string[] UndergroundSettings = { Convert.ToString(checkBoxUnderground.Checked), Convert.ToString(radioButtonUnderground.Checked), Convert.ToString(radioButtonFastUnderground.Checked),
@@ -1012,7 +1025,9 @@ namespace Simple_Bot
 
             //Personal Cage
             string[] PersonalCageSettings = { Convert.ToString(checkBoxUsePersonalCage.Checked), comboBoxPetsSelectionFight.Text, comboBoxPetsSelectionZorroFight.Text ,
-                                            comboBoxPetsSelectionFightMonsters.Text, comboBoxPetsSelectionUnderground.Text ,comboBoxPetsUskor.Text};
+                                            comboBoxPetsSelectionFightMonsters.Text, comboBoxPetsSelectionUnderground.Text ,comboBoxPetsUskor.Text,
+                                            Convert.ToString(checkBoxetsSelectionFightSet.Checked),Convert.ToString(checkBoxetsSelectionZorroFightSet.Checked),
+                                            Convert.ToString(checkBoxPetsSelectionFightMonstersSet.Checked),Convert.ToString(checkBoxPetsSelectionUnderground.Checked)};
             CompareValuesInFile(PersonalCageBox.Name, PersonalCageSettings);
             if (isDonatePlayer)
                 checkBoxUsePersonalCage.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[1]);
@@ -1023,6 +1038,11 @@ namespace Simple_Bot
             comboBoxPetsSelectionFightMonsters.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[4];
             comboBoxPetsSelectionUnderground.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[5];
             comboBoxPetsUskor.Text = ReadFromFile(SettingsFile, PersonalCageBox.Name)[6];
+
+            checkBoxetsSelectionFightSet.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[7]);
+            checkBoxetsSelectionZorroFightSet.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[8]);
+            checkBoxPetsSelectionFightMonstersSet.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[9]);
+            checkBoxPetsSelectionUnderground.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[10]);
         }
 
         private void BotDonateSetUp()
@@ -1109,6 +1129,9 @@ namespace Simple_Bot
                 //Торговая площадка
                 comboBoxTFResource.Enabled = true;
                 comboBoxTFResource.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[30];
+                //Хамелиоши
+                checkBoxChameleons.Enabled = true;
+                checkBoxChameleons.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[38]);
             }
             catch { }
 
@@ -2227,11 +2250,6 @@ namespace Simple_Bot
             UIBoxDisplay(3, 4, "MenuBox");
         }
 
-        private void pictureBox33_Click(object sender, EventArgs e)
-        {
-            UIBoxDisplay(3, 4, "ShopBox");
-        }
-
         private void button17_Click_1(object sender, EventArgs e)
         {
 
@@ -2868,6 +2886,16 @@ namespace Simple_Bot
         private void button51_Click(object sender, EventArgs e)
         {
             UIBoxDisplay(3, 4, "MenuBox");
+        }
+
+        private void checkBoxShop_CheckedChanged(object sender, EventArgs e)
+        {
+            ShopPanel.Enabled = checkBoxShop.Checked;
+        }
+
+        private void button52_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "ShopBox");
         }
     }
 }

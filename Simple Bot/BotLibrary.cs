@@ -223,7 +223,20 @@ namespace Simple_Bot
             VillageSetUp();
             BySlavesSetUp();
             BiggestPotionSetUp();
+            ArenaSetUp();
+            ChameleonsHealSetUp();
             PageSource = driver.PageSource;
+        }
+
+        private void ChameleonsHealSetUp()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[38])) ;
+            {
+                AddingCategory("Ресурсы");
+                AddingItemToTheCategory_Resource("Ресурсы", "i63", "Текущее здоровье Хамелеона");
+                AddingItemToTheCategory_Resource("Ресурсы", "i64", "Текущее здоровье Хамелеона");
+                AddingItemToTheCategory_Resource("Ресурсы", "i65", "Текущее здоровье Хамелеона");
+            }
         }
 
         private void BiggestPotionSetUp()
@@ -2068,7 +2081,7 @@ namespace Simple_Bot
                 sourceBitmap.Dispose();
 
                 attemps--;
-                
+
                 driver.Navigate().Refresh();
                 Delays();
                 Delays();
@@ -2766,7 +2779,7 @@ namespace Simple_Bot
                                                 //вскрываем/продаем панды
                                                 OpenSalePanda();
                                                 //Садим пета
-                                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "UndergroundBox")[12]) == true)
+                                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[10]))
                                                 {
                                                     SetPet();
                                                 }
@@ -2992,7 +3005,7 @@ namespace Simple_Bot
                                                 //вскрываем/продаем панды
                                                 OpenSalePanda();
                                                 //Садим пета
-                                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "UndergroundBox")[12]) == true)
+                                                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[10]))
                                                 {
                                                     SetPet();
                                                 }
@@ -3282,6 +3295,10 @@ namespace Simple_Bot
                     driver.FindElement(By.XPath("//form/input[@value='НАПАСТЬ']")).Click();
                     Delays();
 
+                    //Садим пета если нужно
+                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[9]))
+                        SetPet();
+
                     //возращаем в бодалку
                     driver.FindElement(By.Id("m8")).FindElement(By.XPath(".//b")).Click();
                     Delays();
@@ -3356,6 +3373,10 @@ namespace Simple_Bot
                         }
                     }
                     catch { }
+
+                    //садим зверя
+                    if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[8]))
+                        SetPet();
 
                     IWebElement Timer = driver.FindElement(By.CssSelector(".default tr:nth-of-type(2) .half:nth-of-type(1) span"));
                     //читаем таймер до след напа
@@ -3452,6 +3473,11 @@ namespace Simple_Bot
                     catch { }
                     counter++;
                 }
+
+                //садим зверя
+                if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[7]))
+                    SetPet();
+
                 try
                 {
                     IWebElement Timer = driver.FindElement(By.CssSelector(".default tr:nth-of-type(1) .half:nth-of-type(1) span"));
@@ -3754,26 +3780,24 @@ namespace Simple_Bot
 
         private void SetPet()
         {
-            //проверка есть ли зверь
-            if (driver.FindElement(By.XPath("//a[@title='Посадить в клетку']")).Displayed == true)
+            try
             {
-                driver.FindElement(By.XPath("//a[@title='Посадить в клетку']")).Click();
-                SmallDelays();
-                driver.FindElement(By.LinkText("СПРЯТАТЬ")).Click();
-                /*
-                //Деревня
-                driver.FindElement(By.Id("m3")).FindElement(By.XPath(".//b")).Click();
-                System.Threading.Thread.Sleep(rnd.Next(300, 480));
-                //Жилище
-                driver.FindElement(By.XPath(".//div[text()='Жилище']")).Click();
-                System.Threading.Thread.Sleep(rnd.Next(598, 899));
-                //клетка
-                driver.FindElement(By.LinkText("Клетка")).Click();
-                System.Threading.Thread.Sleep(rnd.Next(598, 899));
-                //вытащить с клетки
-                driver.FindElement(By.XPath("//input[@value='ВЫПУСТИТЬ ИЗ КЛЕТКИ']")).Click();
-                System.Threading.Thread.Sleep(rnd.Next(300, 480));
-                 * */
+                //проверка есть ли зверь
+                if (driver.FindElement(By.XPath("//a[@title='Посадить в клетку']")).Displayed == true)
+                {
+                    driver.FindElement(By.XPath("//a[@title='Посадить в клетку']")).Click();
+                    SmallDelays();
+                    driver.FindElement(By.LinkText("СПРЯТАТЬ")).Click();
+                }
+            }
+            catch
+            {
+                try
+                {
+                    driver.FindElement(By.LinkText("КЛЁВА")).Click();
+                    SmallDelays();
+                }
+                catch { }
             }
         }
 
@@ -6306,7 +6330,6 @@ namespace Simple_Bot
             {
                 try
                 {
-                    int test = Convert.ToInt32(GetResourceValue("i120")[0]);
                     while (Convert.ToInt32(GetResourceValue("i120")[0]) > 0 && ArenaSearchNext())
                     {
                         driver.FindElement(By.PartialLinkText("НОВЫЙ")).Click();
@@ -6453,8 +6476,12 @@ namespace Simple_Bot
                     return driver.FindElements(By.XPath("//img[contains(@src,'Pet_12')]/..")).FirstOrDefault();
                 case "Попуган":
                     return driver.FindElements(By.XPath("//img[contains(@src,'Pet_23')]/..")).FirstOrDefault();
-                case "Серый Мамантоша":
+                case "Мамантоша Серый":
                     return driver.FindElements(By.XPath("//img[contains(@src,'Pet_18')]/..")).FirstOrDefault();
+                case "Мамантоша Белый":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_19')]/..")).FirstOrDefault();
+                case "Мамантоша Чёрный":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_20')]/..")).FirstOrDefault();
                 case "Спиношип":
                     return driver.FindElements(By.XPath("//img[contains(@src,'Pet_4')]/..")).FirstOrDefault();
                 case "Страусяша":
@@ -6473,6 +6500,10 @@ namespace Simple_Bot
                     return driver.FindElements(By.XPath("//img[contains(@src,'Pet_7')]/..")).FirstOrDefault();
                 case "Шнырк":
                     return driver.FindElements(By.XPath("//img[contains(@src,'Pet_1')]/..")).FirstOrDefault();
+                case "Дух Червячелло":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_16')]/..")).FirstOrDefault();
+                case "Дух Червячелло Красный":
+                    return driver.FindElements(By.XPath("//img[contains(@src,'Pet_17')]/..")).FirstOrDefault();
                 default: return null;
             }
         }
@@ -6499,8 +6530,12 @@ namespace Simple_Bot
                     return "pet12";
                 case "Попуган":
                     return "pet23";
-                case "Серый Мамантоша":
+                case "Мамантоша Серый":
                     return "pet18";
+                case "Мамантоша Белый":
+                    return "pet19";
+                case "Мамантоша Чёрный":
+                    return "pet20";
                 case "Спиношип":
                     return "pet4";
                 case "Страусяша":
@@ -6519,6 +6554,10 @@ namespace Simple_Bot
                     return "pet7";
                 case "Шнырк":
                     return "pet1";
+                case "Дух Червячелло":
+                    return "pet16";
+                case "Дух Червячелло Красный":
+                    return "pet17";
                 default: return null;
             }
         }
@@ -6535,12 +6574,18 @@ namespace Simple_Bot
             }
             catch { }
             return true;
-            
+
         }
 
-        public void GetPersonalPet(string petName)
+        public bool GetPersonalPet(string petName, bool notFromUa = false)
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[1]) &&
+            bool isPersonalPet;
+            if (notFromUa)
+                isPersonalPet = notFromUa;
+            else
+                isPersonalPet = Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[1]);
+
+            if (isPersonalPet &&
                 !string.IsNullOrEmpty(petName) &&
                 ShoulChangePet(petName) &&
                 CurrentCry() > 5)
@@ -6556,15 +6601,98 @@ namespace Simple_Bot
                         Delays();
                         driver.FindElement(By.LinkText("ВЫПУСТИТЬ")).Click();
                         Delays();
+                        return true;
                     }
                     catch
                     {
+                        driver.FindElement(By.CssSelector(".box_x_button.hidden.button_new")).Click();
+                        Delays();
+                        return false;
+                        /*
                         driver.FindElement(By.LinkText("СПРЯТАТЬ")).Click();
                         Delays();
+                         * */
                     }
                 }
                 catch { }
             }
+            return false;
+        }
+
+        public void ChameleonsHeal()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[38]) && CurrentWork("Спуск") == false && ImmunTime() > -2)
+            {
+                try
+                {
+                    if (Convert.ToInt32(GetResourceValue("i63")[0]) == 1 && CurrentCry() > 15)
+                    {
+                        if (GetPersonalPet("Хамелеоша Зеленый", true))
+                        {
+                            Delays();
+                            FullPetHeal();
+                            Delays();
+                            SetPet();
+                        }
+                    }
+                }
+                catch { /*driver.FindElement(By.CssSelector(".box_x_button.hidden.button_new")).Click(); Delays();*/ }
+
+
+                try
+                {
+                    if (Convert.ToInt32(GetResourceValue("i64")[0]) == 1 && CurrentCry() > 15)
+                    {
+                        if (GetPersonalPet("Хамелеоша Синий", true))
+                        {
+                            Delays();
+                            FullPetHeal();
+                            Delays();
+                            SetPet();
+                        }
+                    }
+                }
+                catch { /*driver.FindElement(By.CssSelector(".box_x_button.hidden.button_new")).Click(); Delays();*/}
+
+                try
+                {
+                    if (Convert.ToInt32(GetResourceValue("i65")[0]) == 1 && CurrentCry() > 15)
+                    {
+                        if (GetPersonalPet("Хамелеоша Красный", true))
+                        {
+                            Delays();
+                            FullPetHeal();
+                            Delays();
+                            SetPet();
+                        }
+                    }
+                }
+                catch {/*driver.FindElement(By.CssSelector(".box_x_button.hidden.button_new")).Click(); Delays();*/ }
+            }
+        }
+
+        private void FullPetHeal()
+        {
+            //Click heal (Botle) icon
+            driver.FindElement(By.Id("pet")).FindElement(By.XPath(".//a[2]")).Click();
+            Delays();
+            //Buy second bottle three times
+            driver.FindElement(By.Id("field_potion_5_2")).Click();
+            SmallDelays();
+            driver.FindElement(By.Id("field_potion_5_2")).Click();
+            SmallDelays();
+            driver.FindElement(By.Id("field_potion_5_2")).Click();
+            Delays();
+            //Drink bottle three times
+            driver.FindElement(By.Id("potion_td_5")).FindElement(By.TagName("a")).Click();
+            SmallDelays();
+            driver.FindElement(By.Id("potion_td_5")).FindElement(By.TagName("a")).Click();
+            SmallDelays();
+            driver.FindElement(By.Id("potion_td_5")).FindElement(By.TagName("a")).Click();
+            Delays();
+            //Close Healing form
+            driver.FindElement(By.CssSelector(".box_x_button")).Click();
+            SmallDelays();
         }
     }
 }
