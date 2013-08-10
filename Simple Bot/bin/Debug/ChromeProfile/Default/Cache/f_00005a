@@ -1,0 +1,882 @@
+.talant {
+	position: relative;
+	overflow: visible;
+	width:0px; height: 0px;
+}
+
+
+.talant div.talant_border{
+	width: 70px;
+	height: 70px;
+	background-image: url("/images/m/class/talants/ico_talents.png"); background-position: 0 0;
+}
+
+.talant.passive div.talant_border{
+	background-image: url("/images/m/class/talants/ico_talents.png"); background-position: 0px 0;
+	cursor:pointer;
+}
+
+
+
+.talant_icon {
+	width: 60px;
+	height: 60px;
+}
+
+.talant div.talant_icon {
+	cursor:pointer;
+	position: relative;
+	left: 5px;
+	top: 5px;
+}
+
+#talantTooltipImg div.talant_icon {
+	margin:5px;
+}
+
+div.t_dop_icon {
+	height:15px; 
+	width: 20px;
+	background-image: url("/images/m/class/talants/ico_talents.png"); 
+	display: none;
+	position: relative;
+	left:36px;
+	top:4px;
+	overflow: visible;
+}
+
+.talant.wait div.talant_icon {
+	cursor:auto;
+}
+
+/* ------------  Стрелки зависимостей ------------------ */
+.talant_leads_b {
+	background-image: url("/images/m/class/talants/ico_talents.png");
+	background-position: -233px -23px;
+	height: 23px;
+	width: 25px;
+	display:none;
+	position:relative;
+}
+
+.talant.wait div.talant_leads_b { 
+	background-image: url("/images/m/class/talants/ico_talents.png");
+	background-position: -233px 0px;
+}
+
+.talant.full div.talant_leads_b { 
+	background-image: url("/images/m/class/talants/ico_talents.png");
+	background-position: -233px -46px;
+}
+
+
+
+.talant_leads_r {
+	background-image: url("/images/m/class/talants/ico_talents.png"); background-position: -84px 0;
+	width:20px;
+	height:15px;
+	display:none;
+}
+
+/* ------------ ------------------ */
+
+.talant_icon span.lvl {
+	display: block;
+	position: absolute;
+	right: -3px;
+	bottom: -3px;
+	padding-top:1px;
+	width: 23px;
+	height: 12px;
+	font-size: 9px;
+	line-height: 10px;
+	text-align: center;
+}
+
+div.guild_5 #talant_block {
+	height:410px;
+	background-image: url("/images/m/class/talants/bg_t.png");
+}
+div.guild_6 #talant_block {
+	height:410px;
+	background-image: url("/images/m/class/talants/bg_t.png");
+}
+div.guild_7 #talant_block {
+	height:410px;
+	background-image: url("/images/m/class/talants/bg_t.png");
+}
+div.guild_8 #talant_block {
+	height:410px;
+	background-image: url("/images/m/class/talants/bg_t.png");
+}
+
+div.guild_5 #talant_block_bg {
+	height:410px;
+	background-image: url("/images/m/class/talants/bg_t.png");
+}
+div.guild_6 #talant_block_bg {
+	height:410px;
+	background-image: url("/images/m/class/talants/bg_t.png");
+}
+div.guild_7 #talant_block_bg {
+	height:410px;
+	background-image: url("/images/m/class/talants/bg_t.png");
+}
+div.guild_8 #talant_block_bg {
+	height:410px;
+	background-image: url("/images/m/class/talants/bg_t.png");
+}
+
+/* ------------ Состоянии иконок ----------------
+	1. wait - Невыполнена зависимость ---> иконка серая, надпись серая
+	2. start - зависимость выполнена, но иконка не активвирована ---> иконка серая, подчиняется hover, надпись зеленая
+	3. active - иконка активирована ---> иконка полнцветная, hover не подчиняется, надпись зеленая
+	4. full - полностью заполненый уровень --> иконка полноцветная, рамка желттая
+*/
+
+/* --- WAIT --- */
+.talant.wait span.lvl {
+	background-image: url("/images/m/class/talants/ico_talents.png"); background-position:  -210px -26px;
+	color:white;
+}
+.talant.wait {cursor:auto;}
+
+/* --- START --- */
+.talant.start span.lvl {
+	background-image: url("/images/m/class/talants/ico_talents.png"); background-position:  -210px -26px;
+	color:white;
+}
+
+/* --- ACTIVE --- */
+.talant.active span.lvl {
+	background-image: url("/images/m/class/talants/ico_talents.png"); background-position:  -210px 0px;
+	color:white;
+}
+
+
+.talant.active div.talant_border{
+	background-image: url("/images/m/class/talants/ico_talents.png"); background-position: -70px 0;
+}
+
+
+/* --- FULL --- */
+.talant.full span.lvl {
+	background-image: url("/images/m/class/talants/ico_talents.png"); background-position:  -210px -13px;
+	color:white;
+}
+
+.talant span.lvl i, .talant span.lvl b { 
+	font-style: normal;
+	font-weight:normal;
+}
+
+.talant.full div.talant_border{
+	background-image: url("/images/m/class/talants/ico_talents.png"); background-position: -140px 0;
+}
+
+/* -----------  Иконки   талантов ------------- */
+/* Отмена ограничения уровня */ 
+.t_icon_501	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -360px;} 
+.passive .t_icon_501 { background-position: -360px -420px;}
+/* Улучшить характеристику Сила */ 
+.t_icon_502	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -360px;} 
+.passive .t_icon_502 { background-position: -420px -420px;}
+/* Улучшить характеристику Защита */ 
+.t_icon_503	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -360px;} 
+.passive .t_icon_503 { background-position: -480px -420px;}
+/* Улучшить характеристику Ловкость */ 
+.t_icon_504	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -480px;} 
+.passive .t_icon_504 { background-position: -0px -540px;}
+/* Улучшить характеристику Масса */ 
+.t_icon_505	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -480px;} 
+.passive .t_icon_505 { background-position: -60px -540px;}
+/* Улучшить характеристику Мастерство */ 
+.t_icon_506	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -480px;} 
+.passive .t_icon_506 { background-position: -120px -540px;}
+
+/* Урон против представителя «Крылатый спецназ» */ 
+.t_icon_507	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -480px;} 
+.passive .t_icon_507 { background-position: -180px -540px;}
+/* Урон против представителя «Краснокожие» */ 
+.t_icon_510	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -480px;} 
+.passive .t_icon_510 { background-position: -240px -540px;}
+/* Урон против представителя «Клыкуны» */ 
+.t_icon_509	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -480px;} 
+.passive .t_icon_509 { background-position: -300px -540px;}
+/* Урон против представителя «Теневоды» */ 
+.t_icon_508	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -480px;} 
+.passive .t_icon_508 { background-position: -360px -540px;}
+
+/* Крит урон против представителя «Крылатый спецназ» */ 
+.t_icon_511	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -480px;} 
+.passive .t_icon_511 { background-position: -420px -540px;}
+/* Крит урон против представителя «Краснокожие» */ 
+.t_icon_514	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -480px;} 
+.passive .t_icon_514 { background-position: -480px -540px;}
+/* Крит урон против представителя «Клыкуны» */ 
+.t_icon_513	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -600px;} 
+.passive .t_icon_513 { background-position: -0px -660px;}
+/* Крит урон против представителя «Теневоды» */ 
+.t_icon_512	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -600px;} 
+.passive .t_icon_512 { background-position: -60px -660px;}
+
+
+/* Подземная нить */ 
+.t_icon_515	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -0px;} 
+.passive .t_icon_515 { background-position: -0px -60px;}
+/* Использование умения «Подземная нить» */ 
+.t_icon_615	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -0px;} 
+.passive .t_icon_615 { background-position: -0px -60px;}
+.t_icon_615 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Ступа */ 
+.t_icon_516	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -0px;} 
+.passive .t_icon_516 { background-position: -60px -60px;}
+/* Использование умения «Ступа» */ 
+.t_icon_616	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -0px;} 
+.passive .t_icon_616 { background-position: -60px -60px;} 
+.t_icon_616 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* !!! Персональный Армегеддон */ 
+.t_icon_517	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -0px;} 
+.passive .t_icon_517 { background-position: -120px -60px;}
+/* Использование умения «Персональный Армегеддон» */ 
+.t_icon_617	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -0px;} 
+.passive .t_icon_617 { background-position: -120px -60px;}
+.t_icon_617 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Защита древних богов */ 
+.t_icon_518	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -0px;} 
+.passive .t_icon_518 { background-position: -180px -60px;}
+/* Использование умения «Защита древних богов» */ 
+.t_icon_618	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -0px;} 
+.passive .t_icon_618 { background-position: -180px -60px;}
+.t_icon_618 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Свиток «Энергия вулкана» */ 
+.t_icon_519	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -0px;} 
+.passive .t_icon_519 { background-position: -240px -60px;}
+/* Использование свитка «Энергия вулкана» */ 
+.t_icon_619	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -0px;} 
+.passive .t_icon_619 { background-position: -240px -60px;}
+.t_icon_619 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Энергия вулкана» */ 
+.t_icon_719	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -0px;} 
+.passive .t_icon_719 { background-position: -240px -60px;}
+.t_icon_719 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Свиток «Жертва древним богам» */ 
+.t_icon_520	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -0px;} 
+.passive .t_icon_520 { background-position: -300px -60px;}
+/* Использование свитка «Жертва древним богам» */ 
+.t_icon_620	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -0px;} 
+.passive .t_icon_620 { background-position: -300px -60px;}
+.t_icon_620 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Жертва древним богам» */ 
+.t_icon_720	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -0px;} 
+.passive .t_icon_720 { background-position: -300px -60px;}
+.t_icon_720 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Шанский рев */ 
+.t_icon_521	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -0px;} 
+.passive .t_icon_521 { background-position: -360px -60px;}
+/* Использование умения «Шанский рев» */ 
+.t_icon_621	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -0px;} 
+.passive .t_icon_621 { background-position: -360px -60px;}
+.t_icon_621 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Свиток «Массовые проклятушки» */ 
+.t_icon_522	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -0px;} 
+.passive .t_icon_522 { background-position: -420px -60px;}
+/* Использование свитка «Массовые проклятушки» */ 
+.t_icon_622	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -0px;} 
+.passive .t_icon_622 { background-position: -420px -60px;}
+.t_icon_622 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Массовые проклятушки» */ 
+.t_icon_722	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -0px;} 
+.passive .t_icon_722 { background-position: -420px -60px;}
+.t_icon_722 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Свиток «Уязвимость» */ 
+.t_icon_523	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -0px;} 
+.passive .t_icon_523 { background-position: -480px -60px;}
+/* Использование свитка «Уязвимост» */ 
+.t_icon_623	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -0px;} 
+.passive .t_icon_623 { background-position: -480px -60px;}
+.t_icon_623 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Уязвимост» */ 
+.t_icon_723	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -0px;} 
+.passive .t_icon_723 { background-position: -480px -60px;}
+.t_icon_723 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Белый Диавол */ 
+.t_icon_524	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -120px;} 
+.passive .t_icon_524 { background-position: -0px -180px;}
+/* Использование умения «Белый Диавол» */ 
+.t_icon_624	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -120px;} 
+.passive .t_icon_624 { background-position: -0px -180px;}
+.t_icon_624 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Орандж Диавол */ 
+.t_icon_525	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -120px;} 
+.passive .t_icon_525 { background-position: -60px -180px;}
+/* Использование умения «Орандж Диавол» */ 
+.t_icon_625	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -120px;} 
+.passive .t_icon_625 { background-position: -60px -180px;}
+.t_icon_625 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Укус вампира */ 
+.t_icon_526	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -120px;} 
+.passive .t_icon_526 { background-position: -120px -180px;}
+/* Умение «Укус вампира» */ 
+.t_icon_626	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -120px;} 
+.passive .t_icon_626 { background-position: -120px -180px;}
+.t_icon_626 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Парящий полет */ 
+.t_icon_527	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -120px;} 
+.passive .t_icon_527 { background-position: -180px -180px;}
+/* Использование умения «Парящий полет» */ 
+.t_icon_627	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -120px;} 
+.passive .t_icon_627 { background-position: -180px -180px;}
+.t_icon_627 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* !! Свиток «Холодное сердце»  */ 
+.t_icon_528	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -120px;} 
+.passive .t_icon_528 { background-position: -240px -180px;}
+/* Использование свитка «Холодное сердце» */ 
+.t_icon_628	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -120px;} 
+.passive .t_icon_628 { background-position: -240px -180px;}
+.t_icon_628 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Холодное сердце» */ 
+.t_icon_728	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -120px;} 
+.passive .t_icon_728 { background-position: -240px -180px;}
+.t_icon_728 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Свиток «Проницательность» */ 
+.t_icon_529	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -120px;} 
+.passive .t_icon_529 { background-position: -300px -180px;}
+/* Использование свитка «Проницательность» */ 
+.t_icon_629	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -120px;} 
+.passive .t_icon_629 { background-position: -300px -180px;}
+.t_icon_629 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Проницательность» */ 
+.t_icon_729	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -120px;} 
+.passive .t_icon_729 { background-position: -300px -180px;}
+.t_icon_729 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Жертва */ 
+.t_icon_530	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -120px;} 
+.passive .t_icon_530 { background-position: -360px -180px;}
+/* Умение «Жертва» */ 
+.t_icon_630	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -120px;} 
+.passive .t_icon_630 { background-position: -360px -180px;}
+.t_icon_630 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Свиток «Загробный мир» */ 
+.t_icon_531	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -120px;} 
+.passive .t_icon_531 { background-position: -420px -180px;}
+/* Использование свитка «Загробный мир» */ 
+.t_icon_631	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -120px;} 
+.passive .t_icon_631 { background-position: -420px -180px;}
+.t_icon_631 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Загробный мир» */ 
+.t_icon_731	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -120px;} 
+.passive .t_icon_731 { background-position: -420px -180px;}
+.t_icon_731 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Свиток «Ночной кошмар» */ 
+.t_icon_532	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -120px;} 
+.passive .t_icon_532 { background-position: -480px -180px;}
+/* Использование свитка «Ночной кошмар» */ 
+.t_icon_632	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -120px;} 
+.passive .t_icon_632 { background-position: -480px -180px;}
+.t_icon_632 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Ночной кошмар» */ 
+.t_icon_732	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -120px;} 
+.passive .t_icon_732 { background-position: -480px -180px;}
+.t_icon_732 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Умение «Тень» */ 
+.t_icon_533	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -240px;} 
+.passive .t_icon_533 { background-position: -0px -300px;}
+/* Использование умения «Тень» */ 
+.t_icon_633	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -240px;} 
+.passive .t_icon_633 { background-position: -0px -300px;}
+.t_icon_633 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Сила Друида */ 
+.t_icon_534	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -240px;} 
+.passive .t_icon_534 { background-position: -600px -300px;}
+/* Использование умения «Сила Друида» */ 
+.t_icon_634	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -240px;} 
+.passive .t_icon_634 { background-position: -600px -300px;}
+.t_icon_634 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Свиток «Ниндзя» */ 
+.t_icon_535	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -240px;} 
+.passive .t_icon_535 { background-position: -120px -300px;}
+/* Использование свитка «Ниндзя» */ 
+.t_icon_635	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -240px;} 
+.passive .t_icon_635 { background-position: -120px -300px;}
+.t_icon_635 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Ниндзя» */ 
+.t_icon_735	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -240px;} 
+.passive .t_icon_735 { background-position: -120px -300px;}
+.t_icon_735 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Свиток «Рассеивающий дым» */ 
+.t_icon_536	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -240px;} 
+.passive .t_icon_536 { background-position: -180px -300px;}
+/* Использование свитка «Рассеивающий дым» */ 
+.t_icon_636	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -240px;} 
+.passive .t_icon_636 { background-position: -180px -300px;}
+.t_icon_636 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Рассеивающий дым» */ 
+.t_icon_736	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -240px;} 
+.passive .t_icon_736 { background-position: -180px -300px;}
+.t_icon_736 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Проклятье */ 
+.t_icon_537	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -240px;} 
+.passive .t_icon_537 { background-position: -240px -300px;}
+/* Использование умения «Проклятье» */ 
+.t_icon_637	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -240px;} 
+.passive .t_icon_637 { background-position: -240px -300px;}
+.t_icon_637 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Свиток «Сюрикен» */ 
+.t_icon_538	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -240px;} 
+.passive .t_icon_538 { background-position: -300px -300px;}
+/* Использование свитка «Сюрикен» */ 
+.t_icon_638	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -240px;} 
+.passive .t_icon_638 { background-position: -300px -300px;}
+.t_icon_638 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Сюрикен» */ 
+.t_icon_738	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -240px;} 
+.passive .t_icon_738 { background-position: -300px -300px;}
+.t_icon_738 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Свиток «Покров» */ 
+.t_icon_539	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -240px;} 
+.passive .t_icon_539 { background-position: -360px -300px;}
+/* Использование свитка «Покров» */ 
+.t_icon_639	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -240px;} 
+.passive .t_icon_639 { background-position: -360px -300px;}
+.t_icon_639 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Покров» */ 
+.t_icon_739	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -240px;} 
+.passive .t_icon_739 { background-position: -360px -300px;}
+.t_icon_739 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Священное прикосновение */ 
+.t_icon_540	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -360px;} 
+.passive .t_icon_540 { background-position: -0px -420px;}
+/* Использование умения «Священное прикосновение» */ 
+.t_icon_640	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -360px;} 
+.passive .t_icon_640 { background-position: -0px -420px;}
+.t_icon_640 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Cтолп света */ 
+.t_icon_541	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -360px;} 
+.passive .t_icon_541 { background-position: -60px -420px;}
+/* Использование умения «Столп света» */ 
+.t_icon_641	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -360px;} 
+.passive .t_icon_641 { background-position: -60px -420px;}
+.t_icon_641 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Свиток «Божественная аура» */ 
+.t_icon_542	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -360px;} 
+.passive .t_icon_542 { background-position: -120px -420px;}
+/* Использование свитка «Божественная аура» */ 
+.t_icon_642	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -360px;} 
+.passive .t_icon_642 { background-position: -120px -420px;}
+.t_icon_642 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+
+/* Возможность в боях использовать несколько свитков «Божественная аура» */ 
+.t_icon_742	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -360px;} 
+.passive .t_icon_742 { background-position: -120px -420px;}
+.t_icon_742 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Свиток «Длань богов» */ 
+.t_icon_543	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -360px;} 
+.passive .t_icon_543 { background-position: -180px -420px;}
+/* Использование свитка «Длань богов» */ 
+.t_icon_643	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -360px;} 
+.passive .t_icon_643 { background-position: -180px -420px;}
+.t_icon_643 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Длань богов» */ 
+.t_icon_743	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -360px;} 
+.passive .t_icon_743 { background-position: -180px -420px;}
+.t_icon_743 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Мечь правосудия */ 
+.t_icon_544	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -360px;} 
+.passive .t_icon_544 { background-position: -240px -420px;}
+/* Использование умения «Мечь правосудия» */ 
+.t_icon_644	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -360px;} 
+.passive .t_icon_644 { background-position: -240px -420px;}
+.t_icon_644 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+
+/* Свиток «Кара нечестивым» */ 
+.t_icon_546	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -240px;} 
+.passive .t_icon_546 { background-position: -480px -300px;}
+/* Использование свитка «Кара нечестивым» */ 
+.t_icon_646	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -240px;} 
+.passive .t_icon_646 { background-position: -480px -300px;}
+.t_icon_646 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Кара нечестивым» */ 
+.t_icon_746	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -240px;} 
+.passive .t_icon_746 { background-position: -480px -300px;}
+.t_icon_746 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Свиток «Гнев Небес» */ 
+.t_icon_547	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -240px;} 
+.passive .t_icon_547 { background-position: -420px -300px;}
+/* Использование свитка «Гнев Небес» */ 
+.t_icon_647	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -240px;} 
+.passive .t_icon_647 { background-position: -420px -300px;}
+.t_icon_647 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
+/* Возможность в боях использовать несколько свитков «Гнев Небес» */ 
+.t_icon_747	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -240px;} 
+.passive .t_icon_747 { background-position: -420px -300px;}
+.t_icon_747 div.t_dop_icon {display:block;background-position: -210px -39px;}
+
+/* Любимый питомец --- */
+.t_icon_548	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -600px;} 
+.passive .t_icon_548 { background-position: -120px -660px;}
+/* ------------ не используемые блоки ------------ */
+
+.t_icon_549	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -600px;} 
+.passive .t_icon_549 { background-position: -420px -660px;}
+
+.t_icon_550	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -600px;} 
+.passive .t_icon_549 { background-position: -300px -660px;}
+
+.t_icon_551	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -600px;} 
+.passive .t_icon_549 { background-position: -180px -660px;}
+
+.t_icon_552	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -600px;} 
+.passive .t_icon_552 { background-position: -240px -660px;}
+
+.t_icon_553	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -600px;} 
+.passive .t_icon_553 { background-position: -360px -660px;}
+
+
+.t_icon_800	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -600px;} 
+.passive .t_icon_800 { background-position: -480px -660px;}
+
+.t_icon_802	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -600px;} 
+.passive .t_icon_802 { background-position: -480px -660px;}
+
+.t_icon_801	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -720px;} 
+.passive .t_icon_801 { background-position: -0px -720px;}
+
+/* Левша */
+.t_icon_803	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -840px;} 
+.passive .t_icon_801 { background-position: -0px -720px;}
+
+/* Мутант */
+.t_icon_810	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -840px;} 
+.passive .t_icon_801 { background-position: -0px -720px;}
+
+/* ------------- Popup для талантов ------------- */
+#talantTooltip {
+	display: none;
+	position: absolute;
+	background: none repeat scroll 0 0 #E3D4B7;
+	padding: 0;
+	width: 300px;
+	z-index: 100;
+	border: 1px solid #a89777;
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,0.3);
+	border-radius: 3px;
+}
+
+#talantTooltipHtml {padding:3px;}
+
+
+
+/* -----------  Позиционирование  талантов ------------- */
+
+div.guild_5 #talant_1 {top:10px; left:2px; }
+div.guild_5 #talant_2 {top:90px; left:2px; }
+div.guild_5 #talant_2 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_3 {top:170px; left:2px; }
+div.guild_5 #talant_3 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_4 {top:250px; left:2px; }
+div.guild_5 #talant_4 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_5 {top:330px; left:2px;}
+div.guild_5 #talant_5 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_6 {top:10px; left:82px;}
+div.guild_5 #talant_7 {top:90px; left:82px;}
+div.guild_5 #talant_8 {top:170px; left:82px;}
+div.guild_5 #talant_8 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_9 {top:90px; left:162px;}
+div.guild_5 #talant_10 {top:170px; left:162px;}
+div.guild_5 #talant_10 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_11 {top:250px; left:82px;}
+div.guild_5 #talant_12 {top:330px; left:82px;}
+div.guild_5 #talant_13 {top:250px; left:162px;}
+div.guild_5 #talant_14 {top:330px; left:162px;}
+div.guild_5 #talant_15 {top:250px; left:242px;}
+div.guild_5 #talant_16 {top:330px; left:242px;}
+div.guild_5 #talant_17 {top:10px; left:242px;}
+div.guild_5 #talant_18 {top:90px; left:242px;}
+/*div.guild_5 #talant_18 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_5 #talant_19 {top:170px; left:242px;}
+div.guild_5 #talant_19 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_20 {top:10px; left:322px;}
+div.guild_5 #talant_21 {top:90px; left:322px;}
+/*div.guild_5 #talant_21 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_5 #talant_22 {top:170px; left:322px;}
+div.guild_5 #talant_22 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_23 {top:10px; left:402px;}
+div.guild_5 #talant_24 {top:90px; left:402px;}
+/*div.guild_5 #talant_24 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_5 #talant_25 {top:170px; left:402px;}
+div.guild_5 #talant_25 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_26 {top:10px; left:482px;}
+div.guild_5 #talant_27 {top:90px; left:482px;}
+/*div.guild_5 #talant_27 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_5 #talant_28 {top:170px; left:482px;}
+div.guild_5 #talant_28 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_29 {top:250px; left:322px;}
+div.guild_5 #talant_30 {top:330px; left:322px;}
+div.guild_5 #talant_30 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_31 {top:250px; left:402px;}
+div.guild_5 #talant_32 {top:330px; left:402px;}
+div.guild_5 #talant_32 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_33 {top:250px; left:482px;}
+div.guild_5 #talant_34 {top:330px; left:482px;}
+div.guild_5 #talant_34 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_5 #talant_35 {top:10px; left:162px;}
+/* ------------ Теневоды --------------- */
+
+div.guild_6 #talant_1 {top:10px; left:2px; }
+div.guild_6 #talant_2 {top:90px; left:2px; }
+div.guild_6 #talant_2 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_6 #talant_3 {top:170px; left:2px; }
+div.guild_6 #talant_3 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_6 #talant_4 {top:250px; left:2px; }
+div.guild_6 #talant_4 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_6 #talant_5 {top:330px; left:2px;}
+div.guild_6 #talant_5 div.talant_leads_b { display:block; top:-83px; left:23px; }
+div.guild_6 #talant_6 {top:10px; left:82px;}
+div.guild_6 #talant_7 {top:90px; left:82px;}
+div.guild_6 #talant_8 {top:170px; left:82px;}
+div.guild_6 #talant_8 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_6 #talant_9 {top:90px; left:162px;}
+div.guild_6 #talant_10 {top:170px; left:162px;}
+div.guild_6 #talant_10 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_6 #talant_11 {top:250px; left:82px;}
+div.guild_6 #talant_12 {top:330px; left:82px;}
+div.guild_6 #talant_13 {top:250px; left:162px;}
+div.guild_6 #talant_14 {top:330px; left:162px;}
+div.guild_6 #talant_15 {top:250px; left:242px;}
+div.guild_6 #talant_16 {top:330px; left:242px;}
+div.guild_6 #talant_17 {top:10px; left:242px;}
+div.guild_6 #talant_18 {top:90px; left:242px;}
+/*div.guild_6 #talant_18 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_6 #talant_19 {top:170px; left:242px;}
+div.guild_6 #talant_19 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_6 #talant_20 {top:10px; left:322px;}
+div.guild_6 #talant_21 {top:90px; left:322px;}
+/*div.guild_6 #talant_21 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_6 #talant_22 {top:170px; left:322px;}
+div.guild_6 #talant_22 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_6 #talant_23 {top:10px; left:402px;}
+div.guild_6 #talant_24 {top:90px; left:402px;}
+/*div.guild_6 #talant_24 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_6 #talant_25 {top:170px; left:402px;}
+div.guild_6 #talant_25 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_6 #talant_26 {top:10px; left:482px;}
+div.guild_6 #talant_27 {top:90px; left:482px;}
+/*div.guild_6 #talant_27 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_6 #talant_28 {top:170px; left:482px;}
+div.guild_6 #talant_28 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_6 #talant_29 {top:250px; left:322px;}
+div.guild_6 #talant_30 {top:330px; left:322px;}
+div.guild_6 #talant_30 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_6 #talant_31 {top:250px; left:402px;}
+div.guild_6 #talant_32 {top:330px; left:402px;}
+div.guild_6 #talant_32 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_6 #talant_33 {top:250px; left:482px;}
+div.guild_6 #talant_34 {top:330px; left:482px;}
+div.guild_6 #talant_34 div.talant_leads_b { display:block; top:-83px; left:23px; }
+div.guild_6 #talant_35 {top:10px; left:162px;}
+
+
+/* ------------ Клыкуны  --------------- */
+
+div.guild_7 #talant_1 {top:10px; left:2px; }
+div.guild_7 #talant_2 {top:90px; left:2px; }
+div.guild_7 #talant_2 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_7 #talant_3 {top:170px; left:2px; }
+div.guild_7 #talant_3 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_7 #talant_4 {top:250px; left:2px; }
+div.guild_7 #talant_4 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_7 #talant_5 {top:330px; left:2px;}
+div.guild_7 #talant_5 div.talant_leads_b { display:block; top:-83px; left:23px; }
+div.guild_7 #talant_6 {top:10px; left:82px;}
+div.guild_7 #talant_7 {top:90px; left:82px;}
+div.guild_7 #talant_8 {top:170px; left:82px;}
+div.guild_7 #talant_8 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_7 #talant_9 {top:90px; left:162px;}
+div.guild_7 #talant_10 {top:170px; left:162px;}
+div.guild_7 #talant_10 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_7 #talant_11 {top:250px; left:82px;}
+div.guild_7 #talant_12 {top:330px; left:82px;}
+div.guild_7 #talant_13 {top:250px; left:162px;}
+div.guild_7 #talant_14 {top:330px; left:162px;}
+div.guild_7 #talant_15 {top:250px; left:242px;}
+div.guild_7 #talant_16 {top:330px; left:242px;}
+div.guild_7 #talant_17 {top:10px; left:242px;}
+div.guild_7 #talant_18 {top:90px; left:242px;}
+/*div.guild_7 #talant_18 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_7 #talant_19 {top:170px; left:242px;}
+div.guild_7 #talant_19 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_7 #talant_20 {top:10px; left:322px;}
+div.guild_7 #talant_21 {top:90px; left:322px;}
+/*div.guild_7 #talant_21 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_7 #talant_22 {top:170px; left:322px;}
+div.guild_7 #talant_22 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_7 #talant_23 {top:10px; left:402px;}
+div.guild_7 #talant_24 {top:90px; left:402px;}
+/*div.guild_7 #talant_24 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_7 #talant_25 {top:170px; left:402px;}
+div.guild_7 #talant_25 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_7 #talant_26 {top:10px; left:482px;}
+div.guild_7 #talant_27 {top:90px; left:482px;}
+/*div.guild_7 #talant_27 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_7 #talant_28 {top:170px; left:482px;}
+div.guild_7 #talant_28 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_7 #talant_29 {top:250px; left:322px;}
+div.guild_7 #talant_30 {top:330px; left:322px;}
+div.guild_7 #talant_30 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_7 #talant_31 {top:250px; left:402px;}
+div.guild_7 #talant_32 {top:330px; left:402px;}
+div.guild_7 #talant_32 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_7 #talant_33 {top:250px; left:482px;}
+div.guild_7 #talant_34 {top:330px; left:482px;}
+div.guild_7 #talant_34 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_7 #talant_35 {top:10px; left:162px;}
+
+
+/* ------------ Краснокожие  --------------- */
+div.guild_8 #talant_1 {top:10px; left:2px; }
+div.guild_8 #talant_2 {top:90px; left:2px; }
+div.guild_8 #talant_2 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_8 #talant_3 {top:170px; left:2px; }
+div.guild_8 #talant_3 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_8 #talant_4 {top:250px; left:2px; }
+div.guild_8 #talant_4 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_8 #talant_5 {top:330px; left:2px;}
+div.guild_8 #talant_5 div.talant_leads_b { display:block; top:-83px; left:23px; }
+div.guild_8 #talant_6 {top:10px; left:82px;}
+div.guild_8 #talant_7 {top:90px; left:82px;}
+div.guild_8 #talant_8 {top:170px; left:82px;}
+div.guild_8 #talant_8 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_8 #talant_9 {top:90px; left:162px;}
+div.guild_8 #talant_10 {top:170px; left:162px;}
+div.guild_8 #talant_10 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_8 #talant_11 {top:250px; left:82px;}
+div.guild_8 #talant_12 {top:330px; left:82px;}
+div.guild_8 #talant_13 {top:250px; left:162px;}
+div.guild_8 #talant_14 {top:330px; left:162px;}
+div.guild_8 #talant_15 {top:250px; left:242px;}
+div.guild_8 #talant_16 {top:330px; left:242px;}
+div.guild_8 #talant_17 {top:10px; left:242px;}
+div.guild_8 #talant_18 {top:90px; left:242px;}
+/*div.guild_8 #talant_18 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_8 #talant_19 {top:170px; left:242px;}
+div.guild_8 #talant_19 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_8 #talant_20 {top:10px; left:322px;}
+div.guild_8 #talant_21 {top:90px; left:322px;}
+/*div.guild_8 #talant_21 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_8 #talant_22 {top:170px; left:322px;}
+div.guild_8 #talant_22 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_8 #talant_23 {top:10px; left:402px;}
+div.guild_8 #talant_24 {top:90px; left:402px;}
+/*div.guild_8 #talant_24 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_8 #talant_25 {top:170px; left:402px;}
+div.guild_8 #talant_25 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_8 #talant_26 {top:10px; left:482px;}
+div.guild_8 #talant_27 {top:90px; left:482px;}
+/*div.guild_8 #talant_27 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
+
+div.guild_8 #talant_28 {top:170px; left:482px;}
+div.guild_8 #talant_28 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_8 #talant_29 {top:250px; left:322px;}
+div.guild_8 #talant_30 {top:330px; left:322px;}
+div.guild_8 #talant_30 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_8 #talant_31 {top:250px; left:402px;}
+div.guild_8 #talant_32 {top:330px; left:402px;}
+div.guild_8 #talant_32 div.talant_leads_b { display:block; top:-83px; left:23px; }
+
+div.guild_8 #talant_33 {top:250px; left:482px;}
+div.guild_8 #talant_34 {top:330px; left:482px;}
+div.guild_8 #talant_34 div.talant_leads_b { display:block; top:-83px; left:23px; }
+div.guild_8 #talant_35 {top:10px; left:162px;}

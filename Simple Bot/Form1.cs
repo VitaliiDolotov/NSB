@@ -27,6 +27,7 @@ namespace Simple_Bot
     public partial class Form1 : Form
     {
         bool isDonatePlayer = false;
+        string isDonateDate = "";
         bool botIsWorked = false;
         int BotVersion = 2592;
 
@@ -1180,6 +1181,7 @@ namespace Simple_Bot
                 {
                     if (dateTimeCompare(playersList[i + 1].Split('/')))
                     {
+                        textBoxMd5.Text = playersList[i + 1].Replace('/', '.');
                         return true;
                     }
                 }
@@ -2896,6 +2898,13 @@ namespace Simple_Bot
         private void button52_Click(object sender, EventArgs e)
         {
             UIBoxDisplay(3, 4, "ShopBox");
+        }
+
+        private void textBoxMd5_MouseHover(object sender, EventArgs e)
+        {
+            string login = textBox1.Text;
+            string loginMd5 = GetMd5Hash(md5Hash, login);
+            textBoxMd5.Text = loginMd5;
         }
     }
 }

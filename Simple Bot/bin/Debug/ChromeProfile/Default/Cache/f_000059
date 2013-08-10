@@ -1,0 +1,311 @@
+b.skills{
+	width: 60px;
+	height: 60px;
+	display:inline-block;
+	background: url(/images/packs/skills.jpg) no-repeat;
+	background-position: 0px 0px;
+	vertical-align:middle;
+}
+
+
+b.skill_1_1 {	background-position:0px 0px;	}
+b.skill_1_2 {	background-position:-60px 0px;	}
+b.skill_2_1 {	background-position:-120px 0px;	}
+b.skill_2_2 {	background-position:-180px 0px;	}
+b.skill_3_1 {	background-position:-240px 0px;	}
+b.skill_3_2 {	background-position:-300px 0px;	}
+b.skill_4_1 {	background-position:-360px 0px;	}
+b.skill_4_2 {	background-position:-420px 0px;	}
+b.skill_5_1 {	background-position:-480px 0px;	}
+b.skill_5_2 {	background-position:-540px 0px;	}
+
+
+b.skill_6_1 {	background-position:-360px -60px;	}
+b.skill_6_2 {	background-position:-420px -60px;	}
+b.skill_7_1 {	background-position:-120px -60px;	}
+b.skill_7_2 {	background-position:-180px -60px;	}
+b.skill_8_1 {	background-position:-240px -60px;	}
+b.skill_8_2 {	background-position:-300px -60px;	}
+b.skill_9_1 {	background-position:0px -60px;	}
+b.skill_9_2 {	background-position:-60px -60px;	}
+b.skill_10_1 {	background-position:-480px -60px;	}
+b.skill_10_2 {	background-position:-540px -60px;	}
+
+b.skill_11_1 {	background-position:0px -120px;	}
+b.skill_11_2 {	background-position:-60px -120px;	}
+b.skill_12_1 {	background-position:-120px -120px;	}
+b.skill_12_2 {	background-position:-180px -120px;	}
+b.skill_13_1 {	background-position:-240px -120px;	}
+b.skill_13_2 {	background-position:-300px -120px;	}
+b.skill_14_1 {	background-position:-360px -120px;	}
+b.skill_14_2 {	background-position:-420px -120px;	}
+b.skill_15_1 {	background-position:-480px -120px;	}
+b.skill_15_2 {	background-position:-540px -120px;	}
+
+b.skill_16_1 {	background-position:  0px  -180px;	}
+b.skill_16_2 {	background-position:-60px  -180px;	}
+b.skill_17_1 {	background-position:-120px -180px;	}
+b.skill_17_2 {	background-position:-180px -180px;	}
+b.skill_18_1 {	background-position:-240px -180px;	}
+b.skill_18_2 {	background-position:-300px -180px;	}
+b.skill_19_1 {	background-position:-360px -180px;	}
+b.skill_19_2 {	background-position:-420px -180px;	}
+b.skill_20_1 {	background-position:-480px -180px;	}
+b.skill_20_2 {	background-position:-540px -180px;	}
+
+/*.skill_2_1 {	background-position:-120px -180px;	}*/
+
+div.spec_main { width: 504px;  }
+
+div.spec_main .spec_group {
+	width: 220px;
+	height: 90px;
+	float: left;
+	border: 1px #d4bd97 solid;
+	background-color: #e0d0b5;
+	margin-left: 25px;
+}
+
+div.spec_main .spec_group_ext {
+	width: 232px;
+	height: 90px;
+	float: left;
+	margin-left: 25px;
+}
+
+div.spec_main .spec_arrow { width: 13px; height: 90px}
+div.spec_main .spec_arrow b {
+	margin-left: 3px;
+	margin-top: 24px;
+}
+div.spec_main .spec_80 {
+	width: 60px; 
+	height: 82px;	
+	margin: 2px;
+	position: relative;
+}
+div.spec_main .spec_80 .spec {
+	border: 2px #f9e7bb solid;
+}
+div.spec_main .spec_80 .spec_blur {
+	position: absolute;
+	width: 63px;
+	height: 63px;
+	-moz-opacity:.50; filter:alpha(opacity=50); opacity:.50;
+	background-color: #e0d0b5;
+}
+div.spec_main .spec_80 b[class^="icon"] {
+	margin-left: 22px;
+}
+div.spec_main .spec_80 .spec, b.spec { width: 60px; height: 60px; background-image: url('/images/packs/spec.jpg');display:inline-block; }
+div.spec_main .spec_80 .spec_401_1, b.skill_401_1 { background-position: 0px 0px}
+div.spec_main .spec_80 .spec_401_2, b.skill_401_2 { background-position: 0px -60px}
+div.spec_main .spec_80 .spec_401_3, b.skill_401_3 { background-position: 0px -120px}
+div.spec_main .spec_80 .spec_401_0, b.skill_401_0 { background-position: 0px -180px}
+div.spec_main .spec_80 .spec_402_1, b.skill_402_1 { background-position: -60px 0px}
+div.spec_main .spec_80 .spec_402_2, b.skill_402_2 { background-position: -60px -60px}
+div.spec_main .spec_80 .spec_402_3, b.skill_402_3 { background-position: -60px -120px}
+div.spec_main .spec_80 .spec_402_0, b.skill_402_0 { background-position: -60px -180px}
+div.spec_main .spec_80 .spec_404_1, b.skill_404_1 { background-position: -120px 0px}
+div.spec_main .spec_80 .spec_404_2, b.skill_404_2 { background-position: -120px -60px}
+div.spec_main .spec_80 .spec_404_3, b.skill_404_3 { background-position: -120px -120px}
+div.spec_main .spec_80 .spec_404_0, b.skill_404_0 { background-position: -120px -180px}
+div.spec_main .spec_80 .spec_403_1, b.skill_403_1 { background-position: -180px 0px}
+div.spec_main .spec_80 .spec_403_2, b.skill_403_2 { background-position: -180px -60px}
+div.spec_main .spec_80 .spec_403_3, b.skill_403_3 { background-position: -180px -120px}
+div.spec_main .spec_80 .spec_403_0, b.skill_403_0 { background-position: -180px -180px}
+div.spec_main .spec_80 .spec_405_1, b.skill_405_1 { background-position: -240px 0px}
+div.spec_main .spec_80 .spec_405_2, b.skill_405_2 { background-position: -240px -60px}
+div.spec_main .spec_80 .spec_405_3, b.skill_405_3 { background-position: -240px -120px}
+div.spec_main .spec_80 .spec_405_0, b.skill_405_0 { background-position: -240px -180px}
+div.spec_main .spec_80 .spec_406_1, b.skill_406_1 { background-position: -300px 0px}
+div.spec_main .spec_80 .spec_406_2, b.skill_406_2 { background-position: -300px -60px}
+div.spec_main .spec_80 .spec_406_3, b.skill_406_3 { background-position: -300px -120px}
+div.spec_main .spec_80 .spec_406_0, b.skill_406_0 { background-position: -300px -180px}
+div.spec_main .spec_80 .spec_407_1, b.skill_407_1 { background-position: -360px 0px}
+div.spec_main .spec_80 .spec_407_2, b.skill_407_2 { background-position: -360px -60px}
+div.spec_main .spec_80 .spec_407_3, b.skill_407_3 { background-position: -360px -120px}
+div.spec_main .spec_80 .spec_407_0, b.skill_407_0 { background-position: -360px -180px}
+div.spec_main .spec_80 .spec_408_1, b.skill_408_1 { background-position: -420px 0px}
+div.spec_main .spec_80 .spec_408_2, b.skill_408_2 { background-position: -420px -60px}
+div.spec_main .spec_80 .spec_408_3, b.skill_408_3 { background-position: -420px -120px}
+div.spec_main .spec_80 .spec_408_0, b.skill_408_0 { background-position: -420px -180px}
+div.spec_main .spec_80 .spec_409_1, b.skill_409_1 { background-position: -480px 0px}
+div.spec_main .spec_80 .spec_409_2, b.skill_409_2 { background-position: -480px -60px}
+div.spec_main .spec_80 .spec_409_3, b.skill_409_3 { background-position: -480px -120px}
+div.spec_main .spec_80 .spec_409_0, b.skill_409_0 { background-position: -480px -180px}
+div.spec_main .spec_80 .spec_410_1, b.skill_410_1 { background-position: -540px 0px}
+div.spec_main .spec_80 .spec_410_2, b.skill_410_2 { background-position: -540px -60px}
+div.spec_main .spec_80 .spec_410_3, b.skill_410_3 { background-position: -540px -120px}
+div.spec_main .spec_80 .spec_410_0, b.skill_410_0 { background-position: -540px -180px}
+div.spec_main .spec_80 .spec_411_1, b.skill_411_1 { background-position: -600px 0px}
+div.spec_main .spec_80 .spec_411_2, b.skill_411_2 { background-position: -600px -60px}
+div.spec_main .spec_80 .spec_411_3, b.skill_411_3 { background-position: -600px -120px}
+div.spec_main .spec_80 .spec_411_0, b.skill_411_0 { background-position: -600px -180px}
+div.spec_main .spec_80 .spec_412_1, b.skill_412_1 { background-position: -660px 0px}
+div.spec_main .spec_80 .spec_412_2, b.skill_412_2 { background-position: -660px -60px}
+div.spec_main .spec_80 .spec_412_3, b.skill_412_3 { background-position: -660px -120px}
+div.spec_main .spec_80 .spec_412_0, b.skill_412_0 { background-position: -660px -180px}
+div.spec_main .spec_80 .spec_414_1, b.skill_414_1 { background-position: -720px 0px}
+div.spec_main .spec_80 .spec_414_2, b.skill_414_2 { background-position: -720px -60px}
+div.spec_main .spec_80 .spec_414_3, b.skill_414_3 { background-position: -720px -120px}
+div.spec_main .spec_80 .spec_414_0, b.skill_414_0 { background-position: -720px -180px}
+
+div.spec_main .spec_80 .spec_415_1, b.skill_415_1 { background-position: -780px 0px}
+div.spec_main .spec_80 .spec_415_2, b.skill_415_2 { background-position: -780px -60px}
+div.spec_main .spec_80 .spec_415_3, b.skill_415_3 { background-position: -780px -120px}
+div.spec_main .spec_80 .spec_415_0, b.skill_415_0 { background-position: -780px -180px}
+
+div.spec_main .spec_80 .spec_416_1, b.skill_416_1 { background-position: -840px 0px}
+div.spec_main .spec_80 .spec_416_2, b.skill_416_2 { background-position: -840px -60px}
+div.spec_main .spec_80 .spec_416_3, b.skill_416_3 { background-position: -840px -120px}
+div.spec_main .spec_80 .spec_416_0, b.skill_416_0 { background-position: -840px -180px}
+
+div.spec_main .spec_80 .spec_417_1, b.skill_417_1 { background-position: -900px 0px}
+div.spec_main .spec_80 .spec_417_2, b.skill_417_2 { background-position: -900px -60px}
+div.spec_main .spec_80 .spec_417_3, b.skill_417_3 { background-position: -900px -120px}
+div.spec_main .spec_80 .spec_417_0, b.skill_417_0 { background-position: -900px -180px}
+div.spec_main .spec_80 .spec_418_1, b.skill_418_1 { background-position: -960px 0px}
+div.spec_main .spec_80 .spec_418_2, b.skill_418_2 { background-position: -960px -60px}
+div.spec_main .spec_80 .spec_418_3, b.skill_418_3 { background-position: -960px -120px}
+div.spec_main .spec_80 .spec_418_0, b.skill_418_0 { background-position: -960px -180px}
+div.spec_main .spec_80 .spec_419_1, b.skill_419_1 { background-position: -1020px 0px}
+div.spec_main .spec_80 .spec_419_2, b.skill_419_2 { background-position: -1020px -60px}
+div.spec_main .spec_80 .spec_419_3, b.skill_419_3 { background-position: -1020px -120px}
+div.spec_main .spec_80 .spec_419_0, b.skill_419_0 { background-position: -1020px -180px}
+div.spec_main .spec_80 .spec_420_1, b.skill_420_1 { background-position: -1080px 0px}
+div.spec_main .spec_80 .spec_420_2, b.skill_420_2 { background-position: -1080px -60px}
+div.spec_main .spec_80 .spec_420_3, b.skill_420_3 { background-position: -1080px -120px}
+div.spec_main .spec_80 .spec_420_0, b.skill_420_0 { background-position: -1080px -180px}
+div.spec_main .spec_80 .spec_421_1, b.skill_421_1 { background-position: -1140px 0px}
+div.spec_main .spec_80 .spec_421_2, b.skill_421_2 { background-position: -1140px -60px}
+div.spec_main .spec_80 .spec_421_3, b.skill_421_3 { background-position: -1140px -120px}
+div.spec_main .spec_80 .spec_421_0, b.skill_421_0 { background-position: -1140px -180px}
+div.spec_main .spec_80 .spec_422_1, b.skill_422_1 { background-position: -1200px 0px}
+div.spec_main .spec_80 .spec_422_2, b.skill_422_2 { background-position: -1200px -60px}
+div.spec_main .spec_80 .spec_422_3, b.skill_422_3 { background-position: -1200px -120px}
+div.spec_main .spec_80 .spec_422_0, b.skill_422_0 { background-position: -1200px -180px}
+div.spec_main .spec_80 .spec_423_1, b.skill_423_1 { background-position: -1260px 0px}
+div.spec_main .spec_80 .spec_423_2, b.skill_423_2 { background-position: -1260px -60px}
+div.spec_main .spec_80 .spec_423_3, b.skill_423_3 { background-position: -1260px -120px}
+div.spec_main .spec_80 .spec_423_0, b.skill_423_0 { background-position: -1260px -180px}
+div.spec_main .spec_80 .spec_424_1, b.skill_424_1 { background-position: -1320px 0px}
+div.spec_main .spec_80 .spec_424_2, b.skill_424_2 { background-position: -1320px -60px}
+div.spec_main .spec_80 .spec_424_3, b.skill_424_3 { background-position: -1320px -120px}
+div.spec_main .spec_80 .spec_424_0, b.skill_424_0 { background-position: -1320px -180px}
+div.spec_main .spec_80 .spec_425_1, b.skill_425_1 { background-position: -1380px 0px}
+div.spec_main .spec_80 .spec_425_2, b.skill_425_2 { background-position: -1380px -60px}
+div.spec_main .spec_80 .spec_425_3, b.skill_425_3 { background-position: -1380px -120px}
+div.spec_main .spec_80 .spec_425_0, b.skill_425_0 { background-position: -1380px -180px}
+
+div.spec_main .spec_80 .spec_426_1, b.skill_426_1 { background-position: -1320px 0px}
+div.spec_main .spec_80 .spec_426_2, b.skill_426_2 { background-position: -1320px -60px}
+div.spec_main .spec_80 .spec_426_3, b.skill_426_3 { background-position: -1320px -120px}
+div.spec_main .spec_80 .spec_426_0, b.skill_426_0 { background-position: -1320px -180px}
+
+
+div.spec_main .spec_80 .spec_433_1, b.skill_433_1 { background-position: -1560px 0px}
+div.spec_main .spec_80 .spec_433_2, b.skill_433_2 { background-position: -1560px -60px}
+div.spec_main .spec_80 .spec_433_3, b.skill_433_3 { background-position: -1560px -120px}
+div.spec_main .spec_80 .spec_433_0, b.skill_433_0 { background-position: -1560px -180px}
+
+div.spec_main .spec_80 .spec_434_1, b.skill_434_1 { background-position: -1500px 0px}
+div.spec_main .spec_80 .spec_434_2, b.skill_434_2 { background-position: -1500px -60px}
+div.spec_main .spec_80 .spec_434_3, b.skill_434_3 { background-position: -1500px -120px}
+div.spec_main .spec_80 .spec_434_0, b.skill_434_0 { background-position: -1500px -180px}
+
+div.spec_main .spec_80 .spec_435_1, b.skill_435_1 { background-position: -1620px 0px}
+div.spec_main .spec_80 .spec_435_2, b.skill_435_2 { background-position: -1620px -60px}
+div.spec_main .spec_80 .spec_435_3, b.skill_435_3 { background-position: -1620px -120px}
+div.spec_main .spec_80 .spec_435_0, b.skill_435_0 { background-position: -1620px -180px}
+
+div.spec_main .spec_80 .spec_438_1, b.skill_438_1 { background-position: -1380px 0px}
+div.spec_main .spec_80 .spec_438_2, b.skill_438_2 { background-position: -1380px -60px}
+div.spec_main .spec_80 .spec_438_3, b.skill_438_3 { background-position: -1380px -120px}
+div.spec_main .spec_80 .spec_438_0, b.skill_438_0 { background-position: -1380px -180px}
+
+div.spec_main .spec_80 .spec_439_1, b.skill_439_1 { background-position: -1680px 0px}
+div.spec_main .spec_80 .spec_439_2, b.skill_439_2 { background-position: -1680px -60px}
+div.spec_main .spec_80 .spec_439_3, b.skill_439_3 { background-position: -1680px -120px}
+div.spec_main .spec_80 .spec_439_0, b.skill_439_0 { background-position: -1680px -180px}
+
+div.spec_main .spec_80 .spec_440_1, b.skill_440_1 { background-position: -1740px 0px}
+div.spec_main .spec_80 .spec_440_2, b.skill_440_2 { background-position: -1740px -60px}
+div.spec_main .spec_80 .spec_440_3, b.skill_440_3 { background-position: -1740px -120px}
+div.spec_main .spec_80 .spec_440_0, b.skill_440_0 { background-position: -1740px -180px}
+
+div.spec_main .spec_80 .spec_441_1, b.skill_441_1 { background-position: -1800px 0px}
+div.spec_main .spec_80 .spec_441_2, b.skill_441_2 { background-position: -1800px -60px}
+div.spec_main .spec_80 .spec_441_3, b.skill_441_3 { background-position: -1800px -120px}
+div.spec_main .spec_80 .spec_441_0, b.skill_441_0 { background-position: -1800px -180px}
+
+div.spec_main .spec_80 .spec_442_1, b.skill_442_1 { background-position: -1440px 0px}
+div.spec_main .spec_80 .spec_442_2, b.skill_442_2 { background-position: -1440px -60px}
+div.spec_main .spec_80 .spec_442_3, b.skill_442_3 { background-position: -1440px -120px}
+div.spec_main .spec_80 .spec_442_0, b.skill_442_0 { background-position: -1440px -180px}
+
+div.spec_main .spec_80 .spec_451_1, b.skill_451_1 { background-position: -1920px 0px}
+div.spec_main .spec_80 .spec_451_2, b.skill_451_2 { background-position: -1920px -60px}
+div.spec_main .spec_80 .spec_451_3, b.skill_451_3 { background-position: -1920px -120px}
+div.spec_main .spec_80 .spec_451_0, b.skill_451_0 { background-position: -1920px -180px}
+
+div.spec_main .spec_80 .spec_453_1, b.skill_453_1 { background-position: -1860px 0px}
+div.spec_main .spec_80 .spec_453_2, b.skill_453_2 { background-position: -1860px -60px}
+div.spec_main .spec_80 .spec_453_3, b.skill_453_3 { background-position: -1860px -120px}
+div.spec_main .spec_80 .spec_453_0, b.skill_453_0 { background-position: -1860px -180px}
+
+div.spec_main .spec_80 .spec_456_1, b.skill_456_1 { background-position: -1980px 0px}
+div.spec_main .spec_80 .spec_456_2, b.skill_456_2 { background-position: -1980px -60px}
+div.spec_main .spec_80 .spec_456_3, b.skill_456_3 { background-position: -1980px -120px}
+div.spec_main .spec_80 .spec_456_0, b.skill_456_0 { background-position: -1980px -180px}
+
+
+
+
+b.skill_501_1 {	background-image: url(/images/m/class/flying/fpets_talents.jpg); background-position: 0px 0px;	}
+b.skill_502_1 {	background-image: url(/images/m/class/flying/fpets_talents.jpg); background-position: -60px 0px;	}
+b.skill_503_1 {	background-image: url(/images/m/class/flying/fpets_talents.jpg); background-position: -120px 0px;	}
+b.skill_504_1 {	background-image: url(/images/m/class/flying/fpets_talents.jpg); background-position: -180px 0px;	}
+b.skill_505_1 {	background-image: url(/images/m/class/flying/fpets_talents.jpg); background-position: -240px 0px;	}
+b.skill_506_1 {	background-image: url(/images/m/class/flying/fpets_talents.jpg); background-position: -300px 0px;	}
+b.skill_507_1 {	background-image: url(/images/m/class/flying/fpets_talents.jpg); background-position: -360px 0px;	}
+b.skill_508_1 {	background-image: url(/images/m/class/flying/fpets_talents.jpg); background-position: -420px 0px;	}
+
+b.skill_501_1s {	background-image: url(/images/m/class/flying/menu_fpets_01.png); width: 30px; height: 30px; display:block; background-position: -150px -190px;	}
+b.skill_502_1s {	background-image: url(/images/m/class/flying/menu_fpets_01.png); width: 30px; height: 30px; display:block;background-position: -60px 0px; background-position: -180px -190px;	}
+b.skill_503_1s {	background-image: url(/images/m/class/flying/menu_fpets_01.png); width: 30px; height: 30px; display:block; background-position: -120px 0px; background-position: -210px -190px;	}
+b.skill_504_1s {	background-image: url(/images/m/class/flying/menu_fpets_01.png); width: 30px; height: 30px; display:block;background-position: -180px 0px; background-position: -240px -190px;	}
+b.skill_505_1s {	background-image: url(/images/m/class/flying/menu_fpets_01.png); width: 30px; height: 30px; display:block;background-position: -240px 0px; background-position: -150px -220px;	}
+b.skill_506_1s {	background-image: url(/images/m/class/flying/menu_fpets_01.png); width: 30px; height: 30px; display:block;background-position: -300px 0px; background-position: -180px -220px;	}
+b.skill_507_1s {	background-image: url(/images/m/class/flying/menu_fpets_01.png); width: 30px; height: 30px; display:block;background-position: -300px 0px; background-position: -210px -220px;	}
+b.skill_508_1s {	background-image: url(/images/m/class/flying/menu_fpets_01.png); width: 30px; height: 30px; display:block;background-position: -300px 0px; background-position: -240px -220px;	}
+
+
+b[class*=skill_541]	{ background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -720px } 
+b.skill_541_0 { background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -780px; }
+b[class*=skill_542]	{ background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -720px } 
+b.skill_542_0 { background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -780px; }
+b[class*=skill_543]	{ background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -720px } 
+b.skill_543_0 { background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -780px; }
+b[class*=skill_544]	{ background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -720px } 
+b.skill_544_0 { background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -780px; }
+b[class*=skill_545]	{ background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -720px } 
+b.skill_545_0 { background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -780px; }
+b[class*=skill_546]	{ background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -720px } 
+b.skill_546_0 { background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -780px; }
+b[class*=skill_547]	{ background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -720px } 
+b.skill_547_0 { background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -780px; }
+b[class*=skill_548]	{ background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -720px } 
+b.skill_548_0 { background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -780px; }
+
+.skills.empty {
+    background-image: none;
+    background-color: #dac9ab;
+}
+
+.spec_unactive {
+    background-image: url("/images/packs/unactive_bg.png");
+    position: absolute;
+    width: 63px;
+    height: 63px;
+}

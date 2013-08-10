@@ -14,6 +14,7 @@ using System.Media;
 using System.Diagnostics;               // For prcesss related information
 using System.Runtime.InteropServices;   // For DLL importing 
 using System.Windows.Forms;
+using Simple_Bot;
 
 namespace Simple_Bot
 {
@@ -6693,6 +6694,16 @@ namespace Simple_Bot
             //Close Healing form
             driver.FindElement(By.CssSelector(".box_x_button")).Click();
             SmallDelays();
+        }
+
+        public void SmithyWork()
+        {
+            Smithy.driver = driver;
+            Smithy.FirstInit();
+            Smithy.InitMeltingField();
+            Smithy.Click12Cell();
+            Smithy.Click25Cell();
+            
         }
     }
 }

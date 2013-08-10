@@ -1,0 +1,3011 @@
+function doc(id){
+	return document.getElementById(id);
+}
+function loadCss(url){
+	$("head").append("<link>");
+	css = $("head").children(":last");
+	css.attr({
+		rel:  "stylesheet",
+		type: "text/css",
+		href: url
+	});
+
+}
+
+function showBox(id){
+	var body	= doc('b_'+id);
+	var title	= doc('t_'+id);
+
+	var setShow	= 0;
+	if (body.className.search('hidden')>=0) { // object is hidden
+		body.className	= body.className.replace('hidden',	'shown');
+		title.className	= title.className.replace('hidden',	'shown');
+		setShow	= 1;
+	}else{
+		body.className	= body.className.replace('shown',	'hidden');
+		title.className	= title.className.replace('shown',	'hidden');
+		setShow	= 0;
+	}
+	
+	if (typeof toggle_arrows_5 == 'function' && id == 'help_84') {
+		toggle_arrows_5();
+	} else {
+		if (typeof arrows != 'undefined' && arrows !== null)
+			arrows.redraw(true);
+	}
+
+	$.post('ajax.php?m=show',	{element: id, value: setShow});
+}
+
+function flipShowItem(item_1_name,item_2_name,image_name,image_1_url,image_2_url,toShow){
+	var item_1	= doc(item_1_name);
+	var item_2	= doc(item_2_name);
+	var image	= doc(image_name);
+
+
+	if (item_1==undefined || item_2==undefined || image==undefined)
+		return 0;
+
+	var setShow	= 0;
+	if (item_1.className.search('hidden')>=0) { // object is hidden
+		item_1.className	= item_1.className.replace('hidden',	'');
+		item_2.className	= item_2.className  + ' hidden' ;
+		setShow	= 1;
+		image.src		= image_1_url;
+	}else{
+		item_2.className	= item_2.className.replace('hidden',	'');
+		item_1.className	= item_1.className  + ' hidden' ;
+
+		image.src		= image_2_url;
+		setShow	= 2;
+	}
+
+	return setShow;
+}
+
+function doDivLoad(url,	divElement){
+	$("#"+divElement).load(url.toString());
+}
+
+
+
+function setBoxShown(id,state){
+	$.post('ajax.php?m=show',	{element: id, value: state}, function() {
+	    if (typeof toggle_arrows_1 == 'function') {
+		toggle_arrows_1(state == 2);
+	    }
+	});
+}
+
+
+
+function change(item, direction, max){
+	var value	= $('#'+item).val();
+	if (value==undefined)
+		return;
+
+	var newValue	= parseInt(value)+direction;
+
+
+	if (direction <0 && newValue<=max	)
+		newValue	= max;
+	else if (direction >0 && newValue>=max)
+		newValue	= max;
+
+	$('#'+item).val(newValue);
+}
+/** Попапы */
+var is_opera =  (navigator.userAgent.indexOf("Opera") > -1) ? true : false;
+var is_ie = (navigator.userAgent.indexOf("MSIE") > -1) ? true : false;
+var is_moz    = ( (navigator.product == 'Gecko')  && (!is_opera) );
+var is_ipad =  (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i))
+
+var tableStyle=is_ie & !is_opera ? 'block' : 'table';
+var tableItemStyle=is_ie & !is_opera ? 'block' : 'table-cell';
+var tableRowStyle=is_ie & !is_opera ? 'block' : 'table-row';
+
+var tooltip_id=null;
+
+
+function doItem(item_id,vars_str,e,object){
+	if (popups==undefined)
+		return;
+
+	var vars	= {};
+
+	if (vars_str!='') {
+
+		var parts	= vars_str.substring(0,vars_str.length-1).split("|;");
+		for(var n in parts){
+			if (typeof parts[n] == 'function')
+				continue;
+			var part	= parts[n].split(':|',2);
+
+			if (part[1].substring(0,1)=='-')
+				part[1]	= part[1].substring(1,part[1].length-1);
+
+			vars[part[0]]	 = part[1];
+		}
+	}
+	
+	object.title	= '';
+	
+	var item	= popups['item_'+item_id];
+
+	if (item==undefined)
+		return;
+
+	var subject	= item[0];
+	var image	= item[1];
+	var	body	= item[2];
+
+	if (vars['count']>1)
+		body		+= "\n"+getLang('popup_count',vars['count']);
+	if (vars['sells']!=undefined)
+		body		+= "\n"+getLang('popup_sells_left',vars['sells']);
+
+	if (vars['body']!=undefined) {
+		body	= vars['body'];
+		if (vars['sells']!=undefined)
+			body		+= "\n\n"+getLang('popup_sells_left',vars['sells']);
+	}	else
+		body	= doItemBodyParse(body, vars);
+
+
+	if (vars['body_add']!=undefined)
+		body	+= "\n"+ vars['body_add'];
+
+
+
+
+	if (vars['level']!=undefined) {
+		subject		+= getLang('popup_level',parseInt(vars['level'])+1);
+
+
+		if (vars['chance']>0 ) {
+			if (item_id == 633)
+				subject	+= getLang('popup_addon',vars['chance']);
+			else
+				subject	+= getLang('popup_chance',vars['chance']);
+		}
+
+	}
+
+	if (vars['subject']!=undefined)
+		subject	= vars['subject'];
+	else if (vars['subject_add']!=undefined){
+		if (vars['subject_add'].indexOf('[NAME]')!==-1) {
+			subject	= vars['subject_add'].replace('[NAME]',subject);
+		}else{
+			subject	+= vars['subject_add'];
+		}
+
+	}
+
+	if (vars['subject_pre']!=undefined){
+		subject	= vars['subject_pre'] + subject;
+	}
+
+
+
+
+	body	= body.replace(/\[GOLD\]/g, 	getLang('money_1'));
+	body	= body.replace(/\[GREEN\]/g, 	getLang('money_3'));
+	body	= body.replace(/\[CRYST\]/g, 	getLang('money_2'));
+	body	= body.replace(/\[FISH\]/g, 	getLang('money_fish'));
+
+	body	= body.replace('{l1}',	vars['level']);
+	if (vars['level']==undefined || parseInt(vars['level'])==0) {
+
+		body	= body.replace(/\[L\].*\[\/L\]\\n/,	'');
+	}else{
+
+		body	= body.replace(/\[L\](.*)\[\/L\]/,	'$1');
+	}
+
+	//alert(string);
+
+
+	var img = "<img src='"+IMG_URL+"/images/" + image + "' alt='' class='item2'>";
+
+	if (image.indexOf(' ')>0)
+		img	= image;
+
+	if (image==".jpg")
+		img = "";
+
+
+	if (item_id=='text') {
+		var html	 =	"<table class='popup_item'><tr><th colspan='2'>"+subject+"</th></tr>";
+		html		+=  "<tr><td class='text'>" + body;
+		html		+=	"</table>";
+
+	}else{
+
+		var html	 =	"<table class='popup_item'><tr><th colspan='2'>"+subject+"</th></tr>";
+		html		+=  "<tr><td class='image'>"+img+"<td>" + body;
+		html		+=	"</table>";
+	}
+	//alert(html);
+	var tooltip	= getTooltip('tooltip2');
+	doPopup (html,e,object,tooltip,0,0,500);
+
+
+}
+
+/**
+ *
+ * @access public
+ * @return void
+ **/
+/*function doText(text,e,object){
+
+	//alert(html);
+	var tooltip	= getTooltip('tooltip2');
+	doPopup (text,e,object,tooltip,0,0,500);
+}*/
+
+/**
+ *
+ * @access public
+ * @return void
+ **/
+function doItemBodyParse(body,vars){
+
+	(function()
+	{
+		var ifs = body.match(/{if\s+.+?}(.+?){\/if}\\n?/g);
+		
+		if( ifs == null )
+			return;
+
+		for( var i in ifs )
+		{
+			if (i!=parseInt(i))
+				continue;
+
+
+			var param = ifs[i].match(/[a-zA-Z-_\d]+(?=\s*(<=|>=|=|==|<|>|<>|!=))/g);
+			if ('level' == param[0] && !vars[param[0]]) {
+				vars[param[0]]	= '0';
+			}
+			if( param == null || !vars[param[0]] )
+			{
+				body = body.replace(ifs[i], '');
+				continue;
+			}
+
+			var toEval = ifs[i].match(/[a-zA-Z-_\d]+\s*(<=|>=|=|==|<|>|<>|!=)\s*\d+/g);
+			if( toEval == null || !toEval[0] )
+			{
+				body = body.replace(ifs[i], '');
+				continue;
+			}
+
+			var condBody = ifs[i].match(/(?:}\\n).+?(?:{\/)/g);
+			condBody = condBody != null ? condBody[0].replace(/^}\\n|{\//g, '') : "";
+
+			toEval = toEval[0].replace(param[0], vars[param[0]]);
+
+			body = body.replace(ifs[i], !eval(toEval) ? '' : condBody);
+		}
+	})();
+
+	(function()
+	{
+		var repVars = body.match(/{[a-zA-Z-_\d]+}/g);
+		if( repVars == null )
+			return;
+
+		for( var n in repVars )
+		{
+			if (n!=parseInt(n))
+				continue;
+
+
+			var repVarParsed = repVars[n].replace(/{|}/g, '');
+			if( !vars[repVarParsed] )
+				continue;
+
+			var regex = new RegExp(repVars[n], 'g');
+			body = body.replace(regex, vars[repVarParsed]);
+		}
+	})();
+
+
+	return body;
+}
+
+function getTooltip(id){
+	var tooltip = doc(id);
+
+	if (tooltip == undefined) {
+		$("body").append("<div class='shadow9' style='display:none' id="+id+">");
+		 tooltip = doc(id);
+
+	}
+	return tooltip;
+
+}
+
+function getLang(key, value,value2){
+	var text	= texts[key];
+	if (text==undefined)
+		return text;
+
+	text	= text.replace("\\1", value);
+	text	= text.replace("\\2", value2);
+
+	return text;
+}
+function doPopupLarge(url){
+	showBoxLink(url,{ width: 900,closeOnEscape:false });
+	return false;
+}
+function doPopup (string,e,object,tooltip,offX,offY,delay){
+	if (offX==undefined)
+		offX=0;
+	if (offY==undefined)
+		offY=0;
+	if (delay==undefined)
+		delay=100;
+
+	var tooltip_width=360;
+	clearTimeout(tooltip_id);
+
+	if (tooltip==undefined){
+		tooltip = document.getElementById('tooltip');
+
+	}
+
+
+	string	=	string.replace(/-#39;/g,	"'"		);
+
+	string	=	string.replace(/-#38;/g,	"\""		);
+	string	=	string.replace(/\\n/g,	"\n"	);
+	string	=	string.replace(/\n/g,	"<br>"	);
+
+	if (string=='')
+		return;
+
+	tooltip.innerHTML		= string;
+	tooltip.style.display	= "none";
+	tooltip.style.position	= "absolute";
+
+	if (object.onmouseout==undefined || object.onmouseout.toString().indexOf('hide_tooltip')==-1) {
+		object.onmouseout=function () {hide_tooltip();}
+	}
+
+	object.alt	= '';
+	
+	x=e.pageX || event.clientX;
+	y=e.pageY || event.clientY;
+
+	x+=offX;
+	y+=offY;
+	
+	if (is_ie) {
+	    if (getInternetExplorerVersion() < 9) {
+		y	+=document.documentElement.scrollTop+document.body.scrollTop;
+	    }
+	}
+	
+	if (is_ipad) {
+		y	+=60;
+	}
+	
+	body_width=$(window).width();
+	
+	if(body_width < x+tooltip_width)
+	    x = Math.min(x, body_width-tooltip_width-20+document.documentElement.scrollLeft+document.body.scrollLeft);
+
+	tooltip_id=setTimeout("show_tooltip2("+x+","+y+",'"+tooltip.id+"')",delay);
+}
+
+function show_tooltip2(x,y,obj_id) {
+	var tooltip = doc(obj_id);
+	if (tooltip==undefined)
+		return;
+	
+	tooltip.style.left=x+"px";
+	tooltip.style.top=(y+10)+"px";
+	if (is_ipad) {
+		tooltip.style.top=(y+60)+"px";
+	}
+	tooltip.style.display='block';
+}
+function hide_tooltip() {
+	clearTimeout(tooltip_id);
+	if (doc('tooltip'))
+		doc('tooltip').style.display='none';
+
+	if (doc('tooltip2'))
+		doc('tooltip2').style.display='none';
+}
+
+/** Эффекты дизайна */
+
+// TODO: remove ?
+function doImageHover(id,doHover){
+	if (doHover==undefined)
+		doHover=true;
+
+	var newImage	= doc('img'+id).src;
+
+	newImage	= (doHover)	? newImage.replace('_p.','_a.') : newImage.replace('_a.','_p.');
+
+	doc('img'+id).src	=	newImage;
+}
+
+function doHover(id){
+	$('#hover_'+id).toggleClass( 'hover_active' )
+}
+
+
+/** Timers */
+
+var mTitle 		= document.title;
+
+var TIMER_DIFF          = 0;
+var timerInterval	= 0;
+/**
+ *
+ * @access public
+ * @return void
+ **/
+function startTimers(){
+
+	/** Вычисляем - насколько локальное время отличается от времени сервера */
+
+	var now = new Date();
+
+	TIMER_DIFF = Math.round(now.getTime()/1000)-TIME;
+
+	var server	= new Date(TIME*1000);
+	var text	 = "ST: "+ TIME + "\n";
+	text		+= "MT: "+ Math.round(now.getTime()/1000) + "\n";
+	text		+= "TD: "+ TIMER_DIFF + "\n";
+	text		+= "CLIENT: "+ now + "\n";
+	text		+= "SERVER: "+ server + "\n";
+
+	timerInterval	=		setInterval('doTimers();',400);
+
+	// обновление ключевых параметров
+	setInterval('updateInfo();', 60000 * 5);
+
+}
+/**
+ *
+ * @access public
+ * @return void
+ **/
+function doTimers(){
+	var titleSet	= false;
+	$('.js_timer').each(function(index){
+		var timer	=  $(this).attr('timer');
+		var parts	= timer.split('|');
+
+		var temp	= titleSet	? false : parts[1]==1;
+
+		doTimer($(this),parts[0],temp,parts[2]);
+		if (temp)
+			titleSet	= true;
+
+	});
+}
+
+
+/**
+ *
+ * @access public
+ * @return void
+ **/
+function doTimer(obj,eventTime,setTitle,afterFunc){
+	var now 	= new Date();
+
+	if (afterFunc=='day') {
+
+		var left	= Math.round(now.getTime()/1000)	- TIMER_DIFF - eventTime;
+
+
+	//	alert('diff:'+TIMER_DIFF+' left:'+left);
+
+		//left	= Math.round(now.getTime()/1000)+ TIMER_DIFF-now.getTimezoneOffset()*60 	 ;
+	}else{
+		var left	= eventTime-Math.round(now.getTime()/1000)	+ TIMER_DIFF;
+	}
+
+
+
+	var time	= getLeftTime(left,afterFunc=='day');
+
+	obj.html(time);
+
+	if (left < 0) {
+		var addr	= document.location.toString();
+		if (addr.indexOf('?')==-1)
+			addr += '?';
+
+		addr += '&r2='+ Math.floor(Math.random()*1000);
+
+
+		$(obj).removeClass('js_timer');
+
+		if (!(afterFunc==undefined || afterFunc=='')) {
+			if (afterFunc.indexOf('(')>0) {
+				window.setTimeout(afterFunc,100);
+			}else{
+				window.setTimeout(afterFunc+"('"+obj.attr('id')+"')",100);
+
+			}
+
+//		}else if (!(divElement!=undefined || divElement!='')){
+
+//			doDivLoad(addr,divElement);
+		}else if (setTitle){
+
+			setTimeout("document.location='"+addr+"'",500);
+			clearInterval(timerInterval);
+		}
+
+	}
+
+	if (setTitle) {
+		if(inside_frame) {
+			self.parent.document.title	=' [' + time + ']    ' + mTitle;
+		}else document.title	=' [' + time + ']    ' + mTitle;
+	}
+		
+
+}
+
+/**
+ *
+ * @access public
+ * @return void
+ **/
+function getLeftTime(seconds,skipDays){
+	if (seconds<0)
+		return '00:00:00';
+
+	var hour	= Math.floor(seconds/3600);
+	if (hour>0)
+		seconds	-= hour*3600;
+	var days	= "";
+	if (hour>=24){
+		days	= Math.floor(hour/24);
+		hour	= hour%24;
+	}
+	var min	= Math.floor(seconds/60);
+	if (min>0)
+		seconds	-= min*60;
+
+	if(seconds<10)
+		seconds	= "0"+ seconds;
+
+	if(min<10)
+		min		= "0"+ min;
+
+	if(hour<10)
+		hour		= "0"+ hour;
+
+	if (days>0) {
+		days	= days + ":";
+	}
+	if (skipDays) {
+		days	= "";
+	}
+	return	 days+hour +":"+min +":"+ seconds;
+
+}
+
+
+/**
+ *
+ * @access public
+ * @return void
+ **/
+
+
+
+
+
+function loadPage(link,target){
+//	$("#"+target).load(link + ' #' + target + ' > *', function(data) {
+//		alert(data);
+//	});
+	var t	= $.get(link + ' #' + target + ' > *', function(data) {
+		$('#'+target).html(data);
+		if (typeof modifyGifts == 'function')
+			modifyGifts();
+        startAjaxForms();
+	});
+	return false;
+}
+
+
+function loadPageForm(obj){
+    var data = $(obj).serialize();
+
+    data += "&do_content_as_json=1";
+    // $.merge(data,{do_content_as_json: 1});
+    var url =$(obj).attr('action');
+    if(url=="")
+        url = document.location.href;
+
+    $.post(url, data)
+        .success(function(data){
+            data = $.parseJSON(data);
+            doUpdateInfo(data.update, {});
+            startAjaxForms();
+        })
+        .error(function(data){
+            bAlert(getLang('error_ajax_server_error'));
+        });
+
+    return false;
+}
+function loadPageByAjax(url){
+
+    $.getJSON(url, {do_content_as_json: 1})
+        .success(function (data) {
+            doUpdateInfo(data.update, {});
+            startAjaxForms();
+        })
+        .error(function () {
+            bAlert(getLang('error_ajax_server_error'));
+
+        });
+
+    return false;
+
+}
+function loadPageObjFull(obj,target){
+	$.get(obj.href,	function(answer){
+
+		$("#"+target).html(answer);
+	});
+	return false;
+}
+function loadPageObj(obj,target){
+
+	return loadPage(obj.href,target);
+}
+
+function loadPageSelect(obj,link,target){
+	link	= link	+ '&' + obj.name + '=' + obj.options[obj.selectedIndex].value;;
+	//alert(link);
+	return loadPage(link,target);
+}
+
+function ajaxPostAndReload(url, data, box, message) {
+	if (message == undefined || '' == message || confirm(message)) { 
+		$.post(url, data, function(data) { 
+			if (data.error != undefined) { 
+				alert(data.error);
+			} else {
+				loadPage(url, box)
+			};
+		}, 'json');
+	}
+
+	return false
+}
+
+function selectValue(id){
+	var obj = doc(id);
+	if (obj)
+		return obj.options[obj.selectedIndex].value;
+	return null;
+}
+
+function doSubmit(formName){
+	$('#'+formName).submit();
+}
+
+function SelectAll(obj){
+    obj.focus();
+    obj.select();
+}
+
+
+
+function getSortableString(item){
+	var result = $(item).sortable('toArray');
+	var save	= "";
+	for(var n in result) {
+		if (typeof result[n] == 'function')
+			continue;
+		save	+= result[n]+";";
+	}
+
+	return save;
+}
+
+
+function doSwitch(obj,className,item1,item2,saveset){
+
+	$('#'+obj).toggleClass(className);
+	$('#'+item1).toggle();
+	$('#'+item2).toggle();
+
+	if (saveset!=undefined && saveset!=null)
+		setBoxShown(saveset,'toggle');
+	
+	if (typeof toggle_arrows_1 == 'function') {
+		toggle_arrows_1();
+	}
+}
+
+function doSwitchDressingroom(obj){
+  
+	$('[id^=selector_' + ']').removeClass('selector_active');
+	$('#selector_' + obj ).addClass('selector_active');
+	
+	$('div [type^=div_]').hide();
+	$('div [type^=div_' + obj + ']').show();
+	
+	$('.dressingroom_header [id^=header_]').hide();
+	$('.dressingroom_header [id^=header_' + obj + ']').show();
+	
+	var val = 0;
+	
+	switch (obj) {
+	    case 'potions' :
+		val = 1;
+		break;
+	    case 'weapons' :
+		val = 2;
+		break;
+	    case 'artefacts' :
+		val = 3;
+		break;
+	    case 'pandora' :
+		val = 4;
+		break;
+	}
+
+	setBoxShown('acctab_77',val);
+}
+
+/*
+ * Ajax Pager 
+ */
+
+function ajaxPager(page,type,id){
+	
+	switch (type) {
+	case "stamps":
+		
+		$.get("ajax.php?m=stampsPage&page="+page+"&type="+id,	function(data){
+
+			$("#stampsPage"+id).html("");
+			$("#stampsPage"+id).html(data);
+		});				
+		
+		break;
+
+	default:"none";
+		break;
+	}
+	
+	
+}
+
+
+
+/**
+ *
+ * @access public
+ * @return void
+ **/
+function addItemInfoNew(){
+	$('.itemimg').not('[item-init]').each(function(index,img){
+		var sells	=  $(img).attr('sells');
+		var level	=  parseInt($(img).attr('level'))+1;
+		var magic	=  $(img).attr('magic');
+
+
+		var html	= "";
+		if (magic!=undefined && magic>0)
+			html += "<b class='magic'>"+magic+"</b>";
+
+		if (level > 1) {
+			html += "<b class='level'>"+level+"</b>";
+		}
+
+		var	cl	= $(img).hasClass('image2') || $(img).width()==180 ? ' large' : '';
+		var	WIDTH	= $(img).hasClass('image2') || $(img).width()==180 ?  178 : 58;
+
+
+		$(img).before(	"<span class='itemimg_info "+cl+"'>"+html+"</span>");
+		if (sells!=undefined) {
+
+			var width	= Math.floor(WIDTH*sells/10);
+			$(img).after(	"<span class='itemimg_info_sells "+cl+"'><b class='sells_"+sells+"' style='width:"+width+"px'></b></span>");
+		}else{
+			$(img).after(	"<span class='itemimg_info_sells_free'><b class='sells_1' style='width:0px'></b></span>");
+		}
+	}).attr('item-init', 1);
+	
+	$('.front_items .js_count').after(	"<span class='itemimg_info_sells_free'><b class='sells_1' style='width:0px'></b></span>");
+	$('.front_items .ico_free').after(	"<span class='itemimg_info_sells_free'><b class='sells_1' style='width:0px'></b></span>");
+	
+	addItemInfo();
+}
+function addItemInfo(inside, force, add_class){
+	var where	= '.js_count';
+	if (typeof inside != "undefined")
+		where = inside + ' > ' + where;
+
+	var force	= typeof force == 'undefined' ? false : Boolean(force);
+	
+	$(where).not('[item-init-new]').each(function(index,img){
+		var count	=  $(img).attr('count');
+
+		if (!force && count<2)
+			return true;
+
+
+		var	cl	= $(img).width()>60 ? 'large' : '';
+		var ac	= typeof add_class == 'undefined' ? '' : add_class;
+		$(img).before("<span class='count_amount "+cl+" "+ac+"'>"+count+"</span>");
+
+	}).attr('item-init-new', 1);
+}
+
+var dialogWidth = ['240', '400', '800'];
+
+function showMessage(text, width,isModal, height)
+{
+	var _isModal = typeof isModal == 'undefined' ? true : Boolean(isModal);
+	var _width = typeof width == 'undefined' ? 240 : Number(width);
+	var _height = typeof height == 'undefined' ? 'auto' : Number(height);
+	_width = $.inArray(_width, dialogWidth) > -1 ? 240 : _width;
+	
+	$('<div />', {
+		id: 'dialog',
+		html: text
+	}).dialog({
+		modal: _isModal,
+		resizable: false,
+		width: _width,
+		height: _height,
+		dialogClass: 'dialog-' + _width
+	}).after(
+		$('<div />', {
+			className: 'ui-dialog-content-footer'
+		})
+	);
+}
+
+function showMessageEx(text, config) {
+	if (typeof config == "undefined")
+		config = {};
+
+	var haveButtons	= config.buttons && !emptyObject(config.buttons);
+	var _isModal	= config.isModal ? Boolean(config.isModal) : true;
+	var _width		= config.width && $.inArray(config.width, dialogWidth)? Number(config.width) : (haveButtons) ? 400 :240;
+	var _height		= config.height ? Number(config.height) : haveButtons ? 150 : 'auto';
+	var onClose		= config.close ? config.close : function (event, ui) {$(this).remove();};
+
+	var d = $('<div />', {
+		id: 'dialog',
+		html: text
+	}).dialog({
+		modal: _isModal,
+		resizable: false,
+		width: _width,
+		height: _height,
+		dialogClass: 'dialog-' + _width,
+		buttons: config.buttons,
+		close: onClose
+	})
+	
+	if (!haveButtons) {
+		$(d).after(
+			$('<div />', {
+				className: 'ui-dialog-content-footer'
+			})
+		);
+	}
+	
+	return d;
+}
+
+/**
+ * Стандартная функция для подтверждения форм. В том числе созданных через {CMD}
+ * Первый параметр - текст. Второй - ссылка на DOM Объект, например this
+ *
+ * @param obj
+ * @return {Boolean}
+ */
+function doConfirmForm(text, formObj){
+    var config = {
+        onOk: function() {
+            formObj.submit();
+            return true;
+        }
+    };
+
+    showMessageExOkCancel(text, config);
+    return false;
+};
+
+function showMessageExOkCancel(text, config) {
+	form_id	= config.form_id ? config.form_id : '';
+	config.buttons	= [
+		{
+			text: config.ok_text ? config.ok_text : getLang('default_ok_text'),
+			click: function(event){
+				config.onOk ? config.onOk(event) : null;
+				$(this).dialog('close');
+				$(this).remove();
+				return true;
+			}
+		},
+		{
+			text: config.cancel_text ? config.cancel_text : getLang('default_cancel_text'),
+			click: function(event){
+				config.onCancel ? config.onCancel(event) : null;
+				$(this).dialog('close');
+				$(this).remove();
+				return true;
+			}
+		}
+	];
+	showMessageEx(text, config);
+}
+
+
+function showMessageExOk(text, config) {
+	config.buttons	= [
+		{
+			text: config.ok_text ? getLang(config.ok_text) : getLang('default_ok_text'),
+			click: function(event){
+				config.onOk ? config.onOk(event) : null;
+				$(this).dialog('close');
+				return true;
+			}
+		}
+	];
+	showMessageEx(text, config);
+}
+
+function showMessageExForm(text, config) {
+	form_id	= config.form_id ? config.form_id : '';
+	config.buttons	= [
+		{
+			text: config.ok_text ? cofig.ok_text : getLang('default_ok_text'),
+			click: function(){
+				$(this).find('form').submit();
+				return true;
+			}
+		},
+		{
+			text: config.cancel_text ? cofig.cancel_text : getLang('default_cancel_text'),
+			click: function(){
+				$(this).dialog('close');
+				return true;
+			}
+		}
+	];
+	showMessageEx(text, config);
+}
+
+function showBoxLink(link, config, id)
+{
+	var div = $( "<div />", {
+	    'css': {
+	    },
+	    'id': id || ''
+	});
+
+	var loadAndParse = function(data) {
+	    try {
+		    var tmp	= JSON.parse(data);
+		    data	= tmp.data.content || tmp.data;
+            if (tmp.update)
+                doUpdateInfo(tmp.update);
+        } catch(e) {
+            data	= data;
+        }
+        div.html(data).find("a[rel='ajax']").click( function(){
+            $.get($(this).attr('href'), function(html){
+                loadAndParse(html);
+            });
+
+            return false;
+        });
+
+	    if (typeof window['setDefaultMoney'] == 'function')
+		setDefaultMoney();
+	}
+
+	var local_config	= {
+	    id: 'dialog',
+	    width: 800,
+	    height: 700,
+	    modal: true,
+	    resizable: false
+	    //dialogClass: 'dialog-' + 800
+	};
+
+	for (t in config)
+		local_config[t]	= config[t];
+	
+	local_config.dialogClass	= 'dialog-' + local_config.width;
+
+	div.dialog(local_config).after(
+		$('<div />', {
+			className: 'ui-dialog-content-footer'
+		})
+	);
+
+	$.get(String(link), function(answer){
+		loadAndParse(answer);
+	});
+}
+
+
+
+/**
+ *
+ * @access public
+ * @return void
+ **/
+function hideRestart(){
+	$('.restart').hide();
+	$.post('ajax.php?m=restart');
+}
+
+function moreGifts(id,type){
+	$("#moreGifts DIV").load('ajax.php?m=gifts&id='+id+'&type='+type);
+
+}
+
+function startWordCounter (in_container, in_counter, in_max, text_key)
+{
+	var container = $('#'+in_container);
+	var counter = $('#'+in_counter);
+
+	container.keyup (function (){
+		var text = container.val ();
+		var result = text.match(/\n/g)
+		var len2=0;
+		if (result != null)
+			len2 = result.length;
+
+		var len = container.val ().length;
+		len = len + len2;
+		var str = getLang(text_key || 'global_word_counter')
+		str = str.replace('{cur}',len);
+		str = str.replace('{max}',in_max);
+
+		if (len > in_max)
+			counter.html("<BLINK style='color:#FF0000'>" + str + "</BLINK>");
+		else
+			counter.text(str);
+
+		//container.html (text);
+	});
+
+	container.trigger ('keyup');
+	
+	// перерисовка стрелок, полно перепозиционирования textareas
+	if (typeof arrows != 'undefined' && arrows != null)
+		arrows.redraw();
+}
+
+function moreMedals(id,type){
+	$("#medals_to_load").load('ajax.php?m=medals&id='+id+'&type='+type);
+
+}
+function moreOrdens(id,type){
+	$("#ordens_to_load").load('ajax.php?m=ordens&id='+id+'&type='+type);
+
+}
+function moreStamps(id,type){
+	$("#stamps_to_load").load('ajax.php?m=stamps&id='+id+'&type='+type, function() {
+		// для туториала
+		if (typeof toggle_arrows_8 == 'function')toggle_arrows_8();
+	});
+
+}
+
+function toggleMedals() {
+	$('#medals_hidden').toggle();
+}
+function toggleOrdens() {
+	$('#orderns_hidden').toggle();
+}
+function toggleStamps() {
+	$('#stamps_hidden').toggle();
+}
+
+
+/**
+ *
+ * @access public
+ * @return void
+ **/
+function doReload(){
+	location.reload();
+}
+
+function checkTitle() {
+	if(inside_frame) {
+		self.parent.document.title	= self.document.title;
+	}
+}
+
+function doDrinkEx(potion, player){
+	var player = typeof player == "undefined" ? true : Boolean(player);
+	var auto_drink	= $("#auto_drink").filter(':checked').val();
+	var button	= '#potion_td_'+potion + ' > a';
+	var href	= $(button).attr('href');
+	
+	$(button).removeAttr('href').addClass('cmd_blocked');
+	if (potion == 11) {
+	    $('#submitter').removeAttr('href').addClass('cmd_blocked').attr('disabled','disabled');
+	}
+
+	$.getJSON('ajax.php?m=drink&item='+potion+'&auto_drink='+auto_drink, function(data){
+		var to_load	= player ? '#player_message_to_load' : '#pet_message_to_load';
+		bOk(data.data);
+		
+		if (data.status == 'ok') {
+			var n = $('#potion_td_' + potion + '> img').attr('count');
+			$('#potion_td_' + potion + '> img').attr('count', parseInt(n)-1);
+			$('#potion_td_' + potion + '> span').html(n-1);
+		}
+		if (data.update != null)
+			doUpdateInfo(data.update);
+		if (potion != 11)
+			$(button).attr('href', href).removeClass('cmd_blocked');
+	});
+}
+
+function doChangeAutoDrink(type){
+	$.getJSON('ajax.php?m=auto_drink_'+type, function(data){
+		if (data.status == 'ok') {
+			if (data.data == 1)
+				$('#auto_drink').attr("checked", true);
+			else
+				$('#auto_drink').attr("checked", false);
+		}
+	});
+}
+
+$.fn.serializeForm = function()
+{
+    var data = {};
+    var url = this.attr("action");
+    var items = this.serializeArray();
+    $.each(items,function(i,item)
+    {
+        data[item['name']]=item['value'];
+    }
+    );
+    return data;
+}
+
+player_potions_counted = false;
+function doPotions() {
+	lAlert({
+		'title'		: getLang('items_player_potion_panel'),
+		'action'	: function() {lPopupRemove()},
+		'from_url': '/ajax.php?m=getpot&type=1'
+	});
+}
+
+pet_potions_counted = false;
+function doPetPotions() {
+	lAlert({
+		'title'		: getLang('items_pet_potion_panel'),
+		'action'	: function() {lPopupRemove()},
+		'from_url': '/ajax.php?m=getpot&type=2'
+	});
+}
+
+player_special_potions_counted = false;
+function doSpecialPotions() {
+    lConfirm({
+        'title'		: getLang('potion_name_11'),
+        'action'	: function() {
+            var r = $('#potion_11_form').serializeForm();
+            $.post($('#potion_11_form').attr('action'), r, function(data){
+                lPopupRemove();
+                window.location.reload();
+            });
+        },
+        'cancel'	: function() { return false; },
+        'action_title'	: getLang('cmd_drink'),
+        'from_url': '/ajax.php?m=getpot&type=3'
+    });
+}
+
+function doGrowPotion(block) {
+    lConfirm({
+        'title'		: getLang('potion_name_13'),
+        'action'	: function() {
+            var r = $('#potion_11_form').serializeForm();
+            $.post($('#potion_11_form').attr('action'), r, function(data){
+                lPopupRemove();
+                window.location.reload();
+            });
+        },
+        'cancel'	: function() { return false; },
+        'action_title'	: getLang('cmd_drink'),
+        'from_url': '/ajax.php?m=getpot&type=4',
+        'block': block
+    });
+}
+
+function doRumPotion(block) {
+    lConfirm({
+	    'title'		: getLang('popup_rum_select_title'),
+        'width'		: '475',
+        'from_url': '/ajax.php?m=change_avatar',
+        'action'	: function() {
+            var id = $('#pirate_selector .open').data('id');
+            if (id == undefined)
+                return;
+
+            lPopupRemove();
+            $.get("/ajax.php", {m:'change_avatar', num:id}, function(data){
+                if (data.status == 'ok') {
+                    bOk('', data.data);
+                    setTimeout(function(){ window.location.reload()}, 1000);
+                } else {
+                    bOk('', data.data);
+                }
+            }, 'json');
+        },
+        'cancel'	: function() { return false; },
+        'action_title'	: getLang('cmd_choose'),
+        'cancel_title'	: getLang('default_cancel_text'),
+        'open'		: function(popup) {
+            $('.pirate_avatar').click(function(){
+                $('.pirate_avatar').removeClass('open');
+                $(this).addClass('open');
+            });
+        }
+    });
+}
+
+function doMonsterPvePopup(){
+    showBoxLink('/monster.php?a=monsterpve', {
+        width: 400,
+        height: 427
+    });
+}
+
+function doBuyPotionEx(potion, player, buy_max) {
+	var player = typeof player == "undefined" ? true : Boolean(player);
+	var buy_max = typeof buy_max == "undefined" ? 0 : buy_max;
+	var form = '#form_potion_' + potion;
+	
+	if (buy_max == 0)
+		$('#field_buy_max_' + potion).attr('value', '0');
+	else
+		$('#field_buy_max_' + potion).attr('value', '1');
+
+	var button	= '#field_potion_' + potion + '_1';
+	$(button).removeAttr('href').addClass('cmd_blocked');
+	
+	$('#field_potion_' + potion + '_2').removeAttr('href').addClass('cmd_blocked');
+
+	$(form).submit();
+	return;
+}
+
+function prepareBuyPotionEx(potion, player) {
+	var player = typeof player == "undefined" ? true : Boolean(player);
+	var form = '#form_potion_'+potion;
+	
+	var button	= '#field_potion_' + potion + '_1';
+	var href = $(button).attr('href');
+	
+	var button2	= '#field_potion_' + potion + '_2';
+	var href2 = $(button2).attr('href');
+
+	$(form).submit(function(){
+		items = {};
+		items = $(form).serializeForm();
+		url = $(form).attr("action");
+
+		$.getJSON(url, items, function(data) {
+			var to_load	= player ? '#player_message_to_load' : '#pet_message_to_load';
+			
+			if (data.status == 'ok') {
+                bAlert({title:'', message: data.data.message});
+				var n = $('#potion_td_' + potion + '> img').attr('count');
+				$('#potion_td_' + potion + '> img').attr('count', parseInt(n) + parseInt(data.data.amount));
+				$('#potion_td_' + potion + '> span').html(parseInt(n) + parseInt(data.data.amount));
+			}else {
+                bAlert({title:'', message: data.data});
+			}
+			if (data.update != null)
+				doUpdateInfo(data.update);
+			
+			$(button).attr('href', href).removeClass('cmd_blocked');
+			$(button2).attr('href', href2).removeClass('cmd_blocked');
+		});
+		return false;
+	});
+}
+
+function initField(id) {
+	var id = '#square_' + id;
+	$(id + ' > a').click( function(){
+		var to = $(this).attr('href');
+		if (to != null)
+			$.getJSON(to, function(data) {
+				$('#where_to_load').html(data.data);
+				initField(id);
+				if (data.update != null)
+					doUpdateInfo(data.update);
+			});
+		return false;
+	});
+}
+
+function postMeSuare(id) {
+	var form = '#' + id + ' form[rel!="ignore"]';
+	$(form).find('input:submit').attr('onClick','return false;')
+	$(form).find('input:submit').attr('disabled','disabled').addClass('cmd_blocked');
+	$(form).submit( function(){
+		items = {};
+		items = $(form).serializeForm();
+			$.getJSON('/school.php?m=square', items, function(data) {
+			$('#where_to_load').html(data.data);
+			initField(id);
+			if (data.update != null)
+				doUpdateInfo(data.update);
+		});
+		return false;
+	});
+	$(form).submit();
+}
+
+
+function updateInfo(config) {
+	if (typeof config == "undefined")
+		config	= {};
+	else config.config = 1;
+	
+	$.getJSON('/ajax.php?m=info', config, function(data) {
+		if (data.status == 'ok') {
+			doUpdateInfo(data.update, config);
+		}
+	});
+}
+
+function emptyObject(obj) {
+    for (var i in obj) {
+        return false;
+    }
+    return true;
+}
+
+
+function doUpdateInfo(data, config) {
+	var t	= emptyObject(config);
+	$.each(data, function(i, item){
+		if (item.data == '' || (!t && config[i.toString()] == null))
+			return;
+		
+		switch(i) {
+			case 'gold':
+				$('#gold>b').html(item.data);
+				break;
+			case 'crystal':
+				$('#crystal>b').html(item.data);
+				break;
+			case 'fish':
+				$('#fish>b').html(item.data);
+				break;
+			case 'green':
+				$('#green>b').html(item.data);
+				break;
+			case 'shtab':
+				if (item.data > 0)
+					$('#m9').addClass('active').attr('href', 'shtab.php?m=defend');
+				else $('#m9').removeClass('active');
+				break;
+			case 'post':
+				if (item.data > 0)
+					$('#m2').addClass('active');
+				else $('#m2').removeClass('active');
+				break;
+			case 'panel':
+				$('#fast').remove();
+				$('.top_money').after(item.data);
+				break;
+			case 'top_money':
+				$('.top_money').html(item.data);
+				break;
+			case 'top_stats':
+				$('.top_stats').html(item.data);
+				break;
+			case 'coulonpack':
+				$('#coulons_bar').html(item.data);
+				addCoulonPack();
+				break;
+			case 'bg_alive_count':
+				$('#bg_alive_count').html(item.data);
+				addCoulonPack();
+				break;
+			case 'menu_work':
+
+				$('#rmenu1').replaceWith(item.data);
+				addCoulonPack();
+				break;
+			case 'accordion':
+				$('#accordion').accordion("destroy");
+				$('#accordion').html(item.data);
+				setAccordion();
+				$('#accordion').accordion("enable");
+				break;
+            case 'body':
+                $('#body').html(item.data);
+                break;
+			case 'adp':
+//				log(item.data);
+				if (typeof adpd == 'undefined')
+					break;
+				
+				adpd.addInfo(item.data);
+				break;
+			default:
+				break;
+		}
+	});
+	
+	if (typeof window['setDefaultMoney'] == 'function')
+			setDefaultMoney();
+}
+
+function initSellForms() {
+	$('form[id^="sell_"] :submit').click( function(data) {
+		var _form	= $(this).parent().attr('id');
+		showMessageEx(getLang('sell_item_text'),
+				{
+					buttons: [
+						{
+							text: getLang('default_sure_text'),
+							click: function(dat){
+							    t = $('#'+_form).closest('tr').prev().find('[name=ptype]:checked').val();
+							    if (t != undefined) {
+								var it = $('#'+_form).find('[name=ptype]');
+								if (it && it.length > 0) {
+								    $(it).val(t);
+								} else {
+								    $('#'+_form).append("<input type=hidden name=ptype value="+t+" />");
+								}
+							    }
+							    $('#'+_form).submit();
+							    return true;
+							}
+						},
+						{
+							text: getLang('default_notsure_text'),
+							click: function(){
+								$(this).dialog('close');
+							}
+						}
+					]
+				});
+		return false;
+	});
+}
+
+function initRemoveForms() {
+	$('form[id^="remove_"] :submit').click( function(data) {
+		var _form	= $(this).parent().attr('id');
+		showMessageEx(getLang('remove_item_text'),
+				{
+					buttons: [
+						{
+							text: getLang('default_sure_text'),
+							click: function(dat){
+								$('#'+_form).submit();
+								return true;
+							}
+						},
+						{
+							text: getLang('default_notsure_text'),
+							click: function(){
+								$(this).dialog('close');
+							}
+						}
+					]
+				});
+		return false;
+	});
+}
+
+function initMasterCoulons() {
+	$('#upgrade_select').change( function() {
+		var val = $('#upgrade_select :selected').val();
+		$('#upgrade_select_price > .price_num:first').html(prices[val]);
+		$('#upgrade_select_price > .price_num_green:first').html(prices2[val]);
+	});
+}
+
+// Выполнить асинхонный запрос HTTP с помощью объекта
+function ajax_json(oUrl,oDiv)
+{
+	jQuery('#'+ oDiv).html('');
+	jQuery.get(oUrl,function(data){
+		  // распарсили json ответ 
+		  obj = jQuery.parseJSON(data);
+		  jQuery('#'+ oDiv).html(obj.data);
+	});
+	return false;
+}
+function ajax_html(oUrl,oDiv)
+{
+	jQuery('#'+ oDiv).html('');
+	jQuery.get(oUrl,function(data){
+		  jQuery('#'+ oDiv).html(data);
+	});
+	return false;
+}
+
+// Выполнить асинхонный запрос HTTP с помощью объекта
+function ajax_form_json(id,oUrl,oDiv)
+{
+	if (oUrl =='') {oUrl = location.href;}
+	var val = jQuery('#' +id).serialize();
+	jQuery('#'+ oDiv).html('');
+	  jQuery.post(oUrl,val,function(data){
+		obj = jQuery.parseJSON(data);
+		jQuery('#'+ oDiv).html(obj.data);	  
+	});
+	return false;
+}
+function ajax_form_html(id,oUrl,oDiv)
+{
+
+	if (oUrl =='') {oUrl = location.href;}
+	var val = jQuery('#' +id).serialize();
+	jQuery('#'+ oDiv).html('');
+	  jQuery.post(oUrl,val,function(data){
+		jQuery('#'+ oDiv).html(data);	  
+	});
+	return false;
+}
+
+Encoder = {
+
+	// When encoding do we convert characters into html or numerical entities
+	EncodeType : "entity",  // entity OR numerical
+
+	isEmpty : function(val){
+		if(val){
+			return ((val===null) || val.length==0 || /^\s+$/.test(val));
+		}else{
+			return true;
+		}
+	},
+	// Convert HTML entities into numerical entities
+	HTML2Numerical : function(s){
+		var arr1 = new Array('&nbsp;','&iexcl;','&cent;','&pound;','&curren;','&yen;','&brvbar;','&sect;','&uml;','&copy;','&ordf;','&laquo;','&not;','&shy;','&reg;','&macr;','&deg;','&plusmn;','&sup2;','&sup3;','&acute;','&micro;','&para;','&middot;','&cedil;','&sup1;','&ordm;','&raquo;','&frac14;','&frac12;','&frac34;','&iquest;','&agrave;','&aacute;','&acirc;','&atilde;','&Auml;','&aring;','&aelig;','&ccedil;','&egrave;','&eacute;','&ecirc;','&euml;','&igrave;','&iacute;','&icirc;','&iuml;','&eth;','&ntilde;','&ograve;','&oacute;','&ocirc;','&otilde;','&Ouml;','&times;','&oslash;','&ugrave;','&uacute;','&ucirc;','&Uuml;','&yacute;','&thorn;','&szlig;','&agrave;','&aacute;','&acirc;','&atilde;','&auml;','&aring;','&aelig;','&ccedil;','&egrave;','&eacute;','&ecirc;','&euml;','&igrave;','&iacute;','&icirc;','&iuml;','&eth;','&ntilde;','&ograve;','&oacute;','&ocirc;','&otilde;','&ouml;','&divide;','&Oslash;','&ugrave;','&uacute;','&ucirc;','&uuml;','&yacute;','&thorn;','&yuml;','&quot;','&amp;','&lt;','&gt;','&oelig;','&oelig;','&scaron;','&scaron;','&yuml;','&circ;','&tilde;','&ensp;','&emsp;','&thinsp;','&zwnj;','&zwj;','&lrm;','&rlm;','&ndash;','&mdash;','&lsquo;','&rsquo;','&sbquo;','&ldquo;','&rdquo;','&bdquo;','&dagger;','&dagger;','&permil;','&lsaquo;','&rsaquo;','&euro;','&fnof;','&alpha;','&beta;','&gamma;','&delta;','&epsilon;','&zeta;','&eta;','&theta;','&iota;','&kappa;','&lambda;','&mu;','&nu;','&xi;','&omicron;','&pi;','&rho;','&sigma;','&tau;','&upsilon;','&phi;','&chi;','&psi;','&omega;','&alpha;','&beta;','&gamma;','&delta;','&epsilon;','&zeta;','&eta;','&theta;','&iota;','&kappa;','&lambda;','&mu;','&nu;','&xi;','&omicron;','&pi;','&rho;','&sigmaf;','&sigma;','&tau;','&upsilon;','&phi;','&chi;','&psi;','&omega;','&thetasym;','&upsih;','&piv;','&bull;','&hellip;','&prime;','&prime;','&oline;','&frasl;','&weierp;','&image;','&real;','&trade;','&alefsym;','&larr;','&uarr;','&rarr;','&darr;','&harr;','&crarr;','&larr;','&uarr;','&rarr;','&darr;','&harr;','&forall;','&part;','&exist;','&empty;','&nabla;','&isin;','&notin;','&ni;','&prod;','&sum;','&minus;','&lowast;','&radic;','&prop;','&infin;','&ang;','&and;','&or;','&cap;','&cup;','&int;','&there4;','&sim;','&cong;','&asymp;','&ne;','&equiv;','&le;','&ge;','&sub;','&sup;','&nsub;','&sube;','&supe;','&oplus;','&otimes;','&perp;','&sdot;','&lceil;','&rceil;','&lfloor;','&rfloor;','&lang;','&rang;','&loz;','&spades;','&clubs;','&hearts;','&diams;');
+		var arr2 = new Array('&#160;','&#161;','&#162;','&#163;','&#164;','&#165;','&#166;','&#167;','&#168;','&#169;','&#170;','&#171;','&#172;','&#173;','&#174;','&#175;','&#176;','&#177;','&#178;','&#179;','&#180;','&#181;','&#182;','&#183;','&#184;','&#185;','&#186;','&#187;','&#188;','&#189;','&#190;','&#191;','&#192;','&#193;','&#194;','&#195;','&#196;','&#197;','&#198;','&#199;','&#200;','&#201;','&#202;','&#203;','&#204;','&#205;','&#206;','&#207;','&#208;','&#209;','&#210;','&#211;','&#212;','&#213;','&#214;','&#215;','&#216;','&#217;','&#218;','&#219;','&#220;','&#221;','&#222;','&#223;','&#224;','&#225;','&#226;','&#227;','&#228;','&#229;','&#230;','&#231;','&#232;','&#233;','&#234;','&#235;','&#236;','&#237;','&#238;','&#239;','&#240;','&#241;','&#242;','&#243;','&#244;','&#245;','&#246;','&#247;','&#248;','&#249;','&#250;','&#251;','&#252;','&#253;','&#254;','&#255;','&#34;','&#38;','&#60;','&#62;','&#338;','&#339;','&#352;','&#353;','&#376;','&#710;','&#732;','&#8194;','&#8195;','&#8201;','&#8204;','&#8205;','&#8206;','&#8207;','&#8211;','&#8212;','&#8216;','&#8217;','&#8218;','&#8220;','&#8221;','&#8222;','&#8224;','&#8225;','&#8240;','&#8249;','&#8250;','&#8364;','&#402;','&#913;','&#914;','&#915;','&#916;','&#917;','&#918;','&#919;','&#920;','&#921;','&#922;','&#923;','&#924;','&#925;','&#926;','&#927;','&#928;','&#929;','&#931;','&#932;','&#933;','&#934;','&#935;','&#936;','&#937;','&#945;','&#946;','&#947;','&#948;','&#949;','&#950;','&#951;','&#952;','&#953;','&#954;','&#955;','&#956;','&#957;','&#958;','&#959;','&#960;','&#961;','&#962;','&#963;','&#964;','&#965;','&#966;','&#967;','&#968;','&#969;','&#977;','&#978;','&#982;','&#8226;','&#8230;','&#8242;','&#8243;','&#8254;','&#8260;','&#8472;','&#8465;','&#8476;','&#8482;','&#8501;','&#8592;','&#8593;','&#8594;','&#8595;','&#8596;','&#8629;','&#8656;','&#8657;','&#8658;','&#8659;','&#8660;','&#8704;','&#8706;','&#8707;','&#8709;','&#8711;','&#8712;','&#8713;','&#8715;','&#8719;','&#8721;','&#8722;','&#8727;','&#8730;','&#8733;','&#8734;','&#8736;','&#8743;','&#8744;','&#8745;','&#8746;','&#8747;','&#8756;','&#8764;','&#8773;','&#8776;','&#8800;','&#8801;','&#8804;','&#8805;','&#8834;','&#8835;','&#8836;','&#8838;','&#8839;','&#8853;','&#8855;','&#8869;','&#8901;','&#8968;','&#8969;','&#8970;','&#8971;','&#9001;','&#9002;','&#9674;','&#9824;','&#9827;','&#9829;','&#9830;');
+		return this.swapArrayVals(s,arr1,arr2);
+	},
+
+	// Convert Numerical entities into HTML entities
+	NumericalToHTML : function(s){
+		var arr1 = new Array('&#160;','&#161;','&#162;','&#163;','&#164;','&#165;','&#166;','&#167;','&#168;','&#169;','&#170;','&#171;','&#172;','&#173;','&#174;','&#175;','&#176;','&#177;','&#178;','&#179;','&#180;','&#181;','&#182;','&#183;','&#184;','&#185;','&#186;','&#187;','&#188;','&#189;','&#190;','&#191;','&#192;','&#193;','&#194;','&#195;','&#196;','&#197;','&#198;','&#199;','&#200;','&#201;','&#202;','&#203;','&#204;','&#205;','&#206;','&#207;','&#208;','&#209;','&#210;','&#211;','&#212;','&#213;','&#214;','&#215;','&#216;','&#217;','&#218;','&#219;','&#220;','&#221;','&#222;','&#223;','&#224;','&#225;','&#226;','&#227;','&#228;','&#229;','&#230;','&#231;','&#232;','&#233;','&#234;','&#235;','&#236;','&#237;','&#238;','&#239;','&#240;','&#241;','&#242;','&#243;','&#244;','&#245;','&#246;','&#247;','&#248;','&#249;','&#250;','&#251;','&#252;','&#253;','&#254;','&#255;','&#34;','&#38;','&#60;','&#62;','&#338;','&#339;','&#352;','&#353;','&#376;','&#710;','&#732;','&#8194;','&#8195;','&#8201;','&#8204;','&#8205;','&#8206;','&#8207;','&#8211;','&#8212;','&#8216;','&#8217;','&#8218;','&#8220;','&#8221;','&#8222;','&#8224;','&#8225;','&#8240;','&#8249;','&#8250;','&#8364;','&#402;','&#913;','&#914;','&#915;','&#916;','&#917;','&#918;','&#919;','&#920;','&#921;','&#922;','&#923;','&#924;','&#925;','&#926;','&#927;','&#928;','&#929;','&#931;','&#932;','&#933;','&#934;','&#935;','&#936;','&#937;','&#945;','&#946;','&#947;','&#948;','&#949;','&#950;','&#951;','&#952;','&#953;','&#954;','&#955;','&#956;','&#957;','&#958;','&#959;','&#960;','&#961;','&#962;','&#963;','&#964;','&#965;','&#966;','&#967;','&#968;','&#969;','&#977;','&#978;','&#982;','&#8226;','&#8230;','&#8242;','&#8243;','&#8254;','&#8260;','&#8472;','&#8465;','&#8476;','&#8482;','&#8501;','&#8592;','&#8593;','&#8594;','&#8595;','&#8596;','&#8629;','&#8656;','&#8657;','&#8658;','&#8659;','&#8660;','&#8704;','&#8706;','&#8707;','&#8709;','&#8711;','&#8712;','&#8713;','&#8715;','&#8719;','&#8721;','&#8722;','&#8727;','&#8730;','&#8733;','&#8734;','&#8736;','&#8743;','&#8744;','&#8745;','&#8746;','&#8747;','&#8756;','&#8764;','&#8773;','&#8776;','&#8800;','&#8801;','&#8804;','&#8805;','&#8834;','&#8835;','&#8836;','&#8838;','&#8839;','&#8853;','&#8855;','&#8869;','&#8901;','&#8968;','&#8969;','&#8970;','&#8971;','&#9001;','&#9002;','&#9674;','&#9824;','&#9827;','&#9829;','&#9830;');
+		var arr2 = new Array('&nbsp;','&iexcl;','&cent;','&pound;','&curren;','&yen;','&brvbar;','&sect;','&uml;','&copy;','&ordf;','&laquo;','&not;','&shy;','&reg;','&macr;','&deg;','&plusmn;','&sup2;','&sup3;','&acute;','&micro;','&para;','&middot;','&cedil;','&sup1;','&ordm;','&raquo;','&frac14;','&frac12;','&frac34;','&iquest;','&agrave;','&aacute;','&acirc;','&atilde;','&Auml;','&aring;','&aelig;','&ccedil;','&egrave;','&eacute;','&ecirc;','&euml;','&igrave;','&iacute;','&icirc;','&iuml;','&eth;','&ntilde;','&ograve;','&oacute;','&ocirc;','&otilde;','&Ouml;','&times;','&oslash;','&ugrave;','&uacute;','&ucirc;','&Uuml;','&yacute;','&thorn;','&szlig;','&agrave;','&aacute;','&acirc;','&atilde;','&auml;','&aring;','&aelig;','&ccedil;','&egrave;','&eacute;','&ecirc;','&euml;','&igrave;','&iacute;','&icirc;','&iuml;','&eth;','&ntilde;','&ograve;','&oacute;','&ocirc;','&otilde;','&ouml;','&divide;','&Oslash;','&ugrave;','&uacute;','&ucirc;','&uuml;','&yacute;','&thorn;','&yuml;','&quot;','&amp;','&lt;','&gt;','&oelig;','&oelig;','&scaron;','&scaron;','&yuml;','&circ;','&tilde;','&ensp;','&emsp;','&thinsp;','&zwnj;','&zwj;','&lrm;','&rlm;','&ndash;','&mdash;','&lsquo;','&rsquo;','&sbquo;','&ldquo;','&rdquo;','&bdquo;','&dagger;','&dagger;','&permil;','&lsaquo;','&rsaquo;','&euro;','&fnof;','&alpha;','&beta;','&gamma;','&delta;','&epsilon;','&zeta;','&eta;','&theta;','&iota;','&kappa;','&lambda;','&mu;','&nu;','&xi;','&omicron;','&pi;','&rho;','&sigma;','&tau;','&upsilon;','&phi;','&chi;','&psi;','&omega;','&alpha;','&beta;','&gamma;','&delta;','&epsilon;','&zeta;','&eta;','&theta;','&iota;','&kappa;','&lambda;','&mu;','&nu;','&xi;','&omicron;','&pi;','&rho;','&sigmaf;','&sigma;','&tau;','&upsilon;','&phi;','&chi;','&psi;','&omega;','&thetasym;','&upsih;','&piv;','&bull;','&hellip;','&prime;','&prime;','&oline;','&frasl;','&weierp;','&image;','&real;','&trade;','&alefsym;','&larr;','&uarr;','&rarr;','&darr;','&harr;','&crarr;','&larr;','&uarr;','&rarr;','&darr;','&harr;','&forall;','&part;','&exist;','&empty;','&nabla;','&isin;','&notin;','&ni;','&prod;','&sum;','&minus;','&lowast;','&radic;','&prop;','&infin;','&ang;','&and;','&or;','&cap;','&cup;','&int;','&there4;','&sim;','&cong;','&asymp;','&ne;','&equiv;','&le;','&ge;','&sub;','&sup;','&nsub;','&sube;','&supe;','&oplus;','&otimes;','&perp;','&sdot;','&lceil;','&rceil;','&lfloor;','&rfloor;','&lang;','&rang;','&loz;','&spades;','&clubs;','&hearts;','&diams;');
+		return this.swapArrayVals(s,arr1,arr2);
+	},
+
+
+	// Numerically encodes all unicode characters
+	numEncode : function(s){
+
+		if(this.isEmpty(s)) return "";
+
+		var e = "";
+		for (var i = 0; i < s.length; i++)
+		{
+			var c = s.charAt(i);
+			if (c < " " || c > "~")
+			{
+				c = "&#" + c.charCodeAt() + ";";
+			}
+			e += c;
+		}
+		return e;
+	},
+
+	// HTML Decode numerical and HTML entities back to original values
+	htmlDecode : function(s){
+
+		var c,m,d = s;
+
+		if(this.isEmpty(d)) return "";
+
+		// convert HTML entites back to numerical entites first
+		d = this.HTML2Numerical(d);
+
+		// look for numerical entities &#34;
+		arr=d.match(/&#[0-9]{1,5};/g);
+
+		// if no matches found in string then skip
+		if(arr!=null){
+			for(var x=0;x<arr.length;x++){
+				m = arr[x];
+				c = m.substring(2,m.length-1); //get numeric part which is refernce to unicode character
+				// if its a valid number we can decode
+				if(c >= -32768 && c <= 65535){
+					// decode every single match within string
+					d = d.replace(m, String.fromCharCode(c));
+				}else{
+					d = d.replace(m, ""); //invalid so replace with nada
+				}
+			}
+		}
+
+		return d;
+	},
+
+	// encode an input string into either numerical or HTML entities
+	htmlEncode : function(s,dbl){
+
+		if(this.isEmpty(s)) return "";
+
+		// do we allow double encoding? E.g will &amp; be turned into &amp;amp;
+		dbl = dbl || false; //default to prevent double encoding
+
+		// if allowing double encoding we do ampersands first
+		if(dbl){
+			if(this.EncodeType=="numerical"){
+				s = s.replace(/&/g, "&#38;");
+			}else{
+				s = s.replace(/&/g, "&amp;");
+			}
+		}
+
+		// convert the xss chars to numerical entities ' " < >
+		s = this.XSSEncode(s,false);
+
+		if(this.EncodeType=="numerical" || !dbl){
+			// Now call function that will convert any HTML entities to numerical codes
+			s = this.HTML2Numerical(s);
+		}
+
+		// Now encode all chars above 127 e.g unicode
+		s = this.numEncode(s);
+
+		// now we know anything that needs to be encoded has been converted to numerical entities we
+		// can encode any ampersands & that are not part of encoded entities
+		// to handle the fact that I need to do a negative check and handle multiple ampersands &&&
+		// I am going to use a placeholder
+
+		// if we don't want double encoded entities we ignore the & in existing entities
+		if(!dbl){
+			s = s.replace(/&#/g,"##AMPHASH##");
+
+			if(this.EncodeType=="numerical"){
+				s = s.replace(/&/g, "&#38;");
+			}else{
+				s = s.replace(/&/g, "&amp;");
+			}
+
+			s = s.replace(/##AMPHASH##/g,"&#");
+		}
+
+		// replace any malformed entities
+		s = s.replace(/&#\d*([^\d;]|$)/g, "$1");
+
+		if(!dbl){
+			// safety check to correct any double encoded &amp;
+			s = this.correctEncoding(s);
+		}
+
+		// now do we need to convert our numerical encoded string into entities
+		if(this.EncodeType=="entity"){
+			s = this.NumericalToHTML(s);
+		}
+
+		return s;
+	},
+
+	XSSEncode : function(s,en){
+		if(!this.isEmpty(s)){
+			en = en || true;
+
+			if(en){
+				s = s.replace(/\'/g,"&#39;");
+				s = s.replace(/\"/g,"&quot;");
+				s = s.replace(/</g,"&lt;");
+				s = s.replace(/>/g,"&gt;");
+			}else{
+				s = s.replace(/\'/g,"&#39;");
+				s = s.replace(/\"/g,"&#34;");
+				s = s.replace(/</g,"&#60;");
+				s = s.replace(/>/g,"&#62;");
+			}
+			return s;
+		}else{
+			return "";
+		}
+	},
+
+	hasEncoded : function(s){
+		if(/&#[0-9]{1,5};/g.test(s)){
+			return true;
+		}else if(/&[A-Z]{2,6};/gi.test(s)){
+			return true;
+		}else{
+			return false;
+		}
+	},
+
+	stripUnicode : function(s){
+		return s.replace(/[^\x20-\x7E]/g,"");
+
+	},
+
+	correctEncoding : function(s){
+		return s.replace(/(&amp;)(amp;)+/,"$1");
+	},
+
+
+	swapArrayVals : function(s,arr1,arr2){
+		if(this.isEmpty(s)) return "";
+		var re;
+		if(arr1 && arr2){
+			if(arr1.length == arr2.length){
+				for(var x=0,i=arr1.length;x<i;x++){
+					re = new RegExp(arr1[x], 'g');
+					s = s.replace(re,arr2[x]);
+				}
+			}
+		}
+		return s;
+	},
+
+	inArray : function( item, arr ) {
+		for ( var i = 0, x = arr.length; i < x; i++ ){
+			if ( arr[i] === item ){
+				return i;
+			}
+		}
+		return -1;
+	}
+
+}
+
+function afterCatcher() {
+	window.location.reload();
+}
+
+function log(msg) {
+	if (typeof console == 'undefined')
+		return;
+	console.log(msg);
+}
+
+
+function addDisableOnForms() {
+	$('form').live('submit', function(){
+		 $(this).find('input:submit').attr('disabled','disabled').addClass('cmd_blocked');
+		 this.submit();
+		 return false;
+	 });
+}
+
+/** Функция выводит сплывающую сообщение в битве */
+var js_message = '';
+var js_message_timer = 0;
+function show_js_message(message) {
+	message = message || js_message;
+	$("#js_message").hide();
+	if (message.length>0) {
+		var m_top	= parseInt($("#js_message").css('top'));
+		$("#js_message").show().stop().animate({top: m_top-60,opacity: 1}, 0).hide();
+		$("#js_message").bind('click',function() {$(this).stop().animate({opacity: 0}, 500)});
+	
+		$("#js_message").html(message).stop().show().animate({top: m_top}, 700, "easeOutBounce");
+
+		if (js_message_timer == 0) {
+		js_message_timer = setTimeout(function() {
+			$("#js_message").stop().animate({opacity: 0}, 1500);
+			js_message_timer = 0;
+			},4000);
+		}
+	}
+}
+
+/** Отображает popup на синеньких кружочках с "I" */
+function bind_popup() {
+	var popup_path = ".blue_popup, .gray_popup, .spopup";
+
+	if(popup_path){
+		var popups = $(popup_path);
+		popups.each(function(i){
+			var text_id = $(popups[i]).attr('rel');
+			var txt = blue_popups[text_id];
+			
+			$(popups[i]).mouseenter(function(){
+				TOOLTIP.text(popups[i], txt);
+			});
+		});
+			}
+}
+
+function mt_rand(m,n) {
+	return Math.floor( Math.random( ) * (n - m + 1) ) + m
+}
+
+function in_array(needle, haystack, strict) {	// Checks if a value exists in an array
+	// 
+	// +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+
+	var found = false, key, strict = !!strict;
+
+	for (key in haystack) {
+		if ((strict && haystack[key] === needle) || (!strict && haystack[key] == needle)) {
+			found = true;
+			break;
+		}
+	}
+
+	return found;
+}
+
+/** popup перекрывающий все черным фоном и выводящий красивый свиток*/
+function gPopup() {
+	var html = $('#gPopup_overlay').html();
+	log(html);
+	if (html=='' || html == null) {
+		var txt = "<div class='' id='gPopup_overlay'></div>";
+		$('body').append(txt);
+		$('#gPopup_overlay').css({"opacity":0.5}).show();
+		
+		var txt_popup = '\
+<div>\n\
+	<div id="cboxContent" style="float: left; width: 830px; height: 680px;">\n\
+			<div id="cboxLoadedContent" style="display: block; width: 830px; overflow: auto; height: 680px;"></div>\n\
+			<div id="cboxLoadingOverlay" class="" style="height: 680px; display: none;"></div>\n\
+			<div id="cboxLoadingGraphic" class="" style="height: 680px; display: none;"></div>\n\
+			<div id="cboxTitle" class="" style="display: block;"></div>\n\
+			<div id="cboxCurrent" class="" style="display: block;"></div>\n\
+			<div id="cboxNext" class="" style="display: block;">next</div>\n\
+			<div id="cboxPrevious" class="" style="display: block;">previous</div>\n\
+			<div id="cboxSlideshow" class="" style="display: none;"></div>\n\
+			<div id="cboxClose" class="">close</div>\n\
+	</div>\n\
+<div id="cboxMiddleRight" style="float: left; height: 680px;"></div>\n\
+</div>';
+		$('body').append(txt_popup);
+	}
+	
+	$("#gPopup").show();
+	alert('123');
+}
+
+String.prototype.format = function() {	
+    var formatted = this;
+    for (var i = 0; i < arguments.length; i++) {
+		if (typeof arguments[i] == 'object') {
+			for (j in arguments[i]) {
+				var regexp = new RegExp('\\{'+j+'\\}', 'gi');
+				formatted = formatted.replace(regexp, arguments[i][j]);
+			}
+		} else {
+			var regexp = new RegExp('\\{'+i+'\\}', 'gi');
+			formatted = formatted.replace(regexp, arguments[i]);
+		}
+    }
+    return formatted;
+};
+
+if($.browser == 'msie' && !Array.indexOf){
+	Array.prototype.indexOf = function(obj){
+		for(var i=0; i<this.length; i++){
+			if(this[i]==obj){
+				return i;
+			}
+		}
+		return -1;
+	}
+}
+
+//Array.prototype.in_array = function(p_val) {
+//	for(var i = 0, l = this.length; i < l; i++)	{
+//		if(this[i] == p_val) {
+//			return true;
+//		}
+//	}
+//	return false;
+//}
+
+// ajax sumbit + calback
+function ajaxFormBind(id, func) {
+	if (id.substr(0, 1) != '#') {
+		id	= '#' + id;
+	}
+	if (typeof func != 'function')
+		func = null;
+
+	$(id).submit( function() {
+		var items	= $(this).serializeForm();
+		var url		= $(this).attr('action');
+		$.post(url, items, func, 'json');
+		return false;
+	});
+}
+
+function bBlack(config) {
+	$("body").append("<div id='opaque' style='display: none;'></div>");
+}
+
+bBlack.prototype.show = function() {
+	$('#opaque').show();
+}
+
+bBlack.prototype.hide = function() {
+	$('#opaque').hide();
+}
+
+//var battle_group_dialog = null;
+//var bginvite	= null;
+//function register_battle_invite() {
+//	if (typeof bGroup == 'undefined')
+//		return;
+//	
+//	if (typeof bginvite == 'undefined') {
+//		bginvite = new bGroup();
+//		bginvite.init();
+//	}
+//	
+////	$('#battle_invite').click( function() {
+////		showBoxLink('/battle.php?m=palace&a=group&do_cmd=show_invite', {
+////			width: 400,
+////			height: 367,
+////			close: function(ev, ui) {$(this).dialog('destroy');}
+////		});
+////	});
+//}
+//
+//function rejectGroupInvite(id) {
+//	$.post('/battle.php?m=palace&a=group&do_cmd=reject_invite', {id:id}, function(data) {
+//		if (data.data.more == 'none')
+//			$('#battle_invite').remove();
+//		$('div[class^=ui-dialog]').remove();
+//	}, 'json');
+//}
+//
+//function acceptGroupInvite(id) {
+//	$.post('/battle.php?m=palace&a=group&do_cmd=accept_invite', {id:id}, function(data) {
+//		if (data.status == 'error') {
+//			
+//		} else {
+//			window.location.reload();
+//		}
+////		if (data.data.more == 'none')
+////			$('#battle_invite').remove();
+////		$('div[class^=ui-dialog]').remove();
+//	}, 'json');
+//}
+
+
+
+function isset () {
+    // +   original by: Kevin van Zonneveld 
+    // +   improved by: FremyCompany
+    // +   improved by: Onno Marsman
+    // *     example 1: isset( undefined, true);
+    // *     returns 1: false
+    // *     example 2: isset( 'Kevin van Zonneveld' );
+    // *     returns 2: true
+     
+    var a=arguments, l=a.length, i=0;
+     
+    if (l===0) {
+        throw new Error('Empty isset'); 
+    }
+     
+    while (i!==l) {
+        if (typeof(a[i])=='undefined' || a[i]===null) { 
+            return false; 
+        } else { 
+            i++; 
+        }
+    }
+    return true;
+}
+
+
+/** с хащитой от неудачи */
+function parseJson(data) {
+	var json = {};
+	try {
+		json = $.parseJSON(data);
+	} catch(e){
+		
+	}
+	
+	return json;
+}
+
+function showSmallPopup(item, title, text,config) {
+	if (typeof sPopup != 'function')
+		return;
+	
+	if (typeof smallPopup == 'undefined') {
+		smallPopup	= new sPopup();
+	}
+
+    if( typeof config=='undefined')
+        config = {}
+
+    config.title    = title;
+    config.text    = text;
+    config.item    = item;
+
+
+	smallPopup.show(config);
+}
+
+function showArrow(config) {
+	if (typeof sArrow != 'function')
+		return;
+	
+	if (typeof arrows == 'undefined' || arrows === null) {
+//		arrow	= new sArrow();
+		arrows	= new sArrows();
+	}
+	
+//	if (typeof config == 'undefined') {
+//		config	= item;
+//		item = null;
+//	}
+	
+	if (typeof config == 'undefined') {
+		config = {};
+	}
+	
+//	if (item)
+//		config.item	= item;
+
+	arrows.add(config);
+}
+
+var toggle_arrows_1	=  null;
+function toggle_arrows_1_create() {
+	toggle_arrows_1	= function(state) {
+		if (typeof arrows == 'undefined' || arrows == null)
+			return;
+
+		if (state == undefined)
+		    state   = true;
+		if (state) {
+		    arrows.show('arrow_1');
+		    arrows.hide('arrow_2');
+		} else {
+		    arrows.show('arrow_2');
+		    arrows.hide('arrow_1');
+		}
+	}
+}
+
+var toggle_arrows_5	= null;
+function toggle_arrows_5_create() {
+	toggle_arrows_5	 = function() {
+		if (typeof arrows == 'undefined' || arrows == null)
+			return;
+
+		arrows.toggle('arrow_1', 'arrow_2', 'arrow_3', 'arrow_4');
+	}
+}
+
+function toggle_arrows_8() {
+	if (typeof arrows == 'undefined' || arrows == null)
+		return;
+
+	arrows.toggle('arrow_1', 'arrow_2');
+}
+
+var toggle_arrows_1_ex	=  null;
+function toggle_arrows_1_ex_create() {
+    toggle_arrows_1_ex	= function(state) {
+	if (typeof arrows == 'undefined' || arrows == null)
+		return;
+	
+	arrows.hide('arrow_1');
+	arrows.hide('arrow_2');
+	arrows.hide('arrow_3');
+	if (!$('#main_tab_1').hasClass('open')) {
+	    arrows.show('arrow_3');
+	} else if (!$('#selector_weapons').hasClass('open')) {
+	    arrows.show('arrow_2');
+	} else {
+	    arrows.show('arrow_1');
+	}
+    }
+    
+    $('.tabs_mini > div, #main_tabs > a > div').click(function(){
+	toggle_arrows_1_ex();
+    });
+    
+    setTimeout(toggle_arrows_1_ex, 300);
+}
+
+var toggle_arrows_4_ex	=  null;
+function toggle_arrows_4_ex_create() {
+    toggle_arrows_4_ex	= function(state) {
+		if (arrows == undefined || arrows == null) {
+			return;
+		}
+		
+		if($('.popup_new').length == 0) {
+			if ($('#main_tab_1').hasClass('open')) {
+				arrows.hide('arrow_1');
+				arrows.show('arrow_2');
+			} else {			
+				arrows.show('arrow_1');
+				arrows.hide('arrow_2');
+			}
+			
+			arrows.hide('arrow_3');
+			arrows.hide('arrow_4');
+			arrows.hide('arrow_5');
+			arrows.hide('arrow_6');
+		} else {
+			arrows.hide('arrow_1');
+			arrows.hide('arrow_2');
+			arrows.show('arrow_3', true);
+			arrows.show('arrow_4', true);
+			arrows.show('arrow_5', true);
+			arrows.show('arrow_6', true);
+		}
+	}
+	
+	$('.abilities_container').click(function() {
+		arrows.hide('arrow_1');
+		arrows.hide('arrow_2');
+		arrows.hide('arrow_3');
+		arrows.hide('arrow_4');
+		arrows.hide('arrow_5');
+		arrows.hide('arrow_6');
+	});
+
+    $('.tabs_mini > div, #main_tabs > a > div').click(function(){
+		toggle_arrows_4_ex();
+    });
+
+	popupnew.onopen	= function() {
+		toggle_arrows_4_ex();
+		var onclose	= this.onclose;
+		this.onclose	= function() {
+			onclose();
+			toggle_arrows_4_ex();
+		}
+		
+/*			
+			$(arrows.get('arrow_3')._uid).css({position: 'fixed'});
+			$(arrows.get('arrow_4')._uid).css({position: 'fixed'});
+			$(arrows.get('arrow_5')._uid).css({position: 'fixed'});
+			$(arrows.get('arrow_6')._uid).css({position: 'fixed'});
+*/		
+	}
+	
+    setTimeout(toggle_arrows_4_ex, 300);
+}
+
+var toggle_arrows_7_ex	=  null;
+function toggle_arrows_7_ex_create() {
+    toggle_arrows_7_ex	= function(state) {
+		if (arrows == undefined || arrows == null) {
+			return;
+		}
+		
+		if ($('#main_tab_2').hasClass('open')) {
+			arrows.hide('arrow_1');
+			arrows.show('arrow_2');
+		} else {			
+			arrows.show('arrow_1');
+			arrows.hide('arrow_2');
+		}
+		
+	}
+
+    $('.tabs_mini > div, #main_tabs > a > div').click(function(){
+		toggle_arrows_7_ex();
+    });
+
+    setTimeout(toggle_arrows_7_ex, 300);
+}
+
+var toggle_arrows_8_1_ex	=  null;
+function toggle_arrows_8_1_ex_create() {
+    toggle_arrows_8_1_ex	= function(state) {
+		if (arrows == undefined || arrows == null) {
+			return;
+		}
+		
+		if ($('#main_tab_2').hasClass('open')) {
+			arrows.hide('arrow_1');
+			arrows.show('arrow_2');
+		} else {			
+			arrows.show('arrow_1');
+			arrows.hide('arrow_2');
+		}
+		
+	}
+
+    $('.tabs_mini > div, #main_tabs > a > div').click(function(){
+		toggle_arrows_8_1_ex();
+    });
+
+    setTimeout(toggle_arrows_8_1_ex, 300);
+}
+
+var toggle_arrows_8_3_ex	=  null;
+function toggle_arrows_8_3_ex_create() {
+    toggle_arrows_8_3_ex	= function(state) {
+		if (arrows == undefined || arrows == null) {
+			return;
+		}
+		
+		if ($('#main_tab_2').hasClass('open')) {
+			arrows.hide('arrow_1');
+			arrows.show('arrow_2');
+		} else {			
+			arrows.show('arrow_1');
+			arrows.hide('arrow_2');
+		}
+		
+	}
+
+    $('.tabs_mini > div, #main_tabs > a > div').click(function(){
+		toggle_arrows_8_3_ex();
+    });
+
+    setTimeout(toggle_arrows_8_3_ex, 300);
+}
+
+//Функция получения сколько пикселей скрол по top окна
+function getBodyScrollTop()
+{
+  return self.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop);
+}
+
+//Функция получения сколько пикселей скрол по left окна
+function getBodyScrollLeft()
+{
+  return self.pageXOffset || (document.documentElement && document.documentElement.scrollLeft) || (document.body && document.body.scrollLeft);
+}
+
+
+/** ------------------------------------- Spopup class  ------------------------------------- */
+function sPopup() {
+	this._id	= 'small_popup';
+	this.id	= '#small_popup';
+	this.class_name = "";
+	this.hideonmouseout = true;
+
+	this.template	= '\n\
+<div id="{_id}" class="{class_name}">\n\
+<div class="title">{title}</div>\n\
+<div class="text">{text}</div>\n\
+</div>';
+	
+	this.offsetX	= 25;
+	this.offsetY	= 25;
+}
+sPopup.prototype.show	= function(config) {
+    if(!this.hideonmouseout){
+        return;
+    }
+	this.item	= config.item;
+    if(typeof config.className != undefined && config.className!='')
+	    this.class_name	= config.className;
+
+
+	txt	= (config.template || this.template).format(config, this);
+	
+	offsetX	= config.offsetX ? config.offsetX :this.offsetX;
+	offsetY	= config.offsetY ? config.offsetY :this.offsetY;
+	
+	$(this.item).after(txt);
+	var relative	= config.relative || 0;
+	if (relative) {
+	    $(this.id).css({
+		"left": $(this.item).offset().left - $(this.item).parent().offset().left + offsetX,
+		"top":$(this.item).offset().top - $(this.item).parent().offset().top + offsetY
+	    });
+	} else {
+	    $(this.id).css({"left":$(this.item).offset().left+offsetX,"top":$(this.item).offset().top+offsetY});
+	}
+	
+	sp	= this;
+
+    if(config.keeponclick){
+        $(this.item).unbind('click');
+        $(this.item).bind('click', function(event) {
+            event.preventDefault();
+            sp.hideonmouseout = !sp.hideonmouseout;
+
+            // log(sp.hideonmouseout + " changed");
+
+        })
+    }
+	$(this.item).unbind('mouseout');
+	$(this.item).bind('mouseout', function() {
+        // log(sp.hideonmouseout + " current");
+        if(sp.hideonmouseout){
+		    $(sp.id).remove();
+        }
+	})
+}
+
+/** ------------------------------------- End Spopup class  ------------------------------------- */
+
+if (typeof mega == 'undefined')
+	var mega = null;
+
+function bindMega(id, fid, log_id) {
+	if (typeof FlyingMega == 'undefined')
+			return false;
+	if (mega == null)
+			mega = new FlyingMega();
+		
+//	$(id).click( function() {
+		mega.init({curr_flying_id: fid, after: true, log_id: log_id});
+		return false;
+//	})
+	
+	return false;
+}
+
+// функция для автообмена зелени на пирашки
+function price_changed_handler(div_form_price_id, div_auto_change_id, have_fish) {
+	var form_price	= $("#" + div_form_price_id + " input[type=radio]");
+	var auto_change	= $('#' + div_auto_change_id);
+	
+	var type_price	= form_price.filter(":checked").val();
+	
+	if (form_price.filter(":checked").next('span').html() > have_fish && type_price == 10)
+		auto_change.show();
+	else
+		auto_change.hide();
+}
+
+// Класс для арифметики с ценами (порт Type_Money_Amount)
+// пример прайса: [{amount:10, type:2}, {amount:1, type:3}, {amount:100, type: 10}]
+function fPriceAmount(price) {
+	// self::create()
+	price = (typeof price == 'object' && typeof price.get == 'function')
+			? price.get()
+			: price;
+
+	this
+		.init()
+		.set(price);
+}
+
+fPriceAmount.prototype.init	= function() {
+	this.price	= {1: 0, 2: 0, 10: 0, 3: 0};
+	
+	return this;
+}
+
+fPriceAmount.prototype.get	= function(stripZeros) {
+	if (stripZeros == undefined) {
+		stripZeros	= true;
+	}
+	
+	var th	= this;
+	var price	= [];
+	$.map(this.getValidCurrencies(), function(currency) {
+		if (!stripZeros || th.getCurrency(currency) != 0) {
+			price.push([th.getCurrency(currency), currency]);
+		}
+	});
+	
+	return price;
+}
+
+fPriceAmount.prototype.getCurrency	= function(currency) {
+	return this.isValidCurrency(currency) ? this.price[currency] : false;
+}
+
+fPriceAmount.prototype.setCurrency	= function(amount, currency) {
+	if (this.isValidCurrency(currency)) {
+		this.price[currency]	= this.validateAmount(amount);
+	}
+
+	return this;
+}
+
+fPriceAmount.prototype.isZero	= function() {
+	var th	= this;
+	var is_zero	= true;
+	
+	$.map(this.getValidCurrencies(), function(currency) {
+		if (th.getCurrency(currency) != 0) {
+			is_zero	= false;
+		}
+	});
+
+	return is_zero;
+}
+
+fPriceAmount.prototype.calculate	= function(price, callback) {
+	var th	= this;
+	$.map(this.asArray(price), function(part) {
+		th.calculateCurrency(part[0], part[1], callback);
+	});
+
+	return this;
+}
+
+fPriceAmount.prototype.calculateAmount	= function(amount, callback) {
+	var th	= this;
+	$.map(this.getValidCurrencies(), function(currency) {
+		th.calculateCurrency(amount, currency, callback);
+	});
+
+	return this;
+}
+
+fPriceAmount.prototype.calculateCurrency	= function(amount, currency, callback) {
+	return this.setCurrency(
+		Math.floor(callback.call(
+			this,
+			this.getCurrency(currency),
+			amount
+		)),
+		currency
+	);
+}
+
+fPriceAmount.prototype.set	= function(price) {
+	this.calculate(price, function(old_amount, amount) {
+		return amount;
+	});
+	
+	return this;
+}
+
+fPriceAmount.prototype.setAmount	= function(price) {
+	return this.calculateAmount(price, function(old_amount, amount) {
+		return amount;
+	});
+}
+
+fPriceAmount.prototype.doAdd	= function(old_amount, amount) {
+	return old_amount + amount;
+}
+
+fPriceAmount.prototype.doSub	= function(old_amount, amount) {
+	return old_amount - amount;
+}
+
+fPriceAmount.prototype.doMul	= function(old_amount, amount) {
+	return old_amount * amount;
+}
+
+fPriceAmount.prototype.add	= function(price) {
+	return this.calculate(price, this.doAdd);
+}
+
+fPriceAmount.prototype.sub	= function(price) {
+	return this.calculate(price, this.doSub);
+}
+
+fPriceAmount.prototype.mul	= function(price) {
+	return this.calculate(price, this.doMul);
+}
+
+fPriceAmount.prototype.addAmount	= function(price) {
+	return this.calculateAmount(price, this.doAdd);
+}
+
+fPriceAmount.prototype.subAmount	= function(price) {
+	return this.calculateAmount(price, this.doSub);
+}
+
+fPriceAmount.prototype.mulAmount	= function(price) {
+	return this.calculateAmount(price, this.doMul);
+}
+
+fPriceAmount.prototype.asObject	= function(price) {
+	return typeof price == 'object' && typeof price.get == 'function' ? price : new fPriceAmount(price);
+}
+
+fPriceAmount.prototype.asArray	= function(price, stripZeros) {
+	if (stripZeros == undefined) {
+		stripZeros	= true;
+	}
+
+	if (typeof price == 'object' && typeof price.get == 'function') {
+		return price.get(stripZeros);
+	}
+
+	var th		= this;
+	var result	= [];
+	$.map(price, function(part) {
+		part = th.validatePart(part, stripZeros);
+		if (false !== part) {
+			result.push(part);
+		}
+	});
+
+	return price;
+}
+
+fPriceAmount.prototype.validatePart	= function(part, noZero) {
+	if (!typeof part == 'array' || part.length < 2) {
+		return false;
+	}
+
+	var amount		= part[0];
+	var currency	= part[1];
+
+	if (!this.isValidCurrency(currency)) {
+		return false;
+	}
+
+	return (noZero && 0 == amount)
+		? false 
+		: [this.validateAmount(amount), currency];
+}
+
+fPriceAmount.prototype.validateAmount	= function(amount) {
+	return Number(amount);
+}
+
+fPriceAmount.prototype.getValidCurrencies	= function() {
+	return [1, 2, 10, 3];
+}
+
+fPriceAmount.prototype.isValidCurrency	= function(currency) {
+	for (var i in this.getValidCurrencies()) {
+		if (this.getValidCurrencies()[i] == currency) {
+			return true;
+		}
+	}
+	
+	return false;
+	//return (currency in this.getValidCurrencies());
+}
+	
+
+
+// класс для вывода селектов цены
+// пример конфига {skipZero: true, price: [{amount:10, type:2}, {amount:1, type:3}, {amount:100, type: 10}]};
+function fPrice(config) {
+	if (typeof config == 'undefined' || typeof config.price == 'undefined')
+		return '';
+	
+	this.price	= config.price || {};
+	this.skipZero	= typeof config.skipZero != 'undefined' ? config.skipZero : true;
+	this.skip_radio	= config.skip_radio == undefined ? false : config.skip_radio;
+	this.multi_price	= config.multi_price == undefined ? false : config.multi_price;
+	this.small_icons	= config.small_icons == undefined ? false : config.small_icons;
+	this.radio_name	= config.radio_name == undefined ? 'ptype' : config.radio_name;
+	
+	var small	= this.small_icons ? '_small' : '';
+	var space	= this.small_icons ? '' : ' ';
+	
+	this.templates	= {
+		radio: '<input type="radio" value="{type}" name="{radio_name}" id="{id}" do_not_touch="{do_not_touch}" {checked}>',
+		money1:	'<span class="{cclass} {cclass}_gold">{amount}</span>' + space + getLang('money_1' + small),
+		money2:	'<span class="{cclass} {cclass}_crystal">{amount}</span>' + space + getLang('money_2' + small),
+		money3:	'<span class="{cclass} {cclass}_green">{amount}</span>' + space + getLang('money_3' + small),
+		money10:	'<span class="{cclass} {cclass}_crystal">{amount}</span>'+ ' ' + getLang('money_10' + small)
+	};
+	
+	return this;
+}
+
+fPrice.prototype.get	= function(alt_type) {
+	txt	= '';
+	this.first_plus_ignored	= false;
+	this.has_no_zero_prices	= false;
+	
+	for (i in this.price) {
+		txt	+= this.drawPrice(
+			this.price[i],
+			undefined,
+			undefined,
+			undefined,
+			undefined,
+			i,
+			alt_type
+		);
+	}
+	
+	return this.has_no_zero_prices ? txt : getLang('price_free');
+}
+
+fPrice.prototype.drawPrice	= function(amount, type, id, do_not_touch, checked, index, alt_type) {
+	var txt	= '';
+	
+	if (typeof type == 'undefined' || typeof id == 'undefined') {
+		do_not_touch	= amount.do_not_touch;
+		id	= amount.id;
+		type	= (amount.type == undefined) ? amount[1] : amount.type;
+		amount	= (amount.amount == undefined) ? amount[0] : amount.amount;
+	}
+
+	if (typeof id == 'undefined')
+		id	= '';
+	if (typeof do_not_touch == 'undefined')
+		do_not_touch	= '';
+
+	if (amount == 0 && this.skipZero) {
+		return '';
+	}
+	
+	this.has_no_zero_prices	= true;
+	
+	amount	= formatMoney(amount);
+	var	cclass	= '';
+	if (this.skip_radio || this.multi_price) {
+		if (this.first_plus_ignored) {
+			txt += ' + ';
+		} else {
+			this.first_plus_ignored	= true;
+		}
+	} 
+	
+	if (!this.skip_radio && (!this.multi_price || index == 0)) {
+		var cchecked = typeof checked != 'undefined' ? checked : (type == 2 || type == 'crystalls' ? 'checked' : '');
+		
+		txt	+= this.templates.radio.format({
+			type: alt_type == undefined ? type : alt_type,
+			id:id,
+			do_not_touch:do_not_touch,
+			checked:cchecked,
+			radio_name: this.radio_name
+		});
+	}
+	
+	switch (type) {
+		case 1:
+		case 'gold':
+			txt	+= this.templates.money1.format({amount:amount, cclass:cclass});
+			break;
+		case 2:
+		case 'crystalls':
+			txt	+= this.templates.money2.format({amount:amount, cclass:cclass});
+			break;
+		case 3:
+		case 'green':
+			txt	+= this.templates.money3.format({amount:amount, cclass:cclass});
+			break;
+		case 10:
+		case 'fish':
+			txt	+= this.templates.money10.format({amount:amount, cclass:cclass});
+			break;
+		default:
+			return '';
+	}
+
+	return txt;
+}
+
+// Функция преобразует число в денежный формат (1234567 -> 1.234.567)
+// number - число, separator - символ разделитель (необязательный параметр. По умолчанию используется глобальный locale_separator, если и его нет, то .)
+function formatMoney(number, separator) {
+		if (number == undefined) {
+			return '0';
+		}
+		
+		if (separator == undefined) {
+			if (typeof locale_separator != 'undefined')
+				separator	= locale_separator;
+			else
+				separator	= '.';
+		}
+
+		number	= number.toString().replace(/[^0-9]/g,'');
+		var m	= (separator, /(\d+)(?:(\.\d+)|)/.exec(number + ""));
+		if (m == null) m	= new Array('0', '0');
+		var x	= m[1].length > 3 ? m[1].length % 3 : 0;
+		return (x ? m[1].substr(0, x) + separator : "") + m[1].substr(x).replace(/(\d{3})(?=\d)/g, "$1" + separator);
+}
+
+$( function() {
+	$('.proposal').click( function() {
+		testProposal($(this));
+	});
+})
+function testProposal(item) {
+	id	= $(item).attr('rel');
+	showMessageExOkCancel(getLang('wedding_relations_proposed_to_me', $(item).prev('a').html()), {
+		ok_text: getLang('wedding_relations_proposed_to_me_ok'),
+		cancel_text: getLang('wedding_relations_proposed_to_me_nope'),
+		onOk: function() {
+			var url	= '/wedding.php?m=accept&id=' + id;
+			window.location	= url;
+		},
+		onCancel: function() {
+			var url	= '/wedding.php?m=reject&id=' + id;
+			window.location	= url;
+		}
+	});
+}
+
+$( function() {
+	$('.witness_invite').click( function() {
+		showWitnessInvited($(this));
+	});
+})
+function showWitnessInvited(item) {
+	id	= $(item).attr('rel');
+	showMessageExOkCancel(getLang('wedding_js_witness_invite'), {
+		ok_text: getLang('wedding_js_witness_invite_ok'),
+		cancel_text: getLang('wedding_js_witness_invite_no'),
+		onOk: function() {
+			var url	= '/wedding.php?m=accept_w&id=' + id;
+			window.location	= url;
+		},
+		onCancel: function() {
+			var url	= '/wedding.php?m=reject_w&id=' + id;
+			window.location	= url;
+		}
+	});
+}
+
+function foreignBindShips() {
+	$( function() {
+		$('form[id^=ship_form_]').each( function() {
+			var ship_id	= $(this).attr('rel');
+			function checkShips(th) {
+				var val		= $(th).attr('value');
+				var val2	= val == 1 ? 3 : 1;
+				
+				$('#ship_span_'+ship_id+'_'+val).show();
+				$('#ship_span_'+ship_id+'_'+val2).hide();
+			}
+			$(this).find('input[type=radio]').click( function() {
+				checkShips(this);
+			}).each( function() {
+				if ($(this).attr('checked'))
+					checkShips(this);
+			});
+		});
+	});
+}
+
+function doMonsterPve_Join(){
+	$.post('/monster.php?a=monsterpve', {do_cmd: 'jump', k: GET_KEY}, function(data) {
+		if (data.status != 'error') {
+            window.location = '/monster.php?a=continue';
+		} else {
+            $('.message').html("");
+            $('#monsterpve_error').html(data.data);
+            return false;
+		}
+
+
+    },'json');
+
+
+    return false;
+}
+
+function makeSockets() {
+    $('img[data-sockets]').not('[sock-init]').each( function() {
+	var socks   = $(this).attr('data-sockets').split(';');
+	sockets_compiled    = '';
+	for (i in socks) {
+	    sockets_compiled	+= "<div class='sockets socket_"+socks[i]+"'></div>";
+	}
+	var template	= "\n\
+<div class='i_sock'>\n\
+    <div class='container'>\n\
+	{0}\n\
+    </div>\n\
+</div>";
+	$(this).after(template.format(sockets_compiled));
+	$(this).parent().find('div[class=i_sock]').fadeTo(0, 0.5);
+	$(this).parent().find('div[class=i_sock]').mouseover( function() {
+	    $(this).fadeTo(200, 0.9);
+	})
+	$(this).parent().find('div[class=i_sock]').mouseout( function() {
+	    $(this).fadeTo(200, 0.5);
+	})
+    }).attr('sock_init', 1)
+}
+
+$( function() {
+    makeSockets();
+})
+
+function secondsToTime(time, no_hours) {    
+    if (typeof no_hours == 'undefined')
+	no_hours    = false;
+    
+    var dt	= new Date(1970, 0, 1);
+    dt.setSeconds(time);
+    var days	= dt.getDate() - 1;
+    var hours   = dt.getHours();
+    var minutes	= dt.getMinutes();
+    var seconds	= dt.getSeconds();
+    
+    if (hours < 10)
+	hours	= '0' + hours;
+    if (minutes < 10)
+	minutes	= '0' + minutes;
+    if (seconds < 10)
+	seconds	= '0' + seconds;
+    
+    time    = new Array(days, hours, minutes, seconds);
+    if (no_hours)
+	time	= time.slice(-2);
+    else if (days < 1)
+	time	= time.slice(1);
+    return time.join(':');
+}
+
+function localHouseStabsHandler(config) {
+    var t   = {};
+    var curRel = 1;
+    var newRel = curRel;
+    t.startSelected  = [curRel];
+    t.data_id    = config.data_id || '1';
+
+ 
+    t.start     = function() {
+	    for(var n in this.startSelected) {
+		    var rel = this.startSelected[n];
+		    $('.tab[rel='+rel+'][data-id='+this.data_id+']').removeClass('hidden');
+		    $('.tabs_buttons[data-id='+this.data_id+'] > .btn[rel='+rel+']').addClass('selected');
+	    }
+    }
+
+ 
+    t.click      = function(newRel) {               
+	    $('.tab[rel='+curRel+'][data-id='+this.data_id+']').addClass('hidden');
+	    $('.tabs_buttons[data-id='+this.data_id+'] > .btn[rel='+curRel+']').removeClass('selected');
+
+	    $('.tab[rel='+newRel+'][data-id='+this.data_id+']').removeClass('hidden');   
+	    $('.tabs_buttons[data-id='+this.data_id+'] > .btn[rel='+newRel+']').addClass('selected');                                      
+	    curRel = newRel;
+    }
+
+    return t;
+}
+
+function to_url(data) {
+    var url = '';
+    for(i in data)
+	url += '&' + i + '=' + data[i];
+    
+    return url;
+}
+
+function tradeblockBind() {
+    $('.tradeblock select').not('[data-init]').change(function(){
+	var prices  = $(this).parent().parent().find('.prices');
+	var multy   = $(this).val();
+	prices.find('span').each(function(){
+	    var base	= $(this).data('base');
+	    if (!base) {
+		$(this).data('base', $(this).html());
+		base	= $(this).data('base');
+	    }
+	    $(this).html(parseInt(base) * multy);
+	})
+    }).attr('data-init', 1);
+}
+function smartMoneySelectorBind() {
+    $('.smart_money_selector').not('[data-init]').change(function(){
+	var value   = $(this).find(':selected').data('price');
+	$(this).parent().find('.price_num').each(function(){
+	    $(this).html(formatMoney(parseInt(value)));
+	})
+    }).attr('data-init', 1);
+}
+$(function(){
+    tradeblockBind();
+    smartMoneySelectorBind();
+})
+
+function showSmartMessage(id, msg, error) {
+    if (msg === undefined || msg === '' || typeof msg == 'object')
+	return;
+    
+    var message = "<div class='message bar_green'>{0}</div>";
+    if (typeof error != 'undefined')
+	message = "<div class='message bar_red'>{0}</div>";
+    
+    message = message.format(msg);
+    if (!$(id).hasClass('message-box')) {
+	id  = $(id).find('.message-box');
+    }
+    $(id).append(message);
+    $(id).find('p, span').hide();
+    setTimeout(hideSmartMessage, 5000);
+}
+
+function hideSmartMessage() {
+    $('.message-box .message').each(function() {
+	$(this).parent().find('p, span').show();
+	$(this).remove();
+    });
+}
+
+function createTimer(container, time, set_title, after_func) {
+	$(container).attr('timer', [time, set_title ? 1 : 0, after_func].join('|'));
+	doTimer($(container), time, set_title, after_func);
+	$(container).addClass('js_timer');
+}
+
+function destroyTimer(container, restore_title) {
+	$(container)
+		.removeClass('js_timer')
+		.attr('timer', '');
+
+	if (restore_title != undefined && restore_title) {
+		document.title = mTitle;
+	}
+}
+
+function getInternetExplorerVersion() {
+    var rv = 10000;
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+	    var ua = navigator.userAgent;
+	    var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+	    if (re.exec(ua) != null)
+		    rv = parseFloat( RegExp.$1 );
+    }
+    return rv;
+}
+
+function getJqVer() {
+    var jq_version = $.map($().jquery.split('.'), function(i){
+	return parseInt(i);
+    });
+    return jq_version;
+}
+
+$(function(){
+    $('#ap11').mouseover(function(){
+        $('div.ap_extra').addClass('a1');
+    }).mouseout(function(){
+        $('div.ap_extra').removeClass('a1');
+    }).click(function(){
+        window.location    = '/index.php?ap=1';
+        return false;
+    })
+
+    $('#ap12').mouseover(function(){
+        $('div.ap_extra').addClass('a2');
+    }).mouseout(function(){
+        $('div.ap_extra').removeClass('a2');
+    }).click(function(){
+        window.location    = '/index.php?ap=2';
+        return false;
+    })
+
+    $('#ap13').mouseover(function(){
+        $('div.ap_extra').addClass('a3');
+    }).mouseout(function(){
+        $('div.ap_extra').removeClass('a3');
+    }).click(function(){
+        window.location    = '/index.php?ap=3';
+        return false;
+    })
+})
+
+function doMagicItems(item_id,item_name) {
+	lAlert({
+		// 'title'		: getLang('character_ring_warning_1_title'),
+		'title'		: item_name,
+		'from_url'	: '/ajax.php?m=magicItems&id=' + item_id
+	});
+}

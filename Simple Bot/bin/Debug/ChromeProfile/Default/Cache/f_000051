@@ -1,0 +1,1427 @@
+
+/* »ÍÓÌÍË */
+.icon{
+	width: 18px;
+	height: 18px;
+	display:inline-block;
+	background: url(ico.png) no-repeat;
+
+	vertical-align:middle;
+}
+.icon2{
+	width: 20px;
+	height: 20px;
+	display:inline-block;
+	background: url('ico.png') no-repeat;
+	vertical-align:middle;
+}
+.icon3{
+	width: 30px;
+	height: 30px;
+	display:inline-block;
+	background: url(ico_guilds_bonus.jpg?v=20110407) no-repeat;
+	vertical-align:middle;
+}
+
+.icon3a { 
+	width: 30px;
+	height: 30px;
+	display:inline-block;
+	background: url(ico_guilds_bonus.jpg?v=20110407) no-repeat;
+	vertical-align:middle;
+	background: url(/images/m/class/circle/circle_icon.png?v=20110407) no-repeat;
+}
+
+.icon12{
+	width: 12px;
+	height: 12px;
+	display:inline-block;
+	background: url(ico.png) no-repeat;
+	vertical-align:middle;
+}
+
+.icon_pack * {
+	background: url(ico.png) no-repeat;
+	display:inline-block;
+	vertical-align:middle;
+}
+
+.ico_bonus_pet {
+	background: url(/images/packs/fpet_mods.jpg) no-repeat;
+	display:inline-block;
+	vertical-align:middle;
+	width: 60px;
+	height: 60px;
+	position: relative;
+}
+
+.icon10{
+	width: 10px;
+	height: 10px;
+}
+
+.ico_talants{
+	width: 20px;
+	height: 20px;
+	display:inline-block;
+	background: url(ico_talants.png?v=20110516) no-repeat;
+	vertical-align:middle;
+}
+
+.ico_mine{
+	width: 110px;
+	height: 110px;
+	background: url(/images/m/battleground/shafts_medium.png?v=20120528) no-repeat;
+	cursor:pointer;
+}
+
+/** –†–∞—Å—Å—ã */
+.race11 {	background-position:-20px 0px;	}
+.race12 {	background-position:0px 0px;	}
+.race21 {	background-position:-60px 0px;	}
+.race22 {	background-position:-40px 0px;	}
+
+.race111 {	background-position:-20px -480px;	}
+.race121 {	background-position:-0px -480px;	}
+.race211 {	background-position:-60px -480px;	}
+.race221 {	background-position:-40px -480px;	}
+
+.race112 {	background-position:-100px -480px;	}
+.race122 {	background-position:-80px -480px;	}
+.race212 {	background-position:-140px -480px;	}
+.race222 {	background-position:-120px -480px;	}
+
+.race1 {	background-position:-80px 0px;	}
+.race2 {	background-position:-100px 0px;	}
+
+
+
+/** –†–µ—Å—É—Ä—Å—ã - –¥–µ–Ω—å–≥–∏ */
+.money1 {		background-position:  0px -20px;	}
+.money2 {		background-position:-20px -20px;	}
+.money3 {		background-position:-40px -20px;	}
+.fishes {		background-position:-60px -20px;	}
+.slaves {		background-position:-80px -20px;	}
+.medallions {	background-position:-100px -20px;	}
+.ico_ticket1 {		background-position:-120px -20px;	}
+.ico_ticket2 {		background-position:-140px -20px;	}
+.relics {		background-position:-160px -20px;	}
+.atlant {		background-position:-40px -520px;	}
+.cheese {		background-position: -160px -540px }
+.red_cheese {		background-position: 0 -680px }
+
+
+/** »ÍÓÌÍË ÏÂÎÍËÂ */
+.present	{	background-position:  0px -40px;	}
+.king		{	background-position:-20px -40px;	}
+.wins 		{	background-position:-40px -40px;	}
+.fights 		{	background-position:-180px -20px;	}
+.pando		{	background-position:-60px -40px;}
+.ico_clanwar 	{	background-position:-80px -40px;	}
+.place1 	{	background-position:-100px -40px;	}
+.place2 	{	background-position:-120px -40px;	}
+.place3 	{	background-position:-140px -40px;	}
+
+.userfigure 		{	background-position:-160px 0px;	}
+.npcs 		{	background-position:-180px 0px;	}
+.relations		{	background-position:-200px 0px;	}
+.ico_potion_love		{	background-position:-220px 0px;	}
+
+/** –ì–∏–ª—å–¥–∏–∏ */
+.guild1 	{	background-position: -0px -60px;	}
+.guild2 	{	background-position: -20px -60px;	}
+.guild3 	{	background-position: -40px -60px;	}
+.guild4 	{	background-position: -60px -60px;	}
+.guild5 	{	background-position: -80px -60px;	}
+.guild6 	{	background-position: -100px -60px;	}
+.guild7 	{	background-position: -120px -60px;	}
+.guild8 	{	background-position: -140px -60px;	}
+.guild11 	{	background-position: -160px -60px;	}
+.guild22 	{	background-position: -180px -60px;	}
+.guild23 	{	background-position: -200px -60px;	}
+.guild21 	{	background-position: -220px -60px;	}
+.guild11_2 {	background-position: -80px -460px;	}
+.guild11_3 {	background-position: -60px -460px;	}
+.guild11_0 {	background-position: -100px -460px;	}
+
+/** –ñ–∏–≤–Ω–æ—Å—Ç—å */
+.pet1		{	background-position:  0 -80px;	}
+.pet2		{	background-position: -20px -80px;	}
+.pet3		{	background-position: -40px -80px;	}
+.pet4		{	background-position: -60px -80px;	}
+.pet5		{	background-position: -80px -80px;	}
+.pet6		{	background-position: -100px -80px;	}
+.pet7		{	background-position: -120px -80px;	}
+.pet8		{	background-position: -140px -80px;	}
+.pet9		{	background-position: -160px -80px;	}
+.pet10		{	background-position: -140px -80px;	}
+.petD		{	background-position: -180px -80px;	}
+.pet11		{	background-position: -280px -80px;	}
+.pet12		{	background-position: -280px 0px;	}
+.pet13		{	background-position: 0 -400px;	}
+.pet14		{	background-position: -20px -400px;	}
+.pet15		{	background-position: -40px -400px;	}
+.pet16		{	background-position: -120px -540px;	}
+.pet17		{	background-position: 0 -600px;	}
+.pet18		{	background-position: -160px -600px;	}
+.pet19		{	background-position: -140px -600px;	}
+.pet20		{	background-position: -180px -600px;	}
+.pet21		{	background-position: -180px -640px;	}
+.pet22		{	background-position: -80px -660px;	}
+.pet23		{	background-position: -140px -660px;	}
+.pet24		{	background-position: -280px -680px;	}
+
+/** –ë—É—Ç—ã–ª–∫–∏ */
+.potion_1,	.item_1		{	background-position:   0px -100px;	}
+.potion_2,	.item_2		{	background-position: -20px -100px;	}
+.potion_3,	.item_3		{	background-position: -40px -100px;	}
+.potion_4,	.item_130	{	background-position: -60px -100px;	}
+.potion_5,	.item_131	{	background-position: -80px -100px;	}
+.potion_6,	.item_132	{	background-position:-100px -100px;	}
+.potion_7,	.item_60000	{	background-position:-120px -100px;	}
+.potion_8,	.item_60001	{	background-position:-140px -100px;	}
+.potion_11,	.item_404	{	background-position:-220px -100px;	}
+.potion_13,	.item_754	{	background-position:-220px -640px;	}
+.ico_trade1	{	background-position:-160px -100px;	}
+.ico_axe	{	background-position:-180px -100px;	}
+.potion_all {	background-position:   -200px -100px;	}
+.item_771 { background-position:-160px -660px; }
+
+.spec_gift_small 	{	background-position: -240px -60px;	}
+.spec_gift_med 	{	background-position: -260px -60px;	}
+.spec_gift_big 	{	background-position: -280px -60px;	}
+
+/** »ÍÓÌÍË */
+.ico_level	{	background-position:   0px -120px;	}
+.ico_block	{	background-position: -20px -120px;	}
+.ico_hits	{	background-position: -40px -120px;	}
+.ico_glory	{	background-position: -60px -120px;	}
+.ico_exp	{	background-position: -80px -120px;	}
+.ico_endurance	{	background-position:-100px -120px;	}
+.ico_charisma	{	background-position:-120px -120px;	}
+.ico_dexterity	{	background-position:-140px -120px;	}
+.ico_power		{	background-position:-160px -120px;	}
+.ico_morale_2		{	background-position:-180px -120px;	}
+.ico_morale_1		{	background-position:-200px -120px;	}
+.ico_damage         {	background-position:-120px -460px;	}
+
+.ico_glory_small	{	background-position: -160px -480px;	}
+.ico_power_small	{	background-position: -280px -400px;	}
+.ico_exp_small	{
+    width:16px;
+    height:16px;
+    background-position: -160px -720px;
+}
+
+/** ÀÂÚ‡˛˘ËÂ Á‚ÂÛ¯ÍË */
+.flying_11 { background-position: -220px -120px }
+.flying_21 { background-position: -240px -120px }
+.flying_31 { background-position: -260px -120px }
+.flying_41 { background-position: -160px -320px }
+.flying_13 { background-position: -200px -80px }
+.flying_23 { background-position: -220px -80px }
+.flying_33 { background-position: -240px -80px }
+.flying_43 { background-position: -260px -80px }
+.flying_feed { background-position: -60px -40px }
+.flying_heal { background-position: -240px -100px }
+.flying_catcher { background-position: -240px -80px }
+.flying_born { background-position: -240px -80px }
+
+
+
+.ico_ghost0 { background-position: -260px -100px }
+.ico_ghost1 { background-position: -280px -100px }
+.ico_points { background-position: -280px -120px }
+
+.flyings_salt { background-position: -180px -320px }
+.flyings_tear { background-position: -200px -320px }
+.flyings_leaf { background-position: -220px -320px }
+.flyings_ore { background-position: -240px -320px }
+
+.sockets_b {
+    background-image: url(/images/packs/sockets_b.png);
+    display: inline-block;	
+}
+
+.item_646 { width: 23px; height: 25px; background-position: -34px 0px }
+.item_647 { width: 29px; height: 31px; background-position: -34px -25px }
+.item_648 { width: 34px; height: 37px; background-position: -34px -55px }
+.item_649 { width: 23px; height: 25px; background-position: -68px 0px }
+.item_650 { width: 29px; height: 31px; background-position: -68px -25px }
+.item_651 { width: 34px; height: 37px; background-position: -68px -55px }
+.item_652 { width: 23px; height: 25px; background-position: -102px 0px }
+.item_653 { width: 29px; height: 31px; background-position: -102px -25px }
+.item_654 { width: 34px; height: 37px; background-position: -102px -55px }
+.item_655 { width: 23px; height: 25px; background-position: -136px 0px }
+.item_656 { width: 29px; height: 31px; background-position: -136px -25px }
+.item_657 { width: 34px; height: 37px; background-position: -136px -55px }
+.item_658 { width: 23px; height: 25px; background-position: -170px 0px }
+.item_659 { width: 29px; height: 31px; background-position: -170px -25px }
+.item_660 { width: 34px; height: 37px; background-position: -170px -55px }
+.item_661 { width: 23px; height: 25px; background-position: -204px 0px }
+.item_662 { width: 29px; height: 31px; background-position: -204px -25px }
+.item_663 { width: 34px; height: 37px; background-position: -204px -55px }
+
+
+.wedding_xp { background-position: -260px -300px }
+.wedding_stats {background-position: -280px -300px }
+/** –ö–Ω–æ–ø–∫–∏ */
+
+.ico_cmd{
+	width:20px;
+	height:20px;
+
+	border:0px;
+	cursor:pointer;
+}
+
+.ico_mail	{	background-position:  0px -140px;	}
+.ico_mail_hover	{ background-position:  -40px -640px; opacity: 0.7; }
+.ico_mail_hover:hover	{ background-position:  0px -140px; opacity: 1; }
+.ico_bl_list	{	background-position:  0px -140px;	}
+.ico_search	{	background-position:-20px -140px;	}
+.ico_cross	{	background-position:-40px -140px;	}
+.ico_check	{	background-position:-60px -140px;	}
+.ico_plus	{	background-position:-80px -140px;	}
+.ico_minus	{	background-position:-100px -140px;	}
+.ico_down	{	background-position:-120px -140px;	}
+.ico_up	{	background-position:-140px -140px;	}
+.ico_plus2	{	background-position:-160px -140px;	}
+.ico_minus2	{	background-position:-180px -140px;	}
+.ico_filter1{	background-position:-200px -140px;	}
+.ico_filter2{	background-position:-220px -140px;	}
+.ico_filter3{	background-position:-240px -140px;	}
+.ico_filter0{	background-position:-260px -140px;	}
+.ico_add_contact{	background-position:-280px -140px;	}
+.ico_total{	    background-position:-200px -460px;	}
+
+
+
+
+
+/** »ÍÓÌÍË ÓÌÎ‡ÈÌ‡ Ë ÚÔ*/
+.ico_online1	{	background-position: 0px -160px;	}
+.ico_onlineW	{	background-position:-20px -160px;	}
+.ico_online0	{	background-position:-40px -160px;	}
+.ico_remove		{	background-position:-60px -160px;	}
+.ico_remove_hover, 
+.ico_remove_disabled, 
+.ico_remove_disabled:hover, 
+ 
+.disabled .ico_remove_hover,
+.disabled .ico_remove_hover:hover { background-position:0 -640px; opacity: 0.7;	}
+.ico_remove_hover:hover, a:hover .ico_remove_hover	{	background-position:-60px -160px; opacity: 1;	}
+.ico_remove_hover.unactive,
+.ico_remove_hover.unactive:hover,
+.unactive .ico_remove_hover,
+.unactive .ico_remove_hover:hover {background-position:0 -640px !important; opacity: 0.7 !important;}
+.ico_repair	{background-position:-240px -620px;}
+.ico_repair_hover {background-position:-280px -620px; opacity: 0.7;}
+.ico_repair_hover:hover, a:hover .ico_repair_hover {background-position:-240px -620px; opacity: 1;}
+.ico_ban		{	background-position:-80px -160px;	}
+.ico_vacation	{	background-position:-100px -160px;	}
+.ico_attack	{		background-position:-120px -160px;	}
+.ico_check_na	{		background-position:-140px -160px;	}
+.ico_delete_user	{	background-position:-280px -100px;	}
+
+.ico_zorro		{	background-position: -160px -160px;}
+.ico_blist		{	background-position: -180px -160px;}
+
+.ico_item_type1{	background-position:-200px -160px;	}
+.ico_item_type2{	background-position:-220px -160px;	}
+.ico_item_type0{	background-position:-240px -160px;	}
+.ico_item_type3{	background-position:-260px -160px;	}
+.ico_item_type4{	background-position:-280px -160px;	}
+
+
+.ico_filterany	{	background-position: -200px -160px;}
+.ico_filterup	{	background-position: -220px -160px;}
+.ico_filtermagic	{	background-position: -240px -160px;}
+.ico_filterall	{	background-position: -260px -160px;}
+
+
+
+/** –ó–∞–≥–æ–≤–æ—Ä—ã */
+.ico_magic101	{		background-position: 0px -180px;	}
+.ico_magic102	{		background-position: -20px -180px;	}
+.ico_magic103	{		background-position: -40px -180px;	}
+.ico_magic104	{		background-position: -60px -180px;	}
+.ico_magic105	{		background-position: -80px -180px;	}
+.ico_magic106	{		background-position: -100px -180px;	}
+.ico_magic107	{		background-position: -120px -180px;	}
+.ico_magic108	{		background-position: -140px -180px;	}
+.ico_magic109	{		background-position: -160px -180px;	}
+.ico_magic110	{		background-position: -180px -180px;	}
+.ico_magic111	{		background-position: -200px -180px;	}
+.ico_magic112	{		background-position: -220px -180px;	}
+.ico_magic113	{		background-position: -240px -180px;	}
+.ico_magic114	{		background-position: -260px -180px;	}
+.ico_magic115	{		background-position: -280px -180px;	}
+
+.ico_magic116	{		background-position:   0px -200px;	}
+.ico_magic117	{		background-position: -20px -200px;	}
+.ico_magic118	{		background-position: -40px -200px;	}
+.ico_magic119	{		background-position: -80px -200px;	}
+.ico_magic120	{		background-position: -60px -200px;	}
+.ico_magic121	{		background-position: -100px -200px;	}
+.ico_magic122	{		background-position: -120px -200px;	}
+.ico_magic123	{		background-position: -140px -200px;	}
+.ico_magic124	{		background-position: -160px -200px;	}
+.ico_magic125	{		background-position: -180px -200px;	}
+
+.ico_immune_1	{		background-position: -200px -200px;	}
+.ico_immune_2	{		background-position: -220px -200px;	}
+
+.ico_disease1	{		background-position: -160px -40px;	}
+.ico_disease2	{		background-position: -180px -40px;	}
+.ico_disease3	{		background-position: -200px -40px;	}
+.ico_disease4	{		background-position: -220px -40px;	}
+
+
+.icon.ico_safe{		background-position:  0px -280px;	}
+.icon.ico_safe3{		background-position: -20px -280px;	}
+.icon.ico_safe2{		background-position: -40px -280px;	}
+.icon.ico_safe4{		background-position: -60px -280px;	}
+.icon.ico_woodoo{		background-position: -80px -280px;	}
+.icon.ico_woodoo2{		background-position: -100px -280px;	}
+.icon.ico_totem{		background-position: -120px -280px;	}
+.icon.ico_totem2{		background-position: -140px -280px;	}
+.icon.ico_lord{		background-position: -160px -280px;	}
+.icon.ico_farm{		background-position: -180px -280px;	}
+.icon.ico_plantfreeze{		background-position: -200px -280px;	}
+.icon.ico_dungeon{			background-position: -220px -280px;	}
+.icon.ico_clanleave{		background-position: -240px -280px;	}
+.icon.ico_assault{			background-position: -260px -280px;	}
+.icon.ico_smithwork{		background-position: -280px -280px;	}
+.icon.ico_smithwork{		background-position: -280px -280px;	}
+
+/** –ö—É–ª–æ–Ω—ã */
+
+.item_0			{	background-position:   20px -220px;	}
+
+.item_83		{	background-position:   0px -220px;	}
+.item_85		{	background-position: -20px -220px;	}
+.item_86		{	background-position: -40px -220px;	}
+.item_87		{	background-position: -60px -220px;	}
+.item_88		{	background-position: -80px -220px;	}
+.item_177		{	background-position: -100px -220px;	}
+.item_90		{	background-position: -120px -220px;	}
+
+.item_176		{	background-position: -140px -220px;	}
+.item_92		{	background-position: -160px -220px;	}
+.item_178		{	background-position: -180px -220px;	}
+.item_94		{	background-position: -200px -220px;	}
+.item_95		{	background-position: -220px -220px;	}
+.item_96		{	background-position: -240px -220px;	}
+.item_97		{	background-position: -260px -220px;	}
+.item_98		{	background-position: -280px -220px;	}
+
+.item_99		{	background-position: 	0px -240px;	}
+.item_100		{	background-position:  -20px -240px;	}
+.item_101		{	background-position:  -40px -240px;	}
+.item_118		{	background-position:  -60px -240px;	}
+.item_102		{	background-position:  -80px -240px;	}
+.item_103		{	background-position: -100px -240px;	}
+.item_104		{	background-position: -120px -240px;	}
+.item_119		{	background-position: -140px -240px;	}
+.item_105		{	background-position: -160px -240px;	}
+.item_106		{	background-position: -180px -240px;	}
+.item_107		{	background-position: -200px -240px;	}
+.item_108		{	background-position: -220px -240px;	}
+.item_109		{	background-position: -240px -240px;	}
+.item_110		{	background-position: -260px -240px;	}
+.item_111		{	background-position: -280px -240px;	}
+
+
+.item_112		{	background-position: 	0px -260px;	}
+.item_113		{	background-position:  -20px -260px;	}
+.item_114		{	background-position:  -40px -260px;	}
+.item_115		{	background-position:  -60px -260px;	}
+.item_116		{	background-position:  -80px -260px;	}
+.item_117		{	background-position: -100px -260px;	}
+.item_202		{	background-position: -120px -260px;	}
+.item_203		{	background-position: -140px -260px;	}
+.item_226		{	background-position: -160px -260px;	}
+/* –Ω–æ–≤—ã–π –∫—É–ª–æ–Ω */
+.item_247		{	background-position: -200px -260px;	}
+
+/* –Ω–æ–≤—ã–π –∫—É–ª–æ–Ω */
+
+/** –°–ª–æ–Ω */
+.ico_dumb		{	background-position: -240px -260px;	}
+
+/** –ù–∞–∫–æ–ø—ã */
+
+.item_183		{	background-position:  -60px -260px;	}
+.item_184		{	background-position:  0  -260px;	}
+.item_185		{	background-position: -280px -240px;	}
+.item_186		{	background-position: -180px -240px;	}
+.item_187		{	background-position: -160px -240px;	}
+
+.item_188		{	background-position: -120px -240px;	}
+.item_189		{	background-position:  -40px -240px;	}
+.item_190		{	background-position: 	0px -240px;	}
+.item_192		{	background-position: -220px -220px;	}
+.item_193		{	background-position: -200px -220px;	}
+.item_194		{	background-position: -160px -220px;	}
+.item_195		{	background-position: -120px -220px;	}
+
+.item_225		{	background-position: -260px -220px;	}
+.item_191		{	background-position: -260px -220px;	}
+.item_334		{	background-position: -220px -260px;	}
+
+.item_508		{	background-position: -260px -260px;	}
+.item_579		{	background-position: -280px -260px;	}
+
+.item_605		{	background-position: -240px -200px;	}
+.item_606		{	background-position: -180px -260px;	}
+
+/** –≠—Ñ—Ñ–µ–∫—Ç—ã */
+.ico_item_306		{	background-position: -20px -300px;	}
+.ico_item_307		{	background-position: -40px -300px;	}
+.ico_item_308		{	background-position: -60px -300px;	}
+.ico_item_309		{	background-position: -80px -300px;	}
+.ico_item_310		{	background-position: -100px -300px;	}
+
+.item_590	{	background-position: -260px -340px;	}
+.item_591	{	background-position: -180px -340px;	}
+.item_594	{	background-position: -220px -340px;	}
+.item_595	{	background-position: -20px -340px;	}
+.item_596	{	background-position: -40px -340px;	}
+.item_597	{	background-position: -60px -340px;	}
+.item_598	{	background-position: -80px -340px;	}
+.item_599	{	background-position: -100px -340px;	}
+.item_600	{	background-position: -120px -340px;	}
+.item_601	{	background-position: -140px -340px;	}
+.item_602	{	background-position: -160px -340px;	}
+.item_603	{	background-position: -280px -340px;	}
+.item_604	{	background-position: -240px -340px;	}
+
+.item_595_1	{	background-position: -20px -360px;	}
+.item_596_1	{	background-position: -40px -360px;	}
+.item_597_1	{	background-position: -60px -360px;	}
+.item_598_1	{	background-position: -80px -360px;	}
+.item_599_1	{	background-position: -100px -360px;	}
+.item_600_1	{	background-position: -120px -360px;	}
+.item_601_1	{	background-position: -140px -360px;	}
+.item_602_1	{	background-position: -160px -360px;	}
+.item_603_1	{	background-position: -280px -340px;	}
+.item_604_1	{	background-position: -240px -340px;	}
+
+.item_645	{	background-position: -180px -480px;	}
+.item_664	{	background-position: -180px -500px;	}
+
+.ico_effect_exp		{	background-position: -120px -300px;	}
+.ico_effect_oils	{	background-position: -140px -300px;	}
+.ico_effect_stats	{	background-position: -160px -300px;	}
+
+.ico_bonus_sign	{	background-position: -0px -300px;	}
+.ico_bmarket_license	{	background-position: -180px -300px;	}
+.ico_have_1{    background-position: -160px -460px;}
+.ico_have_0{    background-position: -180px -460px;}
+
+.iconItem{
+	width: 60px;
+	height: 60px;
+	display:inline-block;
+	background: url(/images/packs/ico_items.jpg) no-repeat;
+	vertical-align:top;
+}
+
+/** –í–µ—â–∏ */
+.ico_safe {			background-position: 0px 0px;}
+.ico_pet {			background-position: -60px 0px;}
+.ico_woodoo {		background-position: -120px 0px;}
+.ico_woodoo2 {		background-position: -180px 0px;}
+.ico_totem {		background-position: -240px 0px;}
+.ico_totem2 {		background-position: -300px 0px;}
+
+.ico_group_4 {		background-position: -360px 0px;}
+.ico_group_2 {		background-position: -420px 0px;}
+.ico_group_3 {		background-position: -480px 0px;}
+.ico_group_5 {		background-position: -540px 0px;}
+.ico_group_6 {		background-position: -600px 0px;}
+.ico_lock {			background-position: -660px 0px;}
+.ico_defs{			background-position: -720px 0px;}
+.iconItem.ico_zorro {		background-position: -780px 0px;}
+.ico_lock2 {		background-position: -840px 0px;}
+.ico_free {			background-position: -900px 0px;}
+.ico_bag_1  {		background-position: -840px -60px;}
+.ico_bag_2  {		background-position: -780px -60px;}
+.ico_bag_3  {		background-position: -720px -60px;}
+.ico_bag_4  {		background-position: -660px -60px;}
+.ico_bag_5  {		background-position: -900px -60px;}
+
+.ico_item_589 {		background-position: -600px -60px; }
+.item_589 {		background-position: 0px -360px; }
+
+.ico_item_1		{	background-position:   0px -60px;	}
+.ico_item_2		{	background-position: -60px -60px;	}
+.ico_item_3		{	background-position: -120px -60px;	}
+.ico_item_130	{	background-position: -180px -60px;	}
+.ico_item_131	{	background-position: -240px -60px;	}
+.ico_item_132	{	background-position: -300px -60px;	}
+.ico_item_plus	{	background-position: -360px -60px;	}
+.ico_spec_free	{	background-position: -420px -60px;	}
+.ico_item_404	{	background-position: -480px -60px;	}
+.ico_item_754	{	background-position: -960px 0px;	}
+
+
+/** »ÍÓÌÍË ‰Îˇ ƒÂÈÎËÍÓ‚ */
+.ico_daily_time_1	{	background-position:   -40px -440px;	}
+.ico_daily_time_2	{	background-position:   -120px -440px;	}
+.ico_daily_time_3	{	background-position:   -140px -440px;	}
+.ico_daily_time_4	{	background-position:   -160px -440px;	}
+.ico_daily_time_5	{	background-position:   -100px -440px;	}
+.ico_daily_time_6	{	background-position:   -60px -440px;	}
+.ico_daily_time_7	{	background-position:   -180px -440px;	}
+.ico_daily_time_8	{	background-position:   -80px -440px;	}
+.ico_daily_time_9	{	background-position:   -280px -640px;	}
+.ico_daily_time_10	{	background-position:   -240px -640px;	}
+.ico_daily_time_11	{	background-position:   -260px -640px;	}
+.ico_daily_time_12	{	background-position:   -20px -660px;	}
+.ico_daily_time_13	{	background-position:   -240px -760px;	}
+
+.ico_daily_bonus_1	{	background-position:   -200px -440px;	}
+.ico_daily_bonus_2	{	background-position:   -280px -440px;	}
+.ico_daily_bonus_3	{	background-position:   0px -460px;		}
+.ico_daily_bonus_4	{	background-position:   -20px -460px;	}
+.ico_daily_bonus_5	{	background-position:   -260px -440px;	}
+.ico_daily_bonus_6	{	background-position:   -220px -440px;	}
+.ico_daily_bonus_7	{	background-position:   -0px -660px;	}
+.ico_daily_bonus_8	{	background-position:   -240px -440px;	}
+.ico_daily_bonus_9	{	background-position:   -280px -640px;	}
+.ico_daily_bonus_10	{	background-position:   -240px -640px;	}
+.ico_daily_bonus_11	{	background-position:   -260px -640px;	}
+.ico_daily_bonus_12	{	background-position:   -20px -660px;	}
+.ico_daily_bonus_13	{	background-position:   -240px -760px;		}
+
+.ico_maslenica_bonus_watch		{	background-position:   -40px -660px;	}
+.ico_maslenica_bonus_exp		{	background-position:   -120px -300px;	}
+.ico_maslenica_bonus_monster	{	background-position:   -60px -660px;	}
+
+.ico_mine_bonus_none	{	background-position:   -240px -440px;	}
+
+.ico_spec_41	{	background-position:   -100px -660px;	}
+
+
+/** »ÍÓÌÍË ‰Îˇ ˝ÙÙÂÍÚÓ‚ ‡ÂÌ˚ */
+.potion_811	{	background-position:   -140px -740px;	}
+.potion_812	{	background-position:   -60px -740px;	}
+.potion_813	{	background-position:   -100px -740px;	}
+.potion_814	{	background-position:   -120px -740px;	}
+.potion_815	{	background-position:   -80px -740px;	}
+.item_816	{	background-position:   -280px -720px;	}
+.potion_821	{	background-position:   -260px -740px;	}
+.arena_no_lose	{	background-position:   -280px -740px;	}
+.blind_green	{	background-position:   -100px -760px;	}
+.blind_green_small  {	background-position:   -120px -760px;	}
+.krypton_yellow  {	background-position:   -140px -760px;	}
+.krypton_orange  {	background-position:   -160px -760px;	}
+.krypton_red  {	background-position:   -180px -760px;	}
+
+
+
+/**
+	–î–æ–ø–æ–ª–Ω–∏—Ç–µ–ª—å–Ω—ã–µ –∏–∫–æ–Ω–∫–∏
+*/
+.iconsp{
+	width: 18px;
+	height: 18px;
+	display:inline-block;
+	background: url(/i/icons2.png) no-repeat;
+
+	vertical-align:middle;
+}
+.iconsp20{
+	width: 20px;
+	height: 20px;
+	display:inline-block;
+	background: url(/i/icons2.png) no-repeat;
+
+	vertical-align:middle;
+}
+
+.blue_popup {
+	width: 20px;
+	height: 20px;
+	display:inline-block;
+	background: url(/i/icons2.png) no-repeat;
+	vertical-align:middle;
+	background-position:  -160px -20px;
+}
+
+.blue_popup:hover {
+	background-position:  -180px -20px;
+}
+
+.gray_popup {
+	width: 18px;
+	height: 18px;
+	display:inline-block;
+	background: url(/i/icons2.png) no-repeat;
+	vertical-align:middle;
+	background-position:  -200px -120px;
+}
+
+.gray_popup:hover {
+	background-position:  -220px -120px;
+}
+
+.reload {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	background: url(/i/icons2.png) no-repeat;
+	vertical-align: middle;
+	background-position:  -280px -120px;
+}
+
+.inform {
+	background-position:  -200px -20px;
+}
+
+/** »ÍÓÌÍË ÏÓ‰ÂËÓ‚‡ÌËˇ ÔÓ‰‡ÍÓ‚ */
+.cmd_foul {	background-position:  -140px -20px;	}
+.cmd_delete {	background-position:-120px -20px;	}
+
+
+/**	»ÍÓÌÍË Í‡ÏÌÂÈ */
+
+.sm_rock1 {	background-position:  0px 0px;	}
+.sm_rock2 {	background-position:-20px 0px;	}
+.sm_rock3 {	background-position:-40px 0px;	}
+.sm_rock4 {	background-position:-60px 0px;	}
+.sm_rock5 {	background-position:-80px 0px;	}
+.sm_rock6 {	background-position:-100px 0px;	}
+.sm_rock7 {	background-position:-120px 0px;	}
+.sm_rock8 {	background-position:-140px 0px;	}
+.sm_rock0 {	background-position:-160px 0px;	}
+
+
+
+/** –∏–≥—Ä—ã */
+.sm_game1 {	background-position:-180px 0px;	}
+.sm_game2 {	background-position:-200px 0px;	}
+
+.ico_time_small {	background-position:-260px 0px;	}
+
+.ico_hp_3_1 {	background-position:  0px -20px;	}
+.ico_hp_2_1 {	background-position:-20px -20px;	}
+.ico_hp_1_1 {	background-position:-40px -20px;	}
+.ico_hp_0_1 {	background-position:-60px -20px;	}
+
+.ico_hp_3_2 {	background-position:  0px -20px;	}
+.ico_hp_2_2 {	background-position:-20px -20px;	}
+.ico_hp_1_2 {	background-position:-40px -20px;	}
+.ico_hp_0_2 {	background-position:-60px -20px;	}
+.ico_zver {	background-position:  -80px -20px;	}
+.ico_tank {	background-position:  -100px -20px;	}
+
+
+/** —Ç–µ–≥–∏ */
+.tag_right 	{ background-position:  0px -40px;	}
+.tag_center { background-position:-20px -40px;	}
+.tag_left 	{ background-position:-40px -40px;	}
+.tag_left2 	{ background-position:-180px -20px;	}
+.tag_large 	{ background-position:-60px -40px;	}
+.tag_small 	{ background-position:-80px -40px;	}
+.tag_i		 { background-position:-100px -40px;	}
+.tag_u 		{ background-position:-120px -40px;	}
+.tag_b 		{ background-position:-140px -40px;	}
+.tag_color 	{ background-position:-160px -40px;	}
+.tag_char 	{ background-position:-180px -40px;	}
+.tag_clan 	{ background-position:-200px -40px;	}
+
+
+/** –º–∏–Ω–∏ –≤–µ—â–∏ */
+.item_monster_1 	{ background-position: 0px -60px;	}
+.item_monster_2 	{ background-position: -80px -60px;	}
+.item_monster_3 	{ background-position: -40px -60px;	}
+.item_monster_4 	{ background-position: -60px -60px;	}
+.item_monster_5 	{ background-position: -20px -60px;	}
+.item_monster_6 	{ background-position:   0px -140px;	}
+.item_monster_7 	{ background-position: -20px -140px;	}
+.item_monster_8 	{ background-position: -40px -140px;	}
+
+.icon_close 	{ background-position: -220px -0px;	}
+.icon_close:hover 	{ background-position: -240px -0px;	}
+.item_mkey	 	{ background-position: -100px -60px;	}
+.item_mkey2	 	{ background-position: -60px -140px;	}
+
+.item_pandora 		{ background-position: -120px -60px;	}
+.item_pandora_caste_bronse 		{ background-position: -160px -100px;	}
+.item_pandora_caste_silver 		{ background-position: -180px -100px;	}
+.item_pandora_caste_gold 		{ background-position: -200px -100px;	}
+.item_pandora_caste_wins 		{ background-position: -220px -100px;	}
+.item_pandora2 		{ background-position: -260px -100px;	}
+.item_effect_class 		{ background-position: -280px -40px;	}
+.ico_key			{	background-position:-140px -60px;	}
+.harbour_crusades 	{ background-position: -160px -60px;	}
+.relics_total { background-position: -240px -100px;	}
+.ico_time 		{ background-position: -260px 0px;	}
+
+.ico_close_speech { background-position: -220px 0px }
+.ico_close_speech:hover { background-position: -240px 0px; cursor: pointer }
+
+/* –ú–µ–¥–∞–ª–∏ */
+.ico_medal_1		{ background-position: -180px -60px }
+.ico_medal_2		{ background-position: -200px -60px }
+.ico_medal_3		{ background-position: -220px -60px }
+.ico_medal_4		{ background-position: -240px -60px }
+.ico_medal_5		{ background-position: -260px -60px }
+.ico_medal_6		{ background-position: -280px -60px }
+
+.ico_spec_arrow		{ background-position: -260px -40px; width: 10px }
+.ico_spec_arrow2		{ background-position: -270px -40px; width: 10px }
+
+.ico_wiki		{ background-position: -240px -40px }
+
+/* –æ—Ä–¥–µ–Ω–∞ */
+.ico_orden			{ background-position: -240px -80px  }
+
+/* –ú–∞—Ä–∫–∏ */
+.ico_stamp			{ background-position: -260px -80px  }
+
+
+.ico_lost 		{ background-position: 0px -80px;	}
+.ico_won 		{ background-position: -20px -80px;	}
+.ico_question 	{ background-position: -40px -80px;	}
+.guild_ship 	{ background-position: -60px -80px;	}
+.ico_harbour_2 	{ background-position: -80px -80px;	}
+.ico_harbour_3 	{ background-position: -100px -80px;	}
+.trade_bug_4 	{ background-position: -140px -80px;	}
+.trade_bug_1 	{ background-position: -160px -80px;	}
+.trade_bug_2 	{ background-position: -180px -80px;	}
+.trade_bug_3 	{ background-position: -200px -80px;	}
+.trade_bug_5 	{ background-position: -220px -80px;	}
+
+
+.item_smith_1 	{ background-position: 0px -100px;	}
+.item_smith_2 	{ background-position: -20px -100px;	}
+.item_smith_3 	{ background-position: -40px -100px;	}
+.item_smith_4 	{ background-position: -60px -100px;	}
+.item_smith_5 	{ background-position: -80px -100px;	}
+.item_smith_6 	{ background-position: -100px -100px;	}
+.item_smrock 	{ background-position: -120px -100px;	}
+.shop_sales 	{ background-position: -140px -100px;	}
+
+
+.item_mine_1 	{ background-position:  0px -120px;	}
+.item_mine_2 	{ background-position: -20px -120px;	}
+.item_mine_3 	{ background-position: -40px -120px;	}
+.item_mine_4 	{ background-position: -60px -120px;	}
+.item_mine_5 	{ background-position: -80px -120px;	}
+.item_mine_6 	{ background-position: -100px -120px;	}
+.item_mine_7 	{ background-position: -260px -320px;	}
+.item_mine_10 	{ background-position: -120px -120px;	}
+.item_mine_11	{ background-position: -140px -120px;	}
+.item_mine_12 	{ background-position: -160px -120px;	}
+
+.item_alchemy_1 { background-position: -200px -340px;	}
+.item_alchemy_2 { background-position: 0px -340px;	}
+.item_leathers  {  background-position: -80px -780px;}
+
+.icon_spec_10	{ background-position: -200px -300px; }
+
+.item_farm_1 	{ background-position: -280px -320px;	}
+
+
+.timer_farm_1 { background-position: -220px -360px;	}
+.timer_mine_7 { background-position: -200px -360px;	}
+.timer_alchemy_1 { background-position: -240px -360px;	}
+.timer_alchemy_2 { background-position: -260px -360px;	}
+
+.timer_boiler_1 { background-position: 0px -380px;	}
+.timer_boiler_2 { background-position: -20px -380px;	}
+.timer_boiler_3 { background-position: -40px -380px;	}
+.timer_boiler_4 { background-position: -60px -380px;	}
+
+.timer_alchemy_make { background-position: -280px -360px;	}
+.timer_alchemy_stir { background-position: -80px -380px;	}
+
+.timer_mine_manager { background-position: -120px -380px;	}
+.timer_mantibator { background-position: -100px -380px;	}
+.timer_caste { background-position: -140px -380px;	}
+
+.rank_type_1 { background-position: -160px -380px;	}
+.rank_type_2 { background-position: -180px -380px;	}
+.rank_type_3 { background-position: -200px -380px;	}
+.rank_type_11 { background-position: -220px -380px;	}
+.rank_type_12 { background-position: -240px -380px;	}
+.rank_type_13 { background-position: -260px -380px;	}
+
+.item_633 { background-position: -280px -380px;	}
+.item_698 { background-position: -180px -520px;	}
+.alchemy_step_1		{	background-position: -60px -400px;	}
+.alchemy_step_2		{	 background-position: -100px -780px;	}
+
+.chameleon_egg_1	{	background-position: -220px -400px;	}
+.chameleon_egg_2	{	background-position: -240px -400px;	}
+.chameleon_egg_3	{	background-position: -260px -400px;	}
+.wormspirit_egg		{	background-position: -140px -540px;	}
+.mammoth_baby_1		{	background-position: -100px -600px;	}
+.mammoth_baby_2		{	background-position: -80px -600px;	}
+.mammoth_baby_3		{	background-position: -120px -600px;	}
+.whale_egg          {	background-position: -200px -640px;	}
+.parrot_egg          {	background-position: -180px -660px;	}
+.ostrich_egg        {	background-position: -100px -700px;	}
+.casket             {	background-position: -40px -700px;	}
+.horror_point       {	background-position: -20px -700px;	}
+.triangular_hat     {	background-position: -140px -700px;	}
+
+.imgpopups{
+	display:inline-block;
+	background: url(/images/packs/popups.jpg) no-repeat;
+
+	width:60px;
+	height:60px;
+}
+
+.imgpopups.money_1	{	background-position: 0px 0 ;}
+.imgpopups.money_2	{	background-position: -60px 0 ;}
+.imgpopups.money_3	{	background-position: -180px 0 ;}
+.imgpopups.money_10	{	background-position: -120px 0 ;}
+.imgpopups.hps	{		background-position: -240px 0 ;}
+.imgpopups.ticket_1	{		background-position: -300px 0 ;}
+.imgpopups.ticket_2	{		background-position: -360px 0 ;}
+
+.imgmoney_b{
+	display:inline-block;
+	vertical-align: middle;
+	background: url(/images/packs/money_b.png) no-repeat;
+
+	width:60px;
+	height:60px;
+}
+
+.imgmoney_b.money_1	{	background-position: 0px 0 ;}
+.imgmoney_b.money_2	{	background-position: -60px 0 ;}
+.imgmoney_b.money_3	{	background-position: -180px 0 ;}
+.imgmoney_b.money_10	{	background-position: -120px 0 ;}
+
+
+
+.ico_bday_letter{
+	background: url(/images/m/bday/icons.png) no-repeat -60px 0 !important;
+}
+
+/* ------ »ÍÓÌÍË ‰Îˇ ·ÓÂ‚˚ı „ËÎ¸‰ËÈ -------*/
+.class_bonus_1		{ background-position:  0px 0px;	}
+.passive.class_bonus_1 	{ background-position:  0px -30px;	}
+.class_bonus_2		{ background-position: -30px 0px;	}
+.passive.class_bonus_2	{ background-position: -30px -30px;	}
+.class_bonus_3		{ background-position: -60px 0px;	}
+.passive.class_bonus_3	{ background-position: -60px -30px;	}
+.class_bonus_4		{ background-position: -90px 0px;	}
+.passive.class_bonus_4	{ background-position: -90px -30px;	}
+.class_bonus_5		{ background-position: -120px 0px;	}
+.passive.class_bonus_5	{ background-position: -120px -30px;	}
+.class_bonus_6		{ background-position: -150px 0px;	}
+.passive.class_bonus_6	{ background-position: -150px -30px;	}
+.class_bonus_7		{ background-position: -180px 0px;	}
+.passive.class_bonus_7	{ background-position: -180px -30px;	}
+.class_bonus_8		{ background-position: -210px 0px;	}
+.passive.class_bonus_8	{ background-position: -210px -30px;	}
+.class_bonus_9		{ background-position: -240px 0px;	}
+.passive.class_bonus_9	{ background-position: -240px -30px;	}
+.class_bonus_10		{ background-position: -270px 0px;	}
+.passive.class_bonus_10	{ background-position: -270px -30px;	}
+.class_bonus_11		{ background-position: -300px 0px;	}
+.passive.class_bonus_11	{ background-position: -300px -30px;	}
+.class_bonus_12		{ background-position: -330px 0px;	}
+.passive.class_bonus_12	{ background-position: -330px -30px;	}
+
+
+.class_bonus_101		{ background-position: -360px 0px }
+.passive.class_bonus_101	{ background-position: -360px -30px }
+.class_bonus_102		{ background-position: -390px 0px }
+.passive.class_bonus_102	{ background-position: -390px -30px }
+.class_bonus_103		{ background-position: -420px 0px }
+.passive.class_bonus_103	{ background-position: -420px -30px }
+.class_bonus_104		{ background-position: -450px 0px }
+.passive.class_bonus_104	{ background-position: -450px -30px }
+
+.ico_relations_0 { background-position: -200px -20px; }
+.ico_relations_1 { background-position: -220px -20px; }
+.ico_relations_2 { background-position: -240px -20px; }
+.ico_relations_3 { background-position: -260px -20px; }
+.ico_relations { background-position: -280px -20px; }
+
+.ico_class_flag			{background-position: -280px -40px;}
+.ico_class_exhibitors	{background-position: -160px -0px;}
+
+.ico_bonus_pet.ico_m_power		{background-position: -0px -60px;}
+.ico_bonus_pet.ico_m_power.passive	{background-position: -0px -0px;}
+.ico_bonus_pet.ico_m_block		{background-position: -60px -60px;}
+.ico_bonus_pet.ico_m_block.passive	{background-position: -60px -0px;}
+.ico_bonus_pet.ico_m_dexterity		{background-position: -120px -60px;}
+.ico_bonus_pet.ico_m_dexterity.passive	{background-position: -120px -0px;}
+.ico_bonus_pet.ico_m_charisma		{background-position: -180px -60px;}
+.ico_bonus_pet.ico_m_charisma.passive	{background-position: -180px -0px;}
+.ico_bonus_pet.ico_safe			{background-position: -300px -60px;}
+.ico_bonus_pet.ico_safe.passive		{background-position: -300px -0px;}
+.ico_bonus_pet.ico_safe2		{background-position: -240px -60px;}
+.ico_bonus_pet.ico_safe2.passive		{background-position: -240px -0px;}
+.ico_bonus_pet.ico_fast			{background-position: -420px -60px;}
+.ico_bonus_pet.ico_fast.passive		{background-position: -420px -0px;}
+.ico_bonus_pet.ico_luck			{background-position: -360px -60px;}
+.ico_bonus_pet.ico_luck.passive		{background-position: -360px -0px;}
+
+.ico_bonus_pet .b_bonus { 
+    width:20px; 
+    height: 20px; 
+    background-image: url('/i/ico.png'); 
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+.ico_bonus_pet.ico_m_power .b_bonus{ background-position: -160px -560px }
+.ico_bonus_pet.ico_m_block .b_bonus{ background-position: -180px -560px }
+.ico_bonus_pet.ico_m_dexterity .b_bonus{ background-position: -200px -560px }
+.ico_bonus_pet.ico_m_charisma .b_bonus{ background-position: -220px -560px }
+
+.ico_group_state_1 { background-position: -220px -20px }
+.ico_group_state_2 { background-position: -240px -20px }
+.ico_group_state_0 { background-position: -260px -20px }
+.ico_group_state_4 { background-position: -280px -20px }
+.ico_group_state_3 { background-position: -220px -40px }
+
+
+/* ------ »ÍÓÌÍË ‰Îˇ ‡ÒÓ‚˚ı ·ÓÂ‚ -------*/
+
+.ico_bg_01		{	background-position: 0px -420px;	}
+.ico_bg_02		{	background-position: -40px -420px;	}
+.ico_bg_03		{	background-position: -20px -420px;	}
+
+.ico_bg_forest		{	background-position: -220px -420px;	}
+.ico_bg_mountain	{	background-position: -240px -420px;	}
+.ico_bg_plain		{	background-position: -260px -420px;	}
+
+.ico_bg_points		{	background-position: -280px -400px;	}
+.ico_bg_points_big	{	background-position: -280px -120px;	}
+
+.ico_bg_food_01	{	background-position:-60px -420px;	}
+.ico_bg_food_02	{	background-position:-80px -420px;	}
+.ico_bg_food_03	{	background-position:-100px -420px;	}
+.ico_bg_food_request	{	background-position:-120px -420px;	}
+.ico_bg_food_search	{	background-position:-140px -420px;	}
+
+.ico_bg_food_search	{	background-position: -140px -420px;	}
+.ico_bg_dead		{	background-position: -160px -420px;	}
+
+.ico_bg_attack		{	background-position: -119px -160px;	}
+.ico_bg_courage	{	background-position: -180px -420px;	}
+.ico_bg_harbour	{	background-position: -60px -20px;	}
+
+.ico_talants_1_01	{	background-position: 0px 0px;		}
+.ico_talants_1_02	{	background-position: -20px 0px;		}
+.ico_talants_1_03	{	background-position: -40px 0px;		}
+.ico_talants_1_04	{	background-position: -60px 0px;		}
+.ico_talants_1_05	{	background-position: -80px 0px;		}
+.ico_talants_1_06	{	background-position: -100px 0px;	}
+.ico_talants_1_07	{	background-position: -120px 0px;	}
+.ico_talants_1_08	{	background-position: -140px 0px;	}
+.ico_talants_1_09	{	background-position: -160px 0px;	}
+.ico_talants_1_10	{	background-position: -180px 0px;	}
+.ico_talants_1_11	{	background-position: -200px 0px;	}
+.ico_talants_1_12	{	background-position: -220px 0px;	}
+.ico_talants_1_13	{	background-position: -240px 0px;	}
+.ico_talants_1_14	{	background-position: -260px 0px;	}
+.ico_talants_1_15	{	background-position: -280px 0px;	}
+
+
+.ico_talants_2_01	{	background-position: 0px -20px;		}
+.ico_talants_2_02	{	background-position: -20px -20px;	}
+.ico_talants_2_03	{	background-position: -40px -20px;	}
+.ico_talants_2_04	{	background-position: -60px -20px;	}
+.ico_talants_2_05	{	background-position: -80px -20px;	}
+.ico_talants_2_06	{	background-position: -100px -20px;	}
+.ico_talants_2_07	{	background-position: -120px -20px;	}
+.ico_talants_2_08	{	background-position: -140px -20px;	}
+.ico_talants_2_09	{	background-position: -160px -20px;	}
+.ico_talants_2_10	{	background-position: -180px -20px;	}
+.ico_talants_2_11	{	background-position: -200px -20px;	}
+.ico_talants_2_12	{	background-position: -220px -20px;	}
+.ico_talants_2_13	{	background-position: -240px -20px;	}
+.ico_talants_2_14	{	background-position: -260px -20px;	}
+.ico_talants_2_15	{	background-position: -280px -20px;	}
+
+
+.ico_talants_3_01	{	background-position: 0px -40px;		}
+.ico_talants_3_02	{	background-position: -20px -40px;	}
+.ico_talants_3_03	{	background-position: -40px -40px;	}
+.ico_talants_3_04	{	background-position: -60px -40px;	}
+.ico_talants_3_05	{	background-position: -80px -40px;	}
+.ico_talants_3_06	{	background-position: -100px -40px;	}
+.ico_talants_3_07	{	background-position: -120px -40px;	}
+.ico_talants_3_08	{	background-position: -140px -40px;	}
+.ico_talants_3_09	{	background-position: -160px -40px;	}
+.ico_talants_3_10	{	background-position: -180px -40px;	}
+.ico_talants_3_11	{	background-position: -200px -40px;	}
+.ico_talants_3_12	{	background-position: -220px -40px;	}
+.ico_talants_3_13	{	background-position: -240px -40px;	}
+.ico_talants_3_14	{	background-position: -260px -40px;	}
+.ico_talants_3_15	{	background-position: -280px -40px;	}
+
+
+.ico_talants_4_01	{	background-position: 0px -60px;		}
+.ico_talants_4_02	{	background-position: -20px -60px;	}
+.ico_talants_4_03	{	background-position: -40px -60px;	}
+.ico_talants_4_04	{	background-position: -60px -60px;	}
+.ico_talants_4_05	{	background-position: -80px -60px;	}
+.ico_talants_4_06	{	background-position: -100px -60px;	}
+.ico_talants_4_07	{	background-position: -120px -60px;	}
+.ico_talants_4_08	{	background-position: -140px -60px;	}
+.ico_talants_4_09	{	background-position: -160px -60px;	}
+
+
+
+
+.ico_talants_1_01	{	background-position: 0px 0px;		}
+.ico_talants_1_02	{	background-position: -20px 0px;		}
+.ico_talants_517	{	background-position: -40px 0px;		}
+.ico_talants_518	{	background-position: -60px 0px;		}
+.ico_talants_519	{	background-position: -80px 0px;		}
+.ico_talants_520	{	background-position: -100px 0px;	}   
+.ico_talants_521	{	background-position: -120px 0px;	}
+.ico_talants_522	{	background-position: -140px 0px;	}
+.ico_talants_523	{	background-position: -160px 0px;	}
+.ico_talants_524	{	background-position: -180px 0px;	}
+.ico_talants_525	{	background-position: -200px 0px;	}
+.ico_talants_526	{	background-position: -220px 0px;	}
+.ico_talants_527	{	background-position: -240px 0px;	}
+.ico_talants_528	{	background-position: -260px 0px;	}
+.ico_talants_529	{	background-position: -280px 0px;	}
+
+
+.ico_talants_530	{	background-position: 0px -20px;		}
+.ico_talants_531	{	background-position: -20px -20px;	}
+.ico_talants_532	{	background-position: -40px -20px;	}
+.ico_talants_533	{	background-position: -60px -20px;	}
+.ico_talants_534	{	background-position: -80px -20px;	}
+.ico_talants_535	{	background-position: -100px -20px;	}
+.ico_talants_536	{	background-position: -120px -20px;	}
+.ico_talants_537	{	background-position: -140px -20px;	}
+.ico_talants_538	{	background-position: -160px -20px;	}
+.ico_talants_539	{	background-position: -180px -20px;	}
+.ico_talants_547	{	background-position: -200px -20px;	}
+.ico_talants_546	{	background-position: -220px -20px;	}
+.ico_talants_540	{	background-position: -240px -20px;	}
+.ico_talants_541	{	background-position: -260px -20px;	}
+.ico_talants_542	{	background-position: -280px -20px;	}
+
+
+.ico_talants_543	{	background-position: 0px -40px;		}
+.ico_talants_544	{	background-position: -20px -40px;	}
+.ico_talants_3_03	{	background-position: -40px -40px;	}
+.ico_talants_501	{	background-position: -60px -40px;	}
+.ico_talants_502	{	background-position: -80px -40px;	}
+.ico_talants_503	{	background-position: -100px -40px;	}
+.ico_talants_504	{	background-position: -120px -40px;	}
+.ico_talants_505	{	background-position: -140px -40px;	}
+.ico_talants_506	{	background-position: -160px -40px;	}
+.ico_talants_507	{	background-position: -180px -40px;	}
+.ico_talants_510	{	background-position: -200px -40px;	}
+.ico_talants_509	{	background-position: -220px -40px;	}
+.ico_talants_508	{	background-position: -240px -40px;	}
+.ico_talants_511	{	background-position: -260px -40px;	}
+.ico_talants_514	{	background-position: -280px -40px;	}
+
+
+.ico_talants_513	{	background-position: 0px -60px;		}
+.ico_talants_512	{	background-position: -20px -60px;	}
+.ico_talants_548	{	background-position: -40px -60px;	}
+.ico_talants_4_04	{	background-position: -60px -60px;	}
+.ico_talants_4_05	{	background-position: -80px -60px;	}
+.ico_talants_4_06	{	background-position: -100px -60px;	}
+.ico_talants_4_07	{	background-position: -120px -60px;	}
+.ico_talants_4_08	{	background-position: -140px -60px;	}
+.ico_talants_4_09	{	background-position: -160px -60px;	}
+
+.ico_talants_800	{	background-position: -180px -60px;	}
+
+.ico_sk_541	{	background-position: -220px -60px;	}
+.ico_sk_542	{	background-position: -240px -60px;	}
+.ico_sk_543	{	background-position: -260px -60px;	}
+.ico_sk_544	{	background-position: -280px -60px;	}
+.ico_sk_545	{	background-position: 0px -80px;	}
+.ico_sk_546	{	background-position: -20px -80px;	}
+.ico_sk_547	{	background-position: -60px -80px;	}
+.ico_sk_548	{	background-position: -40px -80px;	}
+
+
+.ico_mine_01	{	background-position: -0px -0px;}
+.ico_mine_02	{	background-position: -220px -0px;}
+.ico_mine_03	{	background-position: -330px -0px;}
+.ico_mine_04	{	background-position: -110px -0px;}
+.ico_mine_05	{	background-position: -440px -0px;}
+.ico_mine_06	{	background-position: -550px -0px;}
+.ico_mine_0100	{	background-position: -660px -0px;}
+
+.adamant { background-position: -280px -420px }
+.mifril { background-position: 0px -440px }
+
+.bathyscaphe { background-position: -280px -500px }
+.spaceship { background-position: -180px -540px }
+
+/* ------ »ÍÓÌÍË ÔÓ˜Ú˚, ÌÂÍÓÚÓ˚Â -------*/
+.icon_post{
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	background: url(/images/packs/ico_post.png) no-repeat;
+	vertical-align:middle;
+}
+
+.arrow_left { background-position: -224px 0px; }
+.arrow_right { background-position: -240px 0px; }
+.arrow_down { background-position: -192px 0px; }
+.arrow_up { background-position: -176px 0px; }
+.fill_post { background-position: -16px 0px; }
+.ulevel { background-position: -208px 0px; }
+
+.icon_post.ico_power{background-position: -272px 0px;}
+.icon_post.ico_block{background-position: -288px 0px;}
+.icon_post.ico_dexterity{background-position: -304px 0px;}
+.icon_post.ico_endurance{background-position: -320px 0px;}
+.icon_post.ico_charisma{background-position: -336px 0px;}
+.icon_post.ico_hp{background-position: -480px 0px;}
+.icon_post.ico_reputation{background-position: -496px 0px; position: relative; top: -2px;}
+.icon_post.ico_fights{background-position: -512px 0px; position: relative; top: -2px;}
+.icon_post.ico_coins{background-position: -528px 0px; position: relative; top: -2px;}
+.icon_post.ico_might{background-position: -544px 0px; position: relative; top: -2px;}
+
+/** ŒÚ Ò·˚ÚÌËˆ˚ */
+.icon_post.ico_bids{background-position: -352px 0px;}
+.icon_post.ico_timeout{background-position: -368px 0px;}
+.icon_post.ico_size{background-position: -384px 0px;}
+.icon_post.ico_check, .selected .icon_post.ico_check_auto{background-position: -400px 0px;}
+.icon_post.ico_check_off, .icon_post.ico_check_auto{background-position: -416px 0px;}
+.icon_post.ico_check.disabled {background-position: -448px 0px;}
+.icon_post.ico_check_off.disabled {background-position: -464px 0px;}
+
+.voted {
+    background-position: -120px -500px;
+}
+
+.mine_res_1 { background-position: -180px -320px }
+.mine_res_4 { background-position: -200px -320px }
+.mine_res_2 { background-position: -220px -320px }
+.mine_res_3 { background-position: -240px -320px }
+
+.mine_res_5 { background-position: -280px -420px }
+.mine_res_6 { background-position: 0px -440px }
+
+
+.item_hp_small { background-position: -200px -500px; width: 16px; height: 16px;}
+.item_damage_small { background-position: -220px -500px; width: 16px; height: 16px;}
+.item_courage_small { background-position: -240px -500px; width: 16px; height: 16px;}
+.item_food_small { background-position: -260px -500px; width: 16px; height: 16px;}
+.img_money_1_small { background-position: -240px -460px; width: 16px; height: 16px; margin: -3px 0;}
+.img_money_2_small { background-position: -260px -460px; width: 16px; height: 16px; margin: -3px 0;}
+.img_money_3_small { background-position: -280px -460px; width: 16px; height: 16px; margin: -3px 0;}
+.img_money_10_small { background-position: -60px -520px; width: 16px; height: 16px; margin: -3px 0;}
+
+.ico_filter_m1 { background-position:-200px -140px; }
+.ico_filter_m2 { background-position:-220px -140px; }
+.ico_filter_m3 { background-position:-240px -140px; }
+.ico_filter_t1 { background-position:-200px -480px; }
+.ico_filter_t2 { background-position:-220px -480px; }
+.ico_filter_t3 { background-position:-240px -480px; }
+.ico_filter_u1 { background-position:-240px -160px; }
+.ico_filter_u2 { background-position:-200px -160px; }
+.ico_filter_u3 { background-position:-80px -520px; }
+.ico_filter_u4 { background-position:-280px -160px; }
+.ico_filter_u5 { background-position: -40px -540px; }
+.ico_filter_p0 { background-position: -260px -480px; }
+.ico_filter_p3 { background-position: -280px -480px; }
+.ico_filter_p5 { background-position: 0px -500px; }
+.ico_filter_p7 { background-position: -20px -500px; }
+.ico_filter_p10 { background-position: -40px -500px; }
+.ico_filter_p13 { background-position: -60px -500px; }
+.ico_filter_p15 { background-position: -80px -500px; }
+.ico_filter_p17 { background-position: -100px -500px; }
+
+.ico_trade_stas_got { background-position: -60px -540px; }
+.ico_trade_stas_lost { background-position: -80px -540px; }
+.ico_trade_stas_balance { background-position: -100px -540px; }
+
+.ico_skill_train { background-position:  -220px -140px; }
+
+.bday4_candy {background-position: -220px -540px;}
+.bday4_cake {background-position: -260px -540px;}
+.bday4_cake_time {background-position: -280px -540px;}
+
+.maslenica_bonus {background-position: -120px -640px;}
+.maslenica_cake {background-position: -140px -640px;}
+
+.item_716 { background-position: 0 -560px;	}
+.item_717 { background-position: -20px -560px;	}
+.item_718 { background-position: -40px -560px;	}
+.item_719 { background-position: -60px -560px;	}
+.item_720 { background-position: -100px -560px;	}
+.item_721 { background-position: -80px -560px;	}
+.item_722 { background-position: -120px -560px;	}
+.item_723 { background-position: -140px -560px;	}
+
+.ico_brain { background-position: -21px -580px; }
+.ico_raid { background-position: -40px -580px; }
+
+.ico_burning { background-position: -60px -580px; }
+.ico_burning_safe { background-position: -80px -580px; }
+.ico_burning_safe3 { background-position: -100px -580px; }
+.ico_burning_safe2 { background-position: -120px -580px; }
+.ico_burning_safe4 { background-position: -140px -580px; }
+.ico_burning_woodoo { background-position: -160px -580px; }
+.ico_burning_woodoo2 { background-position: -180px -580px; }
+.ico_burning_totem { background-position: -200px -580px; }
+.ico_burning_totem2 { background-position: -220px -580px; }
+.ico_burning_fence { background-position: -240px -580px; }
+.ico_burning_road { background-position: -260px -580px; }
+.ico_burning_out { background-position: -280px -580px; }
+
+.ico_shroom_critical { background-position: -240px -560px; }
+.ico_shroom_positive { background-position: -260px -560px; }
+.ico_shroom_almighty { background-position: -280px -560px; }
+.ico_shroom_badass { background-position: 0 -580px; }
+
+.ico_cool_small { background-position: -40px -600px; width: 14px !important; height: 16px !important;}
+.ico_cool2_small { background-position: -60px -600px; width: 14px !important; height: 16px !important; opacity: 0.7;}
+
+.ico_nobonus_small { background-position: -20px -600px; width: 20px !important; height: 20px !important;}
+
+.ico_pro_points { background-position: -200px -420px; }
+.ico_pro_level { background-position: -260px -600px; }
+.ico_pro_exp { background-position: -280px -600px; }
+
+.ico_smith_game_1 { background-position: 0px -620px; }
+.ico_smith_game_2 { background-position: -20px -620px; }
+.ico_caste_power { background-position: -40px -620px; }
+.ico_caste_block { background-position: -60px -620px; }
+.ico_caste_dexterity { background-position: -80px -620px; }
+.ico_caste_endurance { background-position: -100px -620px; }
+.ico_caste_charisma { background-position: -120px -620px; }
+
+.heroic_medal { background-position: -140px -620px; }
+
+.stone { background-position: -160px -620px; }
+.wood { background-position: -180px -620px; }
+.wood2 { background-position: -220px -680px; }
+
+.edit { background-position: -260px -620px; opacity: 0.7; }
+.edit:hover { background-position: -200px -620px; opacity: 1; }
+.confirm { background-position: -220px -620px; }
+
+.gold_pandora { background-position: -60px -640px; }
+
+.academy {background-position: -100px -640px; width: 18px;}
+.no_academy {background-position: -80px -640px;}
+
+.ico_move {background-position: -20px -640px; opacity: 0.7; }
+
+.ico_question_unactive { background-position: -200px -660px; }
+.open .ico_question_unactive {width: 20px; background-position: -220px -620px;}
+
+.ico_forest_brotherhood { background-position: -240px -660px; }
+.ico_loggers { background-position: -260px -660px; }
+.ico_clan_level { background-position: -280px -660px; width: 17px;}
+
+.ico_meteor_red { background-position: -100px -680px; }
+.ico_meteor_black { background-position: -160px -680px; }
+.ico_meteor_blue { background-position: -60px -680px; }
+.ico_meteor_yellow { background-position: -120px -680px; }
+.ico_meteor_green { background-position: -80px -680px; }
+.ico_meteor_white { background-position: -140px -680px; }
+.ico_meteor_splinter_green { background-position: -180px -680px; }
+.ico_meteor_splinter_yellow { background-position: -200px -680px; }
+
+.ico_meteor_potion_efficiency { background-position: -260px -680px; }
+
+.ico_clan_exp { background-position: -20px -680px; }
+.ico_clan_bonus_point { background-position: -40px -680px; }
+.ico_chest { background-position: -40px -700px; }
+.ico_chest_key { background-position: -120px -700px; }
+
+.ico_bonus_cnt_2 { background-position: -200px -700px; }
+.ico_bonus_cnt_3 { background-position: -220px -700px; }
+.ico_bonus_cnt_4 { background-position: -240px -700px; }
+.ico_bonus_cnt_5 { background-position: -260px -700px; }
+.ico_bonus_cnt_6 { background-position: -280px -700px; }
+
+.img_server_1_small { background-position: 0 -720px; width: 16px; height: 16px;}
+.img_server_2_small { background-position: -20px -720px; width: 16px; height: 16px;}
+.img_server_3_small { background-position: -40px -720px; width: 16px; height: 16px;}
+.img_server_4_small, .img_server_t_small { background-position: -60px -720px; width: 16px; height: 16px;}
+
+.ico_best_effect { background-position: -100px -720px; }
+
+.img_void {background-color: #cebb9e; background-image: none; border-radius: 3px;}
+
+.ico_best {margin: 0 5px 0 0; width: 60px; height: 60px; background-image: url(/images/packs/ico_nominations.png); display: inline-block; position: relative; float: left;}
+.ico_best1 {background-position: 0 0;}
+.ico_best2 {background-position: -60px 0;}
+.ico_best3 {background-position: -120px 0;}
+.ico_best4 {background-position: -180px 0;}
+.ico_best5 {background-position: -240px 0;}
+.ico_best6 {background-position: -300px 0;}
+
+.ico_arena {background-position: -120px -720px;}
+.ico_arena_coins {background-position: -140px -720px;}
+
+.server_1, .server_2, .server_3, .server_4, .server_t {width: 20px; height: 20px; background: url(ico.png) no-repeat; position: absolute; margin: -7px 0 0 -10px;}
+.server_1 {background-position: -180px -720px;}
+.server_2 {background-position: -200px -720px;}
+.server_3 {background-position: -220px -720px;}
+.server_4 {background-position: -240px -720px;}
+.server_t {background-position: -240px -720px;}
+
+.feeder_money {width: 85px; height: 60px; background: url(/images/packs/ico_green.png) no-repeat -160px -60px;}
+
+.ico_mine_png {width: 60px; height: 60px; background-image: url(/images/packs/guild_circle_03.png); display: inline-block;}
+.ico_monster_7 {background-position: 0 0;}
+.ico_monster_5 {background-position: -60px 0;}
+.ico_monster_2 {background-position: -120px 0;}
+.ico_monster_6 {background-position: -180px 0;}
+.ico_bnnbnbn {background-position: -240px 0;}
+.ico_mine_1 {background-position: -300px 0;}
+.ico_mine_2 {background-position: -360px 0;}
+.ico_mine_3 {background-position: -420px 0;}
+.ico_monster_8 {background-position: 0 -60px;}
+.ico_monster_3 {background-position: -60px -60px;}
+.ico_monster_4 {background-position: -120px -60px;}
+.ico_monster_1 {background-position: -180px -60px;}
+.ico_key_1 {background-position: -240px -60px;}
+.ico_mine_4 {background-position: -300px -60px;}
+.ico_mine_5 {background-position: -360px -60px;}
+.ico_mine_6 {background-position: -420px -60px;}
+
+.icon60 {width: 60px; height: 60px; display: inline-block; background-image: url(/images/packs/big_icons.png);}
+.img_money_1_big {background-position: 0 0;}
+.img_money_2_big {background-position: -60px 0;}
+.img_money_3_big {background-position: -60px -60px;}
+.img_money_10_big {background-position: 0 -60px}
+.img_money_relics_big {background-position: -300px 0;}
+.ico_class_flag_big {background-position: -240px -120px;}
+.img_money_blindgreen_big {background-position: -420px -120px;}
+.img_cheese_big {background-position: -300px -120px;}
+
+.item_847 {background-position: -140px -780px;}
+.item_848 {background-position: -160px -780px;}
+.item_849 {background-position: -180px -780px;}
+.item_850 {background-position: -200px -780px;}
+.item_851 {background-position: -220px -780px;}
+.item_852 {background-position: -240px -780px;}
+.item_853 {background-position: -260px -780px;}
+.item_854 {background-position: -280px -780px;}
+.item_855 {background-position: 0 -800px;}
+.item_856 {background-position: -20px -800px;}
+.item_857 {background-position: -40px -800px;}
+.item_858 {background-position: -60px -800px;}
+.item_859 {background-position: -80px -800px;}
+.item_860 {background-position: -100px -800px;}
+.item_861 {background-position: -120px -800px;}
+.item_862 {background-position: -140px -800px;}
+
+.leathers {background-position: -80px -780px;}
