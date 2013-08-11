@@ -6621,6 +6621,9 @@ namespace Simple_Bot
                 }
                 catch { }
             }
+
+            PetHealing();
+
             return false;
         }
 
@@ -6678,26 +6681,30 @@ namespace Simple_Bot
 
         private void FullPetHeal()
         {
-            //Click heal (Botle) icon
-            driver.FindElement(By.Id("pet")).FindElement(By.XPath(".//a[2]")).Click();
-            Delays();
-            //Buy second bottle three times
-            driver.FindElement(By.Id("field_potion_5_2")).Click();
-            SmallDelays();
-            driver.FindElement(By.Id("field_potion_5_2")).Click();
-            SmallDelays();
-            driver.FindElement(By.Id("field_potion_5_2")).Click();
-            Delays();
-            //Drink bottle three times
-            driver.FindElement(By.Id("potion_td_5")).FindElement(By.TagName("a")).Click();
-            SmallDelays();
-            driver.FindElement(By.Id("potion_td_5")).FindElement(By.TagName("a")).Click();
-            SmallDelays();
-            driver.FindElement(By.Id("potion_td_5")).FindElement(By.TagName("a")).Click();
-            Delays();
-            //Close Healing form
-            driver.FindElement(By.CssSelector(".box_x_button")).Click();
-            SmallDelays();
+            try
+            {
+                //Click heal (Botle) icon
+                driver.FindElement(By.Id("pet")).FindElement(By.XPath(".//a[2]")).Click();
+                Delays();
+                //Buy second bottle three times
+                driver.FindElement(By.Id("field_potion_5_2")).Click();
+                SmallDelays();
+                driver.FindElement(By.Id("field_potion_5_2")).Click();
+                SmallDelays();
+                driver.FindElement(By.Id("field_potion_5_2")).Click();
+                Delays();
+                //Drink bottle three times
+                driver.FindElement(By.Id("potion_td_5")).FindElement(By.TagName("a")).Click();
+                SmallDelays();
+                driver.FindElement(By.Id("potion_td_5")).FindElement(By.TagName("a")).Click();
+                SmallDelays();
+                driver.FindElement(By.Id("potion_td_5")).FindElement(By.TagName("a")).Click();
+                Delays();
+                //Close Healing form
+                driver.FindElement(By.CssSelector(".box_x_button")).Click();
+                SmallDelays();
+            }
+            catch { }
         }
 
         public void SmithyWork()
