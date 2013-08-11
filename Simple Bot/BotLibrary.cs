@@ -1778,13 +1778,13 @@ namespace Simple_Bot
                         {
                             //переходим в алхимию
                             /*
-                            driver.FindElement(By.Id("top_menu")).FindElement(By.XPath(".//a[@title='Братство Алхимиков']")).Click();
+                            driver.FindElement(By.ISSd("top_menu")).FindElement(By.XPath(".//a[@title='Братство Алхимиков']")).Click();
                             System.Threading.Thread.Sleep(rnd.Next(698, 1599));
                             //закупочная
                             driver.FindElement(By.Id("hover_guild_shop")).Click();
                             System.Threading.Thread.Sleep(rnd.Next(698, 1599));*/
                             //радиобатон пирашкового котла
-                            driver.FindElement(By.Id("form_alchemy_shop")).FindElement(By.XPath(".//table/tbody/tr[3]/td[1]/div/div[1]/input[@value='3']")).Click();
+                            driver.FindElement(By.CssSelector(".alchemy_shop_radio[value='3']")).Click();
                             Delays();
                             //арендуем
                             driver.FindElement(By.XPath("//input[@value='АРЕНДОВАТЬ']")).Click();
@@ -2849,7 +2849,7 @@ namespace Simple_Bot
             {
                 Random rnd = new Random();
                 //смотрим сколько у нас ключей, если 0, то докупаем
-                if (Convert.ToInt32(GetResourceValue("Ключ от ворот царства Манаглота")[0]) < 4)
+                if (Convert.ToInt32(GetResourceValue("Ключ от ворот царства Манаглота")[0]) < 30)
                 {
                     try
                     {
@@ -4030,6 +4030,7 @@ namespace Simple_Bot
                         builder.MoveToElement(driver.FindElement(By.CssSelector(".ico_item_404"))).Build().Perform();
                         driver.FindElement(By.XPath("//div[contains(@class,'ico_item_404')]//span[text()='ВЫПИТЬ']")).Click();
                         Delays();
+                        //Отводим фокус чтоб сбить ховер меню
                         builder.MoveToElement(driver.FindElement(By.CssSelector(".title_popup.uppercase"))).Build().Perform();
                         SmallDelays();
                         driver.FindElement(By.XPath("//div[contains(@class,'box_controls')]//span[text()='ВЫПИТЬ']")).Click();
@@ -4061,6 +4062,9 @@ namespace Simple_Bot
                         builder.MoveToElement(driver.FindElement(By.CssSelector(".ico_item_754"))).Build().Perform();
                         driver.FindElement(By.XPath("//div[contains(@class,'ico_item_754')]//span[text()='ВЫПИТЬ']")).Click();
                         Delays();
+                        //Отводим фокус чтоб сбить ховер меню
+                        builder.MoveToElement(driver.FindElement(By.CssSelector(".title_popup.uppercase"))).Build().Perform();
+                        SmallDelays();
                         driver.FindElement(By.XPath("//div[contains(@class,'box_controls')]//span[text()='ВЫПИТЬ']")).Click();
                         Timer_BiggestPotion = ToDateTime(GetResourceValue("Ваши зверушки увеличены в размере и не могут быть проглочены Китушей")[0]);
                         try
