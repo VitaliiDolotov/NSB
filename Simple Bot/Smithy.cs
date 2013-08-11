@@ -15,34 +15,215 @@ namespace Simple_Bot
 
         public static double[,] meltingField = new double[6, 6];
 
+        public static Melting[,] meltingPlayField = new Melting[6, 6];
+
         public static void FirstInit()
         {
             for (int i = 0; i < 6; i++)
                 for (int j = 0; j < 6; j++)
-                    meltingField[i, j] = -1;
+                    meltingPlayField[i, j] = new Melting();
         }
 
         public static void InitMeltingField()
         {
             //проинициализировали поле числами
-            for (int i = 0; i < 6; i++)
-                for (int j = 0; j < 6; j++)
+            for (int j = 0; j < 6; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    //Если ячейка пустая или содержит процент
-                    if (meltingField[i, j] < 12 && meltingField[i, j] > -1000)
+                    int cellValue = CellNumberGeter(i, j);
+                    if (cellValue == -1)
+                        meltingPlayField[i, j].state = 0;
+                    else
                     {
-                        meltingField[i, j] = CellNumberGeter(i, j);
-                        LeftUpCell(i, j);
-                        UpCell(i, j);
-                        RightUpCell(i, j);
-                        RightCell(i, j);
-                        RightDownCell(i, j);
-                        DownCell(i, j);
-                        LeftDownCell(i, j);
+                        meltingPlayField[i, j].number = cellValue;
+                        meltingPlayField[i, j].state = -2;
                     }
-                    Console.Write(meltingField[i, j].ToString() + " ");
                 }
         }
+
+        public static void InitPercentages()
+        {
+            for (int j = 0; j < 6; j++)
+                for (int i = 0; i < 6; i++)
+                {
+                    if (meltingPlayField[i, j].state == 0)
+                    {
+                        SetPercentageLeftUpCell(i, j);
+                        SetPercentageUpCell(i, j);
+                        SetPercentageRightUpCell(i, j);
+                        SetPercentageRightCell(i, j);
+                        SetPercentageRightDownCell(i, j);
+                        SetPercentageDownCell(i, j);
+                        SetPercentageLeftDownCell(i, j);
+                        SetPercentageLeftCell(i, j);
+                    }
+                }
+        }
+
+        public static void InitNumbers()
+        {
+            for (int j = 0; j < 6; j++)
+                for (int i = 0; i < 6; i++)
+                {
+                    if (meltingPlayField[i, j].state == -2)
+                    {
+                        // выход
+                        if (meltingPlayField[i, j].exits == meltingPlayField[i, j].number)
+                        {
+                            if (meltingPlayField[i, j].Lu)
+                                if (!(i - 1 < 0 || j - 1 < 0))
+                                    meltingPlayField[i - 1, j - 1].state = 1;
+
+                            if(meltingPlayField[i, j].U)
+                                if(!(i - 1 < 0))
+                                    meltingPlayField[i - 1, j].state = 1;
+
+                            if(meltingPlayField[i, j].Ru)
+                                if(!(i - 1 < 0 || j + 1 > 5))
+                                    meltingPlayField[i - 1, j + 1].state = 1;
+
+                            if(meltingPlayField[i, j].R)
+                                if(!(j + 1 > 5))
+                                    meltingPlayField[i, j + 1].state = 1;
+
+                            if(meltingPlayField[i, j].Rd)
+                                if(!(i + 1 > 5 || j + 1 > 5))
+                                    meltingPlayField[i + 1, j + 1].state = 1;
+
+                            if(meltingPlayField[i, j].D)
+                                if(!(i + 1 > 5))
+                                    meltingPlayField[i + 1, j].state = 1;
+
+                            if(meltingPlayField[i, j].Ld)
+                                if(!(i + 1 > 5 ||j - 1 < 0))
+                                    meltingPlayField[i + 1, j - 1].state = 1;
+
+
+                            if (meltingPlayField[i, j].L)
+                                if (!(j - 1 < 0))
+                                    meltingPlayField[i, j - 1].state = 1;
+                        }
+
+                        IsEmptyLeftUpCellN(i, j);
+                        IsEmptyUpCellN(i, j);
+                        IsEmptyRightUpCellN(i, j);
+                        IsEmptyRightCellN(i, j);
+                        IsEmptyRightDownCellN(i, j);
+                        IsEmptyDownCellN(i, j);
+                        IsEmptyLeftDownCellN(i, j);
+                        IsEmptyLeftCellN(i, j);
+
+                        //если после переинициализации число стало ноль то кликаем по всем рядошним ячейкам
+                        if (meltingPlayField[i, j].number == 0)
+                        {
+                            if (meltingPlayField[i, j].Lu)
+                                if (!(i - 1 < 0 || j - 1 < 0))
+                                    ClickCell(i - 1, j - 1);
+
+                            if (meltingPlayField[i, j].U)
+                                if (!(i - 1 < 0))
+                                    ClickCell(i - 1, j);
+
+                            if (meltingPlayField[i, j].Ru)
+                                if (!(i - 1 < 0 || j + 1 > 5))
+                                    ClickCell(i - 1, j + 1);
+
+                            if (meltingPlayField[i, j].R)
+                                if (!(j + 1 > 5))
+                                    ClickCell(i, j + 1);
+
+                            if (meltingPlayField[i, j].Rd)
+                                if (!(i + 1 > 5 || j + 1 > 5))
+                                    ClickCell(i + 1, j + 1);
+
+                            if (meltingPlayField[i, j].D)
+                                if (!(i + 1 > 5))
+                                    ClickCell(i + 1, j);
+
+                            if (meltingPlayField[i, j].Ld)
+                                if (!(i + 1 > 5 || j - 1 < 0))
+                                    ClickCell(i + 1, j - 1);
+
+
+                            if (meltingPlayField[i, j].L)
+                                if (!(j - 1 < 0))
+                                    ClickCell(i, j - 1);
+                        }
+
+                        InitMeltingField();
+                    }
+                }
+        }
+
+        #region GetValueForCell
+
+        private static void SetPercentageLeftUpCell(int x, int y)
+        {
+            if (x - 1 < 0 || y - 1 < 0)
+                return;
+            if (meltingPlayField[x - 1, y - 1].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x - 1, y - 1);
+
+        }
+
+        private static void SetPercentageUpCell(int x, int y)
+        {
+            if (x - 1 < 0)
+                return;
+            if (meltingPlayField[x - 1, y].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x - 1, y);
+        }
+
+        private static void SetPercentageRightUpCell(int x, int y)
+        {
+            if (x - 1 < 0 || y + 1 > 5)
+                return;
+            if (meltingPlayField[x - 1, y + 1].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x - 1, y + 1);
+
+        }
+
+        private static void SetPercentageRightCell(int x, int y)
+        {
+            if (y + 1 > 5)
+                return;
+            if (meltingPlayField[x, y + 1].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x, y + 1);
+        }
+
+        private static void SetPercentageRightDownCell(int x, int y)
+        {
+            if (x + 1 > 5 || y + 1 > 5)
+                return;
+            if (meltingPlayField[x + 1, y + 1].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x + 1, y + 1);
+        }
+
+        private static void SetPercentageDownCell(int x, int y)
+        {
+            if (x + 1 > 5)
+                return;
+            if (meltingPlayField[x + 1, y].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x + 1, y);
+        }
+
+        private static void SetPercentageLeftDownCell(int x, int y)
+        {
+            if (x + 1 > 5 || y - 1 < 0)
+                return;
+            if (meltingPlayField[x + 1, y - 1].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x + 1, y - 1);
+        }
+
+        private static void SetPercentageLeftCell(int x, int y)
+        {
+            if (y - 1 < 0)
+                return;
+            if (meltingPlayField[x, y - 1].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x, y - 1);
+        }
+
+        #endregion
 
         //вытягиваем число из ячейки
         private static int CellNumberGeter(int x, int y)
@@ -58,48 +239,87 @@ namespace Simple_Bot
             else return -1;
         }
 
+        private static void ClickCell(int x, int y)
+        {
+            string selector = string.Format(".game_field  tr:nth-of-type({0}) td:nth-of-type({1})", x + 1, y + 1);
+            driver.FindElement(By.CssSelector(selector)).Click();
+        }
+
         //выходы
         public static void Exit(int x, int y)
         {
-            int emptyCellsCount = 0;
 
-            if (IsEmptyLeftUpCell(x, y))
-                emptyCellsCount++;
-            if (IsEmptyUpCell(x, y))
-                emptyCellsCount++;
-            if (IsEmptyRightUpCell(x, y))
-                emptyCellsCount++;
-            if (IsEmptyRightCell(x, y))
-                emptyCellsCount++;
-            if (IsEmptyRightDownCell(x, y))
-                emptyCellsCount++;
-            if (IsEmptyDownCell(x, y))
-                emptyCellsCount++;
-            if (IsEmptyLeftDownCell(x, y))
-                emptyCellsCount++;
-            if (IsEmptyLeftCell(x, y))
-                emptyCellsCount++;
-
-            if (meltingField[x, y] == emptyCellsCount)
-            {
-                if (IsEmptyLeftUpCell(x, y))
-                    meltingField[x - 1, y - 1] = 999;
-                if (IsEmptyUpCell(x, y))
-                    meltingField[x, y - 1] = 999;
-                if (IsEmptyRightUpCell(x, y))
-                    meltingField[x + 1, y - 1] = 999;
-                if (IsEmptyRightCell(x, y))
-                    meltingField[x + 1, y] = 999;
-                if (IsEmptyRightDownCell(x, y))
-                    meltingField[x + 1, y + 1] = 999;
-                if (IsEmptyDownCell(x, y))
-                    meltingField[x, y + 1] = 999;
-                if (IsEmptyLeftDownCell(x, y))
-                    meltingField[x - 1, y + 1] = 999;
-                if (IsEmptyLeftCell(x, y))
-                    meltingField[x - 1, y] = 999;
-            }
         }
+
+        #region GetValueForCell
+
+        private static void IsEmptyLeftUpCell(int x, int y)
+        {
+            if (x - 1 < 0 || y - 1 < 0)
+                return;
+            if (meltingPlayField[x - 1, y - 1].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x - 1, y - 1);
+
+        }
+
+        private static void IsEmptyUpCell(int x, int y)
+        {
+            if (x - 1 < 0)
+                return;
+            if (meltingPlayField[x - 1, y].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x - 1, y);
+        }
+
+        private static void IsEmptyRightUpCell(int x, int y)
+        {
+            if (x - 1 < 0 || y + 1 > 5)
+                return;
+            if (meltingPlayField[x - 1, y + 1].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x - 1, y + 1);
+
+        }
+
+        private static void IsEmptyRightCell(int x, int y)
+        {
+            if (y + 1 > 5)
+                return;
+            if (meltingPlayField[x, y + 1].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x, y + 1);
+        }
+
+        private static void IsEmptyRightDownCell(int x, int y)
+        {
+            if (x + 1 > 5 || y + 1 > 5)
+                return;
+            if (meltingPlayField[x + 1, y + 1].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x + 1, y + 1);
+        }
+
+        private static void IsEmptyDownCell(int x, int y)
+        {
+            if (x + 1 > 5)
+                return;
+            if (meltingPlayField[x + 1, y].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x + 1, y);
+        }
+
+        private static void IsEmptyLeftDownCell(int x, int y)
+        {
+            if (x + 1 > 5 || y - 1 < 0)
+                return;
+            if (meltingPlayField[x + 1, y - 1].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x + 1, y - 1);
+        }
+
+        private static void IsEmptyLeftCell(int x, int y)
+        {
+            if (y - 1 < 0)
+                return;
+            if (meltingPlayField[x, y - 1].number > -1)
+                meltingPlayField[x, y].percentage += NewCellPercentage(x, y - 1);
+        }
+
+        #endregion
 
         //кликаем ячейки смежные с нулевыми
         public static void ClickEmptyCell()
@@ -162,12 +382,18 @@ namespace Simple_Bot
         private static double CellPercentage(int x, int y)
         {
             double retv = 100 * meltingField[x, y] / 8;
-            if (retv == 0)   
+            if (retv == 0)
             {
                 string selector = string.Format(".game_field tr:nth-of-type({0}) td:nth-of-type({1})", x + 1, y + 1);
                 driver.FindElement(By.CssSelector(selector)).Click();
                 retv = CellNumberGeter(x, y);
             }
+            return retv;
+        }
+
+        private static double NewCellPercentage(int x, int y)
+        {
+            double retv = 100 * meltingPlayField[x, y].number / 8;
             return retv;
         }
 
@@ -287,174 +513,110 @@ namespace Simple_Bot
 
         #endregion
 
-        #region IsCellEmpty
+        #region IsCellEmptyN
 
-        private static bool IsEmptyLeftUpCell(int x, int y)
+        private static void IsEmptyLeftUpCellN(int x, int y)
         {
             if (x - 1 < 0 || y - 1 < 0)
-                return false;
-            //если в ячейке число и в левой верхней  999, то мутируем и выкидуем false
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x - 1, y - 1] == 999)
+                return;
+            if (meltingPlayField[x - 1, y - 1].state == 1)
+                meltingPlayField[x, y].number--;
+            if (meltingPlayField[x - 1, y - 1].state == -2)
             {
-                //мутируем ячейку на -1
-                meltingField[x, y]--;
-                return false;
+                meltingPlayField[x, y].exits--;
+                meltingPlayField[x, y].Lu = true;
             }
-
-            //если в ячейке число и в левой верхней тоже число
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x - 1, y - 1] < 12 && meltingField[x - 1, y - 1] > -1)
-            {
-                return false;
-            }
-
-            return true;
         }
 
-        private static bool IsEmptyUpCell(int x, int y)
-        {
-            if (y - 1 < 0)
-                return false;
-            //если в ячейке число и в левой верхней  999, то мутируем и выкидуем тру
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x, y - 1] == 999)
-            {
-                //мутируем ячейку на -1
-                meltingField[x, y]--;
-                return false;
-            }
-
-            //если в ячейке число и в левой верхней тоже число
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x - 1, y - 1] < 12 && meltingField[x - 1, y - 1] > -1)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        private static bool IsEmptyRightUpCell(int x, int y)
-        {
-            if (x + 1 > 6 || y - 1 < 0)
-                return false;
-            //если в ячейке число и в левой верхней  999, то мутируем и выкидуем тру
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x + 1, y - 1] == 999)
-            {
-                //мутируем ячейку на -1
-                meltingField[x, y]--;
-                return false;
-            }
-
-            //если в ячейке число и в левой верхней тоже число
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x + 1, y - 1] < 12 && meltingField[x + 1, y - 1] > -1)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        private static bool IsEmptyRightCell(int x, int y)
-        {
-            if (x + 1 > 6)
-                return false;
-            //если в ячейке число и в левой верхней  999, то мутируем и выкидуем тру
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x + 1, y] == 999)
-            {
-                //мутируем ячейку на -1
-                meltingField[x, y]--;
-                return false;
-            }
-
-            //если в ячейке число и в левой верхней тоже число
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x + 1, y] < 12 && meltingField[x + 1, y] > -1)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        private static bool IsEmptyRightDownCell(int x, int y)
-        {
-            if (x + 1 > 6 || y + 1 > 6)
-                return false;
-            //если в ячейке число и в левой верхней  999, то мутируем и выкидуем тру
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x + 1, y + 1] == 999)
-            {
-                //мутируем ячейку на -1
-                meltingField[x, y]--;
-                return false;
-            }
-
-            //если в ячейке число и в левой верхней тоже число
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x + 1, y + 1] < 12 && meltingField[x + 1, y + 1] > -1)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        private static bool IsEmptyDownCell(int x, int y)
-        {
-            if (y + 1 > 6)
-                return false;
-            //если в ячейке число и в левой верхней  999, то мутируем и выкидуем тру
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x, y + 1] == 999)
-            {
-                //мутируем ячейку на -1
-                meltingField[x, y]--;
-                return false;
-            }
-
-            //если в ячейке число и в левой верхней тоже число
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x, y + 1] < 12 && meltingField[x, y + 1] > -1)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        private static bool IsEmptyLeftDownCell(int x, int y)
-        {
-            if (x - 1 < 0 || y + 1 > 6)
-                return false;
-            //если в ячейке число и в левой верхней  999, то мутируем и выкидуем тру
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x - 1, y + 1] == 999)
-            {
-                //мутируем ячейку на -1
-                meltingField[x, y]--;
-                return false;
-            }
-
-            //если в ячейке число и в левой верхней тоже число
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x - 1, y + 1] < 12 && meltingField[x - 1, y + 1] > -1)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        private static bool IsEmptyLeftCell(int x, int y)
+        private static void IsEmptyUpCellN(int x, int y)
         {
             if (x - 1 < 0)
-                return false;
-            //если в ячейке число и в левой верхней  999, то мутируем и выкидуем тру
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x - 1, y] == 999)
+                return;
+            if (meltingPlayField[x - 1, y].state == 1)
+                meltingPlayField[x, y].number--;
+            if (meltingPlayField[x - 1, y].state == -2)
             {
-                //мутируем ячейку на -1
-                meltingField[x, y]--;
-                return false;
+                meltingPlayField[x, y].exits--;
+                meltingPlayField[x, y].U = true;
             }
+        }
 
-            //если в ячейке число и в левой верхней тоже число
-            if (meltingField[x, y] < 12 && meltingField[x, y] > -1 && meltingField[x - 1, y] < 12 && meltingField[x - 1, y] > -1)
+        private static void IsEmptyRightUpCellN(int x, int y)
+        {
+            if (x - 1 < 0 || y + 1 > 5)
+                return;
+            if (meltingPlayField[x - 1, y + 1].state == 1)
+                meltingPlayField[x, y].number--;
+            if (meltingPlayField[x - 1, y + 1].state == -2)
             {
-                return false;
+                meltingPlayField[x, y].exits--;
+                meltingPlayField[x, y].Ru = true;
             }
+        }
 
-            return true;
+        private static void IsEmptyRightCellN(int x, int y)
+        {
+            if (y + 1 > 5)
+                return;
+            if (meltingPlayField[x, y + 1].state == 1)
+                meltingPlayField[x, y].number--;
+            if (meltingPlayField[x, y + 1].state == -2)
+            {
+                meltingPlayField[x, y].exits--;
+                meltingPlayField[x, y].R = true;
+            }
+        }
+
+        private static void IsEmptyRightDownCellN(int x, int y)
+        {
+            if (x + 1 > 5 || y + 1 > 5)
+                return;
+            if (meltingPlayField[x + 1, y + 1].state == 1)
+                meltingPlayField[x, y].number--;
+            if (meltingPlayField[x + 1, y + 1].state == -2)
+            {
+                meltingPlayField[x, y].exits--;
+                meltingPlayField[x, y].Rd = true;
+            }
+        }
+
+        private static void IsEmptyDownCellN(int x, int y)
+        {
+            if (x + 1 > 5)
+                return;
+            if (meltingPlayField[x + 1, y].state == 1)
+                meltingPlayField[x, y].number--;
+            if (meltingPlayField[x + 1, y].state == -2)
+            {
+                meltingPlayField[x, y].exits--;
+                meltingPlayField[x, y].D = true;
+            }
+        }
+
+        private static void IsEmptyLeftDownCellN(int x, int y)
+        {
+            if (x + 1 > 5 || y - 1 < 0)
+                return;
+            if (meltingPlayField[x + 1, y - 1].state == 1)
+                meltingPlayField[x, y].number--;
+            if (meltingPlayField[x + 1, y - 1].state == -2)
+            {
+                meltingPlayField[x, y].exits--;
+                meltingPlayField[x, y].Ld = true;
+            }
+        }
+
+        private static void IsEmptyLeftCellN(int x, int y)
+        {
+            if (y - 1 < 0)
+                return;
+            if (meltingPlayField[x, y - 1].state == 1)
+                meltingPlayField[x, y].number--;
+            if (meltingPlayField[x, y - 1].state == -2)
+            {
+                meltingPlayField[x, y].exits--;
+                meltingPlayField[x, y].L = true;
+            }
         }
 
         #endregion
@@ -578,8 +740,26 @@ namespace Simple_Bot
 
     public class Melting
     {
-        int number;
-        double percentage;
-        int state;
+        public int number;
+        public double percentage;
+        public int state;
+        public int exits;
+
+        public bool Lu = false;
+        public bool U = false;
+        public bool Ru = false;
+        public bool R = false;
+        public bool Rd = false;
+        public bool D = false;
+        public bool Ld = false;
+        public bool L = false;
+
+        public Melting()
+        {
+            number = -200;
+            percentage = 0;
+            state = 0;
+            exits = 8;
+        }
     }
 }

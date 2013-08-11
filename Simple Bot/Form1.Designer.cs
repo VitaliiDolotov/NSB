@@ -807,6 +807,7 @@
             this.textBoxMd5.Size = new System.Drawing.Size(171, 20);
             this.textBoxMd5.TabIndex = 23;
             this.textBoxMd5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMd5.MouseLeave += new System.EventHandler(this.textBoxMd5_MouseLeave);
             this.textBoxMd5.MouseHover += new System.EventHandler(this.textBoxMd5_MouseHover);
             // 
             // pictureBox27

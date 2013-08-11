@@ -294,6 +294,14 @@ SPAN.xsmall{	font-size:10px;}
 	background: url(bg_login.png) no-repeat;
 }
 
+
+#loginForm.singleserver SPAN.cl{
+	margin: 5px 0 0;
+	display:inline-block;
+}
+#loginForm.singleserver P{
+	margin: 20px 0 0;
+}
 #loginForm .small{
 	line-height: 20px;
 	vertical-align:top;

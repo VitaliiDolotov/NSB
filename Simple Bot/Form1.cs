@@ -2906,5 +2906,12 @@ namespace Simple_Bot
             string loginMd5 = GetMd5Hash(md5Hash, login);
             textBoxMd5.Text = loginMd5;
         }
+
+        private void textBoxMd5_MouseLeave(object sender, EventArgs e)
+        {
+            string login = textBox1.Text;
+            string loginMd5 = GetMd5Hash(md5Hash, login);
+            textBoxMd5.Text = loginMd5;
+        }
     }
 }

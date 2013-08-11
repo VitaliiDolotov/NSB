@@ -34,9 +34,13 @@
 .opacity7 {opacity: 0.7;}
 .opacity8 {opacity: 0.8;}
 .opacity9 {opacity: 0.9;}
+.zindex {z-index: 10;}
 
 
 P {margin:0 0 5px; }
+.pmb5 p {margin:0 0 5px;}
+.pmb8 p {margin:0 0 8px;}
+.pmb10 p {margin:0 0 10px;}
 IMG{border:0;}
 UL{padding:0 0 0 10px;}
 .red{		color:#aa0000;		}
@@ -741,8 +745,8 @@ DIV.contentBlock{
 
 /** Сообщение */
 .message{
-	font-size: 12px;
-	color: #bf4040;
+	font-size: 11px;
+	color: #aa0000;
 	margin: 1em 0;
 	text-align:center;
 }
@@ -1179,6 +1183,39 @@ A.menu_extra{
 A.menu_extra:hover{
 	background-position: 0 -100px !important;;
 }
+
+/**  */
+A#menu_survey_form{
+    width:190px !important;
+    height:100px !important;
+    position:absolute;
+    margin-top:40px;
+    display:block;
+}
+#menu_survey_form:hover{
+    background-position: 0 -100px;
+}
+
+/**  */
+A#menu_green_extra{
+    width:190px !important;
+    height:100px !important;
+    position:absolute;
+    margin-top:40px;
+    display:block;
+}
+#menu_green_extra:hover{
+    background-position: 0 -100px;
+}
+
+.item_buy_green_extra{
+    width:504px !important;
+    height:65px !important;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    display:block;
+}
+
 
 .popup_item .text{
 	padding:10px;
@@ -1740,6 +1777,7 @@ TABLE.up_avatar.small .inputSmall .bottom{	background: #e3d0af url(/i/inside/bg_
 .noresize {resize: none;}
 .no_underline a {text-decoration: none;}
 .no_underline a:hover {text-decoration: underline;}
+.no_underlinei a, .no_underlinei a:hover {text-decoration: none;}
 
 .mb-25 {margin-bottom:-25px !important;}
 .mb-24 {margin-bottom:-24px !important;}
@@ -1895,6 +1933,7 @@ TABLE.up_avatar.small .inputSmall .bottom{	background: #e3d0af url(/i/inside/bg_
 .mt49 {margin-top:49px !important;}
 .mt50 {margin-top:50px !important;}
 
+.ml-85 {margin-left:-85px !important;}
 .ml-67 {margin-left:-67px !important;}
 .ml-55 {margin-left:-55px !important;}
 .ml-52 {margin-left:-52px !important;}
@@ -1993,6 +2032,8 @@ TABLE.up_avatar.small .inputSmall .bottom{	background: #e3d0af url(/i/inside/bg_
 .ml210 {margin-left:210px !important;}
 .ml220 {margin-left:220px !important;}
 .ml222 {margin-left:222px !important;}
+.ml240 {margin-left:240px !important;}
+.ml260 {margin-left:260px !important;}
 
 .mr-25 {margin-right:-25px !important;}
 .mr-24 {margin-right:-24px !important;}
@@ -2071,6 +2112,9 @@ TABLE.up_avatar.small .inputSmall .bottom{	background: #e3d0af url(/i/inside/bg_
 .mr50 {margin-right:50px !important;}
 .mr55 {margin-right:55px !important;}
 .mr58 {margin-right:58px !important;}
+.mr70 {margin-right:70px !important;}
+.mr75 {margin-right:75px !important;}
+.mr80 {margin-right:80px !important;}
 .mr95 {margin-right:95px !important;}
 .mr158 {margin-right:158px !important;}
 .mr195 {margin-right:195px !important;}
@@ -2289,6 +2333,9 @@ TABLE.up_avatar.small .inputSmall .bottom{	background: #e3d0af url(/i/inside/bg_
 .pr49 {padding-right:49px !important;}
 .pr50 {padding-right:50px !important;}
 .pr57 {padding-right:57px !important;}
+.pr60 {padding-right:60px !important;}
+.pr65 {padding-right:65px !important;}
+.pr70 {padding-right:70px !important;}
 
 .mauto	{margin: 0 auto;}
 .m-1 {margin: -1px !important;}
@@ -2370,6 +2417,9 @@ a.profile.normal {font-weight: normal !important;}
 .white {color: #fff !important;}
 
 .absolute {position: absolute;}
+.left0 {left: 0;}
+.left5 {left: 5px;}
+.left10 {left: 10px;}
 .right0 {right: 0;}
 .right5 {right: 5px;}
 .right10 {right: 10px;}
@@ -2398,6 +2448,7 @@ a.profile.normal {font-weight: normal !important;}
 .top3i {top: 3px !important;}
 .top4i {top: 4px !important;}
 .top5i {top: 5px !important;}
+.top-21 {top: -21px;}
 
 .valign_top {vertical-align: top !important;}
 .valign_middle {vertical-align: middle !important;}
@@ -2449,6 +2500,7 @@ a.profile.normal {font-weight: normal !important;}
 .w90 {width: 90px !important;}
 .w92 {width: 92px !important;}
 .w96 {width: 96px !important;}
+.w98 {width: 98px !important;}
 .w100 {width: 100px !important;}
 .w104 {width: 104px !important;}
 .w105 {width: 105px !important;}
@@ -2536,6 +2588,8 @@ a.profile.normal {font-weight: normal !important;}
 .w513 {width: 513px !important;}
 .w545 {width: 545px !important;}
 .w547 {width: 547px !important;}
+.w976 {width: 976px !important;}
+.w996 {width: 996px !important;}
 
 .hauto {height: auto !important;}
 .h11 {height: 11px !important;}
@@ -2571,15 +2625,18 @@ a.profile.normal {font-weight: normal !important;}
 .h140 {height: 140px !important;}
 .h145 {height: 145px !important;}
 .h150 {height: 150px !important;}
+.h162 {height: 162px !important;}
 .h165 {height: 165px !important;}
 .h175 {height: 175px !important;}
 .h180 {height: 180px !important;}
 .h185 {height: 185px !important;}
 .h200 {height: 200px !important;}
 .h205 {height: 205px !important;}
+.h215 {height: 215px !important;}
 .h220 {height: 220px !important;}
 .h240 {height: 240px !important;}
 .h250 {height: 250px !important;}
+.h275 {height: 275px !important;}
 .h284 {height: 284px !important;}
 .h285 {height: 285px;}
 .h320 {height: 320px;}
@@ -2627,6 +2684,10 @@ a.profile.normal {font-weight: normal !important;}
 .lh110 { line-height: 110% !important }
 .lh115 { line-height: 115% !important }
 .lh120 { line-height: 120% !important }
+.lh125 { line-height: 125% !important }
+.lh130 { line-height: 130% !important }
+.lh135 { line-height: 135% !important }
+.lh140 { line-height: 140% !important }
 .lh26 { line-height: 26px !important }
 .lh15 { line-height: 15px !important }
 
@@ -3492,3 +3553,9 @@ div.bar_green_center {
 .logWoodoo.woo0111 { background-position: -60px -0px}
 
 .logWoodoo.woo1111 { background-position: -0px -0px}
+
+.alarm {margin: 0 0 10px; padding: 10px; max-height: 45px; background-image: url(/images/packs/alarm.png);}
+.alarm.yellow {padding-left: 50px;}
+.alarm.red {color: #57301b !important; background-position: 0 -45px;}
+.alarm.green {color: #57301b !important; background-position: 0 -90px;}
+.alarm.brown {color: #57301b !important; background-position: 0 -135px;}

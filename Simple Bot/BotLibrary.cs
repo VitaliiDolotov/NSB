@@ -6701,9 +6701,8 @@ namespace Simple_Bot
             Smithy.driver = driver;
             Smithy.FirstInit();
             Smithy.InitMeltingField();
-            Smithy.Click12Cell();
-            Smithy.Click25Cell();
-            
+            Smithy.InitPercentages();
+            Smithy.InitNumbers();
         }
     }
 }

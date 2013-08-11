@@ -41,7 +41,7 @@ namespace Simple_Bot.Resources
                                 MassFight();
                             }
 
-                        Bot.SmithyWork();
+                        //Bot.SmithyWork();
 
                         Bot.MrIdiot(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.GoToOldoMsters(); Bot.WaitUntilThreadBecomeAvailable();

@@ -1,879 +1,1154 @@
-.talant {
-	position: relative;
-	overflow: visible;
-	width:0px; height: 0px;
+.animate_slow,
+.avatar_settings {
+	-ms-transition: all 0.6s ease;
+	-webkit-transition: all 0.6s ease;
+	-moz-transition: all 0.6s ease;
+	-o-transition: all 0.6s ease;
+	transition: all 0.6s ease;
 }
 
-
-.talant div.talant_border{
-	width: 70px;
-	height: 70px;
-	background-image: url("/images/m/class/talants/ico_talents.png"); background-position: 0 0;
+.animate_fast,
+.avatar_settings a,
+.abilities .ability .ability_plus {
+	-ms-transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
 }
 
-.talant.passive div.talant_border{
-	background-image: url("/images/m/class/talants/ico_talents.png"); background-position: 0px 0;
-	cursor:pointer;
+.animate_fastest {
+	-ms-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	transition: all 0.2s ease;
 }
 
-
-
-.talant_icon {
-	width: 60px;
-	height: 60px;
+.no_select {
+	-o-user-select:none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
-.talant div.talant_icon {
-	cursor:pointer;
-	position: relative;
-	left: 5px;
-	top: 5px;
-}
+.bgr_1 {background-color: #dbcaac; border-radius: 3px;}
+.bgr_0 {background-color: #E3D4B7;}
+.bgr_0i {background-color: #E3D4B7 !important;}
 
-#talantTooltipImg div.talant_icon {
-	margin:5px;
-}
-
-div.t_dop_icon {
-	height:15px; 
-	width: 20px;
-	background-image: url("/images/m/class/talants/ico_talents.png"); 
-	display: none;
-	position: relative;
-	left:36px;
-	top:4px;
-	overflow: visible;
-}
-
-.talant.wait div.talant_icon {
-	cursor:auto;
-}
-
-/* ------------  Стрелки зависимостей ------------------ */
-.talant_leads_b {
-	background-image: url("/images/m/class/talants/ico_talents.png");
-	background-position: -233px -23px;
-	height: 23px;
-	width: 25px;
-	display:none;
-	position:relative;
-}
-
-.talant.wait div.talant_leads_b { 
-	background-image: url("/images/m/class/talants/ico_talents.png");
-	background-position: -233px 0px;
-}
-
-.talant.full div.talant_leads_b { 
-	background-image: url("/images/m/class/talants/ico_talents.png");
-	background-position: -233px -46px;
-}
-
-
-
-.talant_leads_r {
-	background-image: url("/images/m/class/talants/ico_talents.png"); background-position: -84px 0;
-	width:20px;
-	height:15px;
-	display:none;
-}
-
-/* ------------ ------------------ */
-
-.talant_icon span.lvl {
-	display: block;
+.item_box {margin-bottom: 4px; width: 60px; height: 60px; position: relative; cursor: pointer; border-radius: 3px; overflow: hidden;}
+.inventary .item_box {display: block;}
+.item_box:hover {background-color: #e6d9c0;}
+.item_box .bgr {width: 60px; height: 60px; opacity: 0.5; cursor: pointer; position: absolute; top: 0; left: 0;}
+.item_box.w90 .bgr {width: 90px;}
+.item_box.w75 .bgr {width: 75px;}
+.item_box.w75 .border {width: 73px; height: 73px;}
+.item_box.w104.h120 .bgr {width: 104px; height: 120px;}
+.item_box:hover .bgr {opacity: 0.4;}
+.item_box .border {width: 58px; height: 58px; border: 1px solid #cebb9e; border-radius: 3px; position: absolute; top: 0; left: 0;}
+.item_box.w90 .border {width: 88px;}
+.item_box.w127 .border {width: 125px;}
+.item_box .item_action { 
 	position: absolute;
-	right: -3px;
-	bottom: -3px;
-	padding-top:1px;
-	width: 23px;
-	height: 12px;
-	font-size: 9px;
-	line-height: 10px;
+	top: 21px;
+	width: 56px;
+	height: 20px;
+	left: 2px;
+	right: 2px;
+	background: url(/images/m/profile/black_50.png) repeat;
+	border-radius: 3px;
 	text-align: center;
-}
-
-div.guild_5 #talant_block {
-	height:410px;
-	background-image: url("/images/m/class/talants/bg_t.png");
-}
-div.guild_6 #talant_block {
-	height:410px;
-	background-image: url("/images/m/class/talants/bg_t.png");
-}
-div.guild_7 #talant_block {
-	height:410px;
-	background-image: url("/images/m/class/talants/bg_t.png");
-}
-div.guild_8 #talant_block {
-	height:410px;
-	background-image: url("/images/m/class/talants/bg_t.png");
-}
-
-div.guild_5 #talant_block_bg {
-	height:410px;
-	background-image: url("/images/m/class/talants/bg_t.png");
-}
-div.guild_6 #talant_block_bg {
-	height:410px;
-	background-image: url("/images/m/class/talants/bg_t.png");
-}
-div.guild_7 #talant_block_bg {
-	height:410px;
-	background-image: url("/images/m/class/talants/bg_t.png");
-}
-div.guild_8 #talant_block_bg {
-	height:410px;
-	background-image: url("/images/m/class/talants/bg_t.png");
-}
-
-/* ------------ Состоянии иконок ----------------
-	1. wait - Невыполнена зависимость ---> иконка серая, надпись серая
-	2. start - зависимость выполнена, но иконка не активвирована ---> иконка серая, подчиняется hover, надпись зеленая
-	3. active - иконка активирована ---> иконка полнцветная, hover не подчиняется, надпись зеленая
-	4. full - полностью заполненый уровень --> иконка полноцветная, рамка желттая
-*/
-
-/* --- WAIT --- */
-.talant.wait span.lvl {
-	background-image: url("/images/m/class/talants/ico_talents.png"); background-position:  -210px -26px;
-	color:white;
-}
-.talant.wait {cursor:auto;}
-
-/* --- START --- */
-.talant.start span.lvl {
-	background-image: url("/images/m/class/talants/ico_talents.png"); background-position:  -210px -26px;
-	color:white;
-}
-
-/* --- ACTIVE --- */
-.talant.active span.lvl {
-	background-image: url("/images/m/class/talants/ico_talents.png"); background-position:  -210px 0px;
-	color:white;
-}
-
-
-.talant.active div.talant_border{
-	background-image: url("/images/m/class/talants/ico_talents.png"); background-position: -70px 0;
-}
-
-
-/* --- FULL --- */
-.talant.full span.lvl {
-	background-image: url("/images/m/class/talants/ico_talents.png"); background-position:  -210px -13px;
-	color:white;
-}
-
-.talant span.lvl i, .talant span.lvl b { 
-	font-style: normal;
-	font-weight:normal;
-}
-
-.talant.full div.talant_border{
-	background-image: url("/images/m/class/talants/ico_talents.png"); background-position: -140px 0;
-}
-
-/* -----------  Иконки   талантов ------------- */
-/* Отмена ограничения уровня */ 
-.t_icon_501	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -360px;} 
-.passive .t_icon_501 { background-position: -360px -420px;}
-/* Улучшить характеристику Сила */ 
-.t_icon_502	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -360px;} 
-.passive .t_icon_502 { background-position: -420px -420px;}
-/* Улучшить характеристику Защита */ 
-.t_icon_503	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -360px;} 
-.passive .t_icon_503 { background-position: -480px -420px;}
-/* Улучшить характеристику Ловкость */ 
-.t_icon_504	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -480px;} 
-.passive .t_icon_504 { background-position: -0px -540px;}
-/* Улучшить характеристику Масса */ 
-.t_icon_505	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -480px;} 
-.passive .t_icon_505 { background-position: -60px -540px;}
-/* Улучшить характеристику Мастерство */ 
-.t_icon_506	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -480px;} 
-.passive .t_icon_506 { background-position: -120px -540px;}
-
-/* Урон против представителя «Крылатый спецназ» */ 
-.t_icon_507	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -480px;} 
-.passive .t_icon_507 { background-position: -180px -540px;}
-/* Урон против представителя «Краснокожие» */ 
-.t_icon_510	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -480px;} 
-.passive .t_icon_510 { background-position: -240px -540px;}
-/* Урон против представителя «Клыкуны» */ 
-.t_icon_509	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -480px;} 
-.passive .t_icon_509 { background-position: -300px -540px;}
-/* Урон против представителя «Теневоды» */ 
-.t_icon_508	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -480px;} 
-.passive .t_icon_508 { background-position: -360px -540px;}
-
-/* Крит урон против представителя «Крылатый спецназ» */ 
-.t_icon_511	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -480px;} 
-.passive .t_icon_511 { background-position: -420px -540px;}
-/* Крит урон против представителя «Краснокожие» */ 
-.t_icon_514	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -480px;} 
-.passive .t_icon_514 { background-position: -480px -540px;}
-/* Крит урон против представителя «Клыкуны» */ 
-.t_icon_513	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -600px;} 
-.passive .t_icon_513 { background-position: -0px -660px;}
-/* Крит урон против представителя «Теневоды» */ 
-.t_icon_512	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -600px;} 
-.passive .t_icon_512 { background-position: -60px -660px;}
-
-
-/* Подземная нить */ 
-.t_icon_515	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -0px;} 
-.passive .t_icon_515 { background-position: -0px -60px;}
-/* Использование умения «Подземная нить» */ 
-.t_icon_615	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -0px;} 
-.passive .t_icon_615 { background-position: -0px -60px;}
-.t_icon_615 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Ступа */ 
-.t_icon_516	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -0px;} 
-.passive .t_icon_516 { background-position: -60px -60px;}
-/* Использование умения «Ступа» */ 
-.t_icon_616	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -0px;} 
-.passive .t_icon_616 { background-position: -60px -60px;} 
-.t_icon_616 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* !!! Персональный Армегеддон */ 
-.t_icon_517	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -0px;} 
-.passive .t_icon_517 { background-position: -120px -60px;}
-/* Использование умения «Персональный Армегеддон» */ 
-.t_icon_617	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -0px;} 
-.passive .t_icon_617 { background-position: -120px -60px;}
-.t_icon_617 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Защита древних богов */ 
-.t_icon_518	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -0px;} 
-.passive .t_icon_518 { background-position: -180px -60px;}
-/* Использование умения «Защита древних богов» */ 
-.t_icon_618	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -0px;} 
-.passive .t_icon_618 { background-position: -180px -60px;}
-.t_icon_618 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Свиток «Энергия вулкана» */ 
-.t_icon_519	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -0px;} 
-.passive .t_icon_519 { background-position: -240px -60px;}
-/* Использование свитка «Энергия вулкана» */ 
-.t_icon_619	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -0px;} 
-.passive .t_icon_619 { background-position: -240px -60px;}
-.t_icon_619 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Энергия вулкана» */ 
-.t_icon_719	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -0px;} 
-.passive .t_icon_719 { background-position: -240px -60px;}
-.t_icon_719 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Свиток «Жертва древним богам» */ 
-.t_icon_520	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -0px;} 
-.passive .t_icon_520 { background-position: -300px -60px;}
-/* Использование свитка «Жертва древним богам» */ 
-.t_icon_620	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -0px;} 
-.passive .t_icon_620 { background-position: -300px -60px;}
-.t_icon_620 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Жертва древним богам» */ 
-.t_icon_720	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -0px;} 
-.passive .t_icon_720 { background-position: -300px -60px;}
-.t_icon_720 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Шанский рев */ 
-.t_icon_521	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -0px;} 
-.passive .t_icon_521 { background-position: -360px -60px;}
-/* Использование умения «Шанский рев» */ 
-.t_icon_621	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -0px;} 
-.passive .t_icon_621 { background-position: -360px -60px;}
-.t_icon_621 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Свиток «Массовые проклятушки» */ 
-.t_icon_522	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -0px;} 
-.passive .t_icon_522 { background-position: -420px -60px;}
-/* Использование свитка «Массовые проклятушки» */ 
-.t_icon_622	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -0px;} 
-.passive .t_icon_622 { background-position: -420px -60px;}
-.t_icon_622 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Массовые проклятушки» */ 
-.t_icon_722	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -0px;} 
-.passive .t_icon_722 { background-position: -420px -60px;}
-.t_icon_722 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Свиток «Уязвимость» */ 
-.t_icon_523	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -0px;} 
-.passive .t_icon_523 { background-position: -480px -60px;}
-/* Использование свитка «Уязвимост» */ 
-.t_icon_623	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -0px;} 
-.passive .t_icon_623 { background-position: -480px -60px;}
-.t_icon_623 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Уязвимост» */ 
-.t_icon_723	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -0px;} 
-.passive .t_icon_723 { background-position: -480px -60px;}
-.t_icon_723 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Белый Диавол */ 
-.t_icon_524	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -120px;} 
-.passive .t_icon_524 { background-position: -0px -180px;}
-/* Использование умения «Белый Диавол» */ 
-.t_icon_624	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -120px;} 
-.passive .t_icon_624 { background-position: -0px -180px;}
-.t_icon_624 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Орандж Диавол */ 
-.t_icon_525	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -120px;} 
-.passive .t_icon_525 { background-position: -60px -180px;}
-/* Использование умения «Орандж Диавол» */ 
-.t_icon_625	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -120px;} 
-.passive .t_icon_625 { background-position: -60px -180px;}
-.t_icon_625 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Укус вампира */ 
-.t_icon_526	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -120px;} 
-.passive .t_icon_526 { background-position: -120px -180px;}
-/* Умение «Укус вампира» */ 
-.t_icon_626	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -120px;} 
-.passive .t_icon_626 { background-position: -120px -180px;}
-.t_icon_626 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Парящий полет */ 
-.t_icon_527	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -120px;} 
-.passive .t_icon_527 { background-position: -180px -180px;}
-/* Использование умения «Парящий полет» */ 
-.t_icon_627	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -120px;} 
-.passive .t_icon_627 { background-position: -180px -180px;}
-.t_icon_627 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* !! Свиток «Холодное сердце»  */ 
-.t_icon_528	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -120px;} 
-.passive .t_icon_528 { background-position: -240px -180px;}
-/* Использование свитка «Холодное сердце» */ 
-.t_icon_628	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -120px;} 
-.passive .t_icon_628 { background-position: -240px -180px;}
-.t_icon_628 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Холодное сердце» */ 
-.t_icon_728	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -120px;} 
-.passive .t_icon_728 { background-position: -240px -180px;}
-.t_icon_728 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Свиток «Проницательность» */ 
-.t_icon_529	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -120px;} 
-.passive .t_icon_529 { background-position: -300px -180px;}
-/* Использование свитка «Проницательность» */ 
-.t_icon_629	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -120px;} 
-.passive .t_icon_629 { background-position: -300px -180px;}
-.t_icon_629 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Проницательность» */ 
-.t_icon_729	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -120px;} 
-.passive .t_icon_729 { background-position: -300px -180px;}
-.t_icon_729 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Жертва */ 
-.t_icon_530	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -120px;} 
-.passive .t_icon_530 { background-position: -360px -180px;}
-/* Умение «Жертва» */ 
-.t_icon_630	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -120px;} 
-.passive .t_icon_630 { background-position: -360px -180px;}
-.t_icon_630 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Свиток «Загробный мир» */ 
-.t_icon_531	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -120px;} 
-.passive .t_icon_531 { background-position: -420px -180px;}
-/* Использование свитка «Загробный мир» */ 
-.t_icon_631	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -120px;} 
-.passive .t_icon_631 { background-position: -420px -180px;}
-.t_icon_631 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Загробный мир» */ 
-.t_icon_731	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -120px;} 
-.passive .t_icon_731 { background-position: -420px -180px;}
-.t_icon_731 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Свиток «Ночной кошмар» */ 
-.t_icon_532	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -120px;} 
-.passive .t_icon_532 { background-position: -480px -180px;}
-/* Использование свитка «Ночной кошмар» */ 
-.t_icon_632	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -120px;} 
-.passive .t_icon_632 { background-position: -480px -180px;}
-.t_icon_632 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Ночной кошмар» */ 
-.t_icon_732	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -120px;} 
-.passive .t_icon_732 { background-position: -480px -180px;}
-.t_icon_732 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Умение «Тень» */ 
-.t_icon_533	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -240px;} 
-.passive .t_icon_533 { background-position: -0px -300px;}
-/* Использование умения «Тень» */ 
-.t_icon_633	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -240px;} 
-.passive .t_icon_633 { background-position: -0px -300px;}
-.t_icon_633 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Сила Друида */ 
-.t_icon_534	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -240px;} 
-.passive .t_icon_534 { background-position: -600px -300px;}
-/* Использование умения «Сила Друида» */ 
-.t_icon_634	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -240px;} 
-.passive .t_icon_634 { background-position: -600px -300px;}
-.t_icon_634 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Свиток «Ниндзя» */ 
-.t_icon_535	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -240px;} 
-.passive .t_icon_535 { background-position: -120px -300px;}
-/* Использование свитка «Ниндзя» */ 
-.t_icon_635	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -240px;} 
-.passive .t_icon_635 { background-position: -120px -300px;}
-.t_icon_635 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Ниндзя» */ 
-.t_icon_735	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -240px;} 
-.passive .t_icon_735 { background-position: -120px -300px;}
-.t_icon_735 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Свиток «Рассеивающий дым» */ 
-.t_icon_536	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -240px;} 
-.passive .t_icon_536 { background-position: -180px -300px;}
-/* Использование свитка «Рассеивающий дым» */ 
-.t_icon_636	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -240px;} 
-.passive .t_icon_636 { background-position: -180px -300px;}
-.t_icon_636 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Рассеивающий дым» */ 
-.t_icon_736	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -240px;} 
-.passive .t_icon_736 { background-position: -180px -300px;}
-.t_icon_736 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Проклятье */ 
-.t_icon_537	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -240px;} 
-.passive .t_icon_537 { background-position: -240px -300px;}
-/* Использование умения «Проклятье» */ 
-.t_icon_637	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -240px;} 
-.passive .t_icon_637 { background-position: -240px -300px;}
-.t_icon_637 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Свиток «Сюрикен» */ 
-.t_icon_538	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -240px;} 
-.passive .t_icon_538 { background-position: -300px -300px;}
-/* Использование свитка «Сюрикен» */ 
-.t_icon_638	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -240px;} 
-.passive .t_icon_638 { background-position: -300px -300px;}
-.t_icon_638 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Сюрикен» */ 
-.t_icon_738	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -240px;} 
-.passive .t_icon_738 { background-position: -300px -300px;}
-.t_icon_738 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Свиток «Покров» */ 
-.t_icon_539	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -240px;} 
-.passive .t_icon_539 { background-position: -360px -300px;}
-/* Использование свитка «Покров» */ 
-.t_icon_639	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -240px;} 
-.passive .t_icon_639 { background-position: -360px -300px;}
-.t_icon_639 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Покров» */ 
-.t_icon_739	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -240px;} 
-.passive .t_icon_739 { background-position: -360px -300px;}
-.t_icon_739 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Священное прикосновение */ 
-.t_icon_540	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -360px;} 
-.passive .t_icon_540 { background-position: -0px -420px;}
-/* Использование умения «Священное прикосновение» */ 
-.t_icon_640	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -360px;} 
-.passive .t_icon_640 { background-position: -0px -420px;}
-.t_icon_640 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Cтолп света */ 
-.t_icon_541	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -360px;} 
-.passive .t_icon_541 { background-position: -60px -420px;}
-/* Использование умения «Столп света» */ 
-.t_icon_641	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -360px;} 
-.passive .t_icon_641 { background-position: -60px -420px;}
-.t_icon_641 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Свиток «Божественная аура» */ 
-.t_icon_542	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -360px;} 
-.passive .t_icon_542 { background-position: -120px -420px;}
-/* Использование свитка «Божественная аура» */ 
-.t_icon_642	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -360px;} 
-.passive .t_icon_642 { background-position: -120px -420px;}
-.t_icon_642 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-
-/* Возможность в боях использовать несколько свитков «Божественная аура» */ 
-.t_icon_742	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -360px;} 
-.passive .t_icon_742 { background-position: -120px -420px;}
-.t_icon_742 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Свиток «Длань богов» */ 
-.t_icon_543	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -360px;} 
-.passive .t_icon_543 { background-position: -180px -420px;}
-/* Использование свитка «Длань богов» */ 
-.t_icon_643	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -360px;} 
-.passive .t_icon_643 { background-position: -180px -420px;}
-.t_icon_643 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Длань богов» */ 
-.t_icon_743	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -360px;} 
-.passive .t_icon_743 { background-position: -180px -420px;}
-.t_icon_743 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Мечь правосудия */ 
-.t_icon_544	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -360px;} 
-.passive .t_icon_544 { background-position: -240px -420px;}
-/* Использование умения «Мечь правосудия» */ 
-.t_icon_644	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -360px;} 
-.passive .t_icon_644 { background-position: -240px -420px;}
-.t_icon_644 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-
-/* Свиток «Кара нечестивым» */ 
-.t_icon_546	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -240px;} 
-.passive .t_icon_546 { background-position: -480px -300px;}
-/* Использование свитка «Кара нечестивым» */ 
-.t_icon_646	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -240px;} 
-.passive .t_icon_646 { background-position: -480px -300px;}
-.t_icon_646 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Кара нечестивым» */ 
-.t_icon_746	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -240px;} 
-.passive .t_icon_746 { background-position: -480px -300px;}
-.t_icon_746 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Свиток «Гнев Небес» */ 
-.t_icon_547	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -240px;} 
-.passive .t_icon_547 { background-position: -420px -300px;}
-/* Использование свитка «Гнев Небес» */ 
-.t_icon_647	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -240px;} 
-.passive .t_icon_647 { background-position: -420px -300px;}
-.t_icon_647 div.t_dop_icon {display:block; background-position: -210px -54px; left:41px;}
-/* Возможность в боях использовать несколько свитков «Гнев Небес» */ 
-.t_icon_747	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -240px;} 
-.passive .t_icon_747 { background-position: -420px -300px;}
-.t_icon_747 div.t_dop_icon {display:block;background-position: -210px -39px;}
-
-/* Любимый питомец --- */
-.t_icon_548	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -120px -600px;} 
-.passive .t_icon_548 { background-position: -120px -660px;}
-/* ------------ не используемые блоки ------------ */
-
-.t_icon_549	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -420px -600px;} 
-.passive .t_icon_549 { background-position: -420px -660px;}
-
-.t_icon_550	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -300px -600px;} 
-.passive .t_icon_549 { background-position: -300px -660px;}
-
-.t_icon_551	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -180px -600px;} 
-.passive .t_icon_549 { background-position: -180px -660px;}
-
-.t_icon_552	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -240px -600px;} 
-.passive .t_icon_552 { background-position: -240px -660px;}
-
-.t_icon_553	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -360px -600px;} 
-.passive .t_icon_553 { background-position: -360px -660px;}
-
-
-.t_icon_800	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -600px;} 
-.passive .t_icon_800 { background-position: -480px -660px;}
-
-.t_icon_802	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -480px -600px;} 
-.passive .t_icon_802 { background-position: -480px -660px;}
-
-.t_icon_801	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -720px;} 
-.passive .t_icon_801 { background-position: -0px -720px;}
-
-/* Левша */
-.t_icon_803	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -60px -840px;} 
-.passive .t_icon_801 { background-position: -0px -720px;}
-
-/* Мутант */
-.t_icon_810	{background-image: url("/images/m/class/talants/talents.jpg"); background-position: -0px -840px;} 
-.passive .t_icon_801 { background-position: -0px -720px;}
-
-/* ------------- Popup для талантов ------------- */
-#talantTooltip {
+	line-height: 20px;
+	color: #fff;
 	display: none;
-	position: absolute;
-	background: none repeat scroll 0 0 #E3D4B7;
-	padding: 0;
-	width: 360px;
-	z-index: 100;
+	font-size: 10px;
+}
+.item_box:hover .item_action {display: block;}
+
+.item_box a.cmd_all.cmd_mini_sl.cmd_amini_sl {
+	background: transparent !important;
+	position: absolute !important;
+	top: -20px !important;
+	left: -20px !important;
+	right: -20px !important;
+	bottom: -20px !important;
+	width: 100px !important;
+	height: 100px !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	z-index: 4 !important;
+	color: transparent !important;
 }
 
-#talantTooltipHtml {padding:3px;}
-
-
-
-/* -----------  Позиционирование  талантов ------------- */
-
-div.guild_5 #talant_1 {top:10px; left:2px; }
-div.guild_5 #talant_2 {top:90px; left:2px; }
-div.guild_5 #talant_2 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_3 {top:170px; left:2px; }
-div.guild_5 #talant_3 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_4 {top:250px; left:2px; }
-div.guild_5 #talant_4 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_5 {top:330px; left:2px;}
-div.guild_5 #talant_5 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_6 {top:10px; left:82px;}
-div.guild_5 #talant_7 {top:90px; left:82px;}
-div.guild_5 #talant_8 {top:170px; left:82px;}
-div.guild_5 #talant_8 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_9 {top:90px; left:162px;}
-div.guild_5 #talant_10 {top:170px; left:162px;}
-div.guild_5 #talant_10 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_11 {top:250px; left:82px;}
-div.guild_5 #talant_12 {top:330px; left:82px;}
-div.guild_5 #talant_13 {top:250px; left:162px;}
-div.guild_5 #talant_14 {top:330px; left:162px;}
-div.guild_5 #talant_15 {top:250px; left:242px;}
-div.guild_5 #talant_16 {top:330px; left:242px;}
-div.guild_5 #talant_17 {top:10px; left:242px;}
-div.guild_5 #talant_18 {top:90px; left:242px;}
-/*div.guild_5 #talant_18 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_5 #talant_19 {top:170px; left:242px;}
-div.guild_5 #talant_19 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_20 {top:10px; left:322px;}
-div.guild_5 #talant_21 {top:90px; left:322px;}
-/*div.guild_5 #talant_21 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_5 #talant_22 {top:170px; left:322px;}
-div.guild_5 #talant_22 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_23 {top:10px; left:402px;}
-div.guild_5 #talant_24 {top:90px; left:402px;}
-/*div.guild_5 #talant_24 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_5 #talant_25 {top:170px; left:402px;}
-div.guild_5 #talant_25 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_26 {top:10px; left:482px;}
-div.guild_5 #talant_27 {top:90px; left:482px;}
-/*div.guild_5 #talant_27 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_5 #talant_28 {top:170px; left:482px;}
-div.guild_5 #talant_28 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_29 {top:250px; left:322px;}
-div.guild_5 #talant_30 {top:330px; left:322px;}
-div.guild_5 #talant_30 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_31 {top:250px; left:402px;}
-div.guild_5 #talant_32 {top:330px; left:402px;}
-div.guild_5 #talant_32 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_33 {top:250px; left:482px;}
-div.guild_5 #talant_34 {top:330px; left:482px;}
-div.guild_5 #talant_34 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_5 #talant_35 {top:10px; left:162px;}
-/* ------------ Теневоды --------------- */
-
-div.guild_6 #talant_1 {top:10px; left:2px; }
-div.guild_6 #talant_2 {top:90px; left:2px; }
-div.guild_6 #talant_2 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_6 #talant_3 {top:170px; left:2px; }
-div.guild_6 #talant_3 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_6 #talant_4 {top:250px; left:2px; }
-div.guild_6 #talant_4 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_6 #talant_5 {top:330px; left:2px;}
-div.guild_6 #talant_5 div.talant_leads_b { display:block; top:-83px; left:23px; }
-div.guild_6 #talant_6 {top:10px; left:82px;}
-div.guild_6 #talant_7 {top:90px; left:82px;}
-div.guild_6 #talant_8 {top:170px; left:82px;}
-div.guild_6 #talant_8 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_6 #talant_9 {top:90px; left:162px;}
-div.guild_6 #talant_10 {top:170px; left:162px;}
-div.guild_6 #talant_10 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_6 #talant_11 {top:250px; left:82px;}
-div.guild_6 #talant_12 {top:330px; left:82px;}
-div.guild_6 #talant_13 {top:250px; left:162px;}
-div.guild_6 #talant_14 {top:330px; left:162px;}
-div.guild_6 #talant_15 {top:250px; left:242px;}
-div.guild_6 #talant_16 {top:330px; left:242px;}
-div.guild_6 #talant_17 {top:10px; left:242px;}
-div.guild_6 #talant_18 {top:90px; left:242px;}
-/*div.guild_6 #talant_18 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_6 #talant_19 {top:170px; left:242px;}
-div.guild_6 #talant_19 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_6 #talant_20 {top:10px; left:322px;}
-div.guild_6 #talant_21 {top:90px; left:322px;}
-/*div.guild_6 #talant_21 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_6 #talant_22 {top:170px; left:322px;}
-div.guild_6 #talant_22 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_6 #talant_23 {top:10px; left:402px;}
-div.guild_6 #talant_24 {top:90px; left:402px;}
-/*div.guild_6 #talant_24 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_6 #talant_25 {top:170px; left:402px;}
-div.guild_6 #talant_25 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_6 #talant_26 {top:10px; left:482px;}
-div.guild_6 #talant_27 {top:90px; left:482px;}
-/*div.guild_6 #talant_27 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_6 #talant_28 {top:170px; left:482px;}
-div.guild_6 #talant_28 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_6 #talant_29 {top:250px; left:322px;}
-div.guild_6 #talant_30 {top:330px; left:322px;}
-div.guild_6 #talant_30 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_6 #talant_31 {top:250px; left:402px;}
-div.guild_6 #talant_32 {top:330px; left:402px;}
-div.guild_6 #talant_32 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_6 #talant_33 {top:250px; left:482px;}
-div.guild_6 #talant_34 {top:330px; left:482px;}
-div.guild_6 #talant_34 div.talant_leads_b { display:block; top:-83px; left:23px; }
-div.guild_6 #talant_35 {top:10px; left:162px;}
-
-
-/* ------------ Клыкуны  --------------- */
-
-div.guild_7 #talant_1 {top:10px; left:2px; }
-div.guild_7 #talant_2 {top:90px; left:2px; }
-div.guild_7 #talant_2 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_7 #talant_3 {top:170px; left:2px; }
-div.guild_7 #talant_3 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_7 #talant_4 {top:250px; left:2px; }
-div.guild_7 #talant_4 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_7 #talant_5 {top:330px; left:2px;}
-div.guild_7 #talant_5 div.talant_leads_b { display:block; top:-83px; left:23px; }
-div.guild_7 #talant_6 {top:10px; left:82px;}
-div.guild_7 #talant_7 {top:90px; left:82px;}
-div.guild_7 #talant_8 {top:170px; left:82px;}
-div.guild_7 #talant_8 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_7 #talant_9 {top:90px; left:162px;}
-div.guild_7 #talant_10 {top:170px; left:162px;}
-div.guild_7 #talant_10 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_7 #talant_11 {top:250px; left:82px;}
-div.guild_7 #talant_12 {top:330px; left:82px;}
-div.guild_7 #talant_13 {top:250px; left:162px;}
-div.guild_7 #talant_14 {top:330px; left:162px;}
-div.guild_7 #talant_15 {top:250px; left:242px;}
-div.guild_7 #talant_16 {top:330px; left:242px;}
-div.guild_7 #talant_17 {top:10px; left:242px;}
-div.guild_7 #talant_18 {top:90px; left:242px;}
-/*div.guild_7 #talant_18 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_7 #talant_19 {top:170px; left:242px;}
-div.guild_7 #talant_19 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_7 #talant_20 {top:10px; left:322px;}
-div.guild_7 #talant_21 {top:90px; left:322px;}
-/*div.guild_7 #talant_21 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_7 #talant_22 {top:170px; left:322px;}
-div.guild_7 #talant_22 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_7 #talant_23 {top:10px; left:402px;}
-div.guild_7 #talant_24 {top:90px; left:402px;}
-/*div.guild_7 #talant_24 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_7 #talant_25 {top:170px; left:402px;}
-div.guild_7 #talant_25 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_7 #talant_26 {top:10px; left:482px;}
-div.guild_7 #talant_27 {top:90px; left:482px;}
-/*div.guild_7 #talant_27 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_7 #talant_28 {top:170px; left:482px;}
-div.guild_7 #talant_28 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_7 #talant_29 {top:250px; left:322px;}
-div.guild_7 #talant_30 {top:330px; left:322px;}
-div.guild_7 #talant_30 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_7 #talant_31 {top:250px; left:402px;}
-div.guild_7 #talant_32 {top:330px; left:402px;}
-div.guild_7 #talant_32 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_7 #talant_33 {top:250px; left:482px;}
-div.guild_7 #talant_34 {top:330px; left:482px;}
-div.guild_7 #talant_34 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_7 #talant_35 {top:10px; left:162px;}
-
-
-/* ------------ Краснокожие  --------------- */
-div.guild_8 #talant_1 {top:10px; left:2px; }
-div.guild_8 #talant_2 {top:90px; left:2px; }
-div.guild_8 #talant_2 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_8 #talant_3 {top:170px; left:2px; }
-div.guild_8 #talant_3 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_8 #talant_4 {top:250px; left:2px; }
-div.guild_8 #talant_4 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_8 #talant_5 {top:330px; left:2px;}
-div.guild_8 #talant_5 div.talant_leads_b { display:block; top:-83px; left:23px; }
-div.guild_8 #talant_6 {top:10px; left:82px;}
-div.guild_8 #talant_7 {top:90px; left:82px;}
-div.guild_8 #talant_8 {top:170px; left:82px;}
-div.guild_8 #talant_8 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_8 #talant_9 {top:90px; left:162px;}
-div.guild_8 #talant_10 {top:170px; left:162px;}
-div.guild_8 #talant_10 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_8 #talant_11 {top:250px; left:82px;}
-div.guild_8 #talant_12 {top:330px; left:82px;}
-div.guild_8 #talant_13 {top:250px; left:162px;}
-div.guild_8 #talant_14 {top:330px; left:162px;}
-div.guild_8 #talant_15 {top:250px; left:242px;}
-div.guild_8 #talant_16 {top:330px; left:242px;}
-div.guild_8 #talant_17 {top:10px; left:242px;}
-div.guild_8 #talant_18 {top:90px; left:242px;}
-/*div.guild_8 #talant_18 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_8 #talant_19 {top:170px; left:242px;}
-div.guild_8 #talant_19 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_8 #talant_20 {top:10px; left:322px;}
-div.guild_8 #talant_21 {top:90px; left:322px;}
-/*div.guild_8 #talant_21 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_8 #talant_22 {top:170px; left:322px;}
-div.guild_8 #talant_22 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_8 #talant_23 {top:10px; left:402px;}
-div.guild_8 #talant_24 {top:90px; left:402px;}
-/*div.guild_8 #talant_24 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_8 #talant_25 {top:170px; left:402px;}
-div.guild_8 #talant_25 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_8 #talant_26 {top:10px; left:482px;}
-div.guild_8 #talant_27 {top:90px; left:482px;}
-/*div.guild_8 #talant_27 div.talant_leads_b { display:block; top:-83px; left:23px; }*/
-
-div.guild_8 #talant_28 {top:170px; left:482px;}
-div.guild_8 #talant_28 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_8 #talant_29 {top:250px; left:322px;}
-div.guild_8 #talant_30 {top:330px; left:322px;}
-div.guild_8 #talant_30 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_8 #talant_31 {top:250px; left:402px;}
-div.guild_8 #talant_32 {top:330px; left:402px;}
-div.guild_8 #talant_32 div.talant_leads_b { display:block; top:-83px; left:23px; }
-
-div.guild_8 #talant_33 {top:250px; left:482px;}
-div.guild_8 #talant_34 {top:330px; left:482px;}
-div.guild_8 #talant_34 div.talant_leads_b { display:block; top:-83px; left:23px; }
-div.guild_8 #talant_35 {top:10px; left:162px;}
+.item_box .hidden {display: none !important;}
+
+.item_box .cmd_all {z-index: 3; position: relative;}
+.item_box .item_length {position: absolute; top: 3px; right: 5px; font-weight: bold;}
+.item_box.w100 .border {width: 98px;}
+.item_box.w104 .border {width: 102px;}
+.item_box.h100 .border {height: 98px;}
+.item_box.h120 .border {height: 118px;}
+.item_box.w90 img {width: 90px; display: block;}
+.item_box:hover .border {}
+.item_box1 > .bgr {background-position: 0 -120px;}
+.item_box2 > .bgr {background-position: 0px -300px;}
+.item_box3 > .bgr {background-position: -180px -120px;}
+.item_box4 > .bgr {background-position: -240px -120px;}
+.item_box5 > .bgr {background-position: -300px -120px;}
+.item_box6 > .bgr {background-position: 0 -60px;}
+.item_box7 > .bgr {background-position: -240px -60px;}
+.item_box8 > .bgr {background-position: -60px -60px;}
+.item_box9 > .bgr {background-position: -120px -60px;}
+.item_box10 > .bgr {background-position: -180px -60px;}
+.item_box11 > .bgr {background-position: -60px -300px; background-position: -360px 0\0/;}
+.item_box12 > .bgr {background-position: -120px -300px; background-position: -360px -120px\0/;}
+.item_box13 > .bgr {background-position: -120px -300px; background-position: -360 -120px\0/;}
+
+.item_box1:hover > .bgr {background-position: 0 -420px\0/;}
+.item_box2:hover > .bgr {background-position: -120px -420px\0/;}
+.item_box3:hover > .bgr {background-position: -180px -420px\0/;}
+.item_box4:hover > .bgr {background-position: -240px -420px\0/;}
+.item_box5:hover > .bgr {background-position: -300px -420px\0/;}
+.item_box6:hover > .bgr {background-position: 0 -360px\0/;}
+.item_box7:hover > .bgr {background-position: -240px -360px\0/;}
+.item_box8:hover > .bgr {background-position: -60px -360px\0/;}
+.item_box9:hover > .bgr {background-position: -120px -360px\0/;}
+.item_box10:hover > .bgr {background-position: -180px -360px\0/;}
+.item_box11:hover > .bgr {background-position: -360px -300px\0/;}
+.item_box12:hover > .bgr {background-position: -360px -420px\0/;}
+.item_box13:hover > .bgr {background-position: -360px -420px\0/;}
+
+.inventory .item_box {margin: 0; float: left;}
+.item_box .i_sock {opacity: 0.5; filter: alpha(Opacity=50); z-index: 2;}
+.item_box .i_sock:hover {opacity: 1.0; filter: alpha(Opacity=100);}
+.item_box .itemimg_info_sells_free {display: none;}
+.item_box .itemimg_info {position: absolute; top: 0; left: 0; display: block; z-index: 2;}
+.inventory .item_box .bgr {background: none;}
+.item_box.blocked .bgr {
+	background: url(/images/m/profile/ico_60px.png) no-repeat -2px 1px;
+	background: url(/images/m/profile/ico_60px_ie.png) no-repeat -2px 1px\0/;
+}
+.item_box.blocked:hover .bgr {background: url(/images/m/profile/ico_60px_ie.png) no-repeat -2px -299px\0/;}
+.item_box.plus {background: none !important;}
+.item_box.plus .bgr {
+	background: url(/images/m/profile/ico_60px.png) no-repeat -300px -1px; 
+	background: url(/images/m/profile/ico_60px_ie.png) no-repeat -300px -1px; 
+	opacity: 1;
+}
+.item_box.plus:hover .bgr {
+	background: url(/images/m/profile/ico_60px_ie.png) no-repeat -300px -301px\0/; 
+}
+.item_box.unactive {cursor: default;}
+.item_box.unactive .bgr {background: none;}
+.item_box.unactive .border {opacity: 0.5; filter: alpha(Opacity=50);}
+.item_box.unactive:hover {background: none;}
+.inventory .item_box .border {margin: 1px; width: 56px; height: 56px;}
+.item_box .border + div, .item_box .border + img, .border + a, .item_box .border + .spec {z-index: 2; position: relative; display: block;}
+
+.inventory .item_box, .inventory .item_box .bgr, .inventory .item_box .border {border-radius: 0 !important;}
+
+.player_items {width: 62px; border-radius: 3px;}
+.items_left {float: left;}
+.items_right {float: left;}
+.player_items .bgr {
+	background-image: url(/images/m/profile/ico_60px.png);
+	background-image: url(/images/m/profile/ico_60px_ie.png)\0/;
+}
+
+.player_avatar {margin: 0 4px; width: 212px; float: left; position: relative;}
+.player_avatar_mini {width: 212px; float: left; position: relative;}
+.player_avatar_mini .avatar_bgr {width: 212px; height: 275px; background-image: url(/images/m/profile/avatar_border_mini.png); position: absolute; top: 0; left: 0;}
+.player_avatar_mini .avatar {margin: 11px 0 0 10px;}
+.player_avatar .avatar_bgr {width: 212px; height: 290px; background-image: url(/images/m/profile/avatar_border.png); position: absolute; top: 0; left: 0;}
+.player_avatar.without_rating .avatar_bgr  {height: 275px; background-image: none;}
+ /* .player_avatar img {margin: 11px;} */
+.player_avatar div.avatar div {margin: 11px;}
+ 
+.player_avatar .avatar_settings, .clan_avatar .avatar_settings {position: absolute; top: 13px; bottom: 2px; left: 13px; right: 13px;}
+.player_avatar .avatar_settings a, .clan_avatar .avatar_settings a {
+	width: 60px; 
+	height: 60px; 
+	display: block; 
+	position: absolute; 
+	bottom: 5px; 
+	right: 5px; 
+	background: rgba(0,0,0,0.2) url(/images/m/profile/ico_60px.png) no-repeat -180px 0; 
+	border-radius: 3px; 
+	opacity: 0; 
+	display: none\0/;
+}
+.player_avatar .avatar_settings:hover a, .clan_avatar .avatar_settings:hover a {
+	opacity: 1; 
+	background: url(/images/m/profile/ico_60px_ie.png) no-repeat -180px 0\0/; 
+	display: block\0/;
+}
+.player_avatar .avatar_settings a:hover, .clan_avatar .avatar_settings a:hover {
+	background-color: rgba(0,0,0,0.4);
+	background: url(/images/m/profile/ico_60px_ie.png) no-repeat -180px -300px\0/; 
+}
+
+.clan_avatar {position: relative;}
+
+.clan_avatar .avatar_settings {
+	top: 0;
+	bottom: 10px;
+	left: 0;
+	right: 10px;
+}
+
+.profile_hud_container {
+	padding: 7px 3px;
+	left: 0;
+	bottom: -65px;
+	right: 0;
+	position: absolute;
+	background-color: #dbcaac;
+	border-radius: 1px;
+}
+
+.profile_hud {
+	margin: 1px 5px 1px 28px;
+	height: 10px;
+	text-align: center;
+/*	background: #e9dcc9;*/
+	background: #EADEC9;
+	position: relative;
+/*	border: 1px solid #9C8164;*/
+	border: 1px solid #904928;
+	border-radius: 2px;
+}
+.profile_hud div:first-child {height: 10px; top: 0px; left: 0px; position: relative; background: url(/images/m/profile/bars.png) repeat 0 -110px; z-index: 4; float: left;}
+.profile_hud.green_line {border-color: green;}
+.profile_hud.green_line div:first-child {background-position: 0 -120px;}
+.profile_hud div + div {top: 0; bottom: 0; left: 0; right: 0; font-size: 10px; line-height: 100%; position: absolute; z-index: 5; color: #fff; text-shadow: 0px 0px 3px #000;}
+.icon_cont {width: 20px; position: absolute; top: 3px; left: 7px;}
+
+.tabs_mini .btn > div {width: 37px; height: 37px; background-image: url(/images/m/profile/ico_menu_fast.png);}
+.inventory_1 {background-position: -2px -41px;}
+.inventory_1:hover, .open .inventory_1 {background-position: -2px -1px;}
+.inventory_2 {background-position: -80px -41px;}
+.inventory_2:hover, .open .inventory_2 {background-position: -80px -1px;}
+.inventory_3 {background-position: -42px -41px;}
+.inventory_3:hover, .open .inventory_3 {background-position: -42px -1px;}
+.inventory_4 {background-position: -121px -41px;}
+.inventory_4:hover, .open .inventory_4 {background-position: -121px -1px;}
+.inventory_5 {background-position: -160px -42px;}
+.inventory_5:hover, .open .inventary_5 {background-position: -160px -2px;}
+
+.inventory_name {padding: 2px 3px 3px; font-weight: bold; text-align: center;}
+.inventory {width: 190px; height: 251px; padding: 0 0 3px 4px; overflow: auto; border-radius: 0 0 3px 3px;}
+.inventory_border {border: 1px solid #cebb9e; border-radius: 3px;}
+.inventory_bgr {height: 4px;}
+
+/* rating */
+.player_avatar .rating {height: 12px; border-radius: -13px; background: #fff; left: 13px; right: 13px; bottom: -13px; position: absolute; background: #c8ad96;}
+.player_avatar .rating > b.icon {left: 2px;top: -2px;width: 16px;height: 18px;display: block;position: absolute;z-index: 3;background: url(/images/m/pandora/ico_16px.png) no-repeat -176px 0px;}
+.player_avatar .rating > b.level {left: 20px;top: 0;color: #fff;	font-size: 10px;opacity: 0.8;filter: alpha(Opacity=80);text-shadow: 0px 0px 3px #000;display: block;position: absolute;}
+.player_avatar .rating > div {height: 12px; position: relative; background: #907d6c; border-radius: 2px 0 0 2px; margin: 0 !important;}
+.player_avatar .rating > span {top: 0;left: 0;right: 0;line-height: 120%;text-align: center;display: block;position: absolute;color: #fff;	font-size: 10px;opacity: 0.8;filter: alpha(Opacity=80);text-shadow: 0px 0px 3px #000;}
+/*.player_avatar .rating1 {background: #c8ad96;}
+.player_avatar .rating1 > div {background: #907d6c;}
+.player_avatar .rating2 {background: #a8a49f;}
+.player_avatar .rating2 > div {background: #978f86;}
+.player_avatar .rating3 {background: #c8ad96;}
+.player_avatar .rating3 > div {background: #907d6c;}
+.player_avatar .rating4 {background: #afbea3;}
+.player_avatar .rating4 > div {background: #88a06d;}
+.player_avatar .rating5 {background: #7cd2c6;}
+.player_avatar .rating5 > div {background: #09be97;}
+.player_avatar .rating6 {background: #73ccd4;}
+.player_avatar .rating6 > div {background: #18a3a7;}
+.player_avatar .rating7 {background: #6cb1e6;}
+.player_avatar .rating7 > div {background: #2a88da;}
+.player_avatar .rating8 {background: #969bde;}
+.player_avatar .rating8 > div {background: #3a48cb;}
+.player_avatar .rating9 {background: #c37bb8;}
+.player_avatar .rating9 > div {background: #8a3e88;}
+.player_avatar .rating10 {background: #d2816a;}
+.player_avatar .rating10 > div {background: #a34b39;}
+.player_avatar .rating11 {background: #d79c5f;}
+.player_avatar .rating11 > div {background: #d04a0c;}
+.player_avatar .rating12 {background: #c24a3d;}
+.player_avatar .rating12 > div {background: #941610;}
+.player_avatar .rating13 {background: #98372e;}
+.player_avatar .rating13 > div {background: #6a0400;}
+.player_avatar .rating14 {background: #60504f;}
+.player_avatar .rating14 > div {background: #312120;}
+.player_avatar .rating15 {background: #333;}
+.player_avatar .rating15 > div {background: #000;}*/
+
+.abilities {position: relative;}
+.abilities .ability {padding: 13px 5px 2px 5px; margin: 0 0 1px; background: #dbcaac; overflow: hidden; border-radius: 3px; position: relative; z-index: 2;}
+.abilities .ability .ico {margin: -8px 5px 0 0; float: left;}
+.abilities .ability .ability_hud_container {margin: 0 0 0 -5px;}
+.abilities .ability .value1 {width: 100px; font-weight: bold; text-align: center; position: absolute; top: -1px; left: 95px;}
+.abilities .ability .value2 {width: 100px; color: #9C8163; text-align: right; position: absolute; top: -1px; right: 15px;}
+
+.abilities .ability_training {background: #dbcaac; opacity: 0; left: 276px; top: 0; right: 0; bottom: 0; border-radius: 3px; position: absolute; z-index: 1;}
+.ability_training .ability_content {opacity: 0;}
+.ability_training .ability_plus {width: 20px; height: 20px; background: url(/i/ico.png) no-repeat -140px -460px; position: absolute; top: 80px; right: 2px; cursor: pointer;}
+.ability_training.open .ability_plus {background-position: -60px -160px !important;}
+
+.abilities_container:hover .dlink {border-color: transparent;}
+b.ability_plus {width: 20px; height: 20px; background: url(/i/ico.png) no-repeat -140px -460px; display: block !important; position: absolute; top: -3px; right: 63px;}
+.abilities_container:hover b.ability_plus {opacity: 0.7;}
+.abilities_container:active b.ability_plus {opacity: 1;}
+
+.profile_statistic {width: 98%; border-collapse: collapse;}
+.profile_statistic td, .profile_statistic th {border-top: 1px solid #cebb9e; font-weight: normal !important;}
+
+.slide_down_items {padding-left: 15px; position: relative;}
+.slide_down_button {right: -1px;bottom: 27px;width: 16px;height: 16px;background-image: url(/images/m/pandora/ico_16px.png); background-position: -48px -32px;position: absolute;cursor: pointer;opacity: 0.5;}
+.slide_down_button:hover {opacity: 0.8;}
+.slide_down_button.open {background-position: -32px -32px;}
+
+.slide_block_click {position: relative; cursor: pointer;}
+.slide_block_click .slide_block_icon {top: 7px;left: 7px;width: 16px;height: 16px;background-image: url("/images/m/pandora/ico_16px.png");background-position: -16px -32px;display: block;position: absolute;opacity: 0.5;}
+.slide_block_click:hover .slide_block_icon {opacity: 1;}
+.slide_block_click.open .slide_block_icon {background-position: -48px -32px;}
+.slide_block_click span {border-bottom: 1px dotted;}
+.slide_block_click:hover span {color: #a76320; border-color: transparent;}
+
+.slide_click {position: absolute; top: 0; bottom: 0; right: 0; left: 0; z-index: 2;}
+
+.with_progress {height: 62px; position: relative;}
+.medal_progress {width: 58px; height: 2px; background-color: #DBCBAD; position: absolute; bottom: 0; left: 1px;}
+.medal_progress div:first-child {background-color: #00b500; position: absolute; left: 0; top: 0;}
+
+.medals_list .bgr, .medals_list .bgr:hover {background-image: url(/images/m/profile/booster_medals.png); opacity: 1 !important; text-align: center;}
+.medals_list a {display: block; position: absolute; z-index: 3; top: 0; bottom: 0; left: 0; right: 0;}
+.medals_1_1 .bgr {background-position: 0 0;}
+.medals_1_0 .bgr {background-position: 0 -60px;}
+.medals_2_1 .bgr {background-position: -60px 0;}
+.medals_2_0 .bgr {background-position: -60px -60px;}
+.medals_3_1 .bgr {background-position: -120px 0;}
+.medals_3_0 .bgr {background-position: -120px -60px;}
+.medals_4_1 .bgr {background-position: -180px 0;}
+.medals_4_0 .bgr {background-position: -180px -60px;}
+.medals_5_1 .bgr {background-position: -240px 0;}
+.medals_5_0 .bgr {background-position: -240px -60px;}
+.medals_6_1 .bgr {background-position: -300px 0;}
+.medals_6_0 .bgr {background-position: -300px -60px;}
+.medals_7_1 .bgr {background-position: -360px 0;}
+.medals_7_0 .bgr {background-position: -360px -60px;}
+.medals_8_1 .bgr {background-position: -420px 0;}
+.medals_8_0 .bgr {background-position: -420px -60px;}
+
+.medals_text {
+	font-size: 20px; 
+	color: #fff; 
+	text-shadow: 0px 0px 2px #000; 
+	display: inline-block; 
+	line-height: 20px; 
+	position: relative; 
+	top: 18px; 
+	padding: 0 5px 4px;
+	border-radius: 3px;
+	text-align: center;
+	background: url(/images/m/profile/black_50.png) repeat;
+	top: 16px\0/;
+	padding-top: 3px\0/;
+}
+
+/* training */
+.ability_training .tabs {position: absolute; top: -20px; right: 0; border-bottom: 1px solid #9C8164;}
+.ability_training .tabs .btn {padding-top: 2px; padding-bottom: 0; width: 119px !important; margin: 0;}
+.ability_training .tabs .btn:first-child {border-right: 1px solid #DBCAAC;}
+.ability_training .tabs .btn.cornerl3 {border-radius: 3px 0 0 0 !important;}
+.ability_training .tabs .btn.cornerr3 {border-radius: 0 3px 0 0 !important;}
+
+.ico_burning {
+	position: absolute;
+	right: 1px;
+	bottom: 5px;
+}
+/* enemy */
+.enemy_buttons {padding: 4px 2px; position: absolute; bottom: 9px; right: 10px;}
+
+/* fight */
+.barantus_bgr {background: url(/images/m/profile/bg_barans.png) no-repeat center 50px;}
+.svintus_bgr {background: url(/images/m/profile/bg_svins.png) no-repeat center 50px;}
+.previous_player, .next_player {top: 10px; width: 40px; height: 427px; position: absolute !important; cursor: pointer; border-radius: 3px;}
+.previous_player:hover, .next_player:hover  {background: #cabda9;}
+.previous_player:active, .next_player:active {background: #bcae99;}
+.previous_player > div, .next_player > div {top: 49%; width: 16px; height: 16px; position: absolute !important; background-image: url(/images/m/profile/ico_16px.png); opacity: 0.3; filter: alpha(Opacity=30);}
+.previous_player:hover > div, .next_player:hover > div {opacity: 0.7; filter: alpha(Opacity=70);}
+.previous_player > div {left: 11px; background-position: -64px -32px;}
+.next_player > div {top: 45%; width: 40px; height: 40px; right: -2px; background-image: url(/images/m/profile/ico_60px.png); background-position: -70px -10px;}
+.previous_player {left: 8px;}
+.next_player {right: 8px;}
+.next_player.force {background: #cabda9;}
+.next_player.force:hover {background: #bcae99;}
+.next_player.force > div {opacity: 0.8; filter: alpha(Opacity=80);}
+.fight_find_avatar .to_profile {top: 17px; left: 17px;width: 186px;height: 236px;}
+.fight_find_container {}
+.fight_find_container div {position: relative;}
+.fight_find_bgr {background: url(/images/m/profile/search_fight_bgr.jpg) repeat-x; height: 281px; border-radius: 3px 3px 0 0;}
+.fight_find_bgr2 {background: url(/images/m/profile/search_fight_bgr2.jpg) repeat-x;}
+.fight_find_avatar {width: 212px; border-left: 1px solid #d3c4ad; border-top: 1px solid #d3c4ad; border-radius: 3px 0 0 0;}
+.fight_find_descr {margin-left: -1px; width: 323px; height: 279px; border-right: 1px solid #d3c4ad; border-top: 1px solid #d3c4ad; border-bottom: 1px solid #d3c4ad; border-radius: 0 3px 3px 0;}
+.fight_find_enemy_stat {border-left: 1px solid #d3c4ad; border-right: 1px solid #d3c4ad; border-bottom: 1px solid #d3c4ad; border-radius: 0 0 3px 3px;}
+.ava_border_shadow {height: 14px; background: url(/images/m/profile/border_ava2.png) no-repeat bottom center;}
+.fight_find_my {border-right: 1px solid #d3c4ad;}
+.fight_find_my_stat {margin: 5px -4px 0 0; width: 315px; padding: 1px; background: #fff5e0; border: 3px solid #9c8163; border-radius: 5px;}
+.fight_find_my_stat .ability_hud {width: 138px;}
+.fight_find_my_stat > div {background: #f0e3c9; border: 1px solid #d3c4ad; border-radius: 3px;}
+.fight_find_my_name {margin: 0 auto; width: 80px; height: 15px; overflow: hidden;}
+.avatar_extra	{bottom: 0; position: absolute !important; right: -4px;}
+.clan_flag_item {border: 1px solid #D3C4AD; border-radius: 3px; overflow: hidden;}
+.clan_flag_item.selected {border: 1px solid yellow;}
+.fight_find_vs {top: -1px;left: -26px; width: 60px; height: 60px; background: url(/images/m/profile/ico_60px.png) no-repeat -120px 0; position: absolute !important;}
+.block_title {padding-top: 5px; padding-bottom: 5px; background-color: #e7d8c1;}
+.ability_hud {margin: 0 0 1px; height: 10px; text-align: center; background: #e9dcc9 url(/images/m/profile/bars.png) no-repeat 0 -100px; position: relative; z-index: 3; border: 1px solid #714427; border-radius: 1px;}
+.ability_hud div {width: 110px; height: 10px; top: 0px; left: 0px; position: relative; background: #5f351c url(/images/m/profile/bars.png) no-repeat 0 -110px; z-index: 4; float: left;}
+.profile_ability_hud {margin: 1px 5px 1px 28px; height: 12px; text-align: center; background: #e9dcc9; position: relative; z-index: 3; border: 1px solid #714427; border-radius: 1px; background: #9C8163;}
+.profile_ability_hud div:first-child {height: 12px; top: 0px; left: 0px; position: relative; background: #5f351c; z-index: 4; float: left;}
+.profile_ability_hud div + div {top: 0; bottom: 0; left: 0; right: 0; font-size: 10px; line-height: 120%; position: absolute !important; z-index: 5;}
+.border_b {margin: 0 -5px; border-bottom: 1px solid #d3c5ab;}
+.border_b2 {margin: 0 3px;}
+.border_b3 {margin: 2px -3px;}
+.border_b4 {border-bottom: 1px solid #9C8163;}
+.another_hud1 {margin: 8px 40px 0 0; width: 140px;}
+.another_hud5 {margin: 8px 40px 0 0; width: 120px;}
+.another_hud2 {top: -3px; right: -38px; position: absolute !important;}
+.another_hud3 {margin: 7px 50px 0 0; width: 180px;}
+.another_hud6 {width: 50px; top: -3px; left: -58px; text-align: right; position: absolute !important;}
+.another_hud3 span {top: -1px; display: block; position: absolute !important;}
+.another_hud4 {top: -1px; right: -45px; position: absolute !important;}
+.smallest_hud {color:#9c8163; font-size: 10px; top: 1px; right: 22px; position: absolute !important;}
+.rating_ouside .rating {
+	margin: 0 0 0 13px;
+}
+
+.rating_ouside b {
+	left: -13px;
+	background-image: url(/images/global/ico_16px.png?v=var109);
+}
+
+.rating1 {
+	background: #c5baab;
+}
+
+.rating1 > div {
+	background: #b0a595;
+}
+
+.rating_ouside .rating1 b {
+	background-position: -24px -48px;
+}
+
+.rating2 {
+	background: #a8a49f;
+}
+
+.rating2 > div {
+	background: #978f86;
+}
+
+.rating_ouside .rating2 b {
+	background-position: -36px -48px;
+}
+
+.rating3 {
+	background: #c9b29e;
+}
+
+.rating3 > div {
+	background: #a58e7a;
+}
+
+.rating_ouside .rating3 b {
+	background-position: -48px -48px;
+}
+
+.rating4 {
+	background: #afbea3;
+}
+
+.rating4 > div {
+	background: #88a06d;
+}
+
+.rating_ouside .rating4 b {
+	background-position: -60px -48px;
+}
+
+.rating5 {
+	background: #7cd2c6;
+}
+
+.rating5 > div {
+	background: #09be97;
+}
+
+.rating_ouside .rating5 b {
+	background-position: -72px -48px;
+}
+
+.rating6 {
+	background: #73ccd4;
+}
+
+.rating6 > div {
+	background: #18a3a7;
+}
+
+.rating_ouside .rating6 b {
+	background-position: -84px -48px;
+}
+
+.rating7 {
+	background: #6cb1e6;
+}
+
+.rating7 > div {
+	background: #2a88da;
+}
+
+.rating_ouside .rating7 b {
+	background-position: -96px -48px;
+}
+
+.rating8 {
+	background: #969bde;
+}
+
+.rating8 > div {
+	background: #3a48cb;
+}
+
+.rating_ouside .rating8 b {
+	background-position: -108px -48px;
+}
+
+.rating9 {
+	background: #c37bb8;
+}
+
+.rating9 > div {
+	background: #8a3e88;
+}
+
+.rating_ouside .rating9 b {
+	background-position: -120px -48px;
+}
+
+.rating10 {
+	background: #d2816a;
+}
+
+.rating10 > div {
+	background: #a34b39;
+}
+
+.rating_ouside .rating10 b {
+	background-position: -132px -48px;
+}
+
+.rating11 {
+	background: #d79c5f;
+}
+
+.rating11 > div {
+	background: #d04a0c;
+}
+
+.rating_ouside .rating11 b {
+	background-position: -144px -48px;
+}
+
+.rating12 {
+	background: #c24a3d;
+}
+
+.rating12 > div {
+	background: #941610;
+}
+
+.rating_ouside .rating12 b {
+	background-position: -156px -48px;
+}
+
+.rating13 {
+	background: #98372e;
+}
+
+.rating13 > div {
+	background: #6a0400;
+}
+
+.rating_ouside .rating13 b {
+	background-position: -168px -48px;
+}
+
+.rating14 {
+	background: #60504f;
+}
+
+.rating14 > div {
+	background: #312120;
+}
+
+.rating_ouside .rating14 b {
+	background-position: -180px -48px;
+}
+
+.rating15 {
+	background: #333;
+}
+
+.rating15 > div {
+	background: #000;
+}
+
+.rating_ouside .rating15 b {
+	background-position: -180px -48px;
+}
+
+
+.inputs input {position: relative; top: 2px;}
+
+/* christmas gifts */
+.gs_fish { background-position: 0px 0px; }
+.gs_gold { background-position: -60px 0px; }
+.gs_crystal { background-position: -120px 0px; }
+.gs_green { background-position: -180px 0px; }
+.gs_effect_pandora { background-position: -240px 0px; }
+.gs_red_worm { background-position: -300px 0px; }
+.gs_phoenix { background-position: -360px 0px; }
+.gs_farm_hat { background-position: -420px 0px; }
+.gs_harbour_9 { background-position: -480px 0px; }
+
+.sp_prize_0 {	background-position: 0px 0px;	}
+.sp_prize_1 {	background-position:-60px 0px;	}
+.sp_prize_2 {	background-position:-120px 0px;	}
+.sp_prize_3 {	background-position:-180px 0px;	}
+.sp_prize_4 {	background-position:-240px 0px;	}
+.sp_prize_5 {	background-position:-300px 0px;	}
+.sp_prize_6 {	background-position:-360px 0px;	}
+.sp_prize_7 {	background-position:-420px 0px;	}
+.sp_prize_8 {	background-position:-480px 0px;	}
+.sp_prize_9 {	background-position:-540px 0px;	}
+
+.gs_chameleon { background-position: -360px 0px; }
+.gs_old_gauntlets_of_fear { background-position: -420px 0px; }
+.gs_stamp { background-position: -480px 0px; }
+.gs_destroyer { background-position: -300px 0px; }
+
+/* professions */
+.prof_level {bottom: 0; left: 0; right: 0; margin: 0 auto; width: 45px; height: 30px; display: inline-block; position: absolute; z-index: 3; color: #fff; font-weight: bold; background-image: url(/images/m/profile/professions/bg_flag.png); line-height: 23px;}
+.prof_levelup {bottom: 6px; right: 11px; width: 20px; height: 20px; display: inline-block; position: absolute; z-index: 3; background: url(/i/ico.png) no-repeat -160px -300px;}
+
+.profs {width: 120px; height: 120px; display: inline-block; background-image: url(/images/m/profile/professions/ico_proffs.png);}
+
+
+.prof_war_10001_0 {background-position: -480px -120px;}
+.prof_war_10001_1, .item_box:hover .prof_war_10001_0 {background-position: 0 -120px;}
+
+.prof_war_10002_0 {background-position: -720px -120px;}
+.prof_war_10002_1, .item_box:hover .prof_war_10002_0 {background-position: -240px -120px;}
+
+.prof_war_10003_0 {background-position: -600px -120px;}
+.prof_war_10003_1, .item_box:hover .prof_war_10003_0 {background-position: -120px -120px;}
+
+.prof_war_10004_0 {background-position: -480px 0;}
+.prof_war_10004_1, .item_box:hover .prof_war_10004_0 {background-position: 0 0;}
+
+.prof_war_10005_0 {background-position: -720px 0;}
+.prof_war_10005_1, .item_box:hover .prof_war_10005_0 {background-position: -240px 0;}
+
+.prof_war_10006_0 {background-position: -600px 0;}
+.prof_war_10006_1, .item_box:hover .prof_war_10006_0 {background-position: -120px 0;}
+
+
+
+.prof_war_10007_0 {background-position: -840px 0;}
+.prof_war_10007_1, .item_box:hover .prof_war_10007_0 {background-position: -360px 0;}
+
+.prof_peace_10051_0 {background-position: -480px -240px;}
+.prof_peace_10051_1, .item_box:hover .prof_peace_10051_0 {background-position: 0 -240px;}
+
+.prof_peace_10052_0 {background-position: -720px -240px;}
+.prof_peace_10052_1, .item_box:hover .prof_peace_10052_0 {background-position: -240px -240px;}
+.prof_peace_10053_0 {background-position: -600px -240px;}
+.prof_peace_10053_1, .item_box:hover .prof_peace_10053_0 {background-position: -120px -240px;}
+.prof_peace_10054_0 {background-position: -840px -240px;}
+.prof_peace_10054_1, .item_box:hover .prof_peace_10054_0 {background-position: -360px -240px;}
+.prof_peace_10055_0 {background-position: -480px -720px;}
+.prof_peace_10055_1, .item_box:hover .prof_peace_10055_0 {background-position: 0 -720px;}
+
+.prof_peace_10056_0 {background-position: -600px -360px;}
+.prof_peace_10056_1, .item_box:hover .prof_peace_10056_0 {background-position: -120px -360px;}
+
+.prof_peace_10057_0 {background-position: -480px -360px;}
+.prof_peace_10057_1, .item_box:hover .prof_peace_10057_0 {background-position: 0 -360px;}
+
+.prof_peace_10058_0 {background-position: -720px -360px;}
+.prof_peace_10058_1, .item_box:hover .prof_peace_10058_0 {background-position: -240px -360px;}
+
+.prof_peace_10059_0 {background-position: -840px -360px;}
+.prof_peace_10059_1, .item_box:hover .prof_peace_10059_0 {background-position: -360px -360px;}
+.prof_peace_10060_0 {background-position: -600px -480px;}
+.prof_peace_10060_1, .item_box:hover .prof_peace_10060_0 {background-position: -120px -480px;}
+.prof_peace_10061_0 {background-position: -480px -480px;}
+.prof_peace_10061_1, .item_box:hover .prof_peace_10061_0 {background-position: 0 -480px;}
+.prof_peace_10062_0 {background-position: -720px -480px;}
+.prof_peace_10062_1, .item_box:hover .prof_peace_10062_0 {background-position: -240px -480px;}
+.prof_peace_10063_0 {background-position: -840px -480px;}
+.prof_peace_10063_1, .item_box:hover .prof_peace_10063_0 {background-position: -360px -480px;}
+.prof_peace_10064_0 {background-position: -600px -600px;}
+.prof_peace_10064_1, .item_box:hover .prof_peace_10064_0 {background-position: -120px -600px;}
+
+.prof_peace_10065_0 {background-position: -480px -600px;}
+.prof_peace_10065_1, .item_box:hover .prof_peace_10065_0 {background-position: 0 -600px;}
+
+.prof_peace_10066_0 {background-position: -720px -600px;}
+.prof_peace_10066_1, .item_box:hover .prof_peace_10066_0 {background-position: -240px -600px;}
+
+.prof_peace_10067_0 {background-position: -840px -600px;}
+.prof_peace_10067_1, .item_box:hover .prof_peace_10067_0 {background-position: -360px -600px;}
+
+.prof_peace_10068_0 {background-position: -600px -720px;}
+.prof_peace_10068_1, .item_box:hover .prof_peace_10068_0 {background-position: -120px -720px;}
+.prof_peace_10069_0 {background-position: -720px -720px;}
+.prof_peace_10069_1, .item_box:hover .prof_peace_10069_0 {background-position: -240px -720px;}
+.prof_peace_10070_0 {background-position: -840px -720px;}
+.prof_peace_10070_1, .item_box:hover .prof_peace_10070_0 {background-position: -360px -720px;}
+
+.gift_categories .gift_image {border: 2px solid transparent; padding: 0 !important; margin: 0 !important;}
+.gift_categories .gift_selected {border: 2px solid #ffe17f; padding: 0 !important; margin: 0 !important;}
+.gift_categories .gift_image > .gift_image, .gift_categories .gift_selected > .gift_image {border: 0 !important; padding: 0 !important; margin: 0 !important; width: 60px !important; height: 60px !important;}
+
+
+.enemy_message{
+	margin: 0 0;
+	height: 215px;
+	overflow: hidden;
+	width: 317px !important;
+}
+
+.f_s11 > * {
+    font-size: 11px !important;
+}
+
+.profile_statistic {
+	width: 100%;
+}
+
+.profile_statistic td {
+/*	padding: 3px;*/
+}
+
+.editable, .edited {
+	display: inline-block;
+	height: 13px;
+	margin-right: 20px;
+	position: relative;
+}
+
+.round_block_header_top .editable, .round_block_header_top .edited {
+	height: 30px;
+}
+
+.round_block_header_top .editable input[ type="text" ], .round_block_header_top .editable select {
+	margin: 5px 0;
+}
+
+.round_block_header_top .start_edit_icon, .round_block_header_top .finish_edit_icon {
+	top: 5px;
+	background-color: transparent;
+}
+
+.editable.hidden, .edited.hidden {
+	display: none;
+}
+
+.round_block_header_top a {font-size: 11px !important;}
+
+.edited {
+	padding-right: 3px;
+}
+
+.start_edit_icon {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: -3px;
+	right: -22px;
+	cursor: pointer;
+}
+
+.finish_edit_icon {
+	width: 20px;
+	height: 20px;
+	background-color: #E3D4B7;
+	position: absolute;
+	top: -3px;
+	right: -22px;
+	cursor: pointer;
+}
+
+.editable input[ type="text" ] {
+	margin: -4px 0;
+	width: 95%;
+	border: 1px solid #cebb9e !important;
+	border-radius: 3px;
+	background: #fff;
+	font-size: 11px;
+	padding: 3px;
+	text-align: right;
+}
+
+.editable textarea {
+	margin: 0 0 0 -4px;
+	border: 1px solid #cebb9e !important;
+	border-radius: 3px;
+	background: #fff;
+	font-family: Tahoma, Ubuntu, Geneva, Kalimati, sans-serif;
+	font-size: 11px;
+	padding: 3px;
+	width: 510px;
+	height: 250px;
+	resize: none;
+}
+
+.editable select {
+	margin: -4px 0;
+	width: 150px !important; 
+	text-align: right;
+	background: #fff; 
+	border: 1px solid #cebb9e !important;
+	border-radius: 3px;
+	font-size: 11px; 
+	padding: 3px;
+	display: block;
+}
+
+.editable select.w50 {
+	width: 50px !important; 
+}
+
+.editable select.w92 {
+	width: 92px !important; 
+}
+
+.normal_inputs {}
+.normal_inputs input[type="text"] {width: 145px; border: 1px solid #cebb9e !important; font-size: 11px; padding: 3px; border-radius: 3px;}
+.normal_inputs select {width: 153px; background: #fff; border: 1px solid #cebb9e !important; font-size: 11px; padding: 3px; border-radius: 3px;}
+.normal_inputs input[type="checkbox"] {position: relative; top: 0px; margin: 1px 3px;}
+.normal_inputs label input[type="checkbox"] {top: 2px;}
+.normal_inputs input[type="radio"] {position: relative; top: 0px; margin: 1px 3px;}
+.normal_inputs label input[type="radio"] {position: relative; top: 2px; margin: 1px 3px;}
+
+.normal_table { border-collapse: collapse;}
+.normal_table th {padding: 5px; font-weight: normal;}
+.normal_table td {padding: 5px; border-top: 1px solid #cebb9e; border-collapse: collapse;}
+.normal_table td .profile {font-weight: normal;}
+
+.normal_table.warriors_list td {padding: 5px 5px 2px 5px !important;}
+
+.normal_table {overflow: hidden;}
+.normal_table .tr {width: 100%; border-top: 1px solid #cebb9e; overflow: hidden;}
+.normal_table .tr.bar_yellow {height: auto !important; line-height: 120% !important;}
+.normal_table .tr:first-child {border-top: 1px solid transparent;}
+.normal_table .tr > div {padding: 5px; float: left;}
+.normal_table .tr > div .profile {
+	width: 121px;
+	height: 13px;
+	font-size: 11px !important;
+	display: inline-block;
+	overflow: hidden;
+}
+.normal_table .tr > div b {height: 20px !important;}
+.normal_table .tr > div b.img_money_1_small {height: 16px !important;}
+.normal_table .tr > div.header {font-weight: bold;}
+.normal_table .tr > div.header b {height: 17px !important;}
+.normal_table .tr > div.header b.order {height: 10px !important;}
+
+.font_normal A.profile {font-weight: normal !important;}
+.normal_block_table {border-collapse: collapse;}
+.normal_block_table th {font-weight: normal;}
+.normal_block_table td, .normal_block_table th {padding: 5px 2px; border-collapse: collapse; background-color: #E3D4B7; border-bottom: 1px solid #eadec9; border-top: 1px solid #eadec9;}
+.normal_block_table td:first-child, .normal_block_table th:first-child {border-radius: 3px 0 0 3px;}
+.normal_block_table td:last-child, .normal_block_table th:last-child {border-radius: 0 3px 3px 0;}
+.normal_block_table tr:hover td {background: #dbcbad;}
+.normal_block_table tr.place_1:hover td {background:#f9c62d !important;}
+.normal_block_table tr.place_2:hover td {background:#c4c4c4 !important;}
+.normal_block_table tr.place_3:hover td {background:#efba86 !important;}
+.normal_block_table tr.place_me:hover td {background:#8bcc5b !important;}
+.normal_block_table tr.place_clan:hover td {background:#a6ce78 !important;}
+.normal_block_table tr.place_war:hover td {background:#ed8a77 !important;}
+.normal_block_table tr.place_union:hover td {background:#caabbe !important;}
+.normal_block_table  .profile {display: block; overflow: hidden; width: 150px;}
+
+.move_button { display: none; }
+.tr.move { cursor: default !important; }
+
+.edit_access .tr * { 
+	user-select: none;
+	-o-user-select:none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+}
+.edit_access .tr.move { cursor: move !important; width: 534px; overflow: hidden;}
+.edit_access .tr.move:hover { background-color: #dbcbad; }
+.edit_access .tr.in_action { opacity: 0.3; filter: alpha(Opacity=30);}
+.edit_access .start_edit_icon,
+.edit_access .finish_edit_icon,
+.edit_access .ico_mail_hover,
+.edit_access .ico_remove_hover { display: none; }
+.edit_access .edited { margin-right: 0; }
+.edit_access .move_button { display: inline-block; }
+.edit_access .ui-draggable-dragging { background-color: #FFEB9C ; box-shadow: 0 0 10px 0 rgba(0,0,0,0.5); opacity: 0.9; filter: alpha(Opacity=90);}
+
+.edit_access .bgr_1 { background-color: transparent; }
+.edit_access .bgr_1 .round_block_header_top { background-color: #cbbca0 !important; }
+.edit_access .bgr_1 .round_block_header_cont { background-color: #dbcbad !important; }
+
+.new_warrior_group_hidden {display: none;}
+.edit_access .new_warrior_group_hidden {display: block;}
+.new_warrior_group_hidden .start_edit_icon {display: none;}
+.new_warrior_group_hidden .fl_r.name {display: none;}
+.new_warrior_group { display: none;}
+.new_warrior_group_hidden .new_warrior_group {display: block;}
+
+.overlay_drop {
+	display: none;
+}
+.overlay_bgr {
+	background: #000;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	color: #fff;
+	font-size: 20px;
+	line-height: 150%;
+	text-align: center;
+	z-index: 97;
+	opacity: 0.8;
+	filter: alpha(Opacity=80);
+}
+.overlay_block {
+	width: 550px;
+	display: inline-block;
+	z-index: 98;
+}
+.overlay_block_bgr {
+	background: #eadec9;
+	border-radius: 3px ;
+	box-shadow: 0 0 100px 0 rgba(0,0,0,0.7);
+	padding: 10px;
+}
+
+.clan_group {padding: 7px 12px; margin: 0 0 5px; font-size: 15px; border-radius: 3px; background: #dbcbad;}
+.clan_group.new_group {background: #52b152; color: #fff;}
+.clan_group.delete_from_group {background: #ea5507; color: #fff;}
+.clan_group.do_nothing {
+	margin: 25px 0 0;
+	padding: 50px 12px;
+	text-align: center;
+	border: 1px dashed #eee;
+	color: #fff;
+	background: transparent;
+	font-size: 20px;
+	position: relative;
+	border-radius: 0;
+}
+.clan_group.group_hover {background: #cebb9e;}
+.clan_group.do_nothing.group_hover {background: transparent; opacity: 0.5; filter: alpha(Opacity=50);}
+
+.overlay_drop table {position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; z-index: 98;}
+.overlay_drop table td {width: 100%; height: 100%; text-align: center; vertical-align: middle;}
+
+.phrase_text {width: 440px; padding: 2px 0 4px 5px; color: green;}
+.phrase_date {padding: 3px 7px 3px 0; color: #825229; font-size: 9px;}
+.unactive .phrase_text {color: #542f1b !important;}
+
+.big_cell {width: 394px; padding: 3px; height: 24px; position: relative;}
+.big_cell .bgr {width: 400px; height: 30px; background: url(/images/m/parrot/slider.png) no-repeat 0 0; position: absolute; top: 0;}
+.big_cell .fill {
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	right: 3px;
+	bottom: 3px;
+	line-height: 21px;
+	font-size: 18px;
+	text-shadow: 0px 0px 3px #000;
+	color: #fff;
+	background-image: url(/images/m/parrot/slider.png);
+	background-position:  0 -30px;
+}
+.big_cell_1 .fill {background-position: 0 -63px;}
+.big_cell_0 .fill {background-position: 0 -93px;}
+.big_cell_2 .fill {background-position: 0 -123px;}
+.big_cell_3 .fill {background-position: 0 -153px;}
+.big_cell_4 .fill {background-position: 0 -183px;}
+.big_cell_5 .fill {background-position: 0 -213px;}
+.big_cell_6 .fill {background-position: 0 -243px;}
+
+.pirate_avatar {cursor: pointer; margin: 0 0px;}
+.pirate_avatar .avatar, img.pirate_avatar, .pirate_avatar .item_box {
+	opacity: 0.6;
+	filter: alpha(Opacity=60);
+	-ms-transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	border-radius: 3px;
+}
+
+.pirate_avatar.open, img.pirate_avatar.open {cursor: default;}
+.pirate_avatar:hover .avatar, img.pirate_avatar:hover, .pirate_avatar.open .avatar, img.pirate_avatar.open {opacity: 1; filter: alpha(Opacity=100);}
+.pirate_avatar:hover .item_box, .pirate_avatar.open .item_box {opacity: 1; filter: alpha(Opacity=100); background: #fff9ec;}
+
+.content_block_hover {margin-right: 10px; width: 272px; padding: 0; float: left; cursor: pointer;}
+.content_block_hover > a {padding: 5px; line-height: 120%; display: block; text-decoration: none; overflow: hidden;}
+.content_block_hover:hover .content_block_image {opacity: 1;}
+.content_block_hover:hover .alink {text-decoration: none !important;}
+.content_block_image {width: 100px; height: 75px; float: left; opacity: 0.8;}
+
+.village_image1 {background: url(/images/menus/village1.png) no-repeat 0 0;}
+.village_image2 {background: url(/images/menus/village2.png) no-repeat 0 0;}
+.village_image3 {background: url(/images/menus/village3.png) no-repeat 0 0;}
+.village_image4 {background: url(/images/menus/village4.png) no-repeat 0 0;}
+.village_image5 {background: url(/images/menus/village5.png) no-repeat 0 0;}
+.village_image6 {background: url(/images/menus/village6.png) no-repeat 0 0;}
+.village_image7 {background: url(/images/menus/village7.png) no-repeat 0 0;}
+.village_image8 {background: url(/images/menus/village8.png) no-repeat 0 0;}
+.village_image9 {background: url(/images/menus/village9.png) no-repeat 0 0;}
+
+.harbour_image1,
+.harbour_image2,
+.harbour_image3,
+.harbour_image4,
+.harbour_image5,
+.harbour_image6,
+.harbour_image7,
+.harbour_image8 {background: url(/images/menus/harbour_menu.png)}
+.harbour_image1 {background-position: 0 0;}
+.harbour_image2 {background-position: -100px 0;}
+.harbour_image3 {background-position: -200px 0;}
+.harbour_image4 {background-position: -300px 0;}
+.harbour_image5 {background-position: -500px 0;}
+.harbour_image6 {background-position: -400px 0;}
+.harbour_image7 {background-position: -600px 0;}
+.harbour_image8 {background-position: -700px 0;}
+
+.school_image1 {background: url(/images/menus/schoolBday.png) no-repeat 0 0;}
+.school_image2 {background: url(/images/menus/school1.png) no-repeat 0 0;}
+.school_image3 {background: url(/images/menus/school3.png) no-repeat 0 0;}
+.school_image4 {background: url(/images/menus/school4.png) no-repeat 0 0;}
+
+.tavern_image1 {background: url(/images/menus/tavern1.png) no-repeat 0 0;}
+.tavern_image2 {background: url(/images/menus/tavern2.png) no-repeat 0 0;}
+.tavern_image3 {background: url(/images/menus/tavern3.png) no-repeat 0 0;}
+.tavern_image4 {background: url(/images/menus/tavern4.png) no-repeat 0 0;}
+
+.house_image1 {background: url(/images/menus/harbour_safe.png) no-repeat 0 0;}
+.house_image2 {background: url(/images/menus/house_safe3.png) no-repeat 0 0;}
+.house_image3 {background: url(/images/menus/house_safe2.png) no-repeat 0 0;}
+.house_image4 {background: url(/images/menus/house_safe4.png) no-repeat 0 0;}
+.house_image5 {background: url(/images/menus/house_woodoo.png) no-repeat 0 0;}
+.house_image6 {background: url(/images/menus/house_woodoo2.png) no-repeat 0 0;}
+.house_image7 {background: url(/images/menus/house_totem.png) no-repeat 0 0;}
+.house_image8 {background: url(/images/menus/house_totem2.png) no-repeat 0 0;}
+.house_image9 {background: url(/images/menus/house_home.png) no-repeat 0 0;}
+.house_image10 {background: url(/images/menus/house_cage.png) no-repeat 0 0;}
+.house_image11 {background: url(/images/menus/house_fence.png) no-repeat 0 0;}
+.house_image12 {background: url(/images/menus/house_road.png) no-repeat 0 0;}
+.house_image13 {background: url(/images/menus/house_out.png) no-repeat 0 0;}
+.house_image14 {background: url(/images/menus/house_plant.png) no-repeat 0 0;}
+
+.wiki_in_profile {
+    position:absolute; top: 6px; right: 10px; text-decoration: none !important; border-bottom: none !important; z-index: 101;
+}
+.wiki_in_profile:hover {
+    text-decoration: none !important;
+}
+
+.left_image {position: absolute; left: 12px; top: -2px;}
+
+/* arena - кроссерверная бодалка*/
+.arena_enemy {margin: 0 3px; padding: 5px; width: 116px; background-color: #dbcaac; border-radius: 3px; display: inline-block; position: relative; cursor: pointer;}
+.arena_enemy .arena_enemy_stat {opacity: 0.7;}
+.arena_enemy:hover .arena_enemy_stat {opacity: 1;}
+.arena_enemy:hover {background: #fde9bb;}
+.arena_enemy:active {background: #d4c29f;}
+.arena_enemy.disabled, .disabled .arena_enemy, .disabled .arena_enemy:hover {background-color: #dbcaac; cursor: default;}
+.arena_enemy img {width: 40px; height: 40px;}
+.arena_enemy .arena_enemy_name {margin: 2px 0 3px; width: 93px; white-space: nowrap; text-align: left !important; overflow: hidden;}
+.arena_enemy .img_server_big, .arena_log .img_server_big {width: 40px; height: 40px; background-image: url(/images/packs/img_servers.png); display: inline-block; position: absolute; right: 0; top: 0;}
+.arena_enemy .img_server_big1, .arena_log .img_server_big1 {background-position: 0 0;}
+.arena_enemy .img_server_big2, .arena_log .img_server_big2 {background-position: -40px 0;}
+.arena_enemy .img_server_big3, .arena_log .img_server_big3 {background-position: -80px 0;}
+.arena_enemy .img_server_big4, .arena_log .img_server_big4 {background-position: -120px 0;}
+.arena_log .img_server_big {height: 30px;}
+
+/* arena - лог боя*/
+.logs_avatar_bgr {width: 172px; height: 223px; position: absolute; background: url(/images/m/profile/avatar_border_small.png) no-repeat 0 0; left: 0; top: 0;}
+.logs_avatar_bgr.looser {background-position: -344px 0;}
+.logs_avatar_bgr.winner {background-position: -172px 0;}
+.logs_avatar, .logs_avatar * {width: 168px; position: absolute; left: 0; top: 0;}
+.log_details {}
+.log_details .you {margin: 0 0 2px; text-align: left;}
+.log_details .you > div {padding: 1px 30px 4px 10px; display: inline-block; background: #eadec9; border-radius: 3px; min-width: 300px; border: 1px solid #cebb9e;}
+.log_details .enemy {margin: 0 0 2px; text-align: right;}
+.log_details .enemy > div {padding: 1px 10px 4px 30px; display: inline-block; background: #dbcbad; border-radius: 3px; min-width: 300px; border: 1px solid #cebb9e;}
+.arena_mod > div {margin: 0 2px; width: 35px; height: 35px; display: inline-block; background-image: url(/images/packs/arena_mod.png); background-repeat:no-repeat}
+.arena_mod > div.mod_none {background-position: -280px 0;}
+.arena_mod > div.mod_26 {background-position: 0px 0;}
+.arena_mod > div.mod_magic {background-position: -35px 0;}
+.arena_mod > div.mod_coloss {background-position: -70px 0;}
+.arena_mod > div.mod_potion_power {background-position: -105px 0;}
+.arena_mod > div.mod_potion_brave {background-position: -140px 0;}
+.arena_mod > div.mod_potion_slow {background-position: -175px 0;}
+.arena_mod > div.mod_crown {background-position: -210px 0;}
+.arena_mod > div.mod_daily_13 {background-position: -245px 0;}
+
+.log_details .attack, .log_details .block, .log_details .critical, .log_details .skip {margin: 0 5px -6px; width: 40px; height: 20px; display: inline-block; background-image: url(/images/packs/arena_actions.png);}
+.log_details .attack {background-position: 0 0;}
+.log_details .critical {background-position: 0 -20px;}
+.log_details .block {background-position: 0 -40px;}
+.log_details .skip {background-position: 0 -60px;}
+
+/* выбор магической зверушки - зоокотомка */
+.fast_pets {overflow: hidden;}
+.fast_pets > div, .choose_pet {width: 60px; height: 60px; float: left; cursor: pointer; position: relative;}
+.fast_pets > div img, .choose_pet img {width: 60px; height: 60px; display: block;}
+.fast_pets > div > b, .choose_pet > b {width: 60px; height: 60px; position: absolute; opacity: 0; filter: alpha(Opacity=0); display: block; left: 0; top: 0; box-shadow: inset 0 0 10px 1px greenyellow; /*background: greenyellow\0/*/;}
+.fast_pets > div:hover > b, .fast_pets > div.open > b, .choose_pet:hover > b, .choose_pet.open > b {opacity: 0.8; filter: alpha(Opacity=50);}
+.choose_pet {float: none; display: inline-block;}
+.selected_pet {opacity: 0.8 !important; filter: alpha(Opacity=90) !important;}
+
+/* шахта - купильня */
+.mine_shop_slider .mine_slider_container > .center.mb5 {margin-bottom: 3px !important;}
+
+.new_slider {}
+.new_slider .slider {height: 16px; border: 1px solid #c4b095; border-radius: 0; background: #eadec9;}
+.new_slider .ui-slider-handle {bottom: -3px; height: 19px; width: 10px; border: 1px solid #9c8164; border-radius: 0; background: #c4b095;}
+.new_slider .smith_min, .new_slider .smith_max {width: 16px; height: 16px; border: 1px solid #c4b095; background: #dbcaac url(/images/sliders/new/ico_16px.png); cursor: pointer; opacity: 0.5;}
+.new_slider .smith_min {margin: 5px -11px 0 0; background-position: -160px -16px;}
+.new_slider .smith_min:hover {background-position: -160px -16px; opacity: 0.8;}
+.new_slider .smith_max {margin: 5px 0 0 -14px; background-position: -128px -16px;}
+.new_slider .smith_max:hover {background-position: -128px -16px; opacity: 0.8;}
+.new_slider .slider_div {width: 280px;}
+.new_slider .slider_div .slider {width: 265px;}
+
+.harbour_market .harbour_item {width: 60px; height: 60px; background-image: url(/images/packs/big_icons.png); display: inline-block;}
+.harbour_market .harbour_item.Crystal10 {background-position: -60px 0;}
+.harbour_market .harbour_item.Pandora_1 {background-position: -420px -60px;}
+.harbour_market .harbour_item.Pandora_2 {background-position: -60px -180px;}
+.harbour_market .harbour_item.Potion_11 {background-position: -120px -180px;}
+.harbour_market .harbour_item.Mine_7 {background-position: -240px -180px;}
+.harbour_market .harbour_item.Slave_1 {background-position: -120px 0;}
+.harbour_market .harbour_item.Smith_6 {background-position: 0 -180px;}
+.harbour_market .harbour_item.Farm_1 {background-position: -180px -180px;}
+.harbour_market .harbour_item.Ticket_1 {background-position: -180px 0;}
+.harbour_market .harbour_item.Ticket_2 {background-position: -240px 0;}
+.harbour_market .harbour_item.Trade_1 {background-position: -300px -180px;}

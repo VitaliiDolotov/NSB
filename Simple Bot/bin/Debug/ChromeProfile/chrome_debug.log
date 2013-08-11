@@ -1,3 +1,17 @@
-[5828:3040:0810/165306:INFO:CONSOLE(56)] "The "fb-root" div has not been created, auto-creating", source: http://connect.facebook.net/en_US/all.js#xfbml=1 (56)
-[5828:3040:0810/165306:INFO:CONSOLE(56)] "FB.getLoginStatus() called before calling FB.init().", source: http://connect.facebook.net/en_US/all.js#xfbml=1 (56)
-[5828:3040:0810/165309:ERROR:textfield.h(162)] NOT IMPLEMENTED
+[7668:6008:0810/214006:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:7992:0810/214006:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:6496:0810/214011:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:7992:0810/214011:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:6408:0810/214011:ERROR:textfield.h(162)] NOT IMPLEMENTED
+[7668:1196:0810/214016:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:7244:0810/214016:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:6496:0810/214021:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:1196:0810/214021:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:7244:0810/214237:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:7948:0810/214237:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:6008:0810/214517:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:3688:0810/214517:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:1308:0810/214606:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:3688:0810/214606:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:6008:0810/215017:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[7668:4720:0810/215017:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
