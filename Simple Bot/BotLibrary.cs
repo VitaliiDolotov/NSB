@@ -927,7 +927,7 @@ namespace Simple_Bot
                                 try
                                 {
                                     //если в тайтле страници нет надписи Карьер, то переходим в карьер
-                                    if (driver.Title.IndexOf("Карьер") < 0)
+                                    if (!driver.Title.Contains("Карьер"))
                                     {
                                         //go to the mine
                                         driver.FindElement(By.XPath("//a/div[contains(@class,'f43')]")).Click();
@@ -999,7 +999,7 @@ namespace Simple_Bot
                                 try
                                 {
                                     //если в тайтле страници нет надписи Карьер, то переходим в карьер
-                                    if (driver.Title.IndexOf("Карьер") < 0)
+                                    if (!driver.Title.Contains("Карьер"))
                                     {
                                         //go to the mine
                                         driver.FindElement(By.XPath("//a/div[contains(@class,'f43')]")).Click();

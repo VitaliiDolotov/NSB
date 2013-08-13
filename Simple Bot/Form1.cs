@@ -67,12 +67,21 @@ namespace Simple_Bot
 
             this.Size = new System.Drawing.Size(217, 268);
 
-            int workTimeH = rnd.Next(Convert.ToInt32(numericUpDownMinHrsW.Value), Convert.ToInt32(numericUpDownMaxHrsW.Value));
+            int workTimeH;
+            if (Convert.ToInt32(numericUpDownMinHrsW.Value) < Convert.ToInt32(numericUpDownMaxHrsW.Value))
+                workTimeH = rnd.Next(Convert.ToInt32(numericUpDownMinHrsW.Value), Convert.ToInt32(numericUpDownMaxHrsW.Value));
+            else
+                workTimeH = rnd.Next(Convert.ToInt32(numericUpDownMaxHrsW.Value), Convert.ToInt32(numericUpDownMinHrsW.Value));
             string workTimeStringH = workTimeH.ToString();
             if (workTimeStringH.Length == 1)
                 workTimeStringH = "0" + workTimeStringH;
 
-            int workTimeM = rnd.Next(Convert.ToInt32(numericUpDownMinMinW.Value), Convert.ToInt32(numericUpDownMaxMinW.Value));
+            int workTimeM;
+            if (Convert.ToInt32(numericUpDownMinMinW.Value) < Convert.ToInt32(numericUpDownMaxMinW.Value))
+                workTimeM = rnd.Next(Convert.ToInt32(numericUpDownMinMinW.Value), Convert.ToInt32(numericUpDownMaxMinW.Value));
+            else
+                workTimeM = rnd.Next(Convert.ToInt32(numericUpDownMaxMinW.Value), Convert.ToInt32(numericUpDownMinMinW.Value));
+
             string workTimeStringM = workTimeM.ToString();
             if (workTimeStringM.Length == 1)
                 workTimeStringM = "0" + workTimeStringM;
@@ -1861,7 +1870,12 @@ namespace Simple_Bot
                     if (workTimeStringH.Length == 1)
                         workTimeStringH = "0" + workTimeStringH;
 
-                    int workTimeM = rnd.Next(Convert.ToInt32(numericUpDownMinMinW.Value), Convert.ToInt32(numericUpDownMaxMinW.Value));
+                    int workTimeM;
+                    if (Convert.ToInt32(numericUpDownMinMinW.Value) < Convert.ToInt32(numericUpDownMaxMinW.Value))
+                        workTimeM = rnd.Next(Convert.ToInt32(numericUpDownMinMinW.Value), Convert.ToInt32(numericUpDownMaxMinW.Value));
+                    else
+                        workTimeM = rnd.Next(Convert.ToInt32(numericUpDownMaxMinW.Value), Convert.ToInt32(numericUpDownMinMinW.Value));
+
                     string workTimeStringM = workTimeM.ToString();
                     if (workTimeStringM.Length == 1)
                         workTimeStringM = "0" + workTimeStringM;
@@ -1884,7 +1898,12 @@ namespace Simple_Bot
             if (restTimeStringH.Length == 1)
                 restTimeStringH = "0" + restTimeStringH;
 
-            int restTimeM = rnd.Next(Convert.ToInt32(numericUpDownMinMinR.Value), Convert.ToInt32(numericUpDownMaxMinR.Value));
+            int restTimeM;
+            if (Convert.ToInt32(numericUpDownMinMinR.Value) < Convert.ToInt32(numericUpDownMaxMinR.Value))
+                restTimeM = rnd.Next(Convert.ToInt32(numericUpDownMinMinR.Value), Convert.ToInt32(numericUpDownMaxMinR.Value));
+            else
+                restTimeM = rnd.Next(Convert.ToInt32(numericUpDownMaxMinR.Value), Convert.ToInt32(numericUpDownMinMinR.Value));
+
             string restTimeStringM = restTimeM.ToString();
             if (restTimeStringM.Length == 1)
                 restTimeStringM = "0" + restTimeStringM;
@@ -1899,7 +1918,12 @@ namespace Simple_Bot
             if (workTimeStringH.Length == 1)
                 workTimeStringH = "0" + workTimeStringH;
 
-            int workTimeM = rnd.Next(Convert.ToInt32(numericUpDownMinMinW.Value), Convert.ToInt32(numericUpDownMaxMinW.Value));
+            int workTimeM;
+            if (Convert.ToInt32(numericUpDownMinMinW.Value) < Convert.ToInt32(numericUpDownMaxMinW.Value))
+                workTimeM = rnd.Next(Convert.ToInt32(numericUpDownMinMinW.Value), Convert.ToInt32(numericUpDownMaxMinW.Value));
+            else
+                workTimeM = rnd.Next(Convert.ToInt32(numericUpDownMaxMinW.Value), Convert.ToInt32(numericUpDownMinMinW.Value));
+
             string workTimeStringM = workTimeM.ToString();
             if (workTimeStringM.Length == 1)
                 workTimeStringM = "0" + workTimeStringM;
