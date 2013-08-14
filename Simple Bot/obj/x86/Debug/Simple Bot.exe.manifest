@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Simple Bot.exe" size="360960">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Simple Bot.exe" size="363520">
       <assemblyIdentity name="Simple Bot" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>D/bsce4Tfr/VA4ciBWkK8ILY35E=</dsig:DigestValue>
+        <dsig:DigestValue>xcSnIu2fnCB27ZBvmQxvC5gg6gE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

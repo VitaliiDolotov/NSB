@@ -2849,7 +2849,7 @@ namespace Simple_Bot
             {
                 Random rnd = new Random();
                 //смотрим сколько у нас ключей, если 0, то докупаем
-                if (Convert.ToInt32(GetResourceValue("Ключ от ворот царства Манаглота")[0]) < 30)
+                if (Convert.ToInt32(GetResourceValue("Ключ от ворот царства Манаглота")[0]) < 4)
                 {
                     try
                     {
@@ -3246,8 +3246,6 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[1]) == true && Timer_FightMonster.CompareTo(DateTime.Now) < 0)
             {
-                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[4]);
-
                 try
                 {
                     //возращаем в бодалку
@@ -3256,6 +3254,10 @@ namespace Simple_Bot
                         driver.FindElement(By.Id("m8")).FindElement(By.XPath(".//b")).Click();
                         Delays();
                     }
+
+                    //если кнопка АТАКА показуется, то достаем зверя
+                    if (driver.FindElement(By.CssSelector(".watch_attack_level input[value='АТАКА']")).Displayed)
+                        GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[4]);
 
                     //если всех подряд
                     if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[29]))
@@ -3267,7 +3269,7 @@ namespace Simple_Bot
 
                     //если по уровню
                     int currenCry = Convert.ToInt32(driver.FindElement(By.Id("crystal")).FindElement(By.TagName("b")).Text.Replace(".", ""));
-                    if (currenCry > 1)
+                    if (currenCry > 3)
                     {
                         if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[30]))
                         {
@@ -3275,7 +3277,7 @@ namespace Simple_Bot
                             driver.FindElement(By.CssSelector(".sub_title_other input[value='1']")).Click();
                             Delays();
                             string selector = string.Format("//option[text()='{0}']", ReadFromFile(SettingsFile, "FightBox")[31]);
-                            driver.FindElement(By.CssSelector(selector)).Click();
+                            driver.FindElement(By.XPath(selector)).Click();
                             Delays();
                             driver.FindElement(By.CssSelector(".watch_attack_level input[value='АТАКА']")).Click();
                             Delays();
@@ -3316,7 +3318,7 @@ namespace Simple_Bot
         private void FightZorro()
         {
             //Зорро бодалка
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[2]) == true && Timer_FightZorro.CompareTo(DateTime.Now) < 0)
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[2]) == true && Timer_FightZorro.CompareTo(DateTime.Now) < 0 && CharacterIsFree())
             {
                 GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[3]);
 
@@ -3389,7 +3391,7 @@ namespace Simple_Bot
 
         private void FightCommon()
         {
-            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[5]) == true && Timer_FightCommon.CompareTo(DateTime.Now) < 0)
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[5]) == true && Timer_FightCommon.CompareTo(DateTime.Now) < 0 && CharacterIsFree())
             {
                 GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[2]);
 
@@ -3908,15 +3910,33 @@ namespace Simple_Bot
                             //Click heal (Botle) icon
                             driver.FindElement(By.Id("pet")).FindElement(By.XPath(".//a[2]")).Click();
                             Delays();
-                            //Buy 2 bottle
-                            driver.FindElement(By.Id("field_potion_5_2")).Click();
-                            Delays();
-                            //Drink bottle
-                            driver.FindElement(By.Id("potion_td_5")).FindElement(By.TagName("a")).Click();
-                            Delays();
-                            //Close Healing form
-                            driver.FindElement(By.CssSelector(".box_x_button")).Click();
-                            SmallDelays();
+
+                            //Юзаем малую бутілку если хилка у зверя больше 90
+                            if (Convert.ToInt32(HealLevel) >= 90)
+                            {
+
+                                //Buy 2 bottle
+                                driver.FindElement(By.Id("field_potion_4_2")).Click();
+                                Delays();
+                                //Drink bottle
+                                driver.FindElement(By.CssSelector("#potion_td_4 a")).Click();
+                                Delays();
+                                //Close Healing form
+                                driver.FindElement(By.CssSelector(".box_x_button")).Click();
+                                SmallDelays();
+                            }
+                            else
+                            {
+                                //Buy 2 bottle
+                                driver.FindElement(By.Id("field_potion_5_2")).Click();
+                                Delays();
+                                //Drink bottle
+                                driver.FindElement(By.Id("potion_td_5")).FindElement(By.TagName("a")).Click();
+                                Delays();
+                                //Close Healing form
+                                driver.FindElement(By.CssSelector(".box_x_button")).Click();
+                                SmallDelays();
+                            }
                         }
                         catch { }
                     }
@@ -5363,18 +5383,6 @@ namespace Simple_Bot
             catch { }
         }
 
-        private void GoByWorm()
-        {
-            driver.FindElement(By.LinkText("Деревня")).Click();
-            Delays();
-            driver.FindElement(By.XPath(".//div[text()='Лавка']")).Click();
-            Delays();
-            driver.FindElement(By.LinkText("Звери")).Click();
-            Delays();
-            Delays();
-            driver.FindElement(By.CssSelector("#shop_cmd_200")).Click();
-        }
-
         public void AlertFight()
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[27]))
@@ -6219,7 +6227,7 @@ namespace Simple_Bot
             {
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[26]))
                 {
-                    if (Timer_Arena.CompareTo(DateTime.Now) < 0)
+                    if (Timer_Arena.CompareTo(DateTime.Now) < 0 && CharacterIsFree())
                     {
                         //если текущая работа не спуск в подземелье
                         if (CurrentWork("Спуск") == false)
@@ -6612,11 +6620,15 @@ namespace Simple_Bot
                     {
                         driver.FindElement(By.CssSelector(".box_x_button.hidden.button_new")).Click();
                         Delays();
+
+                        if (IsPetPresentInShoop(petName) && CurrentCry() > 53)
+                        {
+                            GoBuyPet(petName);
+                            return true;
+                        }
                         return false;
-                        /*
-                        driver.FindElement(By.LinkText("СПРЯТАТЬ")).Click();
-                        Delays();
-                         * */
+                        //driver.FindElement(By.LinkText("СПРЯТАТЬ")).Click();
+                        //Delays();
                     }
                 }
                 catch { }
@@ -6625,6 +6637,71 @@ namespace Simple_Bot
             PetHealing();
 
             return false;
+        }
+
+        private bool IsPetPresentInShoop(string petName)
+        {
+            switch (petName)
+            {
+                case "Бобруйко":
+                case "Броневоз":
+                case "Енотка":
+                case "Лисистричка":
+                case "Спиношип":
+                case "Царапка":
+                case "Червячелло":
+                case "Шнырк":
+                    return true;
+                default: return false;
+            }
+        }
+
+        private string ShopPetSelectorProvider(string petName)
+        {
+            switch (petName)
+            {
+                case "Бобруйко":
+                    return ".//input[@value='КУПИТЬ'][@id='shop_cmd_135']";
+                case "Броневоз":
+                    return ".//input[@value='КУПИТЬ'][@id='shop_cmd_182']";
+                case "Енотка":
+                    return ".//input[@value='КУПИТЬ'][@id='shop_cmd_181']";
+                case "Лисистричка":
+                    return ".//input[@value='КУПИТЬ'][@id='shop_cmd_246']";
+                case "Спиношип":
+                    return ".//input[@value='КУПИТЬ'][@id='shop_cmd_180']";
+                case "Царапка":
+                    return ".//input[@value='КУПИТЬ'][@id='shop_cmd_134']";
+                case "Червячелло":
+                    return "";
+                case "Шнырк":
+                    return ".//input[@value='КУПИТЬ'][@id='shop_cmd_133']";
+                default: return "";
+            }
+        }
+
+        private void GoBuyPet(string petName)
+        {
+            driver.FindElement(By.LinkText("Деревня")).Click();
+            Delays();
+            driver.FindElement(By.XPath(".//div[text()='Лавка']")).Click();
+            Delays();
+            driver.FindElement(By.LinkText("Звери")).Click();
+            Delays();
+            Delays();
+            driver.FindElement(By.XPath(ShopPetSelectorProvider(petName))).Click();
+        }
+
+        private void GoByWorm()
+        {
+            driver.FindElement(By.LinkText("Деревня")).Click();
+            Delays();
+            driver.FindElement(By.XPath(".//div[text()='Лавка']")).Click();
+            Delays();
+            driver.FindElement(By.LinkText("Звери")).Click();
+            Delays();
+            Delays();
+            driver.FindElement(By.CssSelector("#shop_cmd_200")).Click();
         }
 
         public void ChameleonsHeal()

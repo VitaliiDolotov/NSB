@@ -17,23 +17,29 @@ namespace Updater
         string[] FilesForDeleting;
         string[] FilesForDownload;
         string[] FilesForDownloadNames;
-        int BotVersion = 2592;
+        int BotVersion = 2593;
         int NewBotVersion;
         string reportLog = "";
         string labelMessage = "";
         int percentage = 0;
+
+        //Proxy
+        string webProxy = string.Empty;
+        string domaindAndUsername = string.Empty;
+        string proxyPassword = string.Empty;
 
         public Form1()
         {
             InitializeComponent();
             timer1.Start();
             ClosingSimpleBotProcces();
+            ProxyReader();
         }
 
         private void UpdateFileReader()
         {
             WebClient client = new WebClient();
-            Stream stream = client.OpenRead("https://dl.dropbox.com/s/gixvi3853twwks3/UpdateFile.csv?dl=1");
+            Stream stream = WebClientCreation().OpenRead("https://dl.dropbox.com/s/gixvi3853twwks3/UpdateFile.csv?dl=1");
             StreamReader reader = new StreamReader(stream);
             string[] FileContent = reader.ReadToEnd().Split(';');
             NewBotVersion = Convert.ToInt32(FileContent[0]);
@@ -41,6 +47,36 @@ namespace Updater
             FilesForDownload = FileContent[2].Split(',');
             FilesForDownloadNames = FileContent[3].Split(',');
             percentage += 5;
+        }
+
+        private WebClient WebClientCreation()
+        {
+            WebClient client = new WebClient();
+            if (!string.IsNullOrEmpty(webProxy))
+            {
+                WebProxy wp = new WebProxy(webProxy);
+                if (!string.IsNullOrEmpty(domaindAndUsername))
+                {
+                    wp.Credentials = new NetworkCredential(domaindAndUsername, proxyPassword);
+                    WebRequest.DefaultWebProxy = wp;
+                }
+                client.Proxy = wp;
+            }
+            return client;
+        }
+
+        private void ProxyReader()
+        {
+            try
+            {
+                StreamReader reader = new StreamReader(File.OpenRead("Proxy.txt"));
+                string[] FileContent = reader.ReadToEnd().Split(';');
+                reader.Close();
+                webProxy = FileContent[0];
+                domaindAndUsername = FileContent[1];
+                proxyPassword = FileContent[2];
+            }
+            catch { }
         }
 
         private void FilesDeleting()

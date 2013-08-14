@@ -4,14 +4,14 @@
       "last_known_google_url": "https://www.google.com.ua/",
       "last_prompted_google_url": "https://www.google.com.ua/",
       "window_placement": {
-         "bottom": 870,
-         "left": 12,
+         "bottom": 1030,
+         "left": 10,
          "maximized": false,
-         "right": 974,
-         "top": 0,
-         "work_area_bottom": 870,
+         "right": 1080,
+         "top": 10,
+         "work_area_bottom": 1040,
          "work_area_left": 0,
-         "work_area_right": 1600,
+         "work_area_right": 1920,
          "work_area_top": 0
       }
    },
@@ -21,11 +21,11 @@
          "initialized": true
       },
       "autoupdate": {
-         "last_check": "13020612848189263",
-         "next_check": "13020686821767612"
+         "last_check": "13020903992453933",
+         "next_check": "13020921638118933"
       },
       "blacklistupdate": {
-         "lastpingday": "13020591600633263",
+         "lastpingday": "13020850799814933",
          "version": "0.0.0.149"
       },
       "chrome_url_overrides": {
@@ -49,7 +49,7 @@
             "creation_flags": 1,
             "from_bookmark": false,
             "from_webstore": false,
-            "install_time": "13018268105625509",
+            "install_time": "13020902778324629",
             "location": 5,
             "manifest": {
                "background": {
@@ -62,7 +62,7 @@
                "permissions": [ "tabs" ],
                "version": "1"
             },
-            "path": "C:\\Users\\Aksis\\AppData\\Local\\Temp\\scoped_dir7720_719\\internal",
+            "path": "C:\\Users\\Aksis\\AppData\\Local\\Temp\\scoped_dir5424_19237\\internal",
             "was_installed_by_default": false
          },
          "abciiempgohamehppammbkhkicmkgkob": {
@@ -112,7 +112,7 @@
             "creation_flags": 1,
             "from_bookmark": false,
             "from_webstore": false,
-            "install_time": "13018268105623509",
+            "install_time": "13020902778322629",
             "location": 5,
             "manifest": {
                "app": {
@@ -132,7 +132,7 @@
                "version": "0.2"
             },
             "page_ordinal": "n",
-            "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.72\\resources\\web_store",
+            "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.95\\resources\\web_store",
             "was_installed_by_default": false
          },
          "ahjfgnikolodijnpakeknpilnemojlhc": {
@@ -524,7 +524,7 @@
             "creation_flags": 1,
             "from_bookmark": false,
             "from_webstore": false,
-            "install_time": "13018268105622509",
+            "install_time": "13020902778321629",
             "location": 5,
             "manifest": {
                "chrome_url_overrides": {
@@ -539,7 +539,7 @@
                "permissions": [ "bookmarks", "bookmarkManagerPrivate", "metricsPrivate", "systemPrivate", "tabs", "chrome://favicon/", "chrome://resources/" ],
                "version": "0.1"
             },
-            "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.72\\resources\\bookmark_manager",
+            "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.95\\resources\\bookmark_manager",
             "was_installed_by_default": false
          },
          "efbeabpbbkahnnjalakldjfhljboclkf": {
@@ -608,7 +608,7 @@
             "events": [ "app.runtime.onLaunched" ],
             "from_bookmark": false,
             "from_webstore": false,
-            "install_time": "13018268105624509",
+            "install_time": "13020902778323629",
             "location": 5,
             "manifest": {
                "app": {
@@ -630,7 +630,7 @@
                "permissions": [ "chrome://settings-frame/" ],
                "version": "0.2"
             },
-            "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.72\\resources\\settings_app",
+            "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.95\\resources\\settings_app",
             "running": false,
             "was_installed_by_default": false
          },
@@ -1487,7 +1487,7 @@
             "creation_flags": 1,
             "from_bookmark": false,
             "from_webstore": false,
-            "install_time": "13018268105623509",
+            "install_time": "13020902778322629",
             "location": 5,
             "manifest": {
                "app": {
@@ -1503,7 +1503,7 @@
                "permissions": [ "cloudPrintPrivate" ],
                "version": "0.1"
             },
-            "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.72\\resources\\cloud_print",
+            "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.95\\resources\\cloud_print",
             "was_installed_by_default": false
          },
          "mfffdpnblflpobcnekhekiahepofaane": {
@@ -1529,7 +1529,7 @@
             "creation_flags": 1,
             "from_bookmark": false,
             "from_webstore": false,
-            "install_time": "13018268105624509",
+            "install_time": "13020902778323629",
             "location": 5,
             "manifest": {
                "app": {
@@ -1549,7 +1549,7 @@
                "version": "0.1"
             },
             "page_ordinal": "n",
-            "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.72\\resources\\chrome_app",
+            "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.95\\resources\\chrome_app",
             "was_installed_by_default": false
          },
          "mhbffdldpckobeihgebaamjalehefnia": {
@@ -1961,17 +1961,13 @@
          "servers": {
             "clients1.google.com:443": {
                "settings": {
-                  "4": 100,
-                  "5": 32,
-                  "6": 0
+                  "4": 100
                },
                "supports_spdy": true
             },
             "clients2.google.com:443": {
                "settings": {
-                  "4": 100,
-                  "5": 32,
-                  "6": 0
+                  "4": 100
                },
                "supports_spdy": true
             },
@@ -1985,9 +1981,7 @@
             },
             "www.gstatic.com:443": {
                "settings": {
-                  "4": 100,
-                  "5": 32,
-                  "6": 0
+                  "4": 100
                },
                "supports_spdy": true
             }
@@ -1998,12 +1992,12 @@
    "plugins": {
       "enabled_internal_pdf3": true,
       "enabled_nacl": true,
-      "last_internal_directory": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\28.0.1500.95",
+      "last_internal_directory": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.95",
       "migrated_to_pepper_flash": true,
       "plugins_list": [ {
          "enabled": true,
          "name": "Shockwave Flash",
-         "path": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\28.0.1500.95\\PepperFlash\\pepflashplayer.dll",
+         "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.95\\PepperFlash\\pepflashplayer.dll",
          "version": "11.8.800.97"
       }, {
          "enabled": true,
@@ -2013,18 +2007,18 @@
       }, {
          "enabled": true,
          "name": "Native Client",
-         "path": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\28.0.1500.95\\ppGoogleNaClPluginChrome.dll",
+         "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.95\\ppGoogleNaClPluginChrome.dll",
          "version": ""
       }, {
          "enabled": true,
          "name": "Chrome PDF Viewer",
-         "path": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\28.0.1500.95\\pdf.dll",
+         "path": "C:\\Users\\Aksis\\AppData\\Local\\Google\\Chrome\\Application\\28.0.1500.95\\pdf.dll",
          "version": ""
       }, {
          "enabled": true,
          "name": "Adobe Acrobat",
          "path": "C:\\Program Files (x86)\\Adobe\\Reader 10.0\\Reader\\Browser\\nppdf32.dll",
-         "version": "10.1.7.27"
+         "version": "10.1.3.23"
       }, {
          "enabled": true,
          "name": "Wolfram Mathematica",
@@ -2042,9 +2036,19 @@
          "version": "1.3.21.153"
       }, {
          "enabled": true,
+         "name": "Java(TM) Platform SE 7 U25",
+         "path": "C:\\Program Files (x86)\\Java\\jre7\\bin\\plugin2\\npjp2.dll",
+         "version": "10.25.2.17"
+      }, {
+         "enabled": true,
          "name": "Silverlight Plug-In",
-         "path": "C:\\Program Files (x86)\\Microsoft Silverlight\\5.1.10411.0\\npctrl.dll",
-         "version": "5.1.10411.0"
+         "path": "C:\\Program Files (x86)\\Microsoft Silverlight\\4.1.10329.0\\npctrl.dll",
+         "version": "4.1.10329.0"
+      }, {
+         "enabled": true,
+         "name": "Microsoft Office Live Plug-in for Firefox",
+         "path": "C:\\Program Files (x86)\\Microsoft\\Office Live\\npOLW.dll",
+         "version": "2.0.4024.1"
       }, {
          "enabled": true,
          "name": "VLC Web Plugin",
@@ -2052,9 +2056,19 @@
          "version": "2.0.2"
       }, {
          "enabled": true,
+         "name": "Nexon Game Controller",
+         "path": "C:\\ProgramData\\NexonEU\\NGM\\npNxGameeu.dll",
+         "version": "1, 0, 1, 2"
+      }, {
+         "enabled": true,
          "name": "Shockwave Flash",
-         "path": "C:\\Windows\\SysWOW64\\Macromed\\Flash\\NPSWF32_11_8_800_94.dll",
-         "version": "11,8,800,94"
+         "path": "C:\\Windows\\SysWOW64\\Macromed\\Flash\\NPSWF32_11_7_700_224.dll",
+         "version": "11,7,700,224"
+      }, {
+         "enabled": true,
+         "name": "Java Deployment Toolkit 7.0.250.17",
+         "path": "C:\\Windows\\SysWOW64\\npDeployJava1.dll",
+         "version": "10.25.2.17"
       }, {
          "enabled": true,
          "name": "Adobe Flash Player"
@@ -2075,7 +2089,16 @@
          "name": "Google Update"
       }, {
          "enabled": true,
+         "name": "Java(TM)"
+      }, {
+         "enabled": true,
+         "name": "Microsoft Office"
+      }, {
+         "enabled": true,
          "name": "Native Client"
+      }, {
+         "enabled": true,
+         "name": "Nexon Game Controller"
       }, {
          "enabled": true,
          "name": "Silverlight"
@@ -2094,7 +2117,7 @@
          "clear_on_exit_migrated": true,
          "pref_version": 1
       },
-      "created_by_version": "28.0.1500.72",
+      "created_by_version": "28.0.1500.95",
       "exit_type": "Crashed",
       "exited_cleanly": true,
       "is_managed": false,
