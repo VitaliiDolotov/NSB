@@ -943,14 +943,14 @@ namespace Simple_Bot
                                     {
                                         try
                                         {
-                                            driver.FindElement(By.Id("mine_form")).FindElement(By.XPath(".//center/input[@value='РАБОТАТЬ']")).Click();
-                                            Timer_MineWork = ToDateTime(driver.FindElement(By.ClassName("mine_manager")).FindElement(By.TagName("span")).Text);
+											driver.FindElement(By.XPath("//input[@value='РАБОТАТЬ']")).Click();
+											Timer_MineWork = ToDateTime(driver.FindElement(By.CssSelector(".mine_manager span")).Text);
                                             DateTime Timer_Temp = ToDateTime("00:00:10");
-                                            //System.Threading.Thread.Sleep(rnd.Next(6895, 7123));
                                             //добываем
                                             if (Timer_Temp.CompareTo(Timer_MineWork) > 0)
                                             {
-                                                driver.FindElement(By.LinkText("ДОБЫТЬ КРИСТАЛЛ")).Click();
+												System.Threading.Thread.Sleep(rnd.Next(5895, 6123));
+												driver.FindElement(By.XPath(".//a[text()='ДОБЫТЬ']")).Click();
                                                 Delays();
                                             }
                                             else break;
@@ -1012,7 +1012,7 @@ namespace Simple_Bot
                                 {
                                     if (CahrCurrentWork == true)
                                     {
-                                        driver.FindElement(By.LinkText("ДОБЫТЬ КРИСТАЛЛ")).Click();
+										driver.FindElement(By.XPath(".//a[text()='ДОБЫТЬ']")).Click();
                                         Delays();
                                     }
                                 }
@@ -6253,7 +6253,7 @@ namespace Simple_Bot
                                     //driver.FindElement(By.XPath(".//a[contains(text(),'ПОИСК:')]")).Click();
                                     try
                                     {
-                                        driver.FindElement(By.XPath(".//a[text()='ПОИСК: ']")).Click();
+										driver.FindElement(By.PartialLinkText("ПОИСК:")).Click();
                                         SmallDelays();
                                     }
                                     catch { }
@@ -6581,7 +6581,7 @@ namespace Simple_Bot
             {
                 //если дисплеится посадить в клетку, то проверяем текущего зверя, если в классе содержится азвание пета и оно совпадает, возвращаем фолс
                 if (driver.FindElement(By.XPath("//a[@title='Посадить в клетку']")).Displayed)
-                    return !driver.FindElement(By.CssSelector("#pet b.icon2")).GetAttribute("class").Contains(PetIcoProvider(petName));
+                    return !driver.FindElement(By.CssSelector("#pet b.icon")).GetAttribute("class").Contains(PetIcoProvider(petName));
                 else
                     return true;
             }
@@ -6593,10 +6593,7 @@ namespace Simple_Bot
         public bool GetPersonalPet(string petName, bool notFromUa = false)
         {
             bool isPersonalPet;
-            if (notFromUa)
-                isPersonalPet = notFromUa;
-            else
-                isPersonalPet = Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[1]);
+            isPersonalPet = notFromUa ? notFromUa : Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[1]);
 
             if (isPersonalPet &&
                 !string.IsNullOrEmpty(petName) &&

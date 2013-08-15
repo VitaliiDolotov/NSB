@@ -29,7 +29,7 @@ namespace Simple_Bot
         bool isDonatePlayer = false;
         string isDonateDate = "";
         bool botIsWorked = false;
-        int BotVersion = 2593;
+        int BotVersion = 2594;
 
         static Thread BotThread;
 
