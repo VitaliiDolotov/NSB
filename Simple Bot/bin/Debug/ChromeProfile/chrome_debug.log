@@ -1,17 +1,11 @@
-[5496:6288:0814/003551:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:3404:0814/003551:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:6288:0814/003556:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:3404:0814/003556:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:160:0814/003556:ERROR:textfield.h(162)] NOT IMPLEMENTED
-[5496:3404:0814/003602:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:5048:0814/003602:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:5048:0814/003607:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:5852:0814/003607:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:5852:0814/003657:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:3940:0814/003657:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:6288:0814/004136:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:5772:0814/004136:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:5772:0814/004151:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:7068:0814/004151:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:6288:0814/004632:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
-[5496:6080:0814/004632:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[3972:6596:0816/201253:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[3972:5796:0816/201253:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[3972:5796:0816/201257:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[3972:2520:0816/201257:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[3972:6580:0816/201257:ERROR:textfield.h(162)] NOT IMPLEMENTED
+[3972:6580:0816/201301:INFO:CONSOLE(56)] "The "fb-root" div has not been created, auto-creating", source: http://connect.facebook.net/en_US/all.js#xfbml=1 (56)
+[3972:6580:0816/201301:INFO:CONSOLE(56)] "FB.getLoginStatus() called before calling FB.init().", source: http://connect.facebook.net/en_US/all.js#xfbml=1 (56)
+[3972:5796:0816/201303:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[3972:7456:0816/201303:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[3972:7456:0816/201308:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2
+[3972:2520:0816/201308:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(267)] Error fetching PAC URL from DHCP: 2

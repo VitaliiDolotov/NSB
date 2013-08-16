@@ -947,7 +947,7 @@ namespace Simple_Bot
 										//go to the mine
 										driver.FindElement(By.LinkText("Шахта")).Click();
 										Delays();
-										driver.FindElement(By.XPath("СМОТРЕТЬ")).Click();
+                                        driver.FindElements(By.LinkText("СМОТРЕТЬ")).LastOrDefault().Click();
 										Delays();
 									}
 								}
@@ -1019,7 +1019,7 @@ namespace Simple_Bot
 										//go to the mine
 										driver.FindElement(By.LinkText("Шахта")).Click();
 										Delays();
-										driver.FindElement(By.XPath("СМОТРЕТЬ")).Click();
+                                        driver.FindElements(By.LinkText("СМОТРЕТЬ")).LastOrDefault().Click();
 										Delays();
 									}
 								}
@@ -4463,7 +4463,7 @@ namespace Simple_Bot
 		{
 			try
 			{
-				if (PickWorker < 5 || GlassesWorker < 5 || HelmetWorker < 5)
+				if (PickWorker < 500 || GlassesWorker < 500 || HelmetWorker < 500)
 				{
 					if (!driver.Title.Contains("Товары для шахты"))
 					{
@@ -4496,7 +4496,7 @@ namespace Simple_Bot
 						}
 					}
 
-					if (GlassesWorker < 5)
+					if (GlassesWorker < 500)
 					{
 						//вытягиваем реальное кол-во инструмента
 						GlassesWorker =
@@ -4518,7 +4518,7 @@ namespace Simple_Bot
 						HelmetWorker =
 							Convert.ToInt32(
 								driver.FindElement(By.XPath(".//div[@class='clear_fix mr-10']/div[6]//span[contains(@id,'now_number')]")).Text);
-						if (HelmetWorker < 5)
+						if (HelmetWorker < 500)
 						{
 							IWebElement byButton = driver.FindElement(By.XPath(".//div[@class='clear_fix mr-10']/div[6]//div[contains(@class,'mine_inc')]"));
 							byButton.Click();
@@ -4527,6 +4527,9 @@ namespace Simple_Bot
 							SmallDelays();
 						}
 					}
+
+                    //покупаем
+                    driver.FindElement(By.CssSelector("[value='КУПИТЬ']")).Click();
 				}
 			}
 			catch { }
@@ -5796,6 +5799,8 @@ namespace Simple_Bot
 						{
 							if (foodCount > 20)
 							{
+                                Actions action = new Actions(driver);
+                                action.MoveToElement(foodico).Build().Perform();
 								foodico.Click();
 								SmallDelays();
 								foodCount = MGetCurrentFood();
@@ -5820,6 +5825,8 @@ namespace Simple_Bot
 				{
 					if (foodCount > 20)
 					{
+                        Actions action = new Actions(driver);
+                        action.MoveToElement(swordIcon).Build().Perform();
 						swordIcon.Click();
 						SmallDelays();
 						foodCount = MGetCurrentFood();

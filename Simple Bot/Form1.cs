@@ -28,7 +28,8 @@ namespace Simple_Bot
 	{
 		bool isDonatePlayer = false;
 		bool botIsWorked = false;
-		int BotVersion = 2597;
+        bool newVersionAvailability = false;
+		int BotVersion = 2598;
 
 		static Thread BotThread;
 
@@ -640,6 +641,22 @@ namespace Simple_Bot
 				Environment.Exit(0);
 			}
 		}
+
+        private void CheckNewVersion()
+        {
+            WebClient client = new WebClient();
+				if (!string.IsNullOrEmpty(textBoxProxy.Text))
+				{
+					WebProxy wp = new WebProxy(textBoxProxy.Text);
+					client.Proxy = wp;
+				}
+				Stream stream = client.OpenRead("https://dl.dropbox.com/s/gixvi3853twwks3/UpdateFile.csv?dl=1");
+				StreamReader reader = new StreamReader(stream);
+				string[] FileContent = reader.ReadToEnd().Split(';');
+				int NewBotVersion = Convert.ToInt32(FileContent[0]);
+                if (NewBotVersion > BotVersion)
+                    newVersionAvailability = true;
+        }
 
 		private void ChromeDriverKillerProcess()
 		{
@@ -1828,9 +1845,11 @@ namespace Simple_Bot
 		private void timer1_Tick(object sender, EventArgs e)
 		{
 			if (backgroundWorker1.IsBusy == false)
-			{
-				backgroundWorker1.RunWorkerAsync();
-			}
+                backgroundWorker1.RunWorkerAsync();
+
+            if (newVersionAvailability)
+                pictureBoxDownloadNewVersion.Visible = true;
+
 			if (Timer_CloseBot.CompareTo(DateTime.Now) < 0 & isDonatePlayer == false)
 			{
 				BotThread.Abort();
@@ -1961,6 +1980,7 @@ namespace Simple_Bot
 			BackgroundWorker worker = sender as BackgroundWorker;
 			CheckBotStatus();
 			CheckBotMessage();
+            CheckNewVersion();
 		}
 
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -2977,5 +2997,13 @@ namespace Simple_Bot
 		{
 			UIBoxDisplay(3, 4, "MineBox");
 		}
+
+        private void pictureBoxDownloadNewVersion_Click(object sender, EventArgs e)
+        {
+            Process UpdateProcess = new Process();
+            UpdateProcess.StartInfo.FileName = "Updater.exe";
+            UpdateProcess.Start();
+            Environment.Exit(0);
+        }
 	}
 }

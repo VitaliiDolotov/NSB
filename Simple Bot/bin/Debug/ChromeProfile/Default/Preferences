@@ -16,13 +16,17 @@
       }
    },
    "countryid_at_install": 21843,
+   "dns_prefetching": {
+      "host_referral_list": [ 2, [ "http://g2.botva.ru/", [ "http://connect.facebook.net/", 2.2733802, "http://counter.yadro.ru/", 2.11835406336596, "http://i.botva.ru/", 93.14248602939126, "http://static.ak.facebook.com/", 2.2733802, "http://userapi.com/", 2.2733802, "http://vk.com/", 2.6037003999999997, "http://www.facebook.com/", 2.2733802, "http://yandex.st/", 2.11835406336596, "https://s-static.ak.facebook.com/", 2.2733802 ] ], [ "http://vk.com/", [ "http://st0.vk.me/", 2.33015861274392, "http://st1.vk.me/", 1.7880338633659603, "http://st2.vk.me/", 1.7880338633659603, "http://vk.com/", 3.4144081114998395 ] ], [ "http://www.botva.ru/", [ "http://connect.facebook.net/", 1.4577136633659602, "http://counter.yadro.ru/", 1.4577136633659602, "http://g2.botva.ru/", 2.2733802, "http://i.botva.ru/", 13.106963879153755, "http://static.ak.facebook.com/", 1.4577136633659602, "http://userapi.com/", 1.4577136633659602, "http://vk.com/", 1.6695182127439199, "http://www.facebook.com/", 1.4577136633659602, "http://yandex.st/", 1.4577136633659602, "https://s-static.ak.facebook.com/", 1.4577136633659602 ] ], [ "http://www.facebook.com/", [ "http://static.ak.fbcdn.net/", 2.33015861274392 ] ] ],
+      "startup_list": [ 1, "http://connect.facebook.net/", "http://counter.yadro.ru/", "http://g2.botva.ru/", "http://i.botva.ru/", "http://static.ak.facebook.com/", "http://userapi.com/", "http://vk.com/", "http://www.botva.ru/", "http://yandex.st/", "https://www.google.com/" ]
+   },
    "extensions": {
       "alerts": {
          "initialized": true
       },
       "autoupdate": {
          "last_check": "13020903992453933",
-         "next_check": "13020921638118933"
+         "next_check": "13021151063579533"
       },
       "blacklistupdate": {
          "lastpingday": "13020850799814933",
@@ -2118,7 +2122,7 @@
          "pref_version": 1
       },
       "created_by_version": "28.0.1500.95",
-      "exit_type": "Crashed",
+      "exit_type": "Normal",
       "exited_cleanly": true,
       "is_managed": false,
       "name": "\u041F\u0435\u0440\u0448\u0438\u0439 \u043A\u043E\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447"
