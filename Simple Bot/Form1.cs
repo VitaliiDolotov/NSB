@@ -29,7 +29,7 @@ namespace Simple_Bot
         bool isDonatePlayer = false;
         string isDonateDate = "";
         bool botIsWorked = false;
-        int BotVersion = 2594;
+        int BotVersion = 2596;
 
         static Thread BotThread;
 
@@ -233,6 +233,7 @@ namespace Simple_Bot
                     checkBoxChameleons.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[38]);
                 else
                     checkBoxChameleons.Checked = false;
+                checkBoxDreamCasket.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[39]);
             }
             catch { }
 
@@ -513,6 +514,12 @@ namespace Simple_Bot
                 checkBoxetsSelectionZorroFightSet.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[8]);
                 checkBoxPetsSelectionFightMonstersSet.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[9]);
                 checkBoxPetsSelectionUnderground.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[10]);
+
+                checkBoxBuyPetsSelectionFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[11]);
+                checkBoxBuyPetsSelectionZorroFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[12]);
+                checkBoxBuyPetsSelectionFightMonsters.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[13]);
+                checkBoxBuyPetsSelectionUnderground.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[14]);
+                checkBoxBuyPetsUskor.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[15]);
             }
             catch { }
 
@@ -1037,7 +1044,10 @@ namespace Simple_Bot
             string[] PersonalCageSettings = { Convert.ToString(checkBoxUsePersonalCage.Checked), comboBoxPetsSelectionFight.Text, comboBoxPetsSelectionZorroFight.Text ,
                                             comboBoxPetsSelectionFightMonsters.Text, comboBoxPetsSelectionUnderground.Text ,comboBoxPetsUskor.Text,
                                             Convert.ToString(checkBoxetsSelectionFightSet.Checked),Convert.ToString(checkBoxetsSelectionZorroFightSet.Checked),
-                                            Convert.ToString(checkBoxPetsSelectionFightMonstersSet.Checked),Convert.ToString(checkBoxPetsSelectionUnderground.Checked)};
+                                            Convert.ToString(checkBoxPetsSelectionFightMonstersSet.Checked),Convert.ToString(checkBoxPetsSelectionUnderground.Checked),
+                                            Convert.ToString(checkBoxBuyPetsSelectionFight.Checked),Convert.ToString(checkBoxBuyPetsSelectionZorroFight.Checked),
+                                            Convert.ToString(checkBoxBuyPetsSelectionFightMonsters.Checked), Convert.ToString(checkBoxBuyPetsSelectionUnderground.Checked),
+                                            Convert.ToString(checkBoxBuyPetsUskor.Checked)};
             CompareValuesInFile(PersonalCageBox.Name, PersonalCageSettings);
             if (isDonatePlayer)
                 checkBoxUsePersonalCage.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[1]);
@@ -1053,6 +1063,12 @@ namespace Simple_Bot
             checkBoxetsSelectionZorroFightSet.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[8]);
             checkBoxPetsSelectionFightMonstersSet.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[9]);
             checkBoxPetsSelectionUnderground.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[10]);
+
+            checkBoxBuyPetsSelectionFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[11]);
+            checkBoxBuyPetsSelectionZorroFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[12]);
+            checkBoxBuyPetsSelectionFightMonsters.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[13]);
+            checkBoxBuyPetsSelectionUnderground.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[14]);
+            checkBoxBuyPetsUskor.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, PersonalCageBox.Name)[15]);
         }
 
         private void BotDonateSetUp()

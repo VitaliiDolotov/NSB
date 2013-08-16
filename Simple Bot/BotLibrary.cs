@@ -90,6 +90,7 @@ namespace Simple_Bot
         static DateTime Timer_Arena = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_MassFight = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_MassFightTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
+        static DateTime Timer_DreamCasket = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
 
         static DateTime Timer_Grif = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
         static DateTime Timer_Mont = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second - 1);
@@ -226,7 +227,18 @@ namespace Simple_Bot
             BiggestPotionSetUp();
             ArenaSetUp();
             ChameleonsHealSetUp();
+            OpenDreamCasketSetUp();
             PageSource = driver.PageSource;
+        }
+
+        private void OpenDreamCasketSetUp()
+        {
+            if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[39]))
+            {
+                AddingCategory("Счётчики");
+                AddingItemToTheCategory_Timers("Счётчики", "Время до открытия Ларца Желаний", "Ларец Желаний");
+                Timer_DreamCasket = ToDateTime(GetResourceValue("Время до открытия Ларца Желаний")[0]);
+            }
         }
 
         private void ChameleonsHealSetUp()
@@ -2657,7 +2669,7 @@ namespace Simple_Bot
                                             driver.FindElement(By.CssSelector(".mbuttons.sbt.fl_l")).Click();
                                             //Close
                                             Delays();
-                                            driver.FindElement(By.CssSelector(".iconsp.icon_close")).Click();
+                                            driver.FindElement(By.CssSelector(".icon.icon_close")).Click();
                                             SmallDelays();
                                         }
                                         IsInTrip = true;
@@ -2690,7 +2702,7 @@ namespace Simple_Bot
                             try
                             {
                                 //берем пета
-                                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[5]);
+                                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[5], Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[14]));
                                 //переходим в шахту и кликаем "по лебедке"/"по веревке"
                                 driver.FindElement(By.Id("m6")).FindElement(By.XPath(".//b")).Click();
                                 SmallDelays();
@@ -2899,7 +2911,7 @@ namespace Simple_Bot
                                 try
                                 {
                                     //берем пета
-                                    GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[5]);
+                                    GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[5], Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[14]));
                                     //переходим в шахту и кликаем "по лебедке"/"по веревке"
                                     driver.FindElement(By.Id("m6")).FindElement(By.XPath(".//b")).Click();
                                     SmallDelays();
@@ -3257,7 +3269,7 @@ namespace Simple_Bot
 
                     //если кнопка АТАКА показуется, то достаем зверя
                     if (driver.FindElement(By.CssSelector(".watch_attack_level input[value='АТАКА']")).Displayed)
-                        GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[4]);
+                        GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[4], Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[13]));
 
                     //если всех подряд
                     if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[29]))
@@ -3295,8 +3307,8 @@ namespace Simple_Bot
                     }
 
                     //кликаем напасть
-                    driver.FindElement(By.XPath("//form/input[@value='НАПАСТЬ']")).Click();
-                    Delays();
+                    //driver.FindElement(By.XPath("//form/input[@value='НАПАСТЬ']")).Click();
+                    //Delays();
 
                     //Садим пета если нужно
                     if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[9]))
@@ -3320,7 +3332,7 @@ namespace Simple_Bot
             //Зорро бодалка
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[2]) == true && Timer_FightZorro.CompareTo(DateTime.Now) < 0 && CharacterIsFree())
             {
-                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[3]);
+                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[3], Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[12]));
 
                 try
                 {
@@ -3393,7 +3405,7 @@ namespace Simple_Bot
         {
             if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[5]) == true && Timer_FightCommon.CompareTo(DateTime.Now) < 0 && CharacterIsFree())
             {
-                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[2]);
+                GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[2], Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[11]));
 
                 int counter = 2;
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "FightBox")[8]) == true)
@@ -4073,6 +4085,8 @@ namespace Simple_Bot
                 {
                     if (Timer_BiggestPotion.CompareTo(DateTime.Now) < 0)
                     {
+                        //Преассайн таймера, вдруг зелье выпито
+                        Timer_BiggestPotion = ToDateTime(GetResourceValue("Ваши зверушки увеличены в размере и не могут быть проглочены Китушей")[0]);
                         driver.FindElement(By.LinkText("Персонаж")).Click();
                         Delays();
                         //Click on botles section
@@ -5342,24 +5356,7 @@ namespace Simple_Bot
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[11]))
                 {
                     IWebElement fastMonsterIco = driver.FindElement(By.Id("menu_monsterpve"));
-                    GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[6]);
-                    if (driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis") || driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("StrongPig"))
-                    {
-                        try
-                        {
-                            IWebElement temp = driver.FindElement(By.XPath(".//a[@title='Посадить в клетку']"));
-                        }
-                        catch
-                        {
-                            try
-                            {
-                                GoByWorm();
-                                IWebElement temp = driver.FindElement(By.XPath(".//div[contains(text(),'У тебя уже есть такая зверушка, со')]"));
-                                GetPet(PetType.worm);
-                            }
-                            catch { }
-                        }
-                    }
+                    GetPersonalPet(ReadFromFile(SettingsFile, "PersonalCageBox")[6], Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[15]));
 
                     if (driver.FindElement(By.CssSelector(".char_stat.char_stat_with_pets u")).Text.Equals("Aksis"))
                     {
@@ -6590,7 +6587,7 @@ namespace Simple_Bot
 
         }
 
-        public bool GetPersonalPet(string petName, bool notFromUa = false)
+        public bool GetPersonalPet(string petName, bool shouldBuyPet, bool notFromUa = false)
         {
             bool isPersonalPet;
             isPersonalPet = notFromUa ? notFromUa : Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[1]);
@@ -6781,13 +6778,52 @@ namespace Simple_Bot
             catch { }
         }
 
-        public void SmithyWork()
+        private void SmithyWork()
         {
             Smithy.driver = driver;
             Smithy.FirstInit();
             Smithy.InitMeltingField();
             Smithy.InitPercentages();
             Smithy.InitNumbers();
+        }
+
+        public void OpenDreamCasket()
+        {
+            try
+            {
+                if(Convert.ToBoolean(ReadFromFile(SettingsFile, "AdditionalSettingsBox")[39]))
+                {
+
+                    if (Timer_DreamCasket.CompareTo(DateTime.Now) < 0)
+                    {
+                        //рерайтим таймер
+                        Timer_DreamCasket = ToDateTime(GetResourceValue("Время до открытия Ларца Желаний")[0]);
+                        driver.FindElement(By.LinkText("Персонаж")).Click();
+                        Delays();
+                        //артефакты
+                        driver.FindElement(By.CssSelector(".inventory_3")).Click();
+                        Delays();
+                        //наводим на сундук
+                        Actions builder = new Actions(driver);
+                        builder.MoveToElement(driver.FindElement(By.CssSelector("#art_10"))).Build().Perform();
+                        SmallDelays();
+                        //открыть
+                        driver.FindElement(By.CssSelector("#art_10 a")).Click();
+                        Delays();
+                        //Крутим 
+                        driver.FindElement(By.XPath("#play_btn a")).Click();
+                        Delays();
+                        driver.FindElement(By.LinkText("Персонаж")).Click();
+                        Delays();
+                        try
+                        {
+                            Timer_DreamCasket = ToDateTime(GetResourceValue("Время до открытия Ларца Желаний")[0]);
+                        }
+                        catch { }
+                    }
+                }
+            }
+            catch { }
         }
     }
 }

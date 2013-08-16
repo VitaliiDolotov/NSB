@@ -87,6 +87,7 @@ namespace Simple_Bot.Resources
                         Bot.Shop(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.CulonsUp(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.ChameleonsHeal(); Bot.WaitUntilThreadBecomeAvailable();
+                        Bot.OpenDreamCasket(); Bot.WaitUntilThreadBecomeAvailable();
 
 
                         //Adv
