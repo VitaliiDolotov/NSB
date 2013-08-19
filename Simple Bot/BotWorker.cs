@@ -41,16 +41,16 @@ namespace Simple_Bot.Resources
                                 MassFight();
                             }
 
-                        //Bot.SmithyWork();
+                        Bot.CollectStones();
 
                         Bot.MrIdiot(); Bot.WaitUntilThreadBecomeAvailable();
-                        Bot.GoToOldoMsters(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.AlertFight(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.LitleGuru(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.BigGuru(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.PotionBoil(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.TanksMaking(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.MineGetCry(); Bot.WaitUntilThreadBecomeAvailable();
+                        Bot.GoToOldoMsters(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.StatsUp(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.ArenaFight(); Bot.WaitUntilThreadBecomeAvailable();
                         Bot.FightImmuns(); Bot.WaitUntilThreadBecomeAvailable();

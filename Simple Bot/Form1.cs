@@ -29,7 +29,7 @@ namespace Simple_Bot
 		bool isDonatePlayer = false;
 		bool botIsWorked = false;
         bool newVersionAvailability = false;
-		int BotVersion = 2598;
+		int BotVersion = 2603;
 
 		static Thread BotThread;
 
@@ -440,6 +440,18 @@ namespace Simple_Bot
 				checkBoxMFightTime.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[14]);
 				checkBoxMassAbil.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[15]);
 				comboBoxMassAbil.Text = ReadFromFile(SettingsFile, MassFBox.Name)[16];
+
+                if (isDonatePlayer)
+                    checkBoxCollectSounes.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[17]);
+                else
+                    checkBoxCollectSounes.Checked = false;
+                comboBoxCollectStonesMaxVal.Text = ReadFromFile(SettingsFile, MassFBox.Name)[18];
+                checkBoxCollectStones1.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[19]);
+                checkBoxCollectStones2.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[20]);
+                checkBoxCollectStones3.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[21]);
+                checkBoxCollectStones4.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[22]);
+                checkBoxCollectStones5.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[23]);
+                checkBoxCollectStones6.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[24]);
 			}
 			catch { }
 
@@ -521,6 +533,7 @@ namespace Simple_Bot
 			}
 			catch { }
 
+            CBCollectSounes();
 			CBMineInventory();
 			CBWorkInMine();
 			CBUnderground();
@@ -999,7 +1012,10 @@ namespace Simple_Bot
                                          Convert.ToString(checkBoxMAGodSacrf.Checked),Convert.ToString(checkBoxMAOboz.Checked), comboBoxMLocation.Text,
                                          Convert.ToString(checkBoxMifBmHiger.Checked),Convert.ToString(checkBoxMAArmagedon.Checked),Convert.ToString(checkBoxMAProklatyshki.Checked),
                                          Convert.ToString(checkBoxMAScreem.Checked),Convert.ToString(checkBoxMAWeakness.Checked), Convert.ToString(numericUpDownFightTime.Value),
-                                         Convert.ToString(checkBoxMFightTime.Checked), Convert.ToString(checkBoxMassAbil.Checked), comboBoxMassAbil.Text};
+                                         Convert.ToString(checkBoxMFightTime.Checked), Convert.ToString(checkBoxMassAbil.Checked), comboBoxMassAbil.Text,
+                                         Convert.ToString(checkBoxCollectSounes.Checked), comboBoxCollectStonesMaxVal.Text ,
+                                         Convert.ToString(checkBoxCollectStones1.Checked),Convert.ToString(checkBoxCollectStones2.Checked),Convert.ToString(checkBoxCollectStones3.Checked),
+                                         Convert.ToString(checkBoxCollectStones4.Checked),Convert.ToString(checkBoxCollectStones5.Checked),Convert.ToString(checkBoxCollectStones6.Checked),};
 			CompareValuesInFile(MassFBox.Name, MassFightSettings);
 			if (isDonatePlayer)
 				checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
@@ -1020,6 +1036,18 @@ namespace Simple_Bot
 			checkBoxMFightTime.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[14]);
 			checkBoxMassAbil.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[15]);
 			comboBoxMassAbil.Text = ReadFromFile(SettingsFile, MassFBox.Name)[16];
+
+            if (isDonatePlayer)
+                checkBoxCollectSounes.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[17]);
+            else
+                checkBoxCollectSounes.Checked = false;
+            comboBoxCollectStonesMaxVal.Text = ReadFromFile(SettingsFile, MassFBox.Name)[18];
+            checkBoxCollectStones1.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[19]);
+            checkBoxCollectStones2.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[20]);
+            checkBoxCollectStones3.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[21]);
+            checkBoxCollectStones4.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[22]);
+            checkBoxCollectStones5.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[23]);
+            checkBoxCollectStones6.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[24]);
 
 			//System Settings
 			Timer_SettingsLive = ToDateTime("00:00:09");
@@ -1164,6 +1192,8 @@ namespace Simple_Bot
 			{
 				checkBoxMassFight.Enabled = true;
 				checkBoxMassFight.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[1]);
+                checkBoxCollectSounes.Enabled = true;
+                checkBoxCollectSounes.Checked = Convert.ToBoolean(ReadFromFile(SettingsFile, MassFBox.Name)[17]);
 			}
 			catch { }
 
@@ -2064,6 +2094,7 @@ namespace Simple_Bot
 		{
 			if (checkBoxSoapMaking.Checked == false)
 			{
+                panelVilage.Enabled = checkBoxSoapMaking.Checked;
 				textBoxSoapToTP.Text = "Нет";
 				textBoxBySlaves.Text = "Нет";
 			}
@@ -2071,6 +2102,7 @@ namespace Simple_Bot
 			{
 				try
 				{
+                    panelVilage.Enabled = checkBoxSoapMaking.Checked;
 					textBoxSoapToTP.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[7];
 					textBoxBySlaves.Text = ReadFromFile(SettingsFile, AdditionalSettingsBox.Name)[8];
 				}
@@ -3001,9 +3033,25 @@ namespace Simple_Bot
         private void pictureBoxDownloadNewVersion_Click(object sender, EventArgs e)
         {
             Process UpdateProcess = new Process();
+            ClosingChromeDriverProcces();
             UpdateProcess.StartInfo.FileName = "Updater.exe";
             UpdateProcess.Start();
             Environment.Exit(0);
+        }
+
+        private void checkBoxCollectSounes_CheckedChanged(object sender, EventArgs e)
+        {
+            CBCollectSounes();
+        }
+
+        private void CBCollectSounes()
+        {
+            panelCollectStones.Enabled = checkBoxCollectSounes.Checked;
+        }
+
+        private void button54_Click(object sender, EventArgs e)
+        {
+            UIBoxDisplay(3, 4, "VillageBox");
         }
 	}
 }
