@@ -2095,13 +2095,21 @@ namespace Simple_Bot
                 {
                     MessageBox.Show("Нужно уровнять температуру в котле!", "Simpe Bot: Information",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SoundPlayer simpleSound = new SoundPlayer(Resource.Stirring_Sound);
+                    simpleSound.Play();
                 }
             }
             catch { }
 
             if (result == 0)
+            {
                 MessageBox.Show("Нужно уровнять температуру в котле!", "Simpe Bot: Information",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SoundPlayer simpleSound = new SoundPlayer(Resource.Stirring_Sound);
+                simpleSound.Play();
+            }
+
+            
 
             return result;
         }
@@ -3602,6 +3610,9 @@ namespace Simple_Bot
                     }
                     catch { }
 
+                    //Хилим зверя
+                    MagikPotion();
+
                     //садим зверя
                     if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[8]))
                         SetPet();
@@ -3712,6 +3723,9 @@ namespace Simple_Bot
                     catch { }
                     counter++;
                 }
+
+                //Хилим зверя
+                MagikPotion();
 
                 //садим зверя
                 if (Convert.ToBoolean(ReadFromFile(SettingsFile, "PersonalCageBox")[7]))
@@ -4019,6 +4033,9 @@ namespace Simple_Bot
 
         private void SetPet()
         {
+            //Хилим зверя
+            PetHealing();
+
             try
             {
                 //проверка есть ли зверь
@@ -4644,7 +4661,7 @@ namespace Simple_Bot
         {
             try
             {
-                if (Pick < 5 || Glasses < 5 || Helmet < 5)
+                if (Pick < 7 || Glasses < 7 || Helmet < 7)
                 {
                     if (!driver.Title.Contains("Товары для шахты"))
                     {
@@ -4659,7 +4676,7 @@ namespace Simple_Bot
                         catch { }
                     }
 
-                    if (Pick < 5)
+                    if (Pick < 7)
                     {
                         IWebElement byButton = driver.FindElement(By.XPath(".//div[@class='clear_fix mr-10']/div[1]//div[contains(@class,'mine_inc')]"));
                         byButton.Click();
@@ -4667,7 +4684,7 @@ namespace Simple_Bot
                         byButton.Click();
                         SmallDelays();
                     }
-                    if (Glasses < 5)
+                    if (Glasses < 7)
                     {
                         IWebElement byButton = driver.FindElement(By.XPath(".//div[@class='clear_fix mr-10']/div[3]//div[contains(@class,'mine_inc')]"));
                         byButton.Click();
@@ -4675,7 +4692,7 @@ namespace Simple_Bot
                         byButton.Click();
                         SmallDelays();
                     }
-                    if (Helmet < 5)
+                    if (Helmet < 7)
                     {
                         IWebElement byButton = driver.FindElement(By.XPath(".//div[@class='clear_fix mr-10']/div[5]//div[contains(@class,'mine_inc')]"));
                         byButton.Click();
@@ -4695,7 +4712,8 @@ namespace Simple_Bot
         {
             try
             {
-                if (PickWorker < 5 || GlassesWorker < 5 || HelmetWorker < 5)
+                int minCount = 50;
+                if (PickWorker < minCount || GlassesWorker < minCount || HelmetWorker < minCount)
                 {
                     if (!driver.Title.Contains("Товары для шахты"))
                     {
@@ -4712,13 +4730,13 @@ namespace Simple_Bot
                         }
                     }
 
-                    if (PickWorker < 5)
+                    if (PickWorker < minCount)
                     {
                         //вытягиваем реальное кол-во инструмента
                         PickWorker =
                             Convert.ToInt32(
                                 driver.FindElement(By.XPath(".//div[@class='clear_fix mr-10']/div[2]//span[contains(@id,'now_number')]")).Text);
-                        if (PickWorker < 5)
+                        if (PickWorker < minCount)
                         {
                             IWebElement byButton = driver.FindElement(By.XPath(".//div[@class='clear_fix mr-10']/div[2]//div[contains(@class,'mine_inc')]"));
                             byButton.Click();
@@ -4728,13 +4746,13 @@ namespace Simple_Bot
                         }
                     }
 
-                    if (GlassesWorker < 5)
+                    if (GlassesWorker < minCount)
                     {
                         //вытягиваем реальное кол-во инструмента
                         GlassesWorker =
                             Convert.ToInt32(
                                 driver.FindElement(By.XPath(".//div[@class='clear_fix mr-10']/div[4]//span[contains(@id,'now_number')]")).Text);
-                        if (GlassesWorker < 5)
+                        if (GlassesWorker < minCount)
                         {
                             IWebElement byButton = driver.FindElement(By.XPath(".//div[@class='clear_fix mr-10']/div[4]//div[contains(@class,'mine_inc')]"));
                             byButton.Click();
@@ -4744,13 +4762,13 @@ namespace Simple_Bot
                         }
                     }
 
-                    if (HelmetWorker < 5)
+                    if (HelmetWorker < minCount)
                     {
                         //вытягиваем реальное кол-во инструмента
                         HelmetWorker =
                             Convert.ToInt32(
                                 driver.FindElement(By.XPath(".//div[@class='clear_fix mr-10']/div[6]//span[contains(@id,'now_number')]")).Text);
-                        if (HelmetWorker < 5)
+                        if (HelmetWorker < minCount)
                         {
                             IWebElement byButton = driver.FindElement(By.XPath(".//div[@class='clear_fix mr-10']/div[6]//div[contains(@class,'mine_inc')]"));
                             byButton.Click();
@@ -5229,7 +5247,7 @@ namespace Simple_Bot
                     if (Timer_NestReminder.CompareTo(DateTime.Now) < 0)
                     {
                         IWebElement temp = driver.FindElement(By.Id("menu_monsterpve"));
-                        SoundPlayer simpleSound = new SoundPlayer("Underground_Sound.wav");
+                        SoundPlayer simpleSound = new SoundPlayer(Resource.Underground_Sound);
                         simpleSound.Play();
                         Timer_NestReminder = ToDateTime("00:02:00");
                     }

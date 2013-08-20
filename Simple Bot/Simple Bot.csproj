@@ -92,6 +92,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BotWorker.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ocr\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -111,6 +116,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -141,6 +150,9 @@
     <None Include="Resources\dialog_cancel.png" />
     <None Include="Resources\arrow_down.png" />
     <None Include="Resources\VkLike.png" />
+    <None Include="Resources\Stirring_Sound.wav" />
+    <None Include="Resources\Underground_Sound.wav" />
+    <None Include="Resources\chromedriverKiller.exe" />
     <Content Include="sheep.ico" />
   </ItemGroup>
   <ItemGroup>

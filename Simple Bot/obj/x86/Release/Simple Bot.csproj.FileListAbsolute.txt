@@ -182,3 +182,4 @@ F:\NSB\Simple Bot\bin\Release\WebDriver.pdb
 F:\NSB\Simple Bot\bin\Release\WebDriver.xml
 D:\NSB\Simple Bot\bin\Release\WebDriver.pdb
 D:\NSB\Simple Bot\bin\Release\WebDriver.xml
+E:\NSB\Simple Bot\obj\x86\Release\Simple_Bot.Resource.resources

@@ -29,7 +29,7 @@ namespace Simple_Bot
 		bool isDonatePlayer = false;
 		bool botIsWorked = false;
         bool newVersionAvailability = false;
-		int BotVersion = 2603;
+		int BotVersion = 2604;
 
 		static Thread BotThread;
 
@@ -2238,7 +2238,7 @@ namespace Simple_Bot
 		{
 			if (checkBoxReminder.Checked == true)
 			{
-				SoundPlayer simpleSound = new SoundPlayer("Underground_Sound.wav");
+				SoundPlayer simpleSound = new SoundPlayer(Resource.Underground_Sound);
 				simpleSound.Play();
 			}
 		}

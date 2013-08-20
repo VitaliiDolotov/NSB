@@ -562,6 +562,10 @@
             this.checkBoxUsePersonalCage = new System.Windows.Forms.CheckBox();
             this.MineBox = new System.Windows.Forms.GroupBox();
             this.VillageBox = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.LoginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownloadNewVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -1141,7 +1145,7 @@
             // button16
             // 
             this.button16.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button16.Location = new System.Drawing.Point(7, 340);
+            this.button16.Location = new System.Drawing.Point(3, 338);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(75, 23);
             this.button16.TabIndex = 17;
@@ -7169,12 +7173,53 @@
             this.VillageBox.TabStop = false;
             this.VillageBox.Text = "Фермерам";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Location = new System.Drawing.Point(1034, 30);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowCheckBox = true;
+            this.dateTimePicker1.ShowUpDown = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(109, 20);
+            this.dateTimePicker1.TabIndex = 40;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(968, 32);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(63, 13);
+            this.label32.TabIndex = 41;
+            this.label32.Text = "Работать с";
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(1156, 34);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(19, 13);
+            this.label81.TabIndex = 42;
+            this.label81.Text = "по";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker2.Location = new System.Drawing.Point(1181, 30);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.ShowUpDown = true;
+            this.dateTimePicker2.Size = new System.Drawing.Size(84, 20);
+            this.dateTimePicker2.TabIndex = 43;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1926, 1061);
+            this.ClientSize = new System.Drawing.Size(1604, 882);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.label81);
+            this.Controls.Add(this.label32);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.VillageBox);
             this.Controls.Add(this.MineBox);
             this.Controls.Add(this.PersonalCageBox);
@@ -8021,6 +8066,10 @@
         private System.Windows.Forms.Button button54;
         private System.Windows.Forms.GroupBox VillageBox;
         private System.Windows.Forms.Panel panelVilage;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label81;
     }
 }
 
